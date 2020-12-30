@@ -1,0 +1,115 @@
+\section{jelatine::cldc::io::socket::ProtocolImpl::SocketOutputStream Class Reference}
+\label{classjelatine_1_1cldc_1_1io_1_1socket_1_1_protocol_impl_1_1_socket_output_stream}\index{jelatine::cldc::io::socket::ProtocolImpl::SocketOutputStream@{jelatine::cldc::io::socket::ProtocolImpl::SocketOutputStream}}
+Inheritance diagram for jelatine::cldc::io::socket::ProtocolImpl::SocketOutputStream:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=2.000000cm]{classjelatine_1_1cldc_1_1io_1_1socket_1_1_protocol_impl_1_1_socket_output_stream}
+\end{center}
+\end{figure}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+void {\bf write} (int b)  throws IOException 
+\item 
+void {\bf write} (byte[$\,$] b)  throws IOException 
+\item 
+void {\bf write} (byte[$\,$] b, int off, int len)  throws IOException 
+\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+\doxyref{java.io.OutputStream}{p.}{classjava_1_1io_1_1_output_stream} wrapper for socekts 
+
+Definition at line 143 of file ProtocolImpl.java.
+
+
+
+\subsection{Member Function Documentation}
+\index{jelatine::cldc::io::socket::ProtocolImpl::SocketOutputStream@{jelatine::cldc::io::socket::ProtocolImpl::SocketOutputStream}!write@{write}}
+\index{write@{write}!jelatine::cldc::io::socket::ProtocolImpl::SocketOutputStream@{jelatine::cldc::io::socket::ProtocolImpl::SocketOutputStream}}
+\subsubsection[{write}]{\setlength{\rightskip}{0pt plus 5cm}void jelatine::cldc::io::socket::ProtocolImpl::SocketOutputStream::write (
+\begin{DoxyParamCaption}
+\item[{int}]{ b}
+\end{DoxyParamCaption}
+)  throws {\bf IOException} \hspace{0.3cm}{\ttfamily  [inline, virtual]}}\label{classjelatine_1_1cldc_1_1io_1_1socket_1_1_protocol_impl_1_1_socket_output_stream_a7a2915f3a4d1b06950b33d385fb88ec8}
+This method writes a single byte to the output stream. The byte written is the low eight bits of the {\ttfamily int} passed and a argument. 
+
+Subclasses must provide an implementation of this abstract method
+
+
+\begin{DoxyParams}{Parameters}
+\item[{\em b}]The byte to be written to the output stream, passed as the low eight bits of an {\ttfamily int}\end{DoxyParams}
+
+\begin{DoxyExceptions}{Exceptions}
+\item[{\em IOException}]If an error occurs \end{DoxyExceptions}
+
+
+Implements {\bf java::io::OutputStream} \doxyref{}{p.}{classjava_1_1io_1_1_output_stream_acb393205e8e2e494c27c289439a8d160}.
+
+
+
+Definition at line 145 of file ProtocolImpl.java.
+
+
+
+Referenced by write().
+
+\index{jelatine::cldc::io::socket::ProtocolImpl::SocketOutputStream@{jelatine::cldc::io::socket::ProtocolImpl::SocketOutputStream}!write@{write}}
+\index{write@{write}!jelatine::cldc::io::socket::ProtocolImpl::SocketOutputStream@{jelatine::cldc::io::socket::ProtocolImpl::SocketOutputStream}}
+\subsubsection[{write}]{\setlength{\rightskip}{0pt plus 5cm}void jelatine::cldc::io::socket::ProtocolImpl::SocketOutputStream::write (
+\begin{DoxyParamCaption}
+\item[{byte[$\,$]}]{ b, }
+\item[{int}]{ off, }
+\item[{int}]{ len}
+\end{DoxyParamCaption}
+)  throws {\bf IOException} \hspace{0.3cm}{\ttfamily  [inline]}}\label{classjelatine_1_1cldc_1_1io_1_1socket_1_1_protocol_impl_1_1_socket_output_stream_ae97d00030c3b5fadcac281428ea99534}
+This method writes {\ttfamily len} bytes from the specified array {\ttfamily b} starting at index {\ttfamily off} into the array. 
+
+This method in this class calls the single byte {\ttfamily \doxyref{write()}{p.}{classjelatine_1_1cldc_1_1io_1_1socket_1_1_protocol_impl_1_1_socket_output_stream_a7a2915f3a4d1b06950b33d385fb88ec8}} method in a loop until all bytes have been written. Subclasses should override this method if possible in order to provide a more efficent implementation.
+
+
+\begin{DoxyParams}{Parameters}
+\item[{\em b}]The array of bytes to write from \item[{\em off}]The index into the array to start writing from \item[{\em len}]The number of bytes to write\end{DoxyParams}
+
+\begin{DoxyExceptions}{Exceptions}
+\item[{\em IOException}]If an error occurs \end{DoxyExceptions}
+
+
+Reimplemented from {\bf java::io::OutputStream} \doxyref{}{p.}{classjava_1_1io_1_1_output_stream_ac13ddccf0c1b6d05dd794a5c610ae77c}.
+
+
+
+Definition at line 153 of file ProtocolImpl.java.
+
+\index{jelatine::cldc::io::socket::ProtocolImpl::SocketOutputStream@{jelatine::cldc::io::socket::ProtocolImpl::SocketOutputStream}!write@{write}}
+\index{write@{write}!jelatine::cldc::io::socket::ProtocolImpl::SocketOutputStream@{jelatine::cldc::io::socket::ProtocolImpl::SocketOutputStream}}
+\subsubsection[{write}]{\setlength{\rightskip}{0pt plus 5cm}void jelatine::cldc::io::socket::ProtocolImpl::SocketOutputStream::write (
+\begin{DoxyParamCaption}
+\item[{byte[$\,$]}]{ b}
+\end{DoxyParamCaption}
+)  throws {\bf IOException} \hspace{0.3cm}{\ttfamily  [inline]}}\label{classjelatine_1_1cldc_1_1io_1_1socket_1_1_protocol_impl_1_1_socket_output_stream_aaad7695a70377f7bb6859dc84d54282f}
+This method all the writes bytes from the passed array to the output stream. This method is equivalent to {\ttfamily write(b, 0, buf.length)} which is exactly how it is implemented in this class.
+
+
+\begin{DoxyParams}{Parameters}
+\item[{\em b}]The array of bytes to write\end{DoxyParams}
+
+\begin{DoxyExceptions}{Exceptions}
+\item[{\em IOException}]If an error occurs \end{DoxyExceptions}
+
+
+Reimplemented from {\bf java::io::OutputStream} \doxyref{}{p.}{classjava_1_1io_1_1_output_stream_a80be729834b816c2dd62ef7aa46a15be}.
+
+
+
+Definition at line 149 of file ProtocolImpl.java.
+
+
+
+References write().
+
+
+
+The documentation for this class was generated from the following file:\begin{DoxyCompactItemize}
+\item 
+src/classpath/jelatine/cldc/io/socket/ProtocolImpl.java\end{DoxyCompactItemize}

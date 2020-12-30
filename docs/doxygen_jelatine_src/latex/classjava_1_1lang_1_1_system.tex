@@ -1,0 +1,180 @@
+\section{java::lang::System Class Reference}
+\label{classjava_1_1lang_1_1_system}\index{java::lang::System@{java::lang::System}}
+\subsection*{Static Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+static native long {\bf currentTimeMillis} ()
+\item 
+static native void {\bf arraycopy} ({\bf Object} src, int srcStart, {\bf Object} dest, int destStart, int len)
+\item 
+static native int {\bf identityHashCode} ({\bf Object} o)
+\item 
+static {\bf String} {\bf getProperty} ({\bf String} key)
+\item 
+static void {\bf exit} (int status)
+\item 
+static void {\bf gc} ()
+\end{DoxyCompactItemize}
+\subsection*{Static Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+static final {\bf PrintStream} {\bf out} = System.makeStandardOutputStream()
+\item 
+static final {\bf PrintStream} {\bf err} = System.makeStandardErrorStream()
+\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+\doxyref{System}{p.}{classjava_1_1lang_1_1_system} represents system-\/wide resources; things that represent the general environment. As such, all methods are static.
+
+\begin{DoxyAuthor}{Author}
+John Keiser 
+
+Eric Blake ({\tt ebb9@email.byu.edu}) 
+\end{DoxyAuthor}
+
+
+Definition at line 52 of file System.java.
+
+
+
+\subsection{Member Function Documentation}
+\index{java::lang::System@{java::lang::System}!arraycopy@{arraycopy}}
+\index{arraycopy@{arraycopy}!java::lang::System@{java::lang::System}}
+\subsubsection[{arraycopy}]{\setlength{\rightskip}{0pt plus 5cm}static native void java::lang::System::arraycopy (
+\begin{DoxyParamCaption}
+\item[{{\bf Object}}]{ src, }
+\item[{int}]{ srcStart, }
+\item[{{\bf Object}}]{ dest, }
+\item[{int}]{ destStart, }
+\item[{int}]{ len}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily  [static]}}\label{classjava_1_1lang_1_1_system_ae22472a9b820e1c8699e858f82c41f39}
+Copy one array onto another from {\ttfamily src[srcStart]} ... {\ttfamily src[srcStart+len-\/1]} to {\ttfamily dest[destStart]} ... {\ttfamily dest[destStart+len-\/1]}. First, the arguments are validated: neither array may be null, they must be of compatible types, and the start and length must fit within both arrays. Then the copying starts, and proceeds through increasing slots. If src and dest are the same array, this will appear to copy the data to a temporary location first. An \doxyref{ArrayStoreException}{p.}{classjava_1_1lang_1_1_array_store_exception} in the middle of copying will leave earlier elements copied, but later elements unchanged.
+
+
+\begin{DoxyParams}{Parameters}
+\item[{\em src}]the array to copy elements from \item[{\em srcStart}]the starting position in src \item[{\em dest}]the array to copy elements to \item[{\em destStart}]the starting position in dest \item[{\em len}]the number of elements to copy \end{DoxyParams}
+
+\begin{DoxyExceptions}{Exceptions}
+\item[{\em \doxyref{NullPointerException}{p.}{classjava_1_1lang_1_1_null_pointer_exception}}]if src or dest is null \item[{\em \doxyref{ArrayStoreException}{p.}{classjava_1_1lang_1_1_array_store_exception}}]if src or dest is not an array, if they are not compatible array types, or if an incompatible runtime type is stored in dest \item[{\em \doxyref{IndexOutOfBoundsException}{p.}{classjava_1_1lang_1_1_index_out_of_bounds_exception}}]if len is negative, or if the start or end copy position in either array is out of bounds \end{DoxyExceptions}
+\index{java::lang::System@{java::lang::System}!currentTimeMillis@{currentTimeMillis}}
+\index{currentTimeMillis@{currentTimeMillis}!java::lang::System@{java::lang::System}}
+\subsubsection[{currentTimeMillis}]{\setlength{\rightskip}{0pt plus 5cm}static native long java::lang::System::currentTimeMillis (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily  [static]}}\label{classjava_1_1lang_1_1_system_a60a4663d852af871253c0c727518aa59}
+Get the current time, measured in the number of milliseconds from the beginning of Jan. 1, 1970. This is gathered from the system clock, with any attendant incorrectness (it may be timezone dependent).
+
+\begin{DoxyReturn}{Returns}
+the current time 
+\end{DoxyReturn}
+\begin{DoxySeeAlso}{See also}
+\doxyref{java.util.Date}{p.}{classjava_1_1util_1_1_date} 
+\end{DoxySeeAlso}
+\index{java::lang::System@{java::lang::System}!exit@{exit}}
+\index{exit@{exit}!java::lang::System@{java::lang::System}}
+\subsubsection[{exit}]{\setlength{\rightskip}{0pt plus 5cm}static void java::lang::System::exit (
+\begin{DoxyParamCaption}
+\item[{int}]{ status}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily  [inline, static]}}\label{classjava_1_1lang_1_1_system_a8a9bcfb622df80be0fef22f654d01fe8}
+Terminate the Virtual Machine. This just calls {\ttfamily \doxyref{Runtime.getRuntime()}{p.}{classjava_1_1lang_1_1_runtime_a5685881a47b6f05b4d59fceefd38c4cc}.exit(status)}, and never returns. Obviously, a security check is in order, {\ttfamily checkExit}.
+
+
+\begin{DoxyParams}{Parameters}
+\item[{\em status}]the exit status; by convention non-\/zero is abnormal \end{DoxyParams}
+\begin{DoxySeeAlso}{See also}
+\doxyref{Runtime::exit(int)}{p.}{classjava_1_1lang_1_1_runtime_aadff29184442958bac4dcbf9b816eaca} 
+\end{DoxySeeAlso}
+
+
+Definition at line 170 of file System.java.
+
+\index{java::lang::System@{java::lang::System}!gc@{gc}}
+\index{gc@{gc}!java::lang::System@{java::lang::System}}
+\subsubsection[{gc}]{\setlength{\rightskip}{0pt plus 5cm}static void java::lang::System::gc (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily  [inline, static]}}\label{classjava_1_1lang_1_1_system_a6a6db9c42292bc701452933b653e7234}
+Calls the garbage collector. This is only a hint, and it is up to the implementation what this hint suggests, but it usually causes a best-\/effort attempt to reclaim unused memory from discarded objects. This calls {\ttfamily \doxyref{Runtime.getRuntime()}{p.}{classjava_1_1lang_1_1_runtime_a5685881a47b6f05b4d59fceefd38c4cc}.\doxyref{gc()}{p.}{classjava_1_1lang_1_1_system_a6a6db9c42292bc701452933b653e7234}}.
+
+\begin{DoxySeeAlso}{See also}
+\doxyref{Runtime::gc()}{p.}{classjava_1_1lang_1_1_runtime_a654bce64a9f611b634019716dab68e7c} 
+\end{DoxySeeAlso}
+
+
+Definition at line 183 of file System.java.
+
+\index{java::lang::System@{java::lang::System}!getProperty@{getProperty}}
+\index{getProperty@{getProperty}!java::lang::System@{java::lang::System}}
+\subsubsection[{getProperty}]{\setlength{\rightskip}{0pt plus 5cm}static {\bf String} java::lang::System::getProperty (
+\begin{DoxyParamCaption}
+\item[{{\bf String}}]{ key}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily  [inline, static]}}\label{classjava_1_1lang_1_1_system_a3272c157003028d2ba0fb376e9928600}
+Get a single system property by name. A security check may be performed, {\ttfamily checkPropertyAccess(key)}.
+
+
+\begin{DoxyParams}{Parameters}
+\item[{\em key}]the name of the system property to get \end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+the property, or null if not found 
+\end{DoxyReturn}
+
+\begin{DoxyExceptions}{Exceptions}
+\item[{\em \doxyref{NullPointerException}{p.}{classjava_1_1lang_1_1_null_pointer_exception}}]if key is null \item[{\em \doxyref{IllegalArgumentException}{p.}{classjava_1_1lang_1_1_illegal_argument_exception}}]if key is \char`\"{}\char`\"{} \end{DoxyExceptions}
+
+
+Definition at line 141 of file System.java.
+
+
+
+References java::lang::String::equals().
+
+\index{java::lang::System@{java::lang::System}!identityHashCode@{identityHashCode}}
+\index{identityHashCode@{identityHashCode}!java::lang::System@{java::lang::System}}
+\subsubsection[{identityHashCode}]{\setlength{\rightskip}{0pt plus 5cm}static native int java::lang::System::identityHashCode (
+\begin{DoxyParamCaption}
+\item[{{\bf Object}}]{ o}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily  [static]}}\label{classjava_1_1lang_1_1_system_a3097228bc913a850b7491503602e1c48}
+Get a hash code computed by the VM for the \doxyref{Object}{p.}{classjava_1_1lang_1_1_object}. This hash code will be the same as Object's hashCode() method. It is usually some convolution of the pointer to the \doxyref{Object}{p.}{classjava_1_1lang_1_1_object} internal to the VM. It follows standard hash code rules, in that it will remain the same for a given \doxyref{Object}{p.}{classjava_1_1lang_1_1_object} for the lifetime of that \doxyref{Object}{p.}{classjava_1_1lang_1_1_object}.
+
+
+\begin{DoxyParams}{Parameters}
+\item[{\em o}]the \doxyref{Object}{p.}{classjava_1_1lang_1_1_object} to get the hash code for \end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+the VM-\/dependent hash code for this \doxyref{Object}{p.}{classjava_1_1lang_1_1_object} 
+\end{DoxyReturn}
+\begin{DoxySince}{Since}
+1.1 
+\end{DoxySince}
+
+
+\subsection{Field Documentation}
+\index{java::lang::System@{java::lang::System}!err@{err}}
+\index{err@{err}!java::lang::System@{java::lang::System}}
+\subsubsection[{err}]{\setlength{\rightskip}{0pt plus 5cm}final {\bf PrintStream} {\bf java::lang::System::err} = System.makeStandardErrorStream()\hspace{0.3cm}{\ttfamily  [static]}}\label{classjava_1_1lang_1_1_system_a6a9f495f2cf102cd264d9bd5f9ac1a32}
+The standard output PrintStream. This is assigned at startup and starts its life perfectly valid.
+
+This corresponds to the C stderr and C++ cerr variables, which typically output error messages to the screen, but may be used to pipe output to other processes or files. That should all be transparent to you, however. 
+
+Definition at line 74 of file System.java.
+
+\index{java::lang::System@{java::lang::System}!out@{out}}
+\index{out@{out}!java::lang::System@{java::lang::System}}
+\subsubsection[{out}]{\setlength{\rightskip}{0pt plus 5cm}final {\bf PrintStream} {\bf java::lang::System::out} = System.makeStandardOutputStream()\hspace{0.3cm}{\ttfamily  [static]}}\label{classjava_1_1lang_1_1_system_a3aee5a0828f45fbc3ca2bdd44726ad33}
+The standard output PrintStream. This is assigned at startup and starts its life perfectly valid.
+
+This corresponds to the C stdout and C++ cout variables, which typically output normal messages to the screen, but may be used to pipe output to other processes or files. That should all be transparent to you, however. 
+
+Definition at line 63 of file System.java.
+
+
+
+The documentation for this class was generated from the following file:\begin{DoxyCompactItemize}
+\item 
+src/classpath/java/lang/System.java\end{DoxyCompactItemize}

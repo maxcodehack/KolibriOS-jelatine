@@ -1,0 +1,111 @@
+\section{jelatine::cldc::io::socket::ProtocolImpl::SocketInputStream Class Reference}
+\label{classjelatine_1_1cldc_1_1io_1_1socket_1_1_protocol_impl_1_1_socket_input_stream}\index{jelatine::cldc::io::socket::ProtocolImpl::SocketInputStream@{jelatine::cldc::io::socket::ProtocolImpl::SocketInputStream}}
+Inheritance diagram for jelatine::cldc::io::socket::ProtocolImpl::SocketInputStream:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=2.000000cm]{classjelatine_1_1cldc_1_1io_1_1socket_1_1_protocol_impl_1_1_socket_input_stream}
+\end{center}
+\end{figure}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+int {\bf read} ()  throws IOException 
+\item 
+int {\bf read} (byte[$\,$] b)  throws IOException 
+\item 
+int {\bf read} (byte[$\,$] b, int off, int len)  throws IOException 
+\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+\doxyref{java.io.InputStream}{p.}{classjava_1_1io_1_1_input_stream} wrapper for sockets 
+
+Definition at line 104 of file ProtocolImpl.java.
+
+
+
+\subsection{Member Function Documentation}
+\index{jelatine::cldc::io::socket::ProtocolImpl::SocketInputStream@{jelatine::cldc::io::socket::ProtocolImpl::SocketInputStream}!read@{read}}
+\index{read@{read}!jelatine::cldc::io::socket::ProtocolImpl::SocketInputStream@{jelatine::cldc::io::socket::ProtocolImpl::SocketInputStream}}
+\subsubsection[{read}]{\setlength{\rightskip}{0pt plus 5cm}int jelatine::cldc::io::socket::ProtocolImpl::SocketInputStream::read (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)  throws {\bf IOException} \hspace{0.3cm}{\ttfamily  [inline, virtual]}}\label{classjelatine_1_1cldc_1_1io_1_1socket_1_1_protocol_impl_1_1_socket_input_stream_a97d9765b75aa610ac425a1a3659e4d1c}
+Reads the next byte from the input stream \begin{DoxyReturn}{Returns}
+The next byte in the input stream or -\/1 if no more data can be read 
+\end{DoxyReturn}
+
+\begin{DoxyExceptions}{Exceptions}
+\item[{\em IOException}]if an error occurs \end{DoxyExceptions}
+
+
+Implements {\bf java::io::InputStream} \doxyref{}{p.}{classjava_1_1io_1_1_input_stream_a2663225289237a9aefef92a835ad4a9b}.
+
+
+
+Definition at line 111 of file ProtocolImpl.java.
+
+
+
+Referenced by read().
+
+\index{jelatine::cldc::io::socket::ProtocolImpl::SocketInputStream@{jelatine::cldc::io::socket::ProtocolImpl::SocketInputStream}!read@{read}}
+\index{read@{read}!jelatine::cldc::io::socket::ProtocolImpl::SocketInputStream@{jelatine::cldc::io::socket::ProtocolImpl::SocketInputStream}}
+\subsubsection[{read}]{\setlength{\rightskip}{0pt plus 5cm}int jelatine::cldc::io::socket::ProtocolImpl::SocketInputStream::read (
+\begin{DoxyParamCaption}
+\item[{byte[$\,$]}]{ b, }
+\item[{int}]{ off, }
+\item[{int}]{ len}
+\end{DoxyParamCaption}
+)  throws {\bf IOException} \hspace{0.3cm}{\ttfamily  [inline]}}\label{classjelatine_1_1cldc_1_1io_1_1socket_1_1_protocol_impl_1_1_socket_input_stream_a5a81d669582c70f8716b88eed4fd5ac3}
+This method read bytes len bytes from the stream and store them in the buffer supplied by {\itshape b\/} 
+\begin{DoxyParams}{Parameters}
+\item[{\em b}]The array into which the bytes read should be stored \item[{\em off}]The offset into the array to start storing bytes \item[{\em len}]The requested number of bytes to read \end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+The actual number of bytes read, or -\/1 if end of stream 
+\end{DoxyReturn}
+
+\begin{DoxyExceptions}{Exceptions}
+\item[{\em IOException}]If an error occurs. \end{DoxyExceptions}
+
+
+Reimplemented from {\bf java::io::InputStream} \doxyref{}{p.}{classjava_1_1io_1_1_input_stream_a8dd0e8c89c31b11f0bff0039ec4f7a71}.
+
+
+
+Definition at line 135 of file ProtocolImpl.java.
+
+\index{jelatine::cldc::io::socket::ProtocolImpl::SocketInputStream@{jelatine::cldc::io::socket::ProtocolImpl::SocketInputStream}!read@{read}}
+\index{read@{read}!jelatine::cldc::io::socket::ProtocolImpl::SocketInputStream@{jelatine::cldc::io::socket::ProtocolImpl::SocketInputStream}}
+\subsubsection[{read}]{\setlength{\rightskip}{0pt plus 5cm}int jelatine::cldc::io::socket::ProtocolImpl::SocketInputStream::read (
+\begin{DoxyParamCaption}
+\item[{byte[$\,$]}]{ b}
+\end{DoxyParamCaption}
+)  throws {\bf IOException} \hspace{0.3cm}{\ttfamily  [inline]}}\label{classjelatine_1_1cldc_1_1io_1_1socket_1_1_protocol_impl_1_1_socket_input_stream_adeba3080296d5efef26c087fa49a6c16}
+Read the next {\itshape b.length\/} bytes of data from the input stream and store them in {\itshape b\/} 
+\begin{DoxyParams}{Parameters}
+\item[{\em b}]A byte array \end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+The number the bytes read or -\/1 if at the end of stream 
+\end{DoxyReturn}
+
+\begin{DoxyExceptions}{Exceptions}
+\item[{\em IOException}]if an error occurs \end{DoxyExceptions}
+
+
+Reimplemented from {\bf java::io::InputStream} \doxyref{}{p.}{classjava_1_1io_1_1_input_stream_a8501f410c04fd75e03de52446d4303df}.
+
+
+
+Definition at line 121 of file ProtocolImpl.java.
+
+
+
+References read().
+
+
+
+The documentation for this class was generated from the following file:\begin{DoxyCompactItemize}
+\item 
+src/classpath/jelatine/cldc/io/socket/ProtocolImpl.java\end{DoxyCompactItemize}

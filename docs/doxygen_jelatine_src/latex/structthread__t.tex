@@ -1,0 +1,90 @@
+\section{thread\_\-t Struct Reference}
+\label{structthread__t}\index{thread\_\-t@{thread\_\-t}}
+
+
+{\ttfamily \#include $<$thread.h$>$}
+
+\subsection*{Data Fields}
+\begin{DoxyCompactItemize}
+\item 
+struct {\bf thread\_\-t} $\ast$ {\bf next}\label{structthread__t_a8ac79fa9371166cb444f5695424f19e6}
+
+\begin{DoxyCompactList}\small\item\em Next thread in the list. \item\end{DoxyCompactList}\item 
+bool {\bf blocked}\label{structthread__t_af37c6a38bd31088945e7ea9fde1bfe7c}
+
+\begin{DoxyCompactList}\small\item\em Indicates whethever the thread might be blocked. \item\end{DoxyCompactList}\item 
+bool {\bf stopped}\label{structthread__t_ad1fb4ee527c847541b93d5a627dd2b52}
+
+\begin{DoxyCompactList}\small\item\em Indicates whethever the thread must stop execution. \item\end{DoxyCompactList}\item 
+uintptr\_\-t {\bf obj}\label{structthread__t_aa87a38d6f066fafca225292e44e22df0}
+
+\begin{DoxyCompactList}\small\item\em The associated \doxyref{java.lang.Thread}{p.}{classjava_1_1lang_1_1_thread} object. \item\end{DoxyCompactList}\item 
+jword\_\-t $\ast$ {\bf stack}\label{structthread__t_aae4fa8c0a34d467b19691a1065490b49}
+
+\begin{DoxyCompactList}\small\item\em Global stack pointer. \item\end{DoxyCompactList}\item 
+jword\_\-t $\ast$ {\bf sp}\label{structthread__t_a394d501de4245e192c487f9ab5672a9c}
+
+\begin{DoxyCompactList}\small\item\em Stack pointer. \item\end{DoxyCompactList}\item 
+{\bf stack\_\-frame\_\-t} $\ast$ {\bf fp}\label{structthread__t_a27d4161ad9848186a50d9a137c4d7f83}
+
+\begin{DoxyCompactList}\small\item\em Frame pointer. \item\end{DoxyCompactList}\item 
+const uint8\_\-t $\ast$ {\bf pc}\label{structthread__t_a3fbfd5c6e97c7745283b1964cfba6461}
+
+\begin{DoxyCompactList}\small\item\em Saved program counter. \item\end{DoxyCompactList}\item 
+uintptr\_\-t {\bf exception}\label{structthread__t_ac8114a936cf535b8ff926a77b90a92c8}
+
+\begin{DoxyCompactList}\small\item\em Java exception. \item\end{DoxyCompactList}\item 
+\begin{tabbing}
+xx\=xx\=xx\=xx\=xx\=xx\=xx\=xx\=xx\=\kill
+struct \{\\
+\>const char $\ast$ {\bf file}\\
+\>\>{\em File where the exception was thrown. }\\
+\>int {\bf line}\\
+\>\>{\em Line where the exception was thrown. }\\
+\>uintptr\_t {\bf data}\\
+\>\>{\em Class type of the exception. }\\
+\>char $\ast$ {\bf description}\\
+\>\>{\em Exception description. }\\
+\>jmp\_buf $\ast$ {\bf buf}\\
+\>\>{\em Closest jump buffer. }\\
+\} {\bf c\_exception}\label{structthread__t_a01a1c0dc3ec032cec94ac55b6ac50341}
+\\
+
+\end{tabbing}\begin{DoxyCompactList}\small\item\em C pseudo-\/exception. \item\end{DoxyCompactList}\item 
+\begin{tabbing}
+xx\=xx\=xx\=xx\=xx\=xx\=xx\=xx\=xx\=\kill
+struct \{\\
+\>uint16\_t {\bf capacity}\\
+\>\>{\em Available temporary root slots. }\\
+\>uint16\_t {\bf used}\\
+\>\>{\em Used temporary root slots. }\\
+\>uintptr\_t $\ast$$\ast$ {\bf pointers}\\
+\>\>{\em Array of pointers to the roots. }\\
+\} {\bf roots}\label{structthread__t_a9039e0ee51deacedc5afc21bbee53c7f}
+\\
+
+\end{tabbing}\begin{DoxyCompactList}\small\item\em Area used for storing temporary root pointers. \item\end{DoxyCompactList}\item 
+{\bf native\_\-thread\_\-t} {\bf native}\label{structthread__t_ad64c5234b491b2acaa9d91f6d13574c0}
+
+\begin{DoxyCompactList}\small\item\em Embedded native thread. \item\end{DoxyCompactList}\item 
+{\bf native\_\-cond\_\-t} {\bf cond}\label{structthread__t_a97f0b48764c21a2ce23bac35bfd10dc6}
+
+\begin{DoxyCompactList}\small\item\em Embedded native condition variable. \item\end{DoxyCompactList}\item 
+{\bf native\_\-cond\_\-t} $\ast$ {\bf cond\_\-int}\label{structthread__t_a703825a75bf9b6c441eb6ae8da4a0201}
+
+\begin{DoxyCompactList}\small\item\em Condition on which this thread is waiting. \item\end{DoxyCompactList}\item 
+bool {\bf interrupted}\label{structthread__t_a820c1cbcd3d0f31be537242f2befbf07}
+
+\begin{DoxyCompactList}\small\item\em True if this thread was interrupted. \item\end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+Virtual machine thread 
+
+Definition at line 144 of file thread.h.
+
+
+
+The documentation for this struct was generated from the following file:\begin{DoxyCompactItemize}
+\item 
+src/jelatine/{\bf thread.h}\end{DoxyCompactItemize}

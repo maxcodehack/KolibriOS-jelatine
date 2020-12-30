@@ -1,0 +1,573 @@
+\section{java::lang::Integer Class Reference}
+\label{classjava_1_1lang_1_1_integer}\index{java::lang::Integer@{java::lang::Integer}}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+{\bf Integer} (int value)
+\item 
+byte {\bf byteValue} ()
+\item 
+short {\bf shortValue} ()
+\item 
+int {\bf intValue} ()
+\item 
+long {\bf longValue} ()
+\item 
+float {\bf floatValue} ()
+\item 
+double {\bf doubleValue} ()
+\item 
+{\bf String} {\bf toString} ()
+\item 
+int {\bf hashCode} ()
+\item 
+boolean {\bf equals} ({\bf Object} obj)
+\end{DoxyCompactItemize}
+\subsection*{Static Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+static {\bf String} {\bf toString} (int num, int radix)
+\item 
+static {\bf String} {\bf toHexString} (int i)
+\item 
+static {\bf String} {\bf toOctalString} (int i)
+\item 
+static {\bf String} {\bf toBinaryString} (int i)
+\item 
+static {\bf String} {\bf toString} (int i)
+\item 
+static int {\bf parseInt} ({\bf String} str, int radix)  throws NumberFormatException     
+\item 
+static int {\bf parseInt} ({\bf String} s)  throws NumberFormatException     
+\item 
+static {\bf Integer} {\bf valueOf} ({\bf String} s, int radix)
+\item 
+static {\bf Integer} {\bf valueOf} ({\bf String} s)
+\end{DoxyCompactItemize}
+\subsection*{Static Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+static final int {\bf MIN\_\-VALUE} = 0x80000000
+\item 
+static final int {\bf MAX\_\-VALUE} = 0x7fffffff
+\end{DoxyCompactItemize}
+\subsection*{Static Package Functions}
+\begin{DoxyCompactItemize}
+\item 
+static {\bf String} {\bf toUnsignedString} (int num, int exp)
+\item 
+static int {\bf parseIntInternal} ({\bf String} str, int radix)
+\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+Instances of class {\ttfamily \doxyref{Integer}{p.}{classjava_1_1lang_1_1_integer}} represent primitive {\ttfamily int} values.
+
+Additionally, this class provides various helper functions and variables related to ints.
+
+\begin{DoxyAuthor}{Author}
+Paul Fisher 
+
+John Keiser 
+
+Warren Levy 
+
+Eric Blake ({\tt ebb9@email.byu.edu}) 
+
+Tom Tromey ({\tt tromey@redhat.com}) 
+\end{DoxyAuthor}
+
+
+Definition at line 54 of file Integer.java.
+
+
+
+\subsection{Constructor \& Destructor Documentation}
+\index{java::lang::Integer@{java::lang::Integer}!Integer@{Integer}}
+\index{Integer@{Integer}!java::lang::Integer@{java::lang::Integer}}
+\subsubsection[{Integer}]{\setlength{\rightskip}{0pt plus 5cm}java::lang::Integer::Integer (
+\begin{DoxyParamCaption}
+\item[{int}]{ value}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily  [inline]}}\label{classjava_1_1lang_1_1_integer_af1dc4ba3211ed41a09daab72cf85b152}
+Create an {\ttfamily \doxyref{Integer}{p.}{classjava_1_1lang_1_1_integer}} object representing the value of the {\ttfamily int} argument.
+
+
+\begin{DoxyParams}{Parameters}
+\item[{\em value}]the value to use \end{DoxyParams}
+
+
+Definition at line 91 of file Integer.java.
+
+
+
+Referenced by valueOf().
+
+
+
+\subsection{Member Function Documentation}
+\index{java::lang::Integer@{java::lang::Integer}!byteValue@{byteValue}}
+\index{byteValue@{byteValue}!java::lang::Integer@{java::lang::Integer}}
+\subsubsection[{byteValue}]{\setlength{\rightskip}{0pt plus 5cm}byte java::lang::Integer::byteValue (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily  [inline]}}\label{classjava_1_1lang_1_1_integer_aed52b721de6ad96ed3008ea48744ce45}
+Return the value of this {\ttfamily \doxyref{Integer}{p.}{classjava_1_1lang_1_1_integer}} as a {\ttfamily byte}.
+
+\begin{DoxyReturn}{Returns}
+the byte value 
+\end{DoxyReturn}
+
+
+Definition at line 270 of file Integer.java.
+
+\index{java::lang::Integer@{java::lang::Integer}!doubleValue@{doubleValue}}
+\index{doubleValue@{doubleValue}!java::lang::Integer@{java::lang::Integer}}
+\subsubsection[{doubleValue}]{\setlength{\rightskip}{0pt plus 5cm}double java::lang::Integer::doubleValue (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily  [inline]}}\label{classjava_1_1lang_1_1_integer_aa3a9689f002abcb6993f7759a911f806}
+Return the value of this {\ttfamily \doxyref{Integer}{p.}{classjava_1_1lang_1_1_integer}} as a {\ttfamily double}.
+
+\begin{DoxyReturn}{Returns}
+the double value 
+\end{DoxyReturn}
+
+
+Definition at line 319 of file Integer.java.
+
+\index{java::lang::Integer@{java::lang::Integer}!equals@{equals}}
+\index{equals@{equals}!java::lang::Integer@{java::lang::Integer}}
+\subsubsection[{equals}]{\setlength{\rightskip}{0pt plus 5cm}boolean java::lang::Integer::equals (
+\begin{DoxyParamCaption}
+\item[{{\bf Object}}]{ obj}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily  [inline]}}\label{classjava_1_1lang_1_1_integer_a86fba3b591d440f0c72eb64399ec2cf0}
+Returns {\ttfamily true} if {\ttfamily obj} is an instance of {\ttfamily \doxyref{Integer}{p.}{classjava_1_1lang_1_1_integer}} and represents the same int value.
+
+
+\begin{DoxyParams}{Parameters}
+\item[{\em obj}]the object to compare \end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+whether these Objects are semantically equal 
+\end{DoxyReturn}
+
+
+Definition at line 353 of file Integer.java.
+
+\index{java::lang::Integer@{java::lang::Integer}!floatValue@{floatValue}}
+\index{floatValue@{floatValue}!java::lang::Integer@{java::lang::Integer}}
+\subsubsection[{floatValue}]{\setlength{\rightskip}{0pt plus 5cm}float java::lang::Integer::floatValue (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily  [inline]}}\label{classjava_1_1lang_1_1_integer_a17f7fcf4dd2ef01d40004be71c6681d6}
+Return the value of this {\ttfamily \doxyref{Integer}{p.}{classjava_1_1lang_1_1_integer}} as a {\ttfamily float}.
+
+\begin{DoxyReturn}{Returns}
+the float value 
+\end{DoxyReturn}
+
+
+Definition at line 309 of file Integer.java.
+
+\index{java::lang::Integer@{java::lang::Integer}!hashCode@{hashCode}}
+\index{hashCode@{hashCode}!java::lang::Integer@{java::lang::Integer}}
+\subsubsection[{hashCode}]{\setlength{\rightskip}{0pt plus 5cm}int java::lang::Integer::hashCode (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily  [inline]}}\label{classjava_1_1lang_1_1_integer_a72945ef2d7984339857555a1edc58e04}
+Return a hashcode representing this \doxyref{Object}{p.}{classjava_1_1lang_1_1_object}. {\ttfamily \doxyref{Integer}{p.}{classjava_1_1lang_1_1_integer}}'s hash code is simply its value.
+
+\begin{DoxyReturn}{Returns}
+this Object's hash code 
+\end{DoxyReturn}
+
+
+Definition at line 341 of file Integer.java.
+
+\index{java::lang::Integer@{java::lang::Integer}!intValue@{intValue}}
+\index{intValue@{intValue}!java::lang::Integer@{java::lang::Integer}}
+\subsubsection[{intValue}]{\setlength{\rightskip}{0pt plus 5cm}int java::lang::Integer::intValue (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily  [inline]}}\label{classjava_1_1lang_1_1_integer_a8ba45e9805de2d1d8591edf4be14975b}
+Return the value of this {\ttfamily \doxyref{Integer}{p.}{classjava_1_1lang_1_1_integer}}. \begin{DoxyReturn}{Returns}
+the int value 
+\end{DoxyReturn}
+
+
+Definition at line 289 of file Integer.java.
+
+\index{java::lang::Integer@{java::lang::Integer}!longValue@{longValue}}
+\index{longValue@{longValue}!java::lang::Integer@{java::lang::Integer}}
+\subsubsection[{longValue}]{\setlength{\rightskip}{0pt plus 5cm}long java::lang::Integer::longValue (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily  [inline]}}\label{classjava_1_1lang_1_1_integer_a64fc6f8ab2897a5901feb99045378b9e}
+Return the value of this {\ttfamily \doxyref{Integer}{p.}{classjava_1_1lang_1_1_integer}} as a {\ttfamily long}.
+
+\begin{DoxyReturn}{Returns}
+the long value 
+\end{DoxyReturn}
+
+
+Definition at line 299 of file Integer.java.
+
+\index{java::lang::Integer@{java::lang::Integer}!parseInt@{parseInt}}
+\index{parseInt@{parseInt}!java::lang::Integer@{java::lang::Integer}}
+\subsubsection[{parseInt}]{\setlength{\rightskip}{0pt plus 5cm}static int java::lang::Integer::parseInt (
+\begin{DoxyParamCaption}
+\item[{{\bf String}}]{ str, }
+\item[{int}]{ radix}
+\end{DoxyParamCaption}
+)  throws {\bf NumberFormatException}     \hspace{0.3cm}{\ttfamily  [inline, static]}}\label{classjava_1_1lang_1_1_integer_a369fccaa67bcd1e0f7d6695923628a65}
+Converts the specified {\ttfamily \doxyref{String}{p.}{classjava_1_1lang_1_1_string}} into an {\ttfamily int} using the specified radix (base). The string must not be {\ttfamily null} or empty. It may begin with an optional '-\/', which will negate the answer, provided that there are also valid digits. Each digit is parsed as if by {\ttfamily Character.digit(d, radix)}, and must be in the range {\ttfamily 0} to {\ttfamily radix -\/ 1}. Finally, the result must be within {\ttfamily MIN\_\-VALUE} to {\ttfamily MAX\_\-VALUE}, inclusive. Unlike \doxyref{Double.parseDouble}{p.}{classjava_1_1lang_1_1_double_a5c5fabd1e39b3d9a8b2bc37277da15bc}, you may not have a leading '+'.
+
+
+\begin{DoxyParams}{Parameters}
+\item[{\em str}]the {\ttfamily \doxyref{String}{p.}{classjava_1_1lang_1_1_string}} to convert \item[{\em radix}]the radix (base) to use in the conversion \end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+the {\ttfamily \doxyref{String}{p.}{classjava_1_1lang_1_1_string}} argument converted to {\ttfamily int} 
+\end{DoxyReturn}
+
+\begin{DoxyExceptions}{Exceptions}
+\item[{\em \doxyref{NumberFormatException}{p.}{classjava_1_1lang_1_1_number_format_exception}}]if {\ttfamily s} cannot be parsed as an {\ttfamily int} \end{DoxyExceptions}
+
+
+Definition at line 214 of file Integer.java.
+
+
+
+References parseIntInternal().
+
+\index{java::lang::Integer@{java::lang::Integer}!parseInt@{parseInt}}
+\index{parseInt@{parseInt}!java::lang::Integer@{java::lang::Integer}}
+\subsubsection[{parseInt}]{\setlength{\rightskip}{0pt plus 5cm}static int java::lang::Integer::parseInt (
+\begin{DoxyParamCaption}
+\item[{{\bf String}}]{ s}
+\end{DoxyParamCaption}
+)  throws {\bf NumberFormatException}     \hspace{0.3cm}{\ttfamily  [inline, static]}}\label{classjava_1_1lang_1_1_integer_aebb77d93c3edd97ca1a1dcbf000624b5}
+Converts the specified {\ttfamily \doxyref{String}{p.}{classjava_1_1lang_1_1_string}} into an {\ttfamily int}. This function assumes a radix of 10.
+
+
+\begin{DoxyParams}{Parameters}
+\item[{\em s}]the {\ttfamily \doxyref{String}{p.}{classjava_1_1lang_1_1_string}} to convert \end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+the {\ttfamily int} value of {\ttfamily s} 
+\end{DoxyReturn}
+
+\begin{DoxyExceptions}{Exceptions}
+\item[{\em \doxyref{NumberFormatException}{p.}{classjava_1_1lang_1_1_number_format_exception}}]if {\ttfamily s} cannot be parsed as an {\ttfamily int} \end{DoxyExceptions}
+\begin{DoxySeeAlso}{See also}
+\doxyref{parseInt(String, int)}{p.}{classjava_1_1lang_1_1_integer_a369fccaa67bcd1e0f7d6695923628a65} 
+\end{DoxySeeAlso}
+
+
+Definition at line 230 of file Integer.java.
+
+
+
+References parseIntInternal().
+
+\index{java::lang::Integer@{java::lang::Integer}!parseIntInternal@{parseIntInternal}}
+\index{parseIntInternal@{parseIntInternal}!java::lang::Integer@{java::lang::Integer}}
+\subsubsection[{parseIntInternal}]{\setlength{\rightskip}{0pt plus 5cm}static int java::lang::Integer::parseIntInternal (
+\begin{DoxyParamCaption}
+\item[{{\bf String}}]{ str, }
+\item[{int}]{ radix}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily  [inline, static, package]}}\label{classjava_1_1lang_1_1_integer_addeddbfb53aa7f49bf16cd3805793136}
+Helper for parsing ints, used by \doxyref{Integer}{p.}{classjava_1_1lang_1_1_integer}, \doxyref{Short}{p.}{classjava_1_1lang_1_1_short}, and \doxyref{Byte}{p.}{classjava_1_1lang_1_1_byte}.
+
+
+\begin{DoxyParams}{Parameters}
+\item[{\em str}]the string to parse \item[{\em radix}]the radix to use \end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+the parsed int value 
+\end{DoxyReturn}
+
+\begin{DoxyExceptions}{Exceptions}
+\item[{\em \doxyref{NumberFormatException}{p.}{classjava_1_1lang_1_1_number_format_exception}}]if there is an error \end{DoxyExceptions}
+\begin{DoxySeeAlso}{See also}
+\doxyref{parseInt(String, int)}{p.}{classjava_1_1lang_1_1_integer_a369fccaa67bcd1e0f7d6695923628a65} 
+
+\doxyref{Byte::parseByte(String, int)}{p.}{classjava_1_1lang_1_1_byte_a72074102360e2ab0f2397bbc61e8b537} 
+
+\doxyref{Short::parseShort(String, int)}{p.}{classjava_1_1lang_1_1_short_aeae5e2355537b131caf2c6b64f9106bc} 
+\end{DoxySeeAlso}
+
+
+Definition at line 393 of file Integer.java.
+
+
+
+References java::lang::String::charAt(), java::lang::String::length(), MAX\_\-VALUE, and MIN\_\-VALUE.
+
+
+
+Referenced by parseInt(), and valueOf().
+
+\index{java::lang::Integer@{java::lang::Integer}!shortValue@{shortValue}}
+\index{shortValue@{shortValue}!java::lang::Integer@{java::lang::Integer}}
+\subsubsection[{shortValue}]{\setlength{\rightskip}{0pt plus 5cm}short java::lang::Integer::shortValue (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily  [inline]}}\label{classjava_1_1lang_1_1_integer_aeb131a6e536a29cfd2eadfca6122cb27}
+Return the value of this {\ttfamily \doxyref{Integer}{p.}{classjava_1_1lang_1_1_integer}} as a {\ttfamily short}.
+
+\begin{DoxyReturn}{Returns}
+the short value 
+\end{DoxyReturn}
+
+
+Definition at line 280 of file Integer.java.
+
+\index{java::lang::Integer@{java::lang::Integer}!toBinaryString@{toBinaryString}}
+\index{toBinaryString@{toBinaryString}!java::lang::Integer@{java::lang::Integer}}
+\subsubsection[{toBinaryString}]{\setlength{\rightskip}{0pt plus 5cm}static {\bf String} java::lang::Integer::toBinaryString (
+\begin{DoxyParamCaption}
+\item[{int}]{ i}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily  [inline, static]}}\label{classjava_1_1lang_1_1_integer_ae9d9c5121a3abcb1eba1549ade39b1b9}
+Converts the {\ttfamily int} to a {\ttfamily \doxyref{String}{p.}{classjava_1_1lang_1_1_string}} assuming it is unsigned in base 2.
+
+
+\begin{DoxyParams}{Parameters}
+\item[{\em i}]the {\ttfamily int} to convert to {\ttfamily \doxyref{String}{p.}{classjava_1_1lang_1_1_string}} \end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+the {\ttfamily \doxyref{String}{p.}{classjava_1_1lang_1_1_string}} representation of the argument 
+\end{DoxyReturn}
+
+
+Definition at line 177 of file Integer.java.
+
+
+
+References toUnsignedString().
+
+\index{java::lang::Integer@{java::lang::Integer}!toHexString@{toHexString}}
+\index{toHexString@{toHexString}!java::lang::Integer@{java::lang::Integer}}
+\subsubsection[{toHexString}]{\setlength{\rightskip}{0pt plus 5cm}static {\bf String} java::lang::Integer::toHexString (
+\begin{DoxyParamCaption}
+\item[{int}]{ i}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily  [inline, static]}}\label{classjava_1_1lang_1_1_integer_a466a61080bc7a8cca2acb84e87701820}
+Converts the {\ttfamily int} to a {\ttfamily \doxyref{String}{p.}{classjava_1_1lang_1_1_string}} assuming it is unsigned in base 16.
+
+
+\begin{DoxyParams}{Parameters}
+\item[{\em i}]the {\ttfamily int} to convert to {\ttfamily \doxyref{String}{p.}{classjava_1_1lang_1_1_string}} \end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+the {\ttfamily \doxyref{String}{p.}{classjava_1_1lang_1_1_string}} representation of the argument 
+\end{DoxyReturn}
+
+
+Definition at line 153 of file Integer.java.
+
+
+
+References toUnsignedString().
+
+\index{java::lang::Integer@{java::lang::Integer}!toOctalString@{toOctalString}}
+\index{toOctalString@{toOctalString}!java::lang::Integer@{java::lang::Integer}}
+\subsubsection[{toOctalString}]{\setlength{\rightskip}{0pt plus 5cm}static {\bf String} java::lang::Integer::toOctalString (
+\begin{DoxyParamCaption}
+\item[{int}]{ i}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily  [inline, static]}}\label{classjava_1_1lang_1_1_integer_a9499c31cb6393fe7049dd2a90eaa8815}
+Converts the {\ttfamily int} to a {\ttfamily \doxyref{String}{p.}{classjava_1_1lang_1_1_string}} assuming it is unsigned in base 8.
+
+
+\begin{DoxyParams}{Parameters}
+\item[{\em i}]the {\ttfamily int} to convert to {\ttfamily \doxyref{String}{p.}{classjava_1_1lang_1_1_string}} \end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+the {\ttfamily \doxyref{String}{p.}{classjava_1_1lang_1_1_string}} representation of the argument 
+\end{DoxyReturn}
+
+
+Definition at line 165 of file Integer.java.
+
+
+
+References toUnsignedString().
+
+\index{java::lang::Integer@{java::lang::Integer}!toString@{toString}}
+\index{toString@{toString}!java::lang::Integer@{java::lang::Integer}}
+\subsubsection[{toString}]{\setlength{\rightskip}{0pt plus 5cm}{\bf String} java::lang::Integer::toString (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily  [inline]}}\label{classjava_1_1lang_1_1_integer_aa35f869daba5fd82c9ba2ea32e672f22}
+Converts the {\ttfamily \doxyref{Integer}{p.}{classjava_1_1lang_1_1_integer}} value to a {\ttfamily \doxyref{String}{p.}{classjava_1_1lang_1_1_string}} and assumes a radix of 10.
+
+\begin{DoxyReturn}{Returns}
+the {\ttfamily \doxyref{String}{p.}{classjava_1_1lang_1_1_string}} representation 
+\end{DoxyReturn}
+
+
+Definition at line 330 of file Integer.java.
+
+
+
+References java::lang::String::valueOf().
+
+\index{java::lang::Integer@{java::lang::Integer}!toString@{toString}}
+\index{toString@{toString}!java::lang::Integer@{java::lang::Integer}}
+\subsubsection[{toString}]{\setlength{\rightskip}{0pt plus 5cm}static {\bf String} java::lang::Integer::toString (
+\begin{DoxyParamCaption}
+\item[{int}]{ num, }
+\item[{int}]{ radix}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily  [inline, static]}}\label{classjava_1_1lang_1_1_integer_a892c86468c5223a0870612914d2f4b6f}
+Converts the {\ttfamily int} to a {\ttfamily \doxyref{String}{p.}{classjava_1_1lang_1_1_string}} using the specified radix (base). If the radix exceeds {\ttfamily \doxyref{Character.MIN\_\-RADIX}{p.}{classjava_1_1lang_1_1_character_a13475c952b63552088262ce4493d37cf}} or {\ttfamily \doxyref{Character.MAX\_\-RADIX}{p.}{classjava_1_1lang_1_1_character_a15c66ba56e1086f8dcdb0dfc6c915226}}, 10 is used instead. If the result is negative, the leading character is '-\/' ('$\backslash$u002D'). The remaining characters come from {\ttfamily Character.forDigit(digit, radix)} ('0'-\/'9','a'-\/'z').
+
+
+\begin{DoxyParams}{Parameters}
+\item[{\em num}]the {\ttfamily int} to convert to {\ttfamily \doxyref{String}{p.}{classjava_1_1lang_1_1_string}} \item[{\em radix}]the radix (base) to use in the conversion \end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+the {\ttfamily \doxyref{String}{p.}{classjava_1_1lang_1_1_string}} representation of the argument 
+\end{DoxyReturn}
+
+
+Definition at line 108 of file Integer.java.
+
+\index{java::lang::Integer@{java::lang::Integer}!toString@{toString}}
+\index{toString@{toString}!java::lang::Integer@{java::lang::Integer}}
+\subsubsection[{toString}]{\setlength{\rightskip}{0pt plus 5cm}static {\bf String} java::lang::Integer::toString (
+\begin{DoxyParamCaption}
+\item[{int}]{ i}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily  [inline, static]}}\label{classjava_1_1lang_1_1_integer_aac208f88ae45e83711397924c3b9107a}
+Converts the {\ttfamily int} to a {\ttfamily \doxyref{String}{p.}{classjava_1_1lang_1_1_string}} and assumes a radix of 10.
+
+
+\begin{DoxyParams}{Parameters}
+\item[{\em i}]the {\ttfamily int} to convert to {\ttfamily \doxyref{String}{p.}{classjava_1_1lang_1_1_string}} \end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+the {\ttfamily \doxyref{String}{p.}{classjava_1_1lang_1_1_string}} representation of the argument 
+\end{DoxyReturn}
+\begin{DoxySeeAlso}{See also}
+\doxyref{toString(int, int)}{p.}{classjava_1_1lang_1_1_integer_a892c86468c5223a0870612914d2f4b6f} 
+\end{DoxySeeAlso}
+
+
+Definition at line 190 of file Integer.java.
+
+
+
+References java::lang::String::valueOf().
+
+\index{java::lang::Integer@{java::lang::Integer}!toUnsignedString@{toUnsignedString}}
+\index{toUnsignedString@{toUnsignedString}!java::lang::Integer@{java::lang::Integer}}
+\subsubsection[{toUnsignedString}]{\setlength{\rightskip}{0pt plus 5cm}static {\bf String} java::lang::Integer::toUnsignedString (
+\begin{DoxyParamCaption}
+\item[{int}]{ num, }
+\item[{int}]{ exp}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily  [inline, static, package]}}\label{classjava_1_1lang_1_1_integer_ae6931de568f88d48505496391f102e83}
+Helper for converting unsigned numbers to \doxyref{String}{p.}{classjava_1_1lang_1_1_string}.
+
+
+\begin{DoxyParams}{Parameters}
+\item[{\em num}]the number \item[{\em exp}]log2(digit) (ie. 1, 3, or 4 for binary, oct, hex) \end{DoxyParams}
+
+
+Definition at line 365 of file Integer.java.
+
+
+
+Referenced by toBinaryString(), toHexString(), and toOctalString().
+
+\index{java::lang::Integer@{java::lang::Integer}!valueOf@{valueOf}}
+\index{valueOf@{valueOf}!java::lang::Integer@{java::lang::Integer}}
+\subsubsection[{valueOf}]{\setlength{\rightskip}{0pt plus 5cm}static {\bf Integer} java::lang::Integer::valueOf (
+\begin{DoxyParamCaption}
+\item[{{\bf String}}]{ s, }
+\item[{int}]{ radix}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily  [inline, static]}}\label{classjava_1_1lang_1_1_integer_a094f948d554af6817c957ebb7f41da6b}
+Creates a new {\ttfamily \doxyref{Integer}{p.}{classjava_1_1lang_1_1_integer}} object using the {\ttfamily \doxyref{String}{p.}{classjava_1_1lang_1_1_string}} and specified radix (base).
+
+
+\begin{DoxyParams}{Parameters}
+\item[{\em s}]the {\ttfamily \doxyref{String}{p.}{classjava_1_1lang_1_1_string}} to convert \item[{\em radix}]the radix (base) to convert with \end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+the new {\ttfamily \doxyref{Integer}{p.}{classjava_1_1lang_1_1_integer}} 
+\end{DoxyReturn}
+
+\begin{DoxyExceptions}{Exceptions}
+\item[{\em \doxyref{NumberFormatException}{p.}{classjava_1_1lang_1_1_number_format_exception}}]if {\ttfamily s} cannot be parsed as an {\ttfamily int} \end{DoxyExceptions}
+\begin{DoxySeeAlso}{See also}
+\doxyref{parseInt(String, int)}{p.}{classjava_1_1lang_1_1_integer_a369fccaa67bcd1e0f7d6695923628a65} 
+\end{DoxySeeAlso}
+
+
+Definition at line 246 of file Integer.java.
+
+
+
+References Integer(), and parseIntInternal().
+
+\index{java::lang::Integer@{java::lang::Integer}!valueOf@{valueOf}}
+\index{valueOf@{valueOf}!java::lang::Integer@{java::lang::Integer}}
+\subsubsection[{valueOf}]{\setlength{\rightskip}{0pt plus 5cm}static {\bf Integer} java::lang::Integer::valueOf (
+\begin{DoxyParamCaption}
+\item[{{\bf String}}]{ s}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily  [inline, static]}}\label{classjava_1_1lang_1_1_integer_ab1670fe8f89bf912ddd45eef9ba43399}
+Creates a new {\ttfamily \doxyref{Integer}{p.}{classjava_1_1lang_1_1_integer}} object using the {\ttfamily \doxyref{String}{p.}{classjava_1_1lang_1_1_string}}, assuming a radix of 10.
+
+
+\begin{DoxyParams}{Parameters}
+\item[{\em s}]the {\ttfamily \doxyref{String}{p.}{classjava_1_1lang_1_1_string}} to convert \end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+the new {\ttfamily \doxyref{Integer}{p.}{classjava_1_1lang_1_1_integer}} 
+\end{DoxyReturn}
+
+\begin{DoxyExceptions}{Exceptions}
+\item[{\em \doxyref{NumberFormatException}{p.}{classjava_1_1lang_1_1_number_format_exception}}]if {\ttfamily s} cannot be parsed as an {\ttfamily int} \end{DoxyExceptions}
+
+
+Definition at line 260 of file Integer.java.
+
+
+
+References Integer(), and parseIntInternal().
+
+
+
+\subsection{Field Documentation}
+\index{java::lang::Integer@{java::lang::Integer}!MAX\_\-VALUE@{MAX\_\-VALUE}}
+\index{MAX\_\-VALUE@{MAX\_\-VALUE}!java::lang::Integer@{java::lang::Integer}}
+\subsubsection[{MAX\_\-VALUE}]{\setlength{\rightskip}{0pt plus 5cm}final int {\bf java::lang::Integer::MAX\_\-VALUE} = 0x7fffffff\hspace{0.3cm}{\ttfamily  [static]}}\label{classjava_1_1lang_1_1_integer_a2ff168575d0c3dbc84f1a20e63abbe3e}
+The maximum value an {\ttfamily int} can represent is 2147483647 (or 2$^{\mbox{31}}$  -\/ 1). 
+
+Definition at line 66 of file Integer.java.
+
+
+
+Referenced by parseIntInternal().
+
+\index{java::lang::Integer@{java::lang::Integer}!MIN\_\-VALUE@{MIN\_\-VALUE}}
+\index{MIN\_\-VALUE@{MIN\_\-VALUE}!java::lang::Integer@{java::lang::Integer}}
+\subsubsection[{MIN\_\-VALUE}]{\setlength{\rightskip}{0pt plus 5cm}final int {\bf java::lang::Integer::MIN\_\-VALUE} = 0x80000000\hspace{0.3cm}{\ttfamily  [static]}}\label{classjava_1_1lang_1_1_integer_a985dc2ca31fd0050622cf02a790f9b91}
+The minimum value an {\ttfamily int} can represent is -\/2147483648 (or -\/2$^{\mbox{31}}$ ). 
+
+Definition at line 60 of file Integer.java.
+
+
+
+Referenced by parseIntInternal().
+
+
+
+The documentation for this class was generated from the following file:\begin{DoxyCompactItemize}
+\item 
+src/classpath/java/lang/Integer.java\end{DoxyCompactItemize}

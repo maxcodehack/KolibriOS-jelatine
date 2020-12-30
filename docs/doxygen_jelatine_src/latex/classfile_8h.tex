@@ -1,0 +1,562 @@
+\section{src/jelatine/classfile.h File Reference}
+\label{classfile_8h}\index{src/jelatine/classfile.h@{src/jelatine/classfile.h}}
+{\ttfamily \#include \char`\"{}wrappers.h\char`\"{}}\par
+{\ttfamily \#include \char`\"{}util.h\char`\"{}}\par
+\subsection*{Data Structures}
+\begin{DoxyCompactItemize}
+\item 
+struct {\bf class\_\-file\_\-t}
+\item 
+struct {\bf field\_\-info\_\-t}
+\item 
+struct {\bf field\_\-attributes\_\-t}
+\item 
+struct {\bf method\_\-attributes\_\-t}
+\end{DoxyCompactItemize}
+\subsection*{Defines}
+\begin{DoxyCompactItemize}
+\item 
+\#define {\bf JELATINE\_\-CLASSFILE\_\-H}~(1)
+\item 
+\#define {\bf CLASS\_\-ACC\_\-FLAGS\_\-MASK}~(ACC\_\-PUBLIC $|$ ACC\_\-FINAL $|$ ACC\_\-SUPER $|$ ACC\_\-INTERFACE $|$ ACC\_\-ABSTRACT)
+\item 
+\#define {\bf FIELD\_\-ACC\_\-FLAGS\_\-MASK}
+\item 
+\#define {\bf METHOD\_\-ACC\_\-FLAGS\_\-MASK}
+\end{DoxyCompactItemize}
+\subsection*{Typedefs}
+\begin{DoxyCompactItemize}
+\item 
+typedef enum {\bf primitive\_\-type\_\-t} {\bf primitive\_\-type\_\-t}
+\item 
+typedef enum {\bf const\_\-pool\_\-type\_\-t} {\bf const\_\-pool\_\-type\_\-t}
+\item 
+typedef enum {\bf access\_\-flags\_\-t} {\bf access\_\-flags\_\-t}
+\item 
+typedef struct {\bf class\_\-file\_\-t} {\bf class\_\-file\_\-t}
+\item 
+typedef struct {\bf field\_\-info\_\-t} {\bf field\_\-info\_\-t}
+\item 
+typedef struct {\bf field\_\-attributes\_\-t} {\bf field\_\-attributes\_\-t}
+\item 
+typedef struct {\bf method\_\-attributes\_\-t} {\bf method\_\-attributes\_\-t}
+\end{DoxyCompactItemize}
+\subsection*{Enumerations}
+\begin{DoxyCompactItemize}
+\item 
+enum {\bf primitive\_\-type\_\-t} \{ \par
+{\bf PT\_\-BYTE}, 
+{\bf PT\_\-BOOL}, 
+{\bf PT\_\-CHAR}, 
+{\bf PT\_\-SHORT}, 
+\par
+{\bf PT\_\-INT}, 
+{\bf PT\_\-FLOAT}, 
+{\bf PT\_\-LONG}, 
+{\bf PT\_\-DOUBLE}, 
+\par
+{\bf PT\_\-REFERENCE}, 
+{\bf PT\_\-VOID}
+ \}
+\item 
+enum {\bf const\_\-pool\_\-type\_\-t} \{ \par
+{\bf CONSTANT\_\-Utf8} =  1, 
+{\bf CONSTANT\_\-Integer} =  3, 
+{\bf CONSTANT\_\-Float} =  4, 
+{\bf CONSTANT\_\-Long} =  5, 
+\par
+{\bf CONSTANT\_\-Double} =  6, 
+{\bf CONSTANT\_\-Class} =  7, 
+{\bf CONSTANT\_\-String} =  8, 
+{\bf CONSTANT\_\-Fieldref} =  9, 
+\par
+{\bf CONSTANT\_\-Methodref} =  10, 
+{\bf CONSTANT\_\-InterfaceMethodref} =  11, 
+{\bf CONSTANT\_\-NameAndType} =  12, 
+{\bf CONSTANT\_\-Class\_\-resolved} =  13, 
+\par
+{\bf CONSTANT\_\-Fieldref\_\-resolved} =  14, 
+{\bf CONSTANT\_\-Methodref\_\-resolved} =  15, 
+{\bf CONSTANT\_\-InterfaceMethodref\_\-resolved} =  2
+ \}
+\item 
+enum {\bf access\_\-flags\_\-t} \{ \par
+{\bf ACC\_\-PUBLIC} =  0x0001, 
+{\bf ACC\_\-PRIVATE} =  0x0002, 
+{\bf ACC\_\-PROTECTED} =  0x0004, 
+{\bf ACC\_\-STATIC} =  0x0008, 
+\par
+{\bf ACC\_\-FINAL} =  0x0010, 
+{\bf ACC\_\-SYNCHRONIZED} =  0x0020, 
+{\bf ACC\_\-SUPER} =  0x0020, 
+{\bf ACC\_\-VOLATILE} =  0x0040, 
+\par
+{\bf ACC\_\-TRANSIENT} =  0x0080, 
+{\bf ACC\_\-NATIVE} =  0x0100, 
+{\bf ACC\_\-INTERFACE} =  0x0200, 
+{\bf ACC\_\-ABSTRACT} =  0x0400, 
+\par
+{\bf ACC\_\-STRICT} =  0x0800, 
+{\bf ACC\_\-ARRAY} =  0x1000, 
+{\bf ACC\_\-HAS\_\-FINALIZER} =  0x2000, 
+{\bf ACC\_\-LINKED} =  0x1000, 
+\par
+{\bf ACC\_\-MAIN} =  0x2000
+ \}
+\end{DoxyCompactItemize}
+\subsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+void {\bf classpath\_\-init} (void)
+\item 
+void {\bf classpath\_\-teardown} (void)
+\item 
+{\bf class\_\-file\_\-t} $\ast$ {\bf cf\_\-open} (const char $\ast$)
+\item 
+void {\bf cf\_\-close} ({\bf class\_\-file\_\-t} $\ast$)
+\item 
+uint8\_\-t {\bf cf\_\-load\_\-u1} ({\bf class\_\-file\_\-t} $\ast$)
+\item 
+uint16\_\-t {\bf cf\_\-load\_\-u2} ({\bf class\_\-file\_\-t} $\ast$)
+\item 
+uint32\_\-t {\bf cf\_\-load\_\-u4} ({\bf class\_\-file\_\-t} $\ast$)
+\item 
+void {\bf cf\_\-seek} ({\bf class\_\-file\_\-t} $\ast$, long, int)
+\item 
+long {\bf cf\_\-tell} ({\bf class\_\-file\_\-t} $\ast$)
+\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+Wrapper structure for class file access, this file also contains the definitions which can be found in a class-\/file 
+
+Definition in file {\bf classfile.h}.
+
+
+
+\subsection{Define Documentation}
+\index{classfile.h@{classfile.h}!CLASS\_\-ACC\_\-FLAGS\_\-MASK@{CLASS\_\-ACC\_\-FLAGS\_\-MASK}}
+\index{CLASS\_\-ACC\_\-FLAGS\_\-MASK@{CLASS\_\-ACC\_\-FLAGS\_\-MASK}!classfile.h@{classfile.h}}
+\subsubsection[{CLASS\_\-ACC\_\-FLAGS\_\-MASK}]{\setlength{\rightskip}{0pt plus 5cm}\#define CLASS\_\-ACC\_\-FLAGS\_\-MASK~(ACC\_\-PUBLIC $|$ ACC\_\-FINAL $|$ ACC\_\-SUPER $|$ ACC\_\-INTERFACE $|$ ACC\_\-ABSTRACT)}\label{classfile_8h_ac30875ae4a710db6f3bc7dbe411698df}
+Mask of defined flags of a class access\_\-flags field 
+
+Definition at line 123 of file classfile.h.
+
+\index{classfile.h@{classfile.h}!FIELD\_\-ACC\_\-FLAGS\_\-MASK@{FIELD\_\-ACC\_\-FLAGS\_\-MASK}}
+\index{FIELD\_\-ACC\_\-FLAGS\_\-MASK@{FIELD\_\-ACC\_\-FLAGS\_\-MASK}!classfile.h@{classfile.h}}
+\subsubsection[{FIELD\_\-ACC\_\-FLAGS\_\-MASK}]{\setlength{\rightskip}{0pt plus 5cm}\#define FIELD\_\-ACC\_\-FLAGS\_\-MASK}\label{classfile_8h_aa62397a6740b734899a17fd4e4612df4}
+{\bfseries Value:}
+\begin{DoxyCode}
+(ACC_PUBLIC | ACC_PRIVATE | ACC_PROTECTED | ACC_STATIC | ACC_FINAL | \
+    ACC_VOLATILE | ACC_TRANSIENT)
+\end{DoxyCode}
+Mask of defined flags of a field access\_\-flags field 
+
+Definition at line 126 of file classfile.h.
+
+\index{classfile.h@{classfile.h}!JELATINE\_\-CLASSFILE\_\-H@{JELATINE\_\-CLASSFILE\_\-H}}
+\index{JELATINE\_\-CLASSFILE\_\-H@{JELATINE\_\-CLASSFILE\_\-H}!classfile.h@{classfile.h}}
+\subsubsection[{JELATINE\_\-CLASSFILE\_\-H}]{\setlength{\rightskip}{0pt plus 5cm}\#define JELATINE\_\-CLASSFILE\_\-H~(1)}\label{classfile_8h_a04549053d6634874a1f08a026e4f7e57}
+\doxyref{classfile.h}{p.}{classfile_8h} inclusion macro 
+
+Definition at line 29 of file classfile.h.
+
+\index{classfile.h@{classfile.h}!METHOD\_\-ACC\_\-FLAGS\_\-MASK@{METHOD\_\-ACC\_\-FLAGS\_\-MASK}}
+\index{METHOD\_\-ACC\_\-FLAGS\_\-MASK@{METHOD\_\-ACC\_\-FLAGS\_\-MASK}!classfile.h@{classfile.h}}
+\subsubsection[{METHOD\_\-ACC\_\-FLAGS\_\-MASK}]{\setlength{\rightskip}{0pt plus 5cm}\#define METHOD\_\-ACC\_\-FLAGS\_\-MASK}\label{classfile_8h_a97ca1173073027afccbfcc6083efceed}
+{\bfseries Value:}
+\begin{DoxyCode}
+(ACC_PUBLIC | ACC_PRIVATE | ACC_PROTECTED | ACC_STATIC | ACC_FINAL | \
+    ACC_SYNCHRONIZED | ACC_NATIVE | ACC_ABSTRACT | ACC_STRICT)
+\end{DoxyCode}
+Mask of defined flags of a method access\_\-flags field 
+
+Definition at line 130 of file classfile.h.
+
+
+
+\subsection{Typedef Documentation}
+\index{classfile.h@{classfile.h}!access\_\-flags\_\-t@{access\_\-flags\_\-t}}
+\index{access\_\-flags\_\-t@{access\_\-flags\_\-t}!classfile.h@{classfile.h}}
+\subsubsection[{access\_\-flags\_\-t}]{\setlength{\rightskip}{0pt plus 5cm}typedef enum {\bf access\_\-flags\_\-t} {\bf access\_\-flags\_\-t}}\label{classfile_8h_a381adc4724ea1df692a9ad3480a36190}
+Typedef for enum access\_\-flags\_\-t 
+
+Definition at line 120 of file classfile.h.
+
+\index{classfile.h@{classfile.h}!class\_\-file\_\-t@{class\_\-file\_\-t}}
+\index{class\_\-file\_\-t@{class\_\-file\_\-t}!classfile.h@{classfile.h}}
+\subsubsection[{class\_\-file\_\-t}]{\setlength{\rightskip}{0pt plus 5cm}typedef struct {\bf class\_\-file\_\-t} {\bf class\_\-file\_\-t}}\label{classfile_8h_add390073080b445baa77f2e1546b8ac8}
+Typedef for struct \doxyref{class\_\-file\_\-t}{p.}{structclass__file__t} 
+
+Definition at line 150 of file classfile.h.
+
+\index{classfile.h@{classfile.h}!const\_\-pool\_\-type\_\-t@{const\_\-pool\_\-type\_\-t}}
+\index{const\_\-pool\_\-type\_\-t@{const\_\-pool\_\-type\_\-t}!classfile.h@{classfile.h}}
+\subsubsection[{const\_\-pool\_\-type\_\-t}]{\setlength{\rightskip}{0pt plus 5cm}typedef enum {\bf const\_\-pool\_\-type\_\-t} {\bf const\_\-pool\_\-type\_\-t}}\label{classfile_8h_a21d21ac54666216c1b688667be064eb8}
+Typedef for enum const\_\-pool\_\-type\_\-t 
+
+Definition at line 93 of file classfile.h.
+
+\index{classfile.h@{classfile.h}!field\_\-attributes\_\-t@{field\_\-attributes\_\-t}}
+\index{field\_\-attributes\_\-t@{field\_\-attributes\_\-t}!classfile.h@{classfile.h}}
+\subsubsection[{field\_\-attributes\_\-t}]{\setlength{\rightskip}{0pt plus 5cm}typedef struct {\bf field\_\-attributes\_\-t} {\bf field\_\-attributes\_\-t}}\label{classfile_8h_abf9e66bdf095f059bbd6cea70beb2d3d}
+Typedef for struct \doxyref{field\_\-attributes\_\-t}{p.}{structfield__attributes__t} 
+
+Definition at line 190 of file classfile.h.
+
+\index{classfile.h@{classfile.h}!field\_\-info\_\-t@{field\_\-info\_\-t}}
+\index{field\_\-info\_\-t@{field\_\-info\_\-t}!classfile.h@{classfile.h}}
+\subsubsection[{field\_\-info\_\-t}]{\setlength{\rightskip}{0pt plus 5cm}typedef struct {\bf field\_\-info\_\-t} {\bf field\_\-info\_\-t}}\label{classfile_8h_a2f18be0a3b4f83199f78858f461f146a}
+Typedef for struct \doxyref{field\_\-info\_\-t}{p.}{structfield__info__t} 
+
+Definition at line 180 of file classfile.h.
+
+\index{classfile.h@{classfile.h}!method\_\-attributes\_\-t@{method\_\-attributes\_\-t}}
+\index{method\_\-attributes\_\-t@{method\_\-attributes\_\-t}!classfile.h@{classfile.h}}
+\subsubsection[{method\_\-attributes\_\-t}]{\setlength{\rightskip}{0pt plus 5cm}typedef struct {\bf method\_\-attributes\_\-t} {\bf method\_\-attributes\_\-t}}\label{classfile_8h_aae4d23a93c2f9b9abd2935e4034e7251}
+Typedef for struct \doxyref{method\_\-attributes\_\-t}{p.}{structmethod__attributes__t} 
+
+Definition at line 205 of file classfile.h.
+
+\index{classfile.h@{classfile.h}!primitive\_\-type\_\-t@{primitive\_\-type\_\-t}}
+\index{primitive\_\-type\_\-t@{primitive\_\-type\_\-t}!classfile.h@{classfile.h}}
+\subsubsection[{primitive\_\-type\_\-t}]{\setlength{\rightskip}{0pt plus 5cm}typedef enum {\bf primitive\_\-type\_\-t} {\bf primitive\_\-type\_\-t}}\label{classfile_8h_a26cfd4cb2e559ac2cbf5fd2d63d3a9be}
+Typedef for enum primitive\_\-type\_\-t 
+
+Definition at line 66 of file classfile.h.
+
+
+
+\subsection{Enumeration Type Documentation}
+\index{classfile.h@{classfile.h}!access\_\-flags\_\-t@{access\_\-flags\_\-t}}
+\index{access\_\-flags\_\-t@{access\_\-flags\_\-t}!classfile.h@{classfile.h}}
+\subsubsection[{access\_\-flags\_\-t}]{\setlength{\rightskip}{0pt plus 5cm}enum {\bf access\_\-flags\_\-t}}\label{classfile_8h_aedc78cb6e951bb4fb1f58c5eb88fc5ee}
+Represents the different access flags of a class, field or method \begin{Desc}
+\item[Enumerator: ]\par
+\begin{description}
+\index{ACC\_\-PUBLIC@{ACC\_\-PUBLIC}!classfile.h@{classfile.h}}\index{classfile.h@{classfile.h}!ACC\_\-PUBLIC@{ACC\_\-PUBLIC}}\item[{\em 
+ACC\_\-PUBLIC\label{classfile_8h_aedc78cb6e951bb4fb1f58c5eb88fc5eead6addf2497a04181c180bee6a0fc98d7}
+}]Public access is allowed. \index{ACC\_\-PRIVATE@{ACC\_\-PRIVATE}!classfile.h@{classfile.h}}\index{classfile.h@{classfile.h}!ACC\_\-PRIVATE@{ACC\_\-PRIVATE}}\item[{\em 
+ACC\_\-PRIVATE\label{classfile_8h_aedc78cb6e951bb4fb1f58c5eb88fc5eea731a95fbfab2cc573d34f824c68103da}
+}]This field or method is private. \index{ACC\_\-PROTECTED@{ACC\_\-PROTECTED}!classfile.h@{classfile.h}}\index{classfile.h@{classfile.h}!ACC\_\-PROTECTED@{ACC\_\-PROTECTED}}\item[{\em 
+ACC\_\-PROTECTED\label{classfile_8h_aedc78cb6e951bb4fb1f58c5eb88fc5eead1378b6f4a9d71ae89f08ff9c41e2643}
+}]This field is protected. \index{ACC\_\-STATIC@{ACC\_\-STATIC}!classfile.h@{classfile.h}}\index{classfile.h@{classfile.h}!ACC\_\-STATIC@{ACC\_\-STATIC}}\item[{\em 
+ACC\_\-STATIC\label{classfile_8h_aedc78cb6e951bb4fb1f58c5eb88fc5eea881208cf77b17d32dfc923ff4541c1fe}
+}]This field or method is static. \index{ACC\_\-FINAL@{ACC\_\-FINAL}!classfile.h@{classfile.h}}\index{classfile.h@{classfile.h}!ACC\_\-FINAL@{ACC\_\-FINAL}}\item[{\em 
+ACC\_\-FINAL\label{classfile_8h_aedc78cb6e951bb4fb1f58c5eb88fc5eeab78a5bd0833ef7c394ee026acdfb166f}
+}]This object or method cannot be modified. \index{ACC\_\-SYNCHRONIZED@{ACC\_\-SYNCHRONIZED}!classfile.h@{classfile.h}}\index{classfile.h@{classfile.h}!ACC\_\-SYNCHRONIZED@{ACC\_\-SYNCHRONIZED}}\item[{\em 
+ACC\_\-SYNCHRONIZED\label{classfile_8h_aedc78cb6e951bb4fb1f58c5eb88fc5eead1b97438d7d91ae90cbe69668b25e0e9}
+}]This method is synchronized. \index{ACC\_\-SUPER@{ACC\_\-SUPER}!classfile.h@{classfile.h}}\index{classfile.h@{classfile.h}!ACC\_\-SUPER@{ACC\_\-SUPER}}\item[{\em 
+ACC\_\-SUPER\label{classfile_8h_aedc78cb6e951bb4fb1f58c5eb88fc5eea59ef122665d2a44976860b18e074e8a2}
+}]Alters the behaviour of INVOKESPECIAL. \index{ACC\_\-VOLATILE@{ACC\_\-VOLATILE}!classfile.h@{classfile.h}}\index{classfile.h@{classfile.h}!ACC\_\-VOLATILE@{ACC\_\-VOLATILE}}\item[{\em 
+ACC\_\-VOLATILE\label{classfile_8h_aedc78cb6e951bb4fb1f58c5eb88fc5eea062990ad544d7fe6f1910880dcce455e}
+}]This field cannot be cached. \index{ACC\_\-TRANSIENT@{ACC\_\-TRANSIENT}!classfile.h@{classfile.h}}\index{classfile.h@{classfile.h}!ACC\_\-TRANSIENT@{ACC\_\-TRANSIENT}}\item[{\em 
+ACC\_\-TRANSIENT\label{classfile_8h_aedc78cb6e951bb4fb1f58c5eb88fc5eea63a2d0424d59c2fed955a1633974f50a}
+}]Not written or read by a POM. \index{ACC\_\-NATIVE@{ACC\_\-NATIVE}!classfile.h@{classfile.h}}\index{classfile.h@{classfile.h}!ACC\_\-NATIVE@{ACC\_\-NATIVE}}\item[{\em 
+ACC\_\-NATIVE\label{classfile_8h_aedc78cb6e951bb4fb1f58c5eb88fc5eea94900e08f1643779887f4eb0e1e16f1f}
+}]This method is native. \index{ACC\_\-INTERFACE@{ACC\_\-INTERFACE}!classfile.h@{classfile.h}}\index{classfile.h@{classfile.h}!ACC\_\-INTERFACE@{ACC\_\-INTERFACE}}\item[{\em 
+ACC\_\-INTERFACE\label{classfile_8h_aedc78cb6e951bb4fb1f58c5eb88fc5eea6d061156e0c1a7d2fd2612cdfc22cc9e}
+}]This class is an interface. \index{ACC\_\-ABSTRACT@{ACC\_\-ABSTRACT}!classfile.h@{classfile.h}}\index{classfile.h@{classfile.h}!ACC\_\-ABSTRACT@{ACC\_\-ABSTRACT}}\item[{\em 
+ACC\_\-ABSTRACT\label{classfile_8h_aedc78cb6e951bb4fb1f58c5eb88fc5eeac326b159ac221f52e4eb29b48d0da481}
+}]This class is abstract. \index{ACC\_\-STRICT@{ACC\_\-STRICT}!classfile.h@{classfile.h}}\index{classfile.h@{classfile.h}!ACC\_\-STRICT@{ACC\_\-STRICT}}\item[{\em 
+ACC\_\-STRICT\label{classfile_8h_aedc78cb6e951bb4fb1f58c5eb88fc5eea76a7711c5903238a058555ac603ac435}
+}]This method is strict-\/fp. \index{ACC\_\-ARRAY@{ACC\_\-ARRAY}!classfile.h@{classfile.h}}\index{classfile.h@{classfile.h}!ACC\_\-ARRAY@{ACC\_\-ARRAY}}\item[{\em 
+ACC\_\-ARRAY\label{classfile_8h_aedc78cb6e951bb4fb1f58c5eb88fc5eea1eacbd00f048d1f2e105677be8fff36b}
+}]This class is an array. \index{ACC\_\-HAS\_\-FINALIZER@{ACC\_\-HAS\_\-FINALIZER}!classfile.h@{classfile.h}}\index{classfile.h@{classfile.h}!ACC\_\-HAS\_\-FINALIZER@{ACC\_\-HAS\_\-FINALIZER}}\item[{\em 
+ACC\_\-HAS\_\-FINALIZER\label{classfile_8h_aedc78cb6e951bb4fb1f58c5eb88fc5eea2d35ea1c221d380359a29ddb5fbec306}
+}]This class has a finalizer. \index{ACC\_\-LINKED@{ACC\_\-LINKED}!classfile.h@{classfile.h}}\index{classfile.h@{classfile.h}!ACC\_\-LINKED@{ACC\_\-LINKED}}\item[{\em 
+ACC\_\-LINKED\label{classfile_8h_aedc78cb6e951bb4fb1f58c5eb88fc5eeab38e44826578962251e5ae82980a79d0}
+}]This method has been linked. \index{ACC\_\-MAIN@{ACC\_\-MAIN}!classfile.h@{classfile.h}}\index{classfile.h@{classfile.h}!ACC\_\-MAIN@{ACC\_\-MAIN}}\item[{\em 
+ACC\_\-MAIN\label{classfile_8h_aedc78cb6e951bb4fb1f58c5eb88fc5eea22ca0082d74eb3263330aa873b73000f}
+}]This is the main() method. \end{description}
+\end{Desc}
+
+
+
+Definition at line 97 of file classfile.h.
+
+\index{classfile.h@{classfile.h}!const\_\-pool\_\-type\_\-t@{const\_\-pool\_\-type\_\-t}}
+\index{const\_\-pool\_\-type\_\-t@{const\_\-pool\_\-type\_\-t}!classfile.h@{classfile.h}}
+\subsubsection[{const\_\-pool\_\-type\_\-t}]{\setlength{\rightskip}{0pt plus 5cm}enum {\bf const\_\-pool\_\-type\_\-t}}\label{classfile_8h_a253097a59bba3a2be20242ee865c4ea2}
+Defines the type of a constant pool element. Note that some of the entries are not part of the Java VM spec but were specifically added by the Jelatine JVM. Those are not found in regular class files but will be used by its in-\/memory representation \begin{Desc}
+\item[Enumerator: ]\par
+\begin{description}
+\index{CONSTANT\_\-Utf8@{CONSTANT\_\-Utf8}!classfile.h@{classfile.h}}\index{classfile.h@{classfile.h}!CONSTANT\_\-Utf8@{CONSTANT\_\-Utf8}}\item[{\em 
+CONSTANT\_\-Utf8\label{classfile_8h_a253097a59bba3a2be20242ee865c4ea2a4100a823f09e364338e42951035432ed}
+}]Modified UTF8 string. \index{CONSTANT\_\-Integer@{CONSTANT\_\-Integer}!classfile.h@{classfile.h}}\index{classfile.h@{classfile.h}!CONSTANT\_\-Integer@{CONSTANT\_\-Integer}}\item[{\em 
+CONSTANT\_\-Integer\label{classfile_8h_a253097a59bba3a2be20242ee865c4ea2a211cf9d5f5f1416862052d4671ad440f}
+}]32-\/bit Integer constant \index{CONSTANT\_\-Float@{CONSTANT\_\-Float}!classfile.h@{classfile.h}}\index{classfile.h@{classfile.h}!CONSTANT\_\-Float@{CONSTANT\_\-Float}}\item[{\em 
+CONSTANT\_\-Float\label{classfile_8h_a253097a59bba3a2be20242ee865c4ea2aaef0ceec2622d1d49b45fbe54e406f21}
+}]Single-\/precision floating point constant. \index{CONSTANT\_\-Long@{CONSTANT\_\-Long}!classfile.h@{classfile.h}}\index{classfile.h@{classfile.h}!CONSTANT\_\-Long@{CONSTANT\_\-Long}}\item[{\em 
+CONSTANT\_\-Long\label{classfile_8h_a253097a59bba3a2be20242ee865c4ea2a1d98ddfe1f9abb18cf43bc2c1b74bdd5}
+}]64-\/bit Integer constant \index{CONSTANT\_\-Double@{CONSTANT\_\-Double}!classfile.h@{classfile.h}}\index{classfile.h@{classfile.h}!CONSTANT\_\-Double@{CONSTANT\_\-Double}}\item[{\em 
+CONSTANT\_\-Double\label{classfile_8h_a253097a59bba3a2be20242ee865c4ea2a728b77a24433c54f6c8a0f613e50a2c5}
+}]Double-\/precision floating point constant. \index{CONSTANT\_\-Class@{CONSTANT\_\-Class}!classfile.h@{classfile.h}}\index{classfile.h@{classfile.h}!CONSTANT\_\-Class@{CONSTANT\_\-Class}}\item[{\em 
+CONSTANT\_\-Class\label{classfile_8h_a253097a59bba3a2be20242ee865c4ea2a0c47012a59af298b394855447822a7e3}
+}]Represents a class or an interface. \index{CONSTANT\_\-String@{CONSTANT\_\-String}!classfile.h@{classfile.h}}\index{classfile.h@{classfile.h}!CONSTANT\_\-String@{CONSTANT\_\-String}}\item[{\em 
+CONSTANT\_\-String\label{classfile_8h_a253097a59bba3a2be20242ee865c4ea2a2c4493d41b4f7ff5cf9f2846e1bb92e0}
+}]Java string constant. \index{CONSTANT\_\-Fieldref@{CONSTANT\_\-Fieldref}!classfile.h@{classfile.h}}\index{classfile.h@{classfile.h}!CONSTANT\_\-Fieldref@{CONSTANT\_\-Fieldref}}\item[{\em 
+CONSTANT\_\-Fieldref\label{classfile_8h_a253097a59bba3a2be20242ee865c4ea2a6f435c620d73f5e9366149665dc8ec6e}
+}]Represents a class' field. \index{CONSTANT\_\-Methodref@{CONSTANT\_\-Methodref}!classfile.h@{classfile.h}}\index{classfile.h@{classfile.h}!CONSTANT\_\-Methodref@{CONSTANT\_\-Methodref}}\item[{\em 
+CONSTANT\_\-Methodref\label{classfile_8h_a253097a59bba3a2be20242ee865c4ea2a74af7140e84140c938fbf89e0c33eea8}
+}]Represents a class' method. \index{CONSTANT\_\-InterfaceMethodref@{CONSTANT\_\-InterfaceMethodref}!classfile.h@{classfile.h}}\index{classfile.h@{classfile.h}!CONSTANT\_\-InterfaceMethodref@{CONSTANT\_\-InterfaceMethodref}}\item[{\em 
+CONSTANT\_\-InterfaceMethodref\label{classfile_8h_a253097a59bba3a2be20242ee865c4ea2a49962b9b17bc2ab27647a398b8083828}
+}]Represents an interface's method. \index{CONSTANT\_\-NameAndType@{CONSTANT\_\-NameAndType}!classfile.h@{classfile.h}}\index{classfile.h@{classfile.h}!CONSTANT\_\-NameAndType@{CONSTANT\_\-NameAndType}}\item[{\em 
+CONSTANT\_\-NameAndType\label{classfile_8h_a253097a59bba3a2be20242ee865c4ea2a80805f21212baf2079b2ab767e2ab061}
+}]Name and type of a field or method. \index{CONSTANT\_\-Class\_\-resolved@{CONSTANT\_\-Class\_\-resolved}!classfile.h@{classfile.h}}\index{classfile.h@{classfile.h}!CONSTANT\_\-Class\_\-resolved@{CONSTANT\_\-Class\_\-resolved}}\item[{\em 
+CONSTANT\_\-Class\_\-resolved\label{classfile_8h_a253097a59bba3a2be20242ee865c4ea2a49f2bf1a10a5f8b31887c88b0e900dea}
+}]Represents a resolved class. \index{CONSTANT\_\-Fieldref\_\-resolved@{CONSTANT\_\-Fieldref\_\-resolved}!classfile.h@{classfile.h}}\index{classfile.h@{classfile.h}!CONSTANT\_\-Fieldref\_\-resolved@{CONSTANT\_\-Fieldref\_\-resolved}}\item[{\em 
+CONSTANT\_\-Fieldref\_\-resolved\label{classfile_8h_a253097a59bba3a2be20242ee865c4ea2a17d32b1c14657739428b94a864033199}
+}]Represents a resolved field. \index{CONSTANT\_\-Methodref\_\-resolved@{CONSTANT\_\-Methodref\_\-resolved}!classfile.h@{classfile.h}}\index{classfile.h@{classfile.h}!CONSTANT\_\-Methodref\_\-resolved@{CONSTANT\_\-Methodref\_\-resolved}}\item[{\em 
+CONSTANT\_\-Methodref\_\-resolved\label{classfile_8h_a253097a59bba3a2be20242ee865c4ea2a2297b9cff301d16204c80b6c7336404b}
+}]Represents a resolved method. \index{CONSTANT\_\-InterfaceMethodref\_\-resolved@{CONSTANT\_\-InterfaceMethodref\_\-resolved}!classfile.h@{classfile.h}}\index{classfile.h@{classfile.h}!CONSTANT\_\-InterfaceMethodref\_\-resolved@{CONSTANT\_\-InterfaceMethodref\_\-resolved}}\item[{\em 
+CONSTANT\_\-InterfaceMethodref\_\-resolved\label{classfile_8h_a253097a59bba3a2be20242ee865c4ea2a9075b21f6377118456259854a4e446d9}
+}]Represents a resolved interface method. \end{description}
+\end{Desc}
+
+
+
+Definition at line 73 of file classfile.h.
+
+\index{classfile.h@{classfile.h}!primitive\_\-type\_\-t@{primitive\_\-type\_\-t}}
+\index{primitive\_\-type\_\-t@{primitive\_\-type\_\-t}!classfile.h@{classfile.h}}
+\subsubsection[{primitive\_\-type\_\-t}]{\setlength{\rightskip}{0pt plus 5cm}enum {\bf primitive\_\-type\_\-t}}\label{classfile_8h_acfa05427032aeca92558d1e0944b3ab8}
+Represents the basic type of a field or element of a Java class \begin{Desc}
+\item[Enumerator: ]\par
+\begin{description}
+\index{PT\_\-BYTE@{PT\_\-BYTE}!classfile.h@{classfile.h}}\index{classfile.h@{classfile.h}!PT\_\-BYTE@{PT\_\-BYTE}}\item[{\em 
+PT\_\-BYTE\label{classfile_8h_acfa05427032aeca92558d1e0944b3ab8aee362a88104b25c49bbf874f002a025a}
+}]Field of type byte. \index{PT\_\-BOOL@{PT\_\-BOOL}!classfile.h@{classfile.h}}\index{classfile.h@{classfile.h}!PT\_\-BOOL@{PT\_\-BOOL}}\item[{\em 
+PT\_\-BOOL\label{classfile_8h_acfa05427032aeca92558d1e0944b3ab8a130d8a97106cdf92e9ecb618c7dc0e05}
+}]Field of type bool. \index{PT\_\-CHAR@{PT\_\-CHAR}!classfile.h@{classfile.h}}\index{classfile.h@{classfile.h}!PT\_\-CHAR@{PT\_\-CHAR}}\item[{\em 
+PT\_\-CHAR\label{classfile_8h_acfa05427032aeca92558d1e0944b3ab8a8dca526508800a02bbaaf70cf53ed14f}
+}]Field of type char. \index{PT\_\-SHORT@{PT\_\-SHORT}!classfile.h@{classfile.h}}\index{classfile.h@{classfile.h}!PT\_\-SHORT@{PT\_\-SHORT}}\item[{\em 
+PT\_\-SHORT\label{classfile_8h_acfa05427032aeca92558d1e0944b3ab8aaa481826e984e7266a1f7c20896b2490}
+}]Field of type short. \index{PT\_\-INT@{PT\_\-INT}!classfile.h@{classfile.h}}\index{classfile.h@{classfile.h}!PT\_\-INT@{PT\_\-INT}}\item[{\em 
+PT\_\-INT\label{classfile_8h_acfa05427032aeca92558d1e0944b3ab8a5d3937ad9d674eedd3e2ee82d88f75a9}
+}]Field of type int. \index{PT\_\-FLOAT@{PT\_\-FLOAT}!classfile.h@{classfile.h}}\index{classfile.h@{classfile.h}!PT\_\-FLOAT@{PT\_\-FLOAT}}\item[{\em 
+PT\_\-FLOAT\label{classfile_8h_acfa05427032aeca92558d1e0944b3ab8aaa72e6364519b2f5704f4169b6138cdd}
+}]Field of type float. \index{PT\_\-LONG@{PT\_\-LONG}!classfile.h@{classfile.h}}\index{classfile.h@{classfile.h}!PT\_\-LONG@{PT\_\-LONG}}\item[{\em 
+PT\_\-LONG\label{classfile_8h_acfa05427032aeca92558d1e0944b3ab8ab5ab669b6988ceb66aac8500c3ccfa0a}
+}]Field of type long. \index{PT\_\-DOUBLE@{PT\_\-DOUBLE}!classfile.h@{classfile.h}}\index{classfile.h@{classfile.h}!PT\_\-DOUBLE@{PT\_\-DOUBLE}}\item[{\em 
+PT\_\-DOUBLE\label{classfile_8h_acfa05427032aeca92558d1e0944b3ab8a52946624c43200be974efa027bad70a7}
+}]Field of type double. \index{PT\_\-REFERENCE@{PT\_\-REFERENCE}!classfile.h@{classfile.h}}\index{classfile.h@{classfile.h}!PT\_\-REFERENCE@{PT\_\-REFERENCE}}\item[{\em 
+PT\_\-REFERENCE\label{classfile_8h_acfa05427032aeca92558d1e0944b3ab8a6c9715cefa946cb4688c17720367bfcd}
+}]Generic reference field. \index{PT\_\-VOID@{PT\_\-VOID}!classfile.h@{classfile.h}}\index{classfile.h@{classfile.h}!PT\_\-VOID@{PT\_\-VOID}}\item[{\em 
+PT\_\-VOID\label{classfile_8h_acfa05427032aeca92558d1e0944b3ab8a8ce56f2676a212514cc12f06c3f3b30d}
+}]Used only for method descriptors! \end{description}
+\end{Desc}
+
+
+
+Definition at line 52 of file classfile.h.
+
+
+
+\subsection{Function Documentation}
+\index{classfile.h@{classfile.h}!cf\_\-close@{cf\_\-close}}
+\index{cf\_\-close@{cf\_\-close}!classfile.h@{classfile.h}}
+\subsubsection[{cf\_\-close}]{\setlength{\rightskip}{0pt plus 5cm}void cf\_\-close (
+\begin{DoxyParamCaption}
+\item[{{\bf class\_\-file\_\-t} $\ast$}]{ cf}
+\end{DoxyParamCaption}
+)}\label{classfile_8h_a0ef88c565ba08c428c1483c5beeebf36}
+Closes a class file and disposes the relevant structure 
+\begin{DoxyParams}{Parameters}
+\item[{\em cf}]A pointer to the \doxyref{class\_\-file\_\-t}{p.}{structclass__file__t} structure to be closed and disposed \end{DoxyParams}
+
+
+Definition at line 243 of file classfile.c.
+
+
+
+References class\_\-file\_\-t::file, gc\_\-free(), class\_\-file\_\-t::jar, and class\_\-file\_\-t::plain.
+
+
+
+Referenced by load\_\-bytecode(), load\_\-class(), and load\_\-exception\_\-handlers().
+
+\index{classfile.h@{classfile.h}!cf\_\-load\_\-u1@{cf\_\-load\_\-u1}}
+\index{cf\_\-load\_\-u1@{cf\_\-load\_\-u1}!classfile.h@{classfile.h}}
+\subsubsection[{cf\_\-load\_\-u1}]{\setlength{\rightskip}{0pt plus 5cm}uint8\_\-t cf\_\-load\_\-u1 (
+\begin{DoxyParamCaption}
+\item[{{\bf class\_\-file\_\-t} $\ast$}]{ cf}
+\end{DoxyParamCaption}
+)}\label{classfile_8h_aab80c31d428873390f0021dc55eb166a}
+Reads a single-\/byte value from the provided class-\/file, throws an exception if the end of the file has been already reached 
+\begin{DoxyParams}{Parameters}
+\item[{\em cf}]A pointer to an open class-\/file \end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+A single-\/byte constant read from the class-\/file 
+\end{DoxyReturn}
+
+
+Definition at line 263 of file classfile.c.
+
+
+
+References c\_\-throw, class\_\-file\_\-t::file, class\_\-file\_\-t::jar, JAVA\_\-LANG\_\-NOCLASSDEFFOUNDERROR, and class\_\-file\_\-t::plain.
+
+
+
+Referenced by cp\_\-create(), and load\_\-bytecode().
+
+\index{classfile.h@{classfile.h}!cf\_\-load\_\-u2@{cf\_\-load\_\-u2}}
+\index{cf\_\-load\_\-u2@{cf\_\-load\_\-u2}!classfile.h@{classfile.h}}
+\subsubsection[{cf\_\-load\_\-u2}]{\setlength{\rightskip}{0pt plus 5cm}uint16\_\-t cf\_\-load\_\-u2 (
+\begin{DoxyParamCaption}
+\item[{{\bf class\_\-file\_\-t} $\ast$}]{ cf}
+\end{DoxyParamCaption}
+)}\label{classfile_8h_a0b86af0f6396fb2ca7d201562e05c720}
+Reads a two-\/bytes value from the provided class-\/file, throws an exception if the end of the file has been already reached 
+\begin{DoxyParams}{Parameters}
+\item[{\em cf}]A pointer to an open class-\/file \end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+A two-\/bytes constant read from the class-\/file 
+\end{DoxyReturn}
+
+
+Definition at line 291 of file classfile.c.
+
+
+
+References c\_\-throw, class\_\-file\_\-t::file, class\_\-file\_\-t::jar, JAVA\_\-LANG\_\-NOCLASSDEFFOUNDERROR, and class\_\-file\_\-t::plain.
+
+
+
+Referenced by cp\_\-create(), derive\_\-class(), load\_\-attribute\_\-Code\_\-attributes(), load\_\-attributes(), load\_\-exception\_\-handlers(), load\_\-field\_\-attribute\_\-ConstantValue(), load\_\-field\_\-attributes(), load\_\-field\_\-info(), load\_\-fields(), load\_\-interfaces(), load\_\-method\_\-attribute\_\-Code(), load\_\-method\_\-attribute\_\-Exceptions(), load\_\-method\_\-attributes(), and load\_\-methods().
+
+\index{classfile.h@{classfile.h}!cf\_\-load\_\-u4@{cf\_\-load\_\-u4}}
+\index{cf\_\-load\_\-u4@{cf\_\-load\_\-u4}!classfile.h@{classfile.h}}
+\subsubsection[{cf\_\-load\_\-u4}]{\setlength{\rightskip}{0pt plus 5cm}uint32\_\-t cf\_\-load\_\-u4 (
+\begin{DoxyParamCaption}
+\item[{{\bf class\_\-file\_\-t} $\ast$}]{ cf}
+\end{DoxyParamCaption}
+)}\label{classfile_8h_a39b581f8553361260364b59c86300737}
+Reads a four-\/bytes value from the provided class-\/file, throws an exception if the end of the file has been already reached 
+\begin{DoxyParams}{Parameters}
+\item[{\em cf}]A pointer to an open class-\/file \end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+A four-\/bytes constant read from the class-\/file 
+\end{DoxyReturn}
+
+
+Definition at line 319 of file classfile.c.
+
+
+
+References c\_\-throw, class\_\-file\_\-t::file, class\_\-file\_\-t::jar, JAVA\_\-LANG\_\-NOCLASSDEFFOUNDERROR, and class\_\-file\_\-t::plain.
+
+
+
+Referenced by cp\_\-create(), derive\_\-class(), load\_\-attribute\_\-Code\_\-attributes(), load\_\-attributes(), load\_\-field\_\-attributes(), load\_\-method\_\-attribute\_\-Code(), and load\_\-method\_\-attributes().
+
+\index{classfile.h@{classfile.h}!cf\_\-open@{cf\_\-open}}
+\index{cf\_\-open@{cf\_\-open}!classfile.h@{classfile.h}}
+\subsubsection[{cf\_\-open}]{\setlength{\rightskip}{0pt plus 5cm}{\bf class\_\-file\_\-t}$\ast$ cf\_\-open (
+\begin{DoxyParamCaption}
+\item[{const char $\ast$}]{ name}
+\end{DoxyParamCaption}
+)}\label{classfile_8h_ac3967f4673054969509a30e442fb013f}
+Opens a class file with the specified class name (in the internal class format) looking in the classpath directory or JAR file, throws an exception if the class file cannot be found or opened. 
+\begin{DoxyParams}{Parameters}
+\item[{\em name}]The class name \end{DoxyParams}
+
+
+Definition at line 212 of file classfile.c.
+
+
+
+References classpath\_\-t::boot, c\_\-throw, cf\_\-open\_\-with\_\-classpath(), classpath\_\-t::entries, JAVA\_\-LANG\_\-NOCLASSDEFFOUNDERROR, and classpath\_\-t::user.
+
+
+
+Referenced by load\_\-bytecode(), load\_\-class(), and load\_\-exception\_\-handlers().
+
+\index{classfile.h@{classfile.h}!cf\_\-seek@{cf\_\-seek}}
+\index{cf\_\-seek@{cf\_\-seek}!classfile.h@{classfile.h}}
+\subsubsection[{cf\_\-seek}]{\setlength{\rightskip}{0pt plus 5cm}void cf\_\-seek (
+\begin{DoxyParamCaption}
+\item[{{\bf class\_\-file\_\-t} $\ast$}]{ cf, }
+\item[{long}]{ offset, }
+\item[{int}]{ whence}
+\end{DoxyParamCaption}
+)}\label{classfile_8h_aadad9008f2d9dae3e2b18ca20e3b9279}
+Seeks to the position specified by the {\itshape offset\/} parameter, throws an exception if the position is out of the file's range. This function's semantic is the same as fseek() but only the SEEK\_\-SET and SEEK\_\-CUR whence modes are supported 
+\begin{DoxyParams}{Parameters}
+\item[{\em cf}]A pointer to an open class-\/file \item[{\em offset}]The new position in the class-\/file \item[{\em whence}]From where to start seeking \end{DoxyParams}
+
+
+Definition at line 350 of file classfile.c.
+
+
+
+References c\_\-throw, class\_\-file\_\-t::file, class\_\-file\_\-t::jar, JAVA\_\-LANG\_\-NOCLASSDEFFOUNDERROR, and class\_\-file\_\-t::plain.
+
+
+
+Referenced by load\_\-attribute\_\-Code\_\-attributes(), load\_\-attributes(), load\_\-bytecode(), load\_\-exception\_\-handlers(), load\_\-field\_\-attributes(), load\_\-method\_\-attribute\_\-Code(), and load\_\-method\_\-attributes().
+
+\index{classfile.h@{classfile.h}!cf\_\-tell@{cf\_\-tell}}
+\index{cf\_\-tell@{cf\_\-tell}!classfile.h@{classfile.h}}
+\subsubsection[{cf\_\-tell}]{\setlength{\rightskip}{0pt plus 5cm}long cf\_\-tell (
+\begin{DoxyParamCaption}
+\item[{{\bf class\_\-file\_\-t} $\ast$}]{ cf}
+\end{DoxyParamCaption}
+)}\label{classfile_8h_a10dd9b00093a7fb5589164c2e57f420d}
+Returns the position inside the current class-\/file 
+\begin{DoxyParams}{Parameters}
+\item[{\em cf}]A pointer to an open class-\/file \end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+An integer holding the current position inside the class-\/file 
+\end{DoxyReturn}
+
+
+Definition at line 374 of file classfile.c.
+
+
+
+References c\_\-throw, class\_\-file\_\-t::file, class\_\-file\_\-t::jar, JAVA\_\-LANG\_\-NOCLASSDEFFOUNDERROR, and class\_\-file\_\-t::plain.
+
+
+
+Referenced by load\_\-attribute\_\-Code\_\-attributes(), load\_\-attributes(), load\_\-field\_\-attributes(), load\_\-method\_\-attribute\_\-Code(), and load\_\-method\_\-attributes().
+
+\index{classfile.h@{classfile.h}!classpath\_\-init@{classpath\_\-init}}
+\index{classpath\_\-init@{classpath\_\-init}!classfile.h@{classfile.h}}
+\subsubsection[{classpath\_\-init}]{\setlength{\rightskip}{0pt plus 5cm}void classpath\_\-init (
+\begin{DoxyParamCaption}
+\item[{void}]{}
+\end{DoxyParamCaption}
+)}\label{classfile_8h_a425705ef770d7f2a283ccfeaf74153fd}
+Initializes the classpath by processing the related options 
+
+Definition at line 102 of file classfile.c.
+
+
+
+References classpath\_\-t::boot, classpath\_\-t::entries, gc\_\-palloc(), opts\_\-get\_\-boot\_\-classpath(), opts\_\-get\_\-classpath(), set\_\-classpath\_\-string(), and classpath\_\-t::user.
+
+
+
+Referenced by vm\_\-init().
+
+\index{classfile.h@{classfile.h}!classpath\_\-teardown@{classpath\_\-teardown}}
+\index{classpath\_\-teardown@{classpath\_\-teardown}!classfile.h@{classfile.h}}
+\subsubsection[{classpath\_\-teardown}]{\setlength{\rightskip}{0pt plus 5cm}void classpath\_\-teardown (
+\begin{DoxyParamCaption}
+\item[{void}]{}
+\end{DoxyParamCaption}
+)}\label{classfile_8h_a64442ad68ab5b809a7e205fda2139378}
+Tear down the classpath 
+
+Definition at line 132 of file classfile.c.
+
+
+
+References classpath\_\-t::entries, and classpath\_\-t::user.
+
+
+
+Referenced by vm\_\-teardown().
+

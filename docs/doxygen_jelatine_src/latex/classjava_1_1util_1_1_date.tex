@@ -1,0 +1,201 @@
+\section{java::util::Date Class Reference}
+\label{classjava_1_1util_1_1_date}\index{java::util::Date@{java::util::Date}}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+{\bf Date} ()
+\item 
+{\bf Date} (long time)
+\item 
+long {\bf getTime} ()
+\item 
+void {\bf setTime} (long time)
+\item 
+boolean {\bf equals} (Object obj)
+\item 
+int {\bf hashCode} ()
+\item 
+String {\bf toString} ()
+\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+This class represents a specific time in milliseconds since the epoch. The epoch is 1970, January 1 00:00:00.0000 UTC.  
+
+{\ttfamily \doxyref{Date}{p.}{classjava_1_1util_1_1_date}} is intended to reflect universal time coordinate (UTC), but this depends on the underlying host environment. Most operating systems don't handle the leap second, which occurs about once every year or so. The leap second is added to the last minute of the day on either the 30th of June or the 31st of December, creating a minute 61 seconds in length.  
+
+The representations of the date fields are as follows: 
+\begin{DoxyItemize}
+\item Years are specified as the difference between the year and 1900. Thus, the final year used is equal to 1900 + y, where y is the input value.  
+\item Months are represented using zero-\/based indexing, making 0 January and 11 December.  
+\item Dates are represented with the usual values of 1 through to 31.  
+\item Hours are represented in the twenty-\/four hour clock, with integer values from 0 to 23. 12am is 0, and 12pm is 12.  
+\item Minutes are again as usual, with values from 0 to 59.  
+\item Seconds are represented with the values 0 through to 61, with 60 and 61 being leap seconds (as per the ISO C standard).  
+\end{DoxyItemize}
+
+Prior to JDK 1.1, this class was the sole class handling date and time related functionality. However, this particular solution was not amenable to internationalization. The new {\ttfamily \doxyref{Calendar}{p.}{classjava_1_1util_1_1_calendar}} class should now be used to handle dates and times, with {\ttfamily \doxyref{Date}{p.}{classjava_1_1util_1_1_date}} being used only for values in milliseconds since the epoch. The {\ttfamily \doxyref{Calendar}{p.}{classjava_1_1util_1_1_calendar}} class, and its concrete implementations, handle the interpretation of these values into minutes, hours, days, months and years. The formatting and parsing of dates is left to the {\ttfamily DateFormat} class, which is able to handle the different types of date format which occur in different locales. 
+
+\begin{DoxySeeAlso}{See also}
+\doxyref{Calendar}{p.}{classjava_1_1util_1_1_calendar} 
+
+GregorianCalendar 
+
+java.text.DateFormat 
+\end{DoxySeeAlso}
+\begin{DoxyAuthor}{Author}
+Jochen Hoenicke 
+
+Per Bothner ({\tt bothner@cygnus.com}) 
+
+Andrew John Hughes ({\tt gnu\_\-andrew@member.fsf.org}) 
+\end{DoxyAuthor}
+
+
+Definition at line 103 of file Date.java.
+
+
+
+\subsection{Constructor \& Destructor Documentation}
+\index{java::util::Date@{java::util::Date}!Date@{Date}}
+\index{Date@{Date}!java::util::Date@{java::util::Date}}
+\subsubsection[{Date}]{\setlength{\rightskip}{0pt plus 5cm}java::util::Date::Date (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily  [inline]}}\label{classjava_1_1util_1_1_date_a451e922e4b9f0fe09fd22d6658e3cc63}
+Creates a new \doxyref{Date}{p.}{classjava_1_1util_1_1_date} Object representing the current time. 
+
+Definition at line 125 of file Date.java.
+
+\index{java::util::Date@{java::util::Date}!Date@{Date}}
+\index{Date@{Date}!java::util::Date@{java::util::Date}}
+\subsubsection[{Date}]{\setlength{\rightskip}{0pt plus 5cm}java::util::Date::Date (
+\begin{DoxyParamCaption}
+\item[{long}]{ time}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily  [inline]}}\label{classjava_1_1util_1_1_date_ab1ce40421e78effa8e68106200ccb97d}
+Creates a new \doxyref{Date}{p.}{classjava_1_1util_1_1_date} Object representing the given time.
+
+
+\begin{DoxyParams}{Parameters}
+\item[{\em time}]the time in milliseconds since the epoch. \end{DoxyParams}
+
+
+Definition at line 135 of file Date.java.
+
+
+
+\subsection{Member Function Documentation}
+\index{java::util::Date@{java::util::Date}!equals@{equals}}
+\index{equals@{equals}!java::util::Date@{java::util::Date}}
+\subsubsection[{equals}]{\setlength{\rightskip}{0pt plus 5cm}boolean java::util::Date::equals (
+\begin{DoxyParamCaption}
+\item[{Object}]{ obj}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily  [inline]}}\label{classjava_1_1util_1_1_date_a3ca5b4dd8811deca93834eb43623b71a}
+Compares two dates for equality.
+
+
+\begin{DoxyParams}{Parameters}
+\item[{\em obj}]the object to compare. \end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+true, if obj is a \doxyref{Date}{p.}{classjava_1_1util_1_1_date} object and the time represented by obj is exactly the same as the time represented by this object. 
+\end{DoxyReturn}
+
+
+Definition at line 168 of file Date.java.
+
+\index{java::util::Date@{java::util::Date}!getTime@{getTime}}
+\index{getTime@{getTime}!java::util::Date@{java::util::Date}}
+\subsubsection[{getTime}]{\setlength{\rightskip}{0pt plus 5cm}long java::util::Date::getTime (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily  [inline]}}\label{classjava_1_1util_1_1_date_ac0d5f2468b4862840b2db4bbe0517338}
+Gets the time represented by this object.
+
+\begin{DoxyReturn}{Returns}
+the time in milliseconds since the epoch. 
+\end{DoxyReturn}
+
+
+Definition at line 145 of file Date.java.
+
+
+
+Referenced by java::util::Calendar::setTime().
+
+\index{java::util::Date@{java::util::Date}!hashCode@{hashCode}}
+\index{hashCode@{hashCode}!java::util::Date@{java::util::Date}}
+\subsubsection[{hashCode}]{\setlength{\rightskip}{0pt plus 5cm}int java::util::Date::hashCode (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily  [inline]}}\label{classjava_1_1util_1_1_date_aba8b31897781c1167afeadf4330e2686}
+Computes the hash code of this {\ttfamily \doxyref{Date}{p.}{classjava_1_1util_1_1_date}} as the XOR of the most significant and the least significant 32 bits of the 64 bit milliseconds value.
+
+\begin{DoxyReturn}{Returns}
+the hash code. 
+\end{DoxyReturn}
+
+
+Definition at line 180 of file Date.java.
+
+\index{java::util::Date@{java::util::Date}!setTime@{setTime}}
+\index{setTime@{setTime}!java::util::Date@{java::util::Date}}
+\subsubsection[{setTime}]{\setlength{\rightskip}{0pt plus 5cm}void java::util::Date::setTime (
+\begin{DoxyParamCaption}
+\item[{long}]{ time}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily  [inline]}}\label{classjava_1_1util_1_1_date_a01aa0edf32a4ed5ce64568cba4585b90}
+Sets the time which this object should represent.
+
+
+\begin{DoxyParams}{Parameters}
+\item[{\em time}]the time in milliseconds since the epoch. \end{DoxyParams}
+
+
+Definition at line 155 of file Date.java.
+
+\index{java::util::Date@{java::util::Date}!toString@{toString}}
+\index{toString@{toString}!java::util::Date@{java::util::Date}}
+\subsubsection[{toString}]{\setlength{\rightskip}{0pt plus 5cm}String java::util::Date::toString (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily  [inline]}}\label{classjava_1_1util_1_1_date_a9578405183a582a5a56f78d295fd3851}
+Returns a string representation of this date using the following date format:  
+
+{\ttfamily day mon dd hh:mm:ss zz yyyy}  
+
+where the fields used here are: 
+\begin{DoxyItemize}
+\item {\ttfamily day} -\/-\/ the day of the week (Sunday through to Saturday).  
+\item {\ttfamily mon} -\/-\/ the month (Jan to Dec).  
+\item {\ttfamily dd} -\/-\/ the day of the month as two decimal digits (01 to 31).  
+\item {\ttfamily hh} -\/-\/ the hour of the day as two decimal digits in 24-\/hour clock notation (01 to 23).  
+\item {\ttfamily mm} -\/-\/ the minute of the day as two decimal digits (01 to 59).  
+\item {\ttfamily ss} -\/-\/ the second of the day as two decimal digits (01 to 61).  
+\item {\ttfamily zz} -\/-\/ the time zone information if available. The possible time zones used include the abbreviations recognised by {\ttfamily parse()} (e.g. GMT, CET, etc.) and may reflect the fact that daylight savings time is in effect. The empty string is used if there is no time zone information.  
+\item {\ttfamily yyyy} -\/-\/ the year as four decimal digits.  
+\end{DoxyItemize}
+
+The {\ttfamily DateFormat} class should now be preferred over using this method. 
+
+\begin{DoxyReturn}{Returns}
+A string of the form 'day mon dd hh:mm:ss zz yyyy' 
+\end{DoxyReturn}
+
+
+Definition at line 238 of file Date.java.
+
+
+
+References java::util::Calendar::get(), java::util::TimeZone::getID(), java::util::Calendar::getTimeZone(), and java::util::Calendar::setTimeInMillis().
+
+
+
+The documentation for this class was generated from the following file:\begin{DoxyCompactItemize}
+\item 
+src/classpath/java/util/Date.java\end{DoxyCompactItemize}

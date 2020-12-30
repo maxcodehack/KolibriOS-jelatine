@@ -1,0 +1,570 @@
+\section{java::lang::Float Class Reference}
+\label{classjava_1_1lang_1_1_float}\index{java::lang::Float@{java::lang::Float}}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+{\bf Float} (float value)
+\item 
+{\bf Float} (double value)
+\item 
+boolean {\bf isNaN} ()
+\item 
+boolean {\bf isInfinite} ()
+\item 
+{\bf String} {\bf toString} ()
+\item 
+byte {\bf byteValue} ()
+\item 
+short {\bf shortValue} ()
+\item 
+int {\bf intValue} ()
+\item 
+long {\bf longValue} ()
+\item 
+float {\bf floatValue} ()
+\item 
+double {\bf doubleValue} ()
+\item 
+int {\bf hashCode} ()
+\item 
+boolean {\bf equals} ({\bf Object} obj)
+\end{DoxyCompactItemize}
+\subsection*{Static Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+static native {\bf String} {\bf toString} (float f)
+\item 
+static {\bf Float} {\bf valueOf} ({\bf String} s)
+\item 
+static float {\bf parseFloat} ({\bf String} str)
+\item 
+static boolean {\bf isNaN} (float v)
+\item 
+static boolean {\bf isInfinite} (float v)
+\item 
+static native int {\bf floatToIntBits} (float value)
+\item 
+static native float {\bf intBitsToFloat} (int bits)
+\end{DoxyCompactItemize}
+\subsection*{Static Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+static final float {\bf MAX\_\-VALUE} = 3.4028235e+38f
+\item 
+static final float {\bf MIN\_\-VALUE} = 1.4e-\/45f
+\item 
+static final float {\bf NEGATIVE\_\-INFINITY} = -\/1.0f / 0.0f
+\item 
+static final float {\bf POSITIVE\_\-INFINITY} = 1.0f / 0.0f
+\item 
+static final float {\bf NaN} = 0.0f / 0.0f
+\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+Instances of class {\ttfamily \doxyref{Float}{p.}{classjava_1_1lang_1_1_float}} represent primitive {\ttfamily float} values.
+
+Additionally, this class provides various helper functions and variables related to floats.
+
+\begin{DoxyAuthor}{Author}
+Paul Fisher 
+
+Andrew Haley ({\tt aph@cygnus.com}) 
+
+Eric Blake ({\tt ebb9@email.byu.edu}) 
+\end{DoxyAuthor}
+
+
+Definition at line 54 of file Float.java.
+
+
+
+\subsection{Constructor \& Destructor Documentation}
+\index{java::lang::Float@{java::lang::Float}!Float@{Float}}
+\index{Float@{Float}!java::lang::Float@{java::lang::Float}}
+\subsubsection[{Float}]{\setlength{\rightskip}{0pt plus 5cm}java::lang::Float::Float (
+\begin{DoxyParamCaption}
+\item[{float}]{ value}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily  [inline]}}\label{classjava_1_1lang_1_1_float_a22530defd87bf59d30b437af5c491edf}
+Create a {\ttfamily \doxyref{Float}{p.}{classjava_1_1lang_1_1_float}} from the primitive {\ttfamily float} specified.
+
+
+\begin{DoxyParams}{Parameters}
+\item[{\em value}]the {\ttfamily float} argument \end{DoxyParams}
+
+
+Definition at line 96 of file Float.java.
+
+
+
+Referenced by valueOf().
+
+\index{java::lang::Float@{java::lang::Float}!Float@{Float}}
+\index{Float@{Float}!java::lang::Float@{java::lang::Float}}
+\subsubsection[{Float}]{\setlength{\rightskip}{0pt plus 5cm}java::lang::Float::Float (
+\begin{DoxyParamCaption}
+\item[{double}]{ value}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily  [inline]}}\label{classjava_1_1lang_1_1_float_a0d15f7adbed1ff632a796b4a51037f56}
+Create a {\ttfamily \doxyref{Float}{p.}{classjava_1_1lang_1_1_float}} from the primitive {\ttfamily double} specified.
+
+
+\begin{DoxyParams}{Parameters}
+\item[{\em value}]the {\ttfamily double} argument \end{DoxyParams}
+
+
+Definition at line 107 of file Float.java.
+
+
+
+\subsection{Member Function Documentation}
+\index{java::lang::Float@{java::lang::Float}!byteValue@{byteValue}}
+\index{byteValue@{byteValue}!java::lang::Float@{java::lang::Float}}
+\subsubsection[{byteValue}]{\setlength{\rightskip}{0pt plus 5cm}byte java::lang::Float::byteValue (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily  [inline]}}\label{classjava_1_1lang_1_1_float_a871d697fbdd8789f632501e4bf2de114}
+Return the value of this {\ttfamily \doxyref{Float}{p.}{classjava_1_1lang_1_1_float}} as a {\ttfamily byte}.
+
+\begin{DoxyReturn}{Returns}
+the byte value 
+\end{DoxyReturn}
+
+
+Definition at line 280 of file Float.java.
+
+\index{java::lang::Float@{java::lang::Float}!doubleValue@{doubleValue}}
+\index{doubleValue@{doubleValue}!java::lang::Float@{java::lang::Float}}
+\subsubsection[{doubleValue}]{\setlength{\rightskip}{0pt plus 5cm}double java::lang::Float::doubleValue (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily  [inline]}}\label{classjava_1_1lang_1_1_float_a6488339e31f1a4c6a97cd7a0114dcc56}
+Return the value of this {\ttfamily \doxyref{Float}{p.}{classjava_1_1lang_1_1_float}} as a {\ttfamily double}
+
+\begin{DoxyReturn}{Returns}
+the double value 
+\end{DoxyReturn}
+
+
+Definition at line 331 of file Float.java.
+
+\index{java::lang::Float@{java::lang::Float}!equals@{equals}}
+\index{equals@{equals}!java::lang::Float@{java::lang::Float}}
+\subsubsection[{equals}]{\setlength{\rightskip}{0pt plus 5cm}boolean java::lang::Float::equals (
+\begin{DoxyParamCaption}
+\item[{{\bf Object}}]{ obj}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily  [inline]}}\label{classjava_1_1lang_1_1_float_a707983ac1eb4a5ae4015ad9b15bea8da}
+Returns {\ttfamily true} if {\ttfamily obj} is an instance of {\ttfamily \doxyref{Float}{p.}{classjava_1_1lang_1_1_float}} and represents the same float value. Unlike comparing two floats with {\ttfamily ==}, this treats two instances of {\ttfamily \doxyref{Float.NaN}{p.}{classjava_1_1lang_1_1_float_aca59d12eab141b9c37f6b1a891084772}} as equal, but treats {\ttfamily 0.0} and {\ttfamily -\/0.0} as unequal.
+
+Note that {\ttfamily f1.equals(f2)} is identical to {\ttfamily floatToIntBits(f1.floatValue()) == floatToIntBits(f2.floatValue())}.
+
+
+\begin{DoxyParams}{Parameters}
+\item[{\em obj}]the object to compare \end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+whether the objects are semantically equal 
+\end{DoxyReturn}
+
+
+Definition at line 362 of file Float.java.
+
+
+
+References isNaN().
+
+\index{java::lang::Float@{java::lang::Float}!floatToIntBits@{floatToIntBits}}
+\index{floatToIntBits@{floatToIntBits}!java::lang::Float@{java::lang::Float}}
+\subsubsection[{floatToIntBits}]{\setlength{\rightskip}{0pt plus 5cm}static native int java::lang::Float::floatToIntBits (
+\begin{DoxyParamCaption}
+\item[{float}]{ value}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily  [static]}}\label{classjava_1_1lang_1_1_float_a23c74768d92c816e7e2a125ed7e9137a}
+Convert the float to the IEEE 754 floating-\/point \char`\"{}single format\char`\"{} bit layout. Bit 31 (the most significant) is the sign bit, bits 30-\/23 (masked by 0x7f800000) represent the exponent, and bits 22-\/0 (masked by 0x007fffff) are the mantissa. This function collapses all versions of NaN to 0x7fc00000. The result of this function can be used as the argument to {\ttfamily \doxyref{Float.intBitsToFloat(int)}{p.}{classjava_1_1lang_1_1_float_a2492e2696c7b6a22d452c0a55d086ca7}} to obtain the original {\ttfamily float} value.
+
+
+\begin{DoxyParams}{Parameters}
+\item[{\em value}]the {\ttfamily float} to convert \end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+the bits of the {\ttfamily float} 
+\end{DoxyReturn}
+\begin{DoxySeeAlso}{See also}
+\doxyref{intBitsToFloat(int)}{p.}{classjava_1_1lang_1_1_float_a2492e2696c7b6a22d452c0a55d086ca7} 
+\end{DoxySeeAlso}
+
+
+Referenced by hashCode().
+
+\index{java::lang::Float@{java::lang::Float}!floatValue@{floatValue}}
+\index{floatValue@{floatValue}!java::lang::Float@{java::lang::Float}}
+\subsubsection[{floatValue}]{\setlength{\rightskip}{0pt plus 5cm}float java::lang::Float::floatValue (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily  [inline]}}\label{classjava_1_1lang_1_1_float_a4491838781742cfbdec11552a6c4cf3e}
+Return the value of this {\ttfamily \doxyref{Float}{p.}{classjava_1_1lang_1_1_float}}.
+
+\begin{DoxyReturn}{Returns}
+the float value 
+\end{DoxyReturn}
+
+
+Definition at line 321 of file Float.java.
+
+\index{java::lang::Float@{java::lang::Float}!hashCode@{hashCode}}
+\index{hashCode@{hashCode}!java::lang::Float@{java::lang::Float}}
+\subsubsection[{hashCode}]{\setlength{\rightskip}{0pt plus 5cm}int java::lang::Float::hashCode (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily  [inline]}}\label{classjava_1_1lang_1_1_float_ae0bcc2e9102cd5e9f711f7566f9ed62c}
+Return a hashcode representing this \doxyref{Object}{p.}{classjava_1_1lang_1_1_object}. {\ttfamily \doxyref{Float}{p.}{classjava_1_1lang_1_1_float}}'s hash code is calculated by calling {\ttfamily floatToIntBits(\doxyref{floatValue()}{p.}{classjava_1_1lang_1_1_float_a4491838781742cfbdec11552a6c4cf3e})}.
+
+\begin{DoxyReturn}{Returns}
+this Object's hash code 
+\end{DoxyReturn}
+\begin{DoxySeeAlso}{See also}
+\doxyref{floatToIntBits(float)}{p.}{classjava_1_1lang_1_1_float_a23c74768d92c816e7e2a125ed7e9137a} 
+\end{DoxySeeAlso}
+
+
+Definition at line 343 of file Float.java.
+
+
+
+References floatToIntBits().
+
+\index{java::lang::Float@{java::lang::Float}!intBitsToFloat@{intBitsToFloat}}
+\index{intBitsToFloat@{intBitsToFloat}!java::lang::Float@{java::lang::Float}}
+\subsubsection[{intBitsToFloat}]{\setlength{\rightskip}{0pt plus 5cm}static native float java::lang::Float::intBitsToFloat (
+\begin{DoxyParamCaption}
+\item[{int}]{ bits}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily  [static]}}\label{classjava_1_1lang_1_1_float_a2492e2696c7b6a22d452c0a55d086ca7}
+Convert the argument in IEEE 754 floating-\/point \char`\"{}single format\char`\"{} bit layout to the corresponding float. Bit 31 (the most significant) is the sign bit, bits 30-\/23 (masked by 0x7f800000) represent the exponent, and bits 22-\/0 (masked by 0x007fffff) are the mantissa. This function leaves NaN alone, so that you can recover the bit pattern with {\ttfamily Float.floatToRawIntBits(float)}.
+
+
+\begin{DoxyParams}{Parameters}
+\item[{\em bits}]the bits to convert \end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+the {\ttfamily float} represented by the bits 
+\end{DoxyReturn}
+\index{java::lang::Float@{java::lang::Float}!intValue@{intValue}}
+\index{intValue@{intValue}!java::lang::Float@{java::lang::Float}}
+\subsubsection[{intValue}]{\setlength{\rightskip}{0pt plus 5cm}int java::lang::Float::intValue (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily  [inline]}}\label{classjava_1_1lang_1_1_float_a9d30b9bc0d3111d73be655bbbbd23eb5}
+Return the value of this {\ttfamily \doxyref{Integer}{p.}{classjava_1_1lang_1_1_integer}} as an {\ttfamily int}.
+
+\begin{DoxyReturn}{Returns}
+the int value 
+\end{DoxyReturn}
+
+
+Definition at line 301 of file Float.java.
+
+\index{java::lang::Float@{java::lang::Float}!isInfinite@{isInfinite}}
+\index{isInfinite@{isInfinite}!java::lang::Float@{java::lang::Float}}
+\subsubsection[{isInfinite}]{\setlength{\rightskip}{0pt plus 5cm}static boolean java::lang::Float::isInfinite (
+\begin{DoxyParamCaption}
+\item[{float}]{ v}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily  [inline, static]}}\label{classjava_1_1lang_1_1_float_a7ea6889750c17c24dc04948f38e760fe}
+Return {\ttfamily true} if the {\ttfamily float} has a value equal to either {\ttfamily NEGATIVE\_\-INFINITY} or {\ttfamily POSITIVE\_\-INFINITY}, otherwise return {\ttfamily false}.
+
+
+\begin{DoxyParams}{Parameters}
+\item[{\em v}]the {\ttfamily float} to compare \end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+whether the argument is (-\//+) infinity 
+\end{DoxyReturn}
+
+
+Definition at line 234 of file Float.java.
+
+
+
+References NEGATIVE\_\-INFINITY, and POSITIVE\_\-INFINITY.
+
+\index{java::lang::Float@{java::lang::Float}!isInfinite@{isInfinite}}
+\index{isInfinite@{isInfinite}!java::lang::Float@{java::lang::Float}}
+\subsubsection[{isInfinite}]{\setlength{\rightskip}{0pt plus 5cm}boolean java::lang::Float::isInfinite (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily  [inline]}}\label{classjava_1_1lang_1_1_float_af8ff3de9906b652df9163d4264534835}
+Return {\ttfamily true} if the value of this {\ttfamily \doxyref{Float}{p.}{classjava_1_1lang_1_1_float}} is the same as {\ttfamily NEGATIVE\_\-INFINITY} or {\ttfamily POSITIVE\_\-INFINITY}, otherwise return {\ttfamily false}.
+
+\begin{DoxyReturn}{Returns}
+whether this {\ttfamily \doxyref{Float}{p.}{classjava_1_1lang_1_1_float}} is (-\//+) infinity 
+\end{DoxyReturn}
+
+
+Definition at line 257 of file Float.java.
+
+\index{java::lang::Float@{java::lang::Float}!isNaN@{isNaN}}
+\index{isNaN@{isNaN}!java::lang::Float@{java::lang::Float}}
+\subsubsection[{isNaN}]{\setlength{\rightskip}{0pt plus 5cm}static boolean java::lang::Float::isNaN (
+\begin{DoxyParamCaption}
+\item[{float}]{ v}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily  [inline, static]}}\label{classjava_1_1lang_1_1_float_a34999e7d0b2cee26dc19889928b42ad3}
+Return {\ttfamily true} if the {\ttfamily float} has the same value as {\ttfamily NaN}, otherwise return {\ttfamily false}.
+
+
+\begin{DoxyParams}{Parameters}
+\item[{\em v}]the {\ttfamily float} to compare \end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+whether the argument is {\ttfamily NaN} 
+\end{DoxyReturn}
+
+
+Definition at line 219 of file Float.java.
+
+\index{java::lang::Float@{java::lang::Float}!isNaN@{isNaN}}
+\index{isNaN@{isNaN}!java::lang::Float@{java::lang::Float}}
+\subsubsection[{isNaN}]{\setlength{\rightskip}{0pt plus 5cm}boolean java::lang::Float::isNaN (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily  [inline]}}\label{classjava_1_1lang_1_1_float_a09393f726b9604c2eaab2b8f75c57be0}
+Return {\ttfamily true} if the value of this {\ttfamily \doxyref{Float}{p.}{classjava_1_1lang_1_1_float}} is the same as {\ttfamily NaN}, otherwise return {\ttfamily false}.
+
+\begin{DoxyReturn}{Returns}
+whether this {\ttfamily \doxyref{Float}{p.}{classjava_1_1lang_1_1_float}} is {\ttfamily NaN} 
+\end{DoxyReturn}
+
+
+Definition at line 245 of file Float.java.
+
+
+
+Referenced by equals().
+
+\index{java::lang::Float@{java::lang::Float}!longValue@{longValue}}
+\index{longValue@{longValue}!java::lang::Float@{java::lang::Float}}
+\subsubsection[{longValue}]{\setlength{\rightskip}{0pt plus 5cm}long java::lang::Float::longValue (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily  [inline]}}\label{classjava_1_1lang_1_1_float_a013612b2b476e6e3d3c84ddb050991c9}
+Return the value of this {\ttfamily \doxyref{Integer}{p.}{classjava_1_1lang_1_1_integer}} as a {\ttfamily long}.
+
+\begin{DoxyReturn}{Returns}
+the long value 
+\end{DoxyReturn}
+
+
+Definition at line 311 of file Float.java.
+
+\index{java::lang::Float@{java::lang::Float}!parseFloat@{parseFloat}}
+\index{parseFloat@{parseFloat}!java::lang::Float@{java::lang::Float}}
+\subsubsection[{parseFloat}]{\setlength{\rightskip}{0pt plus 5cm}static float java::lang::Float::parseFloat (
+\begin{DoxyParamCaption}
+\item[{{\bf String}}]{ str}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily  [inline, static]}}\label{classjava_1_1lang_1_1_float_a8396d5b5c1cbaac39664ccc4420e1ce7}
+Parse the specified {\ttfamily \doxyref{String}{p.}{classjava_1_1lang_1_1_string}} as a {\ttfamily float}. The extended BNF grammar is as follows:\par
+ 
+\begin{DoxyPre}
+ {\itshape DecodableString\/}:
+      ( [ {\ttfamily -} | {\ttfamily +} ] {\ttfamily NaN} )
+    | ( [ {\ttfamily -} | {\ttfamily +} ] {\ttfamily Infinity} )
+    | ( [ {\ttfamily -} | {\ttfamily +} ] {\itshape FloatingPoint\/}
+              [ {\ttfamily f} | {\ttfamily F} | {\ttfamily d}
+                | {\ttfamily D}] )
+ {\itshape FloatingPoint\/}:
+      ( \{ {\itshape Digit\/} \}+ [ {\ttfamily .} \{ {\itshape Digit\/} \} ]
+              [ {\itshape Exponent\/} ] )
+    | ( {\ttfamily .} \{ {\itshape Digit\/} \}+ [ {\itshape Exponent\/} ] )
+ {\itshape Exponent\/}:
+      ( ( {\ttfamily e} | {\ttfamily E} )
+              [ {\ttfamily -} | {\ttfamily +} ] \{ {\itshape Digit\/} \}+ )
+ {\itshape Digit\/}: {\itshape {\ttfamily '0'} through {\ttfamily '9'}\/}
+ \end{DoxyPre}
+
+
+NaN and infinity are special cases, to allow parsing of the output of toString. Otherwise, the result is determined by calculating {\itshape n $\ast$ 10$^{\mbox{exponent}}$ \/} to infinite precision, then rounding to the nearest float. Remember that many numbers cannot be precisely represented in floating point. In case of overflow, infinity is used, and in case of underflow, signed zero is used. Unlike \doxyref{Integer.parseInt}{p.}{classjava_1_1lang_1_1_integer_a369fccaa67bcd1e0f7d6695923628a65}, this does not accept Unicode digits outside the ASCII range.
+
+If an unexpected character is found in the {\ttfamily \doxyref{String}{p.}{classjava_1_1lang_1_1_string}}, a {\ttfamily \doxyref{NumberFormatException}{p.}{classjava_1_1lang_1_1_number_format_exception}} will be thrown. Leading and trailing 'whitespace' is ignored via {\ttfamily \doxyref{String.trim()}{p.}{classjava_1_1lang_1_1_string_a43355a6a25f3c2504e45aad51d0e8ce9}}, but spaces internal to the actual number are not allowed.
+
+To parse numbers according to another format, consider using java.text.NumberFormat.
+
+
+\begin{DoxyParams}{Parameters}
+\item[{\em str}]the {\ttfamily \doxyref{String}{p.}{classjava_1_1lang_1_1_string}} to convert \end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+the {\ttfamily float} value of {\ttfamily s} 
+\end{DoxyReturn}
+
+\begin{DoxyExceptions}{Exceptions}
+\item[{\em \doxyref{NumberFormatException}{p.}{classjava_1_1lang_1_1_number_format_exception}}]if {\ttfamily s} cannot be parsed as a {\ttfamily float} \item[{\em \doxyref{NullPointerException}{p.}{classjava_1_1lang_1_1_null_pointer_exception}}]if {\ttfamily s} is null \end{DoxyExceptions}
+\begin{DoxySeeAlso}{See also}
+\doxyref{MIN\_\-VALUE}{p.}{classjava_1_1lang_1_1_float_a87c280f03a9d724d1b72f4d47f898495} 
+
+\doxyref{MAX\_\-VALUE}{p.}{classjava_1_1lang_1_1_float_a9f01a806525611328945f0aa7af18fc9} 
+
+\doxyref{POSITIVE\_\-INFINITY}{p.}{classjava_1_1lang_1_1_float_a73f65006fa6a24615668a9f37778a235} 
+
+\doxyref{NEGATIVE\_\-INFINITY}{p.}{classjava_1_1lang_1_1_float_a7b1f8fe3898d176bd08e8658649a1de8} 
+\end{DoxySeeAlso}
+
+
+Definition at line 205 of file Float.java.
+
+
+
+Referenced by valueOf().
+
+\index{java::lang::Float@{java::lang::Float}!shortValue@{shortValue}}
+\index{shortValue@{shortValue}!java::lang::Float@{java::lang::Float}}
+\subsubsection[{shortValue}]{\setlength{\rightskip}{0pt plus 5cm}short java::lang::Float::shortValue (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily  [inline]}}\label{classjava_1_1lang_1_1_float_abfe10f9afc82aae75b447f0121fedb21}
+Return the value of this {\ttfamily \doxyref{Float}{p.}{classjava_1_1lang_1_1_float}} as a {\ttfamily short}.
+
+\begin{DoxyReturn}{Returns}
+the short value 
+\end{DoxyReturn}
+\begin{DoxySince}{Since}
+1.1 
+\end{DoxySince}
+
+
+Definition at line 291 of file Float.java.
+
+\index{java::lang::Float@{java::lang::Float}!toString@{toString}}
+\index{toString@{toString}!java::lang::Float@{java::lang::Float}}
+\subsubsection[{toString}]{\setlength{\rightskip}{0pt plus 5cm}static native {\bf String} java::lang::Float::toString (
+\begin{DoxyParamCaption}
+\item[{float}]{ f}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily  [static]}}\label{classjava_1_1lang_1_1_float_a90e790b506db9e154c44c3d62ed8f570}
+Convert the {\ttfamily float} to a {\ttfamily \doxyref{String}{p.}{classjava_1_1lang_1_1_string}}. Floating-\/point string representation is fairly complex: here is a rundown of the possible values. \char`\"{}$<$code$>$[-\/]$<$/code$>$\char`\"{} indicates that a negative sign will be printed if the value (or exponent) is negative. \char`\"{}$<$code$>$\&lt;number\&gt;$<$/code$>$\char`\"{} means a string of digits ('0' to '9'). \char`\"{}$<$code$>$\&lt;digit\&gt;$<$/code$>$\char`\"{} means a single digit ('0' to '9').\par
+
+
+\begin{TabularC}{2}
+\hline
+Value of \doxyref{Float}{p.}{classjava_1_1lang_1_1_float}&\doxyref{String}{p.}{classjava_1_1lang_1_1_string} Representation \\\cline{1-2}
+[+-\/] 0 &{\ttfamily [-\/]0.0} \\\cline{1-2}
+Between [+-\/] 10$^{\mbox{-\/3}}$  and 10$^{\mbox{7}}$ , exclusive &{\ttfamily [-\/]number.number} \\\cline{1-2}
+Other numeric value &{\ttfamily [-\/]$<$digit$>$.$<$number$>$ E[-\/]$<$number$>$} \\\cline{1-2}
+[+-\/] infinity &{\ttfamily [-\/]Infinity} \\\cline{1-2}
+NaN &{\ttfamily NaN} \\\cline{1-2}
+\end{TabularC}
+
+
+Yes, negative zero {\itshape is\/} a possible value. Note that there is {\itshape always\/} a {\ttfamily .} and at least one digit printed after it: even if the number is 3, it will be printed as {\ttfamily 3.0}. After the \char`\"{}.\char`\"{}, all digits will be printed except trailing zeros. The result is rounded to the shortest decimal number which will parse back to the same float.
+
+
+\begin{DoxyParams}{Parameters}
+\item[{\em f}]the {\ttfamily float} to convert \end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+the {\ttfamily \doxyref{String}{p.}{classjava_1_1lang_1_1_string}} representing the {\ttfamily float} 
+\end{DoxyReturn}
+\index{java::lang::Float@{java::lang::Float}!toString@{toString}}
+\index{toString@{toString}!java::lang::Float@{java::lang::Float}}
+\subsubsection[{toString}]{\setlength{\rightskip}{0pt plus 5cm}{\bf String} java::lang::Float::toString (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily  [inline]}}\label{classjava_1_1lang_1_1_float_a2822f387c8b8ebfeba2d9cbfefcabf0f}
+Convert the {\ttfamily float} value of this {\ttfamily \doxyref{Float}{p.}{classjava_1_1lang_1_1_float}} to a {\ttfamily \doxyref{String}{p.}{classjava_1_1lang_1_1_string}}. This method calls {\ttfamily \doxyref{Float.toString(float)}{p.}{classjava_1_1lang_1_1_float_a90e790b506db9e154c44c3d62ed8f570}} to do its dirty work.
+
+\begin{DoxyReturn}{Returns}
+the {\ttfamily \doxyref{String}{p.}{classjava_1_1lang_1_1_string}} representation 
+\end{DoxyReturn}
+\begin{DoxySeeAlso}{See also}
+\doxyref{toString(float)}{p.}{classjava_1_1lang_1_1_float_a90e790b506db9e154c44c3d62ed8f570} 
+\end{DoxySeeAlso}
+
+
+Definition at line 270 of file Float.java.
+
+\index{java::lang::Float@{java::lang::Float}!valueOf@{valueOf}}
+\index{valueOf@{valueOf}!java::lang::Float@{java::lang::Float}}
+\subsubsection[{valueOf}]{\setlength{\rightskip}{0pt plus 5cm}static {\bf Float} java::lang::Float::valueOf (
+\begin{DoxyParamCaption}
+\item[{{\bf String}}]{ s}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily  [inline, static]}}\label{classjava_1_1lang_1_1_float_a1b41582a03bab586508a41a62336d337}
+Creates a new {\ttfamily \doxyref{Float}{p.}{classjava_1_1lang_1_1_float}} object using the {\ttfamily \doxyref{String}{p.}{classjava_1_1lang_1_1_string}}.
+
+
+\begin{DoxyParams}{Parameters}
+\item[{\em s}]the {\ttfamily \doxyref{String}{p.}{classjava_1_1lang_1_1_string}} to convert \end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+the new {\ttfamily \doxyref{Float}{p.}{classjava_1_1lang_1_1_float}} 
+\end{DoxyReturn}
+
+\begin{DoxyExceptions}{Exceptions}
+\item[{\em \doxyref{NumberFormatException}{p.}{classjava_1_1lang_1_1_number_format_exception}}]if {\ttfamily s} cannot be parsed as a {\ttfamily float} \item[{\em \doxyref{NullPointerException}{p.}{classjava_1_1lang_1_1_null_pointer_exception}}]if {\ttfamily s} is null \end{DoxyExceptions}
+\begin{DoxySeeAlso}{See also}
+\doxyref{parseFloat(String)}{p.}{classjava_1_1lang_1_1_float_a8396d5b5c1cbaac39664ccc4420e1ce7} 
+\end{DoxySeeAlso}
+
+
+Definition at line 154 of file Float.java.
+
+
+
+References Float(), and parseFloat().
+
+
+
+\subsection{Field Documentation}
+\index{java::lang::Float@{java::lang::Float}!MAX\_\-VALUE@{MAX\_\-VALUE}}
+\index{MAX\_\-VALUE@{MAX\_\-VALUE}!java::lang::Float@{java::lang::Float}}
+\subsubsection[{MAX\_\-VALUE}]{\setlength{\rightskip}{0pt plus 5cm}final float {\bf java::lang::Float::MAX\_\-VALUE} = 3.4028235e+38f\hspace{0.3cm}{\ttfamily  [static]}}\label{classjava_1_1lang_1_1_float_a9f01a806525611328945f0aa7af18fc9}
+The maximum positive value a {\ttfamily double} may represent is 3.4028235e+38f. 
+
+Definition at line 60 of file Float.java.
+
+\index{java::lang::Float@{java::lang::Float}!MIN\_\-VALUE@{MIN\_\-VALUE}}
+\index{MIN\_\-VALUE@{MIN\_\-VALUE}!java::lang::Float@{java::lang::Float}}
+\subsubsection[{MIN\_\-VALUE}]{\setlength{\rightskip}{0pt plus 5cm}final float {\bf java::lang::Float::MIN\_\-VALUE} = 1.4e-\/45f\hspace{0.3cm}{\ttfamily  [static]}}\label{classjava_1_1lang_1_1_float_a87c280f03a9d724d1b72f4d47f898495}
+The minimum positive value a {\ttfamily float} may represent is 1.4e-\/45. 
+
+Definition at line 66 of file Float.java.
+
+\index{java::lang::Float@{java::lang::Float}!NaN@{NaN}}
+\index{NaN@{NaN}!java::lang::Float@{java::lang::Float}}
+\subsubsection[{NaN}]{\setlength{\rightskip}{0pt plus 5cm}final float {\bf java::lang::Float::NaN} = 0.0f / 0.0f\hspace{0.3cm}{\ttfamily  [static]}}\label{classjava_1_1lang_1_1_float_aca59d12eab141b9c37f6b1a891084772}
+All IEEE 754 values of NaN have the same value in Java. 
+
+Definition at line 81 of file Float.java.
+
+\index{java::lang::Float@{java::lang::Float}!NEGATIVE\_\-INFINITY@{NEGATIVE\_\-INFINITY}}
+\index{NEGATIVE\_\-INFINITY@{NEGATIVE\_\-INFINITY}!java::lang::Float@{java::lang::Float}}
+\subsubsection[{NEGATIVE\_\-INFINITY}]{\setlength{\rightskip}{0pt plus 5cm}final float {\bf java::lang::Float::NEGATIVE\_\-INFINITY} = -\/1.0f / 0.0f\hspace{0.3cm}{\ttfamily  [static]}}\label{classjava_1_1lang_1_1_float_a7b1f8fe3898d176bd08e8658649a1de8}
+The value of a float representation -\/1.0/0.0, negative infinity. 
+
+Definition at line 71 of file Float.java.
+
+
+
+Referenced by isInfinite().
+
+\index{java::lang::Float@{java::lang::Float}!POSITIVE\_\-INFINITY@{POSITIVE\_\-INFINITY}}
+\index{POSITIVE\_\-INFINITY@{POSITIVE\_\-INFINITY}!java::lang::Float@{java::lang::Float}}
+\subsubsection[{POSITIVE\_\-INFINITY}]{\setlength{\rightskip}{0pt plus 5cm}final float {\bf java::lang::Float::POSITIVE\_\-INFINITY} = 1.0f / 0.0f\hspace{0.3cm}{\ttfamily  [static]}}\label{classjava_1_1lang_1_1_float_a73f65006fa6a24615668a9f37778a235}
+The value of a float representation 1.0/0.0, positive infinity. 
+
+Definition at line 76 of file Float.java.
+
+
+
+Referenced by isInfinite().
+
+
+
+The documentation for this class was generated from the following file:\begin{DoxyCompactItemize}
+\item 
+src/classpath/java/lang/Float.java\end{DoxyCompactItemize}

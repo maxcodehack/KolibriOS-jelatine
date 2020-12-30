@@ -1,0 +1,956 @@
+\section{class.h File Reference}
+\label{class_8h}\index{class.h@{class.h}}
+{\ttfamily \#include \char`\"{}wrappers.h\char`\"{}}\par
+{\ttfamily \#include \char`\"{}classfile.h\char`\"{}}\par
+{\ttfamily \#include \char`\"{}constantpool.h\char`\"{}}\par
+{\ttfamily \#include \char`\"{}field.h\char`\"{}}\par
+{\ttfamily \#include \char`\"{}header.h\char`\"{}}\par
+{\ttfamily \#include \char`\"{}method.h\char`\"{}}\par
+{\ttfamily \#include \char`\"{}memory.h\char`\"{}}\par
+{\ttfamily \#include \char`\"{}thread.h\char`\"{}}\par
+{\ttfamily \#include \char`\"{}java\_\-lang\_\-Class.h\char`\"{}}\par
+\subsection*{Data Structures}
+\begin{DoxyCompactItemize}
+\item 
+struct {\bf interface\_\-manager\_\-t}
+\item 
+struct {\bf interface\_\-iterator\_\-t}
+\item 
+struct {\bf class\_\-t}
+\end{DoxyCompactItemize}
+\subsection*{Defines}
+\begin{DoxyCompactItemize}
+\item 
+\#define {\bf JELATINE\_\-CLASS\_\-H}~(1)
+\end{DoxyCompactItemize}
+\subsection*{Typedefs}
+\begin{DoxyCompactItemize}
+\item 
+typedef struct {\bf interface\_\-manager\_\-t} {\bf interface\_\-manager\_\-t}
+\item 
+typedef struct {\bf interface\_\-iterator\_\-t} {\bf interface\_\-iterator\_\-t}
+\item 
+typedef enum {\bf class\_\-state\_\-t} {\bf class\_\-state\_\-t}
+\item 
+typedef struct {\bf class\_\-t} {\bf class\_\-t}
+\end{DoxyCompactItemize}
+\subsection*{Enumerations}
+\begin{DoxyCompactItemize}
+\item 
+enum {\bf class\_\-state\_\-t} \{ \par
+{\bf CS\_\-DUMMY} =  0, 
+{\bf CS\_\-PRELOADED} =  1, 
+{\bf CS\_\-LINKING} =  2, 
+{\bf CS\_\-LINKED} =  3, 
+\par
+{\bf CS\_\-INITIALIZING} =  4, 
+{\bf CS\_\-INITIALIZED} =  5, 
+{\bf CS\_\-ERRONEOUS} =  6
+ \}
+\end{DoxyCompactItemize}
+\subsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+{\bf interface\_\-manager\_\-t} $\ast$ {\bf im\_\-create} (void)
+\item 
+void {\bf im\_\-add} ({\bf interface\_\-manager\_\-t} $\ast$, struct {\bf class\_\-t} $\ast$)
+\item 
+void {\bf im\_\-flatten} ({\bf interface\_\-manager\_\-t} $\ast$)
+\item 
+bool {\bf im\_\-is\_\-present} ({\bf interface\_\-manager\_\-t} $\ast$, struct {\bf class\_\-t} $\ast$)
+\item 
+static {\bf interface\_\-iterator\_\-t} {\bf interface\_\-itr} ({\bf interface\_\-manager\_\-t} $\ast$im)
+\item 
+static bool {\bf interface\_\-itr\_\-has\_\-next} ({\bf interface\_\-iterator\_\-t} itr)
+\item 
+static struct {\bf class\_\-t} $\ast$ {\bf interface\_\-itr\_\-get\_\-next} ({\bf interface\_\-iterator\_\-t} $\ast$itr)
+\item 
+bool {\bf class\_\-is\_\-parent} (const {\bf class\_\-t} $\ast$, const {\bf class\_\-t} $\ast$)
+\item 
+void {\bf class\_\-add\_\-field} ({\bf class\_\-t} $\ast$, const {\bf field\_\-info\_\-t} $\ast$, const {\bf field\_\-attributes\_\-t} $\ast$)
+\item 
+{\bf field\_\-t} $\ast$ {\bf class\_\-get\_\-field} (const {\bf class\_\-t} $\ast$, const char $\ast$, const char $\ast$, bool)
+\item 
+void {\bf class\_\-purge\_\-initializer} ({\bf class\_\-t} $\ast$)
+\item 
+static uint32\_\-t {\bf class\_\-get\_\-ref\_\-n} (const {\bf class\_\-t} $\ast$cl)
+\item 
+static uint32\_\-t {\bf class\_\-get\_\-nref\_\-size} (const {\bf class\_\-t} $\ast$cl)
+\item 
+static {\bf class\_\-t} $\ast$ {\bf class\_\-get\_\-parent} (const {\bf class\_\-t} $\ast$cl)
+\item 
+static uint32\_\-t {\bf class\_\-get\_\-id} (const {\bf class\_\-t} $\ast$cl)
+\item 
+static bool {\bf class\_\-is\_\-object} (const {\bf class\_\-t} $\ast$cl)
+\item 
+static bool {\bf class\_\-is\_\-array} (const {\bf class\_\-t} $\ast$cl)
+\item 
+static uint8\_\-t {\bf class\_\-get\_\-dimensions} (const {\bf class\_\-t} $\ast$cl)
+\item 
+static bool {\bf class\_\-is\_\-interface} (const {\bf class\_\-t} $\ast$cl)
+\item 
+static bool {\bf class\_\-is\_\-abstract} (const {\bf class\_\-t} $\ast$cl)
+\item 
+static bool {\bf class\_\-is\_\-final} (const {\bf class\_\-t} $\ast$cl)
+\item 
+static bool {\bf class\_\-is\_\-public} (const {\bf class\_\-t} $\ast$cl)
+\item 
+static bool {\bf class\_\-is\_\-super} (const {\bf class\_\-t} $\ast$cl)
+\item 
+static void {\bf class\_\-set\_\-state} ({\bf class\_\-t} $\ast$cl, {\bf class\_\-state\_\-t} state)
+\item 
+static bool {\bf class\_\-is\_\-preloaded} (const {\bf class\_\-t} $\ast$cl)
+\item 
+static bool {\bf class\_\-is\_\-being\_\-linked} (const {\bf class\_\-t} $\ast$cl)
+\item 
+static bool {\bf class\_\-is\_\-linked} (const {\bf class\_\-t} $\ast$cl)
+\item 
+static bool {\bf class\_\-is\_\-being\_\-initialized} (const {\bf class\_\-t} $\ast$cl)
+\item 
+static bool {\bf class\_\-is\_\-initialized} (const {\bf class\_\-t} $\ast$cl)
+\item 
+static uintptr\_\-t {\bf class\_\-get\_\-object} (const {\bf class\_\-t} $\ast$cl)
+\item 
+static void {\bf class\_\-alloc\_\-fields} ({\bf class\_\-t} $\ast$cl, size\_\-t count)
+\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+C object mirroring the java.lang.Class class 
+
+Definition in file {\bf class.h}.
+
+
+
+\subsection{Define Documentation}
+\index{class.h@{class.h}!JELATINE\_\-CLASS\_\-H@{JELATINE\_\-CLASS\_\-H}}
+\index{JELATINE\_\-CLASS\_\-H@{JELATINE\_\-CLASS\_\-H}!class.h@{class.h}}
+\subsubsection[{JELATINE\_\-CLASS\_\-H}]{\setlength{\rightskip}{0pt plus 5cm}\#define JELATINE\_\-CLASS\_\-H~(1)}\label{class_8h_a4eecb660c8e687401cf1529d6befcd81}
+\doxyref{class.h}{p.}{class_8h} inclusion macro 
+
+Definition at line 28 of file class.h.
+
+
+
+\subsection{Typedef Documentation}
+\index{class.h@{class.h}!class\_\-state\_\-t@{class\_\-state\_\-t}}
+\index{class\_\-state\_\-t@{class\_\-state\_\-t}!class.h@{class.h}}
+\subsubsection[{class\_\-state\_\-t}]{\setlength{\rightskip}{0pt plus 5cm}typedef enum {\bf class\_\-state\_\-t} {\bf class\_\-state\_\-t}}\label{class_8h_a2f4ad80b126e657e044a6f98ee9dccc8}
+Typedef for enum class\_\-state\_\-t 
+
+Definition at line 137 of file class.h.
+
+\index{class.h@{class.h}!class\_\-t@{class\_\-t}}
+\index{class\_\-t@{class\_\-t}!class.h@{class.h}}
+\subsubsection[{class\_\-t}]{\setlength{\rightskip}{0pt plus 5cm}typedef struct {\bf class\_\-t} {\bf class\_\-t}}\label{class_8h_a501e1a48ed8e25c13845063b51474111}
+Typedef for struct \doxyref{class\_\-t}{p.}{structclass__t} 
+
+Definition at line 176 of file class.h.
+
+\index{class.h@{class.h}!interface\_\-iterator\_\-t@{interface\_\-iterator\_\-t}}
+\index{interface\_\-iterator\_\-t@{interface\_\-iterator\_\-t}!class.h@{class.h}}
+\subsubsection[{interface\_\-iterator\_\-t}]{\setlength{\rightskip}{0pt plus 5cm}typedef struct {\bf interface\_\-iterator\_\-t} {\bf interface\_\-iterator\_\-t}}\label{class_8h_a2728890f32fe2ff2a566985f8013d46b}
+Typedef for the struct \doxyref{interface\_\-iterator\_\-t}{p.}{structinterface__iterator__t} type 
+
+Definition at line 82 of file class.h.
+
+\index{class.h@{class.h}!interface\_\-manager\_\-t@{interface\_\-manager\_\-t}}
+\index{interface\_\-manager\_\-t@{interface\_\-manager\_\-t}!class.h@{class.h}}
+\subsubsection[{interface\_\-manager\_\-t}]{\setlength{\rightskip}{0pt plus 5cm}typedef struct {\bf interface\_\-manager\_\-t} {\bf interface\_\-manager\_\-t}}\label{class_8h_a08dee018db494b994a68e8ba388160a5}
+Typedef for struct \doxyref{interface\_\-manager\_\-t}{p.}{structinterface__manager__t} 
+
+Definition at line 58 of file class.h.
+
+
+
+\subsection{Enumeration Type Documentation}
+\index{class.h@{class.h}!class\_\-state\_\-t@{class\_\-state\_\-t}}
+\index{class\_\-state\_\-t@{class\_\-state\_\-t}!class.h@{class.h}}
+\subsubsection[{class\_\-state\_\-t}]{\setlength{\rightskip}{0pt plus 5cm}enum {\bf class\_\-state\_\-t}}\label{class_8h_a43991fa6091de9e837d6e1465972e618}
+Loading state of a class \begin{Desc}
+\item[Enumerator: ]\par
+\begin{description}
+\index{CS\_\-DUMMY@{CS\_\-DUMMY}!class.h@{class.h}}\index{class.h@{class.h}!CS\_\-DUMMY@{CS\_\-DUMMY}}\item[{\em 
+CS\_\-DUMMY\label{class_8h_a43991fa6091de9e837d6e1465972e618ad82926eef4a6cc7330c920d5d69237b6}
+}]Initial state of a newly allocated \& cleared class. \index{CS\_\-PRELOADED@{CS\_\-PRELOADED}!class.h@{class.h}}\index{class.h@{class.h}!CS\_\-PRELOADED@{CS\_\-PRELOADED}}\item[{\em 
+CS\_\-PRELOADED\label{class_8h_a43991fa6091de9e837d6e1465972e618a250084fdd7c0b6add12009306e9ba425}
+}]Preloading, this may happen during bootstrap. \index{CS\_\-LINKING@{CS\_\-LINKING}!class.h@{class.h}}\index{class.h@{class.h}!CS\_\-LINKING@{CS\_\-LINKING}}\item[{\em 
+CS\_\-LINKING\label{class_8h_a43991fa6091de9e837d6e1465972e618aa7ff2e36a39f9a40a75d5358209b4572}
+}]Linking, this happens during class resolution. \index{CS\_\-LINKED@{CS\_\-LINKED}!class.h@{class.h}}\index{class.h@{class.h}!CS\_\-LINKED@{CS\_\-LINKED}}\item[{\em 
+CS\_\-LINKED\label{class_8h_a43991fa6091de9e837d6e1465972e618a864339f9cb257a620504c22b078340b2}
+}]Class has been resolved \& linked but not initialized. \index{CS\_\-INITIALIZING@{CS\_\-INITIALIZING}!class.h@{class.h}}\index{class.h@{class.h}!CS\_\-INITIALIZING@{CS\_\-INITIALIZING}}\item[{\em 
+CS\_\-INITIALIZING\label{class_8h_a43991fa6091de9e837d6e1465972e618a27aad7c28d4355ac5ba652c5efd3613f}
+}]The class is being initialized. \index{CS\_\-INITIALIZED@{CS\_\-INITIALIZED}!class.h@{class.h}}\index{class.h@{class.h}!CS\_\-INITIALIZED@{CS\_\-INITIALIZED}}\item[{\em 
+CS\_\-INITIALIZED\label{class_8h_a43991fa6091de9e837d6e1465972e618afafbe74cab9294553799a9c755160068}
+}]The class has been initialized. \index{CS\_\-ERRONEOUS@{CS\_\-ERRONEOUS}!class.h@{class.h}}\index{class.h@{class.h}!CS\_\-ERRONEOUS@{CS\_\-ERRONEOUS}}\item[{\em 
+CS\_\-ERRONEOUS\label{class_8h_a43991fa6091de9e837d6e1465972e618a83e91bd05a82888bb57d3c0ba51d6e46}
+}]The class is an erroneous state. \end{description}
+\end{Desc}
+
+
+
+Definition at line 126 of file class.h.
+
+
+
+\subsection{Function Documentation}
+\index{class.h@{class.h}!class\_\-add\_\-field@{class\_\-add\_\-field}}
+\index{class\_\-add\_\-field@{class\_\-add\_\-field}!class.h@{class.h}}
+\subsubsection[{class\_\-add\_\-field}]{\setlength{\rightskip}{0pt plus 5cm}void class\_\-add\_\-field (
+\begin{DoxyParamCaption}
+\item[{{\bf class\_\-t} $\ast$}]{ cl, }
+\item[{const {\bf field\_\-info\_\-t} $\ast$}]{ info, }
+\item[{const {\bf field\_\-attributes\_\-t} $\ast$}]{ attr}
+\end{DoxyParamCaption}
+)}\label{class_8h_afa6d339a448387e635a99773b03d7df8}
+Adds a field to the class 
+\begin{DoxyParams}{Parameters}
+\item[{\em cl}]A pointer to a class being loaded \item[{\em info}]A pointer to the information of the new field \item[{\em attr}]A pointer to the field attributes of the new field \end{DoxyParams}
+
+
+Definition at line 126 of file class.c.
+
+
+
+References field\_\-info\_\-t::access\_\-flags, field\_\-t::access\_\-flags, field\_\-attributes\_\-t::constant\_\-value\_\-found, field\_\-attributes\_\-t::constant\_\-value\_\-index, field\_\-info\_\-t::descriptor, field\_\-t::descriptor, field\_\-is\_\-static(), class\_\-t::fields, class\_\-t::fields\_\-n, field\_\-info\_\-t::name, field\_\-t::name, and field\_\-t::offset.
+
+
+
+Referenced by load\_\-fields().
+
+\index{class.h@{class.h}!class\_\-alloc\_\-fields@{class\_\-alloc\_\-fields}}
+\index{class\_\-alloc\_\-fields@{class\_\-alloc\_\-fields}!class.h@{class.h}}
+\subsubsection[{class\_\-alloc\_\-fields}]{\setlength{\rightskip}{0pt plus 5cm}static void class\_\-alloc\_\-fields (
+\begin{DoxyParamCaption}
+\item[{{\bf class\_\-t} $\ast$}]{ cl, }
+\item[{size\_\-t}]{ count}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily  [inline, static]}}\label{class_8h_a6c66a68ff63a4f8c0858b885564967c7}
+Pre-\/allocate enough space for holding {\itshape count\/} fields 
+\begin{DoxyParams}{Parameters}
+\item[{\em cl}]A pointer to a class being loaded \item[{\em count}]The number of fields to be pre-\/allocated \end{DoxyParams}
+
+
+Definition at line 385 of file class.h.
+
+
+
+References class\_\-t::fields, class\_\-t::fields\_\-n, and gc\_\-palloc().
+
+
+
+Referenced by load\_\-fields().
+
+\index{class.h@{class.h}!class\_\-get\_\-dimensions@{class\_\-get\_\-dimensions}}
+\index{class\_\-get\_\-dimensions@{class\_\-get\_\-dimensions}!class.h@{class.h}}
+\subsubsection[{class\_\-get\_\-dimensions}]{\setlength{\rightskip}{0pt plus 5cm}static uint8\_\-t class\_\-get\_\-dimensions (
+\begin{DoxyParamCaption}
+\item[{const {\bf class\_\-t} $\ast$}]{ cl}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily  [inline, static]}}\label{class_8h_ad4b59136a591d72a04b95afb2d36b945}
+Gets the number of dimensions of an array class 
+\begin{DoxyParams}{Parameters}
+\item[{\em cl}]A pointer to an array class \end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+The number of dimensions of the array class 
+\end{DoxyReturn}
+
+
+Definition at line 252 of file class.h.
+
+
+
+References class\_\-is\_\-array(), and class\_\-t::dimensions.
+
+
+
+Referenced by bcl\_\-link\_\-opcode().
+
+\index{class.h@{class.h}!class\_\-get\_\-field@{class\_\-get\_\-field}}
+\index{class\_\-get\_\-field@{class\_\-get\_\-field}!class.h@{class.h}}
+\subsubsection[{class\_\-get\_\-field}]{\setlength{\rightskip}{0pt plus 5cm}{\bf field\_\-t}$\ast$ class\_\-get\_\-field (
+\begin{DoxyParamCaption}
+\item[{const {\bf class\_\-t} $\ast$}]{ cl, }
+\item[{const char $\ast$}]{ name, }
+\item[{const char $\ast$}]{ descriptor, }
+\item[{bool}]{ stat}
+\end{DoxyParamCaption}
+)}\label{class_8h_ad3438976e84261619dd54edc1ca94946}
+Finds a field by its name and descriptor, this function will only look for the field inside the specified class, not its parents 
+\begin{DoxyParams}{Parameters}
+\item[{\em cl}]A pointer to the class where to look for the field \item[{\em name}]The field name \item[{\em descriptor}]The descriptor name \item[{\em stat}]true if the field looked for is static, false otherwise \end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+A pointer to the field or NULL if none was found 
+\end{DoxyReturn}
+
+
+Definition at line 153 of file class.c.
+
+
+
+References field\_\-t::descriptor, field\_\-is\_\-static(), class\_\-t::fields, class\_\-t::fields\_\-n, and field\_\-t::name.
+
+
+
+Referenced by KNI\_\-GetFieldID(), KNI\_\-GetStaticFieldID(), and lookup\_\-field().
+
+\index{class.h@{class.h}!class\_\-get\_\-id@{class\_\-get\_\-id}}
+\index{class\_\-get\_\-id@{class\_\-get\_\-id}!class.h@{class.h}}
+\subsubsection[{class\_\-get\_\-id}]{\setlength{\rightskip}{0pt plus 5cm}static uint32\_\-t class\_\-get\_\-id (
+\begin{DoxyParamCaption}
+\item[{const {\bf class\_\-t} $\ast$}]{ cl}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily  [inline, static]}}\label{class_8h_ad738c2f6b725ce4b54599659cc537eaf}
+Gets the index of the passed class 
+\begin{DoxyParams}{Parameters}
+\item[{\em cl}]A valid pointer to a \doxyref{class\_\-t}{p.}{structclass__t} structure \end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+The id of the passed class 
+\end{DoxyReturn}
+
+
+Definition at line 225 of file class.h.
+
+
+
+References class\_\-t::id.
+
+
+
+Referenced by bcl\_\-link\_\-opcode().
+
+\index{class.h@{class.h}!class\_\-get\_\-nref\_\-size@{class\_\-get\_\-nref\_\-size}}
+\index{class\_\-get\_\-nref\_\-size@{class\_\-get\_\-nref\_\-size}!class.h@{class.h}}
+\subsubsection[{class\_\-get\_\-nref\_\-size}]{\setlength{\rightskip}{0pt plus 5cm}static uint32\_\-t class\_\-get\_\-nref\_\-size (
+\begin{DoxyParamCaption}
+\item[{const {\bf class\_\-t} $\ast$}]{ cl}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily  [inline, static]}}\label{class_8h_a03ee0c165ea4880e9c3a2d40f32d1692}
+Gets the size (in bytes) of the non-\/reference area of the given class' instances 
+\begin{DoxyParams}{Parameters}
+\item[{\em cl}]A valid pointer to a \doxyref{class\_\-t}{p.}{structclass__t} structure \end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+The size of the non-\/reference area of the class' instances 
+\end{DoxyReturn}
+
+
+Definition at line 207 of file class.h.
+
+
+
+References class\_\-t::nref\_\-size.
+
+
+
+Referenced by gc\_\-new(), gc\_\-sweep(), and layout\_\-fields().
+
+\index{class.h@{class.h}!class\_\-get\_\-object@{class\_\-get\_\-object}}
+\index{class\_\-get\_\-object@{class\_\-get\_\-object}!class.h@{class.h}}
+\subsubsection[{class\_\-get\_\-object}]{\setlength{\rightskip}{0pt plus 5cm}static uintptr\_\-t class\_\-get\_\-object (
+\begin{DoxyParamCaption}
+\item[{const {\bf class\_\-t} $\ast$}]{ cl}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily  [inline, static]}}\label{class_8h_a8b321deba540a779fa883e726b60104e}
+Returns the java.lang.Class object associated with this class 
+\begin{DoxyParams}{Parameters}
+\item[{\em cl}]A pointer to a class structure \end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+A reference to the java.lang.Class object associated with this class 
+\end{DoxyReturn}
+
+
+Definition at line 376 of file class.h.
+
+
+
+References class\_\-t::obj.
+
+
+
+Referenced by bcl\_\-mark(), initialize\_\-class(), interpreter(), java\_\-lang\_\-Class\_\-forName(), java\_\-lang\_\-Object\_\-getClass(), KNI\_\-FindClass(), KNI\_\-GetClassPointer(), KNI\_\-GetObjectClass(), and KNI\_\-GetSuperClass().
+
+\index{class.h@{class.h}!class\_\-get\_\-parent@{class\_\-get\_\-parent}}
+\index{class\_\-get\_\-parent@{class\_\-get\_\-parent}!class.h@{class.h}}
+\subsubsection[{class\_\-get\_\-parent}]{\setlength{\rightskip}{0pt plus 5cm}static {\bf class\_\-t}$\ast$ class\_\-get\_\-parent (
+\begin{DoxyParamCaption}
+\item[{const {\bf class\_\-t} $\ast$}]{ cl}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily  [inline, static]}}\label{class_8h_a049cb4b2f624ade2cddb91846dbb77dc}
+Gets a pointer to the parent class of the passed one 
+\begin{DoxyParams}{Parameters}
+\item[{\em cl}]A valid pointer to a \doxyref{class\_\-t}{p.}{structclass__t} structure \end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+A pointer to the parent class 
+\end{DoxyReturn}
+
+
+Definition at line 216 of file class.h.
+
+
+
+References class\_\-t::parent.
+
+
+
+Referenced by KNI\_\-GetSuperClass().
+
+\index{class.h@{class.h}!class\_\-get\_\-ref\_\-n@{class\_\-get\_\-ref\_\-n}}
+\index{class\_\-get\_\-ref\_\-n@{class\_\-get\_\-ref\_\-n}!class.h@{class.h}}
+\subsubsection[{class\_\-get\_\-ref\_\-n}]{\setlength{\rightskip}{0pt plus 5cm}static uint32\_\-t class\_\-get\_\-ref\_\-n (
+\begin{DoxyParamCaption}
+\item[{const {\bf class\_\-t} $\ast$}]{ cl}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily  [inline, static]}}\label{class_8h_ac9f67d07936537c45df5644fb4e30c8e}
+Gets the number of reference fields of the given class' instances 
+\begin{DoxyParams}{Parameters}
+\item[{\em cl}]A valid pointer to a \doxyref{class\_\-t}{p.}{structclass__t} structure \end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+The number of reference fields of the class' instances 
+\end{DoxyReturn}
+
+
+Definition at line 197 of file class.h.
+
+
+
+References class\_\-t::ref\_\-n.
+
+
+
+Referenced by gc\_\-mark\_\-reference(), gc\_\-new(), gc\_\-sweep(), and layout\_\-fields().
+
+\index{class.h@{class.h}!class\_\-is\_\-abstract@{class\_\-is\_\-abstract}}
+\index{class\_\-is\_\-abstract@{class\_\-is\_\-abstract}!class.h@{class.h}}
+\subsubsection[{class\_\-is\_\-abstract}]{\setlength{\rightskip}{0pt plus 5cm}static bool class\_\-is\_\-abstract (
+\begin{DoxyParamCaption}
+\item[{const {\bf class\_\-t} $\ast$}]{ cl}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily  [inline, static]}}\label{class_8h_a9f34cb9d84340875c81a133d04ffdbb3}
+Checks if a class is abstract 
+\begin{DoxyParams}{Parameters}
+\item[{\em cl}]A valid pointer to a \doxyref{class\_\-t}{p.}{structclass__t} structure \end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+true if the class is abstract, false otherwise 
+\end{DoxyReturn}
+
+
+Definition at line 271 of file class.h.
+
+
+
+References class\_\-t::access\_\-flags.
+
+
+
+Referenced by bcl\_\-link\_\-opcode(), derive\_\-class(), and resolve\_\-method().
+
+\index{class.h@{class.h}!class\_\-is\_\-array@{class\_\-is\_\-array}}
+\index{class\_\-is\_\-array@{class\_\-is\_\-array}!class.h@{class.h}}
+\subsubsection[{class\_\-is\_\-array}]{\setlength{\rightskip}{0pt plus 5cm}static bool class\_\-is\_\-array (
+\begin{DoxyParamCaption}
+\item[{const {\bf class\_\-t} $\ast$}]{ cl}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily  [inline, static]}}\label{class_8h_a866983552563b020d401bb67b95ad39a}
+Checks if a class is an array class 
+\begin{DoxyParams}{Parameters}
+\item[{\em cl}]A valid pointer to a \doxyref{class\_\-t}{p.}{structclass__t} structure \end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+true if the class is an array class, false otherwise 
+\end{DoxyReturn}
+
+
+Definition at line 243 of file class.h.
+
+
+
+References class\_\-t::access\_\-flags.
+
+
+
+Referenced by array\_\-get\_\-ref\_\-n(), bcl\_\-is\_\-assignable(), bcl\_\-resolve\_\-class(), class\_\-get\_\-dimensions(), derive\_\-class(), gc\_\-mark\_\-reference(), gc\_\-sweep(), java\_\-lang\_\-System\_\-arraycopy(), and load\_\-class().
+
+\index{class.h@{class.h}!class\_\-is\_\-being\_\-initialized@{class\_\-is\_\-being\_\-initialized}}
+\index{class\_\-is\_\-being\_\-initialized@{class\_\-is\_\-being\_\-initialized}!class.h@{class.h}}
+\subsubsection[{class\_\-is\_\-being\_\-initialized}]{\setlength{\rightskip}{0pt plus 5cm}static bool class\_\-is\_\-being\_\-initialized (
+\begin{DoxyParamCaption}
+\item[{const {\bf class\_\-t} $\ast$}]{ cl}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily  [inline, static]}}\label{class_8h_a481d1d38dee14c375a31c45368cce21b}
+Checks if the class is being initialized 
+\begin{DoxyParams}{Parameters}
+\item[{\em cl}]A pointer to a class structure \end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+true if the class is in the initializing state, false otherwise 
+\end{DoxyReturn}
+
+
+Definition at line 357 of file class.h.
+
+
+
+References class\_\-t::state.
+
+
+
+Referenced by initialize\_\-class().
+
+\index{class.h@{class.h}!class\_\-is\_\-being\_\-linked@{class\_\-is\_\-being\_\-linked}}
+\index{class\_\-is\_\-being\_\-linked@{class\_\-is\_\-being\_\-linked}!class.h@{class.h}}
+\subsubsection[{class\_\-is\_\-being\_\-linked}]{\setlength{\rightskip}{0pt plus 5cm}static bool class\_\-is\_\-being\_\-linked (
+\begin{DoxyParamCaption}
+\item[{const {\bf class\_\-t} $\ast$}]{ cl}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily  [inline, static]}}\label{class_8h_a1fb7b13f7b589e0d85a4de8281d7409e}
+Checks if a class is being linked 
+\begin{DoxyParams}{Parameters}
+\item[{\em cl}]A pointer to a class structure \end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+true if the class is in the linking state, false otherwise 
+\end{DoxyReturn}
+
+
+Definition at line 339 of file class.h.
+
+
+
+References class\_\-t::state.
+
+
+
+Referenced by bcl\_\-resolve\_\-class().
+
+\index{class.h@{class.h}!class\_\-is\_\-final@{class\_\-is\_\-final}}
+\index{class\_\-is\_\-final@{class\_\-is\_\-final}!class.h@{class.h}}
+\subsubsection[{class\_\-is\_\-final}]{\setlength{\rightskip}{0pt plus 5cm}static bool class\_\-is\_\-final (
+\begin{DoxyParamCaption}
+\item[{const {\bf class\_\-t} $\ast$}]{ cl}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily  [inline, static]}}\label{class_8h_ada6e59e03ea381328214ed4c2ce4b3d1}
+Checks if a class is final 
+\begin{DoxyParams}{Parameters}
+\item[{\em cl}]A valid pointer to a \doxyref{class\_\-t}{p.}{structclass__t} structure \end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+true if the class is final, false otherwise 
+\end{DoxyReturn}
+
+
+Definition at line 280 of file class.h.
+
+
+
+References class\_\-t::access\_\-flags.
+
+
+
+Referenced by derive\_\-class().
+
+\index{class.h@{class.h}!class\_\-is\_\-initialized@{class\_\-is\_\-initialized}}
+\index{class\_\-is\_\-initialized@{class\_\-is\_\-initialized}!class.h@{class.h}}
+\subsubsection[{class\_\-is\_\-initialized}]{\setlength{\rightskip}{0pt plus 5cm}static bool class\_\-is\_\-initialized (
+\begin{DoxyParamCaption}
+\item[{const {\bf class\_\-t} $\ast$}]{ cl}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily  [inline, static]}}\label{class_8h_a025f104b8b71c6a33d4fd9533a9ba0a6}
+Checks if the class is being initialized 
+\begin{DoxyParams}{Parameters}
+\item[{\em cl}]A pointer to a class structure \end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+true if the class is in the initializing state, false otherwise 
+\end{DoxyReturn}
+
+
+Definition at line 366 of file class.h.
+
+
+
+References class\_\-t::state.
+
+
+
+Referenced by initialize\_\-class().
+
+\index{class.h@{class.h}!class\_\-is\_\-interface@{class\_\-is\_\-interface}}
+\index{class\_\-is\_\-interface@{class\_\-is\_\-interface}!class.h@{class.h}}
+\subsubsection[{class\_\-is\_\-interface}]{\setlength{\rightskip}{0pt plus 5cm}static bool class\_\-is\_\-interface (
+\begin{DoxyParamCaption}
+\item[{const {\bf class\_\-t} $\ast$}]{ cl}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily  [inline, static]}}\label{class_8h_ae04e23cfe0321bd23f75b48302c89074}
+Checks if a class is an interface 
+\begin{DoxyParams}{Parameters}
+\item[{\em cl}]A valid pointer to a \doxyref{class\_\-t}{p.}{structclass__t} structure \end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+true if the class is an interface, false otherwise 
+\end{DoxyReturn}
+
+
+Definition at line 262 of file class.h.
+
+
+
+References class\_\-t::access\_\-flags.
+
+
+
+Referenced by bcl\_\-is\_\-assignable(), derive\_\-class(), load\_\-class(), load\_\-interfaces(), load\_\-methods(), resolve\_\-method(), and verify\_\-field().
+
+\index{class.h@{class.h}!class\_\-is\_\-linked@{class\_\-is\_\-linked}}
+\index{class\_\-is\_\-linked@{class\_\-is\_\-linked}!class.h@{class.h}}
+\subsubsection[{class\_\-is\_\-linked}]{\setlength{\rightskip}{0pt plus 5cm}static bool class\_\-is\_\-linked (
+\begin{DoxyParamCaption}
+\item[{const {\bf class\_\-t} $\ast$}]{ cl}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily  [inline, static]}}\label{class_8h_a1ed9b9b9fb9335aeb243dfd2c65d568e}
+Checks if a class has been linked 
+\begin{DoxyParams}{Parameters}
+\item[{\em cl}]A pointer to a class structure \end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+true if the class is in the linked state, false otherwise 
+\end{DoxyReturn}
+
+
+Definition at line 348 of file class.h.
+
+
+
+References class\_\-t::state.
+
+\index{class.h@{class.h}!class\_\-is\_\-object@{class\_\-is\_\-object}}
+\index{class\_\-is\_\-object@{class\_\-is\_\-object}!class.h@{class.h}}
+\subsubsection[{class\_\-is\_\-object}]{\setlength{\rightskip}{0pt plus 5cm}static bool class\_\-is\_\-object (
+\begin{DoxyParamCaption}
+\item[{const {\bf class\_\-t} $\ast$}]{ cl}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily  [inline, static]}}\label{class_8h_a7e8d4ca2eb9a7b855e19c6e003a8a6c9}
+Checks if a class is the Object class 
+\begin{DoxyParams}{Parameters}
+\item[{\em cl}]A valid pointer to a \doxyref{class\_\-t}{p.}{structclass__t} structure \end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+true if the class is the java.lang.Object class, false otherwise 
+\end{DoxyReturn}
+
+
+Definition at line 234 of file class.h.
+
+
+
+References class\_\-t::parent.
+
+
+
+Referenced by bcl\_\-is\_\-assignable(), derive\_\-class(), initialize\_\-class(), lookup\_\-field(), and resolve\_\-method().
+
+\index{class.h@{class.h}!class\_\-is\_\-parent@{class\_\-is\_\-parent}}
+\index{class\_\-is\_\-parent@{class\_\-is\_\-parent}!class.h@{class.h}}
+\subsubsection[{class\_\-is\_\-parent}]{\setlength{\rightskip}{0pt plus 5cm}bool class\_\-is\_\-parent (
+\begin{DoxyParamCaption}
+\item[{const {\bf class\_\-t} $\ast$}]{ parent, }
+\item[{const {\bf class\_\-t} $\ast$}]{ child}
+\end{DoxyParamCaption}
+)}\label{class_8h_a978da57a50c22072d73e3492e846ced7}
+Returns true if {\itshape child\/} is a child class of {\itshape parent\/} 
+\begin{DoxyParams}{Parameters}
+\item[{\em parent}]The potentially parent class \item[{\em child}]The potentially child class \end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+true if {\itshape child\/} inherits from {\itshape parent\/}, false otherwise 
+\end{DoxyReturn}
+
+
+Definition at line 108 of file class.c.
+
+
+
+References class\_\-t::parent.
+
+
+
+Referenced by bcl\_\-link\_\-opcode(), interpreter(), resolve\_\-method(), and verify\_\-field\_\-access().
+
+\index{class.h@{class.h}!class\_\-is\_\-preloaded@{class\_\-is\_\-preloaded}}
+\index{class\_\-is\_\-preloaded@{class\_\-is\_\-preloaded}!class.h@{class.h}}
+\subsubsection[{class\_\-is\_\-preloaded}]{\setlength{\rightskip}{0pt plus 5cm}static bool class\_\-is\_\-preloaded (
+\begin{DoxyParamCaption}
+\item[{const {\bf class\_\-t} $\ast$}]{ cl}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily  [inline, static]}}\label{class_8h_a120b9cfabb29f88c04b4c5fc0344e907}
+Checks if a class has been preloaded 
+\begin{DoxyParams}{Parameters}
+\item[{\em cl}]A pointer to a class structure \end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+true if the class is in the preloaded state, false otherwise 
+\end{DoxyReturn}
+
+
+Definition at line 330 of file class.h.
+
+
+
+References class\_\-t::state.
+
+
+
+Referenced by bcl\_\-resolve\_\-class().
+
+\index{class.h@{class.h}!class\_\-is\_\-public@{class\_\-is\_\-public}}
+\index{class\_\-is\_\-public@{class\_\-is\_\-public}!class.h@{class.h}}
+\subsubsection[{class\_\-is\_\-public}]{\setlength{\rightskip}{0pt plus 5cm}static bool class\_\-is\_\-public (
+\begin{DoxyParamCaption}
+\item[{const {\bf class\_\-t} $\ast$}]{ cl}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily  [inline, static]}}\label{class_8h_add1ac3a5c08d03cce63d4b9aa564a48a}
+Checks if a class is public 
+\begin{DoxyParams}{Parameters}
+\item[{\em cl}]A valid pointer to a \doxyref{class\_\-t}{p.}{structclass__t} structure \end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+true if the class is public 
+\end{DoxyReturn}
+
+
+Definition at line 289 of file class.h.
+
+
+
+References class\_\-t::access\_\-flags.
+
+
+
+Referenced by bcl\_\-resolve\_\-class(), and derive\_\-class().
+
+\index{class.h@{class.h}!class\_\-is\_\-super@{class\_\-is\_\-super}}
+\index{class\_\-is\_\-super@{class\_\-is\_\-super}!class.h@{class.h}}
+\subsubsection[{class\_\-is\_\-super}]{\setlength{\rightskip}{0pt plus 5cm}static bool class\_\-is\_\-super (
+\begin{DoxyParamCaption}
+\item[{const {\bf class\_\-t} $\ast$}]{ cl}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily  [inline, static]}}\label{class_8h_a94d399dfd608d375a881a8bef0db2bd9}
+Checks if a class has the ACC\_\-SUPER flag set 
+\begin{DoxyParams}{Parameters}
+\item[{\em cl}]A valid pointer to a \doxyref{class\_\-t}{p.}{structclass__t} structure \end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+true if the class is public 
+\end{DoxyReturn}
+
+
+Definition at line 298 of file class.h.
+
+
+
+References class\_\-t::access\_\-flags.
+
+
+
+Referenced by bcl\_\-link\_\-opcode().
+
+\index{class.h@{class.h}!class\_\-purge\_\-initializer@{class\_\-purge\_\-initializer}}
+\index{class\_\-purge\_\-initializer@{class\_\-purge\_\-initializer}!class.h@{class.h}}
+\subsubsection[{class\_\-purge\_\-initializer}]{\setlength{\rightskip}{0pt plus 5cm}void class\_\-purge\_\-initializer (
+\begin{DoxyParamCaption}
+\item[{{\bf class\_\-t} $\ast$}]{ cl}
+\end{DoxyParamCaption}
+)}\label{class_8h_ab6cdb9a3bd3a2d87db5d29bfd0e85959}
+This function unloads the class initializer method 
+\begin{DoxyParams}{Parameters}
+\item[{\em cl}]A pointer to a \doxyref{class\_\-t}{p.}{structclass__t} structure \end{DoxyParams}
+
+
+Definition at line 175 of file class.c.
+
+
+
+References class\_\-t::method\_\-manager, method\_\-purge(), and mm\_\-get().
+
+
+
+Referenced by initialize\_\-class().
+
+\index{class.h@{class.h}!class\_\-set\_\-state@{class\_\-set\_\-state}}
+\index{class\_\-set\_\-state@{class\_\-set\_\-state}!class.h@{class.h}}
+\subsubsection[{class\_\-set\_\-state}]{\setlength{\rightskip}{0pt plus 5cm}static void class\_\-set\_\-state (
+\begin{DoxyParamCaption}
+\item[{{\bf class\_\-t} $\ast$}]{ cl, }
+\item[{{\bf class\_\-state\_\-t}}]{ state}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily  [inline, static]}}\label{class_8h_a2b2c691f8c005f466a0ad81ff4266ad1}
+Sets the linkage state of a class 
+\begin{DoxyParams}{Parameters}
+\item[{\em cl}]A pointer to a class structure \item[{\em state}]The new state \end{DoxyParams}
+
+
+Definition at line 320 of file class.h.
+
+
+
+References class\_\-t::state.
+
+
+
+Referenced by initialize\_\-class(), load\_\-class(), and preload\_\-class().
+
+\index{class.h@{class.h}!im\_\-add@{im\_\-add}}
+\index{im\_\-add@{im\_\-add}!class.h@{class.h}}
+\subsubsection[{im\_\-add}]{\setlength{\rightskip}{0pt plus 5cm}void im\_\-add (
+\begin{DoxyParamCaption}
+\item[{{\bf interface\_\-manager\_\-t} $\ast$}]{ im, }
+\item[{{\bf class\_\-t} $\ast$}]{ cl}
+\end{DoxyParamCaption}
+)}\label{class_8h_a3ad06e459a4b6ebecb58a85536a3afb1}
+Adds a new interface to the manager 
+\begin{DoxyParams}{Parameters}
+\item[{\em im}]A pointer to the interface manager \item[{\em cl}]A pointer to an interface \end{DoxyParams}
+
+
+Definition at line 51 of file class.c.
+
+
+
+References interface\_\-manager\_\-t::entries, gc\_\-free(), gc\_\-malloc(), and interface\_\-manager\_\-t::interfaces.
+
+
+
+Referenced by load\_\-interfaces().
+
+\index{class.h@{class.h}!im\_\-create@{im\_\-create}}
+\index{im\_\-create@{im\_\-create}!class.h@{class.h}}
+\subsubsection[{im\_\-create}]{\setlength{\rightskip}{0pt plus 5cm}{\bf interface\_\-manager\_\-t}$\ast$ im\_\-create (
+\begin{DoxyParamCaption}
+\item[{void}]{}
+\end{DoxyParamCaption}
+)}\label{class_8h_a9370a583b1069a5b1355c4b1e0463129}
+Creates an interface manager \begin{DoxyReturn}{Returns}
+A new interface manager 
+\end{DoxyReturn}
+
+
+Definition at line 40 of file class.c.
+
+
+
+References gc\_\-palloc().
+
+
+
+Referenced by load\_\-interfaces().
+
+\index{class.h@{class.h}!im\_\-flatten@{im\_\-flatten}}
+\index{im\_\-flatten@{im\_\-flatten}!class.h@{class.h}}
+\subsubsection[{im\_\-flatten}]{\setlength{\rightskip}{0pt plus 5cm}void im\_\-flatten (
+\begin{DoxyParamCaption}
+\item[{{\bf interface\_\-manager\_\-t} $\ast$}]{ im}
+\end{DoxyParamCaption}
+)}\label{class_8h_ae9ebaefa0512f9f05acb496f347bac39}
+Flattens the interface manager internal representation turning it into a permanent structure 
+\begin{DoxyParams}{Parameters}
+\item[{\em im}]A pointer to the interface manager \end{DoxyParams}
+
+
+Definition at line 74 of file class.c.
+
+
+
+References interface\_\-manager\_\-t::entries, gc\_\-free(), gc\_\-palloc(), and interface\_\-manager\_\-t::interfaces.
+
+
+
+Referenced by load\_\-interfaces().
+
+\index{class.h@{class.h}!im\_\-is\_\-present@{im\_\-is\_\-present}}
+\index{im\_\-is\_\-present@{im\_\-is\_\-present}!class.h@{class.h}}
+\subsubsection[{im\_\-is\_\-present}]{\setlength{\rightskip}{0pt plus 5cm}bool im\_\-is\_\-present (
+\begin{DoxyParamCaption}
+\item[{{\bf interface\_\-manager\_\-t} $\ast$}]{ im, }
+\item[{{\bf class\_\-t} $\ast$}]{ interface}
+\end{DoxyParamCaption}
+)}\label{class_8h_ab89115a0fc9752ae05b49a7d7b2a2613}
+Checks if an interface is present in the interface manager 
+\begin{DoxyParams}{Parameters}
+\item[{\em im}]A pointer to the interface manager \item[{\em interface}]A pointer to a class \end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+true if the specified interface is present, false otherwise 
+\end{DoxyReturn}
+
+
+Definition at line 88 of file class.c.
+
+
+
+References interface\_\-manager\_\-t::entries, and interface\_\-manager\_\-t::interfaces.
+
+
+
+Referenced by bcl\_\-is\_\-assignable().
+
+\index{class.h@{class.h}!interface\_\-itr@{interface\_\-itr}}
+\index{interface\_\-itr@{interface\_\-itr}!class.h@{class.h}}
+\subsubsection[{interface\_\-itr}]{\setlength{\rightskip}{0pt plus 5cm}static {\bf interface\_\-iterator\_\-t} interface\_\-itr (
+\begin{DoxyParamCaption}
+\item[{{\bf interface\_\-manager\_\-t} $\ast$}]{ im}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily  [inline, static]}}\label{class_8h_ab4ef76cae684c18067e3b322b31835e7}
+Creates an interface iterator from the interface manager {\itshape im\/} 
+\begin{DoxyParams}{Parameters}
+\item[{\em im}]A pointer to a class' interface manager \end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+An initialized instance interface iterator 
+\end{DoxyReturn}
+
+
+Definition at line 88 of file class.h.
+
+
+
+References interface\_\-manager\_\-t::entries, interface\_\-iterator\_\-t::entries, interface\_\-iterator\_\-t::index, interface\_\-manager\_\-t::interfaces, and interface\_\-iterator\_\-t::interfaces.
+
+
+
+Referenced by create\_\-interface\_\-dispatch\_\-table(), load\_\-interfaces(), lookup\_\-field(), and resolve\_\-method().
+
+\index{class.h@{class.h}!interface\_\-itr\_\-get\_\-next@{interface\_\-itr\_\-get\_\-next}}
+\index{interface\_\-itr\_\-get\_\-next@{interface\_\-itr\_\-get\_\-next}!class.h@{class.h}}
+\subsubsection[{interface\_\-itr\_\-get\_\-next}]{\setlength{\rightskip}{0pt plus 5cm}static struct {\bf class\_\-t}$\ast$ interface\_\-itr\_\-get\_\-next (
+\begin{DoxyParamCaption}
+\item[{{\bf interface\_\-iterator\_\-t} $\ast$}]{ itr}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily  [static, read]}}\label{class_8h_a07b1eabfff81f765ec8da6df8567943b}
+Returns the next interface, if the iterator has just been created it returns the data of the first interface (if it is present) 
+\begin{DoxyParams}{Parameters}
+\item[{\em itr}]A pointer to an interface iterator \end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+A pointer to an interface 
+\end{DoxyReturn}
+
+
+Definition at line 113 of file class.h.
+
+
+
+References interface\_\-iterator\_\-t::index, interface\_\-itr\_\-has\_\-next(), and interface\_\-iterator\_\-t::interfaces.
+
+
+
+Referenced by create\_\-interface\_\-dispatch\_\-table(), load\_\-interfaces(), lookup\_\-field(), and resolve\_\-method().
+
+\index{class.h@{class.h}!interface\_\-itr\_\-has\_\-next@{interface\_\-itr\_\-has\_\-next}}
+\index{interface\_\-itr\_\-has\_\-next@{interface\_\-itr\_\-has\_\-next}!class.h@{class.h}}
+\subsubsection[{interface\_\-itr\_\-has\_\-next}]{\setlength{\rightskip}{0pt plus 5cm}static bool interface\_\-itr\_\-has\_\-next (
+\begin{DoxyParamCaption}
+\item[{{\bf interface\_\-iterator\_\-t}}]{ itr}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily  [inline, static]}}\label{class_8h_a8a6ad75e673bc57f980591fa76daf3fe}
+Returns true if another interface is available 
+\begin{DoxyParams}{Parameters}
+\item[{\em itr}]iterator An interface iterator \end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+true if there are more interfaces, false otherwise 
+\end{DoxyReturn}
+
+
+Definition at line 103 of file class.h.
+
+
+
+References interface\_\-iterator\_\-t::entries, and interface\_\-iterator\_\-t::index.
+
+
+
+Referenced by create\_\-interface\_\-dispatch\_\-table(), interface\_\-itr\_\-get\_\-next(), load\_\-interfaces(), lookup\_\-field(), and resolve\_\-method().
+

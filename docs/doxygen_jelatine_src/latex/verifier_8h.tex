@@ -1,0 +1,117 @@
+\section{src/jelatine/verifier.h File Reference}
+\label{verifier_8h}\index{src/jelatine/verifier.h@{src/jelatine/verifier.h}}
+{\ttfamily \#include \char`\"{}wrappers.h\char`\"{}}\par
+{\ttfamily \#include \char`\"{}class.h\char`\"{}}\par
+{\ttfamily \#include \char`\"{}classfile.h\char`\"{}}\par
+\subsection*{Defines}
+\begin{DoxyCompactItemize}
+\item 
+\#define {\bf JELATINE\_\-VERIFIER\_\-H}~(1)
+\end{DoxyCompactItemize}
+\subsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+bool {\bf same\_\-package} (const {\bf class\_\-t} $\ast$, const {\bf class\_\-t} $\ast$)
+\item 
+void {\bf verify\_\-field} (const {\bf class\_\-t} $\ast$, const {\bf field\_\-info\_\-t} $\ast$, const {\bf field\_\-attributes\_\-t} $\ast$)
+\item 
+void {\bf verify\_\-field\_\-access} (const {\bf class\_\-t} $\ast$, const {\bf class\_\-t} $\ast$, const {\bf field\_\-t} $\ast$)
+\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+Bytecode and class file verification interface 
+
+Definition in file {\bf verifier.h}.
+
+
+
+\subsection{Define Documentation}
+\index{verifier.h@{verifier.h}!JELATINE\_\-VERIFIER\_\-H@{JELATINE\_\-VERIFIER\_\-H}}
+\index{JELATINE\_\-VERIFIER\_\-H@{JELATINE\_\-VERIFIER\_\-H}!verifier.h@{verifier.h}}
+\subsubsection[{JELATINE\_\-VERIFIER\_\-H}]{\setlength{\rightskip}{0pt plus 5cm}\#define JELATINE\_\-VERIFIER\_\-H~(1)}\label{verifier_8h_ab93ff7bed1d65809d8baaa125c95a96e}
+\doxyref{verifier.h}{p.}{verifier_8h} inclusion macro 
+
+Definition at line 28 of file verifier.h.
+
+
+
+\subsection{Function Documentation}
+\index{verifier.h@{verifier.h}!same\_\-package@{same\_\-package}}
+\index{same\_\-package@{same\_\-package}!verifier.h@{verifier.h}}
+\subsubsection[{same\_\-package}]{\setlength{\rightskip}{0pt plus 5cm}bool same\_\-package (
+\begin{DoxyParamCaption}
+\item[{const {\bf class\_\-t} $\ast$}]{ cl1, }
+\item[{const {\bf class\_\-t} $\ast$}]{ cl2}
+\end{DoxyParamCaption}
+)}\label{verifier_8h_a062a5df7f1bf8c228c2420b4c0d2ab1c}
+Checks if two classes belong to the same package 
+\begin{DoxyParams}{Parameters}
+\item[{\em cl1}]A class pointer \item[{\em cl2}]A class pointer \end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+True if both classes belong to the same package 
+\end{DoxyReturn}
+
+
+Definition at line 40 of file verifier.c.
+
+
+
+References class\_\-t::name.
+
+
+
+Referenced by bcl\_\-resolve\_\-class(), resolve\_\-method(), and verify\_\-field\_\-access().
+
+\index{verifier.h@{verifier.h}!verify\_\-field@{verify\_\-field}}
+\index{verify\_\-field@{verify\_\-field}!verifier.h@{verifier.h}}
+\subsubsection[{verify\_\-field}]{\setlength{\rightskip}{0pt plus 5cm}void verify\_\-field (
+\begin{DoxyParamCaption}
+\item[{const {\bf class\_\-t} $\ast$}]{ cl, }
+\item[{const {\bf field\_\-info\_\-t} $\ast$}]{ info, }
+\item[{const {\bf field\_\-attributes\_\-t} $\ast$}]{ attr}
+\end{DoxyParamCaption}
+)}\label{verifier_8h_a649a01628f0b1511379cd6c4ce368b40}
+Verify the validity of a field
+
+If the verification of the field fails this function will throw a verification exception 
+\begin{DoxyParams}{Parameters}
+\item[{\em cl}]A pointer to the class to which the field belongs \item[{\em info}]A pointer to the field\_\-info structure representing the field \item[{\em attr}]A pointer to the field\_\-attributes structure holding the field attributes \end{DoxyParams}
+
+
+Definition at line 88 of file verifier.c.
+
+
+
+References ACC\_\-FINAL, ACC\_\-PRIVATE, ACC\_\-PROTECTED, ACC\_\-PUBLIC, ACC\_\-STATIC, ACC\_\-TRANSIENT, ACC\_\-VOLATILE, field\_\-info\_\-t::access\_\-flags, c\_\-throw, class\_\-is\_\-interface(), field\_\-attributes\_\-t::constant\_\-value\_\-found, field\_\-t::descriptor, field\_\-info\_\-t::descriptor, field\_\-parse\_\-descriptor(), class\_\-t::fields, class\_\-t::fields\_\-n, JAVA\_\-LANG\_\-NOCLASSDEFFOUNDERROR, field\_\-t::name, and field\_\-info\_\-t::name.
+
+
+
+Referenced by load\_\-fields().
+
+\index{verifier.h@{verifier.h}!verify\_\-field\_\-access@{verify\_\-field\_\-access}}
+\index{verify\_\-field\_\-access@{verify\_\-field\_\-access}!verifier.h@{verifier.h}}
+\subsubsection[{verify\_\-field\_\-access}]{\setlength{\rightskip}{0pt plus 5cm}void verify\_\-field\_\-access (
+\begin{DoxyParamCaption}
+\item[{const {\bf class\_\-t} $\ast$}]{ acl, }
+\item[{const {\bf class\_\-t} $\ast$}]{ cl, }
+\item[{const {\bf field\_\-t} $\ast$}]{ field}
+\end{DoxyParamCaption}
+)}\label{verifier_8h_a7ec9b5fb9acb384aaeb5b863072b76ec}
+Check if the field {\itshape field\/} of class {\itshape dst\/} is accessible from class {\itshape src\/} 
+
+This function throws a verification exception if the field is not accessible 
+\begin{DoxyParams}{Parameters}
+\item[{\em acl}]The class trying to access the field \item[{\em cl}]The class to which the field belongs \item[{\em field}]The field to be accessed \end{DoxyParams}
+
+
+Definition at line 160 of file verifier.c.
+
+
+
+References c\_\-throw, class\_\-is\_\-parent(), field\_\-is\_\-private(), field\_\-is\_\-protected(), field\_\-is\_\-public(), JAVA\_\-LANG\_\-NOCLASSDEFFOUNDERROR, and same\_\-package().
+
+
+
+Referenced by resolve\_\-instance\_\-field(), and resolve\_\-static\_\-field().
+

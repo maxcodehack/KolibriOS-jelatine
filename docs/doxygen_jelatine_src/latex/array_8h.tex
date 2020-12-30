@@ -1,0 +1,337 @@
+\section{src/jelatine/array.h File Reference}
+\label{array_8h}\index{src/jelatine/array.h@{src/jelatine/array.h}}
+{\ttfamily \#include \char`\"{}wrappers.h\char`\"{}}\par
+{\ttfamily \#include \char`\"{}classfile.h\char`\"{}}\par
+{\ttfamily \#include \char`\"{}header.h\char`\"{}}\par
+{\ttfamily \#include \char`\"{}opcodes.h\char`\"{}}\par
+\subsection*{Data Structures}
+\begin{DoxyCompactItemize}
+\item 
+struct {\bf array\_\-t}
+\item 
+struct {\bf ref\_\-array\_\-t}
+\end{DoxyCompactItemize}
+\subsection*{Defines}
+\begin{DoxyCompactItemize}
+\item 
+\#define {\bf JELATINE\_\-ARRAY\_\-H}~(1)
+\end{DoxyCompactItemize}
+\subsection*{Typedefs}
+\begin{DoxyCompactItemize}
+\item 
+typedef struct {\bf array\_\-t} {\bf array\_\-t}
+\item 
+typedef struct {\bf ref\_\-array\_\-t} {\bf ref\_\-array\_\-t}
+\end{DoxyCompactItemize}
+\subsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+void {\bf arraycopy\_\-ref} ({\bf array\_\-t} $\ast$, int32\_\-t, {\bf array\_\-t} $\ast$, int32\_\-t, int32\_\-t)
+\item 
+size\_\-t {\bf array\_\-get\_\-nref\_\-size} ({\bf array\_\-t} $\ast$)
+\item 
+size\_\-t {\bf array\_\-get\_\-ref\_\-n} ({\bf array\_\-t} $\ast$)
+\item 
+static void $\ast$ {\bf array\_\-get\_\-data} ({\bf array\_\-t} $\ast$p)
+\item 
+static uintptr\_\-t $\ast$ {\bf array\_\-ref\_\-get\_\-data} ({\bf array\_\-t} $\ast$p)
+\item 
+static uint32\_\-t {\bf array\_\-length} ({\bf array\_\-t} $\ast$p)
+\item 
+static const char $\ast$ {\bf array\_\-name} (array\_\-type\_\-t t)
+\item 
+static uint32\_\-t {\bf array\_\-elem\_\-size} (array\_\-type\_\-t t)
+\item 
+static array\_\-type\_\-t {\bf prim\_\-to\_\-array\_\-type} ({\bf primitive\_\-type\_\-t} t)
+\end{DoxyCompactItemize}
+\subsection*{Variables}
+\begin{DoxyCompactItemize}
+\item 
+const char $\ast$ {\bf array\_\-names} [$\,$]
+\item 
+uint8\_\-t {\bf array\_\-elem\_\-sizes} [$\,$]
+\item 
+uint8\_\-t {\bf prim\_\-to\_\-array\_\-types} [$\,$]
+\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+Array declaration and interface 
+
+Definition in file {\bf array.h}.
+
+
+
+\subsection{Define Documentation}
+\index{array.h@{array.h}!JELATINE\_\-ARRAY\_\-H@{JELATINE\_\-ARRAY\_\-H}}
+\index{JELATINE\_\-ARRAY\_\-H@{JELATINE\_\-ARRAY\_\-H}!array.h@{array.h}}
+\subsubsection[{JELATINE\_\-ARRAY\_\-H}]{\setlength{\rightskip}{0pt plus 5cm}\#define JELATINE\_\-ARRAY\_\-H~(1)}\label{array_8h_a4f5fd4fcc2b354c637651133b3458bd7}
+\doxyref{array.h}{p.}{array_8h} inclusion macro 
+
+Definition at line 28 of file array.h.
+
+
+
+\subsection{Typedef Documentation}
+\index{array.h@{array.h}!array\_\-t@{array\_\-t}}
+\index{array\_\-t@{array\_\-t}!array.h@{array.h}}
+\subsubsection[{array\_\-t}]{\setlength{\rightskip}{0pt plus 5cm}typedef struct {\bf array\_\-t} {\bf array\_\-t}}\label{array_8h_a8921e79576127d6f676095f9e05d0ab8}
+Typedef for struct \doxyref{array\_\-t}{p.}{structarray__t} 
+
+Definition at line 84 of file array.h.
+
+\index{array.h@{array.h}!ref\_\-array\_\-t@{ref\_\-array\_\-t}}
+\index{ref\_\-array\_\-t@{ref\_\-array\_\-t}!array.h@{array.h}}
+\subsubsection[{ref\_\-array\_\-t}]{\setlength{\rightskip}{0pt plus 5cm}typedef struct {\bf ref\_\-array\_\-t} {\bf ref\_\-array\_\-t}}\label{array_8h_a981a5b52ba3573ce2abfb76faaed501d}
+Typedef for struct \doxyref{ref\_\-array\_\-t}{p.}{structref__array__t} 
+
+Definition at line 99 of file array.h.
+
+
+
+\subsection{Function Documentation}
+\index{array.h@{array.h}!array\_\-elem\_\-size@{array\_\-elem\_\-size}}
+\index{array\_\-elem\_\-size@{array\_\-elem\_\-size}!array.h@{array.h}}
+\subsubsection[{array\_\-elem\_\-size}]{\setlength{\rightskip}{0pt plus 5cm}static uint32\_\-t array\_\-elem\_\-size (
+\begin{DoxyParamCaption}
+\item[{array\_\-type\_\-t}]{ t}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily  [inline, static]}}\label{array_8h_ae1429ff9893ccc5f5de23ded4d6ac54f}
+Returns the size of an element of the specified basic array type 
+\begin{DoxyParams}{Parameters}
+\item[{\em t}]The basic array type \end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+The size in bytes of the basic array type 
+\end{DoxyReturn}
+
+
+Definition at line 158 of file array.h.
+
+
+
+References array\_\-elem\_\-sizes.
+
+
+
+Referenced by array\_\-get\_\-nref\_\-size(), gc\_\-new\_\-array\_\-nonref(), and java\_\-lang\_\-System\_\-arraycopy().
+
+\index{array.h@{array.h}!array\_\-get\_\-data@{array\_\-get\_\-data}}
+\index{array\_\-get\_\-data@{array\_\-get\_\-data}!array.h@{array.h}}
+\subsubsection[{array\_\-get\_\-data}]{\setlength{\rightskip}{0pt plus 5cm}static void$\ast$ array\_\-get\_\-data (
+\begin{DoxyParamCaption}
+\item[{{\bf array\_\-t} $\ast$}]{ p}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily  [inline, static]}}\label{array_8h_ae4f96c84071e1826167c2df6945156f3}
+Gets a pointer to the actual array data 
+\begin{DoxyParams}{Parameters}
+\item[{\em p}]A pointer to an array header \end{DoxyParams}
+
+
+Definition at line 124 of file array.h.
+
+
+
+Referenced by interpreter(), java\_\-lang\_\-Class\_\-forName(), java\_\-lang\_\-System\_\-arraycopy(), jstring\_\-create\_\-from\_\-unicode(), jstring\_\-create\_\-from\_\-utf8(), jstring\_\-create\_\-literal(), jstring\_\-equals(), jstring\_\-intern(), KNI\_\-GetBooleanArrayElement(), KNI\_\-GetByteArrayElement(), KNI\_\-GetCharArrayElement(), KNI\_\-GetIntArrayElement(), KNI\_\-GetLongArrayElement(), KNI\_\-GetRawArrayRegion(), KNI\_\-GetShortArrayElement(), KNI\_\-GetStringRegion(), KNI\_\-SetBooleanArrayElement(), KNI\_\-SetByteArrayElement(), KNI\_\-SetCharArrayElement(), KNI\_\-SetIntArrayElement(), KNI\_\-SetLongArrayElement(), KNI\_\-SetRawArrayRegion(), and KNI\_\-SetShortArrayElement().
+
+\index{array.h@{array.h}!array\_\-get\_\-nref\_\-size@{array\_\-get\_\-nref\_\-size}}
+\index{array\_\-get\_\-nref\_\-size@{array\_\-get\_\-nref\_\-size}!array.h@{array.h}}
+\subsubsection[{array\_\-get\_\-nref\_\-size}]{\setlength{\rightskip}{0pt plus 5cm}size\_\-t array\_\-get\_\-nref\_\-size (
+\begin{DoxyParamCaption}
+\item[{{\bf array\_\-t} $\ast$}]{ array}
+\end{DoxyParamCaption}
+)}\label{array_8h_a6332a98b6374f648c196acda479044dc}
+Gets the size (in bytes) of the non-\/reference area of an array 
+\begin{DoxyParams}{Parameters}
+\item[{\em array}]A pointer to the array header \end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+The size (in bytes) of the array's non-\/reference area 
+\end{DoxyReturn}
+
+
+Definition at line 88 of file array.c.
+
+
+
+References array\_\-elem\_\-size(), class\_\-t::elem\_\-type, array\_\-t::header, header\_\-get\_\-class(), array\_\-t::length, prim\_\-to\_\-array\_\-type(), PT\_\-BOOL, PT\_\-REFERENCE, and size\_\-div\_\-inf().
+
+
+
+Referenced by gc\_\-sweep().
+
+\index{array.h@{array.h}!array\_\-get\_\-ref\_\-n@{array\_\-get\_\-ref\_\-n}}
+\index{array\_\-get\_\-ref\_\-n@{array\_\-get\_\-ref\_\-n}!array.h@{array.h}}
+\subsubsection[{array\_\-get\_\-ref\_\-n}]{\setlength{\rightskip}{0pt plus 5cm}size\_\-t array\_\-get\_\-ref\_\-n (
+\begin{DoxyParamCaption}
+\item[{{\bf array\_\-t} $\ast$}]{ array}
+\end{DoxyParamCaption}
+)}\label{array_8h_ac71809a41790f51d14a9b99766dd9f27}
+Gets the number of references in an array 
+\begin{DoxyParams}{Parameters}
+\item[{\em array}]A pointer to an array header \end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+The number of references in the array 
+\end{DoxyReturn}
+
+
+Definition at line 113 of file array.c.
+
+
+
+References class\_\-is\_\-array(), class\_\-t::elem\_\-type, array\_\-t::header, header\_\-get\_\-class(), array\_\-t::length, and PT\_\-REFERENCE.
+
+
+
+Referenced by gc\_\-mark\_\-reference(), and gc\_\-sweep().
+
+\index{array.h@{array.h}!array\_\-length@{array\_\-length}}
+\index{array\_\-length@{array\_\-length}!array.h@{array.h}}
+\subsubsection[{array\_\-length}]{\setlength{\rightskip}{0pt plus 5cm}static uint32\_\-t array\_\-length (
+\begin{DoxyParamCaption}
+\item[{{\bf array\_\-t} $\ast$}]{ p}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily  [inline, static]}}\label{array_8h_a96d84508ecedea394e79a15dfe54ad9e}
+Returns the number of elements in an array 
+\begin{DoxyParams}{Parameters}
+\item[{\em p}]A pointer to an array header \end{DoxyParams}
+
+
+Definition at line 140 of file array.h.
+
+
+
+References array\_\-t::length.
+
+
+
+Referenced by interpreter().
+
+\index{array.h@{array.h}!array\_\-name@{array\_\-name}}
+\index{array\_\-name@{array\_\-name}!array.h@{array.h}}
+\subsubsection[{array\_\-name}]{\setlength{\rightskip}{0pt plus 5cm}static const char$\ast$ array\_\-name (
+\begin{DoxyParamCaption}
+\item[{array\_\-type\_\-t}]{ t}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily  [inline, static]}}\label{array_8h_ae0f5bb658d38e373f9ea196644c68631}
+Returns the name of a basic array type 
+\begin{DoxyParams}{Parameters}
+\item[{\em t}]The basic array type \end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+A string holding the name of the array class 
+\end{DoxyReturn}
+
+
+Definition at line 149 of file array.h.
+
+
+
+References array\_\-names.
+
+
+
+Referenced by bcl\_\-link\_\-opcode().
+
+\index{array.h@{array.h}!array\_\-ref\_\-get\_\-data@{array\_\-ref\_\-get\_\-data}}
+\index{array\_\-ref\_\-get\_\-data@{array\_\-ref\_\-get\_\-data}!array.h@{array.h}}
+\subsubsection[{array\_\-ref\_\-get\_\-data}]{\setlength{\rightskip}{0pt plus 5cm}static uintptr\_\-t$\ast$ array\_\-ref\_\-get\_\-data (
+\begin{DoxyParamCaption}
+\item[{{\bf array\_\-t} $\ast$}]{ p}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily  [inline, static]}}\label{array_8h_a52d1acc3445f4856600cbe7ebef36e14}
+Gets a pointer to the actual array data for reference arrays 
+\begin{DoxyParams}{Parameters}
+\item[{\em p}]A pointer to an array header \end{DoxyParams}
+
+
+Definition at line 132 of file array.h.
+
+
+
+Referenced by arraycopy\_\-ref(), gc\_\-new\_\-multiarray(), interpreter(), KNI\_\-GetObjectArrayElement(), KNI\_\-SetObjectArrayElement(), and vm\_\-run().
+
+\index{array.h@{array.h}!arraycopy\_\-ref@{arraycopy\_\-ref}}
+\index{arraycopy\_\-ref@{arraycopy\_\-ref}!array.h@{array.h}}
+\subsubsection[{arraycopy\_\-ref}]{\setlength{\rightskip}{0pt plus 5cm}void arraycopy\_\-ref (
+\begin{DoxyParamCaption}
+\item[{{\bf array\_\-t} $\ast$}]{ src, }
+\item[{int32\_\-t}]{ src\_\-offset, }
+\item[{{\bf array\_\-t} $\ast$}]{ dest, }
+\item[{int32\_\-t}]{ dest\_\-offset, }
+\item[{int32\_\-t}]{ length}
+\end{DoxyParamCaption}
+)}\label{array_8h_aff00e15534a87b7724175a19eb7833e9}
+C implementation of \doxyref{java.lang.System.arraycopy()}{p.}{classjava_1_1lang_1_1_system_ae22472a9b820e1c8699e858f82c41f39} for reference arrays. If an element is found not to be compatible with the destination array an ArrayStoreException is thrown 
+\begin{DoxyParams}{Parameters}
+\item[{\em src}]A pointer to the source array \item[{\em src\_\-offset}]The offset in the source array \item[{\em dest}]A pointer to the destination array \item[{\em dest\_\-offset}]The offset in the destination array \item[{\em length}]The number of elements to copy \end{DoxyParams}
+
+
+Definition at line 135 of file array.c.
+
+
+
+References array\_\-ref\_\-get\_\-data(), bcl\_\-is\_\-assignable(), class\_\-t::elem\_\-class, gc\_\-new\_\-array\_\-ref(), array\_\-t::header, header\_\-get\_\-class(), and KNI\_\-ThrowNew().
+
+
+
+Referenced by java\_\-lang\_\-System\_\-arraycopy().
+
+\index{array.h@{array.h}!prim\_\-to\_\-array\_\-type@{prim\_\-to\_\-array\_\-type}}
+\index{prim\_\-to\_\-array\_\-type@{prim\_\-to\_\-array\_\-type}!array.h@{array.h}}
+\subsubsection[{prim\_\-to\_\-array\_\-type}]{\setlength{\rightskip}{0pt plus 5cm}static array\_\-type\_\-t prim\_\-to\_\-array\_\-type (
+\begin{DoxyParamCaption}
+\item[{{\bf primitive\_\-type\_\-t}}]{ t}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily  [inline, static]}}\label{array_8h_a21d8fdda4c218393dcb59e6746a5d9dc}
+Returns the array type derived from a primitive type 
+\begin{DoxyParams}{Parameters}
+\item[{\em t}]The primitive type \end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+The array type corresponding to the primitive type 
+\end{DoxyReturn}
+
+
+Definition at line 167 of file array.h.
+
+
+
+References prim\_\-to\_\-array\_\-types.
+
+
+
+Referenced by array\_\-get\_\-nref\_\-size(), gc\_\-new\_\-multiarray(), java\_\-lang\_\-System\_\-arraycopy(), and load\_\-class().
+
+
+
+\subsection{Variable Documentation}
+\index{array.h@{array.h}!array\_\-elem\_\-sizes@{array\_\-elem\_\-sizes}}
+\index{array\_\-elem\_\-sizes@{array\_\-elem\_\-sizes}!array.h@{array.h}}
+\subsubsection[{array\_\-elem\_\-sizes}]{\setlength{\rightskip}{0pt plus 5cm}uint8\_\-t {\bf array\_\-elem\_\-sizes}[$\,$]}\label{array_8h_a09375d4e21e39d1c3e9ad44468aab71c}
+This array holds the size in bytes of the basic array element types. T\_\-BOOLEAN is a special case as it set as having an element size of 1 byte per element when in fact it uses 1 bit per element 
+
+Definition at line 55 of file array.c.
+
+
+
+Referenced by array\_\-elem\_\-size().
+
+\index{array.h@{array.h}!array\_\-names@{array\_\-names}}
+\index{array\_\-names@{array\_\-names}!array.h@{array.h}}
+\subsubsection[{array\_\-names}]{\setlength{\rightskip}{0pt plus 5cm}const char$\ast$ {\bf array\_\-names}[$\,$]}\label{array_8h_aee03bcce8e26a108c188e919043a6cb2}
+This array holds the names of the primitive-\/type arrays 
+
+Definition at line 40 of file array.c.
+
+
+
+Referenced by array\_\-name().
+
+\index{array.h@{array.h}!prim\_\-to\_\-array\_\-types@{prim\_\-to\_\-array\_\-types}}
+\index{prim\_\-to\_\-array\_\-types@{prim\_\-to\_\-array\_\-types}!array.h@{array.h}}
+\subsubsection[{prim\_\-to\_\-array\_\-types}]{\setlength{\rightskip}{0pt plus 5cm}uint8\_\-t {\bf prim\_\-to\_\-array\_\-types}[$\,$]}\label{array_8h_ab03c4266e3b294e855ebc633c1fb83d8}
+This array holds an array\_\-type\_\-t value for each \doxyref{primitive\_\-type\_\-t}{p.}{classfile_8h_a26cfd4cb2e559ac2cbf5fd2d63d3a9be} element which can be used in a non-\/reference array 
+
+Definition at line 69 of file array.c.
+
+
+
+Referenced by prim\_\-to\_\-array\_\-type().
+

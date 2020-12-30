@@ -1,0 +1,232 @@
+\section{java::io::OutputStreamWriter Class Reference}
+\label{classjava_1_1io_1_1_output_stream_writer}\index{java::io::OutputStreamWriter@{java::io::OutputStreamWriter}}
+Inheritance diagram for java::io::OutputStreamWriter:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=2.000000cm]{classjava_1_1io_1_1_output_stream_writer}
+\end{center}
+\end{figure}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+{\bf OutputStreamWriter} ({\bf OutputStream} out, String encoding)  throws UnsupportedEncodingException     
+\item 
+{\bf OutputStreamWriter} ({\bf OutputStream} out)
+\item 
+void {\bf write} (int ch)  throws IOException     
+\item 
+void {\bf write} (char[$\,$] buf, int offset, int count)  throws IOException     
+\item 
+void {\bf write} (String str, int offset, int count)  throws IOException     
+\item 
+void {\bf flush} ()  throws IOException     
+\item 
+void {\bf close} ()  throws IOException     
+\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+This class writes characters to an output stream that is byte oriented It converts the chars that are written to bytes using an encoding layer, which is specific to a particular encoding standard. The desired encoding can either be specified by name, or if no encoding is specified, the system default encoding will be used. The system default encoding name is determined from the system property {\ttfamily file.encoding}. The only encodings that are guaranteed to be available are \char`\"{}8859\_\-1\char`\"{} (the Latin-\/1 character set) and \char`\"{}UTF8\char`\"{}. Unfortunately, Java does not provide a mechanism for listing the encodings that are supported in a given implementation. 
+
+Here is a list of standard encoding names that may be available: 
+
+
+\begin{DoxyItemize}
+\item 8859\_\-1 (ISO-\/8859-\/1/Latin-\/1) 
+\item ASCII (7-\/bit ASCII) 
+\item More Later 
+\end{DoxyItemize}
+
+\begin{DoxyAuthor}{Author}
+Aaron M. Renn ({\tt arenn@urbanophile.com}) 
+
+Per Bothner ({\tt bothner@cygnus.com}) 
+\end{DoxyAuthor}
+
+
+Definition at line 63 of file OutputStreamWriter.java.
+
+
+
+\subsection{Constructor \& Destructor Documentation}
+\index{java::io::OutputStreamWriter@{java::io::OutputStreamWriter}!OutputStreamWriter@{OutputStreamWriter}}
+\index{OutputStreamWriter@{OutputStreamWriter}!java::io::OutputStreamWriter@{java::io::OutputStreamWriter}}
+\subsubsection[{OutputStreamWriter}]{\setlength{\rightskip}{0pt plus 5cm}java::io::OutputStreamWriter::OutputStreamWriter (
+\begin{DoxyParamCaption}
+\item[{{\bf OutputStream}}]{ out, }
+\item[{String}]{ encoding}
+\end{DoxyParamCaption}
+)  throws {\bf UnsupportedEncodingException}     \hspace{0.3cm}{\ttfamily  [inline]}}\label{classjava_1_1io_1_1_output_stream_writer_ab496338017bfd5f9ba91035af3d007f6}
+This method initializes a new instance of {\ttfamily \doxyref{OutputStreamWriter}{p.}{classjava_1_1io_1_1_output_stream_writer}} to write to the specified stream using a caller supplied character encoding scheme. Note that due to a deficiency in the Java language design, there is no way to determine which encodings are supported.
+
+
+\begin{DoxyParams}{Parameters}
+\item[{\em out}]The {\ttfamily \doxyref{OutputStream}{p.}{classjava_1_1io_1_1_output_stream}} to write to \item[{\em encoding}]The name of the encoding scheme to use for character to byte translation\end{DoxyParams}
+
+\begin{DoxyExceptions}{Exceptions}
+\item[{\em \doxyref{UnsupportedEncodingException}{p.}{classjava_1_1io_1_1_unsupported_encoding_exception}}]If the named encoding is not available. \end{DoxyExceptions}
+
+
+Definition at line 83 of file OutputStreamWriter.java.
+
+\index{java::io::OutputStreamWriter@{java::io::OutputStreamWriter}!OutputStreamWriter@{OutputStreamWriter}}
+\index{OutputStreamWriter@{OutputStreamWriter}!java::io::OutputStreamWriter@{java::io::OutputStreamWriter}}
+\subsubsection[{OutputStreamWriter}]{\setlength{\rightskip}{0pt plus 5cm}java::io::OutputStreamWriter::OutputStreamWriter (
+\begin{DoxyParamCaption}
+\item[{{\bf OutputStream}}]{ out}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily  [inline]}}\label{classjava_1_1io_1_1_output_stream_writer_a7bbe9d01bc59f2f44a0308d98c6ec383}
+This method initializes a new instance of {\ttfamily \doxyref{OutputStreamWriter}{p.}{classjava_1_1io_1_1_output_stream_writer}} to write to the specified stream using the default encoding.
+
+
+\begin{DoxyParams}{Parameters}
+\item[{\em out}]The {\ttfamily \doxyref{OutputStream}{p.}{classjava_1_1io_1_1_output_stream}} to write to \end{DoxyParams}
+
+
+Definition at line 102 of file OutputStreamWriter.java.
+
+
+
+\subsection{Member Function Documentation}
+\index{java::io::OutputStreamWriter@{java::io::OutputStreamWriter}!close@{close}}
+\index{close@{close}!java::io::OutputStreamWriter@{java::io::OutputStreamWriter}}
+\subsubsection[{close}]{\setlength{\rightskip}{0pt plus 5cm}void java::io::OutputStreamWriter::close (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)  throws {\bf IOException}     \hspace{0.3cm}{\ttfamily  [inline, virtual]}}\label{classjava_1_1io_1_1_output_stream_writer_a7aa157a96098ba8e76debaf6e2f808ed}
+This method closes this stream, and the underlying {\ttfamily \doxyref{OutputStream}{p.}{classjava_1_1io_1_1_output_stream}}
+
+
+\begin{DoxyExceptions}{Exceptions}
+\item[{\em \doxyref{IOException}{p.}{classjava_1_1io_1_1_i_o_exception}}]If an error occurs \end{DoxyExceptions}
+
+
+Implements {\bf java::io::Writer} \doxyref{}{p.}{classjava_1_1io_1_1_writer_ab663b1b6c077e574b5cdc696ae794818}.
+
+
+
+Definition at line 182 of file OutputStreamWriter.java.
+
+
+
+References java::io::OutputStream::close(), flush(), and java::io::Writer::lock.
+
+\index{java::io::OutputStreamWriter@{java::io::OutputStreamWriter}!flush@{flush}}
+\index{flush@{flush}!java::io::OutputStreamWriter@{java::io::OutputStreamWriter}}
+\subsubsection[{flush}]{\setlength{\rightskip}{0pt plus 5cm}void java::io::OutputStreamWriter::flush (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)  throws {\bf IOException}     \hspace{0.3cm}{\ttfamily  [inline, virtual]}}\label{classjava_1_1io_1_1_output_stream_writer_ab1bad8b151b7fecea37f8da8dfe83f4c}
+This method flushes any buffered bytes to the underlying output sink.
+
+
+\begin{DoxyExceptions}{Exceptions}
+\item[{\em \doxyref{IOException}{p.}{classjava_1_1io_1_1_i_o_exception}}]If an error occurs \end{DoxyExceptions}
+
+
+Implements {\bf java::io::Writer} \doxyref{}{p.}{classjava_1_1io_1_1_writer_a718ddfcd3331eeb87569cb389f9fc396}.
+
+
+
+Definition at line 168 of file OutputStreamWriter.java.
+
+
+
+References java::io::OutputStream::flush().
+
+
+
+Referenced by close().
+
+\index{java::io::OutputStreamWriter@{java::io::OutputStreamWriter}!write@{write}}
+\index{write@{write}!java::io::OutputStreamWriter@{java::io::OutputStreamWriter}}
+\subsubsection[{write}]{\setlength{\rightskip}{0pt plus 5cm}void java::io::OutputStreamWriter::write (
+\begin{DoxyParamCaption}
+\item[{char[$\,$]}]{ buf, }
+\item[{int}]{ offset, }
+\item[{int}]{ count}
+\end{DoxyParamCaption}
+)  throws {\bf IOException}     \hspace{0.3cm}{\ttfamily  [inline, virtual]}}\label{classjava_1_1io_1_1_output_stream_writer_abf4e9d87c0d08863b623542e6895ea55}
+This method writes {\ttfamily count} characters from the specified array to the output stream starting at position {\ttfamily offset} into the array.
+
+
+\begin{DoxyParams}{Parameters}
+\item[{\em buf}]The array of character to write from \item[{\em offset}]The offset into the array to start writing chars from \item[{\em count}]The number of chars to write.\end{DoxyParams}
+
+\begin{DoxyExceptions}{Exceptions}
+\item[{\em \doxyref{IOException}{p.}{classjava_1_1io_1_1_i_o_exception}}]If an error occurs \end{DoxyExceptions}
+
+
+Implements {\bf java::io::Writer} \doxyref{}{p.}{classjava_1_1io_1_1_writer_a9ae243e09a91f317382cec7eb5bcebd4}.
+
+
+
+Definition at line 130 of file OutputStreamWriter.java.
+
+
+
+References java::io::OutputStream::write().
+
+\index{java::io::OutputStreamWriter@{java::io::OutputStreamWriter}!write@{write}}
+\index{write@{write}!java::io::OutputStreamWriter@{java::io::OutputStreamWriter}}
+\subsubsection[{write}]{\setlength{\rightskip}{0pt plus 5cm}void java::io::OutputStreamWriter::write (
+\begin{DoxyParamCaption}
+\item[{String}]{ str, }
+\item[{int}]{ offset, }
+\item[{int}]{ count}
+\end{DoxyParamCaption}
+)  throws {\bf IOException}     \hspace{0.3cm}{\ttfamily  [inline]}}\label{classjava_1_1io_1_1_output_stream_writer_a28fba78fd3d7490657675b1b01f33c65}
+This method writes {\ttfamily count} bytes from the specified {\ttfamily String} starting at position {\ttfamily offset} into the {\ttfamily String}.
+
+
+\begin{DoxyParams}{Parameters}
+\item[{\em str}]The {\ttfamily String} to write chars from \item[{\em offset}]The position in the {\ttfamily String} to start writing chars from \item[{\em count}]The number of chars to write\end{DoxyParams}
+
+\begin{DoxyExceptions}{Exceptions}
+\item[{\em \doxyref{IOException}{p.}{classjava_1_1io_1_1_i_o_exception}}]If an error occurs \end{DoxyExceptions}
+
+
+Reimplemented from {\bf java::io::Writer} \doxyref{}{p.}{classjava_1_1io_1_1_writer_a1c6e59542fdfe823f244b6913a2c21fa}.
+
+
+
+Definition at line 155 of file OutputStreamWriter.java.
+
+
+
+References write().
+
+\index{java::io::OutputStreamWriter@{java::io::OutputStreamWriter}!write@{write}}
+\index{write@{write}!java::io::OutputStreamWriter@{java::io::OutputStreamWriter}}
+\subsubsection[{write}]{\setlength{\rightskip}{0pt plus 5cm}void java::io::OutputStreamWriter::write (
+\begin{DoxyParamCaption}
+\item[{int}]{ ch}
+\end{DoxyParamCaption}
+)  throws {\bf IOException}     \hspace{0.3cm}{\ttfamily  [inline]}}\label{classjava_1_1io_1_1_output_stream_writer_a210be8355260a31df2a3654375f85b99}
+This method writes a single character to the output stream.
+
+
+\begin{DoxyParams}{Parameters}
+\item[{\em ch}]The char to write, passed as an int.\end{DoxyParams}
+
+\begin{DoxyExceptions}{Exceptions}
+\item[{\em \doxyref{IOException}{p.}{classjava_1_1io_1_1_i_o_exception}}]If an error occurs \end{DoxyExceptions}
+
+
+Reimplemented from {\bf java::io::Writer} \doxyref{}{p.}{classjava_1_1io_1_1_writer_a2e76c6167eb578759d40ee55e8fee201}.
+
+
+
+Definition at line 114 of file OutputStreamWriter.java.
+
+
+
+Referenced by write().
+
+
+
+The documentation for this class was generated from the following file:\begin{DoxyCompactItemize}
+\item 
+src/classpath/java/io/OutputStreamWriter.java\end{DoxyCompactItemize}

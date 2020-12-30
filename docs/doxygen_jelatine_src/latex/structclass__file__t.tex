@@ -1,0 +1,33 @@
+\section{class\_\-file\_\-t Struct Reference}
+\label{structclass__file__t}\index{class\_\-file\_\-t@{class\_\-file\_\-t}}
+
+
+{\ttfamily \#include $<$classfile.h$>$}
+
+\subsection*{Data Fields}
+\begin{DoxyCompactItemize}
+\item 
+\begin{tabbing}
+xx\=xx\=xx\=xx\=xx\=xx\=xx\=xx\=xx\=\kill
+union \{\\
+\>FILE $\ast$ {\bf plain}\\
+\>\>{\em Plain file structure. }\\
+\} {\bf file}\label{structclass__file__t_a7ca146163212adaaa17202cadf60d844}
+\\
+
+\end{tabbing}\begin{DoxyCompactList}\small\item\em File handle. \item\end{DoxyCompactList}\item 
+bool {\bf jar}\label{structclass__file__t_ae3ff058bef385687f040167b3adf636d}
+
+\begin{DoxyCompactList}\small\item\em True if the file is inside a JAR archive. \item\end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+Represents a class-\/file, this structure is used as a wrapper over the real class file so that the class-\/loader code can ignore if the class-\/file is a regular file or is embedded in a jar archive 
+
+Definition at line 138 of file classfile.h.
+
+
+
+The documentation for this struct was generated from the following file:\begin{DoxyCompactItemize}
+\item 
+src/jelatine/{\bf classfile.h}\end{DoxyCompactItemize}

@@ -1,0 +1,569 @@
+\section{native.c File Reference}
+\label{native_8c}\index{native.c@{native.c}}
+{\ttfamily \#include \char`\"{}wrappers.h\char`\"{}}\par
+{\ttfamily \#include \char`\"{}interpreter.h\char`\"{}}\par
+{\ttfamily \#include \char`\"{}jstring.h\char`\"{}}\par
+{\ttfamily \#include \char`\"{}kni.h\char`\"{}}\par
+{\ttfamily \#include \char`\"{}loader.h\char`\"{}}\par
+{\ttfamily \#include \char`\"{}native.h\char`\"{}}\par
+{\ttfamily \#include \char`\"{}thread.h\char`\"{}}\par
+{\ttfamily \#include \char`\"{}utf8\_\-string.h\char`\"{}}\par
+{\ttfamily \#include \char`\"{}util.h\char`\"{}}\par
+{\ttfamily \#include \char`\"{}vm.h\char`\"{}}\par
+{\ttfamily \#include \char`\"{}java\_\-lang\_\-String.h\char`\"{}}\par
+{\ttfamily \#include \char`\"{}java\_\-lang\_\-Thread.h\char`\"{}}\par
+{\ttfamily \#include \char`\"{}native\_\-exts/lejos\_\-nxj\_\-ext.h\char`\"{}}\par
+{\ttfamily \#include \char`\"{}native\_\-exts/lejos\_\-nxj\_\-ext\_\-astruct.h\char`\"{}}\par
+\subsection*{Data Structures}
+\begin{DoxyCompactItemize}
+\item 
+struct {\bf native\_\-method\_\-desc\_\-t}
+\end{DoxyCompactItemize}
+\subsection*{Typedefs}
+\begin{DoxyCompactItemize}
+\item 
+typedef struct {\bf native\_\-method\_\-desc\_\-t} {\bf native\_\-method\_\-desc\_\-t}
+\end{DoxyCompactItemize}
+\subsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+static KNI\_\-RETURNTYPE\_\-OBJECT {\bf java\_\-lang\_\-Class\_\-forName} (void)
+\item 
+static KNI\_\-RETURNTYPE\_\-OBJECT {\bf java\_\-lang\_\-Class\_\-getInternalName} (void)
+\item 
+static KNI\_\-RETURNTYPE\_\-OBJECT {\bf java\_\-lang\_\-Class\_\-newInstance} (void)
+\item 
+static KNI\_\-RETURNTYPE\_\-BOOLEAN {\bf java\_\-lang\_\-Class\_\-isInstance} (void)
+\item 
+static KNI\_\-RETURNTYPE\_\-BOOLEAN {\bf java\_\-lang\_\-Class\_\-isAssignableFrom} (void)
+\item 
+static KNI\_\-RETURNTYPE\_\-OBJECT {\bf java\_\-lang\_\-Object\_\-getClass} (void)
+\item 
+static KNI\_\-RETURNTYPE\_\-VOID {\bf java\_\-lang\_\-Object\_\-notify} (void)
+\item 
+static KNI\_\-RETURNTYPE\_\-VOID {\bf java\_\-lang\_\-Object\_\-notifyAll} (void)
+\item 
+static KNI\_\-RETURNTYPE\_\-VOID {\bf java\_\-lang\_\-Object\_\-\_\-wait} (void)
+\item 
+static KNI\_\-RETURNTYPE\_\-VOID {\bf java\_\-lang\_\-Runtime\_\-exit} (void)
+\item 
+static KNI\_\-RETURNTYPE\_\-LONG {\bf java\_\-lang\_\-Runtime\_\-freeMemory} (void)
+\item 
+static KNI\_\-RETURNTYPE\_\-LONG {\bf java\_\-lang\_\-Runtime\_\-totalMemory} (void)
+\item 
+static KNI\_\-RETURNTYPE\_\-VOID {\bf java\_\-lang\_\-Runtime\_\-gc} (void)
+\item 
+static KNI\_\-RETURNTYPE\_\-OBJECT {\bf java\_\-lang\_\-String\_\-intern} (void)
+\item 
+static KNI\_\-RETURNTYPE\_\-LONG {\bf java\_\-lang\_\-System\_\-currentTimeMillis} (void)
+\item 
+static KNI\_\-RETURNTYPE\_\-VOID {\bf java\_\-lang\_\-System\_\-arraycopy} (void)
+\item 
+static KNI\_\-RETURNTYPE\_\-INT {\bf java\_\-lang\_\-System\_\-identityHashCode} (void)
+\item 
+static KNI\_\-RETURNTYPE\_\-OBJECT {\bf java\_\-lang\_\-Thread\_\-currentThread} (void)
+\item 
+static KNI\_\-RETURNTYPE\_\-VOID {\bf java\_\-lang\_\-Thread\_\-yield} (void)
+\item 
+static KNI\_\-RETURNTYPE\_\-VOID {\bf java\_\-lang\_\-Thread\_\-sleep} (void)
+\item 
+static KNI\_\-RETURNTYPE\_\-VOID {\bf java\_\-lang\_\-Thread\_\-start} (void)
+\item 
+static KNI\_\-RETURNTYPE\_\-INT {\bf java\_\-lang\_\-Thread\_\-activeCount} (void)
+\item 
+static KNI\_\-RETURNTYPE\_\-VOID {\bf java\_\-lang\_\-Thread\_\-join} (void)
+\item 
+static KNI\_\-RETURNTYPE\_\-VOID {\bf java\_\-lang\_\-Thread\_\-interrupt} (void)
+\item 
+static KNI\_\-RETURNTYPE\_\-VOID {\bf java\_\-lang\_\-Throwable\_\-printStackTrace} (void)
+\item 
+static KNI\_\-RETURNTYPE\_\-VOID {\bf java\_\-lang\_\-ref\_\-WeakReference\_\-addToWeakReferenceList} (void)
+\item 
+static KNI\_\-RETURNTYPE\_\-VOID {\bf jelatine\_\-VMOutputStream\_\-write\_\-to\_\-stderr} (void)
+\item 
+static KNI\_\-RETURNTYPE\_\-VOID {\bf jelatine\_\-VMOutputStream\_\-write\_\-to\_\-stdout} (void)
+\item 
+{\bf native\_\-proto\_\-t} {\bf native\_\-method\_\-lookup} (const char $\ast$cl\_\-name, const char $\ast$name, const char $\ast$desc)
+\end{DoxyCompactItemize}
+\subsection*{Variables}
+\begin{DoxyCompactItemize}
+\item 
+{\bf native\_\-method\_\-desc\_\-t} {\bf native\_\-desc} [$\,$]
+\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+Native methods' implementation 
+
+Definition in file {\bf native.c}.
+
+
+
+\subsection{Typedef Documentation}
+\index{native.c@{native.c}!native\_\-method\_\-desc\_\-t@{native\_\-method\_\-desc\_\-t}}
+\index{native\_\-method\_\-desc\_\-t@{native\_\-method\_\-desc\_\-t}!native.c@{native.c}}
+\subsubsection[{native\_\-method\_\-desc\_\-t}]{\setlength{\rightskip}{0pt plus 5cm}typedef struct {\bf native\_\-method\_\-desc\_\-t} {\bf native\_\-method\_\-desc\_\-t}}\label{native_8c_a31ecb08f2ddc9ccb93e6066a5a7ea1d6}
+Typedef for struct \doxyref{native\_\-method\_\-desc\_\-t}{p.}{structnative__method__desc__t} 
+
+Definition at line 65 of file native.c.
+
+
+
+\subsection{Function Documentation}
+\index{native.c@{native.c}!java\_\-lang\_\-Class\_\-forName@{java\_\-lang\_\-Class\_\-forName}}
+\index{java\_\-lang\_\-Class\_\-forName@{java\_\-lang\_\-Class\_\-forName}!native.c@{native.c}}
+\subsubsection[{java\_\-lang\_\-Class\_\-forName}]{\setlength{\rightskip}{0pt plus 5cm}static KNI\_\-RETURNTYPE\_\-OBJECT java\_\-lang\_\-Class\_\-forName (
+\begin{DoxyParamCaption}
+\item[{void}]{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily  [static]}}\label{native_8c_adf4cbb91d2aee076d273a7aa7c2a126a}
+Implementation of java.lang.Class.forName() 
+
+Definition at line 561 of file native.c.
+
+
+
+References array\_\-get\_\-data(), bcl\_\-resolve\_\-class(), c\_\-catch, c\_\-clear\_\-exception(), c\_\-rethrow, c\_\-try, class\_\-get\_\-object(), gc\_\-free(), JAVA\_\-LANG\_\-NOCLASSDEFFOUNDERROR, JAVA\_\-LANG\_\-STRING\_\-REF2PTR, java\_\-to\_\-utf8(), KNI\_\-DeclareHandle, KNI\_\-EndHandlesAndReturnObject, KNI\_\-GetParameterAsObject(), KNI\_\-IsNullHandle(), KNI\_\-StartHandles, KNI\_\-ThrowNew(), thread\_\-pop\_\-root(), and utf8\_\-slashify().
+
+\index{native.c@{native.c}!java\_\-lang\_\-Class\_\-getInternalName@{java\_\-lang\_\-Class\_\-getInternalName}}
+\index{java\_\-lang\_\-Class\_\-getInternalName@{java\_\-lang\_\-Class\_\-getInternalName}!native.c@{native.c}}
+\subsubsection[{java\_\-lang\_\-Class\_\-getInternalName}]{\setlength{\rightskip}{0pt plus 5cm}static KNI\_\-RETURNTYPE\_\-OBJECT java\_\-lang\_\-Class\_\-getInternalName (
+\begin{DoxyParamCaption}
+\item[{void}]{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily  [static]}}\label{native_8c_acae794b5b962df93c66eafe934c1f081}
+Implementation of java.lang.Class.getInternalName() 
+
+Definition at line 611 of file native.c.
+
+
+
+References bcl\_\-get\_\-class\_\-by\_\-id(), JAVA\_\-LANG\_\-CLASS\_\-REF2PTR, JAVA\_\-LANG\_\-STRING\_\-PTR2REF, jstring\_\-create\_\-from\_\-utf8(), KNI\_\-DeclareHandle, KNI\_\-EndHandlesAndReturnObject, KNI\_\-GetThisPointer(), KNI\_\-StartHandles, and class\_\-t::name.
+
+\index{native.c@{native.c}!java\_\-lang\_\-Class\_\-isAssignableFrom@{java\_\-lang\_\-Class\_\-isAssignableFrom}}
+\index{java\_\-lang\_\-Class\_\-isAssignableFrom@{java\_\-lang\_\-Class\_\-isAssignableFrom}!native.c@{native.c}}
+\subsubsection[{java\_\-lang\_\-Class\_\-isAssignableFrom}]{\setlength{\rightskip}{0pt plus 5cm}static KNI\_\-RETURNTYPE\_\-BOOLEAN java\_\-lang\_\-Class\_\-isAssignableFrom (
+\begin{DoxyParamCaption}
+\item[{void}]{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily  [static]}}\label{native_8c_a68cb38a2ba3b778b8a3240c62e9914f6}
+Implementation of java.lang.Class.isAssignableFrom() 
+
+Definition at line 667 of file native.c.
+
+
+
+References KNI\_\-DeclareHandle, KNI\_\-EndHandles, KNI\_\-GetParameterAsObject(), KNI\_\-GetThisPointer(), KNI\_\-IsAssignableFrom(), KNI\_\-IsNullHandle(), KNI\_\-ReturnBoolean, KNI\_\-StartHandles, and KNI\_\-ThrowNew().
+
+\index{native.c@{native.c}!java\_\-lang\_\-Class\_\-isInstance@{java\_\-lang\_\-Class\_\-isInstance}}
+\index{java\_\-lang\_\-Class\_\-isInstance@{java\_\-lang\_\-Class\_\-isInstance}!native.c@{native.c}}
+\subsubsection[{java\_\-lang\_\-Class\_\-isInstance}]{\setlength{\rightskip}{0pt plus 5cm}static KNI\_\-RETURNTYPE\_\-BOOLEAN java\_\-lang\_\-Class\_\-isInstance (
+\begin{DoxyParamCaption}
+\item[{void}]{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily  [static]}}\label{native_8c_a6b0c417c09e75fb1353cc5cc6c066b7b}
+Implementation of java.lang.Class.isInstance() 
+
+Definition at line 650 of file native.c.
+
+
+
+References KNI\_\-DeclareHandle, KNI\_\-EndHandles, KNI\_\-GetParameterAsObject(), KNI\_\-GetThisPointer(), KNI\_\-IsInstanceOf(), KNI\_\-ReturnBoolean, and KNI\_\-StartHandles.
+
+\index{native.c@{native.c}!java\_\-lang\_\-Class\_\-newInstance@{java\_\-lang\_\-Class\_\-newInstance}}
+\index{java\_\-lang\_\-Class\_\-newInstance@{java\_\-lang\_\-Class\_\-newInstance}!native.c@{native.c}}
+\subsubsection[{java\_\-lang\_\-Class\_\-newInstance}]{\setlength{\rightskip}{0pt plus 5cm}static KNI\_\-RETURNTYPE\_\-OBJECT java\_\-lang\_\-Class\_\-newInstance (
+\begin{DoxyParamCaption}
+\item[{void}]{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily  [static]}}\label{native_8c_a5667f096c238108edc236bb58a3d3b43}
+Implementation of java.lang.Class.newInstance() 
+
+Definition at line 627 of file native.c.
+
+
+
+References bcl\_\-get\_\-class\_\-by\_\-id(), gc\_\-new(), interpreter(), JAVA\_\-LANG\_\-CLASS\_\-REF2PTR, KNI\_\-DeclareHandle, KNI\_\-EndHandlesAndReturnObject, KNI\_\-GetThisPointer(), KNI\_\-StartHandles, class\_\-t::method\_\-manager, mm\_\-get(), thread\_\-t::sp, and thread\_\-self().
+
+\index{native.c@{native.c}!java\_\-lang\_\-Object\_\-\_\-wait@{java\_\-lang\_\-Object\_\-\_\-wait}}
+\index{java\_\-lang\_\-Object\_\-\_\-wait@{java\_\-lang\_\-Object\_\-\_\-wait}!native.c@{native.c}}
+\subsubsection[{java\_\-lang\_\-Object\_\-\_\-wait}]{\setlength{\rightskip}{0pt plus 5cm}static KNI\_\-RETURNTYPE\_\-VOID java\_\-lang\_\-Object\_\-\_\-wait (
+\begin{DoxyParamCaption}
+\item[{void}]{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily  [static]}}\label{native_8c_a37c48dca6fc88fa5550095196217aa21}
+Implementation of java.lang.Object.\_\-wait() 
+
+Definition at line 939 of file native.c.
+
+
+
+References KNI\_\-DeclareHandle, KNI\_\-EndHandles, KNI\_\-GetParameterAsInt(), KNI\_\-GetParameterAsLong(), KNI\_\-GetThisPointer(), KNI\_\-ReturnVoid, KNI\_\-StartHandles, KNI\_\-ThrowNew(), and thread\_\-wait().
+
+\index{native.c@{native.c}!java\_\-lang\_\-Object\_\-getClass@{java\_\-lang\_\-Object\_\-getClass}}
+\index{java\_\-lang\_\-Object\_\-getClass@{java\_\-lang\_\-Object\_\-getClass}!native.c@{native.c}}
+\subsubsection[{java\_\-lang\_\-Object\_\-getClass}]{\setlength{\rightskip}{0pt plus 5cm}static KNI\_\-RETURNTYPE\_\-OBJECT java\_\-lang\_\-Object\_\-getClass (
+\begin{DoxyParamCaption}
+\item[{void}]{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily  [static]}}\label{native_8c_a11a85f7cd9f527b84c56522a3877426c}
+Implementation of java.lang.Object.getClass() 
+
+Definition at line 884 of file native.c.
+
+
+
+References class\_\-get\_\-object(), header\_\-get\_\-class(), KNI\_\-DeclareHandle, KNI\_\-EndHandlesAndReturnObject, KNI\_\-GetThisPointer(), and KNI\_\-StartHandles.
+
+\index{native.c@{native.c}!java\_\-lang\_\-Object\_\-notify@{java\_\-lang\_\-Object\_\-notify}}
+\index{java\_\-lang\_\-Object\_\-notify@{java\_\-lang\_\-Object\_\-notify}!native.c@{native.c}}
+\subsubsection[{java\_\-lang\_\-Object\_\-notify}]{\setlength{\rightskip}{0pt plus 5cm}static KNI\_\-RETURNTYPE\_\-VOID java\_\-lang\_\-Object\_\-notify (
+\begin{DoxyParamCaption}
+\item[{void}]{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily  [static]}}\label{native_8c_a52a8f56aa69585a96899e420719e5e10}
+Implementation of java.lang.Object.notify() 
+
+Definition at line 897 of file native.c.
+
+
+
+References KNI\_\-DeclareHandle, KNI\_\-EndHandles, KNI\_\-GetThisPointer(), KNI\_\-ReturnVoid, KNI\_\-StartHandles, KNI\_\-ThrowNew(), and thread\_\-notify().
+
+\index{native.c@{native.c}!java\_\-lang\_\-Object\_\-notifyAll@{java\_\-lang\_\-Object\_\-notifyAll}}
+\index{java\_\-lang\_\-Object\_\-notifyAll@{java\_\-lang\_\-Object\_\-notifyAll}!native.c@{native.c}}
+\subsubsection[{java\_\-lang\_\-Object\_\-notifyAll}]{\setlength{\rightskip}{0pt plus 5cm}static KNI\_\-RETURNTYPE\_\-VOID java\_\-lang\_\-Object\_\-notifyAll (
+\begin{DoxyParamCaption}
+\item[{void}]{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily  [static]}}\label{native_8c_a38b9d7807e0b5d90e63e591137d0355d}
+Implementation of java.lang.Object.notifyAll() 
+
+Definition at line 918 of file native.c.
+
+
+
+References KNI\_\-DeclareHandle, KNI\_\-EndHandles, KNI\_\-GetThisPointer(), KNI\_\-ReturnVoid, KNI\_\-StartHandles, KNI\_\-ThrowNew(), and thread\_\-notify().
+
+\index{native.c@{native.c}!java\_\-lang\_\-ref\_\-WeakReference\_\-addToWeakReferenceList@{java\_\-lang\_\-ref\_\-WeakReference\_\-addToWeakReferenceList}}
+\index{java\_\-lang\_\-ref\_\-WeakReference\_\-addToWeakReferenceList@{java\_\-lang\_\-ref\_\-WeakReference\_\-addToWeakReferenceList}!native.c@{native.c}}
+\subsubsection[{java\_\-lang\_\-ref\_\-WeakReference\_\-addToWeakReferenceList}]{\setlength{\rightskip}{0pt plus 5cm}static KNI\_\-RETURNTYPE\_\-VOID java\_\-lang\_\-ref\_\-WeakReference\_\-addToWeakReferenceList (
+\begin{DoxyParamCaption}
+\item[{void}]{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily  [static]}}\label{native_8c_a8a0bc82a3fda02672a45b6f865b50889}
+Implementation of java.lang.ref.WeakReference.addToWeakReferenceList() 
+
+Definition at line 1239 of file native.c.
+
+
+
+References gc\_\-register\_\-weak\_\-ref(), JAVA\_\-LANG\_\-REF\_\-WEAKREFERENCE\_\-REF2PTR, KNI\_\-DeclareHandle, KNI\_\-EndHandles, KNI\_\-GetParameterAsObject(), KNI\_\-ReturnVoid, and KNI\_\-StartHandles.
+
+\index{native.c@{native.c}!java\_\-lang\_\-Runtime\_\-exit@{java\_\-lang\_\-Runtime\_\-exit}}
+\index{java\_\-lang\_\-Runtime\_\-exit@{java\_\-lang\_\-Runtime\_\-exit}!native.c@{native.c}}
+\subsubsection[{java\_\-lang\_\-Runtime\_\-exit}]{\setlength{\rightskip}{0pt plus 5cm}static KNI\_\-RETURNTYPE\_\-VOID java\_\-lang\_\-Runtime\_\-exit (
+\begin{DoxyParamCaption}
+\item[{void}]{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily  [static]}}\label{native_8c_ae0f4f4ce3e6a9736285c20f87274b21f}
+Implementation of java.lang.Runtime.exit() 
+
+Definition at line 965 of file native.c.
+
+
+
+References KNI\_\-GetParameterAsInt().
+
+\index{native.c@{native.c}!java\_\-lang\_\-Runtime\_\-freeMemory@{java\_\-lang\_\-Runtime\_\-freeMemory}}
+\index{java\_\-lang\_\-Runtime\_\-freeMemory@{java\_\-lang\_\-Runtime\_\-freeMemory}!native.c@{native.c}}
+\subsubsection[{java\_\-lang\_\-Runtime\_\-freeMemory}]{\setlength{\rightskip}{0pt plus 5cm}static KNI\_\-RETURNTYPE\_\-LONG java\_\-lang\_\-Runtime\_\-freeMemory (
+\begin{DoxyParamCaption}
+\item[{void}]{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily  [static]}}\label{native_8c_abeee1da70c7cf26395293fe5f8a15a8c}
+Implementation of java.lang.Runtime.freeMemory() 
+
+Definition at line 972 of file native.c.
+
+
+
+References gc\_\-free\_\-memory(), and KNI\_\-ReturnLong.
+
+\index{native.c@{native.c}!java\_\-lang\_\-Runtime\_\-gc@{java\_\-lang\_\-Runtime\_\-gc}}
+\index{java\_\-lang\_\-Runtime\_\-gc@{java\_\-lang\_\-Runtime\_\-gc}!native.c@{native.c}}
+\subsubsection[{java\_\-lang\_\-Runtime\_\-gc}]{\setlength{\rightskip}{0pt plus 5cm}static KNI\_\-RETURNTYPE\_\-VOID java\_\-lang\_\-Runtime\_\-gc (
+\begin{DoxyParamCaption}
+\item[{void}]{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily  [static]}}\label{native_8c_ad3ffe0c8e64ae2da6ba3d98d69a0c4db}
+Implementation of java.lang.Runtime.gc() 
+
+Definition at line 986 of file native.c.
+
+
+
+References gc\_\-collect(), and KNI\_\-ReturnVoid.
+
+\index{native.c@{native.c}!java\_\-lang\_\-Runtime\_\-totalMemory@{java\_\-lang\_\-Runtime\_\-totalMemory}}
+\index{java\_\-lang\_\-Runtime\_\-totalMemory@{java\_\-lang\_\-Runtime\_\-totalMemory}!native.c@{native.c}}
+\subsubsection[{java\_\-lang\_\-Runtime\_\-totalMemory}]{\setlength{\rightskip}{0pt plus 5cm}static KNI\_\-RETURNTYPE\_\-LONG java\_\-lang\_\-Runtime\_\-totalMemory (
+\begin{DoxyParamCaption}
+\item[{void}]{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily  [static]}}\label{native_8c_a11e9a68dbf7b7625a0faf4fdcda83a8a}
+Implementation of java\_\-lang\_\-Runtime.totalMemory() 
+
+Definition at line 979 of file native.c.
+
+
+
+References gc\_\-total\_\-memory(), and KNI\_\-ReturnLong.
+
+\index{native.c@{native.c}!java\_\-lang\_\-String\_\-intern@{java\_\-lang\_\-String\_\-intern}}
+\index{java\_\-lang\_\-String\_\-intern@{java\_\-lang\_\-String\_\-intern}!native.c@{native.c}}
+\subsubsection[{java\_\-lang\_\-String\_\-intern}]{\setlength{\rightskip}{0pt plus 5cm}static KNI\_\-RETURNTYPE\_\-OBJECT java\_\-lang\_\-String\_\-intern (
+\begin{DoxyParamCaption}
+\item[{void}]{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily  [static]}}\label{native_8c_ad320abb1fa8c6607956f8128ff089513}
+Implementation of java.lang.String.intern() 
+
+Definition at line 994 of file native.c.
+
+
+
+References JAVA\_\-LANG\_\-STRING\_\-PTR2REF, JAVA\_\-LANG\_\-STRING\_\-REF2PTR, jstring\_\-intern(), KNI\_\-DeclareHandle, KNI\_\-EndHandlesAndReturnObject, KNI\_\-GetThisPointer(), and KNI\_\-StartHandles.
+
+\index{native.c@{native.c}!java\_\-lang\_\-System\_\-arraycopy@{java\_\-lang\_\-System\_\-arraycopy}}
+\index{java\_\-lang\_\-System\_\-arraycopy@{java\_\-lang\_\-System\_\-arraycopy}!native.c@{native.c}}
+\subsubsection[{java\_\-lang\_\-System\_\-arraycopy}]{\setlength{\rightskip}{0pt plus 5cm}static KNI\_\-RETURNTYPE\_\-VOID java\_\-lang\_\-System\_\-arraycopy (
+\begin{DoxyParamCaption}
+\item[{void}]{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily  [static]}}\label{native_8c_ab9e01375415f0c9d682b0a3f6ee054c4}
+Implementation of java.lang.System.arraycopy() 
+
+Definition at line 1021 of file native.c.
+
+
+
+References array\_\-elem\_\-size(), array\_\-get\_\-data(), arraycopy\_\-ref(), class\_\-is\_\-array(), class\_\-t::elem\_\-type, header\_\-get\_\-class(), KNI\_\-DeclareHandle, KNI\_\-EndHandles, KNI\_\-GetParameterAsInt(), KNI\_\-GetParameterAsObject(), KNI\_\-IsNullHandle(), KNI\_\-StartHandles, KNI\_\-ThrowNew(), array\_\-t::length, prim\_\-to\_\-array\_\-type(), PT\_\-BOOL, and PT\_\-REFERENCE.
+
+\index{native.c@{native.c}!java\_\-lang\_\-System\_\-currentTimeMillis@{java\_\-lang\_\-System\_\-currentTimeMillis}}
+\index{java\_\-lang\_\-System\_\-currentTimeMillis@{java\_\-lang\_\-System\_\-currentTimeMillis}!native.c@{native.c}}
+\subsubsection[{java\_\-lang\_\-System\_\-currentTimeMillis}]{\setlength{\rightskip}{0pt plus 5cm}static KNI\_\-RETURNTYPE\_\-LONG java\_\-lang\_\-System\_\-currentTimeMillis (
+\begin{DoxyParamCaption}
+\item[{void}]{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily  [static]}}\label{native_8c_a5398b25cac54378580ab53f5e28c9ea2}
+Implementation of java.lang.System.currentTimeMillis() 
+
+Definition at line 1009 of file native.c.
+
+
+
+References get\_\-time\_\-with\_\-offset(), and KNI\_\-ReturnLong.
+
+\index{native.c@{native.c}!java\_\-lang\_\-System\_\-identityHashCode@{java\_\-lang\_\-System\_\-identityHashCode}}
+\index{java\_\-lang\_\-System\_\-identityHashCode@{java\_\-lang\_\-System\_\-identityHashCode}!native.c@{native.c}}
+\subsubsection[{java\_\-lang\_\-System\_\-identityHashCode}]{\setlength{\rightskip}{0pt plus 5cm}static KNI\_\-RETURNTYPE\_\-INT java\_\-lang\_\-System\_\-identityHashCode (
+\begin{DoxyParamCaption}
+\item[{void}]{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily  [static]}}\label{native_8c_a44dceda760d1675e37534265bba18eba}
+Implementation of java.lang.System.identityHashCode() 
+
+Definition at line 1121 of file native.c.
+
+
+
+References KNI\_\-DeclareHandle, KNI\_\-EndHandles, KNI\_\-GetParameterAsObject(), KNI\_\-ReturnInt, and KNI\_\-StartHandles.
+
+\index{native.c@{native.c}!java\_\-lang\_\-Thread\_\-activeCount@{java\_\-lang\_\-Thread\_\-activeCount}}
+\index{java\_\-lang\_\-Thread\_\-activeCount@{java\_\-lang\_\-Thread\_\-activeCount}!native.c@{native.c}}
+\subsubsection[{java\_\-lang\_\-Thread\_\-activeCount}]{\setlength{\rightskip}{0pt plus 5cm}static KNI\_\-RETURNTYPE\_\-INT java\_\-lang\_\-Thread\_\-activeCount (
+\begin{DoxyParamCaption}
+\item[{void}]{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily  [static]}}\label{native_8c_a6a9d981b6651ffd4195fb10dc089aa70}
+Implementation of java.lang.Thread.activeCount() 
+
+Definition at line 1191 of file native.c.
+
+
+
+References KNI\_\-ReturnInt, and tm\_\-active().
+
+\index{native.c@{native.c}!java\_\-lang\_\-Thread\_\-currentThread@{java\_\-lang\_\-Thread\_\-currentThread}}
+\index{java\_\-lang\_\-Thread\_\-currentThread@{java\_\-lang\_\-Thread\_\-currentThread}!native.c@{native.c}}
+\subsubsection[{java\_\-lang\_\-Thread\_\-currentThread}]{\setlength{\rightskip}{0pt plus 5cm}static KNI\_\-RETURNTYPE\_\-OBJECT java\_\-lang\_\-Thread\_\-currentThread (
+\begin{DoxyParamCaption}
+\item[{void}]{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily  [static]}}\label{native_8c_ac2ddbfde220a50a80a4e9c6e5075d89d}
+Implementation of java.lang.Thread.currentThread() 
+
+Definition at line 1136 of file native.c.
+
+
+
+References KNI\_\-DeclareHandle, KNI\_\-EndHandlesAndReturnObject, KNI\_\-StartHandles, thread\_\-t::obj, and thread\_\-self().
+
+\index{native.c@{native.c}!java\_\-lang\_\-Thread\_\-interrupt@{java\_\-lang\_\-Thread\_\-interrupt}}
+\index{java\_\-lang\_\-Thread\_\-interrupt@{java\_\-lang\_\-Thread\_\-interrupt}!native.c@{native.c}}
+\subsubsection[{java\_\-lang\_\-Thread\_\-interrupt}]{\setlength{\rightskip}{0pt plus 5cm}static KNI\_\-RETURNTYPE\_\-VOID java\_\-lang\_\-Thread\_\-interrupt (
+\begin{DoxyParamCaption}
+\item[{void}]{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily  [static]}}\label{native_8c_ab1e68df986a0ada7445af4981b2e41bb}
+Implementation of java.lang.Thread.interrupt() 
+
+Definition at line 1214 of file native.c.
+
+
+
+References JAVA\_\-LANG\_\-THREAD\_\-REF2PTR, KNI\_\-DeclareHandle, KNI\_\-EndHandles, KNI\_\-GetThisPointer(), KNI\_\-ReturnVoid, KNI\_\-StartHandles, and thread\_\-interrupt().
+
+\index{native.c@{native.c}!java\_\-lang\_\-Thread\_\-join@{java\_\-lang\_\-Thread\_\-join}}
+\index{java\_\-lang\_\-Thread\_\-join@{java\_\-lang\_\-Thread\_\-join}!native.c@{native.c}}
+\subsubsection[{java\_\-lang\_\-Thread\_\-join}]{\setlength{\rightskip}{0pt plus 5cm}static KNI\_\-RETURNTYPE\_\-VOID java\_\-lang\_\-Thread\_\-join (
+\begin{DoxyParamCaption}
+\item[{void}]{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily  [static]}}\label{native_8c_a1d7e819abd488a0f8c2f80b1b029899b}
+Implementation of java.lang.Thread.join() 
+
+Definition at line 1198 of file native.c.
+
+
+
+References KNI\_\-DeclareHandle, KNI\_\-EndHandles, KNI\_\-GetThisPointer(), KNI\_\-ReturnVoid, KNI\_\-StartHandles, and thread\_\-join().
+
+\index{native.c@{native.c}!java\_\-lang\_\-Thread\_\-sleep@{java\_\-lang\_\-Thread\_\-sleep}}
+\index{java\_\-lang\_\-Thread\_\-sleep@{java\_\-lang\_\-Thread\_\-sleep}!native.c@{native.c}}
+\subsubsection[{java\_\-lang\_\-Thread\_\-sleep}]{\setlength{\rightskip}{0pt plus 5cm}static KNI\_\-RETURNTYPE\_\-VOID java\_\-lang\_\-Thread\_\-sleep (
+\begin{DoxyParamCaption}
+\item[{void}]{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily  [static]}}\label{native_8c_a2f2c0025fe96fcc2861d88df476c793d}
+Implementation of java.lang.Thread.sleep() 
+
+Definition at line 1155 of file native.c.
+
+
+
+References KNI\_\-GetParameterAsLong(), KNI\_\-ReturnVoid, KNI\_\-ThrowNew(), and thread\_\-sleep().
+
+\index{native.c@{native.c}!java\_\-lang\_\-Thread\_\-start@{java\_\-lang\_\-Thread\_\-start}}
+\index{java\_\-lang\_\-Thread\_\-start@{java\_\-lang\_\-Thread\_\-start}!native.c@{native.c}}
+\subsubsection[{java\_\-lang\_\-Thread\_\-start}]{\setlength{\rightskip}{0pt plus 5cm}static KNI\_\-RETURNTYPE\_\-VOID java\_\-lang\_\-Thread\_\-start (
+\begin{DoxyParamCaption}
+\item[{void}]{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily  [static]}}\label{native_8c_ad1e0fcb5212a9ab48e5ad613190743e9}
+Implementation of java.lang.Thread.start() 
+
+Definition at line 1170 of file native.c.
+
+
+
+References header\_\-get\_\-class(), KNI\_\-DeclareHandle, KNI\_\-EndHandles, KNI\_\-GetThisPointer(), KNI\_\-ReturnVoid, KNI\_\-StartHandles, class\_\-t::method\_\-manager, mm\_\-get(), and thread\_\-launch().
+
+\index{native.c@{native.c}!java\_\-lang\_\-Thread\_\-yield@{java\_\-lang\_\-Thread\_\-yield}}
+\index{java\_\-lang\_\-Thread\_\-yield@{java\_\-lang\_\-Thread\_\-yield}!native.c@{native.c}}
+\subsubsection[{java\_\-lang\_\-Thread\_\-yield}]{\setlength{\rightskip}{0pt plus 5cm}static KNI\_\-RETURNTYPE\_\-VOID java\_\-lang\_\-Thread\_\-yield (
+\begin{DoxyParamCaption}
+\item[{void}]{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily  [static]}}\label{native_8c_abaaae8dd996b195b53e8408c0b8a41c3}
+Implementation of java.lang.Thread.yield() 
+
+Definition at line 1147 of file native.c.
+
+
+
+References KNI\_\-ReturnVoid, and thread\_\-yield().
+
+\index{native.c@{native.c}!java\_\-lang\_\-Throwable\_\-printStackTrace@{java\_\-lang\_\-Throwable\_\-printStackTrace}}
+\index{java\_\-lang\_\-Throwable\_\-printStackTrace@{java\_\-lang\_\-Throwable\_\-printStackTrace}!native.c@{native.c}}
+\subsubsection[{java\_\-lang\_\-Throwable\_\-printStackTrace}]{\setlength{\rightskip}{0pt plus 5cm}static KNI\_\-RETURNTYPE\_\-VOID java\_\-lang\_\-Throwable\_\-printStackTrace (
+\begin{DoxyParamCaption}
+\item[{void}]{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily  [static]}}\label{native_8c_a177444546d40b19b83ac395a747a3054}
+Implementation of java.lang.Throwable.printStackTrace() 
+
+Definition at line 1231 of file native.c.
+
+
+
+References KNI\_\-ReturnVoid.
+
+\index{native.c@{native.c}!jelatine\_\-VMOutputStream\_\-write\_\-to\_\-stderr@{jelatine\_\-VMOutputStream\_\-write\_\-to\_\-stderr}}
+\index{jelatine\_\-VMOutputStream\_\-write\_\-to\_\-stderr@{jelatine\_\-VMOutputStream\_\-write\_\-to\_\-stderr}!native.c@{native.c}}
+\subsubsection[{jelatine\_\-VMOutputStream\_\-write\_\-to\_\-stderr}]{\setlength{\rightskip}{0pt plus 5cm}static KNI\_\-RETURNTYPE\_\-VOID jelatine\_\-VMOutputStream\_\-write\_\-to\_\-stderr (
+\begin{DoxyParamCaption}
+\item[{void}]{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily  [static]}}\label{native_8c_a3506b9f4dd0ba7afa0f7300f11adc0d2}
+Implementation of jelatine.VMOutputStream.write\_\-to\_\-stderr() 
+
+Definition at line 1270 of file native.c.
+
+
+
+References KNI\_\-GetParameterAsByte().
+
+\index{native.c@{native.c}!jelatine\_\-VMOutputStream\_\-write\_\-to\_\-stdout@{jelatine\_\-VMOutputStream\_\-write\_\-to\_\-stdout}}
+\index{jelatine\_\-VMOutputStream\_\-write\_\-to\_\-stdout@{jelatine\_\-VMOutputStream\_\-write\_\-to\_\-stdout}!native.c@{native.c}}
+\subsubsection[{jelatine\_\-VMOutputStream\_\-write\_\-to\_\-stdout}]{\setlength{\rightskip}{0pt plus 5cm}static KNI\_\-RETURNTYPE\_\-VOID jelatine\_\-VMOutputStream\_\-write\_\-to\_\-stdout (
+\begin{DoxyParamCaption}
+\item[{void}]{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily  [static]}}\label{native_8c_a5c3c29ecbd6d93971bbbbb925fd66e22}
+Implementation of jelatine.VMOutputStream.write\_\-to\_\-stdout() 
+
+Definition at line 1277 of file native.c.
+
+
+
+References KNI\_\-GetParameterAsByte().
+
+\index{native.c@{native.c}!native\_\-method\_\-lookup@{native\_\-method\_\-lookup}}
+\index{native\_\-method\_\-lookup@{native\_\-method\_\-lookup}!native.c@{native.c}}
+\subsubsection[{native\_\-method\_\-lookup}]{\setlength{\rightskip}{0pt plus 5cm}{\bf native\_\-proto\_\-t} native\_\-method\_\-lookup (
+\begin{DoxyParamCaption}
+\item[{const char $\ast$}]{ cl\_\-name, }
+\item[{const char $\ast$}]{ name, }
+\item[{const char $\ast$}]{ desc}
+\end{DoxyParamCaption}
+)}\label{native_8c_aba0ab19a35cd176c9a7c56fe91ee1826}
+Searches for a native method using the provided class name, method name and signature 
+\begin{DoxyParams}{Parameters}
+\item[{\em cl\_\-name}]Name of the class \item[{\em name}]Name of the method \item[{\em desc}]Descriptor of the method \end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+A pointer to a native method structure or NULL if none is found matching the specified criteria 
+\end{DoxyReturn}
+
+
+Definition at line 544 of file native.c.
+
+
+
+References native\_\-method\_\-desc\_\-t::class\_\-name, native\_\-method\_\-desc\_\-t::descriptor, and native\_\-method\_\-desc\_\-t::func.
+
+
+
+Referenced by method\_\-link\_\-native().
+
+
+
+\subsection{Variable Documentation}
+\index{native.c@{native.c}!native\_\-desc@{native\_\-desc}}
+\index{native\_\-desc@{native\_\-desc}!native.c@{native.c}}
+\subsubsection[{native\_\-desc}]{\setlength{\rightskip}{0pt plus 5cm}{\bf native\_\-method\_\-desc\_\-t} {\bf native\_\-desc}[$\,$]}\label{native_8c_a9658201ae91834c4c22e043785212e37}
+Names and descriptions of the native methods 
+
+Definition at line 168 of file native.c.
+

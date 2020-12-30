@@ -1,0 +1,430 @@
+\section{jelatine::VMTimeZone Class Reference}
+\label{classjelatine_1_1_v_m_time_zone}\index{jelatine::VMTimeZone@{jelatine::VMTimeZone}}
+Inheritance diagram for jelatine::VMTimeZone:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=2.000000cm]{classjelatine_1_1_v_m_time_zone}
+\end{center}
+\end{figure}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+{\bf VMTimeZone} (int rawOffset, {\bf String} id)
+\item 
+void {\bf setStartYear} (int year)
+\item 
+void {\bf setStartRule} (int month, int day, int dayOfWeek, int time)
+\item 
+void {\bf setStartRule} (int month, int day, int dayOfWeek, int time, boolean after)
+\item 
+void {\bf setStartRule} (int month, int day, int time)
+\item 
+void {\bf setEndRule} (int month, int day, int dayOfWeek, int time)
+\item 
+void {\bf setEndRule} (int month, int day, int dayOfWeek, int time, boolean after)
+\item 
+void {\bf setEndRule} (int month, int day, int time)
+\item 
+int {\bf getOffset} (int era, int year, int month, int day, int dayOfWeek, int millis)
+\item 
+int {\bf getRawOffset} ()
+\item 
+void {\bf setRawOffset} (int rawOffset)
+\item 
+int {\bf getDSTSavings} ()
+\item 
+void {\bf setDSTSavings} (int dstSavings)
+\item 
+boolean {\bf useDaylightTime} ()
+\item 
+synchronized int {\bf hashCode} ()
+\item 
+{\bf String} {\bf toString} ()
+\end{DoxyCompactItemize}
+\subsection*{Static Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+static final int {\bf STANDARD\_\-TIME} = 1
+\item 
+static final int {\bf WALL\_\-TIME} = 0
+\item 
+static final int {\bf UTC\_\-TIME} = 2
+\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+Internal VM implementation of the standard TimeZone 
+
+Definition at line 29 of file VMTimeZone.java.
+
+
+
+\subsection{Constructor \& Destructor Documentation}
+\index{jelatine::VMTimeZone@{jelatine::VMTimeZone}!VMTimeZone@{VMTimeZone}}
+\index{VMTimeZone@{VMTimeZone}!jelatine::VMTimeZone@{jelatine::VMTimeZone}}
+\subsubsection[{VMTimeZone}]{\setlength{\rightskip}{0pt plus 5cm}jelatine::VMTimeZone::VMTimeZone (
+\begin{DoxyParamCaption}
+\item[{int}]{ rawOffset, }
+\item[{{\bf String}}]{ id}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily  [inline]}}\label{classjelatine_1_1_v_m_time_zone_ab0744b583798f9af472d79b3f09024fe}
+Create a {\ttfamily SimpleTimeZone} with the given time offset from GMT and without daylight savings. 
+\begin{DoxyParams}{Parameters}
+\item[{\em rawOffset}]the time offset from GMT in milliseconds. \item[{\em id}]The identifier of this time zone. \end{DoxyParams}
+
+
+Definition at line 189 of file VMTimeZone.java.
+
+
+
+\subsection{Member Function Documentation}
+\index{jelatine::VMTimeZone@{jelatine::VMTimeZone}!getDSTSavings@{getDSTSavings}}
+\index{getDSTSavings@{getDSTSavings}!jelatine::VMTimeZone@{jelatine::VMTimeZone}}
+\subsubsection[{getDSTSavings}]{\setlength{\rightskip}{0pt plus 5cm}int jelatine::VMTimeZone::getDSTSavings (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily  [inline]}}\label{classjelatine_1_1_v_m_time_zone_ad5086b403f9d418d35cc19f6fbdad708}
+Gets the daylight savings offset. This is a positive offset in milliseconds with respect to standard time. Typically this is one hour, but for some time zones this may be half an our. \begin{DoxyReturn}{Returns}
+the daylight savings offset in milliseconds. 
+\end{DoxyReturn}
+
+
+Definition at line 556 of file VMTimeZone.java.
+
+\index{jelatine::VMTimeZone@{jelatine::VMTimeZone}!getOffset@{getOffset}}
+\index{getOffset@{getOffset}!jelatine::VMTimeZone@{jelatine::VMTimeZone}}
+\subsubsection[{getOffset}]{\setlength{\rightskip}{0pt plus 5cm}int jelatine::VMTimeZone::getOffset (
+\begin{DoxyParamCaption}
+\item[{int}]{ era, }
+\item[{int}]{ year, }
+\item[{int}]{ month, }
+\item[{int}]{ day, }
+\item[{int}]{ dayOfWeek, }
+\item[{int}]{ millis}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily  [inline, virtual]}}\label{classjelatine_1_1_v_m_time_zone_ad6ebe9060d8820ac90f2ff5261453254}
+Gets the time zone offset, for current date, modified in case of daylight savings. This is the offset to add to UTC to get the local time.
+
+In the standard JDK the results given by this method may result in inaccurate results at the end of February or the beginning of March. To avoid this, you should use Calendar instead: {\ttfamily offset = cal.get(Calendar.ZONE\_\-OFFSET) + cal.get(Calendar.DST\_\-OFFSET);}
+
+This version doesn't suffer this inaccuracy.
+
+The arguments don't follow the approach for setting start and end rules. The day must be a positive number and dayOfWeek must be a positive value from Calendar. dayOfWeek is redundant, but must match the other values or an inaccurate result may be returned.
+
+
+\begin{DoxyParams}{Parameters}
+\item[{\em era}]the era of the given date \item[{\em year}]the year of the given date \item[{\em month}]the month of the given date, 0 for January. \item[{\em day}]the day of month \item[{\em dayOfWeek}]the day of week; this must match the other fields. \item[{\em millis}]the millis in the day (in local standard time) \end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+the time zone offset in milliseconds. 
+\end{DoxyReturn}
+
+\begin{DoxyExceptions}{Exceptions}
+\item[{\em IllegalArgumentException}]if arguments are incorrect. \end{DoxyExceptions}
+
+
+Implements {\bf java::util::TimeZone} \doxyref{}{p.}{classjava_1_1util_1_1_time_zone_ad4f8eca476045f66b4b393543df1ba31}.
+
+
+
+Definition at line 487 of file VMTimeZone.java.
+
+\index{jelatine::VMTimeZone@{jelatine::VMTimeZone}!getRawOffset@{getRawOffset}}
+\index{getRawOffset@{getRawOffset}!jelatine::VMTimeZone@{jelatine::VMTimeZone}}
+\subsubsection[{getRawOffset}]{\setlength{\rightskip}{0pt plus 5cm}int jelatine::VMTimeZone::getRawOffset (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily  [inline, virtual]}}\label{classjelatine_1_1_v_m_time_zone_a33f78cf6f3a9d11adc6522321a3b43e0}
+Returns the time zone offset to GMT in milliseconds, ignoring day light savings. \begin{DoxyReturn}{Returns}
+the time zone offset. 
+\end{DoxyReturn}
+
+
+Implements {\bf java::util::TimeZone} \doxyref{}{p.}{classjava_1_1util_1_1_time_zone_adbc442f64e69f518bd67aa6dfdcb9f1c}.
+
+
+
+Definition at line 536 of file VMTimeZone.java.
+
+\index{jelatine::VMTimeZone@{jelatine::VMTimeZone}!hashCode@{hashCode}}
+\index{hashCode@{hashCode}!jelatine::VMTimeZone@{jelatine::VMTimeZone}}
+\subsubsection[{hashCode}]{\setlength{\rightskip}{0pt plus 5cm}synchronized int jelatine::VMTimeZone::hashCode (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily  [inline]}}\label{classjelatine_1_1_v_m_time_zone_a55b0085f14acac9095709abaf71ebd72}
+Generates the hashCode for the SimpleDateFormat object. It is the rawOffset, possibly, if useDaylightSavings is true, xored with startYear, startMonth, startDayOfWeekInMonth, ..., endTime. 
+
+Definition at line 716 of file VMTimeZone.java.
+
+\index{jelatine::VMTimeZone@{jelatine::VMTimeZone}!setDSTSavings@{setDSTSavings}}
+\index{setDSTSavings@{setDSTSavings}!jelatine::VMTimeZone@{jelatine::VMTimeZone}}
+\subsubsection[{setDSTSavings}]{\setlength{\rightskip}{0pt plus 5cm}void jelatine::VMTimeZone::setDSTSavings (
+\begin{DoxyParamCaption}
+\item[{int}]{ dstSavings}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily  [inline]}}\label{classjelatine_1_1_v_m_time_zone_a10cbbae29fa53f2ef258a94d8c47ce76}
+Sets the daylight savings offset. This is a positive offset in milliseconds with respect to standard time.
+
+
+\begin{DoxyParams}{Parameters}
+\item[{\em dstSavings}]the daylight savings offset in milliseconds. \end{DoxyParams}
+
+
+Definition at line 567 of file VMTimeZone.java.
+
+\index{jelatine::VMTimeZone@{jelatine::VMTimeZone}!setEndRule@{setEndRule}}
+\index{setEndRule@{setEndRule}!jelatine::VMTimeZone@{jelatine::VMTimeZone}}
+\subsubsection[{setEndRule}]{\setlength{\rightskip}{0pt plus 5cm}void jelatine::VMTimeZone::setEndRule (
+\begin{DoxyParamCaption}
+\item[{int}]{ month, }
+\item[{int}]{ day, }
+\item[{int}]{ time}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily  [inline]}}\label{classjelatine_1_1_v_m_time_zone_a963152163e377040c4fa08af76dde7e7}
+Sets the daylight savings end rule. You must also set the start rule with {\ttfamily setStartRule} or the result of getOffset is undefined. For the parameters see the ten-\/argument constructor above.
+
+
+\begin{DoxyParams}{Parameters}
+\item[{\em month}]The end month of daylight savings. \item[{\em day}]A day in month, or a day of week in month. \item[{\em time}]A time in millis in standard time. \end{DoxyParams}
+
+
+Definition at line 455 of file VMTimeZone.java.
+
+
+
+References setEndRule().
+
+\index{jelatine::VMTimeZone@{jelatine::VMTimeZone}!setEndRule@{setEndRule}}
+\index{setEndRule@{setEndRule}!jelatine::VMTimeZone@{jelatine::VMTimeZone}}
+\subsubsection[{setEndRule}]{\setlength{\rightskip}{0pt plus 5cm}void jelatine::VMTimeZone::setEndRule (
+\begin{DoxyParamCaption}
+\item[{int}]{ month, }
+\item[{int}]{ day, }
+\item[{int}]{ dayOfWeek, }
+\item[{int}]{ time}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily  [inline]}}\label{classjelatine_1_1_v_m_time_zone_a4aa30bf49f86d7c6fb80135a058a6318}
+Sets the daylight savings end rule. You must also set the start rule with {\ttfamily setStartRule} or the result of getOffset is undefined. For the parameters see the ten-\/argument constructor above.
+
+
+\begin{DoxyParams}{Parameters}
+\item[{\em month}]The end month of daylight savings. \item[{\em day}]A day in month, or a day of week in month. \item[{\em dayOfWeek}]A day of week, when daylight savings ends. \item[{\em time}]A time in millis in standard time. \end{DoxyParams}
+
+
+Definition at line 370 of file VMTimeZone.java.
+
+
+
+References STANDARD\_\-TIME, and WALL\_\-TIME.
+
+
+
+Referenced by setEndRule().
+
+\index{jelatine::VMTimeZone@{jelatine::VMTimeZone}!setEndRule@{setEndRule}}
+\index{setEndRule@{setEndRule}!jelatine::VMTimeZone@{jelatine::VMTimeZone}}
+\subsubsection[{setEndRule}]{\setlength{\rightskip}{0pt plus 5cm}void jelatine::VMTimeZone::setEndRule (
+\begin{DoxyParamCaption}
+\item[{int}]{ month, }
+\item[{int}]{ day, }
+\item[{int}]{ dayOfWeek, }
+\item[{int}]{ time, }
+\item[{boolean}]{ after}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily  [inline]}}\label{classjelatine_1_1_v_m_time_zone_aca393143d303d95fa8601cc9fdf49c2d}
+Sets the daylight savings end rule. You must also set the start rule with {\ttfamily setStartRule} or the result of getOffset is undefined. For the parameters see the ten-\/argument constructor above.
+
+Note that this API isn't incredibly well specified. It appears that the after flag must override the parameters, since normally, the day and dayofweek can select this. I.e., if day $<$ 0 and dayOfWeek $<$ 0, on or before mode is chosen. But if after == true, this implementation overrides the signs of the other arguments. And if dayOfWeek == 0, it falls back to the behavior in the other APIs. I guess this should be checked against Sun's implementation.
+
+
+\begin{DoxyParams}{Parameters}
+\item[{\em month}]The end month of daylight savings. \item[{\em day}]A day in month, or a day of week in month. \item[{\em dayOfWeek}]A day of week, when daylight savings ends. \item[{\em time}]A time in millis in standard time. \item[{\em after}]If true, day and dayOfWeek specify first day of week on or after day, else first day of week on or before. \end{DoxyParams}
+
+
+Definition at line 414 of file VMTimeZone.java.
+
+
+
+References STANDARD\_\-TIME, and WALL\_\-TIME.
+
+\index{jelatine::VMTimeZone@{jelatine::VMTimeZone}!setRawOffset@{setRawOffset}}
+\index{setRawOffset@{setRawOffset}!jelatine::VMTimeZone@{jelatine::VMTimeZone}}
+\subsubsection[{setRawOffset}]{\setlength{\rightskip}{0pt plus 5cm}void jelatine::VMTimeZone::setRawOffset (
+\begin{DoxyParamCaption}
+\item[{int}]{ rawOffset}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily  [inline]}}\label{classjelatine_1_1_v_m_time_zone_acc8bf938462fc8df373d965a1d19ba6e}
+Sets the standard time zone offset to GMT. 
+\begin{DoxyParams}{Parameters}
+\item[{\em rawOffset}]The time offset from GMT in milliseconds. \end{DoxyParams}
+
+
+Definition at line 545 of file VMTimeZone.java.
+
+\index{jelatine::VMTimeZone@{jelatine::VMTimeZone}!setStartRule@{setStartRule}}
+\index{setStartRule@{setStartRule}!jelatine::VMTimeZone@{jelatine::VMTimeZone}}
+\subsubsection[{setStartRule}]{\setlength{\rightskip}{0pt plus 5cm}void jelatine::VMTimeZone::setStartRule (
+\begin{DoxyParamCaption}
+\item[{int}]{ month, }
+\item[{int}]{ day, }
+\item[{int}]{ dayOfWeek, }
+\item[{int}]{ time}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily  [inline]}}\label{classjelatine_1_1_v_m_time_zone_abadad209f39a660fb5da673c0c1c844a}
+Sets the daylight savings start rule. You must also set the end rule with {\ttfamily setEndRule} or the result of getOffset is undefined. For the parameters see the ten-\/argument constructor above.
+
+
+\begin{DoxyParams}{Parameters}
+\item[{\em month}]The month where daylight savings start, zero based. You should use the constants in Calendar. \item[{\em day}]A day of month or day of week in month. \item[{\em dayOfWeek}]The day of week where daylight savings start. \item[{\em time}]The time in milliseconds standard time where daylight savings start. \end{DoxyParams}
+
+\begin{DoxyExceptions}{Exceptions}
+\item[{\em IllegalArgumentException}]if parameters are out of range. \end{DoxyExceptions}
+
+
+Definition at line 268 of file VMTimeZone.java.
+
+
+
+References STANDARD\_\-TIME, and WALL\_\-TIME.
+
+
+
+Referenced by setStartRule().
+
+\index{jelatine::VMTimeZone@{jelatine::VMTimeZone}!setStartRule@{setStartRule}}
+\index{setStartRule@{setStartRule}!jelatine::VMTimeZone@{jelatine::VMTimeZone}}
+\subsubsection[{setStartRule}]{\setlength{\rightskip}{0pt plus 5cm}void jelatine::VMTimeZone::setStartRule (
+\begin{DoxyParamCaption}
+\item[{int}]{ month, }
+\item[{int}]{ day, }
+\item[{int}]{ time}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily  [inline]}}\label{classjelatine_1_1_v_m_time_zone_ab4906297b8dcf7b28ffa2d550f4f3ff2}
+Sets the daylight savings start rule. You must also set the end rule with {\ttfamily setEndRule} or the result of getOffset is undefined. For the parameters see the ten-\/argument constructor above.
+
+
+\begin{DoxyParams}{Parameters}
+\item[{\em month}]The month where daylight savings start, zero based. You should use the constants in Calendar. \item[{\em day}]A day of month or day of week in month. \item[{\em time}]The time in milliseconds standard time where daylight savings start. \end{DoxyParams}
+
+
+Definition at line 354 of file VMTimeZone.java.
+
+
+
+References setStartRule().
+
+\index{jelatine::VMTimeZone@{jelatine::VMTimeZone}!setStartRule@{setStartRule}}
+\index{setStartRule@{setStartRule}!jelatine::VMTimeZone@{jelatine::VMTimeZone}}
+\subsubsection[{setStartRule}]{\setlength{\rightskip}{0pt plus 5cm}void jelatine::VMTimeZone::setStartRule (
+\begin{DoxyParamCaption}
+\item[{int}]{ month, }
+\item[{int}]{ day, }
+\item[{int}]{ dayOfWeek, }
+\item[{int}]{ time, }
+\item[{boolean}]{ after}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily  [inline]}}\label{classjelatine_1_1_v_m_time_zone_a80fccfdedb114523f55a3db6bc932efb}
+Sets the daylight savings start rule. You must also set the end rule with {\ttfamily setEndRule} or the result of getOffset is undefined. For the parameters see the ten-\/argument constructor above.
+
+Note that this API isn't incredibly well specified. It appears that the after flag must override the parameters, since normally, the day and dayofweek can select this. I.e., if day $<$ 0 and dayOfWeek $<$ 0, on or before mode is chosen. But if after == true, this implementation overrides the signs of the other arguments. And if dayOfWeek == 0, it falls back to the behavior in the other APIs. I guess this should be checked against Sun's implementation.
+
+
+\begin{DoxyParams}{Parameters}
+\item[{\em month}]The month where daylight savings start, zero based. You should use the constants in Calendar. \item[{\em day}]A day of month or day of week in month. \item[{\em dayOfWeek}]The day of week where daylight savings start. \item[{\em time}]The time in milliseconds standard time where daylight savings start. \item[{\em after}]If true, day and dayOfWeek specify first day of week on or after day, else first day of week on or before. \end{DoxyParams}
+
+
+Definition at line 312 of file VMTimeZone.java.
+
+
+
+References STANDARD\_\-TIME, and WALL\_\-TIME.
+
+\index{jelatine::VMTimeZone@{jelatine::VMTimeZone}!setStartYear@{setStartYear}}
+\index{setStartYear@{setStartYear}!jelatine::VMTimeZone@{jelatine::VMTimeZone}}
+\subsubsection[{setStartYear}]{\setlength{\rightskip}{0pt plus 5cm}void jelatine::VMTimeZone::setStartYear (
+\begin{DoxyParamCaption}
+\item[{int}]{ year}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily  [inline]}}\label{classjelatine_1_1_v_m_time_zone_a0d12d4611f3db0cdb1f47c9d17f8b1bd}
+Sets the first year, where daylight savings applies. The daylight savings rule never apply for years in the BC era. Note that this is gregorian calendar specific. 
+\begin{DoxyParams}{Parameters}
+\item[{\em year}]the start year. \end{DoxyParams}
+
+
+Definition at line 202 of file VMTimeZone.java.
+
+\index{jelatine::VMTimeZone@{jelatine::VMTimeZone}!toString@{toString}}
+\index{toString@{toString}!jelatine::VMTimeZone@{jelatine::VMTimeZone}}
+\subsubsection[{toString}]{\setlength{\rightskip}{0pt plus 5cm}{\bf String} jelatine::VMTimeZone::toString (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily  [inline]}}\label{classjelatine_1_1_v_m_time_zone_ae7909202a696ffbad849b85fe87718f5}
+Returns a string representation of this SimpleTimeZone object. \begin{DoxyReturn}{Returns}
+a string representation of this SimpleTimeZone object. 
+\end{DoxyReturn}
+
+
+Definition at line 728 of file VMTimeZone.java.
+
+
+
+References java::util::TimeZone::getID().
+
+\index{jelatine::VMTimeZone@{jelatine::VMTimeZone}!useDaylightTime@{useDaylightTime}}
+\index{useDaylightTime@{useDaylightTime}!jelatine::VMTimeZone@{jelatine::VMTimeZone}}
+\subsubsection[{useDaylightTime}]{\setlength{\rightskip}{0pt plus 5cm}boolean jelatine::VMTimeZone::useDaylightTime (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily  [inline, virtual]}}\label{classjelatine_1_1_v_m_time_zone_a53ca7ae649c8ce43937cb1e2005d660b}
+Returns if this time zone uses daylight savings time. \begin{DoxyReturn}{Returns}
+true, if we use daylight savings time, false otherwise. 
+\end{DoxyReturn}
+
+
+Implements {\bf java::util::TimeZone} \doxyref{}{p.}{classjava_1_1util_1_1_time_zone_ae7869f57c67c330fd2d3e9de5144d4ed}.
+
+
+
+Definition at line 579 of file VMTimeZone.java.
+
+
+
+\subsection{Field Documentation}
+\index{jelatine::VMTimeZone@{jelatine::VMTimeZone}!STANDARD\_\-TIME@{STANDARD\_\-TIME}}
+\index{STANDARD\_\-TIME@{STANDARD\_\-TIME}!jelatine::VMTimeZone@{jelatine::VMTimeZone}}
+\subsubsection[{STANDARD\_\-TIME}]{\setlength{\rightskip}{0pt plus 5cm}final int {\bf jelatine::VMTimeZone::STANDARD\_\-TIME} = 1\hspace{0.3cm}{\ttfamily  [static]}}\label{classjelatine_1_1_v_m_time_zone_aaf08e2c95d2cc0a0cbb185c48ab40417}
+Constant to indicate that start and end times are specified in standard time, without adjusting for daylight savings. 
+
+Definition at line 170 of file VMTimeZone.java.
+
+
+
+Referenced by setEndRule(), and setStartRule().
+
+\index{jelatine::VMTimeZone@{jelatine::VMTimeZone}!UTC\_\-TIME@{UTC\_\-TIME}}
+\index{UTC\_\-TIME@{UTC\_\-TIME}!jelatine::VMTimeZone@{jelatine::VMTimeZone}}
+\subsubsection[{UTC\_\-TIME}]{\setlength{\rightskip}{0pt plus 5cm}final int {\bf jelatine::VMTimeZone::UTC\_\-TIME} = 2\hspace{0.3cm}{\ttfamily  [static]}}\label{classjelatine_1_1_v_m_time_zone_afaef1b7d443f6cea829b362d9b36c56d}
+Constant to indicate that start and end times are specified in UTC. 
+
+Definition at line 181 of file VMTimeZone.java.
+
+\index{jelatine::VMTimeZone@{jelatine::VMTimeZone}!WALL\_\-TIME@{WALL\_\-TIME}}
+\index{WALL\_\-TIME@{WALL\_\-TIME}!jelatine::VMTimeZone@{jelatine::VMTimeZone}}
+\subsubsection[{WALL\_\-TIME}]{\setlength{\rightskip}{0pt plus 5cm}final int {\bf jelatine::VMTimeZone::WALL\_\-TIME} = 0\hspace{0.3cm}{\ttfamily  [static]}}\label{classjelatine_1_1_v_m_time_zone_a7dc66dc73a307f13f8550b281f0ef573}
+Constant to indicate that start and end times are specified in wall time, adjusting for daylight savings. This is the default. 
+
+Definition at line 176 of file VMTimeZone.java.
+
+
+
+Referenced by setEndRule(), and setStartRule().
+
+
+
+The documentation for this class was generated from the following file:\begin{DoxyCompactItemize}
+\item 
+src/classpath/jelatine/VMTimeZone.java\end{DoxyCompactItemize}

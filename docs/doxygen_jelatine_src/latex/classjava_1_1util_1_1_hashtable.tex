@@ -1,0 +1,470 @@
+\section{java::util::Hashtable Class Reference}
+\label{classjava_1_1util_1_1_hashtable}\index{java::util::Hashtable@{java::util::Hashtable}}
+\subsection*{Data Structures}
+\begin{DoxyCompactItemize}
+\item 
+class {\bfseries Enumerator}
+\item 
+class {\bfseries HashEntry}
+\end{DoxyCompactItemize}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+{\bf Hashtable} ()
+\item 
+{\bf Hashtable} (int initialCapacity)
+\item 
+synchronized int {\bf size} ()
+\item 
+synchronized boolean {\bf isEmpty} ()
+\item 
+{\bf Enumeration} {\bf keys} ()
+\item 
+{\bf Enumeration} {\bf elements} ()
+\item 
+synchronized boolean {\bf contains} (Object value)
+\item 
+synchronized boolean {\bf containsKey} (Object key)
+\item 
+synchronized Object {\bf get} (Object key)
+\item 
+synchronized Object {\bf put} (Object key, Object value)
+\item 
+synchronized Object {\bf remove} (Object key)
+\item 
+synchronized void {\bf clear} ()
+\item 
+synchronized String {\bf toString} ()
+\end{DoxyCompactItemize}
+\subsection*{Protected Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+void {\bf rehash} ()
+\end{DoxyCompactItemize}
+\subsection*{Package Attributes}
+\begin{DoxyCompactItemize}
+\item 
+HashEntry[$\,$] {\bf buckets}
+\item 
+int {\bf size}
+\end{DoxyCompactItemize}
+\subsection*{Static Package Attributes}
+\begin{DoxyCompactItemize}
+\item 
+static final int {\bf KEYS} = 0
+\item 
+static final int {\bf VALUES} = 1
+\item 
+static final int {\bf ENTRIES} = 2
+\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+A class which implements a hashtable data structure. 
+
+This implementation of \doxyref{Hashtable}{p.}{classjava_1_1util_1_1_hashtable} uses a hash-\/bucket approach. That is: linear probing and rehashing is avoided; instead, each hashed value maps to a simple linked-\/list which, in the best case, only has one node. Assuming a large enough table, low enough load factor, and / or well implemented hashCode() methods, \doxyref{Hashtable}{p.}{classjava_1_1util_1_1_hashtable} should provide O(1) insertion, deletion, and searching of keys. \doxyref{Hashtable}{p.}{classjava_1_1util_1_1_hashtable} is O(n) in the worst case for all of these (if all keys hash to the same bucket). 
+
+This is a JDK-\/1.2 compliant implementation of \doxyref{Hashtable}{p.}{classjava_1_1util_1_1_hashtable}. As such, it belongs, partially, to the Collections framework (in that it implements Map). For backwards compatibility, it inherits from the obsolete and utterly useless Dictionary class. 
+
+Being a hybrid of old and new, \doxyref{Hashtable}{p.}{classjava_1_1util_1_1_hashtable} has methods which provide redundant capability, but with subtle and even crucial differences. For example, one can iterate over various aspects of a \doxyref{Hashtable}{p.}{classjava_1_1util_1_1_hashtable} with either an Iterator (which is the JDK-\/1.2 way of doing things) or with an \doxyref{Enumeration}{p.}{interfacejava_1_1util_1_1_enumeration}. The latter can end up in an undefined state if the \doxyref{Hashtable}{p.}{classjava_1_1util_1_1_hashtable} changes while the \doxyref{Enumeration}{p.}{interfacejava_1_1util_1_1_enumeration} is open. 
+
+Unlike HashMap, \doxyref{Hashtable}{p.}{classjava_1_1util_1_1_hashtable} does not accept `null' as a key value. Also, all accesses are synchronized: in a single thread environment, this is expensive, but in a multi-\/thread environment, this saves you the effort of extra synchronization. However, the old-\/style enumerators are not synchronized, because they can lead to unspecified behavior even if they were synchronized. You have been warned. 
+
+The iterators are {\itshape fail-\/fast\/}, meaning that any structural modification, except for {\ttfamily \doxyref{remove()}{p.}{classjava_1_1util_1_1_hashtable_a21678f63f9be4bc9fc11eaa1fe972c2c}} called on the iterator itself, cause the iterator to throw a {\ttfamily ConcurrentModificationException} rather than exhibit non-\/deterministic behavior.
+
+\begin{DoxyAuthor}{Author}
+Jon Zeppieri 
+
+Warren Levy 
+
+Bryce McKinlay 
+
+Eric Blake ({\tt ebb9@email.byu.edu}) 
+\end{DoxyAuthor}
+
+
+Definition at line 91 of file Hashtable.java.
+
+
+
+\subsection{Constructor \& Destructor Documentation}
+\index{java::util::Hashtable@{java::util::Hashtable}!Hashtable@{Hashtable}}
+\index{Hashtable@{Hashtable}!java::util::Hashtable@{java::util::Hashtable}}
+\subsubsection[{Hashtable}]{\setlength{\rightskip}{0pt plus 5cm}java::util::Hashtable::Hashtable (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily  [inline]}}\label{classjava_1_1util_1_1_hashtable_a0d3868e9dd31d51a3c011266296ac38f}
+Construct a new \doxyref{Hashtable}{p.}{classjava_1_1util_1_1_hashtable} with the default capacity (11) and the default load factor (0.75). 
+
+Definition at line 251 of file Hashtable.java.
+
+\index{java::util::Hashtable@{java::util::Hashtable}!Hashtable@{Hashtable}}
+\index{Hashtable@{Hashtable}!java::util::Hashtable@{java::util::Hashtable}}
+\subsubsection[{Hashtable}]{\setlength{\rightskip}{0pt plus 5cm}java::util::Hashtable::Hashtable (
+\begin{DoxyParamCaption}
+\item[{int}]{ initialCapacity}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily  [inline]}}\label{classjava_1_1util_1_1_hashtable_ae2afbafb28c4b2ddf6fb96f1be19d436}
+Construct a new \doxyref{Hashtable}{p.}{classjava_1_1util_1_1_hashtable} with a specific inital capacity and default load factor of 0.75.
+
+
+\begin{DoxyParams}{Parameters}
+\item[{\em initialCapacity}]the initial capacity of this \doxyref{Hashtable}{p.}{classjava_1_1util_1_1_hashtable} ($>$= 0) \end{DoxyParams}
+
+\begin{DoxyExceptions}{Exceptions}
+\item[{\em IllegalArgumentException}]if (initialCapacity $<$ 0) \end{DoxyExceptions}
+
+
+Definition at line 263 of file Hashtable.java.
+
+
+
+References buckets, and size().
+
+
+
+\subsection{Member Function Documentation}
+\index{java::util::Hashtable@{java::util::Hashtable}!clear@{clear}}
+\index{clear@{clear}!java::util::Hashtable@{java::util::Hashtable}}
+\subsubsection[{clear}]{\setlength{\rightskip}{0pt plus 5cm}synchronized void java::util::Hashtable::clear (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily  [inline]}}\label{classjava_1_1util_1_1_hashtable_a5ffddf4c81212adcd9f12f948fc9b9a6}
+Clears the hashtable so it has no keys. This is O(1). 
+
+Definition at line 536 of file Hashtable.java.
+
+
+
+References buckets, and size().
+
+\index{java::util::Hashtable@{java::util::Hashtable}!contains@{contains}}
+\index{contains@{contains}!java::util::Hashtable@{java::util::Hashtable}}
+\subsubsection[{contains}]{\setlength{\rightskip}{0pt plus 5cm}synchronized boolean java::util::Hashtable::contains (
+\begin{DoxyParamCaption}
+\item[{Object}]{ value}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily  [inline]}}\label{classjava_1_1util_1_1_hashtable_ad24c0bdf97e6a849960a65e5a01955ed}
+Returns true if this \doxyref{Hashtable}{p.}{classjava_1_1util_1_1_hashtable} contains a value {\ttfamily o}, such that {\ttfamily o.equals(value)}. This is the same as {\ttfamily containsValue()}, and is O(n). 
+
+
+\begin{DoxyParams}{Parameters}
+\item[{\em value}]the value to search for in this \doxyref{Hashtable}{p.}{classjava_1_1util_1_1_hashtable} \end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+true if at least one key maps to the value 
+\end{DoxyReturn}
+
+\begin{DoxyExceptions}{Exceptions}
+\item[{\em NullPointerException}]if {\ttfamily value} is null \end{DoxyExceptions}
+
+
+Definition at line 329 of file Hashtable.java.
+
+
+
+References buckets.
+
+\index{java::util::Hashtable@{java::util::Hashtable}!containsKey@{containsKey}}
+\index{containsKey@{containsKey}!java::util::Hashtable@{java::util::Hashtable}}
+\subsubsection[{containsKey}]{\setlength{\rightskip}{0pt plus 5cm}synchronized boolean java::util::Hashtable::containsKey (
+\begin{DoxyParamCaption}
+\item[{Object}]{ key}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily  [inline]}}\label{classjava_1_1util_1_1_hashtable_a7c20dd81a155ef7643ef9b67cf2a3a39}
+Returns true if the supplied object {\ttfamily equals()} a key in this \doxyref{Hashtable}{p.}{classjava_1_1util_1_1_hashtable}.
+
+
+\begin{DoxyParams}{Parameters}
+\item[{\em key}]the key to search for in this \doxyref{Hashtable}{p.}{classjava_1_1util_1_1_hashtable} \end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+true if the key is in the table 
+\end{DoxyReturn}
+
+\begin{DoxyExceptions}{Exceptions}
+\item[{\em NullPointerException}]if key is null \end{DoxyExceptions}
+
+
+Definition at line 359 of file Hashtable.java.
+
+
+
+References buckets.
+
+\index{java::util::Hashtable@{java::util::Hashtable}!elements@{elements}}
+\index{elements@{elements}!java::util::Hashtable@{java::util::Hashtable}}
+\subsubsection[{elements}]{\setlength{\rightskip}{0pt plus 5cm}{\bf Enumeration} java::util::Hashtable::elements (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily  [inline]}}\label{classjava_1_1util_1_1_hashtable_a66e72bb238ec8973c0708a1fecf59734}
+Return an enumeration of the values of this table. There's no point in synchronizing this, as you have already been warned that the enumeration is not specified to be thread-\/safe.
+
+\begin{DoxyReturn}{Returns}
+the values 
+\end{DoxyReturn}
+
+
+Definition at line 314 of file Hashtable.java.
+
+
+
+References VALUES.
+
+\index{java::util::Hashtable@{java::util::Hashtable}!get@{get}}
+\index{get@{get}!java::util::Hashtable@{java::util::Hashtable}}
+\subsubsection[{get}]{\setlength{\rightskip}{0pt plus 5cm}synchronized Object java::util::Hashtable::get (
+\begin{DoxyParamCaption}
+\item[{Object}]{ key}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily  [inline]}}\label{classjava_1_1util_1_1_hashtable_a6a567e790ef72a800cede7d80cafe35b}
+Return the value in this \doxyref{Hashtable}{p.}{classjava_1_1util_1_1_hashtable} associated with the supplied key, or {\ttfamily null} if the key maps to nothing.
+
+
+\begin{DoxyParams}{Parameters}
+\item[{\em key}]the key for which to fetch an associated value \end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+what the key maps to, if present 
+\end{DoxyReturn}
+
+\begin{DoxyExceptions}{Exceptions}
+\item[{\em NullPointerException}]if key is null \end{DoxyExceptions}
+\begin{DoxySeeAlso}{See also}
+\doxyref{put(Object, Object)}{p.}{classjava_1_1util_1_1_hashtable_a5881c9e9e01e2d827470e160eb69a2ca} 
+
+\doxyref{containsKey(Object)}{p.}{classjava_1_1util_1_1_hashtable_a7c20dd81a155ef7643ef9b67cf2a3a39} 
+\end{DoxySeeAlso}
+
+
+Definition at line 384 of file Hashtable.java.
+
+
+
+References buckets.
+
+\index{java::util::Hashtable@{java::util::Hashtable}!isEmpty@{isEmpty}}
+\index{isEmpty@{isEmpty}!java::util::Hashtable@{java::util::Hashtable}}
+\subsubsection[{isEmpty}]{\setlength{\rightskip}{0pt plus 5cm}synchronized boolean java::util::Hashtable::isEmpty (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily  [inline]}}\label{classjava_1_1util_1_1_hashtable_ab145c0717e2be61ca8a7f660cc495c17}
+Returns true if there are no key-\/value mappings currently in this table. \begin{DoxyReturn}{Returns}
+{\ttfamily \doxyref{size()}{p.}{classjava_1_1util_1_1_hashtable_a4072026d59e93a7d6e98a3c93d7b3ab7} == 0} 
+\end{DoxyReturn}
+
+
+Definition at line 290 of file Hashtable.java.
+
+
+
+References size().
+
+\index{java::util::Hashtable@{java::util::Hashtable}!keys@{keys}}
+\index{keys@{keys}!java::util::Hashtable@{java::util::Hashtable}}
+\subsubsection[{keys}]{\setlength{\rightskip}{0pt plus 5cm}{\bf Enumeration} java::util::Hashtable::keys (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily  [inline]}}\label{classjava_1_1util_1_1_hashtable_a64abf7a64eab703e188839c63ca84294}
+Return an enumeration of the keys of this table. There's no point in synchronizing this, as you have already been warned that the enumeration is not specified to be thread-\/safe.
+
+\begin{DoxyReturn}{Returns}
+the keys 
+\end{DoxyReturn}
+
+
+Definition at line 302 of file Hashtable.java.
+
+
+
+References KEYS.
+
+\index{java::util::Hashtable@{java::util::Hashtable}!put@{put}}
+\index{put@{put}!java::util::Hashtable@{java::util::Hashtable}}
+\subsubsection[{put}]{\setlength{\rightskip}{0pt plus 5cm}synchronized Object java::util::Hashtable::put (
+\begin{DoxyParamCaption}
+\item[{Object}]{ key, }
+\item[{Object}]{ value}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily  [inline]}}\label{classjava_1_1util_1_1_hashtable_a5881c9e9e01e2d827470e160eb69a2ca}
+Puts the supplied value into the Map, mapped by the supplied key. Neither parameter may be null. The value may be retrieved by any object which {\ttfamily equals()} this key.
+
+
+\begin{DoxyParams}{Parameters}
+\item[{\em key}]the key used to locate the value \item[{\em value}]the value to be stored in the table \end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+the prior mapping of the key, or null if there was none 
+\end{DoxyReturn}
+
+\begin{DoxyExceptions}{Exceptions}
+\item[{\em NullPointerException}]if key or value is null \end{DoxyExceptions}
+\begin{DoxySeeAlso}{See also}
+\doxyref{get(Object)}{p.}{classjava_1_1util_1_1_hashtable_a6a567e790ef72a800cede7d80cafe35b} 
+
+Object::equals(Object) 
+\end{DoxySeeAlso}
+
+
+Definition at line 459 of file Hashtable.java.
+
+
+
+References buckets, rehash(), and size().
+
+
+
+Referenced by jelatine::cldc::io::URL::getParamsMap().
+
+\index{java::util::Hashtable@{java::util::Hashtable}!rehash@{rehash}}
+\index{rehash@{rehash}!java::util::Hashtable@{java::util::Hashtable}}
+\subsubsection[{rehash}]{\setlength{\rightskip}{0pt plus 5cm}void java::util::Hashtable::rehash (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily  [inline, protected]}}\label{classjava_1_1util_1_1_hashtable_af84d85b3f71191b5fdf4a623661f05d8}
+Increases the size of the \doxyref{Hashtable}{p.}{classjava_1_1util_1_1_hashtable} and rehashes all keys to new array indices; this is called when the addition of a new value would cause \doxyref{size()}{p.}{classjava_1_1util_1_1_hashtable_a4072026d59e93a7d6e98a3c93d7b3ab7} $>$ threshold. Note that the existing Entry objects are reused in the new hash table. 
+
+This is not specified, but the new size is twice the current size plus one; this number is not always prime, unfortunately. This implementation is not synchronized, as it is only invoked from synchronized methods. 
+
+Definition at line 411 of file Hashtable.java.
+
+
+
+References buckets.
+
+
+
+Referenced by put().
+
+\index{java::util::Hashtable@{java::util::Hashtable}!remove@{remove}}
+\index{remove@{remove}!java::util::Hashtable@{java::util::Hashtable}}
+\subsubsection[{remove}]{\setlength{\rightskip}{0pt plus 5cm}synchronized Object java::util::Hashtable::remove (
+\begin{DoxyParamCaption}
+\item[{Object}]{ key}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily  [inline]}}\label{classjava_1_1util_1_1_hashtable_a21678f63f9be4bc9fc11eaa1fe972c2c}
+Removes from the table and returns the value which is mapped by the supplied key. If the key maps to nothing, then the table remains unchanged, and {\ttfamily null} is returned.
+
+
+\begin{DoxyParams}{Parameters}
+\item[{\em key}]the key used to locate the value to remove \end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+whatever the key mapped to, if present 
+\end{DoxyReturn}
+
+
+Definition at line 506 of file Hashtable.java.
+
+
+
+References buckets, and size().
+
+\index{java::util::Hashtable@{java::util::Hashtable}!size@{size}}
+\index{size@{size}!java::util::Hashtable@{java::util::Hashtable}}
+\subsubsection[{size}]{\setlength{\rightskip}{0pt plus 5cm}synchronized int {\bf java::util::Hashtable::size} (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily  [inline]}}\label{classjava_1_1util_1_1_hashtable_a4072026d59e93a7d6e98a3c93d7b3ab7}
+Returns the number of key-\/value mappings currently in this hashtable. \begin{DoxyReturn}{Returns}
+the size 
+\end{DoxyReturn}
+
+
+Definition at line 281 of file Hashtable.java.
+
+
+
+References size.
+
+
+
+Referenced by clear(), Hashtable(), isEmpty(), put(), remove(), and toString().
+
+\index{java::util::Hashtable@{java::util::Hashtable}!toString@{toString}}
+\index{toString@{toString}!java::util::Hashtable@{java::util::Hashtable}}
+\subsubsection[{toString}]{\setlength{\rightskip}{0pt plus 5cm}synchronized String java::util::Hashtable::toString (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily  [inline]}}\label{classjava_1_1util_1_1_hashtable_a570a850ee1f01e91b1a723804627b3a8}
+Converts this \doxyref{Hashtable}{p.}{classjava_1_1util_1_1_hashtable} to a String, surrounded by braces, and with key/value pairs listed with an equals sign between, separated by a comma and space. For example, {\ttfamily \char`\"{}\{a=1, b=2\}\char`\"{}}.
+
+NOTE: if the {\ttfamily \doxyref{toString()}{p.}{classjava_1_1util_1_1_hashtable_a570a850ee1f01e91b1a723804627b3a8}} method of any key or value throws an exception, this will fail for the same reason.
+
+\begin{DoxyReturn}{Returns}
+the string representation 
+\end{DoxyReturn}
+
+
+Definition at line 557 of file Hashtable.java.
+
+
+
+References ENTRIES, java::util::Enumeration::nextElement(), and size().
+
+
+
+\subsection{Field Documentation}
+\index{java::util::Hashtable@{java::util::Hashtable}!buckets@{buckets}}
+\index{buckets@{buckets}!java::util::Hashtable@{java::util::Hashtable}}
+\subsubsection[{buckets}]{\setlength{\rightskip}{0pt plus 5cm}HashEntry [$\,$] {\bf java::util::Hashtable::buckets}\hspace{0.3cm}{\ttfamily  [package]}}\label{classjava_1_1util_1_1_hashtable_a916cb9b50178077a0259883c1fff14bb}
+Array containing the actual key-\/value mappings. 
+
+Definition at line 125 of file Hashtable.java.
+
+
+
+Referenced by clear(), contains(), containsKey(), get(), Hashtable(), put(), rehash(), and remove().
+
+\index{java::util::Hashtable@{java::util::Hashtable}!ENTRIES@{ENTRIES}}
+\index{ENTRIES@{ENTRIES}!java::util::Hashtable@{java::util::Hashtable}}
+\subsubsection[{ENTRIES}]{\setlength{\rightskip}{0pt plus 5cm}final int {\bf java::util::Hashtable::ENTRIES} = 2\hspace{0.3cm}{\ttfamily  [static, package]}}\label{classjava_1_1util_1_1_hashtable_a592c3fa0df2501c7ede1dc5b72b59b17}
+Enumerator for ENTRIES 
+
+Definition at line 107 of file Hashtable.java.
+
+
+
+Referenced by toString().
+
+\index{java::util::Hashtable@{java::util::Hashtable}!KEYS@{KEYS}}
+\index{KEYS@{KEYS}!java::util::Hashtable@{java::util::Hashtable}}
+\subsubsection[{KEYS}]{\setlength{\rightskip}{0pt plus 5cm}final int {\bf java::util::Hashtable::KEYS} = 0\hspace{0.3cm}{\ttfamily  [static, package]}}\label{classjava_1_1util_1_1_hashtable_a003dbb3ced04e891c44dc933562e600d}
+Enumerator for KEYS 
+
+Definition at line 103 of file Hashtable.java.
+
+
+
+Referenced by keys().
+
+\index{java::util::Hashtable@{java::util::Hashtable}!size@{size}}
+\index{size@{size}!java::util::Hashtable@{java::util::Hashtable}}
+\subsubsection[{size}]{\setlength{\rightskip}{0pt plus 5cm}int {\bf java::util::Hashtable::size}\hspace{0.3cm}{\ttfamily  [package]}}\label{classjava_1_1util_1_1_hashtable_a80876dda3db8f8d216c5193e786d328c}
+The size of this \doxyref{Hashtable}{p.}{classjava_1_1util_1_1_hashtable}: denotes the number of key-\/value pairs. 
+
+Definition at line 131 of file Hashtable.java.
+
+
+
+Referenced by size().
+
+\index{java::util::Hashtable@{java::util::Hashtable}!VALUES@{VALUES}}
+\index{VALUES@{VALUES}!java::util::Hashtable@{java::util::Hashtable}}
+\subsubsection[{VALUES}]{\setlength{\rightskip}{0pt plus 5cm}final int {\bf java::util::Hashtable::VALUES} = 1\hspace{0.3cm}{\ttfamily  [static, package]}}\label{classjava_1_1util_1_1_hashtable_ae7987af818063b670ef9005af0d3809a}
+Enumerator for VALUES 
+
+Definition at line 105 of file Hashtable.java.
+
+
+
+Referenced by elements().
+
+
+
+The documentation for this class was generated from the following file:\begin{DoxyCompactItemize}
+\item 
+src/classpath/java/util/Hashtable.java\end{DoxyCompactItemize}

@@ -1,0 +1,321 @@
+\section{utf8\_\-string.c File Reference}
+\label{utf8__string_8c}\index{utf8\_\-string.c@{utf8\_\-string.c}}
+{\ttfamily \#include \char`\"{}wrappers.h\char`\"{}}\par
+{\ttfamily \#include \char`\"{}memory.h\char`\"{}}\par
+{\ttfamily \#include \char`\"{}thread.h\char`\"{}}\par
+{\ttfamily \#include \char`\"{}utf8\_\-string.h\char`\"{}}\par
+{\ttfamily \#include \char`\"{}util.h\char`\"{}}\par
+{\ttfamily \#include \char`\"{}vm.h\char`\"{}}\par
+\subsection*{Data Structures}
+\begin{DoxyCompactItemize}
+\item 
+struct {\bf utf8\_\-string\_\-t}
+\item 
+struct {\bf string\_\-manager\_\-t}
+\end{DoxyCompactItemize}
+\subsection*{Typedefs}
+\begin{DoxyCompactItemize}
+\item 
+typedef struct {\bf utf8\_\-string\_\-t} {\bf utf8\_\-string\_\-t}
+\item 
+typedef struct {\bf string\_\-manager\_\-t} {\bf string\_\-manager\_\-t}
+\end{DoxyCompactItemize}
+\subsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+static void {\bf string\_\-manager\_\-rehash} (size\_\-t)
+\item 
+static uint32\_\-t {\bf utf8\_\-hash} (const char $\ast$, size\_\-t)
+\item 
+void {\bf string\_\-manager\_\-init} (size\_\-t log2cap, size\_\-t load)
+\item 
+bool {\bf utf8\_\-check} (const char $\ast$src)
+\item 
+char $\ast$ {\bf utf8\_\-intern} (const char $\ast$src, size\_\-t len)
+\item 
+size\_\-t {\bf utf8\_\-to\_\-java\_\-length} (const char $\ast$str)
+\item 
+void {\bf utf8\_\-to\_\-java} (uint16\_\-t $\ast$dst, const char $\ast$src)
+\item 
+char $\ast$ {\bf java\_\-to\_\-utf8} (const uint16\_\-t $\ast$data, size\_\-t length)
+\item 
+char $\ast$ {\bf utf8\_\-slashify} (char $\ast$src)
+\item 
+size\_\-t {\bf string\_\-manager\_\-size} (void)
+\item 
+void {\bf string\_\-manager\_\-print} (void)
+\end{DoxyCompactItemize}
+\subsection*{Variables}
+\begin{DoxyCompactItemize}
+\item 
+static {\bf string\_\-manager\_\-t} {\bf sm}
+\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+UTF8 string manager implementation 
+
+Definition in file {\bf utf8\_\-string.c}.
+
+
+
+\subsection{Typedef Documentation}
+\index{utf8\_\-string.c@{utf8\_\-string.c}!string\_\-manager\_\-t@{string\_\-manager\_\-t}}
+\index{string\_\-manager\_\-t@{string\_\-manager\_\-t}!utf8_string.c@{utf8\_\-string.c}}
+\subsubsection[{string\_\-manager\_\-t}]{\setlength{\rightskip}{0pt plus 5cm}typedef struct {\bf string\_\-manager\_\-t} {\bf string\_\-manager\_\-t}}\label{utf8__string_8c_afea7caaf8c945a2950b9b26546f6b4ae}
+Typedef for the struct \doxyref{string\_\-manager\_\-t}{p.}{structstring__manager__t} 
+
+Definition at line 65 of file utf8\_\-string.c.
+
+\index{utf8\_\-string.c@{utf8\_\-string.c}!utf8\_\-string\_\-t@{utf8\_\-string\_\-t}}
+\index{utf8\_\-string\_\-t@{utf8\_\-string\_\-t}!utf8_string.c@{utf8\_\-string.c}}
+\subsubsection[{utf8\_\-string\_\-t}]{\setlength{\rightskip}{0pt plus 5cm}typedef struct {\bf utf8\_\-string\_\-t} {\bf utf8\_\-string\_\-t}}\label{utf8__string_8c_a0d46fd63493069febb5190eca7f99eda}
+Typedef for struct \doxyref{utf8\_\-string\_\-t}{p.}{structutf8__string__t} 
+
+Definition at line 52 of file utf8\_\-string.c.
+
+
+
+\subsection{Function Documentation}
+\index{utf8\_\-string.c@{utf8\_\-string.c}!java\_\-to\_\-utf8@{java\_\-to\_\-utf8}}
+\index{java\_\-to\_\-utf8@{java\_\-to\_\-utf8}!utf8_string.c@{utf8\_\-string.c}}
+\subsubsection[{java\_\-to\_\-utf8}]{\setlength{\rightskip}{0pt plus 5cm}char$\ast$ java\_\-to\_\-utf8 (
+\begin{DoxyParamCaption}
+\item[{const uint16\_\-t $\ast$}]{ data, }
+\item[{size\_\-t}]{ length}
+\end{DoxyParamCaption}
+)}\label{utf8__string_8c_a432c1703c6343120db552bb4e304553a}
+Converts a Java string into an UTF-\/8 string. 
+\begin{DoxyParams}{Parameters}
+\item[{\em data}]The string's data \item[{\em length}]The string length \end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+A newly created UTF-\/8 string allocated from the memory heap 
+\end{DoxyReturn}
+
+
+Definition at line 313 of file utf8\_\-string.c.
+
+
+
+References gc\_\-malloc().
+
+
+
+Referenced by java\_\-lang\_\-Class\_\-forName().
+
+\index{utf8\_\-string.c@{utf8\_\-string.c}!string\_\-manager\_\-init@{string\_\-manager\_\-init}}
+\index{string\_\-manager\_\-init@{string\_\-manager\_\-init}!utf8_string.c@{utf8\_\-string.c}}
+\subsubsection[{string\_\-manager\_\-init}]{\setlength{\rightskip}{0pt plus 5cm}void string\_\-manager\_\-init (
+\begin{DoxyParamCaption}
+\item[{size\_\-t}]{ log2cap, }
+\item[{size\_\-t}]{ load}
+\end{DoxyParamCaption}
+)}\label{utf8__string_8c_a6a5c3c3d1b0f4d271f20b8f190b84925}
+Creates and initializes the string manager with an initial capacity of 2$^\wedge$({\itshape log2cap\/}) entries and {\itshape load\/} load 
+\begin{DoxyParams}{Parameters}
+\item[{\em log2cap}]The binary logarythm of the initial capacity \item[{\em load}]The allowed load on the manager \end{DoxyParams}
+
+
+Definition at line 90 of file utf8\_\-string.c.
+
+
+
+References string\_\-manager\_\-t::buckets, string\_\-manager\_\-t::capacity, string\_\-manager\_\-t::entries, gc\_\-malloc(), string\_\-manager\_\-t::load, and string\_\-manager\_\-t::threshold.
+
+
+
+Referenced by vm\_\-init().
+
+\index{utf8\_\-string.c@{utf8\_\-string.c}!string\_\-manager\_\-print@{string\_\-manager\_\-print}}
+\index{string\_\-manager\_\-print@{string\_\-manager\_\-print}!utf8_string.c@{utf8\_\-string.c}}
+\subsubsection[{string\_\-manager\_\-print}]{\setlength{\rightskip}{0pt plus 5cm}void string\_\-manager\_\-print (
+\begin{DoxyParamCaption}
+\item[{void}]{}
+\end{DoxyParamCaption}
+)}\label{utf8__string_8c_ae7371c598659aca13e526eb3d59faa12}
+Prints out the contents of the UTF8 string manager 
+
+Definition at line 414 of file utf8\_\-string.c.
+
+
+
+References string\_\-manager\_\-t::buckets, string\_\-manager\_\-t::capacity, utf8\_\-string\_\-t::data, string\_\-manager\_\-t::entries, string\_\-manager\_\-t::load, utf8\_\-string\_\-t::next, and string\_\-manager\_\-t::threshold.
+
+\index{utf8\_\-string.c@{utf8\_\-string.c}!string\_\-manager\_\-rehash@{string\_\-manager\_\-rehash}}
+\index{string\_\-manager\_\-rehash@{string\_\-manager\_\-rehash}!utf8_string.c@{utf8\_\-string.c}}
+\subsubsection[{string\_\-manager\_\-rehash}]{\setlength{\rightskip}{0pt plus 5cm}static void string\_\-manager\_\-rehash (
+\begin{DoxyParamCaption}
+\item[{size\_\-t}]{ capacity}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily  [static]}}\label{utf8__string_8c_a70dd734688dc1744783f12c2f817910d}
+Rehashes the string manager pointed by {\itshape sm\/} 
+\begin{DoxyParams}{Parameters}
+\item[{\em capacity}]The new capacity \end{DoxyParams}
+
+
+Definition at line 107 of file utf8\_\-string.c.
+
+
+
+References string\_\-manager\_\-t::buckets, string\_\-manager\_\-t::capacity, utf8\_\-string\_\-t::data, gc\_\-free(), gc\_\-malloc(), utf8\_\-string\_\-t::next, and utf8\_\-hash().
+
+
+
+Referenced by utf8\_\-intern().
+
+\index{utf8\_\-string.c@{utf8\_\-string.c}!string\_\-manager\_\-size@{string\_\-manager\_\-size}}
+\index{string\_\-manager\_\-size@{string\_\-manager\_\-size}!utf8_string.c@{utf8\_\-string.c}}
+\subsubsection[{string\_\-manager\_\-size}]{\setlength{\rightskip}{0pt plus 5cm}size\_\-t string\_\-manager\_\-size (
+\begin{DoxyParamCaption}
+\item[{void}]{}
+\end{DoxyParamCaption}
+)}\label{utf8__string_8c_a753d00a229dd727d2502cb04ead457a6}
+Prints the total memory consumption of the UTF8 string manager 
+
+Definition at line 390 of file utf8\_\-string.c.
+
+
+
+References string\_\-manager\_\-t::buckets, string\_\-manager\_\-t::capacity, utf8\_\-string\_\-t::data, utf8\_\-string\_\-t::next, and size\_\-ceil().
+
+\index{utf8\_\-string.c@{utf8\_\-string.c}!utf8\_\-check@{utf8\_\-check}}
+\index{utf8\_\-check@{utf8\_\-check}!utf8_string.c@{utf8\_\-string.c}}
+\subsubsection[{utf8\_\-check}]{\setlength{\rightskip}{0pt plus 5cm}bool utf8\_\-check (
+\begin{DoxyParamCaption}
+\item[{const char $\ast$}]{ src}
+\end{DoxyParamCaption}
+)}\label{utf8__string_8c_a1f63cdca44d8ecd1301dcfba87af25c8}
+Checks if a string in the Java class file modified UTF8 format is valid, i.e. checks if the length of the string matches the given one and that the string doesn't contain invalid characters 
+\begin{DoxyParams}{Parameters}
+\item[{\em src}]A pointer to the string to be checked \end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+True if the string is valid, false otherwise 
+\end{DoxyReturn}
+
+
+Definition at line 145 of file utf8\_\-string.c.
+
+
+
+Referenced by cp\_\-create(), jstring\_\-create\_\-from\_\-utf8(), jstring\_\-create\_\-literal(), and vm\_\-run().
+
+\index{utf8\_\-string.c@{utf8\_\-string.c}!utf8\_\-hash@{utf8\_\-hash}}
+\index{utf8\_\-hash@{utf8\_\-hash}!utf8_string.c@{utf8\_\-string.c}}
+\subsubsection[{utf8\_\-hash}]{\setlength{\rightskip}{0pt plus 5cm}static uint32\_\-t utf8\_\-hash (
+\begin{DoxyParamCaption}
+\item[{const char $\ast$}]{ data, }
+\item[{size\_\-t}]{ len}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily  [static]}}\label{utf8__string_8c_a2c1989ddf03d0ac6eb90c8abe3e84131}
+Calculates the hash value of an UTF-\/8 string 
+\begin{DoxyParams}{Parameters}
+\item[{\em data}]The string's data \item[{\em len}]The number of characters in the string \end{DoxyParams}
+
+
+Definition at line 375 of file utf8\_\-string.c.
+
+
+
+Referenced by string\_\-manager\_\-rehash(), and utf8\_\-intern().
+
+\index{utf8\_\-string.c@{utf8\_\-string.c}!utf8\_\-intern@{utf8\_\-intern}}
+\index{utf8\_\-intern@{utf8\_\-intern}!utf8_string.c@{utf8\_\-string.c}}
+\subsubsection[{utf8\_\-intern}]{\setlength{\rightskip}{0pt plus 5cm}char$\ast$ utf8\_\-intern (
+\begin{DoxyParamCaption}
+\item[{const char $\ast$}]{ src, }
+\item[{size\_\-t}]{ len}
+\end{DoxyParamCaption}
+)}\label{utf8__string_8c_a20f5ec4004826a756b4ae8c67ee2da2c}
+Interns a string in the UTF8 format in the string manager and returns a pointer to the interned string.
+
+Empty strings may be interned by specifying a NULL pointer for {\itshape src\/} and a 0 value for {\itshape len\/}. Strings in the Java class file modified format are treated as plain UTF8 strings.
+
+
+\begin{DoxyParams}{Parameters}
+\item[{\em src}]A pointer to an array of bytes, may be NULL \item[{\em len}]The string length \end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+A pointer to the newly created string 
+\end{DoxyReturn}
+
+
+Definition at line 201 of file utf8\_\-string.c.
+
+
+
+References string\_\-manager\_\-t::buckets, string\_\-manager\_\-t::capacity, utf8\_\-string\_\-t::data, string\_\-manager\_\-t::entries, gc\_\-palloc(), string\_\-manager\_\-t::load, utf8\_\-string\_\-t::next, string\_\-manager\_\-rehash(), tm\_\-lock(), tm\_\-unlock(), and utf8\_\-hash().
+
+
+
+Referenced by bcl\_\-resolve\_\-class(), cp\_\-create(), preload\_\-class(), and vm\_\-run().
+
+\index{utf8\_\-string.c@{utf8\_\-string.c}!utf8\_\-slashify@{utf8\_\-slashify}}
+\index{utf8\_\-slashify@{utf8\_\-slashify}!utf8_string.c@{utf8\_\-string.c}}
+\subsubsection[{utf8\_\-slashify}]{\setlength{\rightskip}{0pt plus 5cm}char$\ast$ utf8\_\-slashify (
+\begin{DoxyParamCaption}
+\item[{char $\ast$}]{ src}
+\end{DoxyParamCaption}
+)}\label{utf8__string_8c_a82115478a479d2184078d7ddb861ad99}
+Turns a class or package name in the classfile internal format 
+\begin{DoxyParams}{Parameters}
+\item[{\em src}]The source string \end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+The pointer passed to this function 
+\end{DoxyReturn}
+
+
+Definition at line 358 of file utf8\_\-string.c.
+
+
+
+Referenced by java\_\-lang\_\-Class\_\-forName(), and parse\_\-command\_\-line\_\-args().
+
+\index{utf8\_\-string.c@{utf8\_\-string.c}!utf8\_\-to\_\-java@{utf8\_\-to\_\-java}}
+\index{utf8\_\-to\_\-java@{utf8\_\-to\_\-java}!utf8_string.c@{utf8\_\-string.c}}
+\subsubsection[{utf8\_\-to\_\-java}]{\setlength{\rightskip}{0pt plus 5cm}void utf8\_\-to\_\-java (
+\begin{DoxyParamCaption}
+\item[{uint16\_\-t $\ast$}]{ dst, }
+\item[{const char $\ast$}]{ src}
+\end{DoxyParamCaption}
+)}\label{utf8__string_8c_abd63734f6f8302f8d9958c2eaa20d506}
+Converts a string in the Java class file modified UTF8 format into a Java string. The java chars of the resulting string are written in {\itshape dst\/}. 
+\begin{DoxyParams}{Parameters}
+\item[{\em dst}]A pointer to an array of Java chars \item[{\em src}]A pointer to a string in the Java class file modified UTF8 format \end{DoxyParams}
+
+
+Definition at line 279 of file utf8\_\-string.c.
+
+
+
+Referenced by jstring\_\-create\_\-from\_\-utf8(), and jstring\_\-create\_\-literal().
+
+\index{utf8\_\-string.c@{utf8\_\-string.c}!utf8\_\-to\_\-java\_\-length@{utf8\_\-to\_\-java\_\-length}}
+\index{utf8\_\-to\_\-java\_\-length@{utf8\_\-to\_\-java\_\-length}!utf8_string.c@{utf8\_\-string.c}}
+\subsubsection[{utf8\_\-to\_\-java\_\-length}]{\setlength{\rightskip}{0pt plus 5cm}size\_\-t utf8\_\-to\_\-java\_\-length (
+\begin{DoxyParamCaption}
+\item[{const char $\ast$}]{ str}
+\end{DoxyParamCaption}
+)}\label{utf8__string_8c_acf253d69b28a2e13668b5d8c2e6f9321}
+Calculates the length of a string in the Java class file modified UTF8 format when converted to its Java representation. The functions excepts the source string to be valid. 
+\begin{DoxyParams}{Parameters}
+\item[{\em str}]A pointer to a string in the Java class file modified UTF8 format \end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+The length of the string once converted 
+\end{DoxyReturn}
+
+
+Definition at line 251 of file utf8\_\-string.c.
+
+
+
+Referenced by jstring\_\-create\_\-from\_\-utf8(), and jstring\_\-create\_\-literal().
+
+
+
+\subsection{Variable Documentation}
+\index{utf8\_\-string.c@{utf8\_\-string.c}!sm@{sm}}
+\index{sm@{sm}!utf8_string.c@{utf8\_\-string.c}}
+\subsubsection[{sm}]{\setlength{\rightskip}{0pt plus 5cm}{\bf string\_\-manager\_\-t} {\bf sm}\hspace{0.3cm}{\ttfamily  [static]}}\label{utf8__string_8c_a4b15416f9986b528e3d9bee8b86d8818}
+Global string manager 
+
+Definition at line 72 of file utf8\_\-string.c.
+

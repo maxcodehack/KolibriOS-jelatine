@@ -1,0 +1,321 @@
+\section{src/jelatine/loader.h File Reference}
+\label{loader_8h}\index{src/jelatine/loader.h@{src/jelatine/loader.h}}
+{\ttfamily \#include \char`\"{}wrappers.h\char`\"{}}\par
+{\ttfamily \#include \char`\"{}array.h\char`\"{}}\par
+{\ttfamily \#include \char`\"{}class.h\char`\"{}}\par
+{\ttfamily \#include \char`\"{}opcodes.h\char`\"{}}\par
+{\ttfamily \#include \char`\"{}util.h\char`\"{}}\par
+\subsection*{Defines}
+\begin{DoxyCompactItemize}
+\item 
+\#define {\bf JELATINE\_\-LOADER\_\-H}~(1)
+\end{DoxyCompactItemize}
+\subsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+void {\bf bcl\_\-init} (void)
+\item 
+{\bf class\_\-t} $\ast$ {\bf bcl\_\-get\_\-class\_\-by\_\-id} (uint32\_\-t)
+\item 
+void {\bf bcl\_\-mark} (void)
+\item 
+bool {\bf bcl\_\-is\_\-assignable} ({\bf class\_\-t} $\ast$, {\bf class\_\-t} $\ast$)
+\item 
+void {\bf bcl\_\-preload\_\-bootstrap\_\-classes} (void)
+\item 
+{\bf class\_\-t} $\ast$ {\bf bcl\_\-resolve\_\-class} ({\bf class\_\-t} $\ast$, const char $\ast$)
+\item 
+{\bf class\_\-t} $\ast$ {\bf bcl\_\-find\_\-class} (const char $\ast$)
+\item 
+void {\bf bcl\_\-link\_\-method} ({\bf class\_\-t} $\ast$, {\bf method\_\-t} $\ast$)
+\item 
+const uint8\_\-t $\ast$ {\bf bcl\_\-link\_\-opcode} (const {\bf method\_\-t} $\ast$, const uint8\_\-t $\ast$, internal\_\-opcode\_\-t)
+\item 
+static {\bf class\_\-t} $\ast$ {\bf bcl\_\-array\_\-class} (array\_\-type\_\-t type)
+\item 
+static void {\bf bcl\_\-set\_\-array\_\-class} (array\_\-type\_\-t type, {\bf class\_\-t} $\ast$cl)
+\end{DoxyCompactItemize}
+\subsection*{Variables}
+\begin{DoxyCompactItemize}
+\item 
+{\bf class\_\-t} $\ast$ {\bf array\_\-classes} [$\,$]
+\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+Bootstrap class-\/loader definition 
+
+Definition in file {\bf loader.h}.
+
+
+
+\subsection{Define Documentation}
+\index{loader.h@{loader.h}!JELATINE\_\-LOADER\_\-H@{JELATINE\_\-LOADER\_\-H}}
+\index{JELATINE\_\-LOADER\_\-H@{JELATINE\_\-LOADER\_\-H}!loader.h@{loader.h}}
+\subsubsection[{JELATINE\_\-LOADER\_\-H}]{\setlength{\rightskip}{0pt plus 5cm}\#define JELATINE\_\-LOADER\_\-H~(1)}\label{loader_8h_a95512f09bf57dc8a149833df291e8fac}
+\doxyref{loader.h}{p.}{loader_8h} inclusion macro 
+
+Definition at line 28 of file loader.h.
+
+
+
+\subsection{Function Documentation}
+\index{loader.h@{loader.h}!bcl\_\-array\_\-class@{bcl\_\-array\_\-class}}
+\index{bcl\_\-array\_\-class@{bcl\_\-array\_\-class}!loader.h@{loader.h}}
+\subsubsection[{bcl\_\-array\_\-class}]{\setlength{\rightskip}{0pt plus 5cm}static {\bf class\_\-t}$\ast$ bcl\_\-array\_\-class (
+\begin{DoxyParamCaption}
+\item[{array\_\-type\_\-t}]{ type}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily  [inline, static]}}\label{loader_8h_af08f4bf44423040c6a089771ff0a674b}
+Return the class of a basic array type. The class must have already been resolved otherwise this function will return a NULL pointer 
+\begin{DoxyParams}{Parameters}
+\item[{\em type}]The basic array type \end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+The array class associated with this basic type 
+\end{DoxyReturn}
+
+
+Definition at line 68 of file loader.h.
+
+
+
+Referenced by gc\_\-new\_\-array\_\-nonref().
+
+\index{loader.h@{loader.h}!bcl\_\-find\_\-class@{bcl\_\-find\_\-class}}
+\index{bcl\_\-find\_\-class@{bcl\_\-find\_\-class}!loader.h@{loader.h}}
+\subsubsection[{bcl\_\-find\_\-class}]{\setlength{\rightskip}{0pt plus 5cm}{\bf class\_\-t}$\ast$ bcl\_\-find\_\-class (
+\begin{DoxyParamCaption}
+\item[{const char $\ast$}]{ name}
+\end{DoxyParamCaption}
+)}\label{loader_8h_afd89d0e4e4b5d1766ee03d2e71b1af63}
+Finds a class by its name 
+\begin{DoxyParams}{Parameters}
+\item[{\em name}]The class' name \end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+A pointer to the class or NULL if none is found 
+\end{DoxyReturn}
+
+
+Definition at line 955 of file loader.c.
+
+
+
+References loader\_\-t::class\_\-table, class\_\-t::name, tm\_\-lock(), tm\_\-unlock(), and loader\_\-t::used.
+
+
+
+Referenced by bcl\_\-resolve\_\-class(), KNI\_\-FindClass(), load\_\-class(), and thread\_\-create\_\-main().
+
+\index{loader.h@{loader.h}!bcl\_\-get\_\-class\_\-by\_\-id@{bcl\_\-get\_\-class\_\-by\_\-id}}
+\index{bcl\_\-get\_\-class\_\-by\_\-id@{bcl\_\-get\_\-class\_\-by\_\-id}!loader.h@{loader.h}}
+\subsubsection[{bcl\_\-get\_\-class\_\-by\_\-id}]{\setlength{\rightskip}{0pt plus 5cm}{\bf class\_\-t}$\ast$ bcl\_\-get\_\-class\_\-by\_\-id (
+\begin{DoxyParamCaption}
+\item[{uint32\_\-t}]{ id}
+\end{DoxyParamCaption}
+)}\label{loader_8h_adb3e2597f26f4a9225025f91624d6db4}
+Returns a pointer to the class corresponding to the given id 
+\begin{DoxyParams}{Parameters}
+\item[{\em id}]The id of the class \end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+A pointer to the class corresponding to {\itshape id\/} 
+\end{DoxyReturn}
+
+
+Definition at line 158 of file loader.c.
+
+
+
+References loader\_\-t::class\_\-table, tm\_\-lock(), and tm\_\-unlock().
+
+
+
+Referenced by gc\_\-sweep(), interpreter(), java\_\-lang\_\-Class\_\-getInternalName(), java\_\-lang\_\-Class\_\-newInstance(), KNI\_\-GetFieldID(), KNI\_\-GetStaticFieldID(), KNI\_\-GetSuperClass(), KNI\_\-IsAssignableFrom(), and KNI\_\-IsInstanceOf().
+
+\index{loader.h@{loader.h}!bcl\_\-init@{bcl\_\-init}}
+\index{bcl\_\-init@{bcl\_\-init}!loader.h@{loader.h}}
+\subsubsection[{bcl\_\-init}]{\setlength{\rightskip}{0pt plus 5cm}void bcl\_\-init (
+\begin{DoxyParamCaption}
+\item[{void}]{}
+\end{DoxyParamCaption}
+)}\label{loader_8h_a46a68b38ef8f3cf21ea1f731d6622bbf}
+Initializes the bootstrap class loader 
+
+Definition at line 146 of file loader.c.
+
+
+
+References loader\_\-t::capacity, loader\_\-t::class\_\-table, CLASS\_\-TABLE\_\-INIT, gc\_\-malloc(), loader\_\-t::interface\_\-methods, and loader\_\-t::used.
+
+
+
+Referenced by vm\_\-init().
+
+\index{loader.h@{loader.h}!bcl\_\-is\_\-assignable@{bcl\_\-is\_\-assignable}}
+\index{bcl\_\-is\_\-assignable@{bcl\_\-is\_\-assignable}!loader.h@{loader.h}}
+\subsubsection[{bcl\_\-is\_\-assignable}]{\setlength{\rightskip}{0pt plus 5cm}bool bcl\_\-is\_\-assignable (
+\begin{DoxyParamCaption}
+\item[{{\bf class\_\-t} $\ast$}]{ src, }
+\item[{{\bf class\_\-t} $\ast$}]{ dest}
+\end{DoxyParamCaption}
+)}\label{loader_8h_a067f19e8e80c0a3e5bad9112d186af96}
+Checks if the class {\itshape src\/} may be assigned to the class {\itshape dest\/} 
+\begin{DoxyParams}{Parameters}
+\item[{\em src}]A pointer to the source class \item[{\em dest}]A pointer to the destination class \end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+True if the types are assignable, false otherwise 
+\end{DoxyReturn}
+
+
+Definition at line 208 of file loader.c.
+
+
+
+References bcl\_\-is\_\-assignable(), class\_\-is\_\-array(), class\_\-is\_\-interface(), class\_\-is\_\-object(), class\_\-t::elem\_\-class, class\_\-t::elem\_\-type, im\_\-is\_\-present(), class\_\-t::interface\_\-manager, class\_\-t::parent, and PT\_\-REFERENCE.
+
+
+
+Referenced by arraycopy\_\-ref(), bcl\_\-is\_\-assignable(), interpreter(), KNI\_\-IsAssignableFrom(), and KNI\_\-IsInstanceOf().
+
+\index{loader.h@{loader.h}!bcl\_\-link\_\-method@{bcl\_\-link\_\-method}}
+\index{bcl\_\-link\_\-method@{bcl\_\-link\_\-method}!loader.h@{loader.h}}
+\subsubsection[{bcl\_\-link\_\-method}]{\setlength{\rightskip}{0pt plus 5cm}void bcl\_\-link\_\-method (
+\begin{DoxyParamCaption}
+\item[{{\bf class\_\-t} $\ast$}]{ cl, }
+\item[{{\bf method\_\-t} $\ast$}]{ method}
+\end{DoxyParamCaption}
+)}\label{loader_8h_a187f79553cb34093747d4e1bda011af3}
+Executes the actual linking of a method, implements the METHOD\_\-LOAD field 
+\begin{DoxyParams}{Parameters}
+\item[{\em cl}]The class owning the requesting method \item[{\em method}]The method to be linked \end{DoxyParams}
+
+
+Definition at line 2077 of file loader.c.
+
+
+
+References method\_\-t::code, method\_\-t::cp, cp\_\-get\_\-class(), method\_\-t::data, method\_\-t::handlers, initialize\_\-class(), load\_\-bytecode(), load\_\-exception\_\-handlers(), method\_\-is\_\-linked(), method\_\-is\_\-main(), method\_\-set\_\-linked(), thread\_\-self(), tm\_\-lock(), tm\_\-unlock(), and translate\_\-bytecode().
+
+
+
+Referenced by interpreter().
+
+\index{loader.h@{loader.h}!bcl\_\-link\_\-opcode@{bcl\_\-link\_\-opcode}}
+\index{bcl\_\-link\_\-opcode@{bcl\_\-link\_\-opcode}!loader.h@{loader.h}}
+\subsubsection[{bcl\_\-link\_\-opcode}]{\setlength{\rightskip}{0pt plus 5cm}const uint8\_\-t$\ast$ bcl\_\-link\_\-opcode (
+\begin{DoxyParamCaption}
+\item[{const {\bf method\_\-t} $\ast$}]{ method, }
+\item[{const uint8\_\-t $\ast$}]{ lpc, }
+\item[{internal\_\-opcode\_\-t}]{ opcode}
+\end{DoxyParamCaption}
+)}\label{loader_8h_ac0905238fe3a36eebaae6bce0dc09b85}
+Link a $\ast$\_\-PRELINK opcode. The function behaviour changes depending on the opcode however all that is needed for the opcode to be linked properly is done in this function (for example class initialization). The function returns the same program counter it receives, this is done to 'cast away the constness' of the program counter 
+\begin{DoxyParams}{Parameters}
+\item[{\em method}]The method holding the opcode to be processed \item[{\em lpc}]The program-\/counter pointing to the opcode to be linked \item[{\em opcode}]The opcode value, this is used at the contents of the memory pointed by the program-\/counter may change if more than one thread tries to link it at the same time \end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+The program counter pointing to the linked opcode 
+\end{DoxyReturn}
+
+
+Definition at line 2244 of file loader.c.
+
+
+
+References array\_\-name(), bcl\_\-resolve\_\-class(), c\_\-throw, class\_\-get\_\-dimensions(), class\_\-get\_\-id(), class\_\-is\_\-abstract(), class\_\-is\_\-parent(), class\_\-is\_\-super(), method\_\-t::code, CONSTANT\_\-Class, CONSTANT\_\-Class\_\-resolved, method\_\-t::cp, cp\_\-get\_\-class(), cp\_\-get\_\-class\_\-name(), cp\_\-get\_\-resolved\_\-class(), cp\_\-get\_\-tag(), dbg\_\-unreachable, field\_\-t::descriptor, gc\_\-free(), gc\_\-malloc(), get\_\-type\_\-specific\_\-opcode(), initialize\_\-class(), JAVA\_\-LANG\_\-NOCLASSDEFFOUNDERROR, JAVA\_\-LANG\_\-VIRTUALMACHINEERROR, method\_\-create\_\-packed\_\-index(), method\_\-is\_\-init(), method\_\-is\_\-static(), class\_\-t::name, method\_\-t::name, field\_\-t::offset, resolve\_\-class(), resolve\_\-instance\_\-field(), resolve\_\-method(), resolve\_\-static\_\-field(), store\_\-int16\_\-un, thread\_\-self(), tm\_\-lock(), and tm\_\-unlock().
+
+
+
+Referenced by interpreter().
+
+\index{loader.h@{loader.h}!bcl\_\-mark@{bcl\_\-mark}}
+\index{bcl\_\-mark@{bcl\_\-mark}!loader.h@{loader.h}}
+\subsubsection[{bcl\_\-mark}]{\setlength{\rightskip}{0pt plus 5cm}void bcl\_\-mark (
+\begin{DoxyParamCaption}
+\item[{void}]{}
+\end{DoxyParamCaption}
+)}\label{loader_8h_ad326a3af181aa97298fbb3e74ce2ae7b}
+Asks the class loader to mark all its internal structures allocated on the Java heap or holding Java references 
+
+Definition at line 171 of file loader.c.
+
+
+
+References class\_\-get\_\-object(), loader\_\-t::class\_\-table, static\_\-field\_\-t::data, field\_\-is\_\-reference(), field\_\-itr\_\-get\_\-next(), field\_\-itr\_\-has\_\-next(), gc\_\-mark\_\-reference(), field\_\-t::offset, class\_\-t::static\_\-data, static\_\-field\_\-itr(), and loader\_\-t::used.
+
+
+
+Referenced by gc\_\-mark().
+
+\index{loader.h@{loader.h}!bcl\_\-preload\_\-bootstrap\_\-classes@{bcl\_\-preload\_\-bootstrap\_\-classes}}
+\index{bcl\_\-preload\_\-bootstrap\_\-classes@{bcl\_\-preload\_\-bootstrap\_\-classes}!loader.h@{loader.h}}
+\subsubsection[{bcl\_\-preload\_\-bootstrap\_\-classes}]{\setlength{\rightskip}{0pt plus 5cm}void bcl\_\-preload\_\-bootstrap\_\-classes (
+\begin{DoxyParamCaption}
+\item[{void}]{}
+\end{DoxyParamCaption}
+)}\label{loader_8h_a9a1a5de6cc3812fbda73b22ab0407c49}
+Preload the classes needed during the bootstrap process 
+
+Definition at line 484 of file loader.c.
+
+
+
+References bcl\_\-set\_\-array\_\-class(), JAVA\_\-LANG\_\-CLASS\_\-NREF\_\-SIZE, JAVA\_\-LANG\_\-CLASS\_\-REF\_\-N, JAVA\_\-LANG\_\-STRING\_\-NREF\_\-SIZE, JAVA\_\-LANG\_\-STRING\_\-REF\_\-N, JAVA\_\-LANG\_\-THREAD\_\-NREF\_\-SIZE, JAVA\_\-LANG\_\-THREAD\_\-REF\_\-N, jsm\_\-set\_\-classes(), and preload\_\-class().
+
+
+
+Referenced by vm\_\-run().
+
+\index{loader.h@{loader.h}!bcl\_\-resolve\_\-class@{bcl\_\-resolve\_\-class}}
+\index{bcl\_\-resolve\_\-class@{bcl\_\-resolve\_\-class}!loader.h@{loader.h}}
+\subsubsection[{bcl\_\-resolve\_\-class}]{\setlength{\rightskip}{0pt plus 5cm}{\bf class\_\-t}$\ast$ bcl\_\-resolve\_\-class (
+\begin{DoxyParamCaption}
+\item[{{\bf class\_\-t} $\ast$}]{ orig, }
+\item[{const char $\ast$}]{ name}
+\end{DoxyParamCaption}
+)}\label{loader_8h_ab737a575b134f40c2d2f279b2bedf84d}
+Resolves a class 
+\begin{DoxyParams}{Parameters}
+\item[{\em orig}]The originating class \item[{\em name}]The class' name \end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+A pointer to the class 
+\end{DoxyReturn}
+
+
+Definition at line 513 of file loader.c.
+
+
+
+References bcl\_\-find\_\-class(), c\_\-catch, c\_\-rethrow, c\_\-throw, c\_\-try, class\_\-is\_\-array(), class\_\-is\_\-being\_\-linked(), class\_\-is\_\-preloaded(), class\_\-is\_\-public(), loader\_\-t::class\_\-table, class\_\-t::elem\_\-class, gc\_\-palloc(), get\_\-new\_\-class\_\-id(), class\_\-t::id, JAVA\_\-LANG\_\-NOCLASSDEFFOUNDERROR, load\_\-class(), class\_\-t::name, same\_\-package(), tm\_\-lock(), tm\_\-unlock(), and utf8\_\-intern().
+
+
+
+Referenced by bcl\_\-link\_\-opcode(), init\_\-dummy\_\-methods(), interpreter(), java\_\-lang\_\-Class\_\-forName(), KNI\_\-ThrowNew(), load\_\-class(), load\_\-exception\_\-handlers(), resolve\_\-class(), and vm\_\-run().
+
+\index{loader.h@{loader.h}!bcl\_\-set\_\-array\_\-class@{bcl\_\-set\_\-array\_\-class}}
+\index{bcl\_\-set\_\-array\_\-class@{bcl\_\-set\_\-array\_\-class}!loader.h@{loader.h}}
+\subsubsection[{bcl\_\-set\_\-array\_\-class}]{\setlength{\rightskip}{0pt plus 5cm}static void bcl\_\-set\_\-array\_\-class (
+\begin{DoxyParamCaption}
+\item[{array\_\-type\_\-t}]{ type, }
+\item[{{\bf class\_\-t} $\ast$}]{ cl}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily  [inline, static]}}\label{loader_8h_acc3ad2227168906b41c051fac2a3558b}
+Sets the class for the specified basic array type 
+\begin{DoxyParams}{Parameters}
+\item[{\em type}]The basic array type \item[{\em cl}]A pointer to the array class \end{DoxyParams}
+
+
+Definition at line 80 of file loader.h.
+
+
+
+Referenced by bcl\_\-preload\_\-bootstrap\_\-classes(), and load\_\-class().
+
+
+
+\subsection{Variable Documentation}
+\index{loader.h@{loader.h}!array\_\-classes@{array\_\-classes}}
+\index{array\_\-classes@{array\_\-classes}!loader.h@{loader.h}}
+\subsubsection[{array\_\-classes}]{\setlength{\rightskip}{0pt plus 5cm}{\bf class\_\-t}$\ast$ {\bf array\_\-classes}[$\,$]}\label{loader_8h_a97ca11ae21e4c44cdf1f3ac919c90a08}
+Basic array classes 
+
+Definition at line 80 of file loader.c.
+

@@ -1,0 +1,44 @@
+./javax/microedition/lcdui/Image.java:	public native void getRGB(int[] rgbData, int offset, int scanlength, int x, int y, int width, int height);
+./javax/microedition/lcdui/Image.java:	 * @param imageDataArrayPtr native pointer to image data as Java int
+./javax/microedition/lcdui/FormLFImpl.java:            // Make sure each Item has native resource
+./javax/microedition/lcdui/Display.java:			// SYNC NOTE: playAlertSound is a native method, no locking
+./javax/microedition/lcdui/Display.java:			// with its own native call to the refresh function. Until that
+./javax/microedition/lcdui/Display.java:	 * Resets native resources on a foreground change
+./javax/microedition/lcdui/Display.java:	private native void gainedForeground0(int displayId);
+./javax/microedition/lcdui/Display.java:		 * of a change in its native peer state.
+./javax/microedition/lcdui/DisplayableLF.java:     * @return true if the scroll responsibility is of the native platform.
+./javax/microedition/lcdui/Font.java:	 * @param inp_face The face to initialize the native Font
+./javax/microedition/lcdui/Font.java:	 * @param inp_style The style to initialize the native Font
+./javax/microedition/lcdui/Font.java:	 * @param inp_size The point size to initialize the native Font
+./javax/microedition/lcdui/ImageData.java:     * Cleanup any native resources used by an ImmutableImage
+./javax/microedition/lcdui/ImageData.java:    protected native void finalize();
+./javax/microedition/lcdui/ImageData.java:    //private native void finalize();
+./javax/microedition/lcdui/ChoiceGroup.java:     * Helper method, used solely by the native method 
+./javax/microedition/lcdui/ChoiceGroup.java:     * Helper method, used solely by the native method 
+./javax/microedition/lcdui/KeyConverter_TOREMOVE.java:    public static native int getKeyCode(int gameAction);
+./javax/microedition/lcdui/KeyConverter_TOREMOVE.java:    public static native int getGameAction(int keyCode);
+./javax/microedition/lcdui/KeyConverter_TOREMOVE.java:    public static native int getSystemKey(int keyCode);
+./javax/microedition/lcdui/KeyConverter_TOREMOVE.java:    public static native String getKeyName(int keyCode);
+./javax/microedition/lcdui/ImageItemLF.java:     * Notifies L&F of an alternative text change 
+./javax/microedition/lcdui/ImageItemLF.java:     * @param altText - the new alternative text set in the ImageItem
+./javax/microedition/lcdui/ImageItem.java:     * Either label or alternative text may be present or <code>null</code>.
+./javax/microedition/lcdui/Ticker.java: * <p> An alternative usage model is for the application to use different
+./javax/microedition/lcdui/Canvas.java: * of event that might be delivered. An alternative would be to have fewer
+./javax/microedition/lcdui/Canvas.java: * alternative means (such as through a pop-up menu).  Note that the
+./javax/microedition/lcdui/DisplayableLFImpl.java:     * @return true if the scroll responsibility is of the native platform.
+./javax/microedition/lcdui/DisplayableLFImpl.java:        // only native form overrides this and returns true
+./javax/microedition/lcdui/TextField.java:     * native phone
+./javax/microedition/lcdui/CanvasLFImpl.java:        // Delete native resources including title and ticker
+./javax/microedition/lcdui/CanvasLFImpl.java:        // Notify canvas subclass after hiding the native resource
+./javax/microedition/lcdui/AbstractImageDataFactory.java:     * @param imageDataArrayPtr native pointer to image data as Java int
+./javax/microedition/lcdui/ImageItemLFImpl.java:     * Notifies L&F of an alternative text change 
+./javax/microedition/lcdui/ImageItemLFImpl.java:     * @param altText - the new alternative text set in the ImageItem
+./javax/microedition/lcdui/game/GameCanvas.java:	 * native method to work around the package boundary.
+./javax/microedition/rms/RecordStore.java:	 * each record to support integration with native applications,
+./javax/microedition/io/PushRegistry.java: * MAY be handled via a native callback or polling mechanism
+./javax/microedition/io/PushRegistry.java:		// Delegate to implementation class for native lookup
+./javax/microedition/io/PushRegistry.java:		// Delegate to implementation class for native lookup
+./javax/microedition/io/PushRegistry.java:		// Delegate to implementation class for native registration
+./javax/microedition/io/file/FileSystemEventHandlerBase.java:    //private native void finalize();
+./javax/microedition/io/file/FileSystemEventHandlerBase.java:    private native void registerListener();
+./javax/microedition/media/Configuration.java:     *  True if players loop in native code,

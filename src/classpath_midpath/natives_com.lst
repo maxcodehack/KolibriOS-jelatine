@@ -1,0 +1,229 @@
+./com/sun/cldchi/io/ConsoleOutputStream.java:  native public void write(int b) throws java.io.IOException;
+./com/sun/cldchi/jvm/JVM.java:    public native static int getAppImageProgress();
+./com/sun/cldchi/jvm/JVM.java:    public native static void cancelImageCreation();
+./com/sun/cldchi/jvm/JVM.java:    private static native void startAppImage(char jarFile[], char binFile[],
+./com/sun/cldchi/jvm/JVM.java:    private native static boolean createAppImage0();
+./com/sun/cldchi/jvm/JVM.java:    private native static void createSysImage()
+./com/sun/cldchi/jvm/JVM.java:     * It allows to call native function implementations from this library.
+./com/sun/cldchi/jvm/JVM.java:    public native static void loadLibrary(String libName)
+./com/sun/cldchi/jvm/JVM.java:     *          native call, however not less than one class will be
+./com/sun/cldchi/jvm/JVM.java:    private static native int verifyNextChunk(String jar, int nextChunkID,
+./com/sun/cldchi/jvm/DebuggerInvoke.java:          // we send the exception object to the debugger via the native call
+./com/sun/cldchi/jvm/DebuggerInvoke.java:    private native static long debuggerInvokeReturn(Object ret,
+./com/sun/cldchi/jvm/DebuggerInvoke.java:    private native static Object debuggerInvokeReturnObj(Object ret,
+./com/sun/cldchi/jvm/DebuggerInvoke.java:    private static native void    invokeV(Object entry);
+./com/sun/cldchi/jvm/DebuggerInvoke.java:    private static native boolean invokeZ(Object entry);
+./com/sun/cldchi/jvm/DebuggerInvoke.java:    private static native char    invokeC(Object entry);
+./com/sun/cldchi/jvm/DebuggerInvoke.java:    private static native float   invokeF(Object entry);
+./com/sun/cldchi/jvm/DebuggerInvoke.java:    private static native double  invokeD(Object entry);
+./com/sun/cldchi/jvm/DebuggerInvoke.java:    private static native byte    invokeB(Object entry);
+./com/sun/cldchi/jvm/DebuggerInvoke.java:    private static native short   invokeS(Object entry);
+./com/sun/cldchi/jvm/DebuggerInvoke.java:    private static native int     invokeI(Object entry);
+./com/sun/cldchi/jvm/DebuggerInvoke.java:    private static native long    invokeJ(Object entry);
+./com/sun/cldchi/jvm/DebuggerInvoke.java:    private static native Object  invokeL(Object entry);
+./com/sun/cldchi/jvm/MethodTrap.java:    /** Causes native breakpoint to happen */
+./com/sun/cldchi/jvm/MethodTrap.java:    public static native int setTrap(String methodName, int callCount,
+./com/sun/cldchi/jvm/MethodTrap.java:    public static native int setJavaTrap(String methodName, String handlerName);
+./com/sun/cldchi/jvm/MethodTrap.java:    public static native void releaseTrap(int trapHandle);
+./com/sun/cldchi/jvm/FileDescriptor.java:	public native void finalize();
+./com/sun/cldchi/test/Reflect.java:    private static native Object getStaticField(int taskId, String className, String fieldName);
+./com/sun/cldchi/test/Reflect.java:    private static native int getStaticIntField(int taskId, String className, String fieldName);
+./com/sun/cldchi/test/Reflect.java:    private static native boolean getStaticBooleanField(int taskId, String className, String fieldName);
+./com/sun/cldchi/test/Reflect.java:    private native Object getInstanceField(Object obj, String fieldName);
+./com/sun/cldchi/test/Reflect.java:    private native int getIntField(Object obj, String fieldName);
+./com/sun/cldchi/test/Reflect.java:    private native boolean getBooleanField(Object obj, String fieldName);
+./com/sun/cldc/io/j2me/socket/Protocol.java:    /** Socket object used by native code */
+./com/sun/cldc/io/j2me/socket/Protocol.java:    protected static native int open0(byte hostname[], int port, int mode);
+./com/sun/cldc/io/j2me/socket/Protocol.java:    protected static native int readBuf(int handle, byte b[], int off,
+./com/sun/cldc/io/j2me/socket/Protocol.java:    protected static native int readByte(int handle);
+./com/sun/cldc/io/j2me/socket/Protocol.java:    protected static native int writeBuf(int handle, byte b[], int off,
+./com/sun/cldc/io/j2me/socket/Protocol.java:    protected static native int writeByte(int handle, int b);
+./com/sun/cldc/io/j2me/socket/Protocol.java:    protected static native int available0(int handle);
+./com/sun/cldc/io/j2me/socket/Protocol.java:    protected static native void close0(int handle);
+./com/sun/cldc/io/j2me/socket/Protocol.java:     * Polling the native code is done here to allow for simple
+./com/sun/cldc/io/j2me/socket/Protocol.java:     * asynchronous native code to be written. Not all implementations
+./com/sun/cldc/io/j2me/socket/Protocol.java:     * work this way (they block in the native code) but the same
+./com/sun/cldc/io/j2me/socket/Protocol.java:     * Polling the native code is done here to allow for simple
+./com/sun/cldc/io/j2me/socket/Protocol.java:     * asynchronous native code to be written. Not all implementations
+./com/sun/cldc/io/j2me/socket/Protocol.java:     * work this way (they block in the native code) but the same
+./com/sun/cldc/io/j2me/socket/Protocol.java:        // so that the native code doesn't need to do it
+./com/sun/cldc/io/j2me/socket/Protocol.java:     * Polling the native code is done here to allow for simple
+./com/sun/cldc/io/j2me/socket/Protocol.java:     * asynchronous native code to be written. Not all implementations
+./com/sun/cldc/io/j2me/socket/Protocol.java:     * work this way (they block in the native code) but the same
+./com/sun/cldc/io/j2me/socket/Protocol.java:     * Polling the native code is done here to allow for simple
+./com/sun/cldc/io/j2me/socket/Protocol.java:     * asynchronous native code to be written. Not all implementations
+./com/sun/cldc/io/j2me/socket/Protocol.java:     * work this way (they block in the native code) but the same
+./com/sun/cldc/io/j2me/socket/Protocol.java:        // so that the native code doesn't need to do it
+./com/sun/cldc/util/Semaphore.java:    synchronized native void acquire();
+./com/sun/cldc/util/Semaphore.java:                 native void release();
+./com/sun/cldc/isolate/Isolate.java: * is a <b>native event queue</b>. On many CLDC/MIDP environments a native 
+./com/sun/cldc/isolate/Isolate.java: * Some CLDC/MIDP implementors may be tempted to use native code to
+./com/sun/cldc/isolate/Isolate.java:     * Called by native code when the task corresponding to this Isolate
+./com/sun/cldc/isolate/Isolate.java:    private native static Isolate currentIsolate0();
+./com/sun/cldc/isolate/Isolate.java:    private native static Isolate[] getIsolates0();
+./com/sun/cldc/isolate/Isolate.java:    private native int id0();
+./com/sun/cldc/isolate/Isolate.java:    private native int usedMemory0();
+./com/sun/cldc/isolate/Isolate.java:    private native void registerNewIsolate();
+./com/sun/cldc/isolate/Isolate.java:    private native void stop(int exit_code, int exit_reason);
+./com/sun/cldc/isolate/Isolate.java:    private native void setPriority0(int new_priority);
+./com/sun/cldc/isolate/Isolate.java:    private native int isSuspended0();
+./com/sun/cldc/isolate/Isolate.java:     * (passed via native methods) are used for synchornization. A
+./com/sun/cldc/isolate/Isolate.java:    private native void suspend0();
+./com/sun/cldc/isolate/Isolate.java:    private native void resume0();
+./com/sun/cldc/isolate/Isolate.java:    private native int exitCode0();
+./com/sun/cldc/isolate/Isolate.java:                // native code again, where thread switch is guaranteed to
+./com/sun/cldc/isolate/Isolate.java:    private native int getStatus();
+./com/sun/cldc/isolate/Isolate.java:    private native void notifyStatus();
+./com/sun/cldc/isolate/Isolate.java:    private native void waitStatus(int maxStatus) throws InterruptedException;
+./com/sun/cldc/isolate/Isolate.java:    private native void nativeStart() throws IsolateStartupException;
+./com/sun/cldc/isolate/Isolate.java:    public native void setProfile(String profile) throws 
+./com/sun/cldc/isolate/Isolate.java:    private native void attachDebugger0(Isolate obj);
+./com/sun/midp/security/SecurityInitializer.java: * the following alternative approach is used.
+./com/sun/midp/i18n/ResourceConstants.java: * These are constant defines both in native and Java layers.
+./com/sun/midp/lcdui/DisplayEventConsumer.java:     * of a change in its native peer state.
+./com/sun/midp/lcdui/DisplayDeviceAccess.java: * Device specific calls in the native code
+./com/sun/midp/lcdui/DisplayDeviceAccess.java:    private native boolean showBacklight0(int displayId, int mode);
+./com/sun/midp/lcdui/PhoneDial.java: * PhoneDial allows for UI java code to access the phones native 
+./com/sun/midp/lcdui/PhoneDial.java:	// native function would need to handle the actual call
+./com/sun/midp/lcdui/EventConstants.java:     * generated by native code only when (Logging.REPORT_LEVEL &lt;
+./com/sun/midp/log/Logging.java: * to report runtime information from within Java or native code.
+./com/sun/midp/log/LogChannels.java: * These are constant defines both in native and Java layers.
+./com/sun/midp/rms/RecordStoreImpl.java:                // close native fd 
+./com/sun/midp/rms/RecordStoreImpl.java:     * each record to support integration with native applications,
+./com/sun/midp/rms/RecordStoreFactory.java:    public static native boolean suiteHasRmsData(String id);
+./com/sun/midp/rms/RMSConfig.java: * These are constant defines both in native and Java layers.
+./com/sun/midp/rms/AbstractRecordStoreFile.java: * RecordStoreFile served as the java/native code boundary for
+./com/sun/midp/rms/AbstractRecordStoreImpl.java:     * each record to support integration with native applications,
+./com/sun/midp/events/EventQueue.java: * both the Java layer and native layer and a dedicated thread for processing
+./com/sun/midp/events/EventQueue.java: * Events can be posted from the native level or posted at the Java level. When
+./com/sun/midp/events/EventQueue.java: * the native event queue. When there are no events to deliver, the run method
+./com/sun/midp/events/EventQueue.java: * native event queue.
+./com/sun/midp/events/EventQueue.java: * When performing a non-blocking read of a native event, an a empty event
+./com/sun/midp/events/EventQueue.java: * object will be passed to the native method and the native method will fill in
+./com/sun/midp/events/EventQueue.java: * the empty event in one call, saving up to 3 native method calls per native
+./com/sun/midp/events/EventQueue.java:	 * Constructs, assigns a native event queue handle, and starts the primary
+./com/sun/midp/events/EventQueue.java:	 * used since it given out to callers. But is given to the native event
+./com/sun/midp/events/EventQueue.java:	///** The thread running the native event monitor. */
+./com/sun/midp/events/EventQueue.java:	/** A pool for reusing native events. */
+./com/sun/midp/events/EventQueue.java:	/** This is for the native finalizer to reset peer native queue. */
+./com/sun/midp/events/EventQueue.java:	 * Constructs an event queue. This does not assign a native event queue
+./com/sun/midp/events/EventQueue.java:	 * Clears native event queue for a given isolate - there could be some
+./com/sun/midp/events/EventQueue.java:	 * Get the handle of the native peer event queue.
+./com/sun/midp/events/EventQueue.java:	 * WARNING: The native code can handle only one event queue per isolate.
+./com/sun/midp/events/EventQueue.java:	 * Only one event queue object in any isolate should have a native handle
+./com/sun/midp/events/EventQueue.java:	 * native handles assigned, this causes serious problems.
+./com/sun/midp/events/EventQueue.java:	 * Native finalizer to reset the native peer event queue when the Isolate
+./com/sun/midp/events/EventQueue.java:	//protected native void finalize();
+./com/sun/midp/events/EventQueue.java:	// private native void finalize();
+./com/sun/midp/events/EventQueue.java:	 * Send a native event to a specific Isolate.
+./com/sun/midp/events/EventQueue.java:	 *            a native event
+./com/sun/midp/events/EventQueue.java:	 * Queue a shutdown event to the native event queue.
+./com/sun/midp/events/EventQueue.java:// * Runs in its own Java thread. Wait for set of native events to arrive and then
+./com/sun/midp/events/EventQueue.java://	 * Wait for a native event and then read it.
+./com/sun/midp/events/EventQueue.java://	 * Read a native event without blocking.
+./com/sun/midp/events/EventQueue.java://	/** The event queue to which native events should be posted. */
+./com/sun/midp/events/EventQueue.java://	/** The pool for reusing native events. */
+./com/sun/midp/events/EventQueue.java://	 * Construct a native event monitor.
+./com/sun/midp/events/EventQueue.java://	 *            event queue to post native events into
+./com/sun/midp/events/EventQueue.java://	 *            the pool from which native events are drawn
+./com/sun/midp/events/EventQueue.java://	 * Runs the native event monitor. See the class description for details.
+./com/sun/midp/events/EventQueue.java://				 * To avoid back log in the native event queue, try to post any
+./com/sun/midp/events/EventQueue.java://				 * pending native events to the queue before processing an event
+./com/sun/midp/events/EventQueue.java:// * Pools native events, to avoid repetitive allocation by the native event
+./com/sun/midp/events/EventQueue.java://	 * @return native event
+./com/sun/midp/events/EventTypes.java:     * Major ID for a item's native peer state changed event.
+./com/sun/midp/events/EventTypes.java:     * Sent by the native system to request a MIDlet be created and started.
+./com/sun/midp/events/EventTypes.java:     * Sent by the native system to request a paused MIDlet be resumed.
+./com/sun/midp/events/EventTypes.java:     * Sent by the native system to request a MIDlet be paused.
+./com/sun/midp/events/EventTypes.java:     * Sent by the native system to request a MIDlet be destroyed.
+./com/sun/midp/events/EventTypes.java:     * Sent by the native system to request a MIDlet be in the foreground.
+./com/sun/midp/events/NativeEvent.java: * This class represents a union of the parameters of all native events.
+./com/sun/midp/events/NativeEvent.java: * must be create at the Java level to be filled in by the native level.
+./com/sun/midp/events/NativeEvent.java: * Because the Java level may not know what native event is pending (this 
+./com/sun/midp/events/NativeEvent.java: * to save native method calls) it the object sent down must be able to
+./com/sun/midp/events/NativeEvent.java: * handle the data of any native event.</p>
+./com/sun/midp/events/NativeEvent.java:    /** Construct a native event. */
+./com/sun/midp/events/NativeEvent.java:        /* The native code will fill in the type field. */
+./com/sun/midp/events/NativeEvent.java:     * Construct a native event.
+./com/sun/midp/chameleon/skins/SkinPropertiesIDs.java: * These are constant defines both in native and Java layers.
+./com/sun/midp/chameleon/skins/resources/ImageTunnel.java:     * @param imageDataArrayPtr native pointer to image data as Java int
+./com/sun/midp/chameleon/skins/resources/SkinResources.java:     * Returns native pointer to romized image data array as Java int
+./com/sun/midp/chameleon/skins/resources/SkinResources.java:     * @return native pointer to romized image data array as Java int,
+./com/sun/midp/chameleon/skins/resources/SkinResources.java:     * Returns length of native romized image data array
+./com/sun/midp/chameleon/skins/resources/SkinResources.java:     * @return length of native romized image data array,
+./com/sun/midp/chameleon/skins/resources/SkinResources.java:    //private native void finalize();
+./com/sun/midp/chameleon/skins/resources/SkinResources.java:    //protected native void finalize();
+./com/sun/midp/chameleon/skins/resources/SkinResources.java:    //protected native void finalize();
+./com/sun/midp/chameleon/skins/resources/SkinResources.java:    //private native void finalize();
+./com/sun/midp/configurator/Constants.java: * These are constant defines both in native and Java layers.
+./com/sun/midp/midlet/MIDletPeer.java:         * or the native installer will not be launched.
+./com/sun/midp/midlet/MIDletPeer.java:     * Passes the URL to the native handler.
+./com/sun/midp/midlet/MIDletPeer.java:    public native final boolean dispatchPlatformRequest(String url) throws
+./com/sun/midp/io/NetworkConnectionBase.java://     * Initialize any possible native networking code.
+./com/sun/midp/io/NetworkConnectionBase.java://    private static native void initializeInternal();
+./com/sun/midp/io/ConnectionBaseAdapter.java:     * Polling the native code is done here to allow for simple
+./com/sun/midp/io/ConnectionBaseAdapter.java:     * asynchronous native code to be written. Not all implementations
+./com/sun/midp/io/ConnectionBaseAdapter.java:     * work this way (they block in the native code) but the same
+./com/sun/midp/io/ConnectionBaseAdapter.java:         * this will avoid crashes in the native code
+./com/sun/midp/io/ConnectionBaseAdapter.java:         * this will avoid a crash in the native code
+./com/sun/midp/io/ConnectionBaseAdapter.java:         * Polling the native code is done here to allow for simple
+./com/sun/midp/io/ConnectionBaseAdapter.java:         * asynchronous native code to be written. Not all implementations
+./com/sun/midp/io/ConnectionBaseAdapter.java:         * work this way (they block in the native code) but the same
+./com/sun/midp/io/BufferedConnectionAdapter.java:     * Sets the <code>eof</code> field of the connection when the native read
+./com/sun/midp/io/j2me/socket/Protocol.java:     * Handle to native socket object. This is set and get only by 
+./com/sun/midp/io/j2me/socket/Protocol.java:     * native code.
+./com/sun/midp/io/j2me/socket/Protocol.java:         * an reads to fail so no native action is needed.
+./com/sun/midp/io/j2me/socket/Protocol.java:     * Sets the <code>eof</code> field of the connection when the native read
+./com/sun/midp/io/j2me/socket/Protocol.java://    private native void open0(byte[] szIpBytes, int port) 
+./com/sun/midp/io/j2me/socket/Protocol.java://    private native int read0(byte b[], int off, int len)
+./com/sun/midp/io/j2me/socket/Protocol.java://    private native int write0(byte b[], int off, int len)
+./com/sun/midp/io/j2me/socket/Protocol.java://    private native int available0() 
+./com/sun/midp/io/j2me/socket/Protocol.java://    private native void close0() 
+./com/sun/midp/io/j2me/socket/Protocol.java:////    protected native void finalize();
+./com/sun/midp/io/j2me/socket/Protocol.java:////    private native void finalize();
+./com/sun/midp/io/j2me/socket/Protocol.java://    private native int getIpNumber0(byte[] szHost, byte[] ipBytes_out);
+./com/sun/midp/io/j2me/socket/Protocol.java://    private native String getHost0(boolean local) 
+./com/sun/midp/io/j2me/socket/Protocol.java://    private native int getPort0(boolean local) 
+./com/sun/midp/io/j2me/socket/Protocol.java://    private native int getSockOpt0(int option) 
+./com/sun/midp/io/j2me/socket/Protocol.java://    private native void setSockOpt0(int option, int value) 
+./com/sun/midp/io/j2me/socket/Protocol.java://    private native void shutdownOutput0();
+./com/sun/midp/io/j2me/file/Protocol.java:    /** A peer to the native file */
+./com/sun/midp/io/j2me/file/Protocol.java:    /** Indicates if there is a need to try to load alternative file handler */
+./com/sun/midp/io/j2me/serversocket/Socket.java://	private native void open0(int port, byte[] suiteID) throws IOException;
+./com/sun/midp/io/j2me/serversocket/Socket.java://	private native void close0() throws IOException;
+./com/sun/midp/io/j2me/serversocket/Socket.java://	 * native code. This technique ensures that the acceptance of a new 
+./com/sun/midp/io/j2me/serversocket/Socket.java://	 * connection and the storing of the native handle are performed 
+./com/sun/midp/io/j2me/serversocket/Socket.java://	private native void accept0(com.sun.midp.io.j2me.socket.Protocol con) throws IOException;
+./com/sun/midp/io/j2me/serversocket/Socket.java://	private native String getLocalAddress0();
+./com/sun/midp/io/j2me/serversocket/Socket.java://	private native int getLocalPort0();
+./com/sun/midp/io/j2me/serversocket/ServerSocketPeer.java:	 * native code. This technique ensures that the acceptance of a new 
+./com/sun/midp/io/j2me/serversocket/ServerSocketPeer.java:	 * connection and the storing of the native handle are performed 
+./com/sun/midp/main/MIDletControllerEventConsumer.java:     * ACTIVATE_ALL - produced by native code
+./com/sun/midp/main/MIDletControllerEventConsumer.java:     * PAUSE_ALL -produced by native code
+./com/sun/midp/main/MIDletControllerEventConsumer.java:     * SHUTDOWN/DESTROY_ALL - produced by native code
+./com/sun/midp/main/MIDletControllerEventConsumer.java:     * FATAL_ERROR_NOTIFICATION - produced by native code
+./com/sun/midp/main/MIDletControllerEventConsumer.java:     * SELECT_FOREGROUND - produced by native code
+./com/sun/midp/main/MIDletProxyList.java: * to enable the method be used by native code.
+./com/sun/midp/main/MIDletProxyList.java:	 * Set foreground midletProxy in the native midletProxy list state.
+./com/sun/midp/main/MIDletProxyList.java:	 * Notify native code that all MIDlets have been paused.
+./com/sun/midp/main/MIDletProxyList.java:	 * Notify native code that all MIDlets have been resumed.
+./com/sun/midp/main/MIDletControllerEventProducer.java:     * ACTIVATE_ALL - produced by native code
+./com/sun/midp/main/MIDletControllerEventProducer.java:     * PAUSE_ALL -produced by native code
+./com/sun/midp/main/MIDletControllerEventProducer.java:     * SHUTDOWN/DESTROY_ALL - produced by native code
+./com/sun/midp/main/MIDletControllerEventProducer.java:     * FATAL_ERROR_NOTIFICATION - produced by native code
+./com/sun/midp/main/MIDletControllerEventProducer.java:     * SELECT_FOREGROUND - produced by native code
+./com/sun/midp/main/BaseMIDletSuiteLauncher.java:	//	 *             using a native method instead of the argument.
+./com/sun/midp/main/BaseMIDletSuiteLauncher.java:	//		 * Register AMS Isolate ID in native global variable.
+./com/sun/midp/main/BaseMIDletSuiteLauncher.java:	//		 * Since native functions rely on this value to distinguish
+./com/sun/midp/main/BaseMIDletSuiteLauncher.java:	//		 * other native functions from this Isolate. I.E. This call
+./com/sun/midp/main/BaseMIDletSuiteLauncher.java:	//				 * to the native AMS code.
+./com/sun/midp/main/BaseMIDletSuiteLauncher.java:	//			 * A native finalizer will take care of unlocking
+./com/sun/midp/main/BaseMIDletSuiteLauncher.java:	//			 * the native locks.	     
+./com/sun/midp/main/BaseMIDletSuiteLauncher.java:	//			 * Return specific non-zero number so the native AMS code can
+./com/sun/midp/main/BaseMIDletSuiteLauncher.java:	 * it in the proper native variable.
+./com/sun/midp/main/Configuration.java://     * native interface to the configuration parameter storage.
+./com/sun/midp/main/CommandState.java:    private static native void saveCommandState(CommandState state);
+./com/sun/midp/main/CommandState.java:    private static native void restoreCommandState(CommandState state);
+./com/sun/midp/main/CommandState.java:    static native void exitInternal(int status);
+./com/jcraft/jorbis/StrictMath.java: * no native methods whatsoever.  Also, these algorithms are all accurate
+./com/jcraft/jorbis/StrictMath.java: * use native methods.

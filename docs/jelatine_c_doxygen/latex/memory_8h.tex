@@ -1,0 +1,457 @@
+\section{memory.h File Reference}
+\label{memory_8h}\index{memory.h@{memory.h}}
+{\ttfamily \#include \char`\"{}wrappers.h\char`\"{}}\par
+{\ttfamily \#include \char`\"{}opcodes.h\char`\"{}}\par
+{\ttfamily \#include \char`\"{}header.h\char`\"{}}\par
+{\ttfamily \#include \char`\"{}java\_\-lang\_\-ref\_\-WeakReference.h\char`\"{}}\par
+\subsection*{Defines}
+\begin{DoxyCompactItemize}
+\item 
+\#define {\bf JELATINE\_\-MEMORY\_\-H}~(1)
+\end{DoxyCompactItemize}
+\subsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+void {\bf gc\_\-init} (size\_\-t)
+\item 
+void {\bf gc\_\-teardown} (void)
+\item 
+void {\bf gc\_\-enable} (bool)
+\item 
+void {\bf gc\_\-collect} (size\_\-t)
+\item 
+size\_\-t {\bf gc\_\-free\_\-memory} (void)
+\item 
+size\_\-t {\bf gc\_\-total\_\-memory} (void)
+\item 
+void {\bf gc\_\-mark\_\-potential} (uintptr\_\-t)
+\item 
+void {\bf gc\_\-mark\_\-reference} (uintptr\_\-t)
+\item 
+uintptr\_\-t {\bf gc\_\-new} (struct {\bf class\_\-t} $\ast$)
+\item 
+uintptr\_\-t {\bf gc\_\-new\_\-array\_\-nonref} ({\bf array\_\-type\_\-t}, int32\_\-t)
+\item 
+uintptr\_\-t {\bf gc\_\-new\_\-array\_\-ref} (struct {\bf class\_\-t} $\ast$, int32\_\-t)
+\item 
+uintptr\_\-t {\bf gc\_\-new\_\-multiarray} (struct {\bf class\_\-t} $\ast$, uint8\_\-t, {\bf jword\_\-t} $\ast$)
+\item 
+void {\bf gc\_\-register\_\-weak\_\-ref} ({\bf java\_\-lang\_\-ref\_\-WeakReference\_\-t} $\ast$)
+\item 
+void $\ast$ {\bf gc\_\-malloc} (size\_\-t)
+\item 
+void $\ast$ {\bf gc\_\-palloc} (size\_\-t)
+\item 
+void {\bf gc\_\-free} (void $\ast$)
+\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+Garbage-\/collector and allocator type definitions and interface 
+
+Definition in file {\bf memory.h}.
+
+
+
+\subsection{Define Documentation}
+\index{memory.h@{memory.h}!JELATINE\_\-MEMORY\_\-H@{JELATINE\_\-MEMORY\_\-H}}
+\index{JELATINE\_\-MEMORY\_\-H@{JELATINE\_\-MEMORY\_\-H}!memory.h@{memory.h}}
+\subsubsection[{JELATINE\_\-MEMORY\_\-H}]{\setlength{\rightskip}{0pt plus 5cm}\#define JELATINE\_\-MEMORY\_\-H~(1)}\label{memory_8h_a9ce1b4b0d942bfec50817547aa1c787f}
+\doxyref{memory.h}{p.}{memory_8h} inclusion macro 
+
+Definition at line 28 of file memory.h.
+
+
+
+\subsection{Function Documentation}
+\index{memory.h@{memory.h}!gc\_\-collect@{gc\_\-collect}}
+\index{gc\_\-collect@{gc\_\-collect}!memory.h@{memory.h}}
+\subsubsection[{gc\_\-collect}]{\setlength{\rightskip}{0pt plus 5cm}void gc\_\-collect (
+\begin{DoxyParamCaption}
+\item[{size\_\-t}]{ grow}
+\end{DoxyParamCaption}
+)}\label{memory_8h_aa41cac638c7855f539616bfdbdacc3ed}
+Launches the garbage collector on the provided heap structure 
+\begin{DoxyParams}{Parameters}
+\item[{\em grow}]If non null, specifies the amount of bytes of the next allocation, the heap will be grown after the collection to accomodate it if not enough free space was reclaimed \end{DoxyParams}
+
+
+Definition at line 485 of file memory.c.
+
+
+
+References heap\_\-t::collect, heap\_\-t::end, gc\_\-grow(), gc\_\-mark(), gc\_\-mark\_\-finalizable(), gc\_\-purge\_\-bin(), gc\_\-purge\_\-weakref\_\-list(), gc\_\-sweep(), jsm\_\-purge(), tm\_\-lock(), tm\_\-purge(), tm\_\-stop\_\-the\_\-world(), and tm\_\-unlock().
+
+
+
+Referenced by gc\_\-alloc(), and java\_\-lang\_\-Runtime\_\-gc().
+
+\index{memory.h@{memory.h}!gc\_\-enable@{gc\_\-enable}}
+\index{gc\_\-enable@{gc\_\-enable}!memory.h@{memory.h}}
+\subsubsection[{gc\_\-enable}]{\setlength{\rightskip}{0pt plus 5cm}void gc\_\-enable (
+\begin{DoxyParamCaption}
+\item[{bool}]{ enable}
+\end{DoxyParamCaption}
+)}\label{memory_8h_a4a44f985e7a96b4b94a48ca671abbab2}
+Enables or disables the collector 
+\begin{DoxyParams}{Parameters}
+\item[{\em enable}]new status of the collector \end{DoxyParams}
+
+
+Definition at line 227 of file memory.c.
+
+
+
+References heap\_\-t::collect.
+
+
+
+Referenced by vm\_\-run().
+
+\index{memory.h@{memory.h}!gc\_\-free@{gc\_\-free}}
+\index{gc\_\-free@{gc\_\-free}!memory.h@{memory.h}}
+\subsubsection[{gc\_\-free}]{\setlength{\rightskip}{0pt plus 5cm}void gc\_\-free (
+\begin{DoxyParamCaption}
+\item[{void $\ast$}]{ ptr}
+\end{DoxyParamCaption}
+)}\label{memory_8h_a2da0ace50077bf088fa5523b506501ee}
+Frees a previously allocated C object.
+
+If {\itshape ptr\/} is NULL no action is taken
+
+
+\begin{DoxyParams}{Parameters}
+\item[{\em ptr}]A pointer to the object to be fred \end{DoxyParams}
+
+
+Definition at line 1076 of file memory.c.
+
+
+
+References header\_\-get\_\-size(), heap\_\-t::perm, put\_\-chunk(), heap\_\-t::start, tm\_\-lock(), and tm\_\-unlock().
+
+
+
+Referenced by bcl\_\-link\_\-opcode(), c\_\-clear\_\-exception(), cf\_\-close(), cf\_\-open\_\-with\_\-classpath(), cp\_\-create(), grow\_\-class\_\-table(), im\_\-add(), im\_\-flatten(), java\_\-lang\_\-Class\_\-forName(), jsm\_\-rehash(), jsm\_\-rehash\_\-literals(), load\_\-class(), load\_\-method\_\-attribute\_\-Exceptions(), method\_\-purge(), string\_\-manager\_\-rehash(), thread\_\-create\_\-main(), thread\_\-launch(), thread\_\-push\_\-root(), thread\_\-start(), tm\_\-purge(), and tm\_\-rehash().
+
+\index{memory.h@{memory.h}!gc\_\-free\_\-memory@{gc\_\-free\_\-memory}}
+\index{gc\_\-free\_\-memory@{gc\_\-free\_\-memory}!memory.h@{memory.h}}
+\subsubsection[{gc\_\-free\_\-memory}]{\setlength{\rightskip}{0pt plus 5cm}size\_\-t gc\_\-free\_\-memory (
+\begin{DoxyParamCaption}
+\item[{void}]{}
+\end{DoxyParamCaption}
+)}\label{memory_8h_a86601a16a0565ac58deac88dacf64dd7}
+Helper function used for implementing Runtime.freeMemory(), returns the amount of free memory in bytes \begin{DoxyReturn}{Returns}
+The amount of free memory in bytes 
+\end{DoxyReturn}
+
+
+Definition at line 521 of file memory.c.
+
+
+
+References heap\_\-t::bin, heap\_\-t::large\_\-bin, large\_\-chunk\_\-t::next, small\_\-chunk\_\-t::next, large\_\-chunk\_\-t::size, heap\_\-t::size, tm\_\-lock(), and tm\_\-unlock().
+
+
+
+Referenced by java\_\-lang\_\-Runtime\_\-freeMemory().
+
+\index{memory.h@{memory.h}!gc\_\-init@{gc\_\-init}}
+\index{gc\_\-init@{gc\_\-init}!memory.h@{memory.h}}
+\subsubsection[{gc\_\-init}]{\setlength{\rightskip}{0pt plus 5cm}void gc\_\-init (
+\begin{DoxyParamCaption}
+\item[{size\_\-t}]{ size}
+\end{DoxyParamCaption}
+)}\label{memory_8h_a02685e6d31138838ec1ff3b1dfaa66a4}
+Initializes the heap, throws an exception upon failure
+
+Note that if a heap of less than 32 KiB is requested the function will default to 32 KiB anyway as mandated by the CLDC configuration. If you want to use a heap smaller than 32 KiB you have to explicitely change this function, do it at your own risk. All the pointers in the heap structure are explicitely aligned to 4 or 8-\/bytes boundaries depending on the target machine
+
+
+\begin{DoxyParams}{Parameters}
+\item[{\em size}]Size in bytes of the unified heap \end{DoxyParams}
+
+
+Definition at line 163 of file memory.c.
+
+
+
+References heap\_\-t::bin, BIN\_\-ENTRIES, heap\_\-t::bitmap, heap\_\-t::collect, dbg\_\-error, heap\_\-t::end, HEAP\_\-INIT\_\-FRACTION, heap\_\-t::large\_\-bin, heap\_\-t::max\_\-size, heap\_\-t::memory, heap\_\-t::perm, put\_\-chunk(), heap\_\-t::size, size\_\-ceil(), size\_\-floor(), heap\_\-t::start, vm\_\-fail(), and heap\_\-t::weakref\_\-list.
+
+
+
+Referenced by vm\_\-init().
+
+\index{memory.h@{memory.h}!gc\_\-malloc@{gc\_\-malloc}}
+\index{gc\_\-malloc@{gc\_\-malloc}!memory.h@{memory.h}}
+\subsubsection[{gc\_\-malloc}]{\setlength{\rightskip}{0pt plus 5cm}void$\ast$ gc\_\-malloc (
+\begin{DoxyParamCaption}
+\item[{size\_\-t}]{ size}
+\end{DoxyParamCaption}
+)}\label{memory_8h_af6e78d04be81f707f5073bc8248d666a}
+Allocates a chunk of memory for holding C objects, throws an exception upon failure, the returned memory has already been zeroed.
+
+If the allocation size is zero the function will return a NULL pointer. The allocation size is rounded to a multiple of 4 or 8 bytes depending on the target
+
+
+\begin{DoxyParams}{Parameters}
+\item[{\em size}]The size in bytes of the chunk to be allocated \end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+A pointer to the newly allocated memory 
+\end{DoxyReturn}
+
+
+Definition at line 1002 of file memory.c.
+
+
+
+References gc\_\-alloc(), header\_\-create\_\-c(), size\_\-ceil(), tm\_\-lock(), and tm\_\-unlock().
+
+
+
+Referenced by bcl\_\-init(), bcl\_\-link\_\-opcode(), c\_\-throw\_\-dbg(), cf\_\-open\_\-with\_\-classpath(), cp\_\-create(), gc\_\-palloc(), grow\_\-class\_\-table(), im\_\-add(), java\_\-to\_\-utf8(), jsm\_\-init(), jsm\_\-rehash(), jsm\_\-rehash\_\-literals(), load\_\-bytecode(), load\_\-class(), load\_\-exception\_\-handlers(), load\_\-method\_\-attribute\_\-Exceptions(), monitor\_\-init(), string\_\-manager\_\-init(), string\_\-manager\_\-rehash(), thread\_\-create\_\-main(), thread\_\-launch(), thread\_\-push\_\-root(), thread\_\-start(), thread\_\-wait(), tm\_\-rehash(), and vm\_\-run().
+
+\index{memory.h@{memory.h}!gc\_\-mark\_\-potential@{gc\_\-mark\_\-potential}}
+\index{gc\_\-mark\_\-potential@{gc\_\-mark\_\-potential}!memory.h@{memory.h}}
+\subsubsection[{gc\_\-mark\_\-potential}]{\setlength{\rightskip}{0pt plus 5cm}void gc\_\-mark\_\-potential (
+\begin{DoxyParamCaption}
+\item[{uintptr\_\-t}]{ ref}
+\end{DoxyParamCaption}
+)}\label{memory_8h_a2cb9310bc93c51fa2e8da0988d5ff5e3}
+Check if a reference is a pointer and recursively gc\_\-mark it if it is 
+\begin{DoxyParams}{Parameters}
+\item[{\em ref}]A reference to a Java object \end{DoxyParams}
+
+
+Definition at line 563 of file memory.c.
+
+
+
+References bitmap\_\-get(), heap\_\-t::end, gc\_\-mark\_\-reference(), and heap\_\-t::start.
+
+
+
+Referenced by tm\_\-mark().
+
+\index{memory.h@{memory.h}!gc\_\-mark\_\-reference@{gc\_\-mark\_\-reference}}
+\index{gc\_\-mark\_\-reference@{gc\_\-mark\_\-reference}!memory.h@{memory.h}}
+\subsubsection[{gc\_\-mark\_\-reference}]{\setlength{\rightskip}{0pt plus 5cm}void gc\_\-mark\_\-reference (
+\begin{DoxyParamCaption}
+\item[{uintptr\_\-t}]{ ref}
+\end{DoxyParamCaption}
+)}\label{memory_8h_aa7a876461f1e8f03d76f343981c0d666}
+Marks the object pointed by ref and recursively all the objects pointed by the references it contains 
+\begin{DoxyParams}{Parameters}
+\item[{\em ref}]A reference to a Java object \end{DoxyParams}
+
+
+Definition at line 593 of file memory.c.
+
+
+
+References array\_\-get\_\-ref\_\-n(), class\_\-get\_\-ref\_\-n(), class\_\-is\_\-array(), class\_\-t::elem\_\-type, gc\_\-mark\_\-reference(), header\_\-get\_\-class(), header\_\-is\_\-marked(), header\_\-is\_\-object(), header\_\-set\_\-mark(), and PT\_\-REFERENCE.
+
+
+
+Referenced by bcl\_\-mark(), gc\_\-mark\_\-finalizable(), gc\_\-mark\_\-potential(), gc\_\-mark\_\-reference(), jsm\_\-mark(), and tm\_\-mark().
+
+\index{memory.h@{memory.h}!gc\_\-new@{gc\_\-new}}
+\index{gc\_\-new@{gc\_\-new}!memory.h@{memory.h}}
+\subsubsection[{gc\_\-new}]{\setlength{\rightskip}{0pt plus 5cm}uintptr\_\-t gc\_\-new (
+\begin{DoxyParamCaption}
+\item[{{\bf class\_\-t} $\ast$}]{ cl}
+\end{DoxyParamCaption}
+)}\label{memory_8h_a004fd69d5d4f2b7649035bf213422281}
+Allocates a managed object of the specified class
+
+If not enough memory is avaible an exception is thrown, note that the returned reference points to the object header, not to the first word of the object.
+
+
+\begin{DoxyParams}{Parameters}
+\item[{\em cl}]A pointer to the object class \end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+A reference to the newly created object, throws an exception upon failure 
+\end{DoxyReturn}
+
+
+Definition at line 242 of file memory.c.
+
+
+
+References bitmap\_\-set(), class\_\-get\_\-nref\_\-size(), class\_\-get\_\-ref\_\-n(), gc\_\-alloc(), header\_\-create\_\-object(), heap\_\-t::size, size\_\-ceil(), tm\_\-lock(), and tm\_\-unlock().
+
+
+
+Referenced by interpreter(), java\_\-lang\_\-Class\_\-newInstance(), jstring\_\-create\_\-from\_\-unicode(), jstring\_\-create\_\-from\_\-utf8(), jstring\_\-create\_\-literal(), KNI\_\-ThrowNew(), load\_\-class(), thread\_\-create\_\-main(), and vm\_\-run().
+
+\index{memory.h@{memory.h}!gc\_\-new\_\-array\_\-nonref@{gc\_\-new\_\-array\_\-nonref}}
+\index{gc\_\-new\_\-array\_\-nonref@{gc\_\-new\_\-array\_\-nonref}!memory.h@{memory.h}}
+\subsubsection[{gc\_\-new\_\-array\_\-nonref}]{\setlength{\rightskip}{0pt plus 5cm}uintptr\_\-t gc\_\-new\_\-array\_\-nonref (
+\begin{DoxyParamCaption}
+\item[{{\bf array\_\-type\_\-t}}]{ type, }
+\item[{int32\_\-t}]{ count}
+\end{DoxyParamCaption}
+)}\label{memory_8h_a0635c709fc71d1e6febfa7e27a1f1506}
+Creates a new array of the specified type 
+\begin{DoxyParams}{Parameters}
+\item[{\em type}]The basic array class type requested \item[{\em count}]The number of elements \end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+A reference to the newly created array 
+\end{DoxyReturn}
+
+
+Definition at line 284 of file memory.c.
+
+
+
+References array\_\-elem\_\-size(), bcl\_\-array\_\-class(), bitmap\_\-set(), gc\_\-alloc(), array\_\-t::header, header\_\-create\_\-object(), array\_\-t::length, heap\_\-t::size, size\_\-ceil(), size\_\-div\_\-inf(), T\_\-BOOLEAN, tm\_\-lock(), and tm\_\-unlock().
+
+
+
+Referenced by gc\_\-new\_\-multiarray(), interpreter(), jstring\_\-create\_\-from\_\-unicode(), jstring\_\-create\_\-from\_\-utf8(), and jstring\_\-create\_\-literal().
+
+\index{memory.h@{memory.h}!gc\_\-new\_\-array\_\-ref@{gc\_\-new\_\-array\_\-ref}}
+\index{gc\_\-new\_\-array\_\-ref@{gc\_\-new\_\-array\_\-ref}!memory.h@{memory.h}}
+\subsubsection[{gc\_\-new\_\-array\_\-ref}]{\setlength{\rightskip}{0pt plus 5cm}uintptr\_\-t gc\_\-new\_\-array\_\-ref (
+\begin{DoxyParamCaption}
+\item[{{\bf class\_\-t} $\ast$}]{ cl, }
+\item[{int32\_\-t}]{ count}
+\end{DoxyParamCaption}
+)}\label{memory_8h_accbb0b60d3e80cc154b47d984b588312}
+Creates a new array of references 
+\begin{DoxyParams}{Parameters}
+\item[{\em cl}]A pointer to the corresponding class \item[{\em count}]The number of elements \end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+A pointer to the newly created array 
+\end{DoxyReturn}
+
+
+Definition at line 320 of file memory.c.
+
+
+
+References bitmap\_\-set(), gc\_\-alloc(), ref\_\-array\_\-t::header, header\_\-create\_\-object(), ref\_\-array\_\-t::length, heap\_\-t::size, size\_\-ceil(), tm\_\-lock(), and tm\_\-unlock().
+
+
+
+Referenced by arraycopy\_\-ref(), gc\_\-new\_\-multiarray(), interpreter(), and vm\_\-run().
+
+\index{memory.h@{memory.h}!gc\_\-new\_\-multiarray@{gc\_\-new\_\-multiarray}}
+\index{gc\_\-new\_\-multiarray@{gc\_\-new\_\-multiarray}!memory.h@{memory.h}}
+\subsubsection[{gc\_\-new\_\-multiarray}]{\setlength{\rightskip}{0pt plus 5cm}uintptr\_\-t gc\_\-new\_\-multiarray (
+\begin{DoxyParamCaption}
+\item[{{\bf class\_\-t} $\ast$}]{ cl, }
+\item[{uint8\_\-t}]{ dimensions, }
+\item[{{\bf jword\_\-t} $\ast$}]{ counts}
+\end{DoxyParamCaption}
+)}\label{memory_8h_ab328b25bf73af3140af84491eeaaf62e}
+Helper function used for creating multi-\/dimensional arrays 
+\begin{DoxyParams}{Parameters}
+\item[{\em cl}]A pointer to the corresponding class \item[{\em dimensions}]The number of dimensions to be created \item[{\em counts}]A pointer to the element counts \end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+A pointer to the newly created array 
+\end{DoxyReturn}
+
+
+Definition at line 357 of file memory.c.
+
+
+
+References array\_\-ref\_\-get\_\-data(), class\_\-t::elem\_\-class, class\_\-t::elem\_\-type, gc\_\-new\_\-array\_\-nonref(), gc\_\-new\_\-array\_\-ref(), gc\_\-new\_\-multiarray(), prim\_\-to\_\-array\_\-type(), PT\_\-REFERENCE, thread\_\-pop\_\-root(), and thread\_\-push\_\-root().
+
+
+
+Referenced by gc\_\-new\_\-multiarray(), and interpreter().
+
+\index{memory.h@{memory.h}!gc\_\-palloc@{gc\_\-palloc}}
+\index{gc\_\-palloc@{gc\_\-palloc}!memory.h@{memory.h}}
+\subsubsection[{gc\_\-palloc}]{\setlength{\rightskip}{0pt plus 5cm}void$\ast$ gc\_\-palloc (
+\begin{DoxyParamCaption}
+\item[{size\_\-t}]{ size}
+\end{DoxyParamCaption}
+)}\label{memory_8h_ad2ba3d2f1781278ddee149bb7a664e25}
+Allocates a chunk of permanent memory for holding C objects, throws an exception upon failure, the returned memory has already been zeroed.
+
+The memory allocated with this function cannot be fred with \doxyref{gc\_\-free()}{p.}{memory_8c_a6d35c1593cdf7ffcd54f0f15034b5204}
+
+
+\begin{DoxyParams}{Parameters}
+\item[{\em size}]The size in bytes of the chunk to be allocated \end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+A pointer to the newly allocated memory 
+\end{DoxyReturn}
+
+
+Definition at line 1037 of file memory.c.
+
+
+
+References heap\_\-t::end, gc\_\-malloc(), heap\_\-t::perm, size\_\-ceil(), tm\_\-lock(), and tm\_\-unlock().
+
+
+
+Referenced by bcl\_\-resolve\_\-class(), class\_\-alloc\_\-fields(), classpath\_\-init(), cp\_\-create(), create\_\-dispatch\_\-table(), create\_\-interface\_\-dispatch\_\-table(), im\_\-create(), im\_\-flatten(), initialize\_\-static\_\-fields(), mm\_\-create(), preload\_\-class(), and utf8\_\-intern().
+
+\index{memory.h@{memory.h}!gc\_\-register\_\-weak\_\-ref@{gc\_\-register\_\-weak\_\-ref}}
+\index{gc\_\-register\_\-weak\_\-ref@{gc\_\-register\_\-weak\_\-ref}!memory.h@{memory.h}}
+\subsubsection[{gc\_\-register\_\-weak\_\-ref}]{\setlength{\rightskip}{0pt plus 5cm}void gc\_\-register\_\-weak\_\-ref (
+\begin{DoxyParamCaption}
+\item[{{\bf java\_\-lang\_\-ref\_\-WeakReference\_\-t} $\ast$}]{ ref}
+\end{DoxyParamCaption}
+)}\label{memory_8h_ac5fcaf5c09aadf4a4c398d09c2130b8c}
+Adds a new object to the weak reference list 
+\begin{DoxyParams}{Parameters}
+\item[{\em ref}]A reference to the object to be added to the weak reference list \end{DoxyParams}
+
+
+Definition at line 452 of file memory.c.
+
+
+
+References java\_\-lang\_\-ref\_\-WeakReference\_\-t::next, tm\_\-lock(), tm\_\-unlock(), and heap\_\-t::weakref\_\-list.
+
+
+
+Referenced by java\_\-lang\_\-ref\_\-WeakReference\_\-addToWeakReferenceList().
+
+\index{memory.h@{memory.h}!gc\_\-teardown@{gc\_\-teardown}}
+\index{gc\_\-teardown@{gc\_\-teardown}!memory.h@{memory.h}}
+\subsubsection[{gc\_\-teardown}]{\setlength{\rightskip}{0pt plus 5cm}void gc\_\-teardown (
+\begin{DoxyParamCaption}
+\item[{void}]{}
+\end{DoxyParamCaption}
+)}\label{memory_8h_abc28a9a2a5dcad57fcabcc3aad5fb72b}
+Disposes the unified heap 
+
+Definition at line 219 of file memory.c.
+
+
+
+References heap\_\-t::memory.
+
+
+
+Referenced by vm\_\-teardown().
+
+\index{memory.h@{memory.h}!gc\_\-total\_\-memory@{gc\_\-total\_\-memory}}
+\index{gc\_\-total\_\-memory@{gc\_\-total\_\-memory}!memory.h@{memory.h}}
+\subsubsection[{gc\_\-total\_\-memory}]{\setlength{\rightskip}{0pt plus 5cm}size\_\-t gc\_\-total\_\-memory (
+\begin{DoxyParamCaption}
+\item[{void}]{}
+\end{DoxyParamCaption}
+)}\label{memory_8h_ad583c813f946530af693f0707ae67c8f}
+Helper function used for implementing Runtime.totalMemory(), returns the amount of memory available to the VM in bytes \begin{DoxyReturn}{Returns}
+The amount of memory available to the VM in bytes 
+\end{DoxyReturn}
+
+
+Definition at line 555 of file memory.c.
+
+
+
+References heap\_\-t::size.
+
+
+
+Referenced by java\_\-lang\_\-Runtime\_\-totalMemory().
+

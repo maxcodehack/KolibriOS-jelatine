@@ -1,0 +1,35 @@
+\section{thread\_\-manager\_\-t Struct Reference}
+\label{structthread__manager__t}\index{thread\_\-manager\_\-t@{thread\_\-manager\_\-t}}
+\subsection*{Data Fields}
+\begin{DoxyCompactItemize}
+\item 
+{\bf native\_\-mutex\_\-t} {\bf lock}\label{structthread__manager__t_a7980c5f4018fe77bb4cd84b993cb4ca8}
+
+\begin{DoxyCompactList}\small\item\em Global VM lock. \item\end{DoxyCompactList}\item 
+size\_\-t {\bf active}\label{structthread__manager__t_abdd23f645ebbc19e4381add4d5a1e799}
+
+\begin{DoxyCompactList}\small\item\em Number of active threads. \item\end{DoxyCompactList}\item 
+{\bf thread\_\-t} $\ast$ {\bf queue}\label{structthread__manager__t_af5dfdda0d90cc8c34a9a4705f355a5b8}
+
+\begin{DoxyCompactList}\small\item\em Doubly-\/linked queue of active threads. \item\end{DoxyCompactList}\item 
+size\_\-t {\bf capacity}\label{structthread__manager__t_aacd1bc3723aae565a5d31585465f6f90}
+
+\begin{DoxyCompactList}\small\item\em Capacity of the monitor hash-\/table. \item\end{DoxyCompactList}\item 
+size\_\-t {\bf entries}\label{structthread__manager__t_ae896e4fb0f1d3960512e2ef5ff8726cd}
+
+\begin{DoxyCompactList}\small\item\em Number of used entries of the monitor hash-\/table. \item\end{DoxyCompactList}\item 
+{\bf monitor\_\-t} $\ast$ {\bf buckets}\label{structthread__manager__t_a75ba33310537551018a5355097b14a46}
+
+\begin{DoxyCompactList}\small\item\em Buckets of the monitor hash-\/table. \item\end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+Thread manager, contains all the threads and is used to interact with them globally 
+
+Definition at line 355 of file thread.c.
+
+
+
+The documentation for this struct was generated from the following file:\begin{DoxyCompactItemize}
+\item 
+src/jelatine/{\bf thread.c}\end{DoxyCompactItemize}

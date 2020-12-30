@@ -1,0 +1,233 @@
+\section{util.c File Reference}
+\label{util_8c}\index{util.c@{util.c}}
+{\ttfamily \#include \char`\"{}wrappers.h\char`\"{}}\par
+{\ttfamily \#include \char`\"{}class.h\char`\"{}}\par
+{\ttfamily \#include \char`\"{}memory.h\char`\"{}}\par
+{\ttfamily \#include \char`\"{}util.h\char`\"{}}\par
+{\ttfamily \#include \char`\"{}vm.h\char`\"{}}\par
+\subsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+void {\bf dbg\_\-warning\_\-internal} (const char $\ast$filename, int lineno, const char $\ast$format,...)
+\item 
+void {\bf dbg\_\-error\_\-internal} (const char $\ast$filename, int lineno, const char $\ast$format,...)
+\item 
+void {\bf dbg\_\-printf\_\-internal} (const char $\ast$filename, int lineno, const char $\ast$format,...)
+\item 
+void {\bf dbg\_\-unreachable\_\-internal} (const char $\ast$filename, int lineno)
+\item 
+char $\ast$ {\bf cstrchrnul} (const char $\ast$s, int c)
+\item 
+void {\bf sort\_\-asc\_\-uint16\_\-ptrs} (uint16\_\-t $\ast$array, void $\ast$$\ast$ptrs, uint32\_\-t len)
+\item 
+void {\bf c\_\-throw\_\-dbg} (const char $\ast$file, int line, int exc, const char $\ast$desc,...)
+\item 
+void {\bf c\_\-clear\_\-exception} (void)
+\item 
+void {\bf c\_\-print\_\-exception} (int exc)
+\item 
+struct timespec {\bf get\_\-time\_\-with\_\-offset} (uint64\_\-t ms, uint32\_\-t nanos)
+\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+Utility functions implementation 
+
+Definition in file {\bf util.c}.
+
+
+
+\subsection{Function Documentation}
+\index{util.c@{util.c}!c\_\-clear\_\-exception@{c\_\-clear\_\-exception}}
+\index{c\_\-clear\_\-exception@{c\_\-clear\_\-exception}!util.c@{util.c}}
+\subsubsection[{c\_\-clear\_\-exception}]{\setlength{\rightskip}{0pt plus 5cm}void c\_\-clear\_\-exception (
+\begin{DoxyParamCaption}
+\item[{void}]{}
+\end{DoxyParamCaption}
+)}\label{util_8c_a5c7e5e7dc89e3d0a1085a68a0b8e48d6}
+Clear the current exception. This frees the exception description 
+
+Definition at line 262 of file util.c.
+
+
+
+References gc\_\-free(), self, and thread\_\-self().
+
+
+
+Referenced by java\_\-lang\_\-Class\_\-forName(), thread\_\-start(), and vm\_\-run().
+
+\index{util.c@{util.c}!c\_\-print\_\-exception@{c\_\-print\_\-exception}}
+\index{c\_\-print\_\-exception@{c\_\-print\_\-exception}!util.c@{util.c}}
+\subsubsection[{c\_\-print\_\-exception}]{\setlength{\rightskip}{0pt plus 5cm}void c\_\-print\_\-exception (
+\begin{DoxyParamCaption}
+\item[{int}]{ exc}
+\end{DoxyParamCaption}
+)}\label{util_8c_a1dfbcfe9d8f01f6612f70a0ab79412b9}
+Print the exception of type {\itshape exc\/} currently held by the calling thread 
+\begin{DoxyParams}{Parameters}
+\item[{\em exc}]An exception type \end{DoxyParams}
+
+
+Definition at line 273 of file util.c.
+
+
+
+References self, and thread\_\-self().
+
+
+
+Referenced by thread\_\-start(), and vm\_\-run().
+
+\index{util.c@{util.c}!c\_\-throw\_\-dbg@{c\_\-throw\_\-dbg}}
+\index{c\_\-throw\_\-dbg@{c\_\-throw\_\-dbg}!util.c@{util.c}}
+\subsubsection[{c\_\-throw\_\-dbg}]{\setlength{\rightskip}{0pt plus 5cm}void c\_\-throw\_\-dbg (
+\begin{DoxyParamCaption}
+\item[{const char $\ast$}]{ file, }
+\item[{int}]{ line, }
+\item[{int}]{ exc, }
+\item[{const char $\ast$}]{ desc, }
+\item[{}]{ ...}
+\end{DoxyParamCaption}
+)}\label{util_8c_a0239c5100cf9f475c684815b55bfff56}
+Throw a C pseudo-\/exception in debug mode 
+\begin{DoxyParams}{Parameters}
+\item[{\em file}]The file were the exception was thrown \item[{\em line}]The line were the exception was thrown \item[{\em exc}]The exception number / type \item[{\em desc}]A printf()-\/like formatted string holding a description of the thrown exception \end{DoxyParams}
+
+
+Definition at line 197 of file util.c.
+
+
+
+References gc\_\-malloc(), self, and thread\_\-self().
+
+\index{util.c@{util.c}!cstrchrnul@{cstrchrnul}}
+\index{cstrchrnul@{cstrchrnul}!util.c@{util.c}}
+\subsubsection[{cstrchrnul}]{\setlength{\rightskip}{0pt plus 5cm}char$\ast$ cstrchrnul (
+\begin{DoxyParamCaption}
+\item[{const char $\ast$}]{ s, }
+\item[{int}]{ c}
+\end{DoxyParamCaption}
+)}\label{util_8c_a3d6133c570a49c5ee6e3b074c082b90e}
+Replacement function for strchrnul() which is a GNU extension 
+\begin{DoxyParams}{Parameters}
+\item[{\em s}]String to search for the character {\itshape c\/} \item[{\em c}]The character to look for \end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+A pointer to the first instance of {\itshape c\/} or a pointer to the nul terminator if {\itshape c\/} is not found in the string 
+\end{DoxyReturn}
+
+
+Definition at line 116 of file util.c.
+
+
+
+Referenced by classpath\_\-init().
+
+\index{util.c@{util.c}!dbg\_\-error\_\-internal@{dbg\_\-error\_\-internal}}
+\index{dbg\_\-error\_\-internal@{dbg\_\-error\_\-internal}!util.c@{util.c}}
+\subsubsection[{dbg\_\-error\_\-internal}]{\setlength{\rightskip}{0pt plus 5cm}void dbg\_\-error\_\-internal (
+\begin{DoxyParamCaption}
+\item[{const char $\ast$}]{ filename, }
+\item[{int}]{ lineno, }
+\item[{const char $\ast$}]{ format, }
+\item[{}]{ ...}
+\end{DoxyParamCaption}
+)}\label{util_8c_ac75dbb3a228f1d493434276486fce9a4}
+Prints a formatted string to the stderr stream, notifying the user of an error condition and aborts 
+\begin{DoxyParams}{Parameters}
+\item[{\em filename}]The name of the source file in which this function was called \item[{\em lineno}]The line where this function was called \item[{\em format}]A format string using the printf() guidelines \end{DoxyParams}
+
+
+Definition at line 62 of file util.c.
+
+\index{util.c@{util.c}!dbg\_\-printf\_\-internal@{dbg\_\-printf\_\-internal}}
+\index{dbg\_\-printf\_\-internal@{dbg\_\-printf\_\-internal}!util.c@{util.c}}
+\subsubsection[{dbg\_\-printf\_\-internal}]{\setlength{\rightskip}{0pt plus 5cm}void dbg\_\-printf\_\-internal (
+\begin{DoxyParamCaption}
+\item[{const char $\ast$}]{ filename, }
+\item[{int}]{ lineno, }
+\item[{const char $\ast$}]{ format, }
+\item[{}]{ ...}
+\end{DoxyParamCaption}
+)}\label{util_8c_a1bda95624c3a55505fcc5c50a50aa113}
+Prints a formatted string to the stderr stream, the function prepends the filename and line where the function was called and appends a newline 
+\begin{DoxyParams}{Parameters}
+\item[{\em filename}]The name of the file from which the function was called \item[{\em lineno}]The number of the line in which the function was called \item[{\em format}]A format string using the printf() guidelines \end{DoxyParams}
+
+
+Definition at line 80 of file util.c.
+
+\index{util.c@{util.c}!dbg\_\-unreachable\_\-internal@{dbg\_\-unreachable\_\-internal}}
+\index{dbg\_\-unreachable\_\-internal@{dbg\_\-unreachable\_\-internal}!util.c@{util.c}}
+\subsubsection[{dbg\_\-unreachable\_\-internal}]{\setlength{\rightskip}{0pt plus 5cm}void dbg\_\-unreachable\_\-internal (
+\begin{DoxyParamCaption}
+\item[{const char $\ast$}]{ filename, }
+\item[{int}]{ lineno}
+\end{DoxyParamCaption}
+)}\label{util_8c_a6e12381bc623ffbb6ea2bbbd8bf7439a}
+Aborts execution and emits a warning that the code has reached a point which shouldn't be reachable under normal conditions 
+\begin{DoxyParams}{Parameters}
+\item[{\em filename}]The name of the file from which the function was called \item[{\em lineno}]The number of the line in which the function was called \end{DoxyParams}
+
+
+Definition at line 97 of file util.c.
+
+\index{util.c@{util.c}!dbg\_\-warning\_\-internal@{dbg\_\-warning\_\-internal}}
+\index{dbg\_\-warning\_\-internal@{dbg\_\-warning\_\-internal}!util.c@{util.c}}
+\subsubsection[{dbg\_\-warning\_\-internal}]{\setlength{\rightskip}{0pt plus 5cm}void dbg\_\-warning\_\-internal (
+\begin{DoxyParamCaption}
+\item[{const char $\ast$}]{ filename, }
+\item[{int}]{ lineno, }
+\item[{const char $\ast$}]{ format, }
+\item[{}]{ ...}
+\end{DoxyParamCaption}
+)}\label{util_8c_ac32b9be56dcbd63551feb2f1bb1b1b26}
+Prints a formatted string to the stderr stream, warning the user about abnormal situations which do not prevent the program from continuing execution 
+\begin{DoxyParams}{Parameters}
+\item[{\em filename}]The name of the source file in which this function was called \item[{\em lineno}]The line where this function was called \item[{\em format}]A format string using the printf() guidelines \end{DoxyParams}
+
+
+Definition at line 44 of file util.c.
+
+\index{util.c@{util.c}!get\_\-time\_\-with\_\-offset@{get\_\-time\_\-with\_\-offset}}
+\index{get\_\-time\_\-with\_\-offset@{get\_\-time\_\-with\_\-offset}!util.c@{util.c}}
+\subsubsection[{get\_\-time\_\-with\_\-offset}]{\setlength{\rightskip}{0pt plus 5cm}struct timespec get\_\-time\_\-with\_\-offset (
+\begin{DoxyParamCaption}
+\item[{uint64\_\-t}]{ ms, }
+\item[{uint32\_\-t}]{ nanos}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily  [read]}}\label{util_8c_a8431a1aa2b9b32863c89a4a47f111098}
+Returns a timespec structure filled with the current time plus the offset specified by {\itshape ms\/} and {\itshape nanos\/} 
+\begin{DoxyParams}{Parameters}
+\item[{\em ms}]An offset in microseconds \item[{\em nanos}]An offset in nanoseconds \end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+The current time plus the specified offset 
+\end{DoxyReturn}
+
+
+Definition at line 310 of file util.c.
+
+
+
+Referenced by java\_\-lang\_\-System\_\-currentTimeMillis(), and native\_\-cond\_\-timed\_\-wait().
+
+\index{util.c@{util.c}!sort\_\-asc\_\-uint16\_\-ptrs@{sort\_\-asc\_\-uint16\_\-ptrs}}
+\index{sort\_\-asc\_\-uint16\_\-ptrs@{sort\_\-asc\_\-uint16\_\-ptrs}!util.c@{util.c}}
+\subsubsection[{sort\_\-asc\_\-uint16\_\-ptrs}]{\setlength{\rightskip}{0pt plus 5cm}void sort\_\-asc\_\-uint16\_\-ptrs (
+\begin{DoxyParamCaption}
+\item[{uint16\_\-t $\ast$}]{ array, }
+\item[{void $\ast$$\ast$}]{ ptrs, }
+\item[{uint32\_\-t}]{ len}
+\end{DoxyParamCaption}
+)}\label{util_8c_acbccdc2a0fa9512f19373a01f0453e97}
+Sorts an uint16 array and a pointer array using the integer array as the reference. This function is used to sort the interface table 
+\begin{DoxyParams}{Parameters}
+\item[{\em array}]A pointer to an uint16 array \item[{\em ptrs}]A pointer to an array of pointers \item[{\em len}]The length of the arrays \end{DoxyParams}
+
+
+Definition at line 135 of file util.c.
+
+
+
+Referenced by create\_\-interface\_\-dispatch\_\-table().
+

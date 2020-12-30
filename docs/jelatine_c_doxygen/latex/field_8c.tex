@@ -1,0 +1,174 @@
+\section{field.c File Reference}
+\label{field_8c}\index{field.c@{field.c}}
+{\ttfamily \#include \char`\"{}wrappers.h\char`\"{}}\par
+{\ttfamily \#include \char`\"{}class.h\char`\"{}}\par
+{\ttfamily \#include \char`\"{}field.h\char`\"{}}\par
+{\ttfamily \#include \char`\"{}util.h\char`\"{}}\par
+\subsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+size\_\-t {\bf field\_\-size} (const {\bf field\_\-t} $\ast$field)
+\item 
+void {\bf field\_\-parse\_\-descriptor} (const char $\ast$desc)
+\item 
+uintptr\_\-t {\bf static\_\-field\_\-data\_\-ptr} ({\bf static\_\-field\_\-t} $\ast$static\_\-field)
+\item 
+static {\bf field\_\-t} $\ast$ {\bf field\_\-itr\_\-find\_\-next} ({\bf field\_\-t} $\ast$curr, {\bf field\_\-t} $\ast$end, bool stat)
+\item 
+{\bf field\_\-iterator\_\-t} {\bf field\_\-itr} ({\bf class\_\-t} $\ast$cl, bool stat)
+\item 
+{\bf field\_\-t} $\ast$ {\bf field\_\-itr\_\-get\_\-next} ({\bf field\_\-iterator\_\-t} $\ast$itr)
+\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+Field structure implementation 
+
+Definition in file {\bf field.c}.
+
+
+
+\subsection{Function Documentation}
+\index{field.c@{field.c}!field\_\-itr@{field\_\-itr}}
+\index{field\_\-itr@{field\_\-itr}!field.c@{field.c}}
+\subsubsection[{field\_\-itr}]{\setlength{\rightskip}{0pt plus 5cm}{\bf field\_\-iterator\_\-t} field\_\-itr (
+\begin{DoxyParamCaption}
+\item[{{\bf class\_\-t} $\ast$}]{ cl, }
+\item[{bool}]{ stat}
+\end{DoxyParamCaption}
+)}\label{field_8c_a21f063e65dc2882bd6940ba0c3702cfc}
+Returns an iterator for navigating the instance or static fields of a class depending on the value of stat 
+\begin{DoxyParams}{Parameters}
+\item[{\em cl}]A pointer to a class \item[{\em stat}]true if a static field iterator is needed, false otherwise \end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+An initialized iterator 
+\end{DoxyReturn}
+
+
+Definition at line 224 of file field.c.
+
+
+
+References field\_\-iterator\_\-t::end, field\_\-itr\_\-find\_\-next(), class\_\-t::fields, class\_\-t::fields\_\-n, field\_\-iterator\_\-t::next, and field\_\-iterator\_\-t::stat.
+
+
+
+Referenced by instance\_\-field\_\-itr(), and static\_\-field\_\-itr().
+
+\index{field.c@{field.c}!field\_\-itr\_\-find\_\-next@{field\_\-itr\_\-find\_\-next}}
+\index{field\_\-itr\_\-find\_\-next@{field\_\-itr\_\-find\_\-next}!field.c@{field.c}}
+\subsubsection[{field\_\-itr\_\-find\_\-next}]{\setlength{\rightskip}{0pt plus 5cm}static {\bf field\_\-t}$\ast$ field\_\-itr\_\-find\_\-next (
+\begin{DoxyParamCaption}
+\item[{{\bf field\_\-t} $\ast$}]{ curr, }
+\item[{{\bf field\_\-t} $\ast$}]{ end, }
+\item[{bool}]{ stat}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily  [static]}}\label{field_8c_a641847a350ccf30dc5423e9bf8b29a40}
+Find the next field to iterate on unless there are no more available 
+\begin{DoxyParams}{Parameters}
+\item[{\em curr}]The current field \item[{\em end}]A pointer past the last field \item[{\em stat}]true if a static field is wanted, false otherwise returns A pointer to the next field or NULL if no more are available \end{DoxyParams}
+
+
+Definition at line 205 of file field.c.
+
+
+
+References field\_\-is\_\-static().
+
+
+
+Referenced by field\_\-itr(), and field\_\-itr\_\-get\_\-next().
+
+\index{field.c@{field.c}!field\_\-itr\_\-get\_\-next@{field\_\-itr\_\-get\_\-next}}
+\index{field\_\-itr\_\-get\_\-next@{field\_\-itr\_\-get\_\-next}!field.c@{field.c}}
+\subsubsection[{field\_\-itr\_\-get\_\-next}]{\setlength{\rightskip}{0pt plus 5cm}{\bf field\_\-t}$\ast$ field\_\-itr\_\-get\_\-next (
+\begin{DoxyParamCaption}
+\item[{{\bf field\_\-iterator\_\-t} $\ast$}]{ itr}
+\end{DoxyParamCaption}
+)}\label{field_8c_a9f6afd884f79d5863a050a065c178eb2}
+Returns the next field of this iteration 
+\begin{DoxyParams}{Parameters}
+\item[{\em itr}]A field iterator \end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+The next field available 
+\end{DoxyReturn}
+
+
+Definition at line 240 of file field.c.
+
+
+
+References field\_\-iterator\_\-t::end, field\_\-itr\_\-find\_\-next(), field\_\-itr\_\-has\_\-next(), field\_\-iterator\_\-t::next, and field\_\-iterator\_\-t::stat.
+
+
+
+Referenced by bcl\_\-mark(), initialize\_\-static\_\-fields(), and layout\_\-fields().
+
+\index{field.c@{field.c}!field\_\-parse\_\-descriptor@{field\_\-parse\_\-descriptor}}
+\index{field\_\-parse\_\-descriptor@{field\_\-parse\_\-descriptor}!field.c@{field.c}}
+\subsubsection[{field\_\-parse\_\-descriptor}]{\setlength{\rightskip}{0pt plus 5cm}void field\_\-parse\_\-descriptor (
+\begin{DoxyParamCaption}
+\item[{const char $\ast$}]{ desc}
+\end{DoxyParamCaption}
+)}\label{field_8c_a372e6e74cae4097b35c9511602f53750}
+Checks if a field descriptor is valid 
+\begin{DoxyParams}{Parameters}
+\item[{\em desc}]A field descriptor \end{DoxyParams}
+
+
+Definition at line 74 of file field.c.
+
+
+
+References c\_\-throw, and JAVA\_\-LANG\_\-NOCLASSDEFFOUNDERROR.
+
+
+
+Referenced by verify\_\-field().
+
+\index{field.c@{field.c}!field\_\-size@{field\_\-size}}
+\index{field\_\-size@{field\_\-size}!field.c@{field.c}}
+\subsubsection[{field\_\-size}]{\setlength{\rightskip}{0pt plus 5cm}size\_\-t field\_\-size (
+\begin{DoxyParamCaption}
+\item[{const {\bf field\_\-t} $\ast$}]{ field}
+\end{DoxyParamCaption}
+)}\label{field_8c_abafee4aa66a23d62a4a533b7d98e21ee}
+Returns the size in bytes of a field 
+\begin{DoxyParams}{Parameters}
+\item[{\em field}]A pointer to a field \end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+The size in bytes of the field 
+\end{DoxyReturn}
+
+
+Definition at line 38 of file field.c.
+
+
+
+References dbg\_\-unreachable, and field\_\-t::descriptor.
+
+\index{field.c@{field.c}!static\_\-field\_\-data\_\-ptr@{static\_\-field\_\-data\_\-ptr}}
+\index{static\_\-field\_\-data\_\-ptr@{static\_\-field\_\-data\_\-ptr}!field.c@{field.c}}
+\subsubsection[{static\_\-field\_\-data\_\-ptr}]{\setlength{\rightskip}{0pt plus 5cm}uintptr\_\-t static\_\-field\_\-data\_\-ptr (
+\begin{DoxyParamCaption}
+\item[{{\bf static\_\-field\_\-t} $\ast$}]{ static\_\-field}
+\end{DoxyParamCaption}
+)}\label{field_8c_a57ef866b90fd2eb68768f72441fdd84a}
+Returns a pointer to the actual data of a static field 
+\begin{DoxyParams}{Parameters}
+\item[{\em static\_\-field}]A pointer to a static field \end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+The address of the static field data 
+\end{DoxyReturn}
+
+
+Definition at line 174 of file field.c.
+
+
+
+References static\_\-field\_\-t::data, dbg\_\-unreachable, field\_\-t::descriptor, and static\_\-field\_\-t::field.
+
+
+
+Referenced by KNI\_\-GetStaticFieldID(), and resolve\_\-static\_\-field().
+

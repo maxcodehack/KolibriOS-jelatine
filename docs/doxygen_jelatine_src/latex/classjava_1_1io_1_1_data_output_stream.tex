@@ -1,0 +1,585 @@
+\section{java::io::DataOutputStream Class Reference}
+\label{classjava_1_1io_1_1_data_output_stream}\index{java::io::DataOutputStream@{java::io::DataOutputStream}}
+Inheritance diagram for java::io::DataOutputStream:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=2.000000cm]{classjava_1_1io_1_1_data_output_stream}
+\end{center}
+\end{figure}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+{\bf DataOutputStream} ({\bf OutputStream} {\bf out})
+\item 
+synchronized void {\bf write} (int value)  throws IOException     
+\item 
+synchronized void {\bf write} (byte[$\,$] buf)  throws IOException     
+\item 
+synchronized void {\bf write} (byte[$\,$] buf, int offset, int len)  throws IOException     
+\item 
+void {\bf flush} ()  throws IOException     
+\item 
+void {\bf close} ()  throws IOException     
+\item 
+final void {\bf writeBoolean} (boolean value)  throws IOException     
+\item 
+final void {\bf writeByte} (int value)  throws IOException     
+\item 
+final synchronized void {\bf writeShort} (int value)  throws IOException     
+\item 
+final synchronized void {\bf writeChar} (int value)  throws IOException     
+\item 
+final synchronized void {\bf writeInt} (int value)  throws IOException     
+\item 
+final synchronized void {\bf writeLong} (long value)  throws IOException     
+\item 
+final void {\bf writeFloat} (float value)  throws IOException     
+\item 
+final void {\bf writeDouble} (double value)  throws IOException     
+\item 
+final void {\bf writeChars} (String value)  throws IOException     
+\item 
+final synchronized void {\bf writeUTF} (String value)  throws IOException     
+\end{DoxyCompactItemize}
+\subsection*{Protected Attributes}
+\begin{DoxyCompactItemize}
+\item 
+{\bf OutputStream} {\bf out}
+\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+This class provides a mechanism for writing primitive Java datatypes to an {\ttfamily \doxyref{OutputStream}{p.}{classjava_1_1io_1_1_output_stream}} in a portable way. Data written to a stream using this class can be read back in using the {\ttfamily \doxyref{DataInputStream}{p.}{classjava_1_1io_1_1_data_input_stream}} class on any platform.
+
+\begin{DoxySeeAlso}{See also}
+\doxyref{DataInputStream}{p.}{classjava_1_1io_1_1_data_input_stream} 
+\end{DoxySeeAlso}
+
+
+Definition at line 51 of file DataOutputStream.java.
+
+
+
+\subsection{Constructor \& Destructor Documentation}
+\index{java::io::DataOutputStream@{java::io::DataOutputStream}!DataOutputStream@{DataOutputStream}}
+\index{DataOutputStream@{DataOutputStream}!java::io::DataOutputStream@{java::io::DataOutputStream}}
+\subsubsection[{DataOutputStream}]{\setlength{\rightskip}{0pt plus 5cm}java::io::DataOutputStream::DataOutputStream (
+\begin{DoxyParamCaption}
+\item[{{\bf OutputStream}}]{ out}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily  [inline]}}\label{classjava_1_1io_1_1_data_output_stream_a623e506fede67ec147b821196394ba39}
+This method initializes an instance of {\ttfamily \doxyref{DataOutputStream}{p.}{classjava_1_1io_1_1_data_output_stream}} to write its data to the specified underlying {\ttfamily \doxyref{OutputStream}{p.}{classjava_1_1io_1_1_output_stream}}
+
+
+\begin{DoxyParams}{Parameters}
+\item[{\em out}]The subordinate {\ttfamily \doxyref{OutputStream}{p.}{classjava_1_1io_1_1_output_stream}} to which this object will write \end{DoxyParams}
+
+
+Definition at line 65 of file DataOutputStream.java.
+
+
+
+\subsection{Member Function Documentation}
+\index{java::io::DataOutputStream@{java::io::DataOutputStream}!close@{close}}
+\index{close@{close}!java::io::DataOutputStream@{java::io::DataOutputStream}}
+\subsubsection[{close}]{\setlength{\rightskip}{0pt plus 5cm}void java::io::DataOutputStream::close (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)  throws {\bf IOException}     \hspace{0.3cm}{\ttfamily  [inline]}}\label{classjava_1_1io_1_1_data_output_stream_a62d886f7d211cd2b5aeb4e1d09d428ef}
+Closes the output stream 
+\begin{DoxyExceptions}{Exceptions}
+\item[{\em \doxyref{IOException}{p.}{classjava_1_1io_1_1_i_o_exception}}]if any I/O error occurs \end{DoxyExceptions}
+
+
+Definition at line 129 of file DataOutputStream.java.
+
+
+
+References java::io::OutputStream::close(), and out.
+
+\index{java::io::DataOutputStream@{java::io::DataOutputStream}!flush@{flush}}
+\index{flush@{flush}!java::io::DataOutputStream@{java::io::DataOutputStream}}
+\subsubsection[{flush}]{\setlength{\rightskip}{0pt plus 5cm}void java::io::DataOutputStream::flush (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)  throws {\bf IOException}     \hspace{0.3cm}{\ttfamily  [inline]}}\label{classjava_1_1io_1_1_data_output_stream_aba0f890c421bdfc4b5ddc713f0b18f6b}
+This method flushes any unwritten bytes to the underlying stream.
+
+
+\begin{DoxyExceptions}{Exceptions}
+\item[{\em \doxyref{IOException}{p.}{classjava_1_1io_1_1_i_o_exception}}]If an error occurs. \end{DoxyExceptions}
+
+
+Definition at line 119 of file DataOutputStream.java.
+
+
+
+References java::io::OutputStream::flush(), and out.
+
+\index{java::io::DataOutputStream@{java::io::DataOutputStream}!write@{write}}
+\index{write@{write}!java::io::DataOutputStream@{java::io::DataOutputStream}}
+\subsubsection[{write}]{\setlength{\rightskip}{0pt plus 5cm}synchronized void java::io::DataOutputStream::write (
+\begin{DoxyParamCaption}
+\item[{byte[$\,$]}]{ buf}
+\end{DoxyParamCaption}
+)  throws {\bf IOException}     \hspace{0.3cm}{\ttfamily  [inline]}}\label{classjava_1_1io_1_1_data_output_stream_a03582134ae8ee3bd4e554d3ad1e7fe2e}
+This method writes the specified byte array to the underlying output stream.
+
+
+\begin{DoxyParams}{Parameters}
+\item[{\em buf}]The byte array to write from.\end{DoxyParams}
+
+\begin{DoxyExceptions}{Exceptions}
+\item[{\em \doxyref{IOException}{p.}{classjava_1_1io_1_1_i_o_exception}}]If an error occurs. \end{DoxyExceptions}
+
+
+Implements {\bf java::io::DataOutput} \doxyref{}{p.}{interfacejava_1_1io_1_1_data_output_aa721f54a95c48574301f8f510c986e59}.
+
+
+
+Definition at line 91 of file DataOutputStream.java.
+
+
+
+References write().
+
+\index{java::io::DataOutputStream@{java::io::DataOutputStream}!write@{write}}
+\index{write@{write}!java::io::DataOutputStream@{java::io::DataOutputStream}}
+\subsubsection[{write}]{\setlength{\rightskip}{0pt plus 5cm}synchronized void java::io::DataOutputStream::write (
+\begin{DoxyParamCaption}
+\item[{int}]{ value}
+\end{DoxyParamCaption}
+)  throws {\bf IOException}     \hspace{0.3cm}{\ttfamily  [inline]}}\label{classjava_1_1io_1_1_data_output_stream_ab8fe4497c03973caaa9a64f44f3ea8a4}
+This method writes the specified byte (passed as an {\ttfamily int}) to the underlying output stream.
+
+
+\begin{DoxyParams}{Parameters}
+\item[{\em value}]The {\ttfamily byte} to write, passed as an {\ttfamily int}.\end{DoxyParams}
+
+\begin{DoxyExceptions}{Exceptions}
+\item[{\em \doxyref{IOException}{p.}{classjava_1_1io_1_1_i_o_exception}}]If an error occurs. \end{DoxyExceptions}
+
+
+Implements {\bf java::io::DataOutput} \doxyref{}{p.}{interfacejava_1_1io_1_1_data_output_a696bdf36754f84faceb14b82c1ff304b}.
+
+
+
+Definition at line 78 of file DataOutputStream.java.
+
+
+
+References out, and java::io::OutputStream::write().
+
+
+
+Referenced by write(), and writeUTF().
+
+\index{java::io::DataOutputStream@{java::io::DataOutputStream}!write@{write}}
+\index{write@{write}!java::io::DataOutputStream@{java::io::DataOutputStream}}
+\subsubsection[{write}]{\setlength{\rightskip}{0pt plus 5cm}synchronized void java::io::DataOutputStream::write (
+\begin{DoxyParamCaption}
+\item[{byte[$\,$]}]{ buf, }
+\item[{int}]{ offset, }
+\item[{int}]{ len}
+\end{DoxyParamCaption}
+)  throws {\bf IOException}     \hspace{0.3cm}{\ttfamily  [inline]}}\label{classjava_1_1io_1_1_data_output_stream_ab244397e4a1c2167c4a689dee3a51e49}
+This method writes {\ttfamily len} bytes from the specified byte array {\ttfamily buf} starting at position {\ttfamily offset} into the buffer to the underlying output stream.
+
+
+\begin{DoxyParams}{Parameters}
+\item[{\em buf}]The byte array to write from. \item[{\em offset}]The index into the byte array to start writing from. \item[{\em len}]The number of bytes to write.\end{DoxyParams}
+
+\begin{DoxyExceptions}{Exceptions}
+\item[{\em \doxyref{IOException}{p.}{classjava_1_1io_1_1_i_o_exception}}]If an error occurs. \end{DoxyExceptions}
+
+
+Implements {\bf java::io::DataOutput} \doxyref{}{p.}{interfacejava_1_1io_1_1_data_output_a09f96f97b21ff5fa13aa8974aa9794d0}.
+
+
+
+Definition at line 108 of file DataOutputStream.java.
+
+
+
+References out, and java::io::OutputStream::write().
+
+\index{java::io::DataOutputStream@{java::io::DataOutputStream}!writeBoolean@{writeBoolean}}
+\index{writeBoolean@{writeBoolean}!java::io::DataOutputStream@{java::io::DataOutputStream}}
+\subsubsection[{writeBoolean}]{\setlength{\rightskip}{0pt plus 5cm}final void java::io::DataOutputStream::writeBoolean (
+\begin{DoxyParamCaption}
+\item[{boolean}]{ value}
+\end{DoxyParamCaption}
+)  throws {\bf IOException}     \hspace{0.3cm}{\ttfamily  [inline]}}\label{classjava_1_1io_1_1_data_output_stream_a31e02377ff8aad72b48d794071db59f2}
+This method writes a Java boolean value to an output stream. If {\ttfamily value} is {\ttfamily true}, a byte with the value of 1 will be written, otherwise a byte with the value of 0 will be written.
+
+The value written can be read using the {\ttfamily readBoolean} method in {\ttfamily \doxyref{DataInput}{p.}{interfacejava_1_1io_1_1_data_input}}.
+
+
+\begin{DoxyParams}{Parameters}
+\item[{\em value}]The {\ttfamily boolean} value to write to the stream\end{DoxyParams}
+
+\begin{DoxyExceptions}{Exceptions}
+\item[{\em \doxyref{IOException}{p.}{classjava_1_1io_1_1_i_o_exception}}]If an error occurs\end{DoxyExceptions}
+\begin{DoxySeeAlso}{See also}
+\doxyref{DataInput::readBoolean}{p.}{interfacejava_1_1io_1_1_data_input_a89e4e1441035d370624ba241d55ba8da} 
+\end{DoxySeeAlso}
+
+
+Implements {\bf java::io::DataOutput} \doxyref{}{p.}{interfacejava_1_1io_1_1_data_output_a0aa819400d442617f3a7aec76b41fe07}.
+
+
+
+Definition at line 149 of file DataOutputStream.java.
+
+
+
+References out, and java::io::OutputStream::write().
+
+\index{java::io::DataOutputStream@{java::io::DataOutputStream}!writeByte@{writeByte}}
+\index{writeByte@{writeByte}!java::io::DataOutputStream@{java::io::DataOutputStream}}
+\subsubsection[{writeByte}]{\setlength{\rightskip}{0pt plus 5cm}final void java::io::DataOutputStream::writeByte (
+\begin{DoxyParamCaption}
+\item[{int}]{ value}
+\end{DoxyParamCaption}
+)  throws {\bf IOException}     \hspace{0.3cm}{\ttfamily  [inline]}}\label{classjava_1_1io_1_1_data_output_stream_a7d30584d248d1a284024f3e206aec948}
+This method writes a Java byte value to an output stream. The byte to be written will be in the lowest 8 bits of the {\ttfamily int} value passed.
+
+The value written can be read using the {\ttfamily readByte} or {\ttfamily readUnsignedByte} methods in {\ttfamily \doxyref{DataInput}{p.}{interfacejava_1_1io_1_1_data_input}}.
+
+
+\begin{DoxyParams}{Parameters}
+\item[{\em value}]The {\ttfamily byte} to write to the stream, passed as the low eight bits of an {\ttfamily int}.\end{DoxyParams}
+
+\begin{DoxyExceptions}{Exceptions}
+\item[{\em \doxyref{IOException}{p.}{classjava_1_1io_1_1_i_o_exception}}]If an error occurs\end{DoxyExceptions}
+\begin{DoxySeeAlso}{See also}
+\doxyref{DataInput::readByte}{p.}{interfacejava_1_1io_1_1_data_input_aa4b506d9f0bc46b9ddfa30e94408c094} 
+
+\doxyref{DataInput::readUnsignedByte}{p.}{interfacejava_1_1io_1_1_data_input_a1e7d5f93d9847af91ce8f0d2df885b7e} 
+\end{DoxySeeAlso}
+
+
+Implements {\bf java::io::DataOutput} \doxyref{}{p.}{interfacejava_1_1io_1_1_data_output_ab82f69df74fc270af167a179745d4d81}.
+
+
+
+Definition at line 170 of file DataOutputStream.java.
+
+
+
+References out, and java::io::OutputStream::write().
+
+\index{java::io::DataOutputStream@{java::io::DataOutputStream}!writeChar@{writeChar}}
+\index{writeChar@{writeChar}!java::io::DataOutputStream@{java::io::DataOutputStream}}
+\subsubsection[{writeChar}]{\setlength{\rightskip}{0pt plus 5cm}final synchronized void java::io::DataOutputStream::writeChar (
+\begin{DoxyParamCaption}
+\item[{int}]{ value}
+\end{DoxyParamCaption}
+)  throws {\bf IOException}     \hspace{0.3cm}{\ttfamily  [inline]}}\label{classjava_1_1io_1_1_data_output_stream_a75ee98b3a71ab37a87b9aaf022b86476}
+This method writes a Java char value to an output stream. The char to be written will be in the lowest 16 bits of the {\ttfamily int} value passed. These bytes will be written \char`\"{}big endian\char`\"{}. That is, with the high byte written first in the following manner: 
+
+{\ttfamily byte0 = (byte)((value \& 0xFF00) $>$$>$ 8);\par
+ byte1 = (byte)(value \& 0x00FF);} 
+
+The value written can be read using the {\ttfamily readChar} method in {\ttfamily \doxyref{DataInput}{p.}{interfacejava_1_1io_1_1_data_input}}.
+
+
+\begin{DoxyParams}{Parameters}
+\item[{\em value}]The {\ttfamily char} value to write, passed as an {\ttfamily int}.\end{DoxyParams}
+
+\begin{DoxyExceptions}{Exceptions}
+\item[{\em \doxyref{IOException}{p.}{classjava_1_1io_1_1_i_o_exception}}]If an error occurs\end{DoxyExceptions}
+\begin{DoxySeeAlso}{See also}
+\doxyref{DataInput::readChar}{p.}{interfacejava_1_1io_1_1_data_input_a6f6470041b6658ef6db707cd6c523332} 
+\end{DoxySeeAlso}
+
+
+Implements {\bf java::io::DataOutput} \doxyref{}{p.}{interfacejava_1_1io_1_1_data_output_ac8df25f622b7dee08ffef5d91643d5e3}.
+
+
+
+Definition at line 222 of file DataOutputStream.java.
+
+
+
+References out, and java::io::OutputStream::write().
+
+
+
+Referenced by writeChars().
+
+\index{java::io::DataOutputStream@{java::io::DataOutputStream}!writeChars@{writeChars}}
+\index{writeChars@{writeChars}!java::io::DataOutputStream@{java::io::DataOutputStream}}
+\subsubsection[{writeChars}]{\setlength{\rightskip}{0pt plus 5cm}final void java::io::DataOutputStream::writeChars (
+\begin{DoxyParamCaption}
+\item[{String}]{ value}
+\end{DoxyParamCaption}
+)  throws {\bf IOException}     \hspace{0.3cm}{\ttfamily  [inline]}}\label{classjava_1_1io_1_1_data_output_stream_a45c52512fd58dd72cc00572485a3c042}
+This method writes all the characters of a {\ttfamily String} to an output stream as an array of {\ttfamily char}'s. Each character is written using the method specified in the {\ttfamily writeChar} method.
+
+
+\begin{DoxyParams}{Parameters}
+\item[{\em value}]The {\ttfamily String} to write to the stream\end{DoxyParams}
+
+\begin{DoxyExceptions}{Exceptions}
+\item[{\em \doxyref{IOException}{p.}{classjava_1_1io_1_1_i_o_exception}}]If an error occurs \end{DoxyExceptions}
+
+
+Definition at line 350 of file DataOutputStream.java.
+
+
+
+References writeChar().
+
+\index{java::io::DataOutputStream@{java::io::DataOutputStream}!writeDouble@{writeDouble}}
+\index{writeDouble@{writeDouble}!java::io::DataOutputStream@{java::io::DataOutputStream}}
+\subsubsection[{writeDouble}]{\setlength{\rightskip}{0pt plus 5cm}final void java::io::DataOutputStream::writeDouble (
+\begin{DoxyParamCaption}
+\item[{double}]{ value}
+\end{DoxyParamCaption}
+)  throws {\bf IOException}     \hspace{0.3cm}{\ttfamily  [inline]}}\label{classjava_1_1io_1_1_data_output_stream_aec921d9127a1e2e1ded3e3a25ba1dcf1}
+This method writes a Java {\ttfamily double} value to the stream. This value is written by first calling the method {\ttfamily \doxyref{Double.doubleToLongBits}{p.}{classjava_1_1lang_1_1_double_a33745118409011676bb86cd25389ce9d}} to retrieve an {\ttfamily long} representing the floating point number, then writing this {\ttfamily long} value to the stream exactly the same as the {\ttfamily \doxyref{writeLong()}{p.}{classjava_1_1io_1_1_data_output_stream_acd04d0c2440dc8a8759f8fbb197e12d1}} method does.
+
+The value written can be read using the {\ttfamily readDouble} method in {\ttfamily \doxyref{DataInput}{p.}{interfacejava_1_1io_1_1_data_input}}.
+
+
+\begin{DoxyParams}{Parameters}
+\item[{\em value}]The {\ttfamily double} value to write to the stream\end{DoxyParams}
+
+\begin{DoxyExceptions}{Exceptions}
+\item[{\em \doxyref{IOException}{p.}{classjava_1_1io_1_1_i_o_exception}}]If an error occurs\end{DoxyExceptions}
+\begin{DoxySeeAlso}{See also}
+\doxyref{writeLong(long)}{p.}{classjava_1_1io_1_1_data_output_stream_acd04d0c2440dc8a8759f8fbb197e12d1} 
+
+\doxyref{DataInput::readDouble}{p.}{interfacejava_1_1io_1_1_data_input_a355dd55354ac3324f0d7472014c16690} 
+
+\doxyref{Double::doubleToLongBits}{p.}{classjava_1_1lang_1_1_double_a33745118409011676bb86cd25389ce9d} 
+\end{DoxySeeAlso}
+
+
+Implements {\bf java::io::DataOutput} \doxyref{}{p.}{interfacejava_1_1io_1_1_data_output_ae00f0c212526f41161df14cb0d82d29a}.
+
+
+
+Definition at line 335 of file DataOutputStream.java.
+
+
+
+References writeLong().
+
+\index{java::io::DataOutputStream@{java::io::DataOutputStream}!writeFloat@{writeFloat}}
+\index{writeFloat@{writeFloat}!java::io::DataOutputStream@{java::io::DataOutputStream}}
+\subsubsection[{writeFloat}]{\setlength{\rightskip}{0pt plus 5cm}final void java::io::DataOutputStream::writeFloat (
+\begin{DoxyParamCaption}
+\item[{float}]{ value}
+\end{DoxyParamCaption}
+)  throws {\bf IOException}     \hspace{0.3cm}{\ttfamily  [inline]}}\label{classjava_1_1io_1_1_data_output_stream_a7138f2f2f1a7f815ed215186285af9ee}
+This method writes a Java {\ttfamily float} value to the stream. This value is written by first calling the method {\ttfamily \doxyref{Float.floatToIntBits}{p.}{classjava_1_1lang_1_1_float_a23c74768d92c816e7e2a125ed7e9137a}} to retrieve an {\ttfamily int} representing the floating point number, then writing this {\ttfamily int} value to the stream exactly the same as the {\ttfamily \doxyref{writeInt()}{p.}{classjava_1_1io_1_1_data_output_stream_ac96d54767a7486fda11cb06d51276cbd}} method does.
+
+The value written can be read using the {\ttfamily readFloat} method in {\ttfamily \doxyref{DataInput}{p.}{interfacejava_1_1io_1_1_data_input}}.
+
+
+\begin{DoxyParams}{Parameters}
+\item[{\em value}]The {\ttfamily float} value to write to the stream\end{DoxyParams}
+
+\begin{DoxyExceptions}{Exceptions}
+\item[{\em \doxyref{IOException}{p.}{classjava_1_1io_1_1_i_o_exception}}]If an error occurs\end{DoxyExceptions}
+\begin{DoxySeeAlso}{See also}
+\doxyref{writeInt(int)}{p.}{classjava_1_1io_1_1_data_output_stream_ac96d54767a7486fda11cb06d51276cbd} 
+
+\doxyref{DataInput::readFloat}{p.}{interfacejava_1_1io_1_1_data_input_a04ffbe393ccd873e2866dafae36fe981} 
+
+\doxyref{Float::floatToIntBits}{p.}{classjava_1_1lang_1_1_float_a23c74768d92c816e7e2a125ed7e9137a} 
+\end{DoxySeeAlso}
+
+
+Implements {\bf java::io::DataOutput} \doxyref{}{p.}{interfacejava_1_1io_1_1_data_output_a72a2f2797b621fb8df56be7aafb606a4}.
+
+
+
+Definition at line 311 of file DataOutputStream.java.
+
+
+
+References writeInt().
+
+\index{java::io::DataOutputStream@{java::io::DataOutputStream}!writeInt@{writeInt}}
+\index{writeInt@{writeInt}!java::io::DataOutputStream@{java::io::DataOutputStream}}
+\subsubsection[{writeInt}]{\setlength{\rightskip}{0pt plus 5cm}final synchronized void java::io::DataOutputStream::writeInt (
+\begin{DoxyParamCaption}
+\item[{int}]{ value}
+\end{DoxyParamCaption}
+)  throws {\bf IOException}     \hspace{0.3cm}{\ttfamily  [inline]}}\label{classjava_1_1io_1_1_data_output_stream_ac96d54767a7486fda11cb06d51276cbd}
+This method writes a Java int value to an output stream. The 4 bytes of the passed value will be written \char`\"{}big endian\char`\"{}. That is, with the high byte written first in the following manner: 
+
+{\ttfamily byte0 = (byte)((value \& 0xFF000000) $>$$>$ 24);\par
+ byte1 = (byte)((value \& 0x00FF0000) $>$$>$ 16);\par
+ byte2 = (byte)((value \& 0x0000FF00) $>$$>$ 8);\par
+ byte3 = (byte)(value \& 0x000000FF);} 
+
+The value written can be read using the {\ttfamily readInt} method in {\ttfamily \doxyref{DataInput}{p.}{interfacejava_1_1io_1_1_data_input}}.
+
+
+\begin{DoxyParams}{Parameters}
+\item[{\em value}]The {\ttfamily int} value to write to the stream\end{DoxyParams}
+
+\begin{DoxyExceptions}{Exceptions}
+\item[{\em \doxyref{IOException}{p.}{classjava_1_1io_1_1_i_o_exception}}]If an error occurs\end{DoxyExceptions}
+\begin{DoxySeeAlso}{See also}
+\doxyref{DataInput::readInt}{p.}{interfacejava_1_1io_1_1_data_input_a9695af32a654f3e32c60e04d04f7844e} 
+\end{DoxySeeAlso}
+
+
+Implements {\bf java::io::DataOutput} \doxyref{}{p.}{interfacejava_1_1io_1_1_data_output_a3aac6bf339cad0ec0dd920b5e5c983b7}.
+
+
+
+Definition at line 248 of file DataOutputStream.java.
+
+
+
+References out, and java::io::OutputStream::write().
+
+
+
+Referenced by writeFloat().
+
+\index{java::io::DataOutputStream@{java::io::DataOutputStream}!writeLong@{writeLong}}
+\index{writeLong@{writeLong}!java::io::DataOutputStream@{java::io::DataOutputStream}}
+\subsubsection[{writeLong}]{\setlength{\rightskip}{0pt plus 5cm}final synchronized void java::io::DataOutputStream::writeLong (
+\begin{DoxyParamCaption}
+\item[{long}]{ value}
+\end{DoxyParamCaption}
+)  throws {\bf IOException}     \hspace{0.3cm}{\ttfamily  [inline]}}\label{classjava_1_1io_1_1_data_output_stream_acd04d0c2440dc8a8759f8fbb197e12d1}
+This method writes a Java long value to an output stream. The 8 bytes of the passed value will be written \char`\"{}big endian\char`\"{}. That is, with the high byte written first in the following manner: 
+
+{\ttfamily byte0 = (byte)((value \& 0xFF00000000000000L) $>$$>$ 56);\par
+ byte1 = (byte)((value \& 0x00FF000000000000L) $>$$>$ 48);\par
+ byte2 = (byte)((value \& 0x0000FF0000000000L) $>$$>$ 40);\par
+ byte3 = (byte)((value \& 0x000000FF00000000L) $>$$>$ 32);\par
+ byte4 = (byte)((value \& 0x00000000FF000000L) $>$$>$ 24);\par
+ byte5 = (byte)((value \& 0x0000000000FF0000L) $>$$>$ 16);\par
+ byte6 = (byte)((value \& 0x000000000000FF00L) $>$$>$ 8);\par
+ byte7 = (byte)(value \& 0x00000000000000FFL);} 
+
+The value written can be read using the {\ttfamily readLong} method in {\ttfamily \doxyref{DataInput}{p.}{interfacejava_1_1io_1_1_data_input}}.
+
+
+\begin{DoxyParams}{Parameters}
+\item[{\em value}]The {\ttfamily long} value to write to the stream\end{DoxyParams}
+
+\begin{DoxyExceptions}{Exceptions}
+\item[{\em \doxyref{IOException}{p.}{classjava_1_1io_1_1_i_o_exception}}]If an error occurs\end{DoxyExceptions}
+\begin{DoxySeeAlso}{See also}
+\doxyref{DataInput::readLong}{p.}{interfacejava_1_1io_1_1_data_input_a831af7e41c8655fb154197f644652e26} 
+\end{DoxySeeAlso}
+
+
+Implements {\bf java::io::DataOutput} \doxyref{}{p.}{interfacejava_1_1io_1_1_data_output_abd2315a7cb19bdb441b92e74e2aad57f}.
+
+
+
+Definition at line 280 of file DataOutputStream.java.
+
+
+
+References out, and java::io::OutputStream::write().
+
+
+
+Referenced by writeDouble().
+
+\index{java::io::DataOutputStream@{java::io::DataOutputStream}!writeShort@{writeShort}}
+\index{writeShort@{writeShort}!java::io::DataOutputStream@{java::io::DataOutputStream}}
+\subsubsection[{writeShort}]{\setlength{\rightskip}{0pt plus 5cm}final synchronized void java::io::DataOutputStream::writeShort (
+\begin{DoxyParamCaption}
+\item[{int}]{ value}
+\end{DoxyParamCaption}
+)  throws {\bf IOException}     \hspace{0.3cm}{\ttfamily  [inline]}}\label{classjava_1_1io_1_1_data_output_stream_a2f62f055d6c3059926630e067b4cf04c}
+This method writes a Java short value to an output stream. The char to be written will be in the lowest 16 bits of the {\ttfamily int} value passed. These bytes will be written \char`\"{}big endian\char`\"{}. That is, with the high byte written first in the following manner: 
+
+{\ttfamily byte0 = (byte)((value \& 0xFF00) $>$$>$ 8);\par
+ byte1 = (byte)(value \& 0x00FF);} 
+
+The value written can be read using the {\ttfamily readShort} and {\ttfamily readUnsignedShort} methods in {\ttfamily \doxyref{DataInput}{p.}{interfacejava_1_1io_1_1_data_input}}.
+
+
+\begin{DoxyParams}{Parameters}
+\item[{\em value}]The {\ttfamily short} value to write to the stream, passed as an {\ttfamily int}.\end{DoxyParams}
+
+\begin{DoxyExceptions}{Exceptions}
+\item[{\em \doxyref{IOException}{p.}{classjava_1_1io_1_1_i_o_exception}}]If an error occurs\end{DoxyExceptions}
+\begin{DoxySeeAlso}{See also}
+\doxyref{DataInput::readShort}{p.}{interfacejava_1_1io_1_1_data_input_abf04eb616f2d61e8fb5a6edde7f15ae8} 
+
+\doxyref{DataInput::readUnsignedShort}{p.}{interfacejava_1_1io_1_1_data_input_a6d1127e06c7ea968fbab4fc73c4014b8} 
+\end{DoxySeeAlso}
+
+
+Implements {\bf java::io::DataOutput} \doxyref{}{p.}{interfacejava_1_1io_1_1_data_output_a54f812d1c67d83886601bfefd0403375}.
+
+
+
+Definition at line 196 of file DataOutputStream.java.
+
+
+
+References out, and java::io::OutputStream::write().
+
+
+
+Referenced by writeUTF().
+
+\index{java::io::DataOutputStream@{java::io::DataOutputStream}!writeUTF@{writeUTF}}
+\index{writeUTF@{writeUTF}!java::io::DataOutputStream@{java::io::DataOutputStream}}
+\subsubsection[{writeUTF}]{\setlength{\rightskip}{0pt plus 5cm}final synchronized void java::io::DataOutputStream::writeUTF (
+\begin{DoxyParamCaption}
+\item[{String}]{ value}
+\end{DoxyParamCaption}
+)  throws {\bf IOException}     \hspace{0.3cm}{\ttfamily  [inline]}}\label{classjava_1_1io_1_1_data_output_stream_af845938289b21f0336ac50466f9b4a1a}
+This method writes a Java {\ttfamily String} to the stream in a modified UTF-\/8 format. First, two bytes are written to the stream indicating the number of bytes to follow. Note that this is the number of bytes in the encoded {\ttfamily String} not the {\ttfamily String} length. Next come the encoded characters. Each character in the {\ttfamily String} is encoded as either one, two or three bytes. For characters in the range of {\ttfamily u0001} to u007F, one byte is used. The character value goes into bits 0-\/7 and bit eight is 0. For characters in the range of {\ttfamily u0080} to {\ttfamily u007FF}, two bytes are used. Bits 6-\/10 of the character value are encoded bits 0-\/4 of the first byte, with the high bytes having a value of \char`\"{}110\char`\"{}. Bits 0-\/5 of the character value are stored in bits 0-\/5 of the second byte, with the high bits set to \char`\"{}10\char`\"{}. This type of encoding is also done for the null character {\ttfamily u0000}. This eliminates any C style NUL character values in the output. All remaining characters are stored as three bytes. Bits 12-\/15 of the character value are stored in bits 0-\/3 of the first byte. The high bits of the first bytes are set to \char`\"{}1110\char`\"{}. Bits 6-\/11 of the character value are stored in bits 0-\/5 of the second byte. The high bits of the second byte are set to \char`\"{}10\char`\"{}. And bits 0-\/5 of the character value are stored in bits 0-\/5 of byte three, with the high bits of that byte set to \char`\"{}10\char`\"{}.
+
+The value written can be read using the {\ttfamily readUTF} method in {\ttfamily \doxyref{DataInput}{p.}{interfacejava_1_1io_1_1_data_input}}.
+
+
+\begin{DoxyParams}{Parameters}
+\item[{\em value}]The {\ttfamily String} to write to the output in UTF format\end{DoxyParams}
+
+\begin{DoxyExceptions}{Exceptions}
+\item[{\em \doxyref{IOException}{p.}{classjava_1_1io_1_1_i_o_exception}}]If an error occurs\end{DoxyExceptions}
+\begin{DoxySeeAlso}{See also}
+\doxyref{DataInput::readUTF}{p.}{interfacejava_1_1io_1_1_data_input_aceea32ef352ca618d3d0cebccf2b52da} 
+\end{DoxySeeAlso}
+
+
+Implements {\bf java::io::DataOutput} \doxyref{}{p.}{interfacejava_1_1io_1_1_data_output_a21e0cbf493ccfd20e766b94efe3f73c2}.
+
+
+
+Definition at line 390 of file DataOutputStream.java.
+
+
+
+References write(), and writeShort().
+
+
+
+\subsection{Field Documentation}
+\index{java::io::DataOutputStream@{java::io::DataOutputStream}!out@{out}}
+\index{out@{out}!java::io::DataOutputStream@{java::io::DataOutputStream}}
+\subsubsection[{out}]{\setlength{\rightskip}{0pt plus 5cm}{\bf OutputStream} {\bf java::io::DataOutputStream::out}\hspace{0.3cm}{\ttfamily  [protected]}}\label{classjava_1_1io_1_1_data_output_stream_a382b60e21a445ebf7cc2ace87a7e2334}
+The output stream 
+
+Definition at line 56 of file DataOutputStream.java.
+
+
+
+Referenced by close(), flush(), write(), writeBoolean(), writeByte(), writeChar(), writeInt(), writeLong(), and writeShort().
+
+
+
+The documentation for this class was generated from the following file:\begin{DoxyCompactItemize}
+\item 
+src/classpath/java/io/DataOutputStream.java\end{DoxyCompactItemize}

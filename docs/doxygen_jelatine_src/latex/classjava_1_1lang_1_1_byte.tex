@@ -1,0 +1,215 @@
+\section{java::lang::Byte Class Reference}
+\label{classjava_1_1lang_1_1_byte}\index{java::lang::Byte@{java::lang::Byte}}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+{\bf Byte} (byte value)
+\item 
+byte {\bf byteValue} ()
+\item 
+boolean {\bf equals} ({\bf Object} obj)
+\item 
+int {\bf hashCode} ()
+\item 
+{\bf String} {\bf toString} ()
+\end{DoxyCompactItemize}
+\subsection*{Static Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+static byte {\bf parseByte} ({\bf String} s)  throws NumberFormatException     
+\item 
+static byte {\bf parseByte} ({\bf String} s, int radix)  throws NumberFormatException     
+\end{DoxyCompactItemize}
+\subsection*{Static Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+static final byte {\bf MIN\_\-VALUE} = -\/128
+\item 
+static final byte {\bf MAX\_\-VALUE} = 127
+\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+Instances of class {\ttfamily \doxyref{Byte}{p.}{classjava_1_1lang_1_1_byte}} represent primitive {\ttfamily byte} values.
+
+Additionally, this class provides various helper functions and variables useful to bytes.
+
+\begin{DoxyAuthor}{Author}
+Paul Fisher 
+
+John Keiser 
+
+Per Bothner 
+
+Eric Blake ({\tt ebb9@email.byu.edu}) 
+\end{DoxyAuthor}
+
+
+Definition at line 52 of file Byte.java.
+
+
+
+\subsection{Constructor \& Destructor Documentation}
+\index{java::lang::Byte@{java::lang::Byte}!Byte@{Byte}}
+\index{Byte@{Byte}!java::lang::Byte@{java::lang::Byte}}
+\subsubsection[{Byte}]{\setlength{\rightskip}{0pt plus 5cm}java::lang::Byte::Byte (
+\begin{DoxyParamCaption}
+\item[{byte}]{ value}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily  [inline]}}\label{classjava_1_1lang_1_1_byte_a4cd3e47f5ba7bd350a246ed8954c73be}
+Create a {\ttfamily \doxyref{Byte}{p.}{classjava_1_1lang_1_1_byte}} object representing the value of the {\ttfamily byte} argument.
+
+
+\begin{DoxyParams}{Parameters}
+\item[{\em value}]the value to use \end{DoxyParams}
+
+
+Definition at line 77 of file Byte.java.
+
+
+
+\subsection{Member Function Documentation}
+\index{java::lang::Byte@{java::lang::Byte}!byteValue@{byteValue}}
+\index{byteValue@{byteValue}!java::lang::Byte@{java::lang::Byte}}
+\subsubsection[{byteValue}]{\setlength{\rightskip}{0pt plus 5cm}byte java::lang::Byte::byteValue (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily  [inline]}}\label{classjava_1_1lang_1_1_byte_a5320130aa26a6e1ebd8c4199fc473fdc}
+Return the value of this {\ttfamily \doxyref{Byte}{p.}{classjava_1_1lang_1_1_byte}}.
+
+\begin{DoxyReturn}{Returns}
+the byte value 
+\end{DoxyReturn}
+
+
+Definition at line 87 of file Byte.java.
+
+\index{java::lang::Byte@{java::lang::Byte}!equals@{equals}}
+\index{equals@{equals}!java::lang::Byte@{java::lang::Byte}}
+\subsubsection[{equals}]{\setlength{\rightskip}{0pt plus 5cm}boolean java::lang::Byte::equals (
+\begin{DoxyParamCaption}
+\item[{{\bf Object}}]{ obj}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily  [inline]}}\label{classjava_1_1lang_1_1_byte_a13b44b0eaf640ccd292d49878177cdb6}
+Returns {\ttfamily true} if {\ttfamily obj} is an instance of {\ttfamily \doxyref{Byte}{p.}{classjava_1_1lang_1_1_byte}} and represents the same byte value.
+
+
+\begin{DoxyParams}{Parameters}
+\item[{\em obj}]the object to compare \end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+whether these Objects are semantically equal 
+\end{DoxyReturn}
+
+
+Definition at line 99 of file Byte.java.
+
+\index{java::lang::Byte@{java::lang::Byte}!hashCode@{hashCode}}
+\index{hashCode@{hashCode}!java::lang::Byte@{java::lang::Byte}}
+\subsubsection[{hashCode}]{\setlength{\rightskip}{0pt plus 5cm}int java::lang::Byte::hashCode (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily  [inline]}}\label{classjava_1_1lang_1_1_byte_a9e919f1b1b63f579f83953678c214a06}
+Return a hashcode representing this \doxyref{Object}{p.}{classjava_1_1lang_1_1_object}. {\ttfamily \doxyref{Byte}{p.}{classjava_1_1lang_1_1_byte}}'s hash code is simply its value.
+
+\begin{DoxyReturn}{Returns}
+this Object's hash code 
+\end{DoxyReturn}
+
+
+Definition at line 110 of file Byte.java.
+
+\index{java::lang::Byte@{java::lang::Byte}!parseByte@{parseByte}}
+\index{parseByte@{parseByte}!java::lang::Byte@{java::lang::Byte}}
+\subsubsection[{parseByte}]{\setlength{\rightskip}{0pt plus 5cm}static byte java::lang::Byte::parseByte (
+\begin{DoxyParamCaption}
+\item[{{\bf String}}]{ s}
+\end{DoxyParamCaption}
+)  throws {\bf NumberFormatException}     \hspace{0.3cm}{\ttfamily  [inline, static]}}\label{classjava_1_1lang_1_1_byte_a8fb728973c48b0ed6cb1707911b1a985}
+Converts the specified {\ttfamily \doxyref{String}{p.}{classjava_1_1lang_1_1_string}} into a {\ttfamily byte}. This function assumes a radix of 10.
+
+
+\begin{DoxyParams}{Parameters}
+\item[{\em s}]the {\ttfamily \doxyref{String}{p.}{classjava_1_1lang_1_1_string}} to convert \end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+the {\ttfamily byte} value of {\ttfamily s} 
+\end{DoxyReturn}
+
+\begin{DoxyExceptions}{Exceptions}
+\item[{\em \doxyref{NumberFormatException}{p.}{classjava_1_1lang_1_1_number_format_exception}}]if {\ttfamily s} cannot be parsed as a {\ttfamily byte} \end{DoxyExceptions}
+\begin{DoxySeeAlso}{See also}
+\doxyref{parseByte(String, int)}{p.}{classjava_1_1lang_1_1_byte_a72074102360e2ab0f2397bbc61e8b537} 
+\end{DoxySeeAlso}
+
+
+Definition at line 125 of file Byte.java.
+
+\index{java::lang::Byte@{java::lang::Byte}!parseByte@{parseByte}}
+\index{parseByte@{parseByte}!java::lang::Byte@{java::lang::Byte}}
+\subsubsection[{parseByte}]{\setlength{\rightskip}{0pt plus 5cm}static byte java::lang::Byte::parseByte (
+\begin{DoxyParamCaption}
+\item[{{\bf String}}]{ s, }
+\item[{int}]{ radix}
+\end{DoxyParamCaption}
+)  throws {\bf NumberFormatException}     \hspace{0.3cm}{\ttfamily  [inline, static]}}\label{classjava_1_1lang_1_1_byte_a72074102360e2ab0f2397bbc61e8b537}
+Converts the specified {\ttfamily \doxyref{String}{p.}{classjava_1_1lang_1_1_string}} into an {\ttfamily int} using the specified radix (base). The string must not be {\ttfamily null} or empty. It may begin with an optional '-\/', which will negate the answer, provided that there are also valid digits. Each digit is parsed as if by {\ttfamily Character.digit(d, radix)}, and must be in the range {\ttfamily 0} to {\ttfamily radix -\/ 1}. Finally, the result must be within {\ttfamily MIN\_\-VALUE} to {\ttfamily MAX\_\-VALUE}, inclusive. Unlike \doxyref{Double.parseDouble}{p.}{classjava_1_1lang_1_1_double_a5c5fabd1e39b3d9a8b2bc37277da15bc}, you may not have a leading '+'.
+
+
+\begin{DoxyParams}{Parameters}
+\item[{\em s}]the {\ttfamily \doxyref{String}{p.}{classjava_1_1lang_1_1_string}} to convert \item[{\em radix}]the radix (base) to use in the conversion \end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+the {\ttfamily \doxyref{String}{p.}{classjava_1_1lang_1_1_string}} argument converted to {\ttfamily byte} 
+\end{DoxyReturn}
+
+\begin{DoxyExceptions}{Exceptions}
+\item[{\em \doxyref{NumberFormatException}{p.}{classjava_1_1lang_1_1_number_format_exception}}]if {\ttfamily s} cannot be parsed as a {\ttfamily byte} \end{DoxyExceptions}
+
+
+Definition at line 146 of file Byte.java.
+
+\index{java::lang::Byte@{java::lang::Byte}!toString@{toString}}
+\index{toString@{toString}!java::lang::Byte@{java::lang::Byte}}
+\subsubsection[{toString}]{\setlength{\rightskip}{0pt plus 5cm}{\bf String} java::lang::Byte::toString (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily  [inline]}}\label{classjava_1_1lang_1_1_byte_a8d63008dc405b248d37b2e1435ea1bcb}
+Converts the {\ttfamily \doxyref{Byte}{p.}{classjava_1_1lang_1_1_byte}} value to a {\ttfamily \doxyref{String}{p.}{classjava_1_1lang_1_1_string}} and assumes a radix of 10.
+
+\begin{DoxyReturn}{Returns}
+the {\ttfamily \doxyref{String}{p.}{classjava_1_1lang_1_1_string}} representation of this {\ttfamily \doxyref{Byte}{p.}{classjava_1_1lang_1_1_byte}} 
+\end{DoxyReturn}
+\begin{DoxySeeAlso}{See also}
+\doxyref{Integer::toString()}{p.}{classjava_1_1lang_1_1_integer_aa35f869daba5fd82c9ba2ea32e672f22} 
+\end{DoxySeeAlso}
+
+
+Definition at line 164 of file Byte.java.
+
+
+
+References java::lang::String::valueOf().
+
+
+
+\subsection{Field Documentation}
+\index{java::lang::Byte@{java::lang::Byte}!MAX\_\-VALUE@{MAX\_\-VALUE}}
+\index{MAX\_\-VALUE@{MAX\_\-VALUE}!java::lang::Byte@{java::lang::Byte}}
+\subsubsection[{MAX\_\-VALUE}]{\setlength{\rightskip}{0pt plus 5cm}final byte {\bf java::lang::Byte::MAX\_\-VALUE} = 127\hspace{0.3cm}{\ttfamily  [static]}}\label{classjava_1_1lang_1_1_byte_a26be88accab1bac05b0650191eaeb8b6}
+The maximum value a {\ttfamily byte} can represent is 127 (or 2$^{\mbox{7}}$  -\/ 1). 
+
+Definition at line 64 of file Byte.java.
+
+\index{java::lang::Byte@{java::lang::Byte}!MIN\_\-VALUE@{MIN\_\-VALUE}}
+\index{MIN\_\-VALUE@{MIN\_\-VALUE}!java::lang::Byte@{java::lang::Byte}}
+\subsubsection[{MIN\_\-VALUE}]{\setlength{\rightskip}{0pt plus 5cm}final byte {\bf java::lang::Byte::MIN\_\-VALUE} = -\/128\hspace{0.3cm}{\ttfamily  [static]}}\label{classjava_1_1lang_1_1_byte_a341ea9c3888e6d6a021b67a9a4b5326b}
+The minimum value a {\ttfamily byte} can represent is -\/128 (or -\/2$^{\mbox{7}}$ ). 
+
+Definition at line 58 of file Byte.java.
+
+
+
+The documentation for this class was generated from the following file:\begin{DoxyCompactItemize}
+\item 
+src/classpath/java/lang/Byte.java\end{DoxyCompactItemize}

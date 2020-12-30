@@ -1,0 +1,15 @@
+org/kxml2/wap/Wbxml.java
+org/kxml2/wap/WbxmlParser.java
+org/kxml2/wap/WbxmlSerializer.java
+org/kxml2/wap/wv/WV.java
+org/kxml2/wap/wml/Wml.java
+org/kxml2/wap/syncml/SyncML.java
+org/kxml2/kdom/Document.java
+org/kxml2/kdom/Element.java
+org/kxml2/kdom/Node.java
+org/kxml2/io/KXmlParser.java
+org/kxml2/io/KXmlSerializer.java
+org/xmlpull/v1/XmlPullParser.java
+org/xmlpull/v1/XmlPullParserException.java
+org/xmlpull/v1/XmlPullParserFactory.java
+org/xmlpull/v1/XmlSerializer.java

@@ -1,0 +1,65 @@
+\section{main.c File Reference}
+\label{main_8c}\index{main.c@{main.c}}
+{\ttfamily \#include \char`\"{}wrappers.h\char`\"{}}\par
+{\ttfamily \#include \char`\"{}vm.h\char`\"{}}\par
+{\ttfamily \#include \char`\"{}memory.h\char`\"{}}\par
+{\ttfamily \#include \char`\"{}utf8\_\-string.h\char`\"{}}\par
+\subsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+static void {\bf parse\_\-command\_\-line\_\-args} (int, char $\ast$[$\,$])
+\item 
+int {\bf main} (int argc, char $\ast$argv[$\,$])
+\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+\doxyref{main()}{p.}{main_8c_a0ddf1224851353fc92bfbff6f499fa97} implementation of the command-\/line launcher and global data used by the virtual machine 
+
+Definition in file {\bf main.c}.
+
+
+
+\subsection{Function Documentation}
+\index{main.c@{main.c}!main@{main}}
+\index{main@{main}!main.c@{main.c}}
+\subsubsection[{main}]{\setlength{\rightskip}{0pt plus 5cm}int main (
+\begin{DoxyParamCaption}
+\item[{int}]{ argc, }
+\item[{char $\ast$}]{ argv[$\,$]}
+\end{DoxyParamCaption}
+)}\label{main_8c_a0ddf1224851353fc92bfbff6f499fa97}
+Self explanatory 
+\begin{DoxyParams}{Parameters}
+\item[{\em argc}]Number of arguments \item[{\em argv}]Argument list \end{DoxyParams}
+
+
+Definition at line 41 of file main.c.
+
+
+
+References opts\_\-get\_\-help(), opts\_\-get\_\-jargs(), opts\_\-get\_\-main\_\-class(), opts\_\-get\_\-version(), opts\_\-set\_\-jargs\_\-n(), parse\_\-command\_\-line\_\-args(), and vm\_\-run().
+
+\index{main.c@{main.c}!parse\_\-command\_\-line\_\-args@{parse\_\-command\_\-line\_\-args}}
+\index{parse\_\-command\_\-line\_\-args@{parse\_\-command\_\-line\_\-args}!main.c@{main.c}}
+\subsubsection[{parse\_\-command\_\-line\_\-args}]{\setlength{\rightskip}{0pt plus 5cm}static void parse\_\-command\_\-line\_\-args (
+\begin{DoxyParamCaption}
+\item[{int}]{ argc, }
+\item[{char $\ast$}]{ argv[$\,$]}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily  [static]}}\label{main_8c_a175f61c32e6c0f9a6d0c4a099d32a4b9}
+Parses the command-\/line args, the results are stored in the appropriate global variables 
+\begin{DoxyParams}{Parameters}
+\item[{\em argc}]Same as \doxyref{main()}{p.}{main_8c_a0ddf1224851353fc92bfbff6f499fa97}'s argc \item[{\em argv}]Same as \doxyref{main()}{p.}{main_8c_a0ddf1224851353fc92bfbff6f499fa97}'s argv \end{DoxyParams}
+
+
+Definition at line 99 of file main.c.
+
+
+
+References opts\_\-set\_\-boot\_\-classpath(), opts\_\-set\_\-classpath(), opts\_\-set\_\-heap\_\-size(), opts\_\-set\_\-help(), opts\_\-set\_\-jargs(), opts\_\-set\_\-jargs\_\-n(), opts\_\-set\_\-main\_\-class(), opts\_\-set\_\-stack\_\-size(), opts\_\-set\_\-version(), size\_\-ceil(), and utf8\_\-slashify().
+
+
+
+Referenced by main().
+

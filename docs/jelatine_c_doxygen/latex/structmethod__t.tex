@@ -1,0 +1,70 @@
+\section{method\_\-t Struct Reference}
+\label{structmethod__t}\index{method\_\-t@{method\_\-t}}
+
+
+{\ttfamily \#include $<$method.h$>$}
+
+\subsection*{Data Fields}
+\begin{DoxyCompactItemize}
+\item 
+const char $\ast$ {\bf name}\label{structmethod__t_accec03e70fcb79dc605c72db8c559a68}
+
+\begin{DoxyCompactList}\small\item\em Method name. \item\end{DoxyCompactList}\item 
+const char $\ast$ {\bf descriptor}\label{structmethod__t_abd4c8250246eb7db2d4fc0d7b133e4ee}
+
+\begin{DoxyCompactList}\small\item\em Method descriptor. \item\end{DoxyCompactList}\item 
+{\bf const\_\-pool\_\-t} $\ast$ {\bf cp}\label{structmethod__t_a041245b8c20e8bf05fc9fae9cedd2290}
+
+\begin{DoxyCompactList}\small\item\em Method's constant pool. \item\end{DoxyCompactList}\item 
+uint16\_\-t {\bf access\_\-flags}\label{structmethod__t_a25137490b9f611d35ff3280d94aa2d2d}
+
+\begin{DoxyCompactList}\small\item\em Access flags. \item\end{DoxyCompactList}\item 
+uint16\_\-t {\bf args\_\-size}\label{structmethod__t_aac20fc2168361d2f1e30959373200a27}
+
+\begin{DoxyCompactList}\small\item\em Size of the arguments passed. \item\end{DoxyCompactList}\item 
+uint16\_\-t {\bf index}\label{structmethod__t_aa5a72ec7b49050e28ea6d71a61931bd1}
+
+\begin{DoxyCompactList}\small\item\em Dispatch table index. \item\end{DoxyCompactList}\item 
+uint16\_\-t {\bf max\_\-stack}\label{structmethod__t_aca2dc85191bbdb09a212c9693527d319}
+
+\begin{DoxyCompactList}\small\item\em Maximum number of operand stack slots. \item\end{DoxyCompactList}\item 
+uint16\_\-t {\bf max\_\-locals}\label{structmethod__t_adeeae7fcf3a26e43df89d2da4a57a9ac}
+
+\begin{DoxyCompactList}\small\item\em Maximum number of used locals. \item\end{DoxyCompactList}\item 
+uint16\_\-t {\bf return\_\-type}\label{structmethod__t_a63391b4ff4198123be2064e039cbb6ba}
+
+\begin{DoxyCompactList}\small\item\em Return type for native methods. \item\end{DoxyCompactList}\item 
+uint16\_\-t {\bf code\_\-length}\label{structmethod__t_a1c31f95bb299ef65e96505b638310386}
+
+\begin{DoxyCompactList}\small\item\em Length of the bytecode. \item\end{DoxyCompactList}\item 
+uint16\_\-t {\bf exception\_\-table\_\-length}\label{structmethod__t_a7edaffe83fb0948d93dc36e1cd3be894}
+
+\begin{DoxyCompactList}\small\item\em Length of the exception table. \item\end{DoxyCompactList}\item 
+uint8\_\-t $\ast$ {\bf code}\label{structmethod__t_a31941bf0c178f48eb8da065d36a57853}
+
+\begin{DoxyCompactList}\small\item\em Java bytecode of the method. \item\end{DoxyCompactList}\item 
+\begin{tabbing}
+xx\=xx\=xx\=xx\=xx\=xx\=xx\=xx\=xx\=\kill
+union \{\\
+\>{\bf exception\_handler\_t} $\ast$ {\bf handlers}\\
+\>\>{\em Exception handlers. }\\
+\>long {\bf offset}\\
+\>\>{\em Offset in the class file of the method attributes. }\\
+\>{\bf native\_proto\_t} {\bf function}\\
+\>\>{\em Native function if available. }\\
+\} {\bf data}\label{structmethod__t_adda3efa77283fb738c57bb915a2a1f9f}
+\\
+
+\end{tabbing}\begin{DoxyCompactList}\small\item\em Extra method data. \item\end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+Represents a basic method structure 
+
+Definition at line 96 of file method.h.
+
+
+
+The documentation for this struct was generated from the following file:\begin{DoxyCompactItemize}
+\item 
+{\bf method.h}\end{DoxyCompactItemize}

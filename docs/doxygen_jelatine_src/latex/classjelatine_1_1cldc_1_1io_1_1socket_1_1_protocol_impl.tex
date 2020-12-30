@@ -1,0 +1,105 @@
+\section{jelatine::cldc::io::socket::ProtocolImpl Class Reference}
+\label{classjelatine_1_1cldc_1_1io_1_1socket_1_1_protocol_impl}\index{jelatine::cldc::io::socket::ProtocolImpl@{jelatine::cldc::io::socket::ProtocolImpl}}
+Inheritance diagram for jelatine::cldc::io::socket::ProtocolImpl:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=2.998662cm]{classjelatine_1_1cldc_1_1io_1_1socket_1_1_protocol_impl}
+\end{center}
+\end{figure}
+\subsection*{Data Structures}
+\begin{DoxyCompactItemize}
+\item 
+class {\bf SocketInputStream}
+\item 
+class {\bf SocketOutputStream}
+\end{DoxyCompactItemize}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+{\bf Connection} {\bfseries open} ({\bf URL} url, int mode, boolean timeouts)  throws IllegalArgumentException, IOException \label{classjelatine_1_1cldc_1_1io_1_1socket_1_1_protocol_impl_a4cc4abb525ae76d4f6141c971991adec}
+
+\item 
+{\bf DataInputStream} {\bfseries openDataInputStream} ()  throws IOException \label{classjelatine_1_1cldc_1_1io_1_1socket_1_1_protocol_impl_aff0d87b154c297a025bee95465f8b006}
+
+\item 
+{\bf InputStream} {\bfseries openInputStream} ()  throws IOException \label{classjelatine_1_1cldc_1_1io_1_1socket_1_1_protocol_impl_a24d9c002462fe12713a934b3e6ba4a76}
+
+\item 
+{\bf DataOutputStream} {\bf openDataOutputStream} ()  throws IOException 
+\item 
+{\bf OutputStream} {\bf openOutputStream} ()  throws IOException 
+\item 
+void {\bf close} ()  throws IOException 
+\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+Basic protocol implementation 
+
+Definition at line 37 of file ProtocolImpl.java.
+
+
+
+\subsection{Member Function Documentation}
+\index{jelatine::cldc::io::socket::ProtocolImpl@{jelatine::cldc::io::socket::ProtocolImpl}!close@{close}}
+\index{close@{close}!jelatine::cldc::io::socket::ProtocolImpl@{jelatine::cldc::io::socket::ProtocolImpl}}
+\subsubsection[{close}]{\setlength{\rightskip}{0pt plus 5cm}void jelatine::cldc::io::socket::ProtocolImpl::close (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)  throws {\bf IOException} \hspace{0.3cm}{\ttfamily  [inline]}}\label{classjelatine_1_1cldc_1_1io_1_1socket_1_1_protocol_impl_a2b962e7188683b5c12c6bf64170fad2a}
+Closes the connection 
+
+Implements {\bf javax::microedition::io::Connection} \doxyref{}{p.}{interfacejavax_1_1microedition_1_1io_1_1_connection_a7f8bc2fe6d08db2ea746a0732c610d95}.
+
+
+
+Definition at line 98 of file ProtocolImpl.java.
+
+\index{jelatine::cldc::io::socket::ProtocolImpl@{jelatine::cldc::io::socket::ProtocolImpl}!openDataOutputStream@{openDataOutputStream}}
+\index{openDataOutputStream@{openDataOutputStream}!jelatine::cldc::io::socket::ProtocolImpl@{jelatine::cldc::io::socket::ProtocolImpl}}
+\subsubsection[{openDataOutputStream}]{\setlength{\rightskip}{0pt plus 5cm}{\bf DataOutputStream} jelatine::cldc::io::socket::ProtocolImpl::openDataOutputStream (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)  throws {\bf IOException} \hspace{0.3cm}{\ttfamily  [inline]}}\label{classjelatine_1_1cldc_1_1io_1_1socket_1_1_protocol_impl_a7712ba6167a2d411d5270ac27cf706b6}
+Returns a new, opened data output stream for the connection. \begin{DoxyReturn}{Returns}
+A DataOutputStream object 
+\end{DoxyReturn}
+
+\begin{DoxyExceptions}{Exceptions}
+\item[{\em IOException}]If an error occurs \end{DoxyExceptions}
+
+
+Implements {\bf javax::microedition::io::OutputConnection} \doxyref{}{p.}{interfacejavax_1_1microedition_1_1io_1_1_output_connection_a53973642a330c2cec993392c1dc694f5}.
+
+
+
+Definition at line 90 of file ProtocolImpl.java.
+
+\index{jelatine::cldc::io::socket::ProtocolImpl@{jelatine::cldc::io::socket::ProtocolImpl}!openOutputStream@{openOutputStream}}
+\index{openOutputStream@{openOutputStream}!jelatine::cldc::io::socket::ProtocolImpl@{jelatine::cldc::io::socket::ProtocolImpl}}
+\subsubsection[{openOutputStream}]{\setlength{\rightskip}{0pt plus 5cm}{\bf OutputStream} jelatine::cldc::io::socket::ProtocolImpl::openOutputStream (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)  throws {\bf IOException} \hspace{0.3cm}{\ttfamily  [inline]}}\label{classjelatine_1_1cldc_1_1io_1_1socket_1_1_protocol_impl_abf20f6dae98251f2bc24398b00d2fe27}
+Returns a new, opened output stream for the connection. \begin{DoxyReturn}{Returns}
+An OutputStream object 
+\end{DoxyReturn}
+
+\begin{DoxyExceptions}{Exceptions}
+\item[{\em IOException}]If an error occurs \end{DoxyExceptions}
+
+
+Implements {\bf javax::microedition::io::OutputConnection} \doxyref{}{p.}{interfacejavax_1_1microedition_1_1io_1_1_output_connection_a25b150dc409dc72226fa65bfa5376cc2}.
+
+
+
+Definition at line 94 of file ProtocolImpl.java.
+
+
+
+The documentation for this class was generated from the following file:\begin{DoxyCompactItemize}
+\item 
+src/classpath/jelatine/cldc/io/socket/ProtocolImpl.java\end{DoxyCompactItemize}

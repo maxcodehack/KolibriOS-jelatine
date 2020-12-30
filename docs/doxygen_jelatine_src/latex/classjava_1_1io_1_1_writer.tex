@@ -1,0 +1,266 @@
+\section{java::io::Writer Class Reference}
+\label{classjava_1_1io_1_1_writer}\index{java::io::Writer@{java::io::Writer}}
+Inheritance diagram for java::io::Writer:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=2.000000cm]{classjava_1_1io_1_1_writer}
+\end{center}
+\end{figure}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+void {\bf write} (int b)  throws IOException     
+\item 
+void {\bf write} (char[$\,$] buf)  throws IOException     
+\item 
+abstract void {\bf write} (char[$\,$] buf, int offset, int len)  throws IOException
+\item 
+void {\bf write} (String str)  throws IOException     
+\item 
+void {\bf write} (String str, int offset, int len)  throws IOException     
+\item 
+abstract void {\bf flush} ()  throws IOException
+\item 
+abstract void {\bf close} ()  throws IOException
+\end{DoxyCompactItemize}
+\subsection*{Protected Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+{\bf Writer} ()
+\item 
+{\bf Writer} (Object {\bf lock})
+\end{DoxyCompactItemize}
+\subsection*{Protected Attributes}
+\begin{DoxyCompactItemize}
+\item 
+Object {\bf lock}
+\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+This abstract class forms the base of the hierarchy of classes that write output as a stream of chars. It provides a common set of methods for writing chars to stream. Subclasses implement and/or extend these methods to write chars in a particular manner or to a particular destination such as a file on disk or network connection.
+
+\begin{DoxyAuthor}{Author}
+Aaron M. Renn ({\tt arenn@urbanophile.com}) 
+
+Per Bothner ({\tt bothner@cygnus.com}) 
+\end{DoxyAuthor}
+
+
+Definition at line 56 of file Writer.java.
+
+
+
+\subsection{Constructor \& Destructor Documentation}
+\index{java::io::Writer@{java::io::Writer}!Writer@{Writer}}
+\index{Writer@{Writer}!java::io::Writer@{java::io::Writer}}
+\subsubsection[{Writer}]{\setlength{\rightskip}{0pt plus 5cm}java::io::Writer::Writer (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily  [inline, protected]}}\label{classjava_1_1io_1_1_writer_a1bc41f9d97027fa5f26c3b2b2f38a6c3}
+This is the default no-\/argument constructor for this class. This method will set up the class to synchronize criticial sections on itself. 
+
+Definition at line 69 of file Writer.java.
+
+
+
+References lock.
+
+\index{java::io::Writer@{java::io::Writer}!Writer@{Writer}}
+\index{Writer@{Writer}!java::io::Writer@{java::io::Writer}}
+\subsubsection[{Writer}]{\setlength{\rightskip}{0pt plus 5cm}java::io::Writer::Writer (
+\begin{DoxyParamCaption}
+\item[{Object}]{ lock}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily  [inline, protected]}}\label{classjava_1_1io_1_1_writer_a23771f38f0e5c8e2c49e2f1d12bd7b83}
+This method initializes a {\ttfamily \doxyref{Writer}{p.}{classjava_1_1io_1_1_writer}} that will synchronize on the specified {\ttfamily Object}.
+
+
+\begin{DoxyParams}{Parameters}
+\item[{\em lock}]The {\ttfamily Object} to use for synchronizing critical sections. Must not be null. \end{DoxyParams}
+
+
+Definition at line 81 of file Writer.java.
+
+
+
+\subsection{Member Function Documentation}
+\index{java::io::Writer@{java::io::Writer}!close@{close}}
+\index{close@{close}!java::io::Writer@{java::io::Writer}}
+\subsubsection[{close}]{\setlength{\rightskip}{0pt plus 5cm}abstract void java::io::Writer::close (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)  throws {\bf IOException}\hspace{0.3cm}{\ttfamily  [pure virtual]}}\label{classjava_1_1io_1_1_writer_ab663b1b6c077e574b5cdc696ae794818}
+This method closes the stream. Any internal or native resources associated with this stream are freed. Any subsequent attempt to access the stream might throw an exception. 
+
+This method in this class does nothing.
+
+
+\begin{DoxyExceptions}{Exceptions}
+\item[{\em \doxyref{IOException}{p.}{classjava_1_1io_1_1_i_o_exception}}]If an error occurs \end{DoxyExceptions}
+
+
+Implemented in {\bf java::io::OutputStreamWriter} \doxyref{}{p.}{classjava_1_1io_1_1_output_stream_writer_a7aa157a96098ba8e76debaf6e2f808ed}.
+
+\index{java::io::Writer@{java::io::Writer}!flush@{flush}}
+\index{flush@{flush}!java::io::Writer@{java::io::Writer}}
+\subsubsection[{flush}]{\setlength{\rightskip}{0pt plus 5cm}abstract void java::io::Writer::flush (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)  throws {\bf IOException}\hspace{0.3cm}{\ttfamily  [pure virtual]}}\label{classjava_1_1io_1_1_writer_a718ddfcd3331eeb87569cb389f9fc396}
+This method forces any data that may have been buffered to be written to the underlying output device. Please note that the host environment might perform its own buffering unbeknowst to Java. In that case, a write made (for example, to a disk drive) might be cached in OS buffers instead of actually being written to disk.
+
+
+\begin{DoxyExceptions}{Exceptions}
+\item[{\em \doxyref{IOException}{p.}{classjava_1_1io_1_1_i_o_exception}}]If an error occurs \end{DoxyExceptions}
+
+
+Implemented in {\bf java::io::OutputStreamWriter} \doxyref{}{p.}{classjava_1_1io_1_1_output_stream_writer_ab1bad8b151b7fecea37f8da8dfe83f4c}.
+
+\index{java::io::Writer@{java::io::Writer}!write@{write}}
+\index{write@{write}!java::io::Writer@{java::io::Writer}}
+\subsubsection[{write}]{\setlength{\rightskip}{0pt plus 5cm}abstract void java::io::Writer::write (
+\begin{DoxyParamCaption}
+\item[{char[$\,$]}]{ buf, }
+\item[{int}]{ offset, }
+\item[{int}]{ len}
+\end{DoxyParamCaption}
+)  throws {\bf IOException}\hspace{0.3cm}{\ttfamily  [pure virtual]}}\label{classjava_1_1io_1_1_writer_a9ae243e09a91f317382cec7eb5bcebd4}
+This method writes {\ttfamily len} char from the specified array {\ttfamily buf} starting at index {\ttfamily offset} into the array. 
+
+Subclasses must provide an implementation of this abstract method.
+
+
+\begin{DoxyParams}{Parameters}
+\item[{\em buf}]The array of char to write from \item[{\em offset}]The index into the array to start writing from \item[{\em len}]The number of char to write\end{DoxyParams}
+
+\begin{DoxyExceptions}{Exceptions}
+\item[{\em \doxyref{IOException}{p.}{classjava_1_1io_1_1_i_o_exception}}]If an error occurs \end{DoxyExceptions}
+
+
+Implemented in {\bf java::io::OutputStreamWriter} \doxyref{}{p.}{classjava_1_1io_1_1_output_stream_writer_abf4e9d87c0d08863b623542e6895ea55}.
+
+\index{java::io::Writer@{java::io::Writer}!write@{write}}
+\index{write@{write}!java::io::Writer@{java::io::Writer}}
+\subsubsection[{write}]{\setlength{\rightskip}{0pt plus 5cm}void java::io::Writer::write (
+\begin{DoxyParamCaption}
+\item[{String}]{ str, }
+\item[{int}]{ offset, }
+\item[{int}]{ len}
+\end{DoxyParamCaption}
+)  throws {\bf IOException}     \hspace{0.3cm}{\ttfamily  [inline]}}\label{classjava_1_1io_1_1_writer_a1c6e59542fdfe823f244b6913a2c21fa}
+This method writes {\ttfamily len} chars from the {\ttfamily String} starting at position {\ttfamily offset}.
+
+
+\begin{DoxyParams}{Parameters}
+\item[{\em str}]The {\ttfamily String} that is to be written \item[{\em offset}]The character offset into the {\ttfamily String} to start writing from \item[{\em len}]The number of chars to write\end{DoxyParams}
+
+\begin{DoxyExceptions}{Exceptions}
+\item[{\em \doxyref{IOException}{p.}{classjava_1_1io_1_1_i_o_exception}}]If an error occurs \end{DoxyExceptions}
+
+
+Reimplemented in {\bf java::io::OutputStreamWriter} \doxyref{}{p.}{classjava_1_1io_1_1_output_stream_writer_a28fba78fd3d7490657675b1b01f33c65}.
+
+
+
+Definition at line 158 of file Writer.java.
+
+
+
+References write().
+
+\index{java::io::Writer@{java::io::Writer}!write@{write}}
+\index{write@{write}!java::io::Writer@{java::io::Writer}}
+\subsubsection[{write}]{\setlength{\rightskip}{0pt plus 5cm}void java::io::Writer::write (
+\begin{DoxyParamCaption}
+\item[{String}]{ str}
+\end{DoxyParamCaption}
+)  throws {\bf IOException}     \hspace{0.3cm}{\ttfamily  [inline]}}\label{classjava_1_1io_1_1_writer_adfbb5257d4edea7ca023165897c56d5c}
+This method writes all the characters in a {\ttfamily String} to the output.
+
+
+\begin{DoxyParams}{Parameters}
+\item[{\em str}]The {\ttfamily String} whose chars are to be written.\end{DoxyParams}
+
+\begin{DoxyExceptions}{Exceptions}
+\item[{\em \doxyref{IOException}{p.}{classjava_1_1io_1_1_i_o_exception}}]If an error occurs \end{DoxyExceptions}
+
+
+Definition at line 142 of file Writer.java.
+
+
+
+References write().
+
+\index{java::io::Writer@{java::io::Writer}!write@{write}}
+\index{write@{write}!java::io::Writer@{java::io::Writer}}
+\subsubsection[{write}]{\setlength{\rightskip}{0pt plus 5cm}void java::io::Writer::write (
+\begin{DoxyParamCaption}
+\item[{int}]{ b}
+\end{DoxyParamCaption}
+)  throws {\bf IOException}     \hspace{0.3cm}{\ttfamily  [inline]}}\label{classjava_1_1io_1_1_writer_a2e76c6167eb578759d40ee55e8fee201}
+This method writes a single char to the output stream.
+
+
+\begin{DoxyParams}{Parameters}
+\item[{\em b}]The char to be written to the output stream, passed as an int\end{DoxyParams}
+
+\begin{DoxyExceptions}{Exceptions}
+\item[{\em \doxyref{IOException}{p.}{classjava_1_1io_1_1_i_o_exception}}]If an error occurs \end{DoxyExceptions}
+
+
+Reimplemented in {\bf java::io::OutputStreamWriter} \doxyref{}{p.}{classjava_1_1io_1_1_output_stream_writer_a210be8355260a31df2a3654375f85b99}.
+
+
+
+Definition at line 96 of file Writer.java.
+
+
+
+Referenced by write().
+
+\index{java::io::Writer@{java::io::Writer}!write@{write}}
+\index{write@{write}!java::io::Writer@{java::io::Writer}}
+\subsubsection[{write}]{\setlength{\rightskip}{0pt plus 5cm}void java::io::Writer::write (
+\begin{DoxyParamCaption}
+\item[{char[$\,$]}]{ buf}
+\end{DoxyParamCaption}
+)  throws {\bf IOException}     \hspace{0.3cm}{\ttfamily  [inline]}}\label{classjava_1_1io_1_1_writer_a6e20d69f8b2d73d169330387dc64e5bf}
+This method all the writes char from the passed array to the output stream. This method is equivalent to {\ttfamily write(buf, 0, buf.length)} which is exactly how it is implemented in this class.
+
+
+\begin{DoxyParams}{Parameters}
+\item[{\em buf}]The array of char to write\end{DoxyParams}
+
+\begin{DoxyExceptions}{Exceptions}
+\item[{\em \doxyref{IOException}{p.}{classjava_1_1io_1_1_i_o_exception}}]If an error occurs \end{DoxyExceptions}
+
+
+Definition at line 114 of file Writer.java.
+
+
+
+References write().
+
+
+
+\subsection{Field Documentation}
+\index{java::io::Writer@{java::io::Writer}!lock@{lock}}
+\index{lock@{lock}!java::io::Writer@{java::io::Writer}}
+\subsubsection[{lock}]{\setlength{\rightskip}{0pt plus 5cm}Object {\bf java::io::Writer::lock}\hspace{0.3cm}{\ttfamily  [protected]}}\label{classjava_1_1io_1_1_writer_a208d0e239d38d49faeba4c945acca6c0}
+This is the object used to synchronize criticial code sections for thread safety. Subclasses should use this field instead of using synchronized methods or explicity synchronizations on {\ttfamily this} 
+
+Definition at line 63 of file Writer.java.
+
+
+
+Referenced by java::io::OutputStreamWriter::close(), and Writer().
+
+
+
+The documentation for this class was generated from the following file:\begin{DoxyCompactItemize}
+\item 
+src/classpath/java/io/Writer.java\end{DoxyCompactItemize}

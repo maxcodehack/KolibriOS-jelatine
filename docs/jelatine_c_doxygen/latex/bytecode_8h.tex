@@ -1,0 +1,63 @@
+\section{bytecode.h File Reference}
+\label{bytecode_8h}\index{bytecode.h@{bytecode.h}}
+{\ttfamily \#include \char`\"{}class.h\char`\"{}}\par
+{\ttfamily \#include \char`\"{}method.h\char`\"{}}\par
+\subsection*{Defines}
+\begin{DoxyCompactItemize}
+\item 
+\#define {\bf JELATINE\_\-BYTECODE\_\-H}~(1)
+\end{DoxyCompactItemize}
+\subsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+void {\bf translate\_\-bytecode} ({\bf class\_\-t} $\ast$, {\bf method\_\-t} $\ast$, uint8\_\-t $\ast$, {\bf exception\_\-handler\_\-t} $\ast$)
+\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+Bytecode manipulation functions interface 
+
+Definition in file {\bf bytecode.h}.
+
+
+
+\subsection{Define Documentation}
+\index{bytecode.h@{bytecode.h}!JELATINE\_\-BYTECODE\_\-H@{JELATINE\_\-BYTECODE\_\-H}}
+\index{JELATINE\_\-BYTECODE\_\-H@{JELATINE\_\-BYTECODE\_\-H}!bytecode.h@{bytecode.h}}
+\subsubsection[{JELATINE\_\-BYTECODE\_\-H}]{\setlength{\rightskip}{0pt plus 5cm}\#define JELATINE\_\-BYTECODE\_\-H~(1)}\label{bytecode_8h_a480596b528f35800e7b5b87f7fa5476a}
+\doxyref{bytecode.h}{p.}{bytecode_8h} inclusion macro 
+
+Definition at line 28 of file bytecode.h.
+
+
+
+\subsection{Function Documentation}
+\index{bytecode.h@{bytecode.h}!translate\_\-bytecode@{translate\_\-bytecode}}
+\index{translate\_\-bytecode@{translate\_\-bytecode}!bytecode.h@{bytecode.h}}
+\subsubsection[{translate\_\-bytecode}]{\setlength{\rightskip}{0pt plus 5cm}void translate\_\-bytecode (
+\begin{DoxyParamCaption}
+\item[{{\bf class\_\-t} $\ast$}]{ cl, }
+\item[{{\bf method\_\-t} $\ast$}]{ method, }
+\item[{uint8\_\-t $\ast$}]{ code, }
+\item[{{\bf exception\_\-handler\_\-t} $\ast$}]{ handlers}
+\end{DoxyParamCaption}
+)}\label{bytecode_8h_a8ce799f59db5e5cd8ffd638362e8613b}
+Translates regular Java bytecode into the internal version used by the VM, bytecode verification could be done here too
+
+Note that during bytecode translation constants larger than a single byte are turned to the machines native endian format (for unaligned constants only if the machine supports unaligned accesses). Static constraints in the bytecode are enforced here and partial verification happens too.
+
+
+\begin{DoxyParams}{Parameters}
+\item[{\em cl}]A pointer to the class owning the method \item[{\em method}]A pointer to the method to be translated \item[{\em code}]The method code \item[{\em handlers}]The method exception handlers \end{DoxyParams}
+
+
+Definition at line 48 of file bytecode.c.
+
+
+
+References c\_\-throw, class\_\-t::const\_\-pool, CONSTANT\_\-Class, CONSTANT\_\-Double, CONSTANT\_\-Float, CONSTANT\_\-Integer, CONSTANT\_\-Long, CONSTANT\_\-String, cp\_\-get\_\-tag(), method\_\-t::exception\_\-table\_\-length, JAVA\_\-AALOAD, JAVA\_\-AASTORE, JAVA\_\-ACONST\_\-NULL, JAVA\_\-ALOAD, JAVA\_\-ALOAD\_\-0, JAVA\_\-ALOAD\_\-1, JAVA\_\-ALOAD\_\-2, JAVA\_\-ALOAD\_\-3, JAVA\_\-ANEWARRAY, JAVA\_\-ARETURN, JAVA\_\-ARRAYLENGTH, JAVA\_\-ASTORE, JAVA\_\-ASTORE\_\-0, JAVA\_\-ASTORE\_\-1, JAVA\_\-ASTORE\_\-2, JAVA\_\-ASTORE\_\-3, JAVA\_\-ATHROW, JAVA\_\-BALOAD, JAVA\_\-BASTORE, JAVA\_\-BIPUSH, JAVA\_\-CALOAD, JAVA\_\-CASTORE, JAVA\_\-CHECKCAST, JAVA\_\-D2F, JAVA\_\-D2I, JAVA\_\-D2L, JAVA\_\-DADD, JAVA\_\-DALOAD, JAVA\_\-DASTORE, JAVA\_\-DCMPG, JAVA\_\-DCMPL, JAVA\_\-DCONST\_\-0, JAVA\_\-DCONST\_\-1, JAVA\_\-DDIV, JAVA\_\-DLOAD, JAVA\_\-DLOAD\_\-0, JAVA\_\-DLOAD\_\-1, JAVA\_\-DLOAD\_\-2, JAVA\_\-DLOAD\_\-3, JAVA\_\-DMUL, JAVA\_\-DNEG, JAVA\_\-DREM, JAVA\_\-DRETURN, JAVA\_\-DSTORE, JAVA\_\-DSTORE\_\-0, JAVA\_\-DSTORE\_\-1, JAVA\_\-DSTORE\_\-2, JAVA\_\-DSTORE\_\-3, JAVA\_\-DSUB, JAVA\_\-DUP, JAVA\_\-DUP2, JAVA\_\-DUP2\_\-X1, JAVA\_\-DUP2\_\-X2, JAVA\_\-DUP\_\-X1, JAVA\_\-DUP\_\-X2, JAVA\_\-F2D, JAVA\_\-F2I, JAVA\_\-F2L, JAVA\_\-FADD, JAVA\_\-FALOAD, JAVA\_\-FASTORE, JAVA\_\-FCMPG, JAVA\_\-FCMPL, JAVA\_\-FCONST\_\-0, JAVA\_\-FCONST\_\-1, JAVA\_\-FCONST\_\-2, JAVA\_\-FDIV, JAVA\_\-FLOAD, JAVA\_\-FLOAD\_\-0, JAVA\_\-FLOAD\_\-1, JAVA\_\-FLOAD\_\-2, JAVA\_\-FLOAD\_\-3, JAVA\_\-FMUL, JAVA\_\-FNEG, JAVA\_\-FREM, JAVA\_\-FRETURN, JAVA\_\-FSTORE, JAVA\_\-FSTORE\_\-0, JAVA\_\-FSTORE\_\-1, JAVA\_\-FSTORE\_\-2, JAVA\_\-FSTORE\_\-3, JAVA\_\-FSUB, JAVA\_\-GETFIELD, JAVA\_\-GETSTATIC, JAVA\_\-GOTO, JAVA\_\-GOTO\_\-W, JAVA\_\-I2B, JAVA\_\-I2C, JAVA\_\-I2D, JAVA\_\-I2F, JAVA\_\-I2L, JAVA\_\-I2S, JAVA\_\-IADD, JAVA\_\-IALOAD, JAVA\_\-IAND, JAVA\_\-IASTORE, JAVA\_\-ICONST\_\-0, JAVA\_\-ICONST\_\-1, JAVA\_\-ICONST\_\-2, JAVA\_\-ICONST\_\-3, JAVA\_\-ICONST\_\-4, JAVA\_\-ICONST\_\-5, JAVA\_\-ICONST\_\-M1, JAVA\_\-IDIV, JAVA\_\-IF\_\-ACMPEQ, JAVA\_\-IF\_\-ACMPNE, JAVA\_\-IF\_\-ICMPEQ, JAVA\_\-IF\_\-ICMPGE, JAVA\_\-IF\_\-ICMPGT, JAVA\_\-IF\_\-ICMPLE, JAVA\_\-IF\_\-ICMPLT, JAVA\_\-IF\_\-ICMPNE, JAVA\_\-IFEQ, JAVA\_\-IFGE, JAVA\_\-IFGT, JAVA\_\-IFLE, JAVA\_\-IFLT, JAVA\_\-IFNE, JAVA\_\-IFNONNULL, JAVA\_\-IFNULL, JAVA\_\-IINC, JAVA\_\-ILOAD, JAVA\_\-ILOAD\_\-0, JAVA\_\-ILOAD\_\-1, JAVA\_\-ILOAD\_\-2, JAVA\_\-ILOAD\_\-3, JAVA\_\-IMUL, JAVA\_\-INEG, JAVA\_\-INSTANCEOF, JAVA\_\-INVOKEINTERFACE, JAVA\_\-INVOKESPECIAL, JAVA\_\-INVOKESTATIC, JAVA\_\-INVOKEVIRTUAL, JAVA\_\-IOR, JAVA\_\-IREM, JAVA\_\-IRETURN, JAVA\_\-ISHL, JAVA\_\-ISHR, JAVA\_\-ISTORE, JAVA\_\-ISTORE\_\-0, JAVA\_\-ISTORE\_\-1, JAVA\_\-ISTORE\_\-2, JAVA\_\-ISTORE\_\-3, JAVA\_\-ISUB, JAVA\_\-IUSHR, JAVA\_\-IXOR, JAVA\_\-JSR, JAVA\_\-JSR\_\-W, JAVA\_\-L2D, JAVA\_\-L2F, JAVA\_\-L2I, JAVA\_\-LADD, JAVA\_\-LALOAD, JAVA\_\-LAND, JAVA\_\-LANG\_\-NOCLASSDEFFOUNDERROR, JAVA\_\-LASTORE, JAVA\_\-LCMP, JAVA\_\-LCONST\_\-0, JAVA\_\-LCONST\_\-1, JAVA\_\-LDC, JAVA\_\-LDC2\_\-W, JAVA\_\-LDC\_\-W, JAVA\_\-LDIV, JAVA\_\-LLOAD, JAVA\_\-LLOAD\_\-0, JAVA\_\-LLOAD\_\-1, JAVA\_\-LLOAD\_\-2, JAVA\_\-LLOAD\_\-3, JAVA\_\-LMUL, JAVA\_\-LNEG, JAVA\_\-LOOKUPSWITCH, JAVA\_\-LOR, JAVA\_\-LREM, JAVA\_\-LRETURN, JAVA\_\-LSHL, JAVA\_\-LSHR, JAVA\_\-LSTORE, JAVA\_\-LSTORE\_\-0, JAVA\_\-LSTORE\_\-1, JAVA\_\-LSTORE\_\-2, JAVA\_\-LSTORE\_\-3, JAVA\_\-LSUB, JAVA\_\-LUSHR, JAVA\_\-LXOR, JAVA\_\-MONITORENTER, JAVA\_\-MONITOREXIT, JAVA\_\-MULTIANEWARRAY, JAVA\_\-NEW, JAVA\_\-NEWARRAY, JAVA\_\-NOP, JAVA\_\-POP, JAVA\_\-POP2, JAVA\_\-PUTFIELD, JAVA\_\-PUTSTATIC, JAVA\_\-RET, JAVA\_\-RETURN, JAVA\_\-SALOAD, JAVA\_\-SASTORE, JAVA\_\-SIPUSH, JAVA\_\-SWAP, JAVA\_\-TABLESWITCH, JAVA\_\-WIDE, method\_\-t::max\_\-locals, method\_\-get\_\-code\_\-length(), method\_\-is\_\-static(), method\_\-is\_\-synchronized(), size\_\-ceil(), store\_\-int16\_\-un, store\_\-int32\_\-un, T\_\-BOOLEAN, T\_\-BYTE, T\_\-CHAR, T\_\-INT, T\_\-LONG, and T\_\-SHORT.
+
+
+
+Referenced by bcl\_\-link\_\-method().
+

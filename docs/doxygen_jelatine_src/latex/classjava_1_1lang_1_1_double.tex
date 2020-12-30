@@ -1,0 +1,553 @@
+\section{java::lang::Double Class Reference}
+\label{classjava_1_1lang_1_1_double}\index{java::lang::Double@{java::lang::Double}}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+{\bf Double} (double value)
+\item 
+{\bf String} {\bf toString} ()
+\item 
+boolean {\bf isNaN} ()
+\item 
+boolean {\bf isInfinite} ()
+\item 
+byte {\bf byteValue} ()
+\item 
+short {\bf shortValue} ()
+\item 
+int {\bf intValue} ()
+\item 
+long {\bf longValue} ()
+\item 
+float {\bf floatValue} ()
+\item 
+double {\bf doubleValue} ()
+\item 
+int {\bf hashCode} ()
+\item 
+boolean {\bf equals} ({\bf Object} obj)
+\end{DoxyCompactItemize}
+\subsection*{Static Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+static native {\bf String} {\bf toString} (double d)
+\item 
+static {\bf Double} {\bf valueOf} ({\bf String} s)  throws NumberFormatException, NullPointerException     
+\item 
+static double {\bf parseDouble} ({\bf String} str)  throws NumberFormatException, NullPointerException     
+\item 
+static boolean {\bf isNaN} (double v)
+\item 
+static boolean {\bf isInfinite} (double v)
+\item 
+static native long {\bf doubleToLongBits} (double value)
+\item 
+static native double {\bf longBitsToDouble} (long bits)
+\end{DoxyCompactItemize}
+\subsection*{Static Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+static final double {\bf MAX\_\-VALUE} = 1.7976931348623157e+308
+\item 
+static final double {\bf MIN\_\-VALUE} = 5e-\/324
+\item 
+static final double {\bf NEGATIVE\_\-INFINITY} = -\/1.0 / 0.0
+\item 
+static final double {\bf POSITIVE\_\-INFINITY} = 1.0 / 0.0
+\item 
+static final double {\bf NaN} = 0.0 / 0.0
+\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+Instances of class {\ttfamily \doxyref{Double}{p.}{classjava_1_1lang_1_1_double}} represent primitive {\ttfamily double} values.
+
+Additionally, this class provides various helper functions and variables related to doubles.
+
+\begin{DoxyAuthor}{Author}
+Paul Fisher 
+
+Andrew Haley ({\tt aph@cygnus.com}) 
+
+Eric Blake ({\tt ebb9@email.byu.edu}) 
+\end{DoxyAuthor}
+
+
+Definition at line 52 of file Double.java.
+
+
+
+\subsection{Constructor \& Destructor Documentation}
+\index{java::lang::Double@{java::lang::Double}!Double@{Double}}
+\index{Double@{Double}!java::lang::Double@{java::lang::Double}}
+\subsubsection[{Double}]{\setlength{\rightskip}{0pt plus 5cm}java::lang::Double::Double (
+\begin{DoxyParamCaption}
+\item[{double}]{ value}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily  [inline]}}\label{classjava_1_1lang_1_1_double_a9d1b5e065eccae75d85f1149572175c7}
+Create a {\ttfamily \doxyref{Double}{p.}{classjava_1_1lang_1_1_double}} from the primitive {\ttfamily double} specified.
+
+
+\begin{DoxyParams}{Parameters}
+\item[{\em value}]the {\ttfamily double} argument \end{DoxyParams}
+
+
+Definition at line 95 of file Double.java.
+
+
+
+Referenced by valueOf().
+
+
+
+\subsection{Member Function Documentation}
+\index{java::lang::Double@{java::lang::Double}!byteValue@{byteValue}}
+\index{byteValue@{byteValue}!java::lang::Double@{java::lang::Double}}
+\subsubsection[{byteValue}]{\setlength{\rightskip}{0pt plus 5cm}byte java::lang::Double::byteValue (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily  [inline]}}\label{classjava_1_1lang_1_1_double_a615a2195284b1c24e3c949311f9ba0d4}
+Return the value of this {\ttfamily \doxyref{Double}{p.}{classjava_1_1lang_1_1_double}} as a {\ttfamily byte}.
+
+\begin{DoxyReturn}{Returns}
+the byte value 
+\end{DoxyReturn}
+
+
+Definition at line 376 of file Double.java.
+
+\index{java::lang::Double@{java::lang::Double}!doubleToLongBits@{doubleToLongBits}}
+\index{doubleToLongBits@{doubleToLongBits}!java::lang::Double@{java::lang::Double}}
+\subsubsection[{doubleToLongBits}]{\setlength{\rightskip}{0pt plus 5cm}static native long java::lang::Double::doubleToLongBits (
+\begin{DoxyParamCaption}
+\item[{double}]{ value}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily  [static]}}\label{classjava_1_1lang_1_1_double_a33745118409011676bb86cd25389ce9d}
+Convert the double to the IEEE 754 floating-\/point \char`\"{}double format\char`\"{} bit layout. Bit 63 (the most significant) is the sign bit, bits 62-\/52 (masked by 0x7ff0000000000000L) represent the exponent, and bits 51-\/0 (masked by 0x000fffffffffffffL) are the mantissa. This function collapses all versions of NaN to 0x7ff8000000000000L. The result of this function can be used as the argument to {\ttfamily \doxyref{Double.longBitsToDouble(long)}{p.}{classjava_1_1lang_1_1_double_a8647bc9948f61076a4157bf9f6b35bf4}} to obtain the original {\ttfamily double} value.
+
+
+\begin{DoxyParams}{Parameters}
+\item[{\em value}]the {\ttfamily double} to convert \end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+the bits of the {\ttfamily double} 
+\end{DoxyReturn}
+\begin{DoxySeeAlso}{See also}
+\doxyref{longBitsToDouble(long)}{p.}{classjava_1_1lang_1_1_double_a8647bc9948f61076a4157bf9f6b35bf4} 
+\end{DoxySeeAlso}
+
+
+Referenced by hashCode().
+
+\index{java::lang::Double@{java::lang::Double}!doubleValue@{doubleValue}}
+\index{doubleValue@{doubleValue}!java::lang::Double@{java::lang::Double}}
+\subsubsection[{doubleValue}]{\setlength{\rightskip}{0pt plus 5cm}double java::lang::Double::doubleValue (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily  [inline]}}\label{classjava_1_1lang_1_1_double_ac11980e23ba374ccd7c6aa0b2e2e93f4}
+Return the value of this {\ttfamily \doxyref{Double}{p.}{classjava_1_1lang_1_1_double}}.
+
+\begin{DoxyReturn}{Returns}
+the double value 
+\end{DoxyReturn}
+
+
+Definition at line 426 of file Double.java.
+
+\index{java::lang::Double@{java::lang::Double}!equals@{equals}}
+\index{equals@{equals}!java::lang::Double@{java::lang::Double}}
+\subsubsection[{equals}]{\setlength{\rightskip}{0pt plus 5cm}boolean java::lang::Double::equals (
+\begin{DoxyParamCaption}
+\item[{{\bf Object}}]{ obj}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily  [inline]}}\label{classjava_1_1lang_1_1_double_ae93dda686f3d8e5a358cc687de6d83d3}
+Returns {\ttfamily true} if {\ttfamily obj} is an instance of {\ttfamily \doxyref{Double}{p.}{classjava_1_1lang_1_1_double}} and represents the same double value. Unlike comparing two doubles with {\ttfamily ==}, this treats two instances of {\ttfamily \doxyref{Double.NaN}{p.}{classjava_1_1lang_1_1_double_a7ae8b92fe30e66a8e8a5033d1373b801}} as equal, but treats {\ttfamily 0.0} and {\ttfamily -\/0.0} as unequal.
+
+Note that {\ttfamily d1.equals(d2)} is identical to {\ttfamily doubleToLongBits(d1.doubleValue()) == doubleToLongBits(d2.doubleValue())}.
+
+
+\begin{DoxyParams}{Parameters}
+\item[{\em obj}]the object to compare \end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+whether the objects are semantically equal 
+\end{DoxyReturn}
+
+
+Definition at line 461 of file Double.java.
+
+
+
+References isNaN().
+
+\index{java::lang::Double@{java::lang::Double}!floatValue@{floatValue}}
+\index{floatValue@{floatValue}!java::lang::Double@{java::lang::Double}}
+\subsubsection[{floatValue}]{\setlength{\rightskip}{0pt plus 5cm}float java::lang::Double::floatValue (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily  [inline]}}\label{classjava_1_1lang_1_1_double_a59c7360d8abbf7bf37cde9ae0eff098b}
+Return the value of this {\ttfamily \doxyref{Double}{p.}{classjava_1_1lang_1_1_double}} as a {\ttfamily float}.
+
+\begin{DoxyReturn}{Returns}
+the float value 
+\end{DoxyReturn}
+
+
+Definition at line 416 of file Double.java.
+
+\index{java::lang::Double@{java::lang::Double}!hashCode@{hashCode}}
+\index{hashCode@{hashCode}!java::lang::Double@{java::lang::Double}}
+\subsubsection[{hashCode}]{\setlength{\rightskip}{0pt plus 5cm}int java::lang::Double::hashCode (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily  [inline]}}\label{classjava_1_1lang_1_1_double_a815bdeb2be61f741f72ef12df2656095}
+Return a hashcode representing this \doxyref{Object}{p.}{classjava_1_1lang_1_1_object}. {\ttfamily \doxyref{Double}{p.}{classjava_1_1lang_1_1_double}}'s hash code is calculated by:\par
+ {\ttfamily long v = \doxyref{Double.doubleToLongBits}{p.}{classjava_1_1lang_1_1_double_a33745118409011676bb86cd25389ce9d}(\doxyref{doubleValue()}{p.}{classjava_1_1lang_1_1_double_ac11980e23ba374ccd7c6aa0b2e2e93f4});\par
+ int hash = (int)(v$^\wedge$(v$>$$>$32))}.
+
+\begin{DoxyReturn}{Returns}
+this Object's hash code 
+\end{DoxyReturn}
+\begin{DoxySeeAlso}{See also}
+\doxyref{doubleToLongBits(double)}{p.}{classjava_1_1lang_1_1_double_a33745118409011676bb86cd25389ce9d} 
+\end{DoxySeeAlso}
+
+
+Definition at line 440 of file Double.java.
+
+
+
+References doubleToLongBits().
+
+\index{java::lang::Double@{java::lang::Double}!intValue@{intValue}}
+\index{intValue@{intValue}!java::lang::Double@{java::lang::Double}}
+\subsubsection[{intValue}]{\setlength{\rightskip}{0pt plus 5cm}int java::lang::Double::intValue (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily  [inline]}}\label{classjava_1_1lang_1_1_double_a5e611665b0aba837f5dda16965e11b89}
+Return the value of this {\ttfamily \doxyref{Double}{p.}{classjava_1_1lang_1_1_double}} as an {\ttfamily int}.
+
+\begin{DoxyReturn}{Returns}
+the int value 
+\end{DoxyReturn}
+
+
+Definition at line 396 of file Double.java.
+
+\index{java::lang::Double@{java::lang::Double}!isInfinite@{isInfinite}}
+\index{isInfinite@{isInfinite}!java::lang::Double@{java::lang::Double}}
+\subsubsection[{isInfinite}]{\setlength{\rightskip}{0pt plus 5cm}boolean java::lang::Double::isInfinite (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily  [inline]}}\label{classjava_1_1lang_1_1_double_aeebc61c50d38315fb792a503e3754756}
+Return {\ttfamily true} if the value of this {\ttfamily \doxyref{Double}{p.}{classjava_1_1lang_1_1_double}} is the same as {\ttfamily NEGATIVE\_\-INFINITY} or {\ttfamily POSITIVE\_\-INFINITY}, otherwise return {\ttfamily false}.
+
+\begin{DoxyReturn}{Returns}
+whether this {\ttfamily \doxyref{Double}{p.}{classjava_1_1lang_1_1_double}} is (-\//+) infinity 
+\end{DoxyReturn}
+
+
+Definition at line 366 of file Double.java.
+
+\index{java::lang::Double@{java::lang::Double}!isInfinite@{isInfinite}}
+\index{isInfinite@{isInfinite}!java::lang::Double@{java::lang::Double}}
+\subsubsection[{isInfinite}]{\setlength{\rightskip}{0pt plus 5cm}static boolean java::lang::Double::isInfinite (
+\begin{DoxyParamCaption}
+\item[{double}]{ v}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily  [inline, static]}}\label{classjava_1_1lang_1_1_double_a786088e5710298502a43f993277e79a8}
+Return {\ttfamily true} if the {\ttfamily double} has a value equal to either {\ttfamily NEGATIVE\_\-INFINITY} or {\ttfamily POSITIVE\_\-INFINITY}, otherwise return {\ttfamily false}.
+
+
+\begin{DoxyParams}{Parameters}
+\item[{\em v}]the {\ttfamily double} to compare \end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+whether the argument is (-\//+) infinity. 
+\end{DoxyReturn}
+
+
+Definition at line 330 of file Double.java.
+
+
+
+References NEGATIVE\_\-INFINITY, and POSITIVE\_\-INFINITY.
+
+\index{java::lang::Double@{java::lang::Double}!isNaN@{isNaN}}
+\index{isNaN@{isNaN}!java::lang::Double@{java::lang::Double}}
+\subsubsection[{isNaN}]{\setlength{\rightskip}{0pt plus 5cm}static boolean java::lang::Double::isNaN (
+\begin{DoxyParamCaption}
+\item[{double}]{ v}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily  [inline, static]}}\label{classjava_1_1lang_1_1_double_a64862974affe2b3fe22616331304a87d}
+Return {\ttfamily true} if the {\ttfamily double} has the same value as {\ttfamily NaN}, otherwise return {\ttfamily false}.
+
+
+\begin{DoxyParams}{Parameters}
+\item[{\em v}]the {\ttfamily double} to compare \end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+whether the argument is {\ttfamily NaN}. 
+\end{DoxyReturn}
+
+
+Definition at line 315 of file Double.java.
+
+\index{java::lang::Double@{java::lang::Double}!isNaN@{isNaN}}
+\index{isNaN@{isNaN}!java::lang::Double@{java::lang::Double}}
+\subsubsection[{isNaN}]{\setlength{\rightskip}{0pt plus 5cm}boolean java::lang::Double::isNaN (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily  [inline]}}\label{classjava_1_1lang_1_1_double_a5c17e9c2b0b5861099463e0a457038e7}
+Return {\ttfamily true} if the value of this {\ttfamily \doxyref{Double}{p.}{classjava_1_1lang_1_1_double}} is the same as {\ttfamily NaN}, otherwise return {\ttfamily false}.
+
+\begin{DoxyReturn}{Returns}
+whether this {\ttfamily \doxyref{Double}{p.}{classjava_1_1lang_1_1_double}} is {\ttfamily NaN} 
+\end{DoxyReturn}
+
+
+Definition at line 354 of file Double.java.
+
+
+
+Referenced by equals().
+
+\index{java::lang::Double@{java::lang::Double}!longBitsToDouble@{longBitsToDouble}}
+\index{longBitsToDouble@{longBitsToDouble}!java::lang::Double@{java::lang::Double}}
+\subsubsection[{longBitsToDouble}]{\setlength{\rightskip}{0pt plus 5cm}static native double java::lang::Double::longBitsToDouble (
+\begin{DoxyParamCaption}
+\item[{long}]{ bits}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily  [static]}}\label{classjava_1_1lang_1_1_double_a8647bc9948f61076a4157bf9f6b35bf4}
+Convert the argument in IEEE 754 floating-\/point \char`\"{}double format\char`\"{} bit layout to the corresponding float. Bit 63 (the most significant) is the sign bit, bits 62-\/52 (masked by 0x7ff0000000000000L) represent the exponent, and bits 51-\/0 (masked by 0x000fffffffffffffL) are the mantissa. This function leaves NaN alone, so that you can recover the bit pattern with {\ttfamily Double.doubleToRawLongBits(double)}.
+
+
+\begin{DoxyParams}{Parameters}
+\item[{\em bits}]the bits to convert \end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+the {\ttfamily double} represented by the bits 
+\end{DoxyReturn}
+\index{java::lang::Double@{java::lang::Double}!longValue@{longValue}}
+\index{longValue@{longValue}!java::lang::Double@{java::lang::Double}}
+\subsubsection[{longValue}]{\setlength{\rightskip}{0pt plus 5cm}long java::lang::Double::longValue (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily  [inline]}}\label{classjava_1_1lang_1_1_double_ae374ddc720aabb500e56cf2a754f45fa}
+Return the value of this {\ttfamily \doxyref{Double}{p.}{classjava_1_1lang_1_1_double}} as a {\ttfamily long}.
+
+\begin{DoxyReturn}{Returns}
+the long value 
+\end{DoxyReturn}
+
+
+Definition at line 406 of file Double.java.
+
+\index{java::lang::Double@{java::lang::Double}!parseDouble@{parseDouble}}
+\index{parseDouble@{parseDouble}!java::lang::Double@{java::lang::Double}}
+\subsubsection[{parseDouble}]{\setlength{\rightskip}{0pt plus 5cm}static double java::lang::Double::parseDouble (
+\begin{DoxyParamCaption}
+\item[{{\bf String}}]{ str}
+\end{DoxyParamCaption}
+)  throws {\bf NumberFormatException}, {\bf NullPointerException}     \hspace{0.3cm}{\ttfamily  [inline, static]}}\label{classjava_1_1lang_1_1_double_a5c5fabd1e39b3d9a8b2bc37277da15bc}
+Parse the specified {\ttfamily \doxyref{String}{p.}{classjava_1_1lang_1_1_string}} as a {\ttfamily double}. The extended BNF grammar is as follows:\par
+ 
+\begin{DoxyPre}
+ {\itshape DecodableString\/}:
+      ( [ {\ttfamily -} | {\ttfamily +} ] {\ttfamily NaN} )
+    | ( [ {\ttfamily -} | {\ttfamily +} ] {\ttfamily Infinity} )
+    | ( [ {\ttfamily -} | {\ttfamily +} ] {\itshape FloatingPoint\/}
+              [ {\ttfamily f} | {\ttfamily F} | {\ttfamily d}
+                | {\ttfamily D}] )
+ {\itshape FloatingPoint\/}:
+      ( \{ {\itshape Digit\/} \}+ [ {\ttfamily .} \{ {\itshape Digit\/} \} ]
+              [ {\itshape Exponent\/} ] )
+    | ( {\ttfamily .} \{ {\itshape Digit\/} \}+ [ {\itshape Exponent\/} ] )
+ {\itshape Exponent\/}:
+      ( ( {\ttfamily e} | {\ttfamily E} )
+              [ {\ttfamily -} | {\ttfamily +} ] \{ {\itshape Digit\/} \}+ )
+ {\itshape Digit\/}: {\itshape {\ttfamily '0'} through {\ttfamily '9'}\/}
+ \end{DoxyPre}
+
+
+NaN and infinity are special cases, to allow parsing of the output of toString. Otherwise, the result is determined by calculating {\itshape n $\ast$ 10$^{\mbox{exponent}}$ \/} to infinite precision, then rounding to the nearest double. Remember that many numbers cannot be precisely represented in floating point. In case of overflow, infinity is used, and in case of underflow, signed zero is used. Unlike \doxyref{Integer.parseInt}{p.}{classjava_1_1lang_1_1_integer_a369fccaa67bcd1e0f7d6695923628a65}, this does not accept Unicode digits outside the ASCII range.
+
+If an unexpected character is found in the {\ttfamily \doxyref{String}{p.}{classjava_1_1lang_1_1_string}}, a {\ttfamily \doxyref{NumberFormatException}{p.}{classjava_1_1lang_1_1_number_format_exception}} will be thrown. Leading and trailing 'whitespace' is ignored via {\ttfamily \doxyref{String.trim()}{p.}{classjava_1_1lang_1_1_string_a43355a6a25f3c2504e45aad51d0e8ce9}}, but spaces internal to the actual number are not allowed.
+
+
+\begin{DoxyParams}{Parameters}
+\item[{\em str}]the {\ttfamily \doxyref{String}{p.}{classjava_1_1lang_1_1_string}} to convert \end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+the {\ttfamily double} value of {\ttfamily s} 
+\end{DoxyReturn}
+
+\begin{DoxyExceptions}{Exceptions}
+\item[{\em \doxyref{NumberFormatException}{p.}{classjava_1_1lang_1_1_number_format_exception}}]if {\ttfamily s} cannot be parsed as a {\ttfamily double} \item[{\em \doxyref{NullPointerException}{p.}{classjava_1_1lang_1_1_null_pointer_exception}}]if {\ttfamily s} is null \end{DoxyExceptions}
+\begin{DoxySeeAlso}{See also}
+\doxyref{MIN\_\-VALUE}{p.}{classjava_1_1lang_1_1_double_aedd19a94ab91da9b1860cf7dd5132ad3} 
+
+\doxyref{MAX\_\-VALUE}{p.}{classjava_1_1lang_1_1_double_a7ce444f92f3c33bd0bc65f4a5c04d0e8} 
+
+\doxyref{POSITIVE\_\-INFINITY}{p.}{classjava_1_1lang_1_1_double_a0357631215b0293bdd69e87825b4ed68} 
+
+\doxyref{NEGATIVE\_\-INFINITY}{p.}{classjava_1_1lang_1_1_double_ae5878ff71176f423e1e1b941c752e35a} 
+\end{DoxySeeAlso}
+
+
+Definition at line 191 of file Double.java.
+
+
+
+References java::lang::String::charAt(), java::lang::String::equals(), java::lang::String::length(), and java::lang::String::substring().
+
+
+
+Referenced by valueOf().
+
+\index{java::lang::Double@{java::lang::Double}!shortValue@{shortValue}}
+\index{shortValue@{shortValue}!java::lang::Double@{java::lang::Double}}
+\subsubsection[{shortValue}]{\setlength{\rightskip}{0pt plus 5cm}short java::lang::Double::shortValue (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily  [inline]}}\label{classjava_1_1lang_1_1_double_a027f86cf882823aed6884f9e91d8fd2f}
+Return the value of this {\ttfamily \doxyref{Double}{p.}{classjava_1_1lang_1_1_double}} as a {\ttfamily short}.
+
+\begin{DoxyReturn}{Returns}
+the short value 
+\end{DoxyReturn}
+
+
+Definition at line 386 of file Double.java.
+
+\index{java::lang::Double@{java::lang::Double}!toString@{toString}}
+\index{toString@{toString}!java::lang::Double@{java::lang::Double}}
+\subsubsection[{toString}]{\setlength{\rightskip}{0pt plus 5cm}{\bf String} java::lang::Double::toString (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily  [inline]}}\label{classjava_1_1lang_1_1_double_a0a011ca844604091c70d669617c90995}
+Convert the {\ttfamily double} value of this {\ttfamily \doxyref{Double}{p.}{classjava_1_1lang_1_1_double}} to a {\ttfamily \doxyref{String}{p.}{classjava_1_1lang_1_1_string}}. This method calls {\ttfamily \doxyref{Double.toString(double)}{p.}{classjava_1_1lang_1_1_double_a989aa5eaf198a1f272a9a43b21f0448e}} to do its dirty work.
+
+\begin{DoxyReturn}{Returns}
+the {\ttfamily \doxyref{String}{p.}{classjava_1_1lang_1_1_string}} representation 
+\end{DoxyReturn}
+\begin{DoxySeeAlso}{See also}
+\doxyref{toString(double)}{p.}{classjava_1_1lang_1_1_double_a989aa5eaf198a1f272a9a43b21f0448e} 
+\end{DoxySeeAlso}
+
+
+Definition at line 343 of file Double.java.
+
+\index{java::lang::Double@{java::lang::Double}!toString@{toString}}
+\index{toString@{toString}!java::lang::Double@{java::lang::Double}}
+\subsubsection[{toString}]{\setlength{\rightskip}{0pt plus 5cm}static native {\bf String} java::lang::Double::toString (
+\begin{DoxyParamCaption}
+\item[{double}]{ d}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily  [static]}}\label{classjava_1_1lang_1_1_double_a989aa5eaf198a1f272a9a43b21f0448e}
+Convert the {\ttfamily double} to a {\ttfamily \doxyref{String}{p.}{classjava_1_1lang_1_1_string}}. Floating-\/point string representation is fairly complex: here is a rundown of the possible values. \char`\"{}$<$code$>$[-\/]$<$/code$>$\char`\"{} indicates that a negative sign will be printed if the value (or exponent) is negative. \char`\"{}$<$code$>$\&lt;number\&gt;$<$/code$>$\char`\"{} means a string of digits ('0' to '9'). \char`\"{}$<$code$>$\&lt;digit\&gt;$<$/code$>$\char`\"{} means a single digit ('0' to '9').\par
+
+
+\begin{TabularC}{2}
+\hline
+Value of \doxyref{Double}{p.}{classjava_1_1lang_1_1_double}&\doxyref{String}{p.}{classjava_1_1lang_1_1_string} Representation \\\cline{1-2}
+[+-\/] 0 &{\ttfamily [-\/]0.0} \\\cline{1-2}
+Between [+-\/] 10$^{\mbox{-\/3}}$  and 10$^{\mbox{7}}$ , exclusive &{\ttfamily [-\/]number.number} \\\cline{1-2}
+Other numeric value &{\ttfamily [-\/]$<$digit$>$.$<$number$>$ E[-\/]$<$number$>$} \\\cline{1-2}
+[+-\/] infinity &{\ttfamily [-\/]Infinity} \\\cline{1-2}
+NaN &{\ttfamily NaN} \\\cline{1-2}
+\end{TabularC}
+
+
+Yes, negative zero {\itshape is\/} a possible value. Note that there is {\itshape always\/} a {\ttfamily .} and at least one digit printed after it: even if the number is 3, it will be printed as {\ttfamily 3.0}. After the \char`\"{}.\char`\"{}, all digits will be printed except trailing zeros. The result is rounded to the shortest decimal number which will parse back to the same double.
+
+
+\begin{DoxyParams}{Parameters}
+\item[{\em d}]the {\ttfamily double} to convert \end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+the {\ttfamily \doxyref{String}{p.}{classjava_1_1lang_1_1_string}} representing the {\ttfamily double} 
+\end{DoxyReturn}
+\index{java::lang::Double@{java::lang::Double}!valueOf@{valueOf}}
+\index{valueOf@{valueOf}!java::lang::Double@{java::lang::Double}}
+\subsubsection[{valueOf}]{\setlength{\rightskip}{0pt plus 5cm}static {\bf Double} java::lang::Double::valueOf (
+\begin{DoxyParamCaption}
+\item[{{\bf String}}]{ s}
+\end{DoxyParamCaption}
+)  throws {\bf NumberFormatException}, {\bf NullPointerException}     \hspace{0.3cm}{\ttfamily  [inline, static]}}\label{classjava_1_1lang_1_1_double_a576eb92f87645105228b7edf97ac23c0}
+Create a new {\ttfamily \doxyref{Double}{p.}{classjava_1_1lang_1_1_double}} object using the {\ttfamily \doxyref{String}{p.}{classjava_1_1lang_1_1_string}}.
+
+
+\begin{DoxyParams}{Parameters}
+\item[{\em s}]the {\ttfamily \doxyref{String}{p.}{classjava_1_1lang_1_1_string}} to convert \end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+the new {\ttfamily \doxyref{Double}{p.}{classjava_1_1lang_1_1_double}} 
+\end{DoxyReturn}
+
+\begin{DoxyExceptions}{Exceptions}
+\item[{\em \doxyref{NumberFormatException}{p.}{classjava_1_1lang_1_1_number_format_exception}}]if {\ttfamily s} cannot be parsed as a {\ttfamily double} \item[{\em \doxyref{NullPointerException}{p.}{classjava_1_1lang_1_1_null_pointer_exception}}]if {\ttfamily s} is null. \end{DoxyExceptions}
+\begin{DoxySeeAlso}{See also}
+\doxyref{parseDouble(String)}{p.}{classjava_1_1lang_1_1_double_a5c5fabd1e39b3d9a8b2bc37277da15bc} 
+\end{DoxySeeAlso}
+
+
+Definition at line 142 of file Double.java.
+
+
+
+References Double(), and parseDouble().
+
+
+
+\subsection{Field Documentation}
+\index{java::lang::Double@{java::lang::Double}!MAX\_\-VALUE@{MAX\_\-VALUE}}
+\index{MAX\_\-VALUE@{MAX\_\-VALUE}!java::lang::Double@{java::lang::Double}}
+\subsubsection[{MAX\_\-VALUE}]{\setlength{\rightskip}{0pt plus 5cm}final double {\bf java::lang::Double::MAX\_\-VALUE} = 1.7976931348623157e+308\hspace{0.3cm}{\ttfamily  [static]}}\label{classjava_1_1lang_1_1_double_a7ce444f92f3c33bd0bc65f4a5c04d0e8}
+The maximum positive value a {\ttfamily double} may represent is 1.7976931348623157e+308. 
+
+Definition at line 58 of file Double.java.
+
+\index{java::lang::Double@{java::lang::Double}!MIN\_\-VALUE@{MIN\_\-VALUE}}
+\index{MIN\_\-VALUE@{MIN\_\-VALUE}!java::lang::Double@{java::lang::Double}}
+\subsubsection[{MIN\_\-VALUE}]{\setlength{\rightskip}{0pt plus 5cm}final double {\bf java::lang::Double::MIN\_\-VALUE} = 5e-\/324\hspace{0.3cm}{\ttfamily  [static]}}\label{classjava_1_1lang_1_1_double_aedd19a94ab91da9b1860cf7dd5132ad3}
+The minimum positive value a {\ttfamily double} may represent is 5e-\/324. 
+
+Definition at line 64 of file Double.java.
+
+\index{java::lang::Double@{java::lang::Double}!NaN@{NaN}}
+\index{NaN@{NaN}!java::lang::Double@{java::lang::Double}}
+\subsubsection[{NaN}]{\setlength{\rightskip}{0pt plus 5cm}final double {\bf java::lang::Double::NaN} = 0.0 / 0.0\hspace{0.3cm}{\ttfamily  [static]}}\label{classjava_1_1lang_1_1_double_a7ae8b92fe30e66a8e8a5033d1373b801}
+All IEEE 754 values of NaN have the same value in Java. 
+
+Definition at line 80 of file Double.java.
+
+\index{java::lang::Double@{java::lang::Double}!NEGATIVE\_\-INFINITY@{NEGATIVE\_\-INFINITY}}
+\index{NEGATIVE\_\-INFINITY@{NEGATIVE\_\-INFINITY}!java::lang::Double@{java::lang::Double}}
+\subsubsection[{NEGATIVE\_\-INFINITY}]{\setlength{\rightskip}{0pt plus 5cm}final double {\bf java::lang::Double::NEGATIVE\_\-INFINITY} = -\/1.0 / 0.0\hspace{0.3cm}{\ttfamily  [static]}}\label{classjava_1_1lang_1_1_double_ae5878ff71176f423e1e1b941c752e35a}
+The value of a double representation -\/1.0/0.0, negative infinity. 
+
+Definition at line 70 of file Double.java.
+
+
+
+Referenced by isInfinite().
+
+\index{java::lang::Double@{java::lang::Double}!POSITIVE\_\-INFINITY@{POSITIVE\_\-INFINITY}}
+\index{POSITIVE\_\-INFINITY@{POSITIVE\_\-INFINITY}!java::lang::Double@{java::lang::Double}}
+\subsubsection[{POSITIVE\_\-INFINITY}]{\setlength{\rightskip}{0pt plus 5cm}final double {\bf java::lang::Double::POSITIVE\_\-INFINITY} = 1.0 / 0.0\hspace{0.3cm}{\ttfamily  [static]}}\label{classjava_1_1lang_1_1_double_a0357631215b0293bdd69e87825b4ed68}
+The value of a double representing 1.0/0.0, positive infinity. 
+
+Definition at line 75 of file Double.java.
+
+
+
+Referenced by isInfinite().
+
+
+
+The documentation for this class was generated from the following file:\begin{DoxyCompactItemize}
+\item 
+src/classpath/java/lang/Double.java\end{DoxyCompactItemize}

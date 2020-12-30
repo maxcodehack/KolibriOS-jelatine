@@ -1,0 +1,20 @@
+*** TBD for Jelatine future releases:
+
+ - Add support for profiling and tracing method and bytecode execution
+   (partially done)
+ - An example profile should be written (for example the MIDP one) to provide
+   a reference implementation and the possibility of running code using more
+   classes than the pure CLDC classpath
+ - The bytecode verification process should be implemented properly
+ - Possibly remove the dependency on zziplib for JAR support or find a way to
+   make zziplib allocate its memory on Jelatine's unified heap
+ - Pointer compression should be added, this should allow us to store Java
+   references in 16-bit pointers for heaps of up to 256 KiB
+ - Implement object relocation and heap compaction
+ - The preverifier breaks under heavy optimizations and 64-bit targets, it
+   should be rewritten
+ - Make native method descriptors more compact
+ - Rework the classpath build system, make it faster and more robust with
+   different javac & preverifier combinations
+ - Add support for modified UTF-8 surrogate characters
+ - Streamline the system-dependent part of the multi-threading implementation

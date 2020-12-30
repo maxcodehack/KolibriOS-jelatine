@@ -1,0 +1,108 @@
+\section{java::lang::Runtime Class Reference}
+\label{classjava_1_1lang_1_1_runtime}\index{java::lang::Runtime@{java::lang::Runtime}}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+native void {\bf exit} (int status)
+\item 
+native long {\bf freeMemory} ()
+\item 
+native long {\bf totalMemory} ()
+\item 
+native void {\bf gc} ()
+\end{DoxyCompactItemize}
+\subsection*{Static Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+static {\bf Runtime} {\bf getRuntime} ()
+\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+\doxyref{Runtime}{p.}{classjava_1_1lang_1_1_runtime} represents the Virtual Machine.
+
+\begin{DoxyAuthor}{Author}
+John Keiser 
+
+Eric Blake ({\tt ebb9@email.byu.edu}) 
+
+Jeroen Frijters 
+\end{DoxyAuthor}
+
+
+Definition at line 49 of file Runtime.java.
+
+
+
+\subsection{Member Function Documentation}
+\index{java::lang::Runtime@{java::lang::Runtime}!exit@{exit}}
+\index{exit@{exit}!java::lang::Runtime@{java::lang::Runtime}}
+\subsubsection[{exit}]{\setlength{\rightskip}{0pt plus 5cm}native void java::lang::Runtime::exit (
+\begin{DoxyParamCaption}
+\item[{int}]{ status}
+\end{DoxyParamCaption}
+)}\label{classjava_1_1lang_1_1_runtime_aadff29184442958bac4dcbf9b816eaca}
+Exit the Java runtime. This method will either throw a \doxyref{SecurityException}{p.}{classjava_1_1lang_1_1_security_exception} or it will never return. The status code is returned to the system; often a non-\/zero status code indicates an abnormal exit. Of course, there is a security check, {\ttfamily checkExit(status)}.
+
+First, all shutdown hooks are run, in unspecified order, and concurrently. Next, if finalization on exit has been enabled, all pending finalizers are run. Finally, the system calls {\ttfamily halt}.
+
+If this is run a second time after shutdown has already started, there are two actions. If shutdown hooks are still executing, it blocks indefinitely. Otherwise, if the status is nonzero it halts immediately; if it is zero, it blocks indefinitely. This is typically called by {\ttfamily \doxyref{System.exit}{p.}{classjava_1_1lang_1_1_system_a8a9bcfb622df80be0fef22f654d01fe8}}.
+
+
+\begin{DoxyParams}{Parameters}
+\item[{\em status}]the status to exit with \end{DoxyParams}
+
+\begin{DoxyExceptions}{Exceptions}
+\item[{\em \doxyref{SecurityException}{p.}{classjava_1_1lang_1_1_security_exception}}]if permission is denied \end{DoxyExceptions}
+\index{java::lang::Runtime@{java::lang::Runtime}!freeMemory@{freeMemory}}
+\index{freeMemory@{freeMemory}!java::lang::Runtime@{java::lang::Runtime}}
+\subsubsection[{freeMemory}]{\setlength{\rightskip}{0pt plus 5cm}native long java::lang::Runtime::freeMemory (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}\label{classjava_1_1lang_1_1_runtime_a41d5c72987480311d8933a592497d0c6}
+Find out how much memory is still free for allocating Objects on the heap.
+
+\begin{DoxyReturn}{Returns}
+the number of bytes of free memory for more Objects 
+\end{DoxyReturn}
+\index{java::lang::Runtime@{java::lang::Runtime}!gc@{gc}}
+\index{gc@{gc}!java::lang::Runtime@{java::lang::Runtime}}
+\subsubsection[{gc}]{\setlength{\rightskip}{0pt plus 5cm}native void java::lang::Runtime::gc (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}\label{classjava_1_1lang_1_1_runtime_a654bce64a9f611b634019716dab68e7c}
+Run the garbage collector. This method is more of a suggestion than anything. All this method guarantees is that the garbage collector will have \char`\"{}done its best\char`\"{} by the time it returns. Notice that garbage collection takes place even without calling this method. \index{java::lang::Runtime@{java::lang::Runtime}!getRuntime@{getRuntime}}
+\index{getRuntime@{getRuntime}!java::lang::Runtime@{java::lang::Runtime}}
+\subsubsection[{getRuntime}]{\setlength{\rightskip}{0pt plus 5cm}static {\bf Runtime} java::lang::Runtime::getRuntime (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily  [inline, static]}}\label{classjava_1_1lang_1_1_runtime_a5685881a47b6f05b4d59fceefd38c4cc}
+Get the current \doxyref{Runtime}{p.}{classjava_1_1lang_1_1_runtime} object for this JVM. This is necessary to access the many instance methods of this class.
+
+\begin{DoxyReturn}{Returns}
+the current \doxyref{Runtime}{p.}{classjava_1_1lang_1_1_runtime} object 
+\end{DoxyReturn}
+
+
+Definition at line 69 of file Runtime.java.
+
+\index{java::lang::Runtime@{java::lang::Runtime}!totalMemory@{totalMemory}}
+\index{totalMemory@{totalMemory}!java::lang::Runtime@{java::lang::Runtime}}
+\subsubsection[{totalMemory}]{\setlength{\rightskip}{0pt plus 5cm}native long java::lang::Runtime::totalMemory (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}\label{classjava_1_1lang_1_1_runtime_ac62adc52b63d6e016f2f2b8235d3af33}
+Find out how much memory total is available on the heap for allocating Objects.
+
+\begin{DoxyReturn}{Returns}
+the total number of bytes of memory for Objects 
+\end{DoxyReturn}
+
+
+The documentation for this class was generated from the following file:\begin{DoxyCompactItemize}
+\item 
+src/classpath/java/lang/Runtime.java\end{DoxyCompactItemize}

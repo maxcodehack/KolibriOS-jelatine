@@ -1,0 +1,511 @@
+\section{java::lang::Thread Class Reference}
+\label{classjava_1_1lang_1_1_thread}\index{java::lang::Thread@{java::lang::Thread}}
+Inheritance diagram for java::lang::Thread:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=2.000000cm]{classjava_1_1lang_1_1_thread}
+\end{center}
+\end{figure}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+{\bf Thread} ()
+\item 
+{\bf Thread} ({\bf Runnable} target)
+\item 
+{\bf Thread} ({\bf String} {\bf name})
+\item 
+{\bf Thread} ({\bf Runnable} target, {\bf String} {\bf name})
+\item 
+synchronized native void {\bf start} ()
+\item 
+void {\bf run} ()
+\item 
+synchronized native void {\bf interrupt} ()
+\item 
+final synchronized boolean {\bf isAlive} ()
+\item 
+final synchronized void {\bf setPriority} (int {\bf priority})
+\item 
+final synchronized int {\bf getPriority} ()
+\item 
+final {\bf String} {\bf getName} ()
+\item 
+native final void {\bf join} ()  throws InterruptedException
+\item 
+{\bf String} {\bf toString} ()
+\end{DoxyCompactItemize}
+\subsection*{Static Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+static native {\bf Thread} {\bf currentThread} ()
+\item 
+static native void {\bf yield} ()
+\item 
+static native void {\bf sleep} (long ms)  throws InterruptedException
+\item 
+static native int {\bf activeCount} ()
+\end{DoxyCompactItemize}
+\subsection*{Static Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+static final int {\bf MIN\_\-PRIORITY} = 1
+\item 
+static final int {\bf NORM\_\-PRIORITY} = 5
+\item 
+static final int {\bf MAX\_\-PRIORITY} = 10
+\end{DoxyCompactItemize}
+\subsection*{Package Attributes}
+\begin{DoxyCompactItemize}
+\item 
+final {\bf Runnable} {\bf runnable}
+\item 
+volatile {\bf String} {\bf name}
+\item 
+volatile {\bf VMPointer} {\bf vmThread}
+\item 
+volatile int {\bf priority}
+\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+\doxyref{Thread}{p.}{classjava_1_1lang_1_1_thread} represents a single thread of execution in the VM. When an application VM starts up, it creates a non-\/daemon \doxyref{Thread}{p.}{classjava_1_1lang_1_1_thread} which calls the main() method of a particular class. There may be other Threads running, such as the garbage collection thread.
+
+Threads have names to identify them. These names are not necessarily unique. Every \doxyref{Thread}{p.}{classjava_1_1lang_1_1_thread} has a priority, as well, which tells the VM which Threads should get more running time. New threads inherit the priority and daemon status of the parent thread, by default.
+
+There are two methods of creating a \doxyref{Thread}{p.}{classjava_1_1lang_1_1_thread}: you may subclass \doxyref{Thread}{p.}{classjava_1_1lang_1_1_thread} and implement the {\ttfamily \doxyref{run()}{p.}{classjava_1_1lang_1_1_thread_a1e00c525905d96211c184d515cee2418}} method, at which point you may start the \doxyref{Thread}{p.}{classjava_1_1lang_1_1_thread} by calling its {\ttfamily \doxyref{start()}{p.}{classjava_1_1lang_1_1_thread_a9ab05f9deaab4d233d10c762ff1ab4be}} method, or you may implement {\ttfamily \doxyref{Runnable}{p.}{interfacejava_1_1lang_1_1_runnable}} in the class you want to use and then call new {\ttfamily Thread(your\_\-obj).\doxyref{start()}{p.}{classjava_1_1lang_1_1_thread_a9ab05f9deaab4d233d10c762ff1ab4be}}.
+
+The virtual machine runs until all non-\/daemon threads have died (either by returning from the \doxyref{run()}{p.}{classjava_1_1lang_1_1_thread_a1e00c525905d96211c184d515cee2418} method as invoked by \doxyref{start()}{p.}{classjava_1_1lang_1_1_thread_a9ab05f9deaab4d233d10c762ff1ab4be}, or by throwing an uncaught exception); or until {\ttfamily \doxyref{System.exit}{p.}{classjava_1_1lang_1_1_system_a8a9bcfb622df80be0fef22f654d01fe8}} is called with adequate permissions.
+
+It is unclear at what point a \doxyref{Thread}{p.}{classjava_1_1lang_1_1_thread} should be added to a ThreadGroup, and at what point it should be removed. Should it be inserted when it starts, or when it is created? Should it be removed when it is suspended or interrupted? The only thing that is clear is that the \doxyref{Thread}{p.}{classjava_1_1lang_1_1_thread} should be removed when it is stopped.
+
+\begin{DoxyAuthor}{Author}
+Tom Tromey 
+
+John Keiser 
+
+Eric Blake ({\tt ebb9@email.byu.edu}) 
+\end{DoxyAuthor}
+\begin{DoxySeeAlso}{See also}
+\doxyref{Runnable}{p.}{interfacejava_1_1lang_1_1_runnable} 
+
+\doxyref{Runtime::exit(int)}{p.}{classjava_1_1lang_1_1_runtime_aadff29184442958bac4dcbf9b816eaca} 
+
+\doxyref{run()}{p.}{classjava_1_1lang_1_1_thread_a1e00c525905d96211c184d515cee2418} 
+
+\doxyref{start()}{p.}{classjava_1_1lang_1_1_thread_a9ab05f9deaab4d233d10c762ff1ab4be} 
+\end{DoxySeeAlso}
+
+
+Definition at line 79 of file Thread.java.
+
+
+
+\subsection{Constructor \& Destructor Documentation}
+\index{java::lang::Thread@{java::lang::Thread}!Thread@{Thread}}
+\index{Thread@{Thread}!java::lang::Thread@{java::lang::Thread}}
+\subsubsection[{Thread}]{\setlength{\rightskip}{0pt plus 5cm}java::lang::Thread::Thread (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily  [inline]}}\label{classjava_1_1lang_1_1_thread_a2eff82311097a25b929d6445035ade5a}
+Allocates a new {\ttfamily \doxyref{Thread}{p.}{classjava_1_1lang_1_1_thread}} object. This constructor has the same effect as {\ttfamily \doxyref{Thread}{p.}{classjava_1_1lang_1_1_thread}(null, null,} {\itshape gname\/}{\ttfamily )}, where {\bfseries {\itshape gname\/}} is a newly generated name. Automatically generated names are of the form {\ttfamily \char`\"{}Thread-\/\char`\"{}+}{\itshape n\/}, where {\itshape n\/} is an integer. 
+
+Threads created this way must have overridden their {\ttfamily \doxyref{run()}{p.}{classjava_1_1lang_1_1_thread_a1e00c525905d96211c184d515cee2418}} method to actually do anything. An example illustrating this method being used follows: 
+
+
+\begin{DoxyPre}
+     import java.lang.*;\end{DoxyPre}
+
+
+
+\begin{DoxyPre}     class plain01 implements \doxyref{Runnable}{p.}{interfacejava_1_1lang_1_1_runnable} \{
+         \doxyref{String}{p.}{classjava_1_1lang_1_1_string} name;
+         plain01() \{
+             name = null;
+         \}
+         plain01(String s) \{
+             name = s;
+         \}
+         public void \doxyref{run()}{p.}{classjava_1_1lang_1_1_thread_a1e00c525905d96211c184d515cee2418} \{
+             if (name == null)
+                 System.out.println("A new thread created");
+             else
+                 System.out.println("A new thread with name " + name +
+                                    " created");
+         \}
+     \}
+     class threadtest01 \{
+         public static void main(\doxyref{String}{p.}{classjava_1_1lang_1_1_string} args[] ) \{
+             int failed = 0 ;\end{DoxyPre}
+
+
+
+\begin{DoxyPre}             {\bfseries \doxyref{Thread}{p.}{classjava_1_1lang_1_1_thread} t1 = new \doxyref{Thread()}{p.}{classjava_1_1lang_1_1_thread_a2eff82311097a25b929d6445035ade5a};}
+             if (t1 != null)
+                 System.out.println("new Thread() succeed");
+             else \{
+                 System.out.println("new Thread() failed");
+                 failed++;
+             \}
+         \}
+     \}
+ \end{DoxyPre}
+
+
+\begin{DoxySeeAlso}{See also}
+\doxyref{java.lang.Thread::Thread}{p.}{classjava_1_1lang_1_1_thread_a2eff82311097a25b929d6445035ade5a}(java.lang.ThreadGroup, \doxyref{java.lang.Runnable}{p.}{interfacejava_1_1lang_1_1_runnable}, \doxyref{java.lang.String}{p.}{classjava_1_1lang_1_1_string}) 
+\end{DoxySeeAlso}
+
+
+Definition at line 153 of file Thread.java.
+
+\index{java::lang::Thread@{java::lang::Thread}!Thread@{Thread}}
+\index{Thread@{Thread}!java::lang::Thread@{java::lang::Thread}}
+\subsubsection[{Thread}]{\setlength{\rightskip}{0pt plus 5cm}java::lang::Thread::Thread (
+\begin{DoxyParamCaption}
+\item[{{\bf Runnable}}]{ target}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily  [inline]}}\label{classjava_1_1lang_1_1_thread_aabe8396e72e0506dae1ff1237acf2f52}
+Allocates a new {\ttfamily \doxyref{Thread}{p.}{classjava_1_1lang_1_1_thread}} object. This constructor has the same effect as {\ttfamily \doxyref{Thread}{p.}{classjava_1_1lang_1_1_thread}(null, target,} {\itshape gname\/}{\ttfamily )}, where {\itshape gname\/} is a newly generated name. Automatically generated names are of the form {\ttfamily \char`\"{}Thread-\/\char`\"{}+}{\itshape n\/}, where {\itshape n\/} is an integer.
+
+
+\begin{DoxyParams}{Parameters}
+\item[{\em target}]the object whose {\ttfamily run} method is called. \end{DoxyParams}
+
+
+Definition at line 167 of file Thread.java.
+
+\index{java::lang::Thread@{java::lang::Thread}!Thread@{Thread}}
+\index{Thread@{Thread}!java::lang::Thread@{java::lang::Thread}}
+\subsubsection[{Thread}]{\setlength{\rightskip}{0pt plus 5cm}java::lang::Thread::Thread (
+\begin{DoxyParamCaption}
+\item[{{\bf String}}]{ name}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily  [inline]}}\label{classjava_1_1lang_1_1_thread_ac020623b24a965225d882a0be539f248}
+Allocates a new {\ttfamily \doxyref{Thread}{p.}{classjava_1_1lang_1_1_thread}} object. This constructor has the same effect as {\ttfamily Thread(null, null, name)}.
+
+
+\begin{DoxyParams}{Parameters}
+\item[{\em name}]the name of the new thread. \end{DoxyParams}
+
+
+Definition at line 178 of file Thread.java.
+
+\index{java::lang::Thread@{java::lang::Thread}!Thread@{Thread}}
+\index{Thread@{Thread}!java::lang::Thread@{java::lang::Thread}}
+\subsubsection[{Thread}]{\setlength{\rightskip}{0pt plus 5cm}java::lang::Thread::Thread (
+\begin{DoxyParamCaption}
+\item[{{\bf Runnable}}]{ target, }
+\item[{{\bf String}}]{ name}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily  [inline]}}\label{classjava_1_1lang_1_1_thread_a5181e9723dc7bd46d7d55d96ef709792}
+Allocates a new {\ttfamily \doxyref{Thread}{p.}{classjava_1_1lang_1_1_thread}} object. This constructor has the same effect as {\ttfamily Thread(null, target, name)}.
+
+
+\begin{DoxyParams}{Parameters}
+\item[{\em target}]the \doxyref{Runnable}{p.}{interfacejava_1_1lang_1_1_runnable} object to execute \item[{\em name}]the name for the \doxyref{Thread}{p.}{classjava_1_1lang_1_1_thread} \end{DoxyParams}
+
+\begin{DoxyExceptions}{Exceptions}
+\item[{\em \doxyref{NullPointerException}{p.}{classjava_1_1lang_1_1_null_pointer_exception}}]if name is null \end{DoxyExceptions}
+
+
+Definition at line 191 of file Thread.java.
+
+
+
+References currentThread(), priority, runnable, and java::lang::String::toString().
+
+
+
+\subsection{Member Function Documentation}
+\index{java::lang::Thread@{java::lang::Thread}!activeCount@{activeCount}}
+\index{activeCount@{activeCount}!java::lang::Thread@{java::lang::Thread}}
+\subsubsection[{activeCount}]{\setlength{\rightskip}{0pt plus 5cm}static native int java::lang::Thread::activeCount (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily  [static]}}\label{classjava_1_1lang_1_1_thread_a2c90e03d7113f8ebe28ddbeef5f2c7c8}
+Returns the current number of active threads in the virtual machine
+
+\begin{DoxyReturn}{Returns}
+the current number of active threads 
+\end{DoxyReturn}
+\index{java::lang::Thread@{java::lang::Thread}!currentThread@{currentThread}}
+\index{currentThread@{currentThread}!java::lang::Thread@{java::lang::Thread}}
+\subsubsection[{currentThread}]{\setlength{\rightskip}{0pt plus 5cm}static native {\bf Thread} java::lang::Thread::currentThread (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily  [static]}}\label{classjava_1_1lang_1_1_thread_a912b624647417001cc39451b98343fcf}
+Get the currently executing \doxyref{Thread}{p.}{classjava_1_1lang_1_1_thread}. In the situation that the currently running thread was created by native code and doesn't have an associated \doxyref{Thread}{p.}{classjava_1_1lang_1_1_thread} object yet, a new \doxyref{Thread}{p.}{classjava_1_1lang_1_1_thread} object is constructed and associated with the native thread.
+
+\begin{DoxyReturn}{Returns}
+the currently executing \doxyref{Thread}{p.}{classjava_1_1lang_1_1_thread} 
+\end{DoxyReturn}
+
+
+Referenced by Thread().
+
+\index{java::lang::Thread@{java::lang::Thread}!getName@{getName}}
+\index{getName@{getName}!java::lang::Thread@{java::lang::Thread}}
+\subsubsection[{getName}]{\setlength{\rightskip}{0pt plus 5cm}final {\bf String} java::lang::Thread::getName (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily  [inline]}}\label{classjava_1_1lang_1_1_thread_a91e939db749532ef2e5cfce7bb9524e4}
+Get this Thread's name.
+
+\begin{DoxyReturn}{Returns}
+this Thread's name 
+\end{DoxyReturn}
+
+
+Definition at line 321 of file Thread.java.
+
+
+
+References name.
+
+\index{java::lang::Thread@{java::lang::Thread}!getPriority@{getPriority}}
+\index{getPriority@{getPriority}!java::lang::Thread@{java::lang::Thread}}
+\subsubsection[{getPriority}]{\setlength{\rightskip}{0pt plus 5cm}final synchronized int java::lang::Thread::getPriority (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily  [inline]}}\label{classjava_1_1lang_1_1_thread_ae05ff8ce17c0a787d5a9bf6120b0d146}
+Get this Thread's priority.
+
+\begin{DoxyReturn}{Returns}
+the Thread's priority 
+\end{DoxyReturn}
+
+
+Definition at line 311 of file Thread.java.
+
+
+
+References priority.
+
+\index{java::lang::Thread@{java::lang::Thread}!interrupt@{interrupt}}
+\index{interrupt@{interrupt}!java::lang::Thread@{java::lang::Thread}}
+\subsubsection[{interrupt}]{\setlength{\rightskip}{0pt plus 5cm}synchronized native void java::lang::Thread::interrupt (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}\label{classjava_1_1lang_1_1_thread_a2dc697c861ff3c87e5c6e1c8298a5dee}
+Interrupt this \doxyref{Thread}{p.}{classjava_1_1lang_1_1_thread}.
+
+If the thread is waiting because of wait(), \doxyref{sleep(long)}{p.}{classjava_1_1lang_1_1_thread_a6e3299562e3f3de2dc3e7b512ad03813}, or \doxyref{join()}{p.}{classjava_1_1lang_1_1_thread_a245cfc52ab16a6c8de0a07f15a6bac86}, its {\itshape interrupt status\/} will be cleared, and an \doxyref{InterruptedException}{p.}{classjava_1_1lang_1_1_interrupted_exception} will be thrown. Notice that this case is only possible if an external thread called \doxyref{interrupt()}{p.}{classjava_1_1lang_1_1_thread_a2dc697c861ff3c87e5c6e1c8298a5dee}.
+
+Otherwise, the interrupt status will be set. \index{java::lang::Thread@{java::lang::Thread}!isAlive@{isAlive}}
+\index{isAlive@{isAlive}!java::lang::Thread@{java::lang::Thread}}
+\subsubsection[{isAlive}]{\setlength{\rightskip}{0pt plus 5cm}final synchronized boolean java::lang::Thread::isAlive (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily  [inline]}}\label{classjava_1_1lang_1_1_thread_aa595f57f05a9e8c202bdc4ecac201e0f}
+Determine whether this \doxyref{Thread}{p.}{classjava_1_1lang_1_1_thread} is alive. A thread which is alive has started and not yet died.
+
+\begin{DoxyReturn}{Returns}
+whether this \doxyref{Thread}{p.}{classjava_1_1lang_1_1_thread} is alive 
+\end{DoxyReturn}
+
+
+Definition at line 283 of file Thread.java.
+
+
+
+References vmThread.
+
+\index{java::lang::Thread@{java::lang::Thread}!join@{join}}
+\index{join@{join}!java::lang::Thread@{java::lang::Thread}}
+\subsubsection[{join}]{\setlength{\rightskip}{0pt plus 5cm}native final void java::lang::Thread::join (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)  throws {\bf InterruptedException}}\label{classjava_1_1lang_1_1_thread_a245cfc52ab16a6c8de0a07f15a6bac86}
+Wait forever for the \doxyref{Thread}{p.}{classjava_1_1lang_1_1_thread} in question to die.
+
+
+\begin{DoxyExceptions}{Exceptions}
+\item[{\em \doxyref{InterruptedException}{p.}{classjava_1_1lang_1_1_interrupted_exception}}]if the \doxyref{Thread}{p.}{classjava_1_1lang_1_1_thread} is interrupted; it's {\itshape interrupted status\/} will be cleared \end{DoxyExceptions}
+\index{java::lang::Thread@{java::lang::Thread}!run@{run}}
+\index{run@{run}!java::lang::Thread@{java::lang::Thread}}
+\subsubsection[{run}]{\setlength{\rightskip}{0pt plus 5cm}void java::lang::Thread::run (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily  [inline]}}\label{classjava_1_1lang_1_1_thread_a1e00c525905d96211c184d515cee2418}
+The method of \doxyref{Thread}{p.}{classjava_1_1lang_1_1_thread} that will be run if there is no \doxyref{Runnable}{p.}{interfacejava_1_1lang_1_1_runnable} object associated with the \doxyref{Thread}{p.}{classjava_1_1lang_1_1_thread}. Thread's implementation does nothing at all. 
+
+Implements {\bf java::lang::Runnable} \doxyref{}{p.}{interfacejava_1_1lang_1_1_runnable_a23205ccce9343ac2e3c050951827774f}.
+
+
+
+Definition at line 259 of file Thread.java.
+
+
+
+References java::lang::Runnable::run(), and runnable.
+
+\index{java::lang::Thread@{java::lang::Thread}!setPriority@{setPriority}}
+\index{setPriority@{setPriority}!java::lang::Thread@{java::lang::Thread}}
+\subsubsection[{setPriority}]{\setlength{\rightskip}{0pt plus 5cm}final synchronized void java::lang::Thread::setPriority (
+\begin{DoxyParamCaption}
+\item[{int}]{ priority}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily  [inline]}}\label{classjava_1_1lang_1_1_thread_a0613da2b76be95eaeaffe9f183dd9d52}
+Set this Thread's priority. There may be a security check, {\ttfamily checkAccess}, then the priority is set to the smaller of priority and the ThreadGroup maximum priority.
+
+
+\begin{DoxyParams}{Parameters}
+\item[{\em priority}]the new priority for this \doxyref{Thread}{p.}{classjava_1_1lang_1_1_thread} \end{DoxyParams}
+
+\begin{DoxyExceptions}{Exceptions}
+\item[{\em \doxyref{IllegalArgumentException}{p.}{classjava_1_1lang_1_1_illegal_argument_exception}}]if priority exceeds MIN\_\-PRIORITY or MAX\_\-PRIORITY \item[{\em \doxyref{SecurityException}{p.}{classjava_1_1lang_1_1_security_exception}}]if you cannot modify this \doxyref{Thread}{p.}{classjava_1_1lang_1_1_thread} \end{DoxyExceptions}
+
+
+Definition at line 298 of file Thread.java.
+
+
+
+References MAX\_\-PRIORITY.
+
+\index{java::lang::Thread@{java::lang::Thread}!sleep@{sleep}}
+\index{sleep@{sleep}!java::lang::Thread@{java::lang::Thread}}
+\subsubsection[{sleep}]{\setlength{\rightskip}{0pt plus 5cm}static native void java::lang::Thread::sleep (
+\begin{DoxyParamCaption}
+\item[{long}]{ ms}
+\end{DoxyParamCaption}
+)  throws {\bf InterruptedException}\hspace{0.3cm}{\ttfamily  [static]}}\label{classjava_1_1lang_1_1_thread_a6e3299562e3f3de2dc3e7b512ad03813}
+Suspend the current Thread's execution for the specified amount of time. The \doxyref{Thread}{p.}{classjava_1_1lang_1_1_thread} will not lose any locks it has during this time. There are no guarantees which thread will be next to run, but most VMs will choose the highest priority thread that has been waiting longest.
+
+
+\begin{DoxyParams}{Parameters}
+\item[{\em ms}]the number of milliseconds to sleep. \end{DoxyParams}
+
+\begin{DoxyExceptions}{Exceptions}
+\item[{\em \doxyref{InterruptedException}{p.}{classjava_1_1lang_1_1_interrupted_exception}}]if the \doxyref{Thread}{p.}{classjava_1_1lang_1_1_thread} is (or was) interrupted; it's {\itshape interrupted status\/} will be cleared \item[{\em \doxyref{IllegalArgumentException}{p.}{classjava_1_1lang_1_1_illegal_argument_exception}}]if ms is negative \end{DoxyExceptions}
+\begin{DoxySeeAlso}{See also}
+\doxyref{interrupt()}{p.}{classjava_1_1lang_1_1_thread_a2dc697c861ff3c87e5c6e1c8298a5dee} 
+\end{DoxySeeAlso}
+\index{java::lang::Thread@{java::lang::Thread}!start@{start}}
+\index{start@{start}!java::lang::Thread@{java::lang::Thread}}
+\subsubsection[{start}]{\setlength{\rightskip}{0pt plus 5cm}synchronized native void java::lang::Thread::start (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}\label{classjava_1_1lang_1_1_thread_a9ab05f9deaab4d233d10c762ff1ab4be}
+Start this \doxyref{Thread}{p.}{classjava_1_1lang_1_1_thread}, calling the \doxyref{run()}{p.}{classjava_1_1lang_1_1_thread_a1e00c525905d96211c184d515cee2418} method of the \doxyref{Runnable}{p.}{interfacejava_1_1lang_1_1_runnable} this \doxyref{Thread}{p.}{classjava_1_1lang_1_1_thread} was created with, or else the \doxyref{run()}{p.}{classjava_1_1lang_1_1_thread_a1e00c525905d96211c184d515cee2418} method of the \doxyref{Thread}{p.}{classjava_1_1lang_1_1_thread} itself. This is the only way to start a new thread; calling run by yourself will just stay in the same thread. This method implicitly sets vmThread.
+
+
+\begin{DoxyExceptions}{Exceptions}
+\item[{\em \doxyref{IllegalThreadStateException}{p.}{classjava_1_1lang_1_1_illegal_thread_state_exception}}]if the thread has already started \end{DoxyExceptions}
+\begin{DoxySeeAlso}{See also}
+\doxyref{run()}{p.}{classjava_1_1lang_1_1_thread_a1e00c525905d96211c184d515cee2418} 
+\end{DoxySeeAlso}
+\index{java::lang::Thread@{java::lang::Thread}!toString@{toString}}
+\index{toString@{toString}!java::lang::Thread@{java::lang::Thread}}
+\subsubsection[{toString}]{\setlength{\rightskip}{0pt plus 5cm}{\bf String} java::lang::Thread::toString (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily  [inline]}}\label{classjava_1_1lang_1_1_thread_acb2326ab5f407a7eb46d7286639ea4c2}
+Returns a string representation of this thread, including the thread's name, priority, and thread group.
+
+\begin{DoxyReturn}{Returns}
+a human-\/readable \doxyref{String}{p.}{classjava_1_1lang_1_1_string} representing this \doxyref{Thread}{p.}{classjava_1_1lang_1_1_thread} 
+\end{DoxyReturn}
+
+
+Definition at line 347 of file Thread.java.
+
+
+
+References name, and priority.
+
+\index{java::lang::Thread@{java::lang::Thread}!yield@{yield}}
+\index{yield@{yield}!java::lang::Thread@{java::lang::Thread}}
+\subsubsection[{yield}]{\setlength{\rightskip}{0pt plus 5cm}static native void java::lang::Thread::yield (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily  [static]}}\label{classjava_1_1lang_1_1_thread_a0605428e61903f05dfc370f3fb8c8ab0}
+Yield to another thread. The \doxyref{Thread}{p.}{classjava_1_1lang_1_1_thread} will not lose any locks it holds during this time. There are no guarantees which thread will be next to run, and it could even be this one, but most VMs will choose the highest priority thread that has been waiting longest. 
+
+\subsection{Field Documentation}
+\index{java::lang::Thread@{java::lang::Thread}!MAX\_\-PRIORITY@{MAX\_\-PRIORITY}}
+\index{MAX\_\-PRIORITY@{MAX\_\-PRIORITY}!java::lang::Thread@{java::lang::Thread}}
+\subsubsection[{MAX\_\-PRIORITY}]{\setlength{\rightskip}{0pt plus 5cm}final int {\bf java::lang::Thread::MAX\_\-PRIORITY} = 10\hspace{0.3cm}{\ttfamily  [static]}}\label{classjava_1_1lang_1_1_thread_a3db9de0bd8551508dd747932d97c5c5a}
+The maximum priority for a \doxyref{Thread}{p.}{classjava_1_1lang_1_1_thread}. 
+
+Definition at line 88 of file Thread.java.
+
+
+
+Referenced by setPriority().
+
+\index{java::lang::Thread@{java::lang::Thread}!MIN\_\-PRIORITY@{MIN\_\-PRIORITY}}
+\index{MIN\_\-PRIORITY@{MIN\_\-PRIORITY}!java::lang::Thread@{java::lang::Thread}}
+\subsubsection[{MIN\_\-PRIORITY}]{\setlength{\rightskip}{0pt plus 5cm}final int {\bf java::lang::Thread::MIN\_\-PRIORITY} = 1\hspace{0.3cm}{\ttfamily  [static]}}\label{classjava_1_1lang_1_1_thread_aace5e28b076dd188d3e92c4bdbe7b2a7}
+The minimum priority for a \doxyref{Thread}{p.}{classjava_1_1lang_1_1_thread}. 
+
+Definition at line 82 of file Thread.java.
+
+\index{java::lang::Thread@{java::lang::Thread}!name@{name}}
+\index{name@{name}!java::lang::Thread@{java::lang::Thread}}
+\subsubsection[{name}]{\setlength{\rightskip}{0pt plus 5cm}volatile {\bf String} {\bf java::lang::Thread::name}\hspace{0.3cm}{\ttfamily  [package]}}\label{classjava_1_1lang_1_1_thread_ab0d3f718867dc4f11a4628a78c5d0334}
+The thread name, non-\/null. 
+
+Definition at line 94 of file Thread.java.
+
+
+
+Referenced by getName(), and toString().
+
+\index{java::lang::Thread@{java::lang::Thread}!NORM\_\-PRIORITY@{NORM\_\-PRIORITY}}
+\index{NORM\_\-PRIORITY@{NORM\_\-PRIORITY}!java::lang::Thread@{java::lang::Thread}}
+\subsubsection[{NORM\_\-PRIORITY}]{\setlength{\rightskip}{0pt plus 5cm}final int {\bf java::lang::Thread::NORM\_\-PRIORITY} = 5\hspace{0.3cm}{\ttfamily  [static]}}\label{classjava_1_1lang_1_1_thread_ad8cf08e3c0f6c74e33572c786022ce37}
+The priority a \doxyref{Thread}{p.}{classjava_1_1lang_1_1_thread} gets by default. 
+
+Definition at line 85 of file Thread.java.
+
+\index{java::lang::Thread@{java::lang::Thread}!priority@{priority}}
+\index{priority@{priority}!java::lang::Thread@{java::lang::Thread}}
+\subsubsection[{priority}]{\setlength{\rightskip}{0pt plus 5cm}volatile int {\bf java::lang::Thread::priority}\hspace{0.3cm}{\ttfamily  [package]}}\label{classjava_1_1lang_1_1_thread_a32f8287a31a576acc974d67aa0617558}
+The thread priority, 1 to 10. 
+
+Definition at line 100 of file Thread.java.
+
+
+
+Referenced by getPriority(), Thread(), and toString().
+
+\index{java::lang::Thread@{java::lang::Thread}!runnable@{runnable}}
+\index{runnable@{runnable}!java::lang::Thread@{java::lang::Thread}}
+\subsubsection[{runnable}]{\setlength{\rightskip}{0pt plus 5cm}final {\bf Runnable} {\bf java::lang::Thread::runnable}\hspace{0.3cm}{\ttfamily  [package]}}\label{classjava_1_1lang_1_1_thread_a46d11c107d9d854359bca9e6c3a5c8fa}
+The object to \doxyref{run()}{p.}{classjava_1_1lang_1_1_thread_a1e00c525905d96211c184d515cee2418}, null if this is the target. 
+
+Definition at line 91 of file Thread.java.
+
+
+
+Referenced by run(), and Thread().
+
+\index{java::lang::Thread@{java::lang::Thread}!vmThread@{vmThread}}
+\index{vmThread@{vmThread}!java::lang::Thread@{java::lang::Thread}}
+\subsubsection[{vmThread}]{\setlength{\rightskip}{0pt plus 5cm}volatile {\bf VMPointer} {\bf java::lang::Thread::vmThread}\hspace{0.3cm}{\ttfamily  [package]}}\label{classjava_1_1lang_1_1_thread_af9bcd2f610e6e1bb69668bcf329dcfb6}
+The internal thread representation 
+
+Definition at line 97 of file Thread.java.
+
+
+
+Referenced by isAlive().
+
+
+
+The documentation for this class was generated from the following file:\begin{DoxyCompactItemize}
+\item 
+src/classpath/java/lang/Thread.java\end{DoxyCompactItemize}

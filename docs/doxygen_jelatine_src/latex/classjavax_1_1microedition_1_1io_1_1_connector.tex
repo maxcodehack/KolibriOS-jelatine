@@ -1,0 +1,254 @@
+\section{javax::microedition::io::Connector Class Reference}
+\label{classjavax_1_1microedition_1_1io_1_1_connector}\index{javax::microedition::io::Connector@{javax::microedition::io::Connector}}
+\subsection*{Static Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+static {\bf Connection} {\bf open} (String name)  throws IllegalArgumentException,         ConnectionNotFoundException, IOException, SecurityException     
+\item 
+static {\bf Connection} {\bf open} (String name, int mode)  throws IllegalArgumentException, ConnectionNotFoundException,             IOException, SecurityException     
+\item 
+static {\bf Connection} {\bf open} (String name, int mode, boolean timeouts)  throws IllegalArgumentException, ConnectionNotFoundException,             IOException, SecurityException     
+\item 
+static {\bf DataInputStream} {\bf openDataInputStream} (String name)  throws IllegalArgumentException, ConnectionNotFoundException,             IOException, SecurityException     
+\item 
+static {\bf DataOutputStream} {\bf openDataOutputStream} (String name)  throws IllegalArgumentException, ConnectionNotFoundException,             IOException, SecurityException     
+\item 
+static {\bf InputStream} {\bf openInputStream} (String name)  throws IllegalArgumentException, ConnectionNotFoundException,             IOException, SecurityException     
+\item 
+static {\bf OutputStream} {\bf openOutputStream} (String name)  throws IllegalArgumentException, ConnectionNotFoundException,             IOException, SecurityException     
+\end{DoxyCompactItemize}
+\subsection*{Static Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+static final int {\bf READ} = 1
+\item 
+static final int {\bf WRITE} = 2
+\item 
+static final int {\bf READ\_\-WRITE} = 3
+\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+This class is a factory for creating \doxyref{Connection}{p.}{interfacejavax_1_1microedition_1_1io_1_1_connection} objects 
+
+Definition at line 35 of file Connector.java.
+
+
+
+\subsection{Member Function Documentation}
+\index{javax::microedition::io::Connector@{javax::microedition::io::Connector}!open@{open}}
+\index{open@{open}!javax::microedition::io::Connector@{javax::microedition::io::Connector}}
+\subsubsection[{open}]{\setlength{\rightskip}{0pt plus 5cm}static {\bf Connection} javax::microedition::io::Connector::open (
+\begin{DoxyParamCaption}
+\item[{String}]{ name}
+\end{DoxyParamCaption}
+)  throws {\bf IllegalArgumentException},         {\bf ConnectionNotFoundException}, {\bf IOException}, SecurityException     \hspace{0.3cm}{\ttfamily  [inline, static]}}\label{classjavax_1_1microedition_1_1io_1_1_connector_a4a80fa8873c4da30e56ab8e3e725769f}
+Create a connection object and open it 
+\begin{DoxyParams}{Parameters}
+\item[{\em name}]A String holding an URL \end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+A newly created \doxyref{Connection}{p.}{interfacejavax_1_1microedition_1_1io_1_1_connection} object 
+\end{DoxyReturn}
+
+\begin{DoxyExceptions}{Exceptions}
+\item[{\em IllegalArgumentException}]If the parameter is invalid \item[{\em \doxyref{ConnectionNotFoundException}{p.}{classjavax_1_1microedition_1_1io_1_1_connection_not_found_exception}}]If the passed name cannot be found or the protocol is unsupported \item[{\em IOException}]If any I/O error happens \item[{\em SecurityException}]If access to the requested protocol handler is not allowed \end{DoxyExceptions}
+
+
+Definition at line 74 of file Connector.java.
+
+
+
+References READ\_\-WRITE.
+
+
+
+Referenced by open().
+
+\index{javax::microedition::io::Connector@{javax::microedition::io::Connector}!open@{open}}
+\index{open@{open}!javax::microedition::io::Connector@{javax::microedition::io::Connector}}
+\subsubsection[{open}]{\setlength{\rightskip}{0pt plus 5cm}static {\bf Connection} javax::microedition::io::Connector::open (
+\begin{DoxyParamCaption}
+\item[{String}]{ name, }
+\item[{int}]{ mode}
+\end{DoxyParamCaption}
+)  throws {\bf IllegalArgumentException}, {\bf ConnectionNotFoundException},             {\bf IOException}, SecurityException     \hspace{0.3cm}{\ttfamily  [inline, static]}}\label{classjavax_1_1microedition_1_1io_1_1_connector_aa418334e5a6be00a1b1cc8a9a23b29a6}
+Create a connection object and open it with the requested access mode 
+\begin{DoxyParams}{Parameters}
+\item[{\em name}]A String holding an URL \item[{\em mode}]The access mode \end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+A newly created \doxyref{Connection}{p.}{interfacejavax_1_1microedition_1_1io_1_1_connection} object 
+\end{DoxyReturn}
+
+\begin{DoxyExceptions}{Exceptions}
+\item[{\em IllegalArgumentException}]If the parameter is invalid \item[{\em \doxyref{ConnectionNotFoundException}{p.}{classjavax_1_1microedition_1_1io_1_1_connection_not_found_exception}}]If the passed name cannot be found or the protocol is unsupported \item[{\em IOException}]If any I/O error happens \item[{\em SecurityException}]If access to the requested protocol handler is not allowed \end{DoxyExceptions}
+
+
+Definition at line 94 of file Connector.java.
+
+
+
+References open().
+
+\index{javax::microedition::io::Connector@{javax::microedition::io::Connector}!open@{open}}
+\index{open@{open}!javax::microedition::io::Connector@{javax::microedition::io::Connector}}
+\subsubsection[{open}]{\setlength{\rightskip}{0pt plus 5cm}static {\bf Connection} javax::microedition::io::Connector::open (
+\begin{DoxyParamCaption}
+\item[{String}]{ name, }
+\item[{int}]{ mode, }
+\item[{boolean}]{ timeouts}
+\end{DoxyParamCaption}
+)  throws {\bf IllegalArgumentException}, {\bf ConnectionNotFoundException},             {\bf IOException}, SecurityException     \hspace{0.3cm}{\ttfamily  [inline, static]}}\label{classjavax_1_1microedition_1_1io_1_1_connector_a5e7452de5b150c6c24fd782c3e1b10e7}
+Create a connection object and open it with the requested access mode and an explicit flag asking (or not) for timeout exceptions 
+\begin{DoxyParams}{Parameters}
+\item[{\em name}]A String holding an URL \item[{\em mode}]The access mode \item[{\em timeouts}]True if timeout-\/related exceptions must be thrown \end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+A newly created \doxyref{Connection}{p.}{interfacejavax_1_1microedition_1_1io_1_1_connection} object 
+\end{DoxyReturn}
+
+\begin{DoxyExceptions}{Exceptions}
+\item[{\em IllegalArgumentException}]If the parameter is invalid \item[{\em \doxyref{ConnectionNotFoundException}{p.}{classjavax_1_1microedition_1_1io_1_1_connection_not_found_exception}}]If the passed name cannot be found or the protocol is unsupported \item[{\em IOException}]If any I/O error happens \item[{\em SecurityException}]If access to the requested protocol handler is not allowed \end{DoxyExceptions}
+
+
+Definition at line 115 of file Connector.java.
+
+
+
+References jelatine::cldc::io::URL::getScheme(), and jelatine::cldc::io::Protocol::open().
+
+\index{javax::microedition::io::Connector@{javax::microedition::io::Connector}!openDataInputStream@{openDataInputStream}}
+\index{openDataInputStream@{openDataInputStream}!javax::microedition::io::Connector@{javax::microedition::io::Connector}}
+\subsubsection[{openDataInputStream}]{\setlength{\rightskip}{0pt plus 5cm}static {\bf DataInputStream} javax::microedition::io::Connector::openDataInputStream (
+\begin{DoxyParamCaption}
+\item[{String}]{ name}
+\end{DoxyParamCaption}
+)  throws {\bf IllegalArgumentException}, {\bf ConnectionNotFoundException},             {\bf IOException}, SecurityException     \hspace{0.3cm}{\ttfamily  [inline, static]}}\label{classjavax_1_1microedition_1_1io_1_1_connector_a043d47e7184dbbefa9eca404e88c9dd6}
+Creates a new connection input stream and open it 
+\begin{DoxyParams}{Parameters}
+\item[{\em name}]A String holding an URL \end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+A newly created DataInputStream object 
+\end{DoxyReturn}
+
+\begin{DoxyExceptions}{Exceptions}
+\item[{\em IllegalArgumentException}]If the parameter is invalid \item[{\em \doxyref{ConnectionNotFoundException}{p.}{classjavax_1_1microedition_1_1io_1_1_connection_not_found_exception}}]If the passed name cannot be found or the protocol is unsupported \item[{\em IOException}]If any I/O error happens \item[{\em SecurityException}]If access to the requested protocol handler is not allowed \end{DoxyExceptions}
+
+
+Definition at line 157 of file Connector.java.
+
+
+
+References javax::microedition::io::Connection::close(), and javax::microedition::io::InputConnection::openDataInputStream().
+
+
+
+Referenced by openInputStream().
+
+\index{javax::microedition::io::Connector@{javax::microedition::io::Connector}!openDataOutputStream@{openDataOutputStream}}
+\index{openDataOutputStream@{openDataOutputStream}!javax::microedition::io::Connector@{javax::microedition::io::Connector}}
+\subsubsection[{openDataOutputStream}]{\setlength{\rightskip}{0pt plus 5cm}static {\bf DataOutputStream} javax::microedition::io::Connector::openDataOutputStream (
+\begin{DoxyParamCaption}
+\item[{String}]{ name}
+\end{DoxyParamCaption}
+)  throws {\bf IllegalArgumentException}, {\bf ConnectionNotFoundException},             {\bf IOException}, SecurityException     \hspace{0.3cm}{\ttfamily  [inline, static]}}\label{classjavax_1_1microedition_1_1io_1_1_connector_a95b37d64cbbd76bfeb34f9b42836a88e}
+Creates a new connection output stream and open it 
+\begin{DoxyParams}{Parameters}
+\item[{\em name}]A String holding an URL \end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+A newly created DataOutputStream object 
+\end{DoxyReturn}
+
+\begin{DoxyExceptions}{Exceptions}
+\item[{\em IllegalArgumentException}]If the parameter is invalid \item[{\em \doxyref{ConnectionNotFoundException}{p.}{classjavax_1_1microedition_1_1io_1_1_connection_not_found_exception}}]If the passed name cannot be found or the protocol is unsupported \item[{\em IOException}]If any I/O error happens \item[{\em SecurityException}]If access to the requested protocol handler is not allowed \end{DoxyExceptions}
+
+
+Definition at line 188 of file Connector.java.
+
+
+
+References javax::microedition::io::Connection::close(), and javax::microedition::io::OutputConnection::openDataOutputStream().
+
+
+
+Referenced by openOutputStream().
+
+\index{javax::microedition::io::Connector@{javax::microedition::io::Connector}!openInputStream@{openInputStream}}
+\index{openInputStream@{openInputStream}!javax::microedition::io::Connector@{javax::microedition::io::Connector}}
+\subsubsection[{openInputStream}]{\setlength{\rightskip}{0pt plus 5cm}static {\bf InputStream} javax::microedition::io::Connector::openInputStream (
+\begin{DoxyParamCaption}
+\item[{String}]{ name}
+\end{DoxyParamCaption}
+)  throws {\bf IllegalArgumentException}, {\bf ConnectionNotFoundException},             {\bf IOException}, SecurityException     \hspace{0.3cm}{\ttfamily  [inline, static]}}\label{classjavax_1_1microedition_1_1io_1_1_connector_a9de66ae1c7ecc6baa2bb9747f2231040}
+Creates a new connection input stream and open it 
+\begin{DoxyParams}{Parameters}
+\item[{\em name}]A String holding an URL \end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+A newly created InputStream object 
+\end{DoxyReturn}
+
+\begin{DoxyExceptions}{Exceptions}
+\item[{\em IllegalArgumentException}]If the parameter is invalid \item[{\em \doxyref{ConnectionNotFoundException}{p.}{classjavax_1_1microedition_1_1io_1_1_connection_not_found_exception}}]If the passed name cannot be found or the protocol is unsupported \item[{\em IOException}]If any I/O error happens \item[{\em SecurityException}]If access to the requested protocol handler is not allowed \end{DoxyExceptions}
+
+
+Definition at line 219 of file Connector.java.
+
+
+
+References openDataInputStream().
+
+\index{javax::microedition::io::Connector@{javax::microedition::io::Connector}!openOutputStream@{openOutputStream}}
+\index{openOutputStream@{openOutputStream}!javax::microedition::io::Connector@{javax::microedition::io::Connector}}
+\subsubsection[{openOutputStream}]{\setlength{\rightskip}{0pt plus 5cm}static {\bf OutputStream} javax::microedition::io::Connector::openOutputStream (
+\begin{DoxyParamCaption}
+\item[{String}]{ name}
+\end{DoxyParamCaption}
+)  throws {\bf IllegalArgumentException}, {\bf ConnectionNotFoundException},             {\bf IOException}, SecurityException     \hspace{0.3cm}{\ttfamily  [inline, static]}}\label{classjavax_1_1microedition_1_1io_1_1_connector_aa689141357f06ec9ed623c267b6495fe}
+Creates a new connection output stream and open it 
+\begin{DoxyParams}{Parameters}
+\item[{\em name}]A String holding an URL \end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+A newly created OutputStream object 
+\end{DoxyReturn}
+
+\begin{DoxyExceptions}{Exceptions}
+\item[{\em IllegalArgumentException}]If the parameter is invalid \item[{\em \doxyref{ConnectionNotFoundException}{p.}{classjavax_1_1microedition_1_1io_1_1_connection_not_found_exception}}]If the passed name cannot be found or the protocol is unsupported \item[{\em IOException}]If any I/O error happens \item[{\em SecurityException}]If access to the requested protocol handler is not allowed \end{DoxyExceptions}
+
+
+Definition at line 237 of file Connector.java.
+
+
+
+References openDataOutputStream().
+
+
+
+\subsection{Field Documentation}
+\index{javax::microedition::io::Connector@{javax::microedition::io::Connector}!READ@{READ}}
+\index{READ@{READ}!javax::microedition::io::Connector@{javax::microedition::io::Connector}}
+\subsubsection[{READ}]{\setlength{\rightskip}{0pt plus 5cm}final int {\bf javax::microedition::io::Connector::READ} = 1\hspace{0.3cm}{\ttfamily  [static]}}\label{classjavax_1_1microedition_1_1io_1_1_connector_ab1ffeb5afe3acda82079a689e01ad557}
+READ access mode 
+
+Definition at line 40 of file Connector.java.
+
+\index{javax::microedition::io::Connector@{javax::microedition::io::Connector}!READ\_\-WRITE@{READ\_\-WRITE}}
+\index{READ\_\-WRITE@{READ\_\-WRITE}!javax::microedition::io::Connector@{javax::microedition::io::Connector}}
+\subsubsection[{READ\_\-WRITE}]{\setlength{\rightskip}{0pt plus 5cm}final int {\bf javax::microedition::io::Connector::READ\_\-WRITE} = 3\hspace{0.3cm}{\ttfamily  [static]}}\label{classjavax_1_1microedition_1_1io_1_1_connector_a73121bc6c53a46bd1392c5de80afeb84}
+READ\_\-WRITE access mode 
+
+Definition at line 50 of file Connector.java.
+
+
+
+Referenced by open().
+
+\index{javax::microedition::io::Connector@{javax::microedition::io::Connector}!WRITE@{WRITE}}
+\index{WRITE@{WRITE}!javax::microedition::io::Connector@{javax::microedition::io::Connector}}
+\subsubsection[{WRITE}]{\setlength{\rightskip}{0pt plus 5cm}final int {\bf javax::microedition::io::Connector::WRITE} = 2\hspace{0.3cm}{\ttfamily  [static]}}\label{classjavax_1_1microedition_1_1io_1_1_connector_a039e21e7fd651855525c41893b26decf}
+WRITE access mode 
+
+Definition at line 45 of file Connector.java.
+
+
+
+The documentation for this class was generated from the following file:\begin{DoxyCompactItemize}
+\item 
+src/classpath/javax/microedition/io/Connector.java\end{DoxyCompactItemize}

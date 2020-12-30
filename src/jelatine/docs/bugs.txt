@@ -1,0 +1,26 @@
+gdb --args jelatine -b C:\algoritm\leJOSNXJ\lib\nxt\for_jel\  -s 8000000 --stack-size 80000 -c C:\algoritm\c_src\JVMs\leJosMyBuild\tests\lejos_org_samples:C:\algoritm\leJOSNXJ\lib\nxt\for_jel\ org.lejos.sample.lcdui.LCDUI
+
+
+Program received signal SIGSEGV, Segmentation fault.
+0x00410b70 in get_chunk (size=8) at memory.c:1184
+1184                    heap.bin[id] = schunk->next;
+(gdb) backtrace
+#0  0x00410b70 in get_chunk (size=8) at memory.c:1184
+#1  0x00410469 in gc_alloc (size=8) at memory.c:747
+#2  0x0040fe1d in gc_new (cl=0x11a5dc0) at memory.c:262
+#3  0x0040ae76 in jstring_create_literal (src=0x11a1f74 "Form for Stuff") at jstring.c:359
+#4  0x0040382d in cp_create (cl=0x11a2d38, cf=0xa40418) at constantpool.c:231
+#5  0x0040c9db in derive_class (cl=0x11a2d38, cf=0xa40418) at loader.c:769
+#6  0x0040bcc8 in load_class (cl=0x11a2d38) at loader.c:321
+#7  0x0040c30c in bcl_resolve_class (orig=0x0, name=0x11a5ed0 "org/lejos/sample/lcdui/LCDUI") at loader.c:551
+#8  0x004133b0 in vm_run () at vm.c:177
+#9  0x0040f774 in main (argc=10, argv=0x3f2c70) at main.c:88
+
+(gdb) print heap.bin
+$1 = {0xa4010c, 0xb, 0xa400e0, 0xa40d48, 0xa4053c, 0xa40d78, 0xa40074, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0}
+(gdb) print id
+$2 = 1
+(gdb) print schunk
+$3 = (small_chunk_t *) 0xb
+(gdb) print schunk->next
+Cannot access memory at address 0xb

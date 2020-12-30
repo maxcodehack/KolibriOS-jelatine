@@ -1,0 +1,52 @@
+\section{heap\_\-t Struct Reference}
+\label{structheap__t}\index{heap\_\-t@{heap\_\-t}}
+\subsection*{Data Fields}
+\begin{DoxyCompactItemize}
+\item 
+bool {\bf collect}\label{structheap__t_afe4a182f63e71bb09a6082f32c005c4f}
+
+\begin{DoxyCompactList}\small\item\em True if the collector can run. \item\end{DoxyCompactList}\item 
+size\_\-t {\bf size}\label{structheap__t_a054b24d6fc17dcd8c2f6d934cc24935f}
+
+\begin{DoxyCompactList}\small\item\em Current heap size (in bytes). \item\end{DoxyCompactList}\item 
+size\_\-t {\bf max\_\-size}\label{structheap__t_a92a5aefc2f2355a7300f337b76e6050e}
+
+\begin{DoxyCompactList}\small\item\em Maximum heap size (in bytes). \item\end{DoxyCompactList}\item 
+void $\ast$ {\bf memory}\label{structheap__t_a20022ca4f2cfd567d4e65aed47200a57}
+
+\begin{DoxyCompactList}\small\item\em Generic heap used by the VM. \item\end{DoxyCompactList}\item 
+uintptr\_\-t {\bf start}\label{structheap__t_a91b9ca7d7bfae159e6e71153247f73ab}
+
+\begin{DoxyCompactList}\small\item\em First word of the heap. \item\end{DoxyCompactList}\item 
+uintptr\_\-t {\bf end}\label{structheap__t_a9811cf54966509b6e90dfa0e6aa33b6f}
+
+\begin{DoxyCompactList}\small\item\em First word after the end of the heap. \item\end{DoxyCompactList}\item 
+uintptr\_\-t {\bf perm}\label{structheap__t_a07c8a695bc8159582234dc75eeeda84d}
+
+\begin{DoxyCompactList}\small\item\em First word of the permanent allocation area. \item\end{DoxyCompactList}\item 
+uint8\_\-t $\ast$ {\bf bitmap}\label{structheap__t_a09d90167f1e0275c529bf49906c37e19}
+
+\begin{DoxyCompactList}\small\item\em Memory bitmap. \item\end{DoxyCompactList}\item 
+{\bf java\_\-lang\_\-ref\_\-WeakReference\_\-t} $\ast$ {\bf weakref\_\-list}\label{structheap__t_a8af61a6703a2fe903d95713c3e6755fe}
+
+\begin{DoxyCompactList}\small\item\em Weak references list. \item\end{DoxyCompactList}\item 
+{\bf large\_\-chunk\_\-t} $\ast$ {\bf large\_\-bin}\label{structheap__t_a3fde1410b171dbd0940268e7446d1e70}
+
+\begin{DoxyCompactList}\small\item\em Bin used for storing large free chunks. \item\end{DoxyCompactList}\item 
+{\bf small\_\-chunk\_\-t} $\ast$ {\bf bin} [BIN\_\-ENTRIES]\label{structheap__t_a433c6952a98e3fdb805e8f01fdbd1168}
+
+\begin{DoxyCompactList}\small\item\em Bin used for storing small free chunks. \item\end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+Structure representing the heap object
+
+Note that the last field not only points to the last word in the Java-\/heap but also to a fake object-\/header used as a sentinel by the garbage-\/collector 
+
+Definition at line 87 of file memory.c.
+
+
+
+The documentation for this struct was generated from the following file:\begin{DoxyCompactItemize}
+\item 
+src/jelatine/{\bf memory.c}\end{DoxyCompactItemize}

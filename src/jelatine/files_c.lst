@@ -1,0 +1,25 @@
+
+
+OBJS= array.o \
+bytecode.o \
+class.o \
+classfile.o \
+constantpool.o \
+field.o \
+header.o \
+interpreter.o \
+jstring.o \
+kni.o \
+loader.o \
+main.o \
+memory.o \
+method.o \
+native.o \
+print.o \
+thread.o \
+utf8_string.o \
+util.o \
+verifier.o \
+vm.o 
+
+

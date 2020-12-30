@@ -1,0 +1,99 @@
+\section{java::lang::ref::Reference Class Reference}
+\label{classjava_1_1lang_1_1ref_1_1_reference}\index{java::lang::ref::Reference@{java::lang::ref::Reference}}
+Inheritance diagram for java::lang::ref::Reference:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=2.000000cm]{classjava_1_1lang_1_1ref_1_1_reference}
+\end{center}
+\end{figure}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+void {\bf clear} ()
+\item 
+{\bf Object} {\bf get} ()
+\end{DoxyCompactItemize}
+\subsection*{Package Functions}
+\begin{DoxyCompactItemize}
+\item 
+{\bf Reference} ({\bf Object} ref)
+\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+This is the base class of all references. A reference allows refering to an object without preventing the garbage collector to collect it. The only way to get the referred object is via the {\ttfamily \doxyref{get()}{p.}{classjava_1_1lang_1_1ref_1_1_reference_af933f89b04df58b171bcb5310513008f}}-\/method. This method will return {\ttfamily null} if the object was collected. \par
+
+
+A reference may be registered with a queue. When a referred element gets collected the reference will be put on the queue, so that you will be notified. \par
+
+
+There are currently three types of references: soft reference, weak reference and phantom reference. \par
+
+
+Soft references will be cleared if the garbage collector is told to free some memory and there are no unreferenced or weakly referenced objects. It is useful for caches. \par
+
+
+Weak references will be cleared as soon as the garbage collector determines that the refered object is only weakly reachable. They are useful as keys in hashtables (see {\ttfamily WeakHashtable}) as you get notified when nobody has the key anymore.
+
+Phantom references don't prevent finalization. If an object is only phantom reachable, it will be finalized, and the reference will be enqueued, but not cleared. Since you mustn't access an finalized object, the {\ttfamily get} method of a phantom reference will never work. It is useful to keep track, when an object is finalized.
+
+\begin{DoxyAuthor}{Author}
+Jochen Hoenicke 
+\end{DoxyAuthor}
+\begin{DoxySeeAlso}{See also}
+java.util.WeakHashMap 
+\end{DoxySeeAlso}
+
+
+Definition at line 73 of file Reference.java.
+
+
+
+\subsection{Constructor \& Destructor Documentation}
+\index{java::lang::ref::Reference@{java::lang::ref::Reference}!Reference@{Reference}}
+\index{Reference@{Reference}!java::lang::ref::Reference@{java::lang::ref::Reference}}
+\subsubsection[{Reference}]{\setlength{\rightskip}{0pt plus 5cm}java::lang::ref::Reference::Reference (
+\begin{DoxyParamCaption}
+\item[{{\bf Object}}]{ ref}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily  [inline, package]}}\label{classjava_1_1lang_1_1ref_1_1_reference_aab90fa7e2d5ae235b4b3962b507ed0e2}
+Creates a new reference that is not registered to any queue. Since it is package private, it is not possible to overload this class in a different package. 
+\begin{DoxyParams}{Parameters}
+\item[{\em ref}]the object we refer to. \end{DoxyParams}
+
+
+Definition at line 91 of file Reference.java.
+
+
+
+\subsection{Member Function Documentation}
+\index{java::lang::ref::Reference@{java::lang::ref::Reference}!clear@{clear}}
+\index{clear@{clear}!java::lang::ref::Reference@{java::lang::ref::Reference}}
+\subsubsection[{clear}]{\setlength{\rightskip}{0pt plus 5cm}void java::lang::ref::Reference::clear (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily  [inline]}}\label{classjava_1_1lang_1_1ref_1_1_reference_ae0204bec45edd91935f7d3c69da35c95}
+Clears the reference, so that it doesn't refer to its object anymore. For soft and weak references this is called by the garbage collector. For phantom references you should call this when enqueuing the reference. 
+
+Definition at line 102 of file Reference.java.
+
+\index{java::lang::ref::Reference@{java::lang::ref::Reference}!get@{get}}
+\index{get@{get}!java::lang::ref::Reference@{java::lang::ref::Reference}}
+\subsubsection[{get}]{\setlength{\rightskip}{0pt plus 5cm}{\bf Object} java::lang::ref::Reference::get (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily  [inline]}}\label{classjava_1_1lang_1_1ref_1_1_reference_af933f89b04df58b171bcb5310513008f}
+Returns the object, this reference refers to. \begin{DoxyReturn}{Returns}
+the object, this reference refers to, or null if the reference was cleared. 
+\end{DoxyReturn}
+
+
+Definition at line 112 of file Reference.java.
+
+
+
+The documentation for this class was generated from the following file:\begin{DoxyCompactItemize}
+\item 
+src/classpath/java/lang/ref/Reference.java\end{DoxyCompactItemize}

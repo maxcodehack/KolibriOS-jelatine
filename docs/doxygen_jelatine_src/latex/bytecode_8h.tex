@@ -1,0 +1,63 @@
+\section{src/jelatine/bytecode.h File Reference}
+\label{bytecode_8h}\index{src/jelatine/bytecode.h@{src/jelatine/bytecode.h}}
+{\ttfamily \#include \char`\"{}class.h\char`\"{}}\par
+{\ttfamily \#include \char`\"{}method.h\char`\"{}}\par
+\subsection*{Defines}
+\begin{DoxyCompactItemize}
+\item 
+\#define {\bf JELATINE\_\-BYTECODE\_\-H}~(1)
+\end{DoxyCompactItemize}
+\subsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+void {\bf translate\_\-bytecode} ({\bf class\_\-t} $\ast$, {\bf method\_\-t} $\ast$, uint8\_\-t $\ast$, {\bf exception\_\-handler\_\-t} $\ast$)
+\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+Bytecode manipulation functions interface 
+
+Definition in file {\bf bytecode.h}.
+
+
+
+\subsection{Define Documentation}
+\index{bytecode.h@{bytecode.h}!JELATINE\_\-BYTECODE\_\-H@{JELATINE\_\-BYTECODE\_\-H}}
+\index{JELATINE\_\-BYTECODE\_\-H@{JELATINE\_\-BYTECODE\_\-H}!bytecode.h@{bytecode.h}}
+\subsubsection[{JELATINE\_\-BYTECODE\_\-H}]{\setlength{\rightskip}{0pt plus 5cm}\#define JELATINE\_\-BYTECODE\_\-H~(1)}\label{bytecode_8h_a480596b528f35800e7b5b87f7fa5476a}
+\doxyref{bytecode.h}{p.}{bytecode_8h} inclusion macro 
+
+Definition at line 28 of file bytecode.h.
+
+
+
+\subsection{Function Documentation}
+\index{bytecode.h@{bytecode.h}!translate\_\-bytecode@{translate\_\-bytecode}}
+\index{translate\_\-bytecode@{translate\_\-bytecode}!bytecode.h@{bytecode.h}}
+\subsubsection[{translate\_\-bytecode}]{\setlength{\rightskip}{0pt plus 5cm}void translate\_\-bytecode (
+\begin{DoxyParamCaption}
+\item[{{\bf class\_\-t} $\ast$}]{ cl, }
+\item[{{\bf method\_\-t} $\ast$}]{ method, }
+\item[{uint8\_\-t $\ast$}]{ code, }
+\item[{{\bf exception\_\-handler\_\-t} $\ast$}]{ handlers}
+\end{DoxyParamCaption}
+)}\label{bytecode_8h_a8ce799f59db5e5cd8ffd638362e8613b}
+Translates regular Java bytecode into the internal version used by the VM, bytecode verification could be done here too
+
+Note that during bytecode translation constants larger than a single byte are turned to the machines native endian format (for unaligned constants only if the machine supports unaligned accesses). Static constraints in the bytecode are enforced here and partial verification happens too.
+
+
+\begin{DoxyParams}{Parameters}
+\item[{\em cl}]A pointer to the class owning the method \item[{\em method}]A pointer to the method to be translated \item[{\em code}]The method code \item[{\em handlers}]The method exception handlers \end{DoxyParams}
+
+
+Definition at line 48 of file bytecode.c.
+
+
+
+References c\_\-throw, class\_\-t::const\_\-pool, CONSTANT\_\-Class, CONSTANT\_\-Double, CONSTANT\_\-Float, CONSTANT\_\-Integer, CONSTANT\_\-Long, CONSTANT\_\-String, cp\_\-get\_\-tag(), method\_\-t::exception\_\-table\_\-length, JAVA\_\-LANG\_\-NOCLASSDEFFOUNDERROR, method\_\-t::max\_\-locals, method\_\-get\_\-code\_\-length(), method\_\-is\_\-static(), method\_\-is\_\-synchronized(), size\_\-ceil(), store\_\-int16\_\-un, and store\_\-int32\_\-un.
+
+
+
+Referenced by bcl\_\-link\_\-method().
+

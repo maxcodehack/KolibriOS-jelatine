@@ -1,0 +1,232 @@
+\section{java::lang::Throwable Class Reference}
+\label{classjava_1_1lang_1_1_throwable}\index{java::lang::Throwable@{java::lang::Throwable}}
+Inheritance diagram for java::lang::Throwable:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=3.471074cm]{classjava_1_1lang_1_1_throwable}
+\end{center}
+\end{figure}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+{\bf Throwable} ()
+\item 
+{\bf Throwable} ({\bf String} message)
+\item 
+{\bf String} {\bf getMessage} ()
+\item 
+{\bf String} {\bf toString} ()
+\item 
+native void {\bf printStackTrace} ()
+\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+\doxyref{Throwable}{p.}{classjava_1_1lang_1_1_throwable} is the superclass of all exceptions that can be raised.
+
+There are two special cases: \doxyref{Error}{p.}{classjava_1_1lang_1_1_error} and \doxyref{RuntimeException}{p.}{classjava_1_1lang_1_1_runtime_exception}: these two classes (and their subclasses) are considered unchecked exceptions, and are either frequent enough or catastrophic enough that you do not need to declare them in {\ttfamily throws} clauses. Everything else is a checked exception, and is ususally a subclass of \doxyref{Exception}{p.}{classjava_1_1lang_1_1_exception}; these exceptions have to be handled or declared.
+
+Instances of this class are usually created with knowledge of the execution context, so that you can get a stack trace of the problem spot in the code. Also, since JDK 1.4, Throwables participate in \char`\"{}exception
+ chaining.\char`\"{} This means that one exception can be caused by another, and preserve the information of the original.
+
+One reason this is useful is to wrap exceptions to conform to an interface. For example, it would be bad design to require all levels of a program interface to be aware of the low-\/level exceptions thrown at one level of abstraction. Another example is wrapping a checked exception in an unchecked one, to communicate that failure occured while still obeying the method throws clause of a superclass.
+
+A cause is assigned in one of two ways; but can only be assigned once in the lifetime of the \doxyref{Throwable}{p.}{classjava_1_1lang_1_1_throwable}. There are new constructors added to several classes in the exception hierarchy that directly initialize the cause, or you can use the {\ttfamily initCause} method. This second method is especially useful if the superclass has not been retrofitted with new constructors:\par
+ 
+\begin{DoxyPre}
+ try
+   \{
+     lowLevelOp();
+   \}
+ catch (LowLevelException lle)
+   \{
+     throw (HighLevelException) new HighLevelException().initCause(lle);
+   \}
+ \end{DoxyPre}
+ Notice the cast in the above example; without it, your method would need a throws clase that declared \doxyref{Throwable}{p.}{classjava_1_1lang_1_1_throwable}, defeating the purpose of chainig your exceptions.
+
+By convention, exception classes have two constructors: one with no arguments, and one that takes a \doxyref{String}{p.}{classjava_1_1lang_1_1_string} for a detail message. Further, classes which are likely to be used in an exception chain also provide a constructor that takes a \doxyref{Throwable}{p.}{classjava_1_1lang_1_1_throwable}, with or without a detail message string.
+
+Another 1.4 feature is the StackTrace, a means of reflection that allows the program to inspect the context of the exception, and which is serialized, so that remote procedure calls can correctly pass exceptions.
+
+\begin{DoxyAuthor}{Author}
+Brian Jones 
+
+John Keiser 
+
+Mark Wielaard 
+
+Tom Tromey 
+
+Eric Blake ({\tt ebb9@email.byu.edu}) 
+\end{DoxyAuthor}
+
+
+Definition at line 99 of file Throwable.java.
+
+
+
+\subsection{Constructor \& Destructor Documentation}
+\index{java::lang::Throwable@{java::lang::Throwable}!Throwable@{Throwable}}
+\index{Throwable@{Throwable}!java::lang::Throwable@{java::lang::Throwable}}
+\subsubsection[{Throwable}]{\setlength{\rightskip}{0pt plus 5cm}java::lang::Throwable::Throwable (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily  [inline]}}\label{classjava_1_1lang_1_1_throwable_a526db44a25dfdff8161e797b73791538}
+Instantiate this \doxyref{Throwable}{p.}{classjava_1_1lang_1_1_throwable} with an empty message. The cause remains uninitialized. fillInStackTrace() will be called to set up the stack trace. 
+
+Definition at line 111 of file Throwable.java.
+
+\index{java::lang::Throwable@{java::lang::Throwable}!Throwable@{Throwable}}
+\index{Throwable@{Throwable}!java::lang::Throwable@{java::lang::Throwable}}
+\subsubsection[{Throwable}]{\setlength{\rightskip}{0pt plus 5cm}java::lang::Throwable::Throwable (
+\begin{DoxyParamCaption}
+\item[{{\bf String}}]{ message}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily  [inline]}}\label{classjava_1_1lang_1_1_throwable_aac65c315f9d21459fe9a91410737f133}
+Instantiate this \doxyref{Throwable}{p.}{classjava_1_1lang_1_1_throwable} with the given message. The cause remains uninitialized. fillInStackTrace() will be called to set up the stack trace.
+
+
+\begin{DoxyParams}{Parameters}
+\item[{\em message}]the message to associate with the \doxyref{Throwable}{p.}{classjava_1_1lang_1_1_throwable} \end{DoxyParams}
+
+
+Definition at line 123 of file Throwable.java.
+
+
+
+\subsection{Member Function Documentation}
+\index{java::lang::Throwable@{java::lang::Throwable}!getMessage@{getMessage}}
+\index{getMessage@{getMessage}!java::lang::Throwable@{java::lang::Throwable}}
+\subsubsection[{getMessage}]{\setlength{\rightskip}{0pt plus 5cm}{\bf String} java::lang::Throwable::getMessage (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily  [inline]}}\label{classjava_1_1lang_1_1_throwable_a8d0360ecc18df402a726c2e8fc0c4b22}
+Get the message associated with this \doxyref{Throwable}{p.}{classjava_1_1lang_1_1_throwable}.
+
+\begin{DoxyReturn}{Returns}
+the error message associated with this \doxyref{Throwable}{p.}{classjava_1_1lang_1_1_throwable}, may be null 
+\end{DoxyReturn}
+
+
+Definition at line 133 of file Throwable.java.
+
+
+
+Referenced by toString().
+
+\index{java::lang::Throwable@{java::lang::Throwable}!printStackTrace@{printStackTrace}}
+\index{printStackTrace@{printStackTrace}!java::lang::Throwable@{java::lang::Throwable}}
+\subsubsection[{printStackTrace}]{\setlength{\rightskip}{0pt plus 5cm}native void java::lang::Throwable::printStackTrace (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}\label{classjava_1_1lang_1_1_throwable_abd4ca85875df537b87b9551300e8918f}
+Print a stack trace to the standard error stream. This stream is the current contents of {\ttfamily \doxyref{System.err}{p.}{classjava_1_1lang_1_1_system_a6a9f495f2cf102cd264d9bd5f9ac1a32}}. The first line of output is the result of \doxyref{toString()}{p.}{classjava_1_1lang_1_1_throwable_a73414ce32f26389f7751f4fafb70340d}, and the remaining lines represent the data created by fillInStackTrace(). While the format is unspecified, this implementation uses the suggested format, demonstrated by this example:\par
+ 
+\begin{DoxyPre}
+ public class Junk
+ \{
+   public static void main(\doxyref{String}{p.}{classjava_1_1lang_1_1_string} args[])
+   \{
+     try
+       \{
+         a();
+       \}
+     catch(HighLevelException e)
+       \{
+         e.printStackTrace();
+       \}
+   \}
+   static void a() throws HighLevelException
+   \{
+     try
+       \{
+         b();
+       \}
+     catch(MidLevelException e)
+       \{
+         throw new HighLevelException(e);
+       \}
+   \}
+   static void b() throws MidLevelException
+   \{
+     c();
+   \}
+   static void c() throws MidLevelException
+   \{
+     try
+       \{
+         d();
+       \}
+     catch(LowLevelException e)
+       \{
+         throw new MidLevelException(e);
+       \}
+   \}
+   static void d() throws LowLevelException
+   \{
+     e();
+   \}
+   static void e() throws LowLevelException
+   \{
+     throw new LowLevelException();
+   \}
+ \}
+ class HighLevelException extends \doxyref{Exception}{p.}{classjava_1_1lang_1_1_exception}
+ \{
+   HighLevelException(Throwable cause) \{ super(cause); \}
+ \}
+ class MidLevelException extends \doxyref{Exception}{p.}{classjava_1_1lang_1_1_exception}
+ \{
+   MidLevelException(Throwable cause)  \{ super(cause); \}
+ \}
+ class LowLevelException extends \doxyref{Exception}{p.}{classjava_1_1lang_1_1_exception}
+ \{
+ \}
+ \end{DoxyPre}
+ 
+
+
+\begin{DoxyPre}
+  HighLevelException: MidLevelException: LowLevelException
+          at Junk.a(Junk.java:13)
+          at Junk.main(Junk.java:4)
+  Caused by: MidLevelException: LowLevelException
+          at Junk.c(Junk.java:23)
+          at Junk.b(Junk.java:17)
+          at Junk.a(Junk.java:11)
+          ... 1 more
+  Caused by: LowLevelException
+          at Junk.e(Junk.java:30)
+          at Junk.d(Junk.java:27)
+          at Junk.c(Junk.java:21)
+          ... 3 more
+ \end{DoxyPre}
+ \index{java::lang::Throwable@{java::lang::Throwable}!toString@{toString}}
+\index{toString@{toString}!java::lang::Throwable@{java::lang::Throwable}}
+\subsubsection[{toString}]{\setlength{\rightskip}{0pt plus 5cm}{\bf String} java::lang::Throwable::toString (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily  [inline]}}\label{classjava_1_1lang_1_1_throwable_a73414ce32f26389f7751f4fafb70340d}
+Get a human-\/readable representation of this \doxyref{Throwable}{p.}{classjava_1_1lang_1_1_throwable}. The detail message is retrieved by getLocalizedMessage(). Then, with a null detail message, this string is simply the object's class name; otherwise the string is {\ttfamily getClass().getName() + \char`\"{}: \char`\"{} + message}.
+
+\begin{DoxyReturn}{Returns}
+a human-\/readable \doxyref{String}{p.}{classjava_1_1lang_1_1_string} represting this \doxyref{Throwable}{p.}{classjava_1_1lang_1_1_throwable} 
+\end{DoxyReturn}
+
+
+Definition at line 146 of file Throwable.java.
+
+
+
+References getMessage().
+
+
+
+The documentation for this class was generated from the following file:\begin{DoxyCompactItemize}
+\item 
+src/classpath/java/lang/Throwable.java\end{DoxyCompactItemize}

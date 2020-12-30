@@ -1,0 +1,106 @@
+\section{java\_\-lang\_\-String.h File Reference}
+\label{java__lang___string_8h}\index{java\_\-lang\_\-String.h@{java\_\-lang\_\-String.h}}
+{\ttfamily \#include \char`\"{}wrappers.h\char`\"{}}\par
+{\ttfamily \#include \char`\"{}array.h\char`\"{}}\par
+\subsection*{Data Structures}
+\begin{DoxyCompactItemize}
+\item 
+struct {\bf java\_\-lang\_\-String\_\-t}
+\end{DoxyCompactItemize}
+\subsection*{Defines}
+\begin{DoxyCompactItemize}
+\item 
+\#define {\bf JELATINE\_\-JAVA\_\-LANG\_\-STRING\_\-H}~(1)
+\item 
+\#define {\bf JAVA\_\-LANG\_\-STRING\_\-REF\_\-N}~(1)
+\item 
+\#define {\bf JAVA\_\-LANG\_\-STRING\_\-NREF\_\-SIZE}~(sizeof({\bf java\_\-lang\_\-String\_\-t}) -\/ offsetof({\bf java\_\-lang\_\-String\_\-t}, next))
+\item 
+\#define {\bf JAVA\_\-LANG\_\-STRING\_\-REF2PTR}(r)~(({\bf java\_\-lang\_\-String\_\-t} $\ast$) ((r) -\/ offsetof({\bf java\_\-lang\_\-String\_\-t}, header)))
+\item 
+\#define {\bf JAVA\_\-LANG\_\-STRING\_\-PTR2REF}(p)~((uintptr\_\-t) (p) + offsetof({\bf java\_\-lang\_\-String\_\-t}, header))
+\end{DoxyCompactItemize}
+\subsection*{Typedefs}
+\begin{DoxyCompactItemize}
+\item 
+typedef struct {\bf java\_\-lang\_\-String\_\-t} {\bf java\_\-lang\_\-String\_\-t}
+\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+Java Class 'java.lang.String' declaration 
+
+Definition in file {\bf java\_\-lang\_\-String.h}.
+
+
+
+\subsection{Define Documentation}
+\index{java\_\-lang\_\-String.h@{java\_\-lang\_\-String.h}!JAVA\_\-LANG\_\-STRING\_\-NREF\_\-SIZE@{JAVA\_\-LANG\_\-STRING\_\-NREF\_\-SIZE}}
+\index{JAVA\_\-LANG\_\-STRING\_\-NREF\_\-SIZE@{JAVA\_\-LANG\_\-STRING\_\-NREF\_\-SIZE}!java_lang_String.h@{java\_\-lang\_\-String.h}}
+\subsubsection[{JAVA\_\-LANG\_\-STRING\_\-NREF\_\-SIZE}]{\setlength{\rightskip}{0pt plus 5cm}\#define JAVA\_\-LANG\_\-STRING\_\-NREF\_\-SIZE~(sizeof({\bf java\_\-lang\_\-String\_\-t}) -\/ offsetof({\bf java\_\-lang\_\-String\_\-t}, next))}\label{java__lang___string_8h_a9e0ee3e997fb01c056cfbadc57c77d0d}
+Size in words of the non-\/reference area of a java.lang.String instance 
+
+Definition at line 60 of file java\_\-lang\_\-String.h.
+
+
+
+Referenced by bcl\_\-preload\_\-bootstrap\_\-classes().
+
+\index{java\_\-lang\_\-String.h@{java\_\-lang\_\-String.h}!JAVA\_\-LANG\_\-STRING\_\-PTR2REF@{JAVA\_\-LANG\_\-STRING\_\-PTR2REF}}
+\index{JAVA\_\-LANG\_\-STRING\_\-PTR2REF@{JAVA\_\-LANG\_\-STRING\_\-PTR2REF}!java_lang_String.h@{java\_\-lang\_\-String.h}}
+\subsubsection[{JAVA\_\-LANG\_\-STRING\_\-PTR2REF}]{\setlength{\rightskip}{0pt plus 5cm}\#define JAVA\_\-LANG\_\-STRING\_\-PTR2REF(
+\begin{DoxyParamCaption}
+\item[{}]{p}
+\end{DoxyParamCaption}
+)~((uintptr\_\-t) (p) + offsetof({\bf java\_\-lang\_\-String\_\-t}, header))}\label{java__lang___string_8h_a41ecc1b6b2cfa9c2263b233c88ed418c}
+Turns a C pointer to a Java string into a Java reference 
+
+Definition at line 68 of file java\_\-lang\_\-String.h.
+
+
+
+Referenced by cp\_\-create(), java\_\-lang\_\-Class\_\-getInternalName(), java\_\-lang\_\-String\_\-intern(), jsm\_\-mark(), KNI\_\-NewString(), KNI\_\-NewStringUTF(), KNI\_\-ThrowNew(), thread\_\-create\_\-main(), and vm\_\-run().
+
+\index{java\_\-lang\_\-String.h@{java\_\-lang\_\-String.h}!JAVA\_\-LANG\_\-STRING\_\-REF2PTR@{JAVA\_\-LANG\_\-STRING\_\-REF2PTR}}
+\index{JAVA\_\-LANG\_\-STRING\_\-REF2PTR@{JAVA\_\-LANG\_\-STRING\_\-REF2PTR}!java_lang_String.h@{java\_\-lang\_\-String.h}}
+\subsubsection[{JAVA\_\-LANG\_\-STRING\_\-REF2PTR}]{\setlength{\rightskip}{0pt plus 5cm}\#define JAVA\_\-LANG\_\-STRING\_\-REF2PTR(
+\begin{DoxyParamCaption}
+\item[{}]{r}
+\end{DoxyParamCaption}
+)~(({\bf java\_\-lang\_\-String\_\-t} $\ast$) ((r) -\/ offsetof({\bf java\_\-lang\_\-String\_\-t}, header)))}\label{java__lang___string_8h_af75cb73d73c92a1c9cf0e1e188d822fd}
+Turns a reference to a Java string into a C pointer 
+
+Definition at line 64 of file java\_\-lang\_\-String.h.
+
+
+
+Referenced by java\_\-lang\_\-Class\_\-forName(), java\_\-lang\_\-String\_\-intern(), jstring\_\-create\_\-from\_\-unicode(), jstring\_\-create\_\-from\_\-utf8(), jstring\_\-create\_\-literal(), KNI\_\-GetStringLength(), and KNI\_\-GetStringRegion().
+
+\index{java\_\-lang\_\-String.h@{java\_\-lang\_\-String.h}!JAVA\_\-LANG\_\-STRING\_\-REF\_\-N@{JAVA\_\-LANG\_\-STRING\_\-REF\_\-N}}
+\index{JAVA\_\-LANG\_\-STRING\_\-REF\_\-N@{JAVA\_\-LANG\_\-STRING\_\-REF\_\-N}!java_lang_String.h@{java\_\-lang\_\-String.h}}
+\subsubsection[{JAVA\_\-LANG\_\-STRING\_\-REF\_\-N}]{\setlength{\rightskip}{0pt plus 5cm}\#define JAVA\_\-LANG\_\-STRING\_\-REF\_\-N~(1)}\label{java__lang___string_8h_a85dc4a1da5a1f8fa10b511a14b625b95}
+Number of references in a java.lang.String instance 
+
+Definition at line 57 of file java\_\-lang\_\-String.h.
+
+
+
+Referenced by bcl\_\-preload\_\-bootstrap\_\-classes().
+
+\index{java\_\-lang\_\-String.h@{java\_\-lang\_\-String.h}!JELATINE\_\-JAVA\_\-LANG\_\-STRING\_\-H@{JELATINE\_\-JAVA\_\-LANG\_\-STRING\_\-H}}
+\index{JELATINE\_\-JAVA\_\-LANG\_\-STRING\_\-H@{JELATINE\_\-JAVA\_\-LANG\_\-STRING\_\-H}!java_lang_String.h@{java\_\-lang\_\-String.h}}
+\subsubsection[{JELATINE\_\-JAVA\_\-LANG\_\-STRING\_\-H}]{\setlength{\rightskip}{0pt plus 5cm}\#define JELATINE\_\-JAVA\_\-LANG\_\-STRING\_\-H~(1)}\label{java__lang___string_8h_a88008d343522f05bf7fc80c355338639}
+\doxyref{java\_\-lang\_\-String.h}{p.}{java__lang___string_8h} inclusion macro 
+
+Definition at line 28 of file java\_\-lang\_\-String.h.
+
+
+
+\subsection{Typedef Documentation}
+\index{java\_\-lang\_\-String.h@{java\_\-lang\_\-String.h}!java\_\-lang\_\-String\_\-t@{java\_\-lang\_\-String\_\-t}}
+\index{java\_\-lang\_\-String\_\-t@{java\_\-lang\_\-String\_\-t}!java_lang_String.h@{java\_\-lang\_\-String.h}}
+\subsubsection[{java\_\-lang\_\-String\_\-t}]{\setlength{\rightskip}{0pt plus 5cm}typedef struct {\bf java\_\-lang\_\-String\_\-t} {\bf java\_\-lang\_\-String\_\-t}}\label{java__lang___string_8h_adada48f8ff114a2b408b5f3c25005324}
+Typedef for struct \doxyref{java\_\-lang\_\-String\_\-t}{p.}{structjava__lang___string__t} 
+
+Definition at line 54 of file java\_\-lang\_\-String.h.
+

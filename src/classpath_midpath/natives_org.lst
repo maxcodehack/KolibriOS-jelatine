@@ -1,0 +1,76 @@
+./org/thenesis/midpath/mmedia/BasicPlayer.java:// * Event listener for events delivered from native layer
+./org/thenesis/midpath/mmedia/protocol/CommonDS.java:    //native private static int nFileExists(String filename);
+./org/thenesis/midpath/sound/backend/esd/EsdSink.java:	private native long open0(int format, int sampleRate);
+./org/thenesis/midpath/sound/backend/esd/EsdSink.java:	private native int write0(long fd, byte[] buf, int offset, int frames);
+./org/thenesis/midpath/sound/backend/esd/EsdSink.java:	private native void close0(long fd);
+./org/thenesis/midpath/sound/backend/alsa/AlsaSink.java:	private native int open0(String deviceName, int bufferSize, int sampleRate);
+./org/thenesis/midpath/sound/backend/alsa/AlsaSink.java:	private native int available0();
+./org/thenesis/midpath/sound/backend/alsa/AlsaSink.java:	private native int write0(byte[] buf, int offset, int frames);
+./org/thenesis/midpath/sound/backend/alsa/AlsaSink.java:	private native void close0();
+./org/thenesis/midpath/sound/backend/pulseaudio/PulseSink.java:	private native boolean open0(int format, int channels, int sampleRate);
+./org/thenesis/midpath/sound/backend/pulseaudio/PulseSink.java:	private native int write0(byte[] buf, int offset, int frames);
+./org/thenesis/midpath/sound/backend/pulseaudio/PulseSink.java:	private native void close0();
+./org/thenesis/midpath/io/backend/cldc/File.java:	private static native boolean createInternal(String name) throws IOException;
+./org/thenesis/midpath/io/backend/cldc/File.java:	 * names, can throw an IOException.  This is because native method 
+./org/thenesis/midpath/io/backend/cldc/File.java:	 * This native method checks file permissions for reading
+./org/thenesis/midpath/io/backend/cldc/File.java:	private synchronized native boolean canReadInternal(String path);
+./org/thenesis/midpath/io/backend/cldc/File.java:	 * This native method checks file permissions for writing
+./org/thenesis/midpath/io/backend/cldc/File.java:	private synchronized native boolean canWriteInternal(String path);
+./org/thenesis/midpath/io/backend/cldc/File.java:	 * This native method sets the permissions to make the file read only.
+./org/thenesis/midpath/io/backend/cldc/File.java:	private native boolean setReadOnlyInternal(String path);
+./org/thenesis/midpath/io/backend/cldc/File.java:	 * This native method does the actual checking of file existence.
+./org/thenesis/midpath/io/backend/cldc/File.java:	private native boolean existsInternal(String path);
+./org/thenesis/midpath/io/backend/cldc/File.java:	 * This native method does the actual check of whether or not a file
+./org/thenesis/midpath/io/backend/cldc/File.java:	private native boolean isFileInternal(String path);
+./org/thenesis/midpath/io/backend/cldc/File.java:	private native boolean isDirectoryInternal(String path);
+./org/thenesis/midpath/io/backend/cldc/File.java:	 * This native method actually determines the length of the file and
+./org/thenesis/midpath/io/backend/cldc/File.java:	private native long lengthInternal(String path);
+./org/thenesis/midpath/io/backend/cldc/File.java:	 * This native method does the actual work of getting the last file
+./org/thenesis/midpath/io/backend/cldc/File.java:	private native long lastModifiedInternal(String path);
+./org/thenesis/midpath/io/backend/cldc/File.java:	private native boolean setLastModifiedInternal(String path, long time);
+./org/thenesis/midpath/io/backend/cldc/File.java:	 * This native method handles the actual deleting of the file
+./org/thenesis/midpath/io/backend/cldc/File.java:	private native boolean deleteInternal(String path);
+./org/thenesis/midpath/io/backend/cldc/File.java:	 * This native method actually creates the directory
+./org/thenesis/midpath/io/backend/cldc/File.java:	private native boolean mkdirInternal(String path);
+./org/thenesis/midpath/io/backend/cldc/File.java:		// Call our native rename method
+./org/thenesis/midpath/io/backend/cldc/File.java:	 * This native method actually performs the rename.
+./org/thenesis/midpath/io/backend/cldc/File.java:	private native boolean renameToInternal(String target, String dest);
+./org/thenesis/midpath/io/backend/cldc/File.java:	 * This native function actually produces the list of file in this
+./org/thenesis/midpath/io/backend/cldc/File.java:	private native String[] listInternal(String dirname);
+./org/thenesis/midpath/io/backend/cldc/RandomAccessFile.java:	 * The native file descriptor for this file
+./org/thenesis/midpath/io/backend/cldc/RandomAccessFile.java:	 * This native method opens the file with the desired access mode
+./org/thenesis/midpath/io/backend/cldc/RandomAccessFile.java:	private native int open(String name, boolean read_only) throws IOException;
+./org/thenesis/midpath/io/backend/cldc/RandomAccessFile.java:	private native void closeInternal(int native_fd) throws IOException;
+./org/thenesis/midpath/io/backend/cldc/RandomAccessFile.java:	 * This native method actually retrieves the file pointer
+./org/thenesis/midpath/io/backend/cldc/RandomAccessFile.java:	private native long getFilePointerInternal(int native_fd) throws IOException;
+./org/thenesis/midpath/io/backend/cldc/RandomAccessFile.java:	 * This native method determines the actual file length
+./org/thenesis/midpath/io/backend/cldc/RandomAccessFile.java:	private native long lengthInternal(int native_fd) throws IOException;
+./org/thenesis/midpath/io/backend/cldc/RandomAccessFile.java:	 * This native method does the actual file offset seeking
+./org/thenesis/midpath/io/backend/cldc/RandomAccessFile.java:	private native void seekInternal(int native_fd, long pos) throws IOException;
+./org/thenesis/midpath/io/backend/cldc/RandomAccessFile.java:	 * This native method does the actual work of setting the file length
+./org/thenesis/midpath/io/backend/cldc/RandomAccessFile.java:	private native void setLengthInternal(int native_fd, long newlen) throws IOException;
+./org/thenesis/midpath/io/backend/cldc/RandomAccessFile.java:	 * This native method actually reads the bytes from the file
+./org/thenesis/midpath/io/backend/cldc/RandomAccessFile.java:	private native int readInternal(int native_fd, byte[] buf, int offset, int len);
+./org/thenesis/midpath/io/backend/cldc/RandomAccessFile.java:	private native int skipInternal(int native_fd, int n);
+./org/thenesis/midpath/io/backend/cldc/RandomAccessFile.java:	 * This native method does the actual writing of the bytes
+./org/thenesis/midpath/io/backend/cldc/RandomAccessFile.java:	private native void writeInternal(int native_fd, byte[] buf, int offset, int len);
+./org/thenesis/microbackend/ui/UIBackendFactory.java://            Logging.log("A native library loader can't be found", Logging.ERROR);
+./org/thenesis/microbackend/ui/UIBackendFactory.java:        // Create the native library loader required by some backends
+./org/thenesis/microbackend/ui/fb/FBBackend.java:	native private boolean initialize(String keyboardDeviceName, String mouseDeviceName, String touchscreenDeviceName,
+./org/thenesis/microbackend/ui/fb/FBBackend.java:	native private void drawARGB(int[] argbBuffer, int offset, int scanlength, int x, int y, int width, int height);
+./org/thenesis/microbackend/ui/fb/FBBackend.java:	native private void eventLoop();
+./org/thenesis/microbackend/ui/fb/FBBackend.java:	native private int quit();
+./org/thenesis/microbackend/ui/fb/FBBackend.java:	 * An event thread which polls events from the native layer 
+./org/thenesis/microbackend/ui/gtk/GTKBackend.java:	native public int initialize(int width, int height);
+./org/thenesis/microbackend/ui/gtk/GTKBackend.java:	//native public int isMainLoopStarted(); 
+./org/thenesis/microbackend/ui/gtk/GTKBackend.java:	native private void writeARGB(int[] argbBuffer, int x_src, int y_src, int width, int height);
+./org/thenesis/microbackend/ui/gtk/GTKBackend.java:	native public int gtkMainIterationDo();
+./org/thenesis/microbackend/ui/gtk/GTKBackend.java:	native public int destroy();
+./org/thenesis/microbackend/ui/image/png/Color.java:   * The color value, in the native ColorSpace components. This may be null
+./org/thenesis/microbackend/ui/image/png/PngImage.java:	 * Alternative to {@link #getEverything()} which can throw
+./org/thenesis/microbackend/ui/qt/QTBackend.java:	/* Event callback methods (called by native code) */
+./org/thenesis/microbackend/ui/qt/QTBackend.java:	native private boolean initialize(int width, int height);
+./org/thenesis/microbackend/ui/qt/QTBackend.java:	native private void writeARGB(int[] argbBuffer, int x_src, int y_src, int width, int height);
+./org/thenesis/microbackend/ui/qt/QTBackend.java:	native private int startMainLoop();
+./org/thenesis/microbackend/ui/qt/QTBackend.java:	native private int quit();
+./org/thenesis/microbackend/zip/Inflater.java:     * compressor allocates native memory. If you call any method (even reset)

@@ -1,0 +1,55 @@
+\section{src/jelatine/bytecode.c File Reference}
+\label{bytecode_8c}\index{src/jelatine/bytecode.c@{src/jelatine/bytecode.c}}
+{\ttfamily \#include \char`\"{}wrappers.h\char`\"{}}\par
+{\ttfamily \#include \char`\"{}bytecode.h\char`\"{}}\par
+{\ttfamily \#include \char`\"{}class.h\char`\"{}}\par
+{\ttfamily \#include \char`\"{}constantpool.h\char`\"{}}\par
+{\ttfamily \#include \char`\"{}loader.h\char`\"{}}\par
+{\ttfamily \#include \char`\"{}memory.h\char`\"{}}\par
+{\ttfamily \#include \char`\"{}method.h\char`\"{}}\par
+{\ttfamily \#include \char`\"{}opcodes.h\char`\"{}}\par
+{\ttfamily \#include \char`\"{}util.h\char`\"{}}\par
+\subsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+void {\bf translate\_\-bytecode} ({\bf class\_\-t} $\ast$cl, {\bf method\_\-t} $\ast$method, uint8\_\-t $\ast$code, {\bf exception\_\-handler\_\-t} $\ast$handlers)
+\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+Bytecode manipulation functions implementation 
+
+Definition in file {\bf bytecode.c}.
+
+
+
+\subsection{Function Documentation}
+\index{bytecode.c@{bytecode.c}!translate\_\-bytecode@{translate\_\-bytecode}}
+\index{translate\_\-bytecode@{translate\_\-bytecode}!bytecode.c@{bytecode.c}}
+\subsubsection[{translate\_\-bytecode}]{\setlength{\rightskip}{0pt plus 5cm}void translate\_\-bytecode (
+\begin{DoxyParamCaption}
+\item[{{\bf class\_\-t} $\ast$}]{ cl, }
+\item[{{\bf method\_\-t} $\ast$}]{ method, }
+\item[{uint8\_\-t $\ast$}]{ code, }
+\item[{{\bf exception\_\-handler\_\-t} $\ast$}]{ handlers}
+\end{DoxyParamCaption}
+)}\label{bytecode_8c_ae50dd97e41c86fe613f33ffda0576f42}
+Translates regular Java bytecode into the internal version used by the VM, bytecode verification could be done here too
+
+Note that during bytecode translation constants larger than a single byte are turned to the machines native endian format (for unaligned constants only if the machine supports unaligned accesses). Static constraints in the bytecode are enforced here and partial verification happens too.
+
+
+\begin{DoxyParams}{Parameters}
+\item[{\em cl}]A pointer to the class owning the method \item[{\em method}]A pointer to the method to be translated \item[{\em code}]The method code \item[{\em handlers}]The method exception handlers \end{DoxyParams}
+
+
+Definition at line 48 of file bytecode.c.
+
+
+
+References c\_\-throw, class\_\-t::const\_\-pool, CONSTANT\_\-Class, CONSTANT\_\-Double, CONSTANT\_\-Float, CONSTANT\_\-Integer, CONSTANT\_\-Long, CONSTANT\_\-String, cp\_\-get\_\-tag(), method\_\-t::exception\_\-table\_\-length, JAVA\_\-LANG\_\-NOCLASSDEFFOUNDERROR, method\_\-t::max\_\-locals, method\_\-get\_\-code\_\-length(), method\_\-is\_\-static(), method\_\-is\_\-synchronized(), size\_\-ceil(), store\_\-int16\_\-un, and store\_\-int32\_\-un.
+
+
+
+Referenced by bcl\_\-link\_\-method().
+

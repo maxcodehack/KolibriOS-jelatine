@@ -1,0 +1,164 @@
+\section{vm.c File Reference}
+\label{vm_8c}\index{vm.c@{vm.c}}
+{\ttfamily \#include \char`\"{}wrappers.h\char`\"{}}\par
+{\ttfamily \#include \char`\"{}class.h\char`\"{}}\par
+{\ttfamily \#include \char`\"{}jstring.h\char`\"{}}\par
+{\ttfamily \#include \char`\"{}interpreter.h\char`\"{}}\par
+{\ttfamily \#include \char`\"{}loader.h\char`\"{}}\par
+{\ttfamily \#include \char`\"{}memory.h\char`\"{}}\par
+{\ttfamily \#include \char`\"{}method.h\char`\"{}}\par
+{\ttfamily \#include \char`\"{}thread.h\char`\"{}}\par
+{\ttfamily \#include \char`\"{}utf8\_\-string.h\char`\"{}}\par
+{\ttfamily \#include \char`\"{}util.h\char`\"{}}\par
+{\ttfamily \#include \char`\"{}vm.h\char`\"{}}\par
+{\ttfamily \#include \char`\"{}java\_\-lang\_\-Thread.h\char`\"{}}\par
+\subsection*{Data Structures}
+\begin{DoxyCompactItemize}
+\item 
+struct {\bf virtual\_\-machine\_\-t}
+\end{DoxyCompactItemize}
+\subsection*{Typedefs}
+\begin{DoxyCompactItemize}
+\item 
+typedef struct {\bf virtual\_\-machine\_\-t} {\bf virtual\_\-machine\_\-t}
+\end{DoxyCompactItemize}
+\subsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+static void {\bf vm\_\-init} (void)
+\item 
+static void {\bf vm\_\-teardown} (void)
+\item 
+void {\bf vm\_\-run} (void)
+\end{DoxyCompactItemize}
+\subsection*{Variables}
+\begin{DoxyCompactItemize}
+\item 
+{\bf options\_\-t} {\bf options}
+\item 
+{\bf virtual\_\-machine\_\-t} {\bf vm}
+\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+Virtual machine object implementation 
+
+Definition in file {\bf vm.c}.
+
+
+
+\subsection{Typedef Documentation}
+\index{vm.c@{vm.c}!virtual\_\-machine\_\-t@{virtual\_\-machine\_\-t}}
+\index{virtual\_\-machine\_\-t@{virtual\_\-machine\_\-t}!vm.c@{vm.c}}
+\subsubsection[{virtual\_\-machine\_\-t}]{\setlength{\rightskip}{0pt plus 5cm}typedef struct {\bf virtual\_\-machine\_\-t} {\bf virtual\_\-machine\_\-t}}\label{vm_8c_ad831fe77e55cc09e937909cc92aa89fd}
+Typedef for the struct \doxyref{virtual\_\-machine\_\-t}{p.}{structvirtual__machine__t} 
+
+Definition at line 58 of file vm.c.
+
+
+
+\subsection{Function Documentation}
+\index{vm.c@{vm.c}!vm\_\-init@{vm\_\-init}}
+\index{vm\_\-init@{vm\_\-init}!vm.c@{vm.c}}
+\subsubsection[{vm\_\-init}]{\setlength{\rightskip}{0pt plus 5cm}static void vm\_\-init (
+\begin{DoxyParamCaption}
+\item[{void}]{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily  [static]}}\label{vm_8c_a0de48e376bf6bfbf5a797e4f9b3e3739}
+Initializes the basic subsystems of the virtual machine 
+
+Definition at line 229 of file vm.c.
+
+
+
+References bcl\_\-init(), classpath\_\-init(), gc\_\-init(), jsm\_\-init(), monitor\_\-init(), opts\_\-get\_\-heap\_\-size(), and string\_\-manager\_\-init().
+
+
+
+Referenced by vm\_\-run().
+
+\index{vm.c@{vm.c}!vm\_\-run@{vm\_\-run}}
+\index{vm\_\-run@{vm\_\-run}!vm.c@{vm.c}}
+\subsubsection[{vm\_\-run}]{\setlength{\rightskip}{0pt plus 5cm}void vm\_\-run (
+\begin{DoxyParamCaption}
+\item[{void}]{}
+\end{DoxyParamCaption}
+)}\label{vm_8c_a3b28f0bb73e25ee3d38e07f5547103ec}
+Launches the JVM 
+
+Definition at line 106 of file vm.c.
+
+
+
+References method\_\-t::access\_\-flags, array\_\-ref\_\-get\_\-data(), bcl\_\-preload\_\-bootstrap\_\-classes(), bcl\_\-resolve\_\-class(), c\_\-catch, c\_\-clear\_\-exception(), c\_\-print\_\-exception(), c\_\-throw, c\_\-try, thread\_\-t::capacity, gc\_\-enable(), gc\_\-malloc(), gc\_\-new(), gc\_\-new\_\-array\_\-ref(), init\_\-dummy\_\-methods(), JAVA\_\-LANG\_\-NOCLASSDEFFOUNDERROR, JAVA\_\-LANG\_\-STRING\_\-PTR2REF, JAVA\_\-LANG\_\-THREAD\_\-REF2PTR, JAVA\_\-LANG\_\-VIRTUALMACHINEERROR, jstring\_\-create\_\-literal(), method\_\-is\_\-native(), method\_\-is\_\-public(), method\_\-is\_\-static(), class\_\-t::method\_\-manager, mm\_\-get(), opts\_\-get\_\-jargs(), opts\_\-get\_\-jargs\_\-n(), opts\_\-get\_\-main\_\-class(), thread\_\-t::pointers, thread\_\-t::roots, thread\_\-create\_\-main(), thread\_\-init(), thread\_\-launch(), thread\_\-pop\_\-root(), thread\_\-push\_\-root(), THREAD\_\-TMP\_\-ROOTS, tm\_\-init(), tm\_\-register(), tm\_\-teardown(), utf8\_\-check(), utf8\_\-intern(), vm\_\-fail(), vm\_\-init(), and vm\_\-teardown().
+
+
+
+Referenced by main().
+
+\index{vm.c@{vm.c}!vm\_\-teardown@{vm\_\-teardown}}
+\index{vm\_\-teardown@{vm\_\-teardown}!vm.c@{vm.c}}
+\subsubsection[{vm\_\-teardown}]{\setlength{\rightskip}{0pt plus 5cm}static void vm\_\-teardown (
+\begin{DoxyParamCaption}
+\item[{void}]{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily  [static]}}\label{vm_8c_af57623fb0faf7d57eb38d4f62354b325}
+Destroys the virtual machine instance 
+
+Definition at line 245 of file vm.c.
+
+
+
+References classpath\_\-teardown(), and gc\_\-teardown().
+
+
+
+Referenced by vm\_\-run().
+
+
+
+\subsection{Variable Documentation}
+\index{vm.c@{vm.c}!options@{options}}
+\index{options@{options}!vm.c@{vm.c}}
+\subsubsection[{options}]{\setlength{\rightskip}{0pt plus 5cm}{\bf options\_\-t} {\bf options}}\label{vm_8c_a240ee0e7894d18d8507c0e252c5f9230}
+{\bfseries Initial value:}
+\begin{DoxyCode}
+ {
+    ".", 
+    JEL_CLASSPATH_DIR, 
+    128 * 1024, 
+    4096, 
+    NULL, 
+    NULL, 
+    0, 
+
+
+
+
+ 
+
+
+
+
+
+ 
+
+    false, 
+    false 
+}
+\end{DoxyCode}
+Global options of the VM 
+
+Definition at line 66 of file vm.c.
+
+
+
+Referenced by opts\_\-get\_\-boot\_\-classpath(), opts\_\-get\_\-classpath(), opts\_\-get\_\-heap\_\-size(), opts\_\-get\_\-help(), opts\_\-get\_\-jargs(), opts\_\-get\_\-jargs\_\-n(), opts\_\-get\_\-main\_\-class(), opts\_\-get\_\-stack\_\-size(), opts\_\-get\_\-version(), opts\_\-set\_\-boot\_\-classpath(), opts\_\-set\_\-classpath(), opts\_\-set\_\-heap\_\-size(), opts\_\-set\_\-help(), opts\_\-set\_\-jargs(), opts\_\-set\_\-jargs\_\-n(), opts\_\-set\_\-main\_\-class(), opts\_\-set\_\-stack\_\-size(), and opts\_\-set\_\-version().
+
+\index{vm.c@{vm.c}!vm@{vm}}
+\index{vm@{vm}!vm.c@{vm.c}}
+\subsubsection[{vm}]{\setlength{\rightskip}{0pt plus 5cm}{\bf virtual\_\-machine\_\-t} {\bf vm}}\label{vm_8c_a9b54e1384397347c5e9f6e10c9c1d8db}
+Global virtual-\/machine pointer 
+
+Definition at line 91 of file vm.c.
+

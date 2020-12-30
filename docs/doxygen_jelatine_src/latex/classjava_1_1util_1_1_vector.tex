@@ -1,0 +1,683 @@
+\section{java::util::Vector Class Reference}
+\label{classjava_1_1util_1_1_vector}\index{java::util::Vector@{java::util::Vector}}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+{\bf Vector} ()
+\item 
+{\bf Vector} (int initialCapacity)
+\item 
+{\bf Vector} (int initialCapacity, int {\bf capacityIncrement})
+\item 
+synchronized void {\bf copyInto} (Object[$\,$] a)
+\item 
+synchronized void {\bf trimToSize} ()
+\item 
+synchronized void {\bf ensureCapacity} (int minCapacity)
+\item 
+synchronized void {\bf setSize} (int newSize)
+\item 
+synchronized int {\bf capacity} ()
+\item 
+synchronized int {\bf size} ()
+\item 
+synchronized boolean {\bf isEmpty} ()
+\item 
+{\bf Enumeration} {\bf elements} ()
+\item 
+boolean {\bf contains} (Object elem)
+\item 
+int {\bf indexOf} (Object elem)
+\item 
+synchronized int {\bf indexOf} (Object e, int index)
+\item 
+int {\bf lastIndexOf} (Object elem)
+\item 
+synchronized int {\bf lastIndexOf} (Object e, int index)  throws IndexOutOfBoundsException     
+\item 
+synchronized Object {\bf elementAt} (int index)  throws ArrayIndexOutOfBoundsException     
+\item 
+synchronized Object {\bf firstElement} ()
+\item 
+synchronized Object {\bf lastElement} ()
+\item 
+void {\bf setElementAt} (Object obj, int index)
+\item 
+void {\bf removeElementAt} (int index)
+\item 
+synchronized void {\bf insertElementAt} (Object obj, int index)
+\item 
+synchronized void {\bf addElement} (Object obj)
+\item 
+synchronized boolean {\bf removeElement} (Object obj)
+\item 
+synchronized void {\bf removeAllElements} ()
+\item 
+synchronized String {\bf toString} ()
+\end{DoxyCompactItemize}
+\subsection*{Protected Attributes}
+\begin{DoxyCompactItemize}
+\item 
+Object[$\,$] {\bf elementData}
+\item 
+int {\bf elementCount}
+\item 
+int {\bf capacityIncrement}
+\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+The {\ttfamily \doxyref{Vector}{p.}{classjava_1_1util_1_1_vector}} classes implements growable arrays of Objects. You can access elements in a \doxyref{Vector}{p.}{classjava_1_1util_1_1_vector} with an index, just as you can in a built in array, but Vectors can grow and shrink to accommodate more or fewer objects.
+
+Vectors try to mantain efficiency in growing by having a {\ttfamily capacityIncrement} that can be specified at instantiation. When a \doxyref{Vector}{p.}{classjava_1_1util_1_1_vector} can no longer hold a new Object, it grows by the amount in {\ttfamily capacityIncrement}. If this value is 0, the vector doubles in size.
+
+\doxyref{Vector}{p.}{classjava_1_1util_1_1_vector} implements the JDK 1.2 List interface, and is therefore a fully compliant Collection object. The \doxyref{Vector}{p.}{classjava_1_1util_1_1_vector} class is fully synchronized, but the iterators are not. So, when iterating over a vector, be sure to synchronize on the vector itself. If you don't want the expense of synchronization, use ArrayList instead. On the other hand, the \doxyref{Enumeration}{p.}{interfacejava_1_1util_1_1_enumeration} of \doxyref{elements()}{p.}{classjava_1_1util_1_1_vector_a012d17cd7d9e5207d03f6f41bbfec22b} is not thread-\/safe, nor is it fail-\/fast; so it can lead to undefined behavior even in a single thread if you modify the vector during iteration.
+
+Note: Some methods, especially those specified by List, specify throwing {\ttfamily IndexOutOfBoundsException}, but it is easier to implement by throwing the subclass {\ttfamily ArrayIndexOutOfBoundsException}. Others directly specify this subclass.
+
+\begin{DoxyAuthor}{Author}
+Scott G. Miller 
+
+Bryce McKinlay 
+
+Eric Blake ({\tt ebb9@email.byu.edu}) 
+\end{DoxyAuthor}
+
+
+Definition at line 70 of file Vector.java.
+
+
+
+\subsection{Constructor \& Destructor Documentation}
+\index{java::util::Vector@{java::util::Vector}!Vector@{Vector}}
+\index{Vector@{Vector}!java::util::Vector@{java::util::Vector}}
+\subsubsection[{Vector}]{\setlength{\rightskip}{0pt plus 5cm}java::util::Vector::Vector (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily  [inline]}}\label{classjava_1_1util_1_1_vector_a8b3a91c0377d9539695569b465847975}
+Constructs an empty vector with an initial size of 10, and a capacity increment of 0 
+
+Definition at line 96 of file Vector.java.
+
+\index{java::util::Vector@{java::util::Vector}!Vector@{Vector}}
+\index{Vector@{Vector}!java::util::Vector@{java::util::Vector}}
+\subsubsection[{Vector}]{\setlength{\rightskip}{0pt plus 5cm}java::util::Vector::Vector (
+\begin{DoxyParamCaption}
+\item[{int}]{ initialCapacity}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily  [inline]}}\label{classjava_1_1util_1_1_vector_acf6eecb7e12ad1d797820a83b96a48c9}
+Constructs a \doxyref{Vector}{p.}{classjava_1_1util_1_1_vector} with the initial capacity specified, and a capacity increment of 0 (double in size).
+
+
+\begin{DoxyParams}{Parameters}
+\item[{\em initialCapacity}]the initial size of the Vector's internal array \end{DoxyParams}
+
+\begin{DoxyExceptions}{Exceptions}
+\item[{\em IllegalArgumentException}]if initialCapacity $<$ 0 \end{DoxyExceptions}
+
+
+Definition at line 108 of file Vector.java.
+
+\index{java::util::Vector@{java::util::Vector}!Vector@{Vector}}
+\index{Vector@{Vector}!java::util::Vector@{java::util::Vector}}
+\subsubsection[{Vector}]{\setlength{\rightskip}{0pt plus 5cm}java::util::Vector::Vector (
+\begin{DoxyParamCaption}
+\item[{int}]{ initialCapacity, }
+\item[{int}]{ capacityIncrement}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily  [inline]}}\label{classjava_1_1util_1_1_vector_acbdfdf3c6eada55c5def061c27f17168}
+Constructs a \doxyref{Vector}{p.}{classjava_1_1util_1_1_vector} with the initial capacity and capacity increment specified.
+
+
+\begin{DoxyParams}{Parameters}
+\item[{\em initialCapacity}]the initial size of the Vector's internal array \item[{\em capacityIncrement}]the amount the internal array should be increased by when necessary, 0 to double the size \end{DoxyParams}
+
+\begin{DoxyExceptions}{Exceptions}
+\item[{\em IllegalArgumentException}]if initialCapacity $<$ 0 \end{DoxyExceptions}
+
+
+Definition at line 122 of file Vector.java.
+
+
+
+References elementData.
+
+
+
+\subsection{Member Function Documentation}
+\index{java::util::Vector@{java::util::Vector}!addElement@{addElement}}
+\index{addElement@{addElement}!java::util::Vector@{java::util::Vector}}
+\subsubsection[{addElement}]{\setlength{\rightskip}{0pt plus 5cm}synchronized void java::util::Vector::addElement (
+\begin{DoxyParamCaption}
+\item[{Object}]{ obj}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily  [inline]}}\label{classjava_1_1util_1_1_vector_a82e43c4516681378e822f8ab8d043758}
+Adds an element to the \doxyref{Vector}{p.}{classjava_1_1util_1_1_vector} at the end of the \doxyref{Vector}{p.}{classjava_1_1util_1_1_vector}. The vector is increased by ensureCapacity(\doxyref{size()}{p.}{classjava_1_1util_1_1_vector_a0801da7ce41c899def9648eaf661b2b6} + 1) if needed.
+
+
+\begin{DoxyParams}{Parameters}
+\item[{\em obj}]the object to add to the \doxyref{Vector}{p.}{classjava_1_1util_1_1_vector} \end{DoxyParams}
+
+
+Definition at line 455 of file Vector.java.
+
+
+
+References elementCount, elementData, and ensureCapacity().
+
+\index{java::util::Vector@{java::util::Vector}!capacity@{capacity}}
+\index{capacity@{capacity}!java::util::Vector@{java::util::Vector}}
+\subsubsection[{capacity}]{\setlength{\rightskip}{0pt plus 5cm}synchronized int java::util::Vector::capacity (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily  [inline]}}\label{classjava_1_1util_1_1_vector_a2ff13c53fe07eef210b4e7f7636ed38e}
+Returns the size of the internal data array (not the amount of elements contained in the \doxyref{Vector}{p.}{classjava_1_1util_1_1_vector}).
+
+\begin{DoxyReturn}{Returns}
+capacity of the internal data array 
+\end{DoxyReturn}
+
+
+Definition at line 222 of file Vector.java.
+
+
+
+References elementData.
+
+\index{java::util::Vector@{java::util::Vector}!contains@{contains}}
+\index{contains@{contains}!java::util::Vector@{java::util::Vector}}
+\subsubsection[{contains}]{\setlength{\rightskip}{0pt plus 5cm}boolean java::util::Vector::contains (
+\begin{DoxyParamCaption}
+\item[{Object}]{ elem}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily  [inline]}}\label{classjava_1_1util_1_1_vector_a67f55a2e4005c3bd0c065e774d192c9c}
+Returns true when {\ttfamily elem} is contained in this \doxyref{Vector}{p.}{classjava_1_1util_1_1_vector}.
+
+
+\begin{DoxyParams}{Parameters}
+\item[{\em elem}]the element to check \end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+true if the object is contained in this \doxyref{Vector}{p.}{classjava_1_1util_1_1_vector}, false otherwise 
+\end{DoxyReturn}
+
+
+Definition at line 281 of file Vector.java.
+
+
+
+References indexOf().
+
+\index{java::util::Vector@{java::util::Vector}!copyInto@{copyInto}}
+\index{copyInto@{copyInto}!java::util::Vector@{java::util::Vector}}
+\subsubsection[{copyInto}]{\setlength{\rightskip}{0pt plus 5cm}synchronized void java::util::Vector::copyInto (
+\begin{DoxyParamCaption}
+\item[{Object[$\,$]}]{ a}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily  [inline]}}\label{classjava_1_1util_1_1_vector_ac1ab9e3a2a1ca9123048c3c7e896cb54}
+Copies the contents of the \doxyref{Vector}{p.}{classjava_1_1util_1_1_vector} into the provided array. If the array is too small to fit all the elements in the \doxyref{Vector}{p.}{classjava_1_1util_1_1_vector}, an {\ttfamily IndexOutOfBoundsException} is thrown without modifying the array. Old elements in the array are overwritten by the new elements.
+
+
+\begin{DoxyParams}{Parameters}
+\item[{\em a}]target array for the copy \end{DoxyParams}
+
+\begin{DoxyExceptions}{Exceptions}
+\item[{\em IndexOutOfBoundsException}]the array is not large enough \item[{\em NullPointerException}]the array is null \end{DoxyExceptions}
+
+
+Definition at line 142 of file Vector.java.
+
+
+
+References elementCount, and elementData.
+
+\index{java::util::Vector@{java::util::Vector}!elementAt@{elementAt}}
+\index{elementAt@{elementAt}!java::util::Vector@{java::util::Vector}}
+\subsubsection[{elementAt}]{\setlength{\rightskip}{0pt plus 5cm}synchronized Object java::util::Vector::elementAt (
+\begin{DoxyParamCaption}
+\item[{int}]{ index}
+\end{DoxyParamCaption}
+)  throws ArrayIndexOutOfBoundsException     \hspace{0.3cm}{\ttfamily  [inline]}}\label{classjava_1_1util_1_1_vector_a07d3285fb4dff119c3be26a00c38820b}
+Returns the Object stored at {\ttfamily index}.
+
+
+\begin{DoxyParams}{Parameters}
+\item[{\em index}]the index of the Object to retrieve \end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+the object at {\ttfamily index} 
+\end{DoxyReturn}
+
+\begin{DoxyExceptions}{Exceptions}
+\item[{\em ArrayIndexOutOfBoundsException}]index $<$ 0 $|$$|$ index $>$= \doxyref{size()}{p.}{classjava_1_1util_1_1_vector_a0801da7ce41c899def9648eaf661b2b6} \end{DoxyExceptions}
+
+
+Definition at line 368 of file Vector.java.
+
+
+
+References elementData.
+
+\index{java::util::Vector@{java::util::Vector}!elements@{elements}}
+\index{elements@{elements}!java::util::Vector@{java::util::Vector}}
+\subsubsection[{elements}]{\setlength{\rightskip}{0pt plus 5cm}{\bf Enumeration} java::util::Vector::elements (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily  [inline]}}\label{classjava_1_1util_1_1_vector_a012d17cd7d9e5207d03f6f41bbfec22b}
+Returns an \doxyref{Enumeration}{p.}{interfacejava_1_1util_1_1_enumeration} of the elements of this \doxyref{Vector}{p.}{classjava_1_1util_1_1_vector}. The enumeration visits the elements in increasing index order, but is NOT thread-\/safe.
+
+\begin{DoxyReturn}{Returns}
+an \doxyref{Enumeration}{p.}{interfacejava_1_1util_1_1_enumeration} 
+\end{DoxyReturn}
+
+
+Definition at line 254 of file Vector.java.
+
+
+
+References elementCount, and elementData.
+
+\index{java::util::Vector@{java::util::Vector}!ensureCapacity@{ensureCapacity}}
+\index{ensureCapacity@{ensureCapacity}!java::util::Vector@{java::util::Vector}}
+\subsubsection[{ensureCapacity}]{\setlength{\rightskip}{0pt plus 5cm}synchronized void java::util::Vector::ensureCapacity (
+\begin{DoxyParamCaption}
+\item[{int}]{ minCapacity}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily  [inline]}}\label{classjava_1_1util_1_1_vector_a8a3d89b26e8f0d0c9502d15e93e746ed}
+Ensures that {\ttfamily minCapacity} elements can fit within this \doxyref{Vector}{p.}{classjava_1_1util_1_1_vector}. If {\ttfamily elementData} is too small, it is expanded as follows: If the {\ttfamily elementCount + capacityIncrement} is adequate, that is the new size. If {\ttfamily capacityIncrement} is non-\/zero, the candidate size is double the current. If that is not enough, the new size is {\ttfamily minCapacity}.
+
+
+\begin{DoxyParams}{Parameters}
+\item[{\em minCapacity}]the desired minimum capacity, negative values ignored \end{DoxyParams}
+
+
+Definition at line 173 of file Vector.java.
+
+
+
+References capacityIncrement, elementCount, and elementData.
+
+
+
+Referenced by addElement(), insertElementAt(), and setSize().
+
+\index{java::util::Vector@{java::util::Vector}!firstElement@{firstElement}}
+\index{firstElement@{firstElement}!java::util::Vector@{java::util::Vector}}
+\subsubsection[{firstElement}]{\setlength{\rightskip}{0pt plus 5cm}synchronized Object java::util::Vector::firstElement (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily  [inline]}}\label{classjava_1_1util_1_1_vector_af3d0195b4e74188e50bfca52739136da}
+Returns the first element (index 0) in the \doxyref{Vector}{p.}{classjava_1_1util_1_1_vector}.
+
+\begin{DoxyReturn}{Returns}
+the first Object in the \doxyref{Vector}{p.}{classjava_1_1util_1_1_vector} 
+\end{DoxyReturn}
+
+\begin{DoxyExceptions}{Exceptions}
+\item[{\em \doxyref{NoSuchElementException}{p.}{classjava_1_1util_1_1_no_such_element_exception}}]the \doxyref{Vector}{p.}{classjava_1_1util_1_1_vector} is empty \end{DoxyExceptions}
+
+
+Definition at line 382 of file Vector.java.
+
+
+
+References elementCount, and elementData.
+
+\index{java::util::Vector@{java::util::Vector}!indexOf@{indexOf}}
+\index{indexOf@{indexOf}!java::util::Vector@{java::util::Vector}}
+\subsubsection[{indexOf}]{\setlength{\rightskip}{0pt plus 5cm}int java::util::Vector::indexOf (
+\begin{DoxyParamCaption}
+\item[{Object}]{ elem}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily  [inline]}}\label{classjava_1_1util_1_1_vector_a31bfd18d729518b87d4b8263882fcd6e}
+Returns the first occurrence of {\ttfamily elem} in the \doxyref{Vector}{p.}{classjava_1_1util_1_1_vector}, or -\/1 if {\ttfamily elem} is not found.
+
+
+\begin{DoxyParams}{Parameters}
+\item[{\em elem}]the object to search for \end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+the index of the first occurrence, or -\/1 if not found 
+\end{DoxyReturn}
+
+
+Definition at line 293 of file Vector.java.
+
+
+
+Referenced by contains(), and removeElement().
+
+\index{java::util::Vector@{java::util::Vector}!indexOf@{indexOf}}
+\index{indexOf@{indexOf}!java::util::Vector@{java::util::Vector}}
+\subsubsection[{indexOf}]{\setlength{\rightskip}{0pt plus 5cm}synchronized int java::util::Vector::indexOf (
+\begin{DoxyParamCaption}
+\item[{Object}]{ e, }
+\item[{int}]{ index}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily  [inline]}}\label{classjava_1_1util_1_1_vector_a93dcec47b0ba4f02179003c8e100f0b6}
+Searches the vector starting at {\ttfamily index} for object {\ttfamily elem} and returns the index of the first occurrence of this Object. If the object is not found, or index is larger than the size of the vector, -\/1 is returned.
+
+
+\begin{DoxyParams}{Parameters}
+\item[{\em e}]the Object to search for \item[{\em index}]start searching at this index \end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+the index of the next occurrence, or -\/1 if it is not found 
+\end{DoxyReturn}
+
+
+Definition at line 308 of file Vector.java.
+
+
+
+References elementCount, and elementData.
+
+\index{java::util::Vector@{java::util::Vector}!insertElementAt@{insertElementAt}}
+\index{insertElementAt@{insertElementAt}!java::util::Vector@{java::util::Vector}}
+\subsubsection[{insertElementAt}]{\setlength{\rightskip}{0pt plus 5cm}synchronized void java::util::Vector::insertElementAt (
+\begin{DoxyParamCaption}
+\item[{Object}]{ obj, }
+\item[{int}]{ index}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily  [inline]}}\label{classjava_1_1util_1_1_vector_af164c5251a6fa6584feb295bb3a7ed9a}
+Inserts a new element into the \doxyref{Vector}{p.}{classjava_1_1util_1_1_vector} at {\ttfamily index}. Any elements at or greater than index are shifted up one position.
+
+
+\begin{DoxyParams}{Parameters}
+\item[{\em obj}]the object to insert \item[{\em index}]the index at which the object is inserted \end{DoxyParams}
+
+\begin{DoxyExceptions}{Exceptions}
+\item[{\em ArrayIndexOutOfBoundsException}]index $<$ 0 $|$$|$ index $>$ \doxyref{size()}{p.}{classjava_1_1util_1_1_vector_a0801da7ce41c899def9648eaf661b2b6} \end{DoxyExceptions}
+
+
+Definition at line 436 of file Vector.java.
+
+
+
+References elementCount, elementData, and ensureCapacity().
+
+\index{java::util::Vector@{java::util::Vector}!isEmpty@{isEmpty}}
+\index{isEmpty@{isEmpty}!java::util::Vector@{java::util::Vector}}
+\subsubsection[{isEmpty}]{\setlength{\rightskip}{0pt plus 5cm}synchronized boolean java::util::Vector::isEmpty (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily  [inline]}}\label{classjava_1_1util_1_1_vector_a6d15c16a23796b98c2d518e03bf7b0fa}
+Returns true if this \doxyref{Vector}{p.}{classjava_1_1util_1_1_vector} is empty, false otherwise
+
+\begin{DoxyReturn}{Returns}
+true if the \doxyref{Vector}{p.}{classjava_1_1util_1_1_vector} is empty, false otherwise 
+\end{DoxyReturn}
+
+
+Definition at line 242 of file Vector.java.
+
+
+
+References elementCount.
+
+\index{java::util::Vector@{java::util::Vector}!lastElement@{lastElement}}
+\index{lastElement@{lastElement}!java::util::Vector@{java::util::Vector}}
+\subsubsection[{lastElement}]{\setlength{\rightskip}{0pt plus 5cm}synchronized Object java::util::Vector::lastElement (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily  [inline]}}\label{classjava_1_1util_1_1_vector_ac84b5bb45ddbabce292cf57589f6afde}
+Returns the last element in the \doxyref{Vector}{p.}{classjava_1_1util_1_1_vector}.
+
+\begin{DoxyReturn}{Returns}
+the last Object in the \doxyref{Vector}{p.}{classjava_1_1util_1_1_vector} 
+\end{DoxyReturn}
+
+\begin{DoxyExceptions}{Exceptions}
+\item[{\em \doxyref{NoSuchElementException}{p.}{classjava_1_1util_1_1_no_such_element_exception}}]the \doxyref{Vector}{p.}{classjava_1_1util_1_1_vector} is empty \end{DoxyExceptions}
+
+
+Definition at line 396 of file Vector.java.
+
+
+
+References elementCount, and elementData.
+
+\index{java::util::Vector@{java::util::Vector}!lastIndexOf@{lastIndexOf}}
+\index{lastIndexOf@{lastIndexOf}!java::util::Vector@{java::util::Vector}}
+\subsubsection[{lastIndexOf}]{\setlength{\rightskip}{0pt plus 5cm}synchronized int java::util::Vector::lastIndexOf (
+\begin{DoxyParamCaption}
+\item[{Object}]{ e, }
+\item[{int}]{ index}
+\end{DoxyParamCaption}
+)  throws IndexOutOfBoundsException     \hspace{0.3cm}{\ttfamily  [inline]}}\label{classjava_1_1util_1_1_vector_a743d338920624b2c2d837e7cff76aa8a}
+Returns the index of the first occurrence of {\ttfamily elem}, when searching backwards from {\ttfamily index}. If the object does not occur in this \doxyref{Vector}{p.}{classjava_1_1util_1_1_vector}, or index is less than 0, -\/1 is returned.
+
+
+\begin{DoxyParams}{Parameters}
+\item[{\em e}]the object to search for \item[{\em index}]the index to start searching in reverse from \end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+the index of the Object if found, -\/1 otherwise 
+\end{DoxyReturn}
+
+\begin{DoxyExceptions}{Exceptions}
+\item[{\em IndexOutOfBoundsException}]if index $>$= \doxyref{size()}{p.}{classjava_1_1util_1_1_vector_a0801da7ce41c899def9648eaf661b2b6} \end{DoxyExceptions}
+
+
+Definition at line 349 of file Vector.java.
+
+
+
+References elementData.
+
+\index{java::util::Vector@{java::util::Vector}!lastIndexOf@{lastIndexOf}}
+\index{lastIndexOf@{lastIndexOf}!java::util::Vector@{java::util::Vector}}
+\subsubsection[{lastIndexOf}]{\setlength{\rightskip}{0pt plus 5cm}int java::util::Vector::lastIndexOf (
+\begin{DoxyParamCaption}
+\item[{Object}]{ elem}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily  [inline]}}\label{classjava_1_1util_1_1_vector_ae40cb1c4b45867feb1d8f1e698eff794}
+Returns the last index of {\ttfamily elem} within this \doxyref{Vector}{p.}{classjava_1_1util_1_1_vector}, or -\/1 if the object is not within the \doxyref{Vector}{p.}{classjava_1_1util_1_1_vector}.
+
+
+\begin{DoxyParams}{Parameters}
+\item[{\em elem}]the object to search for \end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+the last index of the object, or -\/1 if not found 
+\end{DoxyReturn}
+
+
+Definition at line 334 of file Vector.java.
+
+
+
+References elementCount.
+
+\index{java::util::Vector@{java::util::Vector}!removeAllElements@{removeAllElements}}
+\index{removeAllElements@{removeAllElements}!java::util::Vector@{java::util::Vector}}
+\subsubsection[{removeAllElements}]{\setlength{\rightskip}{0pt plus 5cm}synchronized void java::util::Vector::removeAllElements (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily  [inline]}}\label{classjava_1_1util_1_1_vector_a1329165a4801e62ff7aeed2a5c2a8a9b}
+Removes all elements from the \doxyref{Vector}{p.}{classjava_1_1util_1_1_vector}. Note that this does not resize the internal data array. 
+
+Definition at line 488 of file Vector.java.
+
+
+
+References elementCount, and elementData.
+
+\index{java::util::Vector@{java::util::Vector}!removeElement@{removeElement}}
+\index{removeElement@{removeElement}!java::util::Vector@{java::util::Vector}}
+\subsubsection[{removeElement}]{\setlength{\rightskip}{0pt plus 5cm}synchronized boolean java::util::Vector::removeElement (
+\begin{DoxyParamCaption}
+\item[{Object}]{ obj}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily  [inline]}}\label{classjava_1_1util_1_1_vector_ac962b891e5e86e09e5351db4600484d3}
+Removes the first (the lowestindex) occurance of the given object from the \doxyref{Vector}{p.}{classjava_1_1util_1_1_vector}. If such a remove was performed (the object was found), true is returned. If there was no such object, false is returned.
+
+
+\begin{DoxyParams}{Parameters}
+\item[{\em obj}]the object to remove from the \doxyref{Vector}{p.}{classjava_1_1util_1_1_vector} \end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+true if the Object was in the \doxyref{Vector}{p.}{classjava_1_1util_1_1_vector}, false otherwise 
+\end{DoxyReturn}
+
+
+Definition at line 471 of file Vector.java.
+
+
+
+References indexOf().
+
+\index{java::util::Vector@{java::util::Vector}!removeElementAt@{removeElementAt}}
+\index{removeElementAt@{removeElementAt}!java::util::Vector@{java::util::Vector}}
+\subsubsection[{removeElementAt}]{\setlength{\rightskip}{0pt plus 5cm}void java::util::Vector::removeElementAt (
+\begin{DoxyParamCaption}
+\item[{int}]{ index}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily  [inline]}}\label{classjava_1_1util_1_1_vector_af2ce6452e3dd15fc57866488d254fed7}
+Removes the element at {\ttfamily index}, and shifts all elements at positions greater than index to their index -\/ 1.
+
+
+\begin{DoxyParams}{Parameters}
+\item[{\em index}]the index of the element to remove \end{DoxyParams}
+
+\begin{DoxyExceptions}{Exceptions}
+\item[{\em ArrayIndexOutOfBoundsException}]index $<$ 0 $|$$|$ index $>$= \doxyref{size()}{p.}{classjava_1_1util_1_1_vector_a0801da7ce41c899def9648eaf661b2b6}; \end{DoxyExceptions}
+
+
+Definition at line 423 of file Vector.java.
+
+\index{java::util::Vector@{java::util::Vector}!setElementAt@{setElementAt}}
+\index{setElementAt@{setElementAt}!java::util::Vector@{java::util::Vector}}
+\subsubsection[{setElementAt}]{\setlength{\rightskip}{0pt plus 5cm}void java::util::Vector::setElementAt (
+\begin{DoxyParamCaption}
+\item[{Object}]{ obj, }
+\item[{int}]{ index}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily  [inline]}}\label{classjava_1_1util_1_1_vector_a84ec405be14284c5990ede946bdcd032}
+Changes the element at {\ttfamily index} to be {\ttfamily obj}
+
+
+\begin{DoxyParams}{Parameters}
+\item[{\em obj}]the object to store \item[{\em index}]the position in the \doxyref{Vector}{p.}{classjava_1_1util_1_1_vector} to store the object \end{DoxyParams}
+
+\begin{DoxyExceptions}{Exceptions}
+\item[{\em ArrayIndexOutOfBoundsException}]the index is out of range \end{DoxyExceptions}
+
+
+Definition at line 411 of file Vector.java.
+
+\index{java::util::Vector@{java::util::Vector}!setSize@{setSize}}
+\index{setSize@{setSize}!java::util::Vector@{java::util::Vector}}
+\subsubsection[{setSize}]{\setlength{\rightskip}{0pt plus 5cm}synchronized void java::util::Vector::setSize (
+\begin{DoxyParamCaption}
+\item[{int}]{ newSize}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily  [inline]}}\label{classjava_1_1util_1_1_vector_ade5a9e31da736390cc1d2d9abb19375d}
+Explicitly sets the size of the vector (but not necessarily the size of the internal data array). If the new size is smaller than the old one, old values that don't fit are lost. If the new size is larger than the old one, the vector is padded with null entries.
+
+
+\begin{DoxyParams}{Parameters}
+\item[{\em newSize}]The new size of the internal array \end{DoxyParams}
+
+\begin{DoxyExceptions}{Exceptions}
+\item[{\em ArrayIndexOutOfBoundsException}]if the new size is negative \end{DoxyExceptions}
+
+
+Definition at line 200 of file Vector.java.
+
+
+
+References elementCount, elementData, and ensureCapacity().
+
+\index{java::util::Vector@{java::util::Vector}!size@{size}}
+\index{size@{size}!java::util::Vector@{java::util::Vector}}
+\subsubsection[{size}]{\setlength{\rightskip}{0pt plus 5cm}synchronized int java::util::Vector::size (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily  [inline]}}\label{classjava_1_1util_1_1_vector_a0801da7ce41c899def9648eaf661b2b6}
+Returns the number of elements stored in this \doxyref{Vector}{p.}{classjava_1_1util_1_1_vector}.
+
+\begin{DoxyReturn}{Returns}
+the number of elements in this \doxyref{Vector}{p.}{classjava_1_1util_1_1_vector} 
+\end{DoxyReturn}
+
+
+Definition at line 232 of file Vector.java.
+
+
+
+References elementCount.
+
+\index{java::util::Vector@{java::util::Vector}!toString@{toString}}
+\index{toString@{toString}!java::util::Vector@{java::util::Vector}}
+\subsubsection[{toString}]{\setlength{\rightskip}{0pt plus 5cm}synchronized String java::util::Vector::toString (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily  [inline]}}\label{classjava_1_1util_1_1_vector_a853c0008b550e8e5e7fac9f7f8ddcce8}
+Returns a string representation of this \doxyref{Vector}{p.}{classjava_1_1util_1_1_vector} in the form \char`\"{}[element0, element1, ... elementN]\char`\"{}.
+
+\begin{DoxyReturn}{Returns}
+the String representation of this \doxyref{Vector}{p.}{classjava_1_1util_1_1_vector} 
+\end{DoxyReturn}
+
+
+Definition at line 548 of file Vector.java.
+
+\index{java::util::Vector@{java::util::Vector}!trimToSize@{trimToSize}}
+\index{trimToSize@{trimToSize}!java::util::Vector@{java::util::Vector}}
+\subsubsection[{trimToSize}]{\setlength{\rightskip}{0pt plus 5cm}synchronized void java::util::Vector::trimToSize (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily  [inline]}}\label{classjava_1_1util_1_1_vector_a181e1362b3347a30ae747c705811dfa6}
+Trims the \doxyref{Vector}{p.}{classjava_1_1util_1_1_vector} down to size. If the internal data array is larger than the number of Objects its holding, a new array is constructed that precisely holds the elements. Otherwise this does nothing. 
+
+Definition at line 152 of file Vector.java.
+
+
+
+References elementCount, and elementData.
+
+
+
+\subsection{Field Documentation}
+\index{java::util::Vector@{java::util::Vector}!capacityIncrement@{capacityIncrement}}
+\index{capacityIncrement@{capacityIncrement}!java::util::Vector@{java::util::Vector}}
+\subsubsection[{capacityIncrement}]{\setlength{\rightskip}{0pt plus 5cm}int {\bf java::util::Vector::capacityIncrement}\hspace{0.3cm}{\ttfamily  [protected]}}\label{classjava_1_1util_1_1_vector_ab2ea5a80b4069f16a578fe942cd47b08}
+The amount the Vector's internal array should be increased in size when a new element is added that exceeds the current size of the array, or when \doxyref{ensureCapacity}{p.}{classjava_1_1util_1_1_vector_a8a3d89b26e8f0d0c9502d15e93e746ed} is called. If $<$= 0, the vector just doubles in size. 
+
+Definition at line 90 of file Vector.java.
+
+
+
+Referenced by ensureCapacity().
+
+\index{java::util::Vector@{java::util::Vector}!elementCount@{elementCount}}
+\index{elementCount@{elementCount}!java::util::Vector@{java::util::Vector}}
+\subsubsection[{elementCount}]{\setlength{\rightskip}{0pt plus 5cm}int {\bf java::util::Vector::elementCount}\hspace{0.3cm}{\ttfamily  [protected]}}\label{classjava_1_1util_1_1_vector_acbc34f717bf0fd000377d155464618f6}
+The number of elements currently in the vector, also returned by \doxyref{size}{p.}{classjava_1_1util_1_1_vector_a0801da7ce41c899def9648eaf661b2b6}. 
+
+Definition at line 82 of file Vector.java.
+
+
+
+Referenced by addElement(), copyInto(), elements(), ensureCapacity(), firstElement(), indexOf(), insertElementAt(), isEmpty(), lastElement(), lastIndexOf(), removeAllElements(), setSize(), size(), and trimToSize().
+
+\index{java::util::Vector@{java::util::Vector}!elementData@{elementData}}
+\index{elementData@{elementData}!java::util::Vector@{java::util::Vector}}
+\subsubsection[{elementData}]{\setlength{\rightskip}{0pt plus 5cm}Object [$\,$] {\bf java::util::Vector::elementData}\hspace{0.3cm}{\ttfamily  [protected]}}\label{classjava_1_1util_1_1_vector_aaac2d287ddfbec59c95affdef2261a53}
+The internal array used to hold members of a \doxyref{Vector}{p.}{classjava_1_1util_1_1_vector}. The elements are in positions 0 through elementCount -\/ 1, and all remaining slots are null. 
+
+Definition at line 76 of file Vector.java.
+
+
+
+Referenced by addElement(), capacity(), copyInto(), elementAt(), elements(), ensureCapacity(), firstElement(), indexOf(), insertElementAt(), lastElement(), lastIndexOf(), removeAllElements(), setSize(), trimToSize(), and Vector().
+
+
+
+The documentation for this class was generated from the following file:\begin{DoxyCompactItemize}
+\item 
+src/classpath/java/util/Vector.java\end{DoxyCompactItemize}

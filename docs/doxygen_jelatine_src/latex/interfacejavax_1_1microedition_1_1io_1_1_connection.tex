@@ -1,0 +1,43 @@
+\section{javax::microedition::io::Connection Interface Reference}
+\label{interfacejavax_1_1microedition_1_1io_1_1_connection}\index{javax::microedition::io::Connection@{javax::microedition::io::Connection}}
+Inheritance diagram for javax::microedition::io::Connection:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=1.544828cm]{interfacejavax_1_1microedition_1_1io_1_1_connection}
+\end{center}
+\end{figure}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+void {\bf close} ()  throws IOException
+\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+Represents the interface of the most basic type of generic connection. Only the close method is defined. No open method is defined here because opening is always done using the \doxyref{Connector.open()}{p.}{classjavax_1_1microedition_1_1io_1_1_connector_a4a80fa8873c4da30e56ab8e3e725769f} methods. 
+
+Definition at line 30 of file Connection.java.
+
+
+
+\subsection{Member Function Documentation}
+\index{javax::microedition::io::Connection@{javax::microedition::io::Connection}!close@{close}}
+\index{close@{close}!javax::microedition::io::Connection@{javax::microedition::io::Connection}}
+\subsubsection[{close}]{\setlength{\rightskip}{0pt plus 5cm}void javax::microedition::io::Connection::close (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)  throws {\bf IOException}}\label{interfacejavax_1_1microedition_1_1io_1_1_connection_a7f8bc2fe6d08db2ea746a0732c610d95}
+Closes the connection 
+
+Implemented in {\bf jelatine::cldc::io::socket::ProtocolImpl} \doxyref{}{p.}{classjelatine_1_1cldc_1_1io_1_1socket_1_1_protocol_impl_a2b962e7188683b5c12c6bf64170fad2a}.
+
+
+
+Referenced by javax::microedition::io::Connector::openDataInputStream(), and javax::microedition::io::Connector::openDataOutputStream().
+
+
+
+The documentation for this interface was generated from the following file:\begin{DoxyCompactItemize}
+\item 
+src/classpath/javax/microedition/io/Connection.java\end{DoxyCompactItemize}

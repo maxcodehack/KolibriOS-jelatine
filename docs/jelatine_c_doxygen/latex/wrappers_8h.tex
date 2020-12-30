@@ -1,0 +1,100 @@
+\section{wrappers.h File Reference}
+\label{wrappers_8h}\index{wrappers.h@{wrappers.h}}
+{\ttfamily \#include $<$assert.h$>$}\par
+{\ttfamily \#include $<$setjmp.h$>$}\par
+{\ttfamily \#include $<$stdarg.h$>$}\par
+{\ttfamily \#include $<$stddef.h$>$}\par
+{\ttfamily \#include $<$stdio.h$>$}\par
+{\ttfamily \#include $<$stdlib.h$>$}\par
+{\ttfamily \#include $<$string.h$>$}\par
+\subsection*{Defines}
+\begin{DoxyCompactItemize}
+\item 
+\#define {\bf JELATINE\_\-WRAPPERS\_\-H}~(1)
+\item 
+\#define {\bf bool}~{\bf \_\-Bool}
+\item 
+\#define {\bf false}~(0)
+\item 
+\#define {\bf true}~(1)
+\item 
+\#define {\bf \_\-\_\-bool\_\-true\_\-false\_\-are\_\-defined}~(1)
+\end{DoxyCompactItemize}
+\subsection*{Typedefs}
+\begin{DoxyCompactItemize}
+\item 
+typedef unsigned int {\bf \_\-Bool}
+\item 
+typedef intptr\_\-t {\bf ptrdiff\_\-t}
+\item 
+typedef uint32\_\-t {\bf jword\_\-t}
+\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+Portability wrappers 
+
+Definition in file {\bf wrappers.h}.
+
+
+
+\subsection{Define Documentation}
+\index{wrappers.h@{wrappers.h}!\_\-\_\-bool\_\-true\_\-false\_\-are\_\-defined@{\_\-\_\-bool\_\-true\_\-false\_\-are\_\-defined}}
+\index{\_\-\_\-bool\_\-true\_\-false\_\-are\_\-defined@{\_\-\_\-bool\_\-true\_\-false\_\-are\_\-defined}!wrappers.h@{wrappers.h}}
+\subsubsection[{\_\-\_\-bool\_\-true\_\-false\_\-are\_\-defined}]{\setlength{\rightskip}{0pt plus 5cm}\#define \_\-\_\-bool\_\-true\_\-false\_\-are\_\-defined~(1)}\label{wrappers_8h_a665b0cc9ee2ced31785321d55cde349e}
+True if bool, true and false are defined 
+
+Definition at line 99 of file wrappers.h.
+
+\index{wrappers.h@{wrappers.h}!bool@{bool}}
+\index{bool@{bool}!wrappers.h@{wrappers.h}}
+\subsubsection[{bool}]{\setlength{\rightskip}{0pt plus 5cm}\#define bool~{\bf \_\-Bool}}\label{wrappers_8h_abb452686968e48b67397da5f97445f5b}
+Boolean type wrapper used if the compiler doesn't provide it 
+
+Definition at line 96 of file wrappers.h.
+
+\index{wrappers.h@{wrappers.h}!false@{false}}
+\index{false@{false}!wrappers.h@{wrappers.h}}
+\subsubsection[{false}]{\setlength{\rightskip}{0pt plus 5cm}\#define false~(0)}\label{wrappers_8h_a65e9886d74aaee76545e83dd09011727}
+Boolean false value wrapper used if the compiler doesn't provide it 
+
+Definition at line 97 of file wrappers.h.
+
+\index{wrappers.h@{wrappers.h}!JELATINE\_\-WRAPPERS\_\-H@{JELATINE\_\-WRAPPERS\_\-H}}
+\index{JELATINE\_\-WRAPPERS\_\-H@{JELATINE\_\-WRAPPERS\_\-H}!wrappers.h@{wrappers.h}}
+\subsubsection[{JELATINE\_\-WRAPPERS\_\-H}]{\setlength{\rightskip}{0pt plus 5cm}\#define JELATINE\_\-WRAPPERS\_\-H~(1)}\label{wrappers_8h_ab40b6ff77a3aaf783dd1bd4826161de0}
+\doxyref{wrappers.h}{p.}{wrappers_8h} inclusion macro 
+
+Definition at line 28 of file wrappers.h.
+
+\index{wrappers.h@{wrappers.h}!true@{true}}
+\index{true@{true}!wrappers.h@{wrappers.h}}
+\subsubsection[{true}]{\setlength{\rightskip}{0pt plus 5cm}\#define true~(1)}\label{wrappers_8h_a41f9c5fb8b08eb5dc3edce4dcb37fee7}
+Boolean true value wrapper used if the compiler doesn't provide it 
+
+Definition at line 98 of file wrappers.h.
+
+
+
+\subsection{Typedef Documentation}
+\index{wrappers.h@{wrappers.h}!\_\-Bool@{\_\-Bool}}
+\index{\_\-Bool@{\_\-Bool}!wrappers.h@{wrappers.h}}
+\subsubsection[{\_\-Bool}]{\setlength{\rightskip}{0pt plus 5cm}{\bf \_\-Bool}}\label{wrappers_8h_a3b2f8ce8eb83358d84c6058be0e0a92b}
+C99 \_\-Bool wrapper used if the compiler doesn't provide it 
+
+Definition at line 93 of file wrappers.h.
+
+\index{wrappers.h@{wrappers.h}!jword\_\-t@{jword\_\-t}}
+\index{jword\_\-t@{jword\_\-t}!wrappers.h@{wrappers.h}}
+\subsubsection[{jword\_\-t}]{\setlength{\rightskip}{0pt plus 5cm}{\bf jword\_\-t}}\label{wrappers_8h_a9849124bfecdbfa5fbea0d619a6341db}
+Represents the basic unit in which the Java heap is accessed 
+
+Definition at line 115 of file wrappers.h.
+
+\index{wrappers.h@{wrappers.h}!ptrdiff\_\-t@{ptrdiff\_\-t}}
+\index{ptrdiff\_\-t@{ptrdiff\_\-t}!wrappers.h@{wrappers.h}}
+\subsubsection[{ptrdiff\_\-t}]{\setlength{\rightskip}{0pt plus 5cm}typedef intptr\_\-t {\bf ptrdiff\_\-t}}\label{wrappers_8h_ae209eb7ec7a19803d38f034f77fe15ed}
+ptrdiff\_\-t wrapper, some compilers lack the ptrdiff\_\-t type, in case we define it ourselves 
+
+Definition at line 106 of file wrappers.h.
+

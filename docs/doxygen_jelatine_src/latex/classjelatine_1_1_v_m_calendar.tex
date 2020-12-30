@@ -1,0 +1,115 @@
+\section{jelatine::VMCalendar Class Reference}
+\label{classjelatine_1_1_v_m_calendar}\index{jelatine::VMCalendar@{jelatine::VMCalendar}}
+Inheritance diagram for jelatine::VMCalendar:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=2.000000cm]{classjelatine_1_1_v_m_calendar}
+\end{center}
+\end{figure}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+{\bf VMCalendar} ()
+\end{DoxyCompactItemize}
+\subsection*{Static Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+static final int {\bf BC} = 0
+\item 
+static final int {\bf AD} = 1
+\end{DoxyCompactItemize}
+\subsection*{Protected Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+void {\bf computeTime} ()
+\item 
+void {\bf computeFields} ()
+\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+Internal implementation of the default Calendar class 
+
+Definition at line 29 of file VMCalendar.java.
+
+
+
+\subsection{Constructor \& Destructor Documentation}
+\index{jelatine::VMCalendar@{jelatine::VMCalendar}!VMCalendar@{VMCalendar}}
+\index{VMCalendar@{VMCalendar}!jelatine::VMCalendar@{jelatine::VMCalendar}}
+\subsubsection[{VMCalendar}]{\setlength{\rightskip}{0pt plus 5cm}jelatine::VMCalendar::VMCalendar (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily  [inline]}}\label{classjelatine_1_1_v_m_calendar_a674693849e68366071bd7d17d1d6e7be}
+Constructs a new GregorianCalender representing the current time, using the default time zone and the default locale. 
+
+Definition at line 76 of file VMCalendar.java.
+
+
+
+References java::util::Calendar::complete(), and java::util::Calendar::setTimeInMillis().
+
+
+
+\subsection{Member Function Documentation}
+\index{jelatine::VMCalendar@{jelatine::VMCalendar}!computeFields@{computeFields}}
+\index{computeFields@{computeFields}!jelatine::VMCalendar@{jelatine::VMCalendar}}
+\subsubsection[{computeFields}]{\setlength{\rightskip}{0pt plus 5cm}void jelatine::VMCalendar::computeFields (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily  [inline, protected, virtual]}}\label{classjelatine_1_1_v_m_calendar_a19e3578101dd45d48896877c8f41539a}
+Implements the abstract \doxyref{computeFields()}{p.}{classjelatine_1_1_v_m_calendar_a19e3578101dd45d48896877c8f41539a} method 
+
+Implements {\bf java::util::Calendar} \doxyref{}{p.}{classjava_1_1util_1_1_calendar_af2104128871bc4ab1b07d77e10d2e94b}.
+
+
+
+Definition at line 195 of file VMCalendar.java.
+
+
+
+References java::util::Calendar::AM, java::util::Calendar::AM\_\-PM, java::util::Calendar::areFieldsSet, java::util::Calendar::DAY\_\-OF\_\-MONTH, java::util::Calendar::DAY\_\-OF\_\-WEEK, java::util::Calendar::fields, java::util::Calendar::HOUR, java::util::Calendar::HOUR\_\-OF\_\-DAY, java::util::Calendar::isSet, java::util::Calendar::MILLISECOND, java::util::Calendar::MINUTE, java::util::Calendar::MONTH, java::util::Calendar::PM, java::util::Calendar::SECOND, java::util::Calendar::time, and java::util::Calendar::YEAR.
+
+\index{jelatine::VMCalendar@{jelatine::VMCalendar}!computeTime@{computeTime}}
+\index{computeTime@{computeTime}!jelatine::VMCalendar@{jelatine::VMCalendar}}
+\subsubsection[{computeTime}]{\setlength{\rightskip}{0pt plus 5cm}void jelatine::VMCalendar::computeTime (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily  [inline, protected, virtual]}}\label{classjelatine_1_1_v_m_calendar_a5302c05540abf758117bc85608bc4dfb}
+Implements the abstract \doxyref{computeTime()}{p.}{classjelatine_1_1_v_m_calendar_a5302c05540abf758117bc85608bc4dfb} method 
+
+Implements {\bf java::util::Calendar} \doxyref{}{p.}{classjava_1_1util_1_1_calendar_a8bef02a7d4ee773318e4f32db442f10c}.
+
+
+
+Definition at line 86 of file VMCalendar.java.
+
+
+
+References java::util::Calendar::AM\_\-PM, java::util::Calendar::DAY\_\-OF\_\-MONTH, java::util::Calendar::DAY\_\-OF\_\-WEEK, java::util::Calendar::fields, java::util::Calendar::HOUR, java::util::Calendar::HOUR\_\-OF\_\-DAY, java::util::Calendar::isSet, java::util::Calendar::isTimeSet, java::util::Calendar::MILLISECOND, java::util::Calendar::MINUTE, java::util::Calendar::MONTH, java::util::Calendar::PM, java::util::Calendar::SECOND, java::util::Calendar::THURSDAY, java::util::Calendar::time, and java::util::Calendar::YEAR.
+
+
+
+\subsection{Field Documentation}
+\index{jelatine::VMCalendar@{jelatine::VMCalendar}!AD@{AD}}
+\index{AD@{AD}!jelatine::VMCalendar@{jelatine::VMCalendar}}
+\subsubsection[{AD}]{\setlength{\rightskip}{0pt plus 5cm}final int {\bf jelatine::VMCalendar::AD} = 1\hspace{0.3cm}{\ttfamily  [static]}}\label{classjelatine_1_1_v_m_calendar_a7baf372945a3ece60fd0bdee516256ff}
+Constant representing the era AD (Anno Domini). 
+
+Definition at line 39 of file VMCalendar.java.
+
+\index{jelatine::VMCalendar@{jelatine::VMCalendar}!BC@{BC}}
+\index{BC@{BC}!jelatine::VMCalendar@{jelatine::VMCalendar}}
+\subsubsection[{BC}]{\setlength{\rightskip}{0pt plus 5cm}final int {\bf jelatine::VMCalendar::BC} = 0\hspace{0.3cm}{\ttfamily  [static]}}\label{classjelatine_1_1_v_m_calendar_a548c0edfd82f21eb73c9e1faf22fed0d}
+Constant representing the era BC (Before Christ). 
+
+Definition at line 34 of file VMCalendar.java.
+
+
+
+The documentation for this class was generated from the following file:\begin{DoxyCompactItemize}
+\item 
+src/classpath/jelatine/VMCalendar.java\end{DoxyCompactItemize}

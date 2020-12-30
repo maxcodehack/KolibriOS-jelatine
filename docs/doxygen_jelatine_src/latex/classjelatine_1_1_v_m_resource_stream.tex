@@ -1,0 +1,123 @@
+\section{jelatine::VMResourceStream Class Reference}
+\label{classjelatine_1_1_v_m_resource_stream}\index{jelatine::VMResourceStream@{jelatine::VMResourceStream}}
+Inheritance diagram for jelatine::VMResourceStream:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=2.000000cm]{classjelatine_1_1_v_m_resource_stream}
+\end{center}
+\end{figure}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+{\bf VMResourceStream} ({\bf String} resource)
+\item 
+native boolean {\bf open} ()
+\item 
+int {\bf available} ()
+\item 
+native int {\bf read} ()
+\end{DoxyCompactItemize}
+\subsection*{Protected Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+native void {\bf finalize} ()
+\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+Internal VM class used for handling System's standard error and output streams 
+
+Definition at line 31 of file VMResourceStream.java.
+
+
+
+\subsection{Constructor \& Destructor Documentation}
+\index{jelatine::VMResourceStream@{jelatine::VMResourceStream}!VMResourceStream@{VMResourceStream}}
+\index{VMResourceStream@{VMResourceStream}!jelatine::VMResourceStream@{jelatine::VMResourceStream}}
+\subsubsection[{VMResourceStream}]{\setlength{\rightskip}{0pt plus 5cm}jelatine::VMResourceStream::VMResourceStream (
+\begin{DoxyParamCaption}
+\item[{{\bf String}}]{ resource}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily  [inline]}}\label{classjelatine_1_1_v_m_resource_stream_a8642d8e1a123080b0f404e51c7131056}
+Creates a new stream for the specified resource 
+\begin{DoxyParams}{Parameters}
+\item[{\em resource}]Resource name \end{DoxyParams}
+
+
+Definition at line 46 of file VMResourceStream.java.
+
+
+
+References available().
+
+
+
+\subsection{Member Function Documentation}
+\index{jelatine::VMResourceStream@{jelatine::VMResourceStream}!available@{available}}
+\index{available@{available}!jelatine::VMResourceStream@{jelatine::VMResourceStream}}
+\subsubsection[{available}]{\setlength{\rightskip}{0pt plus 5cm}int jelatine::VMResourceStream::available (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily  [inline]}}\label{classjelatine_1_1_v_m_resource_stream_aa585878dc07190441eada47550e45591}
+Returns the number of bytes that can be read (or skipped over) from this input stream without blocking by the next caller of a method for this input stream. The next caller might be the same thread or another thread
+
+\begin{DoxyReturn}{Returns}
+the number of bytes that can be read from this input stream without blocking 
+\end{DoxyReturn}
+
+
+Reimplemented from {\bf java::io::InputStream} \doxyref{}{p.}{classjava_1_1io_1_1_input_stream_ac07ebf2845751f87e46269188517d440}.
+
+
+
+Definition at line 67 of file VMResourceStream.java.
+
+
+
+Referenced by VMResourceStream().
+
+\index{jelatine::VMResourceStream@{jelatine::VMResourceStream}!finalize@{finalize}}
+\index{finalize@{finalize}!jelatine::VMResourceStream@{jelatine::VMResourceStream}}
+\subsubsection[{finalize}]{\setlength{\rightskip}{0pt plus 5cm}native void jelatine::VMResourceStream::finalize (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily  [protected]}}\label{classjelatine_1_1_v_m_resource_stream_adfd9f73e19e2def04b8ecc6d3038ca38}
+Finalize method \index{jelatine::VMResourceStream@{jelatine::VMResourceStream}!open@{open}}
+\index{open@{open}!jelatine::VMResourceStream@{jelatine::VMResourceStream}}
+\subsubsection[{open}]{\setlength{\rightskip}{0pt plus 5cm}native boolean jelatine::VMResourceStream::open (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}\label{classjelatine_1_1_v_m_resource_stream_adc38cf212807e340d77e461035cb13e5}
+Opens the resource stream \begin{DoxyReturn}{Returns}
+true if the resource held by the object is available, false otherwise 
+\end{DoxyReturn}
+
+
+Referenced by java::lang::Class::getResourceAsStream().
+
+\index{jelatine::VMResourceStream@{jelatine::VMResourceStream}!read@{read}}
+\index{read@{read}!jelatine::VMResourceStream@{jelatine::VMResourceStream}}
+\subsubsection[{read}]{\setlength{\rightskip}{0pt plus 5cm}native int jelatine::VMResourceStream::read (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily  [virtual]}}\label{classjelatine_1_1_v_m_resource_stream_a44260a484b4eb7e0aac40c772657ff96}
+This method reads an unsigned byte from the input stream and returns it as an int in the range of 0-\/255. This method also will return -\/1 if the end of the stream has been reached. 
+
+This method will block until the byte can be read.
+
+\begin{DoxyReturn}{Returns}
+The byte read or -\/1 if end of stream 
+\end{DoxyReturn}
+
+
+Implements {\bf java::io::InputStream} \doxyref{}{p.}{classjava_1_1io_1_1_input_stream_a2663225289237a9aefef92a835ad4a9b}.
+
+
+
+The documentation for this class was generated from the following file:\begin{DoxyCompactItemize}
+\item 
+src/classpath/jelatine/VMResourceStream.java\end{DoxyCompactItemize}

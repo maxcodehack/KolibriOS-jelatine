@@ -1,0 +1,1635 @@
+\section{opcodes.h File Reference}
+\label{opcodes_8h}\index{opcodes.h@{opcodes.h}}
+{\ttfamily \#include \char`\"{}wrappers.h\char`\"{}}\par
+\subsection*{Defines}
+\begin{DoxyCompactItemize}
+\item 
+\#define {\bf JELATINE\_\-OPCODES\_\-H}~(1)
+\end{DoxyCompactItemize}
+\subsection*{Typedefs}
+\begin{DoxyCompactItemize}
+\item 
+typedef enum {\bf array\_\-type\_\-t} {\bf array\_\-type\_\-t}
+\item 
+typedef enum {\bf internal\_\-opcode\_\-t} {\bf internal\_\-opcode\_\-t}
+\item 
+typedef enum {\bf java\_\-opcode\_\-t} {\bf java\_\-opcode\_\-t}
+\end{DoxyCompactItemize}
+\subsection*{Enumerations}
+\begin{DoxyCompactItemize}
+\item 
+enum {\bf array\_\-type\_\-t} \{ \par
+{\bf T\_\-BOOLEAN} =  4, 
+{\bf T\_\-CHAR} =  5, 
+{\bf T\_\-BYTE} =  8, 
+{\bf T\_\-SHORT} =  9, 
+\par
+{\bf T\_\-INT} =  10, 
+{\bf T\_\-LONG} =  11
+ \}
+\item 
+enum {\bf internal\_\-opcode\_\-t} \{ \par
+{\bf NOP} =  0, 
+{\bf ACONST\_\-NULL} =  1, 
+{\bf ICONST\_\-M1} =  2, 
+{\bf ICONST\_\-0} =  3, 
+\par
+{\bf ICONST\_\-1} =  4, 
+{\bf ICONST\_\-2} =  5, 
+{\bf ICONST\_\-3} =  6, 
+{\bf ICONST\_\-4} =  7, 
+\par
+{\bf ICONST\_\-5} =  8, 
+{\bf LCONST\_\-0} =  9, 
+{\bf LCONST\_\-1} =  10, 
+{\bf FCONST\_\-0} =  11, 
+\par
+{\bf FCONST\_\-1} =  12, 
+{\bf FCONST\_\-2} =  13, 
+{\bf DCONST\_\-0} =  14, 
+{\bf DCONST\_\-1} =  15, 
+\par
+{\bf BIPUSH} =  16, 
+{\bf SIPUSH} =  17, 
+{\bf LDC} =  18, 
+{\bf LDC\_\-W} =  19, 
+\par
+{\bf LDC2\_\-W} =  20, 
+{\bf ILOAD} =  21, 
+{\bf LLOAD} =  22, 
+{\bf FLOAD} =  23, 
+\par
+{\bf DLOAD} =  24, 
+{\bf ALOAD} =  25, 
+{\bf ILOAD\_\-0} =  26, 
+{\bf ILOAD\_\-1} =  27, 
+\par
+{\bf ILOAD\_\-2} =  28, 
+{\bf ILOAD\_\-3} =  29, 
+{\bf LLOAD\_\-0} =  30, 
+{\bf LLOAD\_\-1} =  31, 
+\par
+{\bf LLOAD\_\-2} =  32, 
+{\bf LLOAD\_\-3} =  33, 
+{\bf FLOAD\_\-0} =  34, 
+{\bf FLOAD\_\-1} =  35, 
+\par
+{\bf FLOAD\_\-2} =  36, 
+{\bf FLOAD\_\-3} =  37, 
+{\bf DLOAD\_\-0} =  38, 
+{\bf DLOAD\_\-1} =  39, 
+\par
+{\bf DLOAD\_\-2} =  40, 
+{\bf DLOAD\_\-3} =  41, 
+{\bf ALOAD\_\-0} =  42, 
+{\bf ALOAD\_\-1} =  43, 
+\par
+{\bf ALOAD\_\-2} =  44, 
+{\bf ALOAD\_\-3} =  45, 
+{\bf IALOAD} =  46, 
+{\bf LALOAD} =  47, 
+\par
+{\bf FALOAD} =  48, 
+{\bf DALOAD} =  49, 
+{\bf AALOAD} =  50, 
+{\bf BALOAD} =  51, 
+\par
+{\bf CALOAD} =  52, 
+{\bf SALOAD} =  53, 
+{\bf ISTORE} =  54, 
+{\bf LSTORE} =  55, 
+\par
+{\bf FSTORE} =  56, 
+{\bf DSTORE} =  57, 
+{\bf ASTORE} =  58, 
+{\bf ISTORE\_\-0} =  59, 
+\par
+{\bf ISTORE\_\-1} =  60, 
+{\bf ISTORE\_\-2} =  61, 
+{\bf ISTORE\_\-3} =  62, 
+{\bf LSTORE\_\-0} =  63, 
+\par
+{\bf LSTORE\_\-1} =  64, 
+{\bf LSTORE\_\-2} =  65, 
+{\bf LSTORE\_\-3} =  66, 
+{\bf FSTORE\_\-0} =  67, 
+\par
+{\bf FSTORE\_\-1} =  68, 
+{\bf FSTORE\_\-2} =  69, 
+{\bf FSTORE\_\-3} =  70, 
+{\bf DSTORE\_\-0} =  71, 
+\par
+{\bf DSTORE\_\-1} =  72, 
+{\bf DSTORE\_\-2} =  73, 
+{\bf DSTORE\_\-3} =  74, 
+{\bf ASTORE\_\-0} =  75, 
+\par
+{\bf ASTORE\_\-1} =  76, 
+{\bf ASTORE\_\-2} =  77, 
+{\bf ASTORE\_\-3} =  78, 
+{\bf IASTORE} =  79, 
+\par
+{\bf LASTORE} =  80, 
+{\bf FASTORE} =  81, 
+{\bf DASTORE} =  82, 
+{\bf AASTORE} =  83, 
+\par
+{\bf BASTORE} =  84, 
+{\bf CASTORE} =  85, 
+{\bf SASTORE} =  86, 
+{\bf POP} =  87, 
+\par
+{\bf POP2} =  88, 
+{\bf DUP} =  89, 
+{\bf DUP\_\-X1} =  90, 
+{\bf DUP\_\-X2} =  91, 
+\par
+{\bf DUP2} =  92, 
+{\bf DUP2\_\-X1} =  93, 
+{\bf DUP2\_\-X2} =  94, 
+{\bf SWAP} =  95, 
+\par
+{\bf IADD} =  96, 
+{\bf LADD} =  97, 
+{\bf FADD} =  98, 
+{\bf DADD} =  99, 
+\par
+{\bf ISUB} =  100, 
+{\bf LSUB} =  101, 
+{\bf FSUB} =  102, 
+{\bf DSUB} =  103, 
+\par
+{\bf IMUL} =  104, 
+{\bf LMUL} =  105, 
+{\bf FMUL} =  106, 
+{\bf DMUL} =  107, 
+\par
+{\bf IDIV} =  108, 
+{\bf LDIV} =  109, 
+{\bf FDIV} =  110, 
+{\bf DDIV} =  111, 
+\par
+{\bf IREM} =  112, 
+{\bf LREM} =  113, 
+{\bf FREM} =  114, 
+{\bf DREM} =  115, 
+\par
+{\bf INEG} =  116, 
+{\bf LNEG} =  117, 
+{\bf FNEG} =  118, 
+{\bf DNEG} =  119, 
+\par
+{\bf ISHL} =  120, 
+{\bf LSHL} =  121, 
+{\bf ISHR} =  122, 
+{\bf LSHR} =  123, 
+\par
+{\bf IUSHR} =  124, 
+{\bf LUSHR} =  125, 
+{\bf IAND} =  126, 
+{\bf LAND} =  127, 
+\par
+{\bf IOR} =  128, 
+{\bf LOR} =  129, 
+{\bf IXOR} =  130, 
+{\bf LXOR} =  131, 
+\par
+{\bf IINC} =  132, 
+{\bf I2L} =  133, 
+{\bf I2F} =  134, 
+{\bf I2D} =  135, 
+\par
+{\bf L2I} =  136, 
+{\bf L2F} =  137, 
+{\bf L2D} =  138, 
+{\bf F2I} =  139, 
+\par
+{\bf F2L} =  140, 
+{\bf F2D} =  141, 
+{\bf D2I} =  142, 
+{\bf D2L} =  143, 
+\par
+{\bf D2F} =  144, 
+{\bf I2B} =  145, 
+{\bf I2C} =  146, 
+{\bf I2S} =  147, 
+\par
+{\bf LCMP} =  148, 
+{\bf FCMPL} =  149, 
+{\bf FCMPG} =  150, 
+{\bf DCMPL} =  151, 
+\par
+{\bf DCMPG} =  152, 
+{\bf IFEQ} =  153, 
+{\bf IFNE} =  154, 
+{\bf IFLT} =  155, 
+\par
+{\bf IFGE} =  156, 
+{\bf IFGT} =  157, 
+{\bf IFLE} =  158, 
+{\bf IF\_\-ICMPEQ} =  159, 
+\par
+{\bf IF\_\-ICMPNE} =  160, 
+{\bf IF\_\-ICMPLT} =  161, 
+{\bf IF\_\-ICMPGE} =  162, 
+{\bf IF\_\-ICMPGT} =  163, 
+\par
+{\bf IF\_\-ICMPLE} =  164, 
+{\bf IF\_\-ACMPEQ} =  165, 
+{\bf IF\_\-ACMPNE} =  166, 
+{\bf GOTO} =  167, 
+\par
+{\bf LDC\_\-REF} =  168, 
+{\bf LDC\_\-W\_\-REF} =  169, 
+{\bf TABLESWITCH} =  170, 
+{\bf LOOKUPSWITCH} =  171, 
+\par
+{\bf IRETURN} =  172, 
+{\bf LRETURN} =  173, 
+{\bf FRETURN} =  174, 
+{\bf DRETURN} =  175, 
+\par
+{\bf ARETURN} =  176, 
+{\bf RETURN} =  177, 
+{\bf GETSTATIC\_\-PRELINK} =  178, 
+{\bf PUTSTATIC\_\-PRELINK} =  179, 
+\par
+{\bf GETFIELD\_\-PRELINK} =  180, 
+{\bf PUTFIELD\_\-PRELINK} =  181, 
+{\bf INVOKEVIRTUAL} =  182, 
+{\bf INVOKESPECIAL} =  183, 
+\par
+{\bf INVOKESTATIC} =  184, 
+{\bf INVOKEINTERFACE} =  185, 
+{\bf INVOKESUPER} =  186, 
+{\bf NEW} =  187, 
+\par
+{\bf NEWARRAY} =  188, 
+{\bf ANEWARRAY} =  189, 
+{\bf ARRAYLENGTH} =  190, 
+{\bf ATHROW} =  191, 
+\par
+{\bf CHECKCAST} =  192, 
+{\bf INSTANCEOF} =  193, 
+{\bf MONITORENTER} =  194, 
+{\bf MONITOREXIT} =  195, 
+\par
+{\bf WIDE} =  196, 
+{\bf MULTIANEWARRAY} =  197, 
+{\bf IFNULL} =  198, 
+{\bf IFNONNULL} =  199, 
+\par
+{\bf GOTO\_\-W} =  200, 
+{\bf GETSTATIC\_\-BYTE} =  201, 
+{\bf GETSTATIC\_\-BOOL} =  201, 
+{\bf GETSTATIC\_\-CHAR} =  202, 
+\par
+{\bf GETSTATIC\_\-SHORT} =  203, 
+{\bf GETSTATIC\_\-INT} =  204, 
+{\bf GETSTATIC\_\-FLOAT} =  205, 
+{\bf GETSTATIC\_\-LONG} =  206, 
+\par
+{\bf GETSTATIC\_\-DOUBLE} =  207, 
+{\bf GETSTATIC\_\-REFERENCE} =  208, 
+{\bf PUTSTATIC\_\-BYTE} =  209, 
+{\bf PUTSTATIC\_\-BOOL} =  210, 
+\par
+{\bf PUTSTATIC\_\-CHAR} =  211, 
+{\bf PUTSTATIC\_\-SHORT} =  211, 
+{\bf PUTSTATIC\_\-INT} =  212, 
+{\bf PUTSTATIC\_\-FLOAT} =  213, 
+\par
+{\bf PUTSTATIC\_\-LONG} =  214, 
+{\bf PUTSTATIC\_\-DOUBLE} =  215, 
+{\bf PUTSTATIC\_\-REFERENCE} =  216, 
+{\bf GETFIELD\_\-BYTE} =  217, 
+\par
+{\bf GETFIELD\_\-BOOL} =  218, 
+{\bf GETFIELD\_\-CHAR} =  219, 
+{\bf GETFIELD\_\-SHORT} =  220, 
+{\bf GETFIELD\_\-INT} =  221, 
+\par
+{\bf GETFIELD\_\-FLOAT} =  222, 
+{\bf GETFIELD\_\-LONG} =  223, 
+{\bf GETFIELD\_\-DOUBLE} =  224, 
+{\bf GETFIELD\_\-REFERENCE} =  225, 
+\par
+{\bf PUTFIELD\_\-BYTE} =  226, 
+{\bf PUTFIELD\_\-BOOL} =  227, 
+{\bf PUTFIELD\_\-CHAR} =  228, 
+{\bf PUTFIELD\_\-SHORT} =  228, 
+\par
+{\bf PUTFIELD\_\-INT} =  229, 
+{\bf PUTFIELD\_\-FLOAT} =  230, 
+{\bf PUTFIELD\_\-LONG} =  231, 
+{\bf PUTFIELD\_\-DOUBLE} =  232, 
+\par
+{\bf PUTFIELD\_\-REFERENCE} =  233, 
+{\bf INVOKEVIRTUAL\_\-PRELINK} =  234, 
+{\bf INVOKESPECIAL\_\-PRELINK} =  235, 
+{\bf INVOKESTATIC\_\-PRELINK} =  236, 
+\par
+{\bf INVOKEINTERFACE\_\-PRELINK} =  237, 
+{\bf NEW\_\-PRELINK} =  238, 
+{\bf NEWARRAY\_\-PRELINK} =  239, 
+{\bf ANEWARRAY\_\-PRELINK} =  240, 
+\par
+{\bf CHECKCAST\_\-PRELINK} =  241, 
+{\bf INSTANCEOF\_\-PRELINK} =  242, 
+{\bf MULTIANEWARRAY\_\-PRELINK} =  243, 
+{\bf MONITORENTER\_\-SPECIAL} =  244, 
+\par
+{\bf MONITORENTER\_\-SPECIAL\_\-STATIC} =  245, 
+{\bf IRETURN\_\-MONITOREXIT} =  246, 
+{\bf LRETURN\_\-MONITOREXIT} =  247, 
+{\bf FRETURN\_\-MONITOREXIT} =  248, 
+\par
+{\bf DRETURN\_\-MONITOREXIT} =  249, 
+{\bf ARETURN\_\-MONITOREXIT} =  250, 
+{\bf RETURN\_\-MONITOREXIT} =  251, 
+{\bf NEW\_\-FINALIZER} =  252, 
+\par
+{\bf LDC\_\-PRELINK} =  253, 
+{\bf LDC\_\-W\_\-PRELINK} =  254, 
+{\bf METHOD\_\-LOAD} =  201, 
+{\bf METHOD\_\-ABSTRACT} =  202, 
+\par
+{\bf INVOKE\_\-NATIVE} =  203, 
+{\bf HALT} =  204
+ \}
+\item 
+enum {\bf java\_\-opcode\_\-t} \{ \par
+{\bf JAVA\_\-NOP} =  0, 
+{\bf JAVA\_\-ACONST\_\-NULL} =  1, 
+{\bf JAVA\_\-ICONST\_\-M1} =  2, 
+{\bf JAVA\_\-ICONST\_\-0} =  3, 
+\par
+{\bf JAVA\_\-ICONST\_\-1} =  4, 
+{\bf JAVA\_\-ICONST\_\-2} =  5, 
+{\bf JAVA\_\-ICONST\_\-3} =  6, 
+{\bf JAVA\_\-ICONST\_\-4} =  7, 
+\par
+{\bf JAVA\_\-ICONST\_\-5} =  8, 
+{\bf JAVA\_\-LCONST\_\-0} =  9, 
+{\bf JAVA\_\-LCONST\_\-1} =  10, 
+{\bf JAVA\_\-FCONST\_\-0} =  11, 
+\par
+{\bf JAVA\_\-FCONST\_\-1} =  12, 
+{\bf JAVA\_\-FCONST\_\-2} =  13, 
+{\bf JAVA\_\-DCONST\_\-0} =  14, 
+{\bf JAVA\_\-DCONST\_\-1} =  15, 
+\par
+{\bf JAVA\_\-BIPUSH} =  16, 
+{\bf JAVA\_\-SIPUSH} =  17, 
+{\bf JAVA\_\-LDC} =  18, 
+{\bf JAVA\_\-LDC\_\-W} =  19, 
+\par
+{\bf JAVA\_\-LDC2\_\-W} =  20, 
+{\bf JAVA\_\-ILOAD} =  21, 
+{\bf JAVA\_\-LLOAD} =  22, 
+{\bf JAVA\_\-FLOAD} =  23, 
+\par
+{\bf JAVA\_\-DLOAD} =  24, 
+{\bf JAVA\_\-ALOAD} =  25, 
+{\bf JAVA\_\-ILOAD\_\-0} =  26, 
+{\bf JAVA\_\-ILOAD\_\-1} =  27, 
+\par
+{\bf JAVA\_\-ILOAD\_\-2} =  28, 
+{\bf JAVA\_\-ILOAD\_\-3} =  29, 
+{\bf JAVA\_\-LLOAD\_\-0} =  30, 
+{\bf JAVA\_\-LLOAD\_\-1} =  31, 
+\par
+{\bf JAVA\_\-LLOAD\_\-2} =  32, 
+{\bf JAVA\_\-LLOAD\_\-3} =  33, 
+{\bf JAVA\_\-FLOAD\_\-0} =  34, 
+{\bf JAVA\_\-FLOAD\_\-1} =  35, 
+\par
+{\bf JAVA\_\-FLOAD\_\-2} =  36, 
+{\bf JAVA\_\-FLOAD\_\-3} =  37, 
+{\bf JAVA\_\-DLOAD\_\-0} =  38, 
+{\bf JAVA\_\-DLOAD\_\-1} =  39, 
+\par
+{\bf JAVA\_\-DLOAD\_\-2} =  40, 
+{\bf JAVA\_\-DLOAD\_\-3} =  41, 
+{\bf JAVA\_\-ALOAD\_\-0} =  42, 
+{\bf JAVA\_\-ALOAD\_\-1} =  43, 
+\par
+{\bf JAVA\_\-ALOAD\_\-2} =  44, 
+{\bf JAVA\_\-ALOAD\_\-3} =  45, 
+{\bf JAVA\_\-IALOAD} =  46, 
+{\bf JAVA\_\-LALOAD} =  47, 
+\par
+{\bf JAVA\_\-FALOAD} =  48, 
+{\bf JAVA\_\-DALOAD} =  49, 
+{\bf JAVA\_\-AALOAD} =  50, 
+{\bf JAVA\_\-BALOAD} =  51, 
+\par
+{\bf JAVA\_\-CALOAD} =  52, 
+{\bf JAVA\_\-SALOAD} =  53, 
+{\bf JAVA\_\-ISTORE} =  54, 
+{\bf JAVA\_\-LSTORE} =  55, 
+\par
+{\bf JAVA\_\-FSTORE} =  56, 
+{\bf JAVA\_\-DSTORE} =  57, 
+{\bf JAVA\_\-ASTORE} =  58, 
+{\bf JAVA\_\-ISTORE\_\-0} =  59, 
+\par
+{\bf JAVA\_\-ISTORE\_\-1} =  60, 
+{\bf JAVA\_\-ISTORE\_\-2} =  61, 
+{\bf JAVA\_\-ISTORE\_\-3} =  62, 
+{\bf JAVA\_\-LSTORE\_\-0} =  63, 
+\par
+{\bf JAVA\_\-LSTORE\_\-1} =  64, 
+{\bf JAVA\_\-LSTORE\_\-2} =  65, 
+{\bf JAVA\_\-LSTORE\_\-3} =  66, 
+{\bf JAVA\_\-FSTORE\_\-0} =  67, 
+\par
+{\bf JAVA\_\-FSTORE\_\-1} =  68, 
+{\bf JAVA\_\-FSTORE\_\-2} =  69, 
+{\bf JAVA\_\-FSTORE\_\-3} =  70, 
+{\bf JAVA\_\-DSTORE\_\-0} =  71, 
+\par
+{\bf JAVA\_\-DSTORE\_\-1} =  72, 
+{\bf JAVA\_\-DSTORE\_\-2} =  73, 
+{\bf JAVA\_\-DSTORE\_\-3} =  74, 
+{\bf JAVA\_\-ASTORE\_\-0} =  75, 
+\par
+{\bf JAVA\_\-ASTORE\_\-1} =  76, 
+{\bf JAVA\_\-ASTORE\_\-2} =  77, 
+{\bf JAVA\_\-ASTORE\_\-3} =  78, 
+{\bf JAVA\_\-IASTORE} =  79, 
+\par
+{\bf JAVA\_\-LASTORE} =  80, 
+{\bf JAVA\_\-FASTORE} =  81, 
+{\bf JAVA\_\-DASTORE} =  82, 
+{\bf JAVA\_\-AASTORE} =  83, 
+\par
+{\bf JAVA\_\-BASTORE} =  84, 
+{\bf JAVA\_\-CASTORE} =  85, 
+{\bf JAVA\_\-SASTORE} =  86, 
+{\bf JAVA\_\-POP} =  87, 
+\par
+{\bf JAVA\_\-POP2} =  88, 
+{\bf JAVA\_\-DUP} =  89, 
+{\bf JAVA\_\-DUP\_\-X1} =  90, 
+{\bf JAVA\_\-DUP\_\-X2} =  91, 
+\par
+{\bf JAVA\_\-DUP2} =  92, 
+{\bf JAVA\_\-DUP2\_\-X1} =  93, 
+{\bf JAVA\_\-DUP2\_\-X2} =  94, 
+{\bf JAVA\_\-SWAP} =  95, 
+\par
+{\bf JAVA\_\-IADD} =  96, 
+{\bf JAVA\_\-LADD} =  97, 
+{\bf JAVA\_\-FADD} =  98, 
+{\bf JAVA\_\-DADD} =  99, 
+\par
+{\bf JAVA\_\-ISUB} =  100, 
+{\bf JAVA\_\-LSUB} =  101, 
+{\bf JAVA\_\-FSUB} =  102, 
+{\bf JAVA\_\-DSUB} =  103, 
+\par
+{\bf JAVA\_\-IMUL} =  104, 
+{\bf JAVA\_\-LMUL} =  105, 
+{\bf JAVA\_\-FMUL} =  106, 
+{\bf JAVA\_\-DMUL} =  107, 
+\par
+{\bf JAVA\_\-IDIV} =  108, 
+{\bf JAVA\_\-LDIV} =  109, 
+{\bf JAVA\_\-FDIV} =  110, 
+{\bf JAVA\_\-DDIV} =  111, 
+\par
+{\bf JAVA\_\-IREM} =  112, 
+{\bf JAVA\_\-LREM} =  113, 
+{\bf JAVA\_\-FREM} =  114, 
+{\bf JAVA\_\-DREM} =  115, 
+\par
+{\bf JAVA\_\-INEG} =  116, 
+{\bf JAVA\_\-LNEG} =  117, 
+{\bf JAVA\_\-FNEG} =  118, 
+{\bf JAVA\_\-DNEG} =  119, 
+\par
+{\bf JAVA\_\-ISHL} =  120, 
+{\bf JAVA\_\-LSHL} =  121, 
+{\bf JAVA\_\-ISHR} =  122, 
+{\bf JAVA\_\-LSHR} =  123, 
+\par
+{\bf JAVA\_\-IUSHR} =  124, 
+{\bf JAVA\_\-LUSHR} =  125, 
+{\bf JAVA\_\-IAND} =  126, 
+{\bf JAVA\_\-LAND} =  127, 
+\par
+{\bf JAVA\_\-IOR} =  128, 
+{\bf JAVA\_\-LOR} =  129, 
+{\bf JAVA\_\-IXOR} =  130, 
+{\bf JAVA\_\-LXOR} =  131, 
+\par
+{\bf JAVA\_\-IINC} =  132, 
+{\bf JAVA\_\-I2L} =  133, 
+{\bf JAVA\_\-I2F} =  134, 
+{\bf JAVA\_\-I2D} =  135, 
+\par
+{\bf JAVA\_\-L2I} =  136, 
+{\bf JAVA\_\-L2F} =  137, 
+{\bf JAVA\_\-L2D} =  138, 
+{\bf JAVA\_\-F2I} =  139, 
+\par
+{\bf JAVA\_\-F2L} =  140, 
+{\bf JAVA\_\-F2D} =  141, 
+{\bf JAVA\_\-D2I} =  142, 
+{\bf JAVA\_\-D2L} =  143, 
+\par
+{\bf JAVA\_\-D2F} =  144, 
+{\bf JAVA\_\-I2B} =  145, 
+{\bf JAVA\_\-I2C} =  146, 
+{\bf JAVA\_\-I2S} =  147, 
+\par
+{\bf JAVA\_\-LCMP} =  148, 
+{\bf JAVA\_\-FCMPL} =  149, 
+{\bf JAVA\_\-FCMPG} =  150, 
+{\bf JAVA\_\-DCMPL} =  151, 
+\par
+{\bf JAVA\_\-DCMPG} =  152, 
+{\bf JAVA\_\-IFEQ} =  153, 
+{\bf JAVA\_\-IFNE} =  154, 
+{\bf JAVA\_\-IFLT} =  155, 
+\par
+{\bf JAVA\_\-IFGE} =  156, 
+{\bf JAVA\_\-IFGT} =  157, 
+{\bf JAVA\_\-IFLE} =  158, 
+{\bf JAVA\_\-IF\_\-ICMPEQ} =  159, 
+\par
+{\bf JAVA\_\-IF\_\-ICMPNE} =  160, 
+{\bf JAVA\_\-IF\_\-ICMPLT} =  161, 
+{\bf JAVA\_\-IF\_\-ICMPGE} =  162, 
+{\bf JAVA\_\-IF\_\-ICMPGT} =  163, 
+\par
+{\bf JAVA\_\-IF\_\-ICMPLE} =  164, 
+{\bf JAVA\_\-IF\_\-ACMPEQ} =  165, 
+{\bf JAVA\_\-IF\_\-ACMPNE} =  166, 
+{\bf JAVA\_\-GOTO} =  167, 
+\par
+{\bf JAVA\_\-JSR} =  168, 
+{\bf JAVA\_\-RET} =  169, 
+{\bf JAVA\_\-TABLESWITCH} =  170, 
+{\bf JAVA\_\-LOOKUPSWITCH} =  171, 
+\par
+{\bf JAVA\_\-IRETURN} =  172, 
+{\bf JAVA\_\-LRETURN} =  173, 
+{\bf JAVA\_\-FRETURN} =  174, 
+{\bf JAVA\_\-DRETURN} =  175, 
+\par
+{\bf JAVA\_\-ARETURN} =  176, 
+{\bf JAVA\_\-RETURN} =  177, 
+{\bf JAVA\_\-GETSTATIC} =  178, 
+{\bf JAVA\_\-PUTSTATIC} =  179, 
+\par
+{\bf JAVA\_\-GETFIELD} =  180, 
+{\bf JAVA\_\-PUTFIELD} =  181, 
+{\bf JAVA\_\-INVOKEVIRTUAL} =  182, 
+{\bf JAVA\_\-INVOKESPECIAL} =  183, 
+\par
+{\bf JAVA\_\-INVOKESTATIC} =  184, 
+{\bf JAVA\_\-INVOKEINTERFACE} =  185, 
+{\bf JAVA\_\-NEW} =  187, 
+{\bf JAVA\_\-NEWARRAY} =  188, 
+\par
+{\bf JAVA\_\-ANEWARRAY} =  189, 
+{\bf JAVA\_\-ARRAYLENGTH} =  190, 
+{\bf JAVA\_\-ATHROW} =  191, 
+{\bf JAVA\_\-CHECKCAST} =  192, 
+\par
+{\bf JAVA\_\-INSTANCEOF} =  193, 
+{\bf JAVA\_\-MONITORENTER} =  194, 
+{\bf JAVA\_\-MONITOREXIT} =  195, 
+{\bf JAVA\_\-WIDE} =  196, 
+\par
+{\bf JAVA\_\-MULTIANEWARRAY} =  197, 
+{\bf JAVA\_\-IFNULL} =  198, 
+{\bf JAVA\_\-IFNONNULL} =  199, 
+{\bf JAVA\_\-GOTO\_\-W} =  200, 
+\par
+{\bf JAVA\_\-JSR\_\-W} =  201
+ \}
+\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+Java Bytecode opcodes definitions 
+
+Definition in file {\bf opcodes.h}.
+
+
+
+\subsection{Define Documentation}
+\index{opcodes.h@{opcodes.h}!JELATINE\_\-OPCODES\_\-H@{JELATINE\_\-OPCODES\_\-H}}
+\index{JELATINE\_\-OPCODES\_\-H@{JELATINE\_\-OPCODES\_\-H}!opcodes.h@{opcodes.h}}
+\subsubsection[{JELATINE\_\-OPCODES\_\-H}]{\setlength{\rightskip}{0pt plus 5cm}\#define JELATINE\_\-OPCODES\_\-H~(1)}\label{opcodes_8h_a0b9d3039e143ff0b270b6082fe08f70b}
+\doxyref{opcodes.h}{p.}{opcodes_8h} inclusion macro 
+
+Definition at line 28 of file opcodes.h.
+
+
+
+\subsection{Typedef Documentation}
+\index{opcodes.h@{opcodes.h}!array\_\-type\_\-t@{array\_\-type\_\-t}}
+\index{array\_\-type\_\-t@{array\_\-type\_\-t}!opcodes.h@{opcodes.h}}
+\subsubsection[{array\_\-type\_\-t}]{\setlength{\rightskip}{0pt plus 5cm}typedef enum {\bf array\_\-type\_\-t} {\bf array\_\-type\_\-t}}\label{opcodes_8h_a6027b672a14578fc3870557a20305cc3}
+Typedef for enum array\_\-type\_\-t 
+
+Definition at line 48 of file opcodes.h.
+
+\index{opcodes.h@{opcodes.h}!internal\_\-opcode\_\-t@{internal\_\-opcode\_\-t}}
+\index{internal\_\-opcode\_\-t@{internal\_\-opcode\_\-t}!opcodes.h@{opcodes.h}}
+\subsubsection[{internal\_\-opcode\_\-t}]{\setlength{\rightskip}{0pt plus 5cm}typedef enum {\bf internal\_\-opcode\_\-t} {\bf internal\_\-opcode\_\-t}}\label{opcodes_8h_aa092f144d452d614c6fe1cad7a477a1f}
+Typedef for enum internal\_\-opcode\_\-t 
+
+Definition at line 319 of file opcodes.h.
+
+\index{opcodes.h@{opcodes.h}!java\_\-opcode\_\-t@{java\_\-opcode\_\-t}}
+\index{java\_\-opcode\_\-t@{java\_\-opcode\_\-t}!opcodes.h@{opcodes.h}}
+\subsubsection[{java\_\-opcode\_\-t}]{\setlength{\rightskip}{0pt plus 5cm}typedef enum {\bf java\_\-opcode\_\-t} {\bf java\_\-opcode\_\-t}}\label{opcodes_8h_a286aa05bbd497829873e7cdd9d3effb8}
+Typedef for enum java\_\-opcode\_\-t 
+
+Definition at line 528 of file opcodes.h.
+
+
+
+\subsection{Enumeration Type Documentation}
+\index{opcodes.h@{opcodes.h}!array\_\-type\_\-t@{array\_\-type\_\-t}}
+\index{array\_\-type\_\-t@{array\_\-type\_\-t}!opcodes.h@{opcodes.h}}
+\subsubsection[{array\_\-type\_\-t}]{\setlength{\rightskip}{0pt plus 5cm}enum {\bf array\_\-type\_\-t}}\label{opcodes_8h_a7c7093ac8adc8c2cd3c68cfe218aecbe}
+Defines the array types used by the NEWARRAY opcode \begin{Desc}
+\item[Enumerator: ]\par
+\begin{description}
+\index{T\_\-BOOLEAN@{T\_\-BOOLEAN}!opcodes.h@{opcodes.h}}\index{opcodes.h@{opcodes.h}!T\_\-BOOLEAN@{T\_\-BOOLEAN}}\item[{\em 
+T\_\-BOOLEAN\label{opcodes_8h_a7c7093ac8adc8c2cd3c68cfe218aecbeae9a41de21d41da1b2f4195dd8829d6e3}
+}]Array of booleans. \index{T\_\-CHAR@{T\_\-CHAR}!opcodes.h@{opcodes.h}}\index{opcodes.h@{opcodes.h}!T\_\-CHAR@{T\_\-CHAR}}\item[{\em 
+T\_\-CHAR\label{opcodes_8h_a7c7093ac8adc8c2cd3c68cfe218aecbeafc1d9070a444ece92960119b8b6d71b3}
+}]Array of chars. \index{T\_\-BYTE@{T\_\-BYTE}!opcodes.h@{opcodes.h}}\index{opcodes.h@{opcodes.h}!T\_\-BYTE@{T\_\-BYTE}}\item[{\em 
+T\_\-BYTE\label{opcodes_8h_a7c7093ac8adc8c2cd3c68cfe218aecbea62be7e90fa01bd88b476e0bebdae6bb1}
+}]Array of bytes. \index{T\_\-SHORT@{T\_\-SHORT}!opcodes.h@{opcodes.h}}\index{opcodes.h@{opcodes.h}!T\_\-SHORT@{T\_\-SHORT}}\item[{\em 
+T\_\-SHORT\label{opcodes_8h_a7c7093ac8adc8c2cd3c68cfe218aecbeaf6e1ea54f8e10a8fc777843afc797c22}
+}]Array of shorts. \index{T\_\-INT@{T\_\-INT}!opcodes.h@{opcodes.h}}\index{opcodes.h@{opcodes.h}!T\_\-INT@{T\_\-INT}}\item[{\em 
+T\_\-INT\label{opcodes_8h_a7c7093ac8adc8c2cd3c68cfe218aecbeaa30cbb0eb56b7263a35f9d6643e12c83}
+}]Array of integers. \index{T\_\-LONG@{T\_\-LONG}!opcodes.h@{opcodes.h}}\index{opcodes.h@{opcodes.h}!T\_\-LONG@{T\_\-LONG}}\item[{\em 
+T\_\-LONG\label{opcodes_8h_a7c7093ac8adc8c2cd3c68cfe218aecbea1f8887255ce9ce523e5c497f14d9d842}
+}]Array of longs. \end{description}
+\end{Desc}
+
+
+
+Definition at line 34 of file opcodes.h.
+
+\index{opcodes.h@{opcodes.h}!internal\_\-opcode\_\-t@{internal\_\-opcode\_\-t}}
+\index{internal\_\-opcode\_\-t@{internal\_\-opcode\_\-t}!opcodes.h@{opcodes.h}}
+\subsubsection[{internal\_\-opcode\_\-t}]{\setlength{\rightskip}{0pt plus 5cm}enum {\bf internal\_\-opcode\_\-t}}\label{opcodes_8h_a137a2c90bc7aa8b889a767d0d607567d}
+Internal opcodes definition \begin{Desc}
+\item[Enumerator: ]\par
+\begin{description}
+\index{NOP@{NOP}!opcodes.h@{opcodes.h}}\index{opcodes.h@{opcodes.h}!NOP@{NOP}}\item[{\em 
+NOP\label{opcodes_8h_a137a2c90bc7aa8b889a767d0d607567daf811bef354b292ff0713c50d7652c026}
+}]No operation. \index{ACONST\_\-NULL@{ACONST\_\-NULL}!opcodes.h@{opcodes.h}}\index{opcodes.h@{opcodes.h}!ACONST\_\-NULL@{ACONST\_\-NULL}}\item[{\em 
+ACONST\_\-NULL\label{opcodes_8h_a137a2c90bc7aa8b889a767d0d607567daf7628dbf29199a857604d0a8efbba25e}
+}]Push null. \index{ICONST\_\-M1@{ICONST\_\-M1}!opcodes.h@{opcodes.h}}\index{opcodes.h@{opcodes.h}!ICONST\_\-M1@{ICONST\_\-M1}}\item[{\em 
+ICONST\_\-M1\label{opcodes_8h_a137a2c90bc7aa8b889a767d0d607567da2219598cb8e2f41d08d84968954bf174}
+}]Push integer constant -\/1. \index{ICONST\_\-0@{ICONST\_\-0}!opcodes.h@{opcodes.h}}\index{opcodes.h@{opcodes.h}!ICONST\_\-0@{ICONST\_\-0}}\item[{\em 
+ICONST\_\-0\label{opcodes_8h_a137a2c90bc7aa8b889a767d0d607567da5056ad4b750ce1dd90a14961697a7ff0}
+}]Push integer constant 0. \index{ICONST\_\-1@{ICONST\_\-1}!opcodes.h@{opcodes.h}}\index{opcodes.h@{opcodes.h}!ICONST\_\-1@{ICONST\_\-1}}\item[{\em 
+ICONST\_\-1\label{opcodes_8h_a137a2c90bc7aa8b889a767d0d607567da46dc5ef3b9b86ac1819cbc30cd1b863d}
+}]Push integer constant 1. \index{ICONST\_\-2@{ICONST\_\-2}!opcodes.h@{opcodes.h}}\index{opcodes.h@{opcodes.h}!ICONST\_\-2@{ICONST\_\-2}}\item[{\em 
+ICONST\_\-2\label{opcodes_8h_a137a2c90bc7aa8b889a767d0d607567dac7b68f0108bc8f1c055c96c0c9feb073}
+}]Push integer constant 2. \index{ICONST\_\-3@{ICONST\_\-3}!opcodes.h@{opcodes.h}}\index{opcodes.h@{opcodes.h}!ICONST\_\-3@{ICONST\_\-3}}\item[{\em 
+ICONST\_\-3\label{opcodes_8h_a137a2c90bc7aa8b889a767d0d607567da065bfb24e8caaa853b396cca402e7e89}
+}]Push integer constant 3. \index{ICONST\_\-4@{ICONST\_\-4}!opcodes.h@{opcodes.h}}\index{opcodes.h@{opcodes.h}!ICONST\_\-4@{ICONST\_\-4}}\item[{\em 
+ICONST\_\-4\label{opcodes_8h_a137a2c90bc7aa8b889a767d0d607567da9f0ddd6c3ccbc93d21a33cf2e09b87cd}
+}]Push integer constant 4. \index{ICONST\_\-5@{ICONST\_\-5}!opcodes.h@{opcodes.h}}\index{opcodes.h@{opcodes.h}!ICONST\_\-5@{ICONST\_\-5}}\item[{\em 
+ICONST\_\-5\label{opcodes_8h_a137a2c90bc7aa8b889a767d0d607567da0520f41e795f79661d1e0af381b05c4d}
+}]Push integer constant 5. \index{LCONST\_\-0@{LCONST\_\-0}!opcodes.h@{opcodes.h}}\index{opcodes.h@{opcodes.h}!LCONST\_\-0@{LCONST\_\-0}}\item[{\em 
+LCONST\_\-0\label{opcodes_8h_a137a2c90bc7aa8b889a767d0d607567dade1f67eb9da36e8b8095fc5603d191f5}
+}]Push long constant 0. \index{LCONST\_\-1@{LCONST\_\-1}!opcodes.h@{opcodes.h}}\index{opcodes.h@{opcodes.h}!LCONST\_\-1@{LCONST\_\-1}}\item[{\em 
+LCONST\_\-1\label{opcodes_8h_a137a2c90bc7aa8b889a767d0d607567daa6f45179f4c6bcf32ab014e66fd142f8}
+}]Push long constant 1. \index{FCONST\_\-0@{FCONST\_\-0}!opcodes.h@{opcodes.h}}\index{opcodes.h@{opcodes.h}!FCONST\_\-0@{FCONST\_\-0}}\item[{\em 
+FCONST\_\-0\label{opcodes_8h_a137a2c90bc7aa8b889a767d0d607567da897a5a267ab81a6618c8e433016c1b3b}
+}]Push float constant 0.0. \index{FCONST\_\-1@{FCONST\_\-1}!opcodes.h@{opcodes.h}}\index{opcodes.h@{opcodes.h}!FCONST\_\-1@{FCONST\_\-1}}\item[{\em 
+FCONST\_\-1\label{opcodes_8h_a137a2c90bc7aa8b889a767d0d607567dae8f1f655c765eb7285cc4919856e24a6}
+}]Push float constant 1.0. \index{FCONST\_\-2@{FCONST\_\-2}!opcodes.h@{opcodes.h}}\index{opcodes.h@{opcodes.h}!FCONST\_\-2@{FCONST\_\-2}}\item[{\em 
+FCONST\_\-2\label{opcodes_8h_a137a2c90bc7aa8b889a767d0d607567da08adb50976676f8566a76cfc15bc4c98}
+}]Push float constant 2.0. \index{DCONST\_\-0@{DCONST\_\-0}!opcodes.h@{opcodes.h}}\index{opcodes.h@{opcodes.h}!DCONST\_\-0@{DCONST\_\-0}}\item[{\em 
+DCONST\_\-0\label{opcodes_8h_a137a2c90bc7aa8b889a767d0d607567da26b53e83353a5348a181587dd7f1493b}
+}]Push double constant 0.0. \index{DCONST\_\-1@{DCONST\_\-1}!opcodes.h@{opcodes.h}}\index{opcodes.h@{opcodes.h}!DCONST\_\-1@{DCONST\_\-1}}\item[{\em 
+DCONST\_\-1\label{opcodes_8h_a137a2c90bc7aa8b889a767d0d607567da09cfdd558c6a207ef1c1573cb3f4acb8}
+}]Push double constant 1.0. \index{BIPUSH@{BIPUSH}!opcodes.h@{opcodes.h}}\index{opcodes.h@{opcodes.h}!BIPUSH@{BIPUSH}}\item[{\em 
+BIPUSH\label{opcodes_8h_a137a2c90bc7aa8b889a767d0d607567dac65db46dea0b1bcecaa3a8f1794eac7a}
+}]Push a byte sign-\/extended to an integer. \index{SIPUSH@{SIPUSH}!opcodes.h@{opcodes.h}}\index{opcodes.h@{opcodes.h}!SIPUSH@{SIPUSH}}\item[{\em 
+SIPUSH\label{opcodes_8h_a137a2c90bc7aa8b889a767d0d607567da5635c9e5cf72af3e5e84c914e6523678}
+}]Push a short sign-\/extended to an integer. \index{LDC@{LDC}!opcodes.h@{opcodes.h}}\index{opcodes.h@{opcodes.h}!LDC@{LDC}}\item[{\em 
+LDC\label{opcodes_8h_a137a2c90bc7aa8b889a767d0d607567da70185febe94cf03ca1db849b10c4438f}
+}]Push item from runtime constant pool using a 1-\/byte index. \index{LDC\_\-W@{LDC\_\-W}!opcodes.h@{opcodes.h}}\index{opcodes.h@{opcodes.h}!LDC\_\-W@{LDC\_\-W}}\item[{\em 
+LDC\_\-W\label{opcodes_8h_a137a2c90bc7aa8b889a767d0d607567da575a81a452e1332317e52cc69e41b862}
+}]Push item from runtime constant pool using a 2-\/byte index. \index{LDC2\_\-W@{LDC2\_\-W}!opcodes.h@{opcodes.h}}\index{opcodes.h@{opcodes.h}!LDC2\_\-W@{LDC2\_\-W}}\item[{\em 
+LDC2\_\-W\label{opcodes_8h_a137a2c90bc7aa8b889a767d0d607567da45007e5a863799315dcad6c3e28a800a}
+}]Push double-\/word item from runtime constant pool. \index{ILOAD@{ILOAD}!opcodes.h@{opcodes.h}}\index{opcodes.h@{opcodes.h}!ILOAD@{ILOAD}}\item[{\em 
+ILOAD\label{opcodes_8h_a137a2c90bc7aa8b889a767d0d607567da8a27009dfdfa051dc1e9617ec0996c1b}
+}]Load int from local variable. \index{LLOAD@{LLOAD}!opcodes.h@{opcodes.h}}\index{opcodes.h@{opcodes.h}!LLOAD@{LLOAD}}\item[{\em 
+LLOAD\label{opcodes_8h_a137a2c90bc7aa8b889a767d0d607567da022c513afce6fe21f15c5463bfdf0eeb}
+}]Load long from local variable. \index{FLOAD@{FLOAD}!opcodes.h@{opcodes.h}}\index{opcodes.h@{opcodes.h}!FLOAD@{FLOAD}}\item[{\em 
+FLOAD\label{opcodes_8h_a137a2c90bc7aa8b889a767d0d607567daf31a5647ad398f12f99550d3264294ce}
+}]Load float from local variable. \index{DLOAD@{DLOAD}!opcodes.h@{opcodes.h}}\index{opcodes.h@{opcodes.h}!DLOAD@{DLOAD}}\item[{\em 
+DLOAD\label{opcodes_8h_a137a2c90bc7aa8b889a767d0d607567da05971d48efb29b579bc33eb46ee4be19}
+}]Load double from local variable. \index{ALOAD@{ALOAD}!opcodes.h@{opcodes.h}}\index{opcodes.h@{opcodes.h}!ALOAD@{ALOAD}}\item[{\em 
+ALOAD\label{opcodes_8h_a137a2c90bc7aa8b889a767d0d607567da5f54638b9316d6910d681bc83f9c2045}
+}]Load reference from local variable. \index{ILOAD\_\-0@{ILOAD\_\-0}!opcodes.h@{opcodes.h}}\index{opcodes.h@{opcodes.h}!ILOAD\_\-0@{ILOAD\_\-0}}\item[{\em 
+ILOAD\_\-0\label{opcodes_8h_a137a2c90bc7aa8b889a767d0d607567dabf4f8ba002794f3251f055babf89bf18}
+}]Load int from the first local variable. \index{ILOAD\_\-1@{ILOAD\_\-1}!opcodes.h@{opcodes.h}}\index{opcodes.h@{opcodes.h}!ILOAD\_\-1@{ILOAD\_\-1}}\item[{\em 
+ILOAD\_\-1\label{opcodes_8h_a137a2c90bc7aa8b889a767d0d607567da0e6052e7eded9b9d78e68d6630eef290}
+}]Load int from the second local variable. \index{ILOAD\_\-2@{ILOAD\_\-2}!opcodes.h@{opcodes.h}}\index{opcodes.h@{opcodes.h}!ILOAD\_\-2@{ILOAD\_\-2}}\item[{\em 
+ILOAD\_\-2\label{opcodes_8h_a137a2c90bc7aa8b889a767d0d607567da190c93d9eeb78648ebd69b06d94030a1}
+}]Load int from the third local variable. \index{ILOAD\_\-3@{ILOAD\_\-3}!opcodes.h@{opcodes.h}}\index{opcodes.h@{opcodes.h}!ILOAD\_\-3@{ILOAD\_\-3}}\item[{\em 
+ILOAD\_\-3\label{opcodes_8h_a137a2c90bc7aa8b889a767d0d607567da56da94d868621773c70cbcbb42ece16a}
+}]Load int from the fourth local variable. \index{LLOAD\_\-0@{LLOAD\_\-0}!opcodes.h@{opcodes.h}}\index{opcodes.h@{opcodes.h}!LLOAD\_\-0@{LLOAD\_\-0}}\item[{\em 
+LLOAD\_\-0\label{opcodes_8h_a137a2c90bc7aa8b889a767d0d607567dae741d217598b0d4af0d58fda6fd52bae}
+}]Load long from the first local variable. \index{LLOAD\_\-1@{LLOAD\_\-1}!opcodes.h@{opcodes.h}}\index{opcodes.h@{opcodes.h}!LLOAD\_\-1@{LLOAD\_\-1}}\item[{\em 
+LLOAD\_\-1\label{opcodes_8h_a137a2c90bc7aa8b889a767d0d607567da21bcb0781b85df6d393ec4ab2bf181f7}
+}]Load long from the second local variable. \index{LLOAD\_\-2@{LLOAD\_\-2}!opcodes.h@{opcodes.h}}\index{opcodes.h@{opcodes.h}!LLOAD\_\-2@{LLOAD\_\-2}}\item[{\em 
+LLOAD\_\-2\label{opcodes_8h_a137a2c90bc7aa8b889a767d0d607567da9f89cbbb502d941cd80afb9ba9fd1d9c}
+}]Load long from the third local variable. \index{LLOAD\_\-3@{LLOAD\_\-3}!opcodes.h@{opcodes.h}}\index{opcodes.h@{opcodes.h}!LLOAD\_\-3@{LLOAD\_\-3}}\item[{\em 
+LLOAD\_\-3\label{opcodes_8h_a137a2c90bc7aa8b889a767d0d607567da5c9b80fb56ee20eef50a305bacbc1292}
+}]Load long from the fourth local variable. \index{FLOAD\_\-0@{FLOAD\_\-0}!opcodes.h@{opcodes.h}}\index{opcodes.h@{opcodes.h}!FLOAD\_\-0@{FLOAD\_\-0}}\item[{\em 
+FLOAD\_\-0\label{opcodes_8h_a137a2c90bc7aa8b889a767d0d607567da3771b2287134c1115dcda2c7997fb4d6}
+}]Load float from the first local variable. \index{FLOAD\_\-1@{FLOAD\_\-1}!opcodes.h@{opcodes.h}}\index{opcodes.h@{opcodes.h}!FLOAD\_\-1@{FLOAD\_\-1}}\item[{\em 
+FLOAD\_\-1\label{opcodes_8h_a137a2c90bc7aa8b889a767d0d607567dadb9defb5551243fbc86aab2dc1bd2fe9}
+}]Load float from the second local variable. \index{FLOAD\_\-2@{FLOAD\_\-2}!opcodes.h@{opcodes.h}}\index{opcodes.h@{opcodes.h}!FLOAD\_\-2@{FLOAD\_\-2}}\item[{\em 
+FLOAD\_\-2\label{opcodes_8h_a137a2c90bc7aa8b889a767d0d607567da61bfbfd8ba71df6e0c7e1ba2a684227c}
+}]Load float from the third local variable. \index{FLOAD\_\-3@{FLOAD\_\-3}!opcodes.h@{opcodes.h}}\index{opcodes.h@{opcodes.h}!FLOAD\_\-3@{FLOAD\_\-3}}\item[{\em 
+FLOAD\_\-3\label{opcodes_8h_a137a2c90bc7aa8b889a767d0d607567daae386540ac2c02109a805fd0be2d6a0d}
+}]Load float from the fourth local variable. \index{DLOAD\_\-0@{DLOAD\_\-0}!opcodes.h@{opcodes.h}}\index{opcodes.h@{opcodes.h}!DLOAD\_\-0@{DLOAD\_\-0}}\item[{\em 
+DLOAD\_\-0\label{opcodes_8h_a137a2c90bc7aa8b889a767d0d607567da03cbd84143e1a90ce1a2b4693765ef6f}
+}]Load double from the first local variable. \index{DLOAD\_\-1@{DLOAD\_\-1}!opcodes.h@{opcodes.h}}\index{opcodes.h@{opcodes.h}!DLOAD\_\-1@{DLOAD\_\-1}}\item[{\em 
+DLOAD\_\-1\label{opcodes_8h_a137a2c90bc7aa8b889a767d0d607567da47bb4b3f96561a7f2f244c6d24228e65}
+}]Load double from the second local variable. \index{DLOAD\_\-2@{DLOAD\_\-2}!opcodes.h@{opcodes.h}}\index{opcodes.h@{opcodes.h}!DLOAD\_\-2@{DLOAD\_\-2}}\item[{\em 
+DLOAD\_\-2\label{opcodes_8h_a137a2c90bc7aa8b889a767d0d607567da53dce82e4a0c1dc1fb1b0534679a2586}
+}]Load double from the third local variable. \index{DLOAD\_\-3@{DLOAD\_\-3}!opcodes.h@{opcodes.h}}\index{opcodes.h@{opcodes.h}!DLOAD\_\-3@{DLOAD\_\-3}}\item[{\em 
+DLOAD\_\-3\label{opcodes_8h_a137a2c90bc7aa8b889a767d0d607567da18883d08af45fca5199d739060946de5}
+}]Load double from the fourth local variable. \index{ALOAD\_\-0@{ALOAD\_\-0}!opcodes.h@{opcodes.h}}\index{opcodes.h@{opcodes.h}!ALOAD\_\-0@{ALOAD\_\-0}}\item[{\em 
+ALOAD\_\-0\label{opcodes_8h_a137a2c90bc7aa8b889a767d0d607567dad1c9b230b2f11fb3b9bc16ea53ec489a}
+}]Load reference from the first local variable. \index{ALOAD\_\-1@{ALOAD\_\-1}!opcodes.h@{opcodes.h}}\index{opcodes.h@{opcodes.h}!ALOAD\_\-1@{ALOAD\_\-1}}\item[{\em 
+ALOAD\_\-1\label{opcodes_8h_a137a2c90bc7aa8b889a767d0d607567da887337f8823656c2a0e89b0843a7331d}
+}]Load reference from the second local variable. \index{ALOAD\_\-2@{ALOAD\_\-2}!opcodes.h@{opcodes.h}}\index{opcodes.h@{opcodes.h}!ALOAD\_\-2@{ALOAD\_\-2}}\item[{\em 
+ALOAD\_\-2\label{opcodes_8h_a137a2c90bc7aa8b889a767d0d607567daabc8c77903d010d3088a1adbb7888a35}
+}]Load reference from the third local variable. \index{ALOAD\_\-3@{ALOAD\_\-3}!opcodes.h@{opcodes.h}}\index{opcodes.h@{opcodes.h}!ALOAD\_\-3@{ALOAD\_\-3}}\item[{\em 
+ALOAD\_\-3\label{opcodes_8h_a137a2c90bc7aa8b889a767d0d607567da59ddc7b22a4a76b46ff085fcdfaf59b0}
+}]Load reference from the fourth local variable. \index{IALOAD@{IALOAD}!opcodes.h@{opcodes.h}}\index{opcodes.h@{opcodes.h}!IALOAD@{IALOAD}}\item[{\em 
+IALOAD\label{opcodes_8h_a137a2c90bc7aa8b889a767d0d607567da3ba46983bf5975dd391ee17cfce9dcc8}
+}]Load int from array. \index{LALOAD@{LALOAD}!opcodes.h@{opcodes.h}}\index{opcodes.h@{opcodes.h}!LALOAD@{LALOAD}}\item[{\em 
+LALOAD\label{opcodes_8h_a137a2c90bc7aa8b889a767d0d607567dad5a7f6d656d7072e81171f864c376edc}
+}]Load long from array. \index{FALOAD@{FALOAD}!opcodes.h@{opcodes.h}}\index{opcodes.h@{opcodes.h}!FALOAD@{FALOAD}}\item[{\em 
+FALOAD\label{opcodes_8h_a137a2c90bc7aa8b889a767d0d607567da56a39c4d19694231a2c52c741c7d4ef1}
+}]Load float from array. \index{DALOAD@{DALOAD}!opcodes.h@{opcodes.h}}\index{opcodes.h@{opcodes.h}!DALOAD@{DALOAD}}\item[{\em 
+DALOAD\label{opcodes_8h_a137a2c90bc7aa8b889a767d0d607567daee4eec302cd35c96675b752fa80e3a12}
+}]Load double from array. \index{AALOAD@{AALOAD}!opcodes.h@{opcodes.h}}\index{opcodes.h@{opcodes.h}!AALOAD@{AALOAD}}\item[{\em 
+AALOAD\label{opcodes_8h_a137a2c90bc7aa8b889a767d0d607567daddb3220c87287e77d8d4da12ae80f03b}
+}]Load reference from array. \index{BALOAD@{BALOAD}!opcodes.h@{opcodes.h}}\index{opcodes.h@{opcodes.h}!BALOAD@{BALOAD}}\item[{\em 
+BALOAD\label{opcodes_8h_a137a2c90bc7aa8b889a767d0d607567dafd30ab0ecf66f89e161de49c7c230171}
+}]Load byte or boolean from array. \index{CALOAD@{CALOAD}!opcodes.h@{opcodes.h}}\index{opcodes.h@{opcodes.h}!CALOAD@{CALOAD}}\item[{\em 
+CALOAD\label{opcodes_8h_a137a2c90bc7aa8b889a767d0d607567da4005ba5ce9d67ca4932faff9c8e4106c}
+}]Load char from array. \index{SALOAD@{SALOAD}!opcodes.h@{opcodes.h}}\index{opcodes.h@{opcodes.h}!SALOAD@{SALOAD}}\item[{\em 
+SALOAD\label{opcodes_8h_a137a2c90bc7aa8b889a767d0d607567da304d690cdc09850d3846917e48b1265a}
+}]Load short from array. \index{ISTORE@{ISTORE}!opcodes.h@{opcodes.h}}\index{opcodes.h@{opcodes.h}!ISTORE@{ISTORE}}\item[{\em 
+ISTORE\label{opcodes_8h_a137a2c90bc7aa8b889a767d0d607567da4a1fc4b3839b7541cb5cb4e0de6a617a}
+}]Store int into local variable. \index{LSTORE@{LSTORE}!opcodes.h@{opcodes.h}}\index{opcodes.h@{opcodes.h}!LSTORE@{LSTORE}}\item[{\em 
+LSTORE\label{opcodes_8h_a137a2c90bc7aa8b889a767d0d607567dafeed7f8aeb8edddacfcbb01c28fab792}
+}]Store long into local variable. \index{FSTORE@{FSTORE}!opcodes.h@{opcodes.h}}\index{opcodes.h@{opcodes.h}!FSTORE@{FSTORE}}\item[{\em 
+FSTORE\label{opcodes_8h_a137a2c90bc7aa8b889a767d0d607567da2df5d318b2e91482f8b29de7a8dc263b}
+}]Store float into local variable. \index{DSTORE@{DSTORE}!opcodes.h@{opcodes.h}}\index{opcodes.h@{opcodes.h}!DSTORE@{DSTORE}}\item[{\em 
+DSTORE\label{opcodes_8h_a137a2c90bc7aa8b889a767d0d607567da5855ecc980a8dddcbd0fe92240ec8aad}
+}]Store double into local variable. \index{ASTORE@{ASTORE}!opcodes.h@{opcodes.h}}\index{opcodes.h@{opcodes.h}!ASTORE@{ASTORE}}\item[{\em 
+ASTORE\label{opcodes_8h_a137a2c90bc7aa8b889a767d0d607567da6005a9af375ed3e3b26f546d75fe09f7}
+}]Store reference into local variable. \index{ISTORE\_\-0@{ISTORE\_\-0}!opcodes.h@{opcodes.h}}\index{opcodes.h@{opcodes.h}!ISTORE\_\-0@{ISTORE\_\-0}}\item[{\em 
+ISTORE\_\-0\label{opcodes_8h_a137a2c90bc7aa8b889a767d0d607567dab9d1401061c2fb6631ef5bcf5d9b01ef}
+}]Store int into the first local variable. \index{ISTORE\_\-1@{ISTORE\_\-1}!opcodes.h@{opcodes.h}}\index{opcodes.h@{opcodes.h}!ISTORE\_\-1@{ISTORE\_\-1}}\item[{\em 
+ISTORE\_\-1\label{opcodes_8h_a137a2c90bc7aa8b889a767d0d607567da412c027ba27ca01b3c002c11b84c282a}
+}]Store int into the second local variable. \index{ISTORE\_\-2@{ISTORE\_\-2}!opcodes.h@{opcodes.h}}\index{opcodes.h@{opcodes.h}!ISTORE\_\-2@{ISTORE\_\-2}}\item[{\em 
+ISTORE\_\-2\label{opcodes_8h_a137a2c90bc7aa8b889a767d0d607567da285f50df870b9b9f1cf44ea8b8d4c69c}
+}]Store int into the third local variable. \index{ISTORE\_\-3@{ISTORE\_\-3}!opcodes.h@{opcodes.h}}\index{opcodes.h@{opcodes.h}!ISTORE\_\-3@{ISTORE\_\-3}}\item[{\em 
+ISTORE\_\-3\label{opcodes_8h_a137a2c90bc7aa8b889a767d0d607567da551ecb9a1b3b406b0cd58a56d7d5b8ee}
+}]Store int into the fourth local variable. \index{LSTORE\_\-0@{LSTORE\_\-0}!opcodes.h@{opcodes.h}}\index{opcodes.h@{opcodes.h}!LSTORE\_\-0@{LSTORE\_\-0}}\item[{\em 
+LSTORE\_\-0\label{opcodes_8h_a137a2c90bc7aa8b889a767d0d607567da2124e965604316a8506ba54ec63ef601}
+}]Store long into the first local variable. \index{LSTORE\_\-1@{LSTORE\_\-1}!opcodes.h@{opcodes.h}}\index{opcodes.h@{opcodes.h}!LSTORE\_\-1@{LSTORE\_\-1}}\item[{\em 
+LSTORE\_\-1\label{opcodes_8h_a137a2c90bc7aa8b889a767d0d607567da0246110e63c4a54588cffb3090807a48}
+}]Store long into the second local variable. \index{LSTORE\_\-2@{LSTORE\_\-2}!opcodes.h@{opcodes.h}}\index{opcodes.h@{opcodes.h}!LSTORE\_\-2@{LSTORE\_\-2}}\item[{\em 
+LSTORE\_\-2\label{opcodes_8h_a137a2c90bc7aa8b889a767d0d607567da7747482a4cc4fbdb1dc98ce3b2c4923a}
+}]Store long into the third local variable. \index{LSTORE\_\-3@{LSTORE\_\-3}!opcodes.h@{opcodes.h}}\index{opcodes.h@{opcodes.h}!LSTORE\_\-3@{LSTORE\_\-3}}\item[{\em 
+LSTORE\_\-3\label{opcodes_8h_a137a2c90bc7aa8b889a767d0d607567da2175b3954139052cae20844f421d9afc}
+}]Store long into the fourth local variable. \index{FSTORE\_\-0@{FSTORE\_\-0}!opcodes.h@{opcodes.h}}\index{opcodes.h@{opcodes.h}!FSTORE\_\-0@{FSTORE\_\-0}}\item[{\em 
+FSTORE\_\-0\label{opcodes_8h_a137a2c90bc7aa8b889a767d0d607567da39b4f9dc20a4197f33fe62730512bcec}
+}]Store float into the first local variable. \index{FSTORE\_\-1@{FSTORE\_\-1}!opcodes.h@{opcodes.h}}\index{opcodes.h@{opcodes.h}!FSTORE\_\-1@{FSTORE\_\-1}}\item[{\em 
+FSTORE\_\-1\label{opcodes_8h_a137a2c90bc7aa8b889a767d0d607567da95d2a8906f00da40aec021566b4e4f64}
+}]Store float into the second local variable. \index{FSTORE\_\-2@{FSTORE\_\-2}!opcodes.h@{opcodes.h}}\index{opcodes.h@{opcodes.h}!FSTORE\_\-2@{FSTORE\_\-2}}\item[{\em 
+FSTORE\_\-2\label{opcodes_8h_a137a2c90bc7aa8b889a767d0d607567dae023fe09d14a535fdbcad51aa9053036}
+}]Store float into the third local variable. \index{FSTORE\_\-3@{FSTORE\_\-3}!opcodes.h@{opcodes.h}}\index{opcodes.h@{opcodes.h}!FSTORE\_\-3@{FSTORE\_\-3}}\item[{\em 
+FSTORE\_\-3\label{opcodes_8h_a137a2c90bc7aa8b889a767d0d607567da9eece762cffc063d6ab637c660812636}
+}]Store float into the fourth local variable. \index{DSTORE\_\-0@{DSTORE\_\-0}!opcodes.h@{opcodes.h}}\index{opcodes.h@{opcodes.h}!DSTORE\_\-0@{DSTORE\_\-0}}\item[{\em 
+DSTORE\_\-0\label{opcodes_8h_a137a2c90bc7aa8b889a767d0d607567dad27f9e2881d1ea8222dec9d186dadb3d}
+}]Store double into the first local variable. \index{DSTORE\_\-1@{DSTORE\_\-1}!opcodes.h@{opcodes.h}}\index{opcodes.h@{opcodes.h}!DSTORE\_\-1@{DSTORE\_\-1}}\item[{\em 
+DSTORE\_\-1\label{opcodes_8h_a137a2c90bc7aa8b889a767d0d607567da3c9a5a253781844f0bb506281533289c}
+}]Store double into the second local variable. \index{DSTORE\_\-2@{DSTORE\_\-2}!opcodes.h@{opcodes.h}}\index{opcodes.h@{opcodes.h}!DSTORE\_\-2@{DSTORE\_\-2}}\item[{\em 
+DSTORE\_\-2\label{opcodes_8h_a137a2c90bc7aa8b889a767d0d607567da496de9a3fa847fcf1abf70056487674c}
+}]Store double into the third local variable. \index{DSTORE\_\-3@{DSTORE\_\-3}!opcodes.h@{opcodes.h}}\index{opcodes.h@{opcodes.h}!DSTORE\_\-3@{DSTORE\_\-3}}\item[{\em 
+DSTORE\_\-3\label{opcodes_8h_a137a2c90bc7aa8b889a767d0d607567da8ae388cf171bd74ccdaab5bdc417185c}
+}]Store double into the fourth local variable. \index{ASTORE\_\-0@{ASTORE\_\-0}!opcodes.h@{opcodes.h}}\index{opcodes.h@{opcodes.h}!ASTORE\_\-0@{ASTORE\_\-0}}\item[{\em 
+ASTORE\_\-0\label{opcodes_8h_a137a2c90bc7aa8b889a767d0d607567da647fbc4585d0e5ec2986e1c9056af1ce}
+}]Store reference into the first local variable. \index{ASTORE\_\-1@{ASTORE\_\-1}!opcodes.h@{opcodes.h}}\index{opcodes.h@{opcodes.h}!ASTORE\_\-1@{ASTORE\_\-1}}\item[{\em 
+ASTORE\_\-1\label{opcodes_8h_a137a2c90bc7aa8b889a767d0d607567da7ae9ee4a8749bfe9539d0f523fe94fe9}
+}]Store reference into the second local variable. \index{ASTORE\_\-2@{ASTORE\_\-2}!opcodes.h@{opcodes.h}}\index{opcodes.h@{opcodes.h}!ASTORE\_\-2@{ASTORE\_\-2}}\item[{\em 
+ASTORE\_\-2\label{opcodes_8h_a137a2c90bc7aa8b889a767d0d607567da37e3cfecdf274b13a50c74be1d9e7b80}
+}]Store reference into the third local variable. \index{ASTORE\_\-3@{ASTORE\_\-3}!opcodes.h@{opcodes.h}}\index{opcodes.h@{opcodes.h}!ASTORE\_\-3@{ASTORE\_\-3}}\item[{\em 
+ASTORE\_\-3\label{opcodes_8h_a137a2c90bc7aa8b889a767d0d607567da08bf1b2d565a4ffa65afeac92385c921}
+}]Store reference into the fourth local variable. \index{IASTORE@{IASTORE}!opcodes.h@{opcodes.h}}\index{opcodes.h@{opcodes.h}!IASTORE@{IASTORE}}\item[{\em 
+IASTORE\label{opcodes_8h_a137a2c90bc7aa8b889a767d0d607567daf96278226c415931d4270afe242c29ec}
+}]Store into int array. \index{LASTORE@{LASTORE}!opcodes.h@{opcodes.h}}\index{opcodes.h@{opcodes.h}!LASTORE@{LASTORE}}\item[{\em 
+LASTORE\label{opcodes_8h_a137a2c90bc7aa8b889a767d0d607567da21b5e6cc36448c10994c4857911d5c8e}
+}]Store into long array. \index{FASTORE@{FASTORE}!opcodes.h@{opcodes.h}}\index{opcodes.h@{opcodes.h}!FASTORE@{FASTORE}}\item[{\em 
+FASTORE\label{opcodes_8h_a137a2c90bc7aa8b889a767d0d607567da68eb384d463bd1d67c0be42af8b1d313}
+}]Store into float array. \index{DASTORE@{DASTORE}!opcodes.h@{opcodes.h}}\index{opcodes.h@{opcodes.h}!DASTORE@{DASTORE}}\item[{\em 
+DASTORE\label{opcodes_8h_a137a2c90bc7aa8b889a767d0d607567da25928a9b1e2f99943cef0c4b0a0accc7}
+}]Store into double array. \index{AASTORE@{AASTORE}!opcodes.h@{opcodes.h}}\index{opcodes.h@{opcodes.h}!AASTORE@{AASTORE}}\item[{\em 
+AASTORE\label{opcodes_8h_a137a2c90bc7aa8b889a767d0d607567da4e8530f1c625b32763d9c57ed97cf6e4}
+}]Store into reference array. \index{BASTORE@{BASTORE}!opcodes.h@{opcodes.h}}\index{opcodes.h@{opcodes.h}!BASTORE@{BASTORE}}\item[{\em 
+BASTORE\label{opcodes_8h_a137a2c90bc7aa8b889a767d0d607567da128b90bfae8c9874894f89a81650c893}
+}]Store into byte array. \index{CASTORE@{CASTORE}!opcodes.h@{opcodes.h}}\index{opcodes.h@{opcodes.h}!CASTORE@{CASTORE}}\item[{\em 
+CASTORE\label{opcodes_8h_a137a2c90bc7aa8b889a767d0d607567da6912fd89ff4c5dcca30a9e86310bf442}
+}]Store into char array. \index{SASTORE@{SASTORE}!opcodes.h@{opcodes.h}}\index{opcodes.h@{opcodes.h}!SASTORE@{SASTORE}}\item[{\em 
+SASTORE\label{opcodes_8h_a137a2c90bc7aa8b889a767d0d607567daebe1659ae0a12e398beb5d32c171ab5c}
+}]Store into short array. \index{POP@{POP}!opcodes.h@{opcodes.h}}\index{opcodes.h@{opcodes.h}!POP@{POP}}\item[{\em 
+POP\label{opcodes_8h_a137a2c90bc7aa8b889a767d0d607567da061dcf4785583d8653942f2d252174fa}
+}]Pop the top operand stack value. \index{POP2@{POP2}!opcodes.h@{opcodes.h}}\index{opcodes.h@{opcodes.h}!POP2@{POP2}}\item[{\em 
+POP2\label{opcodes_8h_a137a2c90bc7aa8b889a767d0d607567dada1d9877c2e14beae94783a490c10b24}
+}]Pop the one or two top operand stack values. \index{DUP@{DUP}!opcodes.h@{opcodes.h}}\index{opcodes.h@{opcodes.h}!DUP@{DUP}}\item[{\em 
+DUP\label{opcodes_8h_a137a2c90bc7aa8b889a767d0d607567da94ec660291079916623355f9d9231077}
+}]Duplicate the top operand stack value. \index{DUP\_\-X1@{DUP\_\-X1}!opcodes.h@{opcodes.h}}\index{opcodes.h@{opcodes.h}!DUP\_\-X1@{DUP\_\-X1}}\item[{\em 
+DUP\_\-X1\label{opcodes_8h_a137a2c90bc7aa8b889a767d0d607567da3c5151f3af83619d098d2a0182dffd48}
+}]Duplicate the top operand stack value and insert two values down. \index{DUP\_\-X2@{DUP\_\-X2}!opcodes.h@{opcodes.h}}\index{opcodes.h@{opcodes.h}!DUP\_\-X2@{DUP\_\-X2}}\item[{\em 
+DUP\_\-X2\label{opcodes_8h_a137a2c90bc7aa8b889a767d0d607567dafd59aefb378bb0ed56b66d92cbc97a1e}
+}]Duplicate the top operand stack value and insert two or three values down. \index{DUP2@{DUP2}!opcodes.h@{opcodes.h}}\index{opcodes.h@{opcodes.h}!DUP2@{DUP2}}\item[{\em 
+DUP2\label{opcodes_8h_a137a2c90bc7aa8b889a767d0d607567dae6a3ea16974b854f99286eb148d00c7c}
+}]Duplicate the top operand stack value and insert two or three values down$\ast$/. \index{DUP2\_\-X1@{DUP2\_\-X1}!opcodes.h@{opcodes.h}}\index{opcodes.h@{opcodes.h}!DUP2\_\-X1@{DUP2\_\-X1}}\item[{\em 
+DUP2\_\-X1\label{opcodes_8h_a137a2c90bc7aa8b889a767d0d607567da4de1bcdfa6c0f724e375ebbbd98370af}
+}]Duplicate the top one or two operand stack values and insert two or three values down$\ast$/. \index{DUP2\_\-X2@{DUP2\_\-X2}!opcodes.h@{opcodes.h}}\index{opcodes.h@{opcodes.h}!DUP2\_\-X2@{DUP2\_\-X2}}\item[{\em 
+DUP2\_\-X2\label{opcodes_8h_a137a2c90bc7aa8b889a767d0d607567dab1373b40a1c8552b869b54c4cffbaa32}
+}]Duplicate the top one or two operand stack values and insert two, three, or four values down. \index{SWAP@{SWAP}!opcodes.h@{opcodes.h}}\index{opcodes.h@{opcodes.h}!SWAP@{SWAP}}\item[{\em 
+SWAP\label{opcodes_8h_a137a2c90bc7aa8b889a767d0d607567daaa826be4c1bbb2ee3d5f2e2fb6912a23}
+}]Swap the top two operand stack values. \index{IADD@{IADD}!opcodes.h@{opcodes.h}}\index{opcodes.h@{opcodes.h}!IADD@{IADD}}\item[{\em 
+IADD\label{opcodes_8h_a137a2c90bc7aa8b889a767d0d607567dab907ed61005f5c66af7ff32c95209dce}
+}]Add int. \index{LADD@{LADD}!opcodes.h@{opcodes.h}}\index{opcodes.h@{opcodes.h}!LADD@{LADD}}\item[{\em 
+LADD\label{opcodes_8h_a137a2c90bc7aa8b889a767d0d607567dac791caa2b5d3d1887f797792628a08a8}
+}]Add long. \index{FADD@{FADD}!opcodes.h@{opcodes.h}}\index{opcodes.h@{opcodes.h}!FADD@{FADD}}\item[{\em 
+FADD\label{opcodes_8h_a137a2c90bc7aa8b889a767d0d607567da5934efeaef89e3facbc9301b097f46c7}
+}]Add float. \index{DADD@{DADD}!opcodes.h@{opcodes.h}}\index{opcodes.h@{opcodes.h}!DADD@{DADD}}\item[{\em 
+DADD\label{opcodes_8h_a137a2c90bc7aa8b889a767d0d607567dab898aaf9defc15e5d9d5c7a1f9c340db}
+}]Add double. \index{ISUB@{ISUB}!opcodes.h@{opcodes.h}}\index{opcodes.h@{opcodes.h}!ISUB@{ISUB}}\item[{\em 
+ISUB\label{opcodes_8h_a137a2c90bc7aa8b889a767d0d607567daeef80632dcb15b29fda61f3c9d3f633a}
+}]Substract int. \index{LSUB@{LSUB}!opcodes.h@{opcodes.h}}\index{opcodes.h@{opcodes.h}!LSUB@{LSUB}}\item[{\em 
+LSUB\label{opcodes_8h_a137a2c90bc7aa8b889a767d0d607567da383f412552e65152b50013e6c5397baa}
+}]Substract long. \index{FSUB@{FSUB}!opcodes.h@{opcodes.h}}\index{opcodes.h@{opcodes.h}!FSUB@{FSUB}}\item[{\em 
+FSUB\label{opcodes_8h_a137a2c90bc7aa8b889a767d0d607567dadae3c12f60c26b759331b584f789d005}
+}]Substract float. \index{DSUB@{DSUB}!opcodes.h@{opcodes.h}}\index{opcodes.h@{opcodes.h}!DSUB@{DSUB}}\item[{\em 
+DSUB\label{opcodes_8h_a137a2c90bc7aa8b889a767d0d607567da9c979cc065bc46dd316dbe9bce8c14b9}
+}]Sustract double. \index{IMUL@{IMUL}!opcodes.h@{opcodes.h}}\index{opcodes.h@{opcodes.h}!IMUL@{IMUL}}\item[{\em 
+IMUL\label{opcodes_8h_a137a2c90bc7aa8b889a767d0d607567daa53e6d74599ea736cd470707935d49b6}
+}]Multiply int. \index{LMUL@{LMUL}!opcodes.h@{opcodes.h}}\index{opcodes.h@{opcodes.h}!LMUL@{LMUL}}\item[{\em 
+LMUL\label{opcodes_8h_a137a2c90bc7aa8b889a767d0d607567daddd3ac72d079e9f6342d552927fae786}
+}]Multiply long. \index{FMUL@{FMUL}!opcodes.h@{opcodes.h}}\index{opcodes.h@{opcodes.h}!FMUL@{FMUL}}\item[{\em 
+FMUL\label{opcodes_8h_a137a2c90bc7aa8b889a767d0d607567da99a6a8b4a2b1a6cbe396f647644e3774}
+}]Multiply float. \index{DMUL@{DMUL}!opcodes.h@{opcodes.h}}\index{opcodes.h@{opcodes.h}!DMUL@{DMUL}}\item[{\em 
+DMUL\label{opcodes_8h_a137a2c90bc7aa8b889a767d0d607567dabd5e733befecc9319a4fb4efe4a21ff6}
+}]Multiply double. \index{IDIV@{IDIV}!opcodes.h@{opcodes.h}}\index{opcodes.h@{opcodes.h}!IDIV@{IDIV}}\item[{\em 
+IDIV\label{opcodes_8h_a137a2c90bc7aa8b889a767d0d607567dafc965839a7f67e65542c70f2f26356c4}
+}]Divide int. \index{LDIV@{LDIV}!opcodes.h@{opcodes.h}}\index{opcodes.h@{opcodes.h}!LDIV@{LDIV}}\item[{\em 
+LDIV\label{opcodes_8h_a137a2c90bc7aa8b889a767d0d607567da87e9c17f1cce4e17ba87b9b9169adbdc}
+}]Divide long. \index{FDIV@{FDIV}!opcodes.h@{opcodes.h}}\index{opcodes.h@{opcodes.h}!FDIV@{FDIV}}\item[{\em 
+FDIV\label{opcodes_8h_a137a2c90bc7aa8b889a767d0d607567da5e99fb577cdb2550c79e6badc9fd6281}
+}]Divide float. \index{DDIV@{DDIV}!opcodes.h@{opcodes.h}}\index{opcodes.h@{opcodes.h}!DDIV@{DDIV}}\item[{\em 
+DDIV\label{opcodes_8h_a137a2c90bc7aa8b889a767d0d607567dad5aaa9f8e83f9af1b382678beb591520}
+}]Divide double. \index{IREM@{IREM}!opcodes.h@{opcodes.h}}\index{opcodes.h@{opcodes.h}!IREM@{IREM}}\item[{\em 
+IREM\label{opcodes_8h_a137a2c90bc7aa8b889a767d0d607567daeaf84155c5ee85156b0e564ae068044d}
+}]Remainder int. \index{LREM@{LREM}!opcodes.h@{opcodes.h}}\index{opcodes.h@{opcodes.h}!LREM@{LREM}}\item[{\em 
+LREM\label{opcodes_8h_a137a2c90bc7aa8b889a767d0d607567da1069917a7508e233c64ca896db84c823}
+}]Remainder long. \index{FREM@{FREM}!opcodes.h@{opcodes.h}}\index{opcodes.h@{opcodes.h}!FREM@{FREM}}\item[{\em 
+FREM\label{opcodes_8h_a137a2c90bc7aa8b889a767d0d607567da78890cd98870b7cc03350248e428a381}
+}]Remainder float. \index{DREM@{DREM}!opcodes.h@{opcodes.h}}\index{opcodes.h@{opcodes.h}!DREM@{DREM}}\item[{\em 
+DREM\label{opcodes_8h_a137a2c90bc7aa8b889a767d0d607567da4afb3c9276826a9f507868b08cb8dc4b}
+}]Remainder double. \index{INEG@{INEG}!opcodes.h@{opcodes.h}}\index{opcodes.h@{opcodes.h}!INEG@{INEG}}\item[{\em 
+INEG\label{opcodes_8h_a137a2c90bc7aa8b889a767d0d607567da6ae1f171a87d9ca1d79de7bf83c475fe}
+}]Negate int. \index{LNEG@{LNEG}!opcodes.h@{opcodes.h}}\index{opcodes.h@{opcodes.h}!LNEG@{LNEG}}\item[{\em 
+LNEG\label{opcodes_8h_a137a2c90bc7aa8b889a767d0d607567da933444af510cd51c77b847256b9f2be6}
+}]Negate long. \index{FNEG@{FNEG}!opcodes.h@{opcodes.h}}\index{opcodes.h@{opcodes.h}!FNEG@{FNEG}}\item[{\em 
+FNEG\label{opcodes_8h_a137a2c90bc7aa8b889a767d0d607567da5bd10b2dfddbf56bed34c043102b8e43}
+}]Negate float. \index{DNEG@{DNEG}!opcodes.h@{opcodes.h}}\index{opcodes.h@{opcodes.h}!DNEG@{DNEG}}\item[{\em 
+DNEG\label{opcodes_8h_a137a2c90bc7aa8b889a767d0d607567dad28cd398369d63490483f73271957577}
+}]Negate double. \index{ISHL@{ISHL}!opcodes.h@{opcodes.h}}\index{opcodes.h@{opcodes.h}!ISHL@{ISHL}}\item[{\em 
+ISHL\label{opcodes_8h_a137a2c90bc7aa8b889a767d0d607567da94be4796422fda8280c5d5d6c9793ecf}
+}]Shift left int. \index{LSHL@{LSHL}!opcodes.h@{opcodes.h}}\index{opcodes.h@{opcodes.h}!LSHL@{LSHL}}\item[{\em 
+LSHL\label{opcodes_8h_a137a2c90bc7aa8b889a767d0d607567daa508cec915e8ee5ee22dc2b0dc1091ec}
+}]Shift left long. \index{ISHR@{ISHR}!opcodes.h@{opcodes.h}}\index{opcodes.h@{opcodes.h}!ISHR@{ISHR}}\item[{\em 
+ISHR\label{opcodes_8h_a137a2c90bc7aa8b889a767d0d607567dab5d3e8573432e598957cccb718c5b3bb}
+}]Arithmetic shift right int. \index{LSHR@{LSHR}!opcodes.h@{opcodes.h}}\index{opcodes.h@{opcodes.h}!LSHR@{LSHR}}\item[{\em 
+LSHR\label{opcodes_8h_a137a2c90bc7aa8b889a767d0d607567da0f88335caa79be303d8d30299edb091b}
+}]Arithmetic shift right long. \index{IUSHR@{IUSHR}!opcodes.h@{opcodes.h}}\index{opcodes.h@{opcodes.h}!IUSHR@{IUSHR}}\item[{\em 
+IUSHR\label{opcodes_8h_a137a2c90bc7aa8b889a767d0d607567da9873aecc8eca15d34fc7019f501ffba6}
+}]Logical shift right int. \index{LUSHR@{LUSHR}!opcodes.h@{opcodes.h}}\index{opcodes.h@{opcodes.h}!LUSHR@{LUSHR}}\item[{\em 
+LUSHR\label{opcodes_8h_a137a2c90bc7aa8b889a767d0d607567dabae831ee08daa3e22a2b08bf2cef6043}
+}]Logical shift right long. \index{IAND@{IAND}!opcodes.h@{opcodes.h}}\index{opcodes.h@{opcodes.h}!IAND@{IAND}}\item[{\em 
+IAND\label{opcodes_8h_a137a2c90bc7aa8b889a767d0d607567da38e8a8d9238974ed9262f86010045937}
+}]Boolean AND int. \index{LAND@{LAND}!opcodes.h@{opcodes.h}}\index{opcodes.h@{opcodes.h}!LAND@{LAND}}\item[{\em 
+LAND\label{opcodes_8h_a137a2c90bc7aa8b889a767d0d607567da020389bbc8308bea419f7828d9b6d6eb}
+}]Boolean AND long. \index{IOR@{IOR}!opcodes.h@{opcodes.h}}\index{opcodes.h@{opcodes.h}!IOR@{IOR}}\item[{\em 
+IOR\label{opcodes_8h_a137a2c90bc7aa8b889a767d0d607567da20108318f80016f9a144bd70c6f56c05}
+}]Boolean OR int. \index{LOR@{LOR}!opcodes.h@{opcodes.h}}\index{opcodes.h@{opcodes.h}!LOR@{LOR}}\item[{\em 
+LOR\label{opcodes_8h_a137a2c90bc7aa8b889a767d0d607567dafcd75ee62f1678f5e0b629cdf0c27423}
+}]Boolean OR long. \index{IXOR@{IXOR}!opcodes.h@{opcodes.h}}\index{opcodes.h@{opcodes.h}!IXOR@{IXOR}}\item[{\em 
+IXOR\label{opcodes_8h_a137a2c90bc7aa8b889a767d0d607567dae243ef6b58ec2abf722cc1df82437873}
+}]Boolean XOR int. \index{LXOR@{LXOR}!opcodes.h@{opcodes.h}}\index{opcodes.h@{opcodes.h}!LXOR@{LXOR}}\item[{\em 
+LXOR\label{opcodes_8h_a137a2c90bc7aa8b889a767d0d607567dae1f9d837d799a9f724de1836872b83d0}
+}]Boolean XOR long. \index{IINC@{IINC}!opcodes.h@{opcodes.h}}\index{opcodes.h@{opcodes.h}!IINC@{IINC}}\item[{\em 
+IINC\label{opcodes_8h_a137a2c90bc7aa8b889a767d0d607567dab42a6fde4d23e097cddbb1c77633f804}
+}]Increment local variable by constant. \index{I2L@{I2L}!opcodes.h@{opcodes.h}}\index{opcodes.h@{opcodes.h}!I2L@{I2L}}\item[{\em 
+I2L\label{opcodes_8h_a137a2c90bc7aa8b889a767d0d607567da029b6c768d1763e4211e90a0d20d6c03}
+}]Convert int to long. \index{I2F@{I2F}!opcodes.h@{opcodes.h}}\index{opcodes.h@{opcodes.h}!I2F@{I2F}}\item[{\em 
+I2F\label{opcodes_8h_a137a2c90bc7aa8b889a767d0d607567da3ff172eb1c37ea2267c60ae1eaa0fc67}
+}]Convert int to float. \index{I2D@{I2D}!opcodes.h@{opcodes.h}}\index{opcodes.h@{opcodes.h}!I2D@{I2D}}\item[{\em 
+I2D\label{opcodes_8h_a137a2c90bc7aa8b889a767d0d607567dad98e546de053e76c8df8f1081f23e419}
+}]Convert int to double. \index{L2I@{L2I}!opcodes.h@{opcodes.h}}\index{opcodes.h@{opcodes.h}!L2I@{L2I}}\item[{\em 
+L2I\label{opcodes_8h_a137a2c90bc7aa8b889a767d0d607567dae5369392f1f804c7e9c24e950b09a294}
+}]Convert long to int. \index{L2F@{L2F}!opcodes.h@{opcodes.h}}\index{opcodes.h@{opcodes.h}!L2F@{L2F}}\item[{\em 
+L2F\label{opcodes_8h_a137a2c90bc7aa8b889a767d0d607567dae5b4ce804e5ea4ca14afa9e338cea21f}
+}]Convert long to float. \index{L2D@{L2D}!opcodes.h@{opcodes.h}}\index{opcodes.h@{opcodes.h}!L2D@{L2D}}\item[{\em 
+L2D\label{opcodes_8h_a137a2c90bc7aa8b889a767d0d607567da26c1f030a314afb43e1acc916128c922}
+}]Convert long to double. \index{F2I@{F2I}!opcodes.h@{opcodes.h}}\index{opcodes.h@{opcodes.h}!F2I@{F2I}}\item[{\em 
+F2I\label{opcodes_8h_a137a2c90bc7aa8b889a767d0d607567da3083d80a92ae667acc540c51259aaaf3}
+}]Convert float to int. \index{F2L@{F2L}!opcodes.h@{opcodes.h}}\index{opcodes.h@{opcodes.h}!F2L@{F2L}}\item[{\em 
+F2L\label{opcodes_8h_a137a2c90bc7aa8b889a767d0d607567dae73e0d32b1c91f82054491d2e7fdd989}
+}]Convert float to long. \index{F2D@{F2D}!opcodes.h@{opcodes.h}}\index{opcodes.h@{opcodes.h}!F2D@{F2D}}\item[{\em 
+F2D\label{opcodes_8h_a137a2c90bc7aa8b889a767d0d607567da42371bcca6bde589137dfc357f2d741c}
+}]Convert float to double. \index{D2I@{D2I}!opcodes.h@{opcodes.h}}\index{opcodes.h@{opcodes.h}!D2I@{D2I}}\item[{\em 
+D2I\label{opcodes_8h_a137a2c90bc7aa8b889a767d0d607567dab0f41e3d619f72e1121730b50a40452d}
+}]Convert double to int. \index{D2L@{D2L}!opcodes.h@{opcodes.h}}\index{opcodes.h@{opcodes.h}!D2L@{D2L}}\item[{\em 
+D2L\label{opcodes_8h_a137a2c90bc7aa8b889a767d0d607567dad2750b7d90bf97ad86a00abd08c058dd}
+}]Convert double to long. \index{D2F@{D2F}!opcodes.h@{opcodes.h}}\index{opcodes.h@{opcodes.h}!D2F@{D2F}}\item[{\em 
+D2F\label{opcodes_8h_a137a2c90bc7aa8b889a767d0d607567da5d431883c94a76b10731116b9821d42b}
+}]Convert double to float. \index{I2B@{I2B}!opcodes.h@{opcodes.h}}\index{opcodes.h@{opcodes.h}!I2B@{I2B}}\item[{\em 
+I2B\label{opcodes_8h_a137a2c90bc7aa8b889a767d0d607567dae4f80af27b3efb07b756bae5d50031cb}
+}]Convert int to byte. \index{I2C@{I2C}!opcodes.h@{opcodes.h}}\index{opcodes.h@{opcodes.h}!I2C@{I2C}}\item[{\em 
+I2C\label{opcodes_8h_a137a2c90bc7aa8b889a767d0d607567da999bae3da733e2c2015a4585271b0187}
+}]Convert int to char. \index{I2S@{I2S}!opcodes.h@{opcodes.h}}\index{opcodes.h@{opcodes.h}!I2S@{I2S}}\item[{\em 
+I2S\label{opcodes_8h_a137a2c90bc7aa8b889a767d0d607567da39366144e6381ab3ff6d4d0896a57e1a}
+}]Convert int to short. \index{LCMP@{LCMP}!opcodes.h@{opcodes.h}}\index{opcodes.h@{opcodes.h}!LCMP@{LCMP}}\item[{\em 
+LCMP\label{opcodes_8h_a137a2c90bc7aa8b889a767d0d607567da28fe0437b9306e8ff6dcb3778e2d970d}
+}]Long compare. \index{FCMPL@{FCMPL}!opcodes.h@{opcodes.h}}\index{opcodes.h@{opcodes.h}!FCMPL@{FCMPL}}\item[{\em 
+FCMPL\label{opcodes_8h_a137a2c90bc7aa8b889a767d0d607567dae4c3ea7696d907deaf41795fe4c9bfe9}
+}]Float compare NaN negative. \index{FCMPG@{FCMPG}!opcodes.h@{opcodes.h}}\index{opcodes.h@{opcodes.h}!FCMPG@{FCMPG}}\item[{\em 
+FCMPG\label{opcodes_8h_a137a2c90bc7aa8b889a767d0d607567dac26c04a6b9c2227ec58410ee44a622f5}
+}]Float compare NaN positive. \index{DCMPL@{DCMPL}!opcodes.h@{opcodes.h}}\index{opcodes.h@{opcodes.h}!DCMPL@{DCMPL}}\item[{\em 
+DCMPL\label{opcodes_8h_a137a2c90bc7aa8b889a767d0d607567da4b7a7c26fe262626f2e3f0d93a218e82}
+}]Double compare NaN negative. \index{DCMPG@{DCMPG}!opcodes.h@{opcodes.h}}\index{opcodes.h@{opcodes.h}!DCMPG@{DCMPG}}\item[{\em 
+DCMPG\label{opcodes_8h_a137a2c90bc7aa8b889a767d0d607567da66ff10be606ceb3574dbfb49611d92ba}
+}]Double compare NaN positive. \index{IFEQ@{IFEQ}!opcodes.h@{opcodes.h}}\index{opcodes.h@{opcodes.h}!IFEQ@{IFEQ}}\item[{\em 
+IFEQ\label{opcodes_8h_a137a2c90bc7aa8b889a767d0d607567da83cef5da3922b2f13da6a1093a468a83}
+}]Branch if equal to zero. \index{IFNE@{IFNE}!opcodes.h@{opcodes.h}}\index{opcodes.h@{opcodes.h}!IFNE@{IFNE}}\item[{\em 
+IFNE\label{opcodes_8h_a137a2c90bc7aa8b889a767d0d607567da0b77419459f419a2b91e76ca0a1bd912}
+}]Branch if not equal to zero. \index{IFLT@{IFLT}!opcodes.h@{opcodes.h}}\index{opcodes.h@{opcodes.h}!IFLT@{IFLT}}\item[{\em 
+IFLT\label{opcodes_8h_a137a2c90bc7aa8b889a767d0d607567dae70d0d06154807e60cd5b943250d251c}
+}]Branch if lower than zero. \index{IFGE@{IFGE}!opcodes.h@{opcodes.h}}\index{opcodes.h@{opcodes.h}!IFGE@{IFGE}}\item[{\em 
+IFGE\label{opcodes_8h_a137a2c90bc7aa8b889a767d0d607567da822eb618e38d6ed40a61ae98146ee82a}
+}]Branch if greater or equal to zero. \index{IFGT@{IFGT}!opcodes.h@{opcodes.h}}\index{opcodes.h@{opcodes.h}!IFGT@{IFGT}}\item[{\em 
+IFGT\label{opcodes_8h_a137a2c90bc7aa8b889a767d0d607567da2e02da4f438927a762c81013f5b41d97}
+}]Branch if greater than zero. \index{IFLE@{IFLE}!opcodes.h@{opcodes.h}}\index{opcodes.h@{opcodes.h}!IFLE@{IFLE}}\item[{\em 
+IFLE\label{opcodes_8h_a137a2c90bc7aa8b889a767d0d607567dad6cd5edd4c1dabcfd435f8b4851eea62}
+}]Branch if lower or equal to zero. \index{IF\_\-ICMPEQ@{IF\_\-ICMPEQ}!opcodes.h@{opcodes.h}}\index{opcodes.h@{opcodes.h}!IF\_\-ICMPEQ@{IF\_\-ICMPEQ}}\item[{\em 
+IF\_\-ICMPEQ\label{opcodes_8h_a137a2c90bc7aa8b889a767d0d607567da8f1433cbe14958db20d84e3b301a1026}
+}]Branch if equal. \index{IF\_\-ICMPNE@{IF\_\-ICMPNE}!opcodes.h@{opcodes.h}}\index{opcodes.h@{opcodes.h}!IF\_\-ICMPNE@{IF\_\-ICMPNE}}\item[{\em 
+IF\_\-ICMPNE\label{opcodes_8h_a137a2c90bc7aa8b889a767d0d607567da2a0c601edd5048b0954009f336dd33d2}
+}]Branch if not equal. \index{IF\_\-ICMPLT@{IF\_\-ICMPLT}!opcodes.h@{opcodes.h}}\index{opcodes.h@{opcodes.h}!IF\_\-ICMPLT@{IF\_\-ICMPLT}}\item[{\em 
+IF\_\-ICMPLT\label{opcodes_8h_a137a2c90bc7aa8b889a767d0d607567da33a01dd3ecda979a6c32a738e121a10a}
+}]Branch if lower than. \index{IF\_\-ICMPGE@{IF\_\-ICMPGE}!opcodes.h@{opcodes.h}}\index{opcodes.h@{opcodes.h}!IF\_\-ICMPGE@{IF\_\-ICMPGE}}\item[{\em 
+IF\_\-ICMPGE\label{opcodes_8h_a137a2c90bc7aa8b889a767d0d607567dadaf37bd6a58e95378bc0a9e6064d3649}
+}]Branch if greater or equal. \index{IF\_\-ICMPGT@{IF\_\-ICMPGT}!opcodes.h@{opcodes.h}}\index{opcodes.h@{opcodes.h}!IF\_\-ICMPGT@{IF\_\-ICMPGT}}\item[{\em 
+IF\_\-ICMPGT\label{opcodes_8h_a137a2c90bc7aa8b889a767d0d607567daefd6ba2c8025935b5ba3dfdc11239398}
+}]Branch if greater than. \index{IF\_\-ICMPLE@{IF\_\-ICMPLE}!opcodes.h@{opcodes.h}}\index{opcodes.h@{opcodes.h}!IF\_\-ICMPLE@{IF\_\-ICMPLE}}\item[{\em 
+IF\_\-ICMPLE\label{opcodes_8h_a137a2c90bc7aa8b889a767d0d607567dade22e5583a7596031b30bb36d93d4607}
+}]Branch if lower or equal. \index{IF\_\-ACMPEQ@{IF\_\-ACMPEQ}!opcodes.h@{opcodes.h}}\index{opcodes.h@{opcodes.h}!IF\_\-ACMPEQ@{IF\_\-ACMPEQ}}\item[{\em 
+IF\_\-ACMPEQ\label{opcodes_8h_a137a2c90bc7aa8b889a767d0d607567da866414870b9ca7144a7da95c4e510d7e}
+}]Branch if reference equal. \index{IF\_\-ACMPNE@{IF\_\-ACMPNE}!opcodes.h@{opcodes.h}}\index{opcodes.h@{opcodes.h}!IF\_\-ACMPNE@{IF\_\-ACMPNE}}\item[{\em 
+IF\_\-ACMPNE\label{opcodes_8h_a137a2c90bc7aa8b889a767d0d607567da97c035dcca2c296956fb45466f3553cd}
+}]Branch if reference not equal. \index{GOTO@{GOTO}!opcodes.h@{opcodes.h}}\index{opcodes.h@{opcodes.h}!GOTO@{GOTO}}\item[{\em 
+GOTO\label{opcodes_8h_a137a2c90bc7aa8b889a767d0d607567dadf1256e4198172eedfbf12c770d11589}
+}]Branch always. \index{LDC\_\-REF@{LDC\_\-REF}!opcodes.h@{opcodes.h}}\index{opcodes.h@{opcodes.h}!LDC\_\-REF@{LDC\_\-REF}}\item[{\em 
+LDC\_\-REF\label{opcodes_8h_a137a2c90bc7aa8b889a767d0d607567da34d670d2ea7692a776eb9f77249a4136}
+}]Load a string or class constant reference. \index{LDC\_\-W\_\-REF@{LDC\_\-W\_\-REF}!opcodes.h@{opcodes.h}}\index{opcodes.h@{opcodes.h}!LDC\_\-W\_\-REF@{LDC\_\-W\_\-REF}}\item[{\em 
+LDC\_\-W\_\-REF\label{opcodes_8h_a137a2c90bc7aa8b889a767d0d607567da481c4ab32ae340af6f1bc896d391a9e8}
+}]Load a string or class constant reference. \index{TABLESWITCH@{TABLESWITCH}!opcodes.h@{opcodes.h}}\index{opcodes.h@{opcodes.h}!TABLESWITCH@{TABLESWITCH}}\item[{\em 
+TABLESWITCH\label{opcodes_8h_a137a2c90bc7aa8b889a767d0d607567da2e7fc3476e280f60b2d3be820d302247}
+}]Access jump table by index and jump. \index{LOOKUPSWITCH@{LOOKUPSWITCH}!opcodes.h@{opcodes.h}}\index{opcodes.h@{opcodes.h}!LOOKUPSWITCH@{LOOKUPSWITCH}}\item[{\em 
+LOOKUPSWITCH\label{opcodes_8h_a137a2c90bc7aa8b889a767d0d607567daa369f4f9b642270e65a90ca66c5daa6a}
+}]Access jump table by key match and jump. \index{IRETURN@{IRETURN}!opcodes.h@{opcodes.h}}\index{opcodes.h@{opcodes.h}!IRETURN@{IRETURN}}\item[{\em 
+IRETURN\label{opcodes_8h_a137a2c90bc7aa8b889a767d0d607567daa6c3a85a559de7f73848d4d8499f6b17}
+}]Return int from method. \index{LRETURN@{LRETURN}!opcodes.h@{opcodes.h}}\index{opcodes.h@{opcodes.h}!LRETURN@{LRETURN}}\item[{\em 
+LRETURN\label{opcodes_8h_a137a2c90bc7aa8b889a767d0d607567da3801dc28ea4f0c6238cc56a0170a0bc8}
+}]Return long from method. \index{FRETURN@{FRETURN}!opcodes.h@{opcodes.h}}\index{opcodes.h@{opcodes.h}!FRETURN@{FRETURN}}\item[{\em 
+FRETURN\label{opcodes_8h_a137a2c90bc7aa8b889a767d0d607567da7a8918d465611ec0214a13d70ac1195d}
+}]Return float from method. \index{DRETURN@{DRETURN}!opcodes.h@{opcodes.h}}\index{opcodes.h@{opcodes.h}!DRETURN@{DRETURN}}\item[{\em 
+DRETURN\label{opcodes_8h_a137a2c90bc7aa8b889a767d0d607567da34e9c873b0a50b4871d62b1ca140faf7}
+}]Return double from method. \index{ARETURN@{ARETURN}!opcodes.h@{opcodes.h}}\index{opcodes.h@{opcodes.h}!ARETURN@{ARETURN}}\item[{\em 
+ARETURN\label{opcodes_8h_a137a2c90bc7aa8b889a767d0d607567da86baccbacfe91bc784f8efc4d1afb38e}
+}]Return reference from method. \index{RETURN@{RETURN}!opcodes.h@{opcodes.h}}\index{opcodes.h@{opcodes.h}!RETURN@{RETURN}}\item[{\em 
+RETURN\label{opcodes_8h_a137a2c90bc7aa8b889a767d0d607567da520e09ffec033636dba711f3441cc600}
+}]Return void from method. \index{GETSTATIC\_\-PRELINK@{GETSTATIC\_\-PRELINK}!opcodes.h@{opcodes.h}}\index{opcodes.h@{opcodes.h}!GETSTATIC\_\-PRELINK@{GETSTATIC\_\-PRELINK}}\item[{\em 
+GETSTATIC\_\-PRELINK\label{opcodes_8h_a137a2c90bc7aa8b889a767d0d607567da600a4c9d99055d73c538da381df84886}
+}]Prelink get static field from class. \index{PUTSTATIC\_\-PRELINK@{PUTSTATIC\_\-PRELINK}!opcodes.h@{opcodes.h}}\index{opcodes.h@{opcodes.h}!PUTSTATIC\_\-PRELINK@{PUTSTATIC\_\-PRELINK}}\item[{\em 
+PUTSTATIC\_\-PRELINK\label{opcodes_8h_a137a2c90bc7aa8b889a767d0d607567da3a7c4778abc73bffc1aae8362c12cca6}
+}]Prelink set static field in class. \index{GETFIELD\_\-PRELINK@{GETFIELD\_\-PRELINK}!opcodes.h@{opcodes.h}}\index{opcodes.h@{opcodes.h}!GETFIELD\_\-PRELINK@{GETFIELD\_\-PRELINK}}\item[{\em 
+GETFIELD\_\-PRELINK\label{opcodes_8h_a137a2c90bc7aa8b889a767d0d607567dafac419832de5134e2c11ceb9447b0d59}
+}]Prelink fetch field from object. \index{PUTFIELD\_\-PRELINK@{PUTFIELD\_\-PRELINK}!opcodes.h@{opcodes.h}}\index{opcodes.h@{opcodes.h}!PUTFIELD\_\-PRELINK@{PUTFIELD\_\-PRELINK}}\item[{\em 
+PUTFIELD\_\-PRELINK\label{opcodes_8h_a137a2c90bc7aa8b889a767d0d607567da2db1056b817199251dd767218283d4a3}
+}]Prelink set field in object. \index{INVOKEVIRTUAL@{INVOKEVIRTUAL}!opcodes.h@{opcodes.h}}\index{opcodes.h@{opcodes.h}!INVOKEVIRTUAL@{INVOKEVIRTUAL}}\item[{\em 
+INVOKEVIRTUAL\label{opcodes_8h_a137a2c90bc7aa8b889a767d0d607567da368b887111a2f6e2d587b7f39707bcd9}
+}]Invoke virtual method. \index{INVOKESPECIAL@{INVOKESPECIAL}!opcodes.h@{opcodes.h}}\index{opcodes.h@{opcodes.h}!INVOKESPECIAL@{INVOKESPECIAL}}\item[{\em 
+INVOKESPECIAL\label{opcodes_8h_a137a2c90bc7aa8b889a767d0d607567da725ea081d9900afcbb217446cafea0fe}
+}]Invoke special instance method. \index{INVOKESTATIC@{INVOKESTATIC}!opcodes.h@{opcodes.h}}\index{opcodes.h@{opcodes.h}!INVOKESTATIC@{INVOKESTATIC}}\item[{\em 
+INVOKESTATIC\label{opcodes_8h_a137a2c90bc7aa8b889a767d0d607567dae521a15e43a675ca106e0e800ecbf059}
+}]Invoke a (class) static method. \index{INVOKEINTERFACE@{INVOKEINTERFACE}!opcodes.h@{opcodes.h}}\index{opcodes.h@{opcodes.h}!INVOKEINTERFACE@{INVOKEINTERFACE}}\item[{\em 
+INVOKEINTERFACE\label{opcodes_8h_a137a2c90bc7aa8b889a767d0d607567da86958f1579d48548518bf72f33b66eac}
+}]Invoke interface method. \index{INVOKESUPER@{INVOKESUPER}!opcodes.h@{opcodes.h}}\index{opcodes.h@{opcodes.h}!INVOKESUPER@{INVOKESUPER}}\item[{\em 
+INVOKESUPER\label{opcodes_8h_a137a2c90bc7aa8b889a767d0d607567dad89ad7f47fba0a71088066b432716c91}
+}]Implements the super() call semantics of INVOKESPECIAL. \index{NEW@{NEW}!opcodes.h@{opcodes.h}}\index{opcodes.h@{opcodes.h}!NEW@{NEW}}\item[{\em 
+NEW\label{opcodes_8h_a137a2c90bc7aa8b889a767d0d607567daec34b0b90541576a22697631105dc847}
+}]Create new object. \index{NEWARRAY@{NEWARRAY}!opcodes.h@{opcodes.h}}\index{opcodes.h@{opcodes.h}!NEWARRAY@{NEWARRAY}}\item[{\em 
+NEWARRAY\label{opcodes_8h_a137a2c90bc7aa8b889a767d0d607567dacca576f0a7dc1833afd7e56b868adbdd}
+}]Create new array. \index{ANEWARRAY@{ANEWARRAY}!opcodes.h@{opcodes.h}}\index{opcodes.h@{opcodes.h}!ANEWARRAY@{ANEWARRAY}}\item[{\em 
+ANEWARRAY\label{opcodes_8h_a137a2c90bc7aa8b889a767d0d607567dacb97b014f5a21343a24acbdc39d2711f}
+}]Create new array of reference. \index{ARRAYLENGTH@{ARRAYLENGTH}!opcodes.h@{opcodes.h}}\index{opcodes.h@{opcodes.h}!ARRAYLENGTH@{ARRAYLENGTH}}\item[{\em 
+ARRAYLENGTH\label{opcodes_8h_a137a2c90bc7aa8b889a767d0d607567da23bdceff02d661273f1ca15aa70a7e4a}
+}]Get length of array. \index{ATHROW@{ATHROW}!opcodes.h@{opcodes.h}}\index{opcodes.h@{opcodes.h}!ATHROW@{ATHROW}}\item[{\em 
+ATHROW\label{opcodes_8h_a137a2c90bc7aa8b889a767d0d607567da3beff79ffa9552f8a6643d3f8a57578f}
+}]Throw exception or error. \index{CHECKCAST@{CHECKCAST}!opcodes.h@{opcodes.h}}\index{opcodes.h@{opcodes.h}!CHECKCAST@{CHECKCAST}}\item[{\em 
+CHECKCAST\label{opcodes_8h_a137a2c90bc7aa8b889a767d0d607567dab31957ce0c2848ef086dc1a1e9367d5a}
+}]Check whethever object is of given type. \index{INSTANCEOF@{INSTANCEOF}!opcodes.h@{opcodes.h}}\index{opcodes.h@{opcodes.h}!INSTANCEOF@{INSTANCEOF}}\item[{\em 
+INSTANCEOF\label{opcodes_8h_a137a2c90bc7aa8b889a767d0d607567da1921505afad6f597b07a8c773123b39c}
+}]Determine if object is of given type. \index{MONITORENTER@{MONITORENTER}!opcodes.h@{opcodes.h}}\index{opcodes.h@{opcodes.h}!MONITORENTER@{MONITORENTER}}\item[{\em 
+MONITORENTER\label{opcodes_8h_a137a2c90bc7aa8b889a767d0d607567da450bcc611fdc7be425833928c1858426}
+}]Enter monitor for object. \index{MONITOREXIT@{MONITOREXIT}!opcodes.h@{opcodes.h}}\index{opcodes.h@{opcodes.h}!MONITOREXIT@{MONITOREXIT}}\item[{\em 
+MONITOREXIT\label{opcodes_8h_a137a2c90bc7aa8b889a767d0d607567daeb45d9cad7a0dc6d5d9c8718319788f4}
+}]Monitor exit. \index{WIDE@{WIDE}!opcodes.h@{opcodes.h}}\index{opcodes.h@{opcodes.h}!WIDE@{WIDE}}\item[{\em 
+WIDE\label{opcodes_8h_a137a2c90bc7aa8b889a767d0d607567daaaf006932a6cb65c0b546ba7fd331083}
+}]Extend local variable index by additional bytes. \index{MULTIANEWARRAY@{MULTIANEWARRAY}!opcodes.h@{opcodes.h}}\index{opcodes.h@{opcodes.h}!MULTIANEWARRAY@{MULTIANEWARRAY}}\item[{\em 
+MULTIANEWARRAY\label{opcodes_8h_a137a2c90bc7aa8b889a767d0d607567dade8f03368a1130e4291696ccbc5e3e1c}
+}]Create new multidimensional array. \index{IFNULL@{IFNULL}!opcodes.h@{opcodes.h}}\index{opcodes.h@{opcodes.h}!IFNULL@{IFNULL}}\item[{\em 
+IFNULL\label{opcodes_8h_a137a2c90bc7aa8b889a767d0d607567dae999e1a42d9bd70601e022faeba2e6bd}
+}]Branch if reference is null. \index{IFNONNULL@{IFNONNULL}!opcodes.h@{opcodes.h}}\index{opcodes.h@{opcodes.h}!IFNONNULL@{IFNONNULL}}\item[{\em 
+IFNONNULL\label{opcodes_8h_a137a2c90bc7aa8b889a767d0d607567da241bb0e9505566502a1d33ad2c4f7beb}
+}]Branch if reference is not null. \index{GOTO\_\-W@{GOTO\_\-W}!opcodes.h@{opcodes.h}}\index{opcodes.h@{opcodes.h}!GOTO\_\-W@{GOTO\_\-W}}\item[{\em 
+GOTO\_\-W\label{opcodes_8h_a137a2c90bc7aa8b889a767d0d607567da44b801a7c98c1f1bb255c40c422c7957}
+}]Branch always wide index. \index{GETSTATIC\_\-BYTE@{GETSTATIC\_\-BYTE}!opcodes.h@{opcodes.h}}\index{opcodes.h@{opcodes.h}!GETSTATIC\_\-BYTE@{GETSTATIC\_\-BYTE}}\item[{\em 
+GETSTATIC\_\-BYTE\label{opcodes_8h_a137a2c90bc7aa8b889a767d0d607567dae337c1a00019ed622459aca90b28414c}
+}]Gets a byte-\/typed static field. \index{GETSTATIC\_\-BOOL@{GETSTATIC\_\-BOOL}!opcodes.h@{opcodes.h}}\index{opcodes.h@{opcodes.h}!GETSTATIC\_\-BOOL@{GETSTATIC\_\-BOOL}}\item[{\em 
+GETSTATIC\_\-BOOL\label{opcodes_8h_a137a2c90bc7aa8b889a767d0d607567dae792b83f349ed416c3adc1816793f45d}
+}]Gets a bool-\/typed static field (same as GETSTATIC\_\-BYTE). \index{GETSTATIC\_\-CHAR@{GETSTATIC\_\-CHAR}!opcodes.h@{opcodes.h}}\index{opcodes.h@{opcodes.h}!GETSTATIC\_\-CHAR@{GETSTATIC\_\-CHAR}}\item[{\em 
+GETSTATIC\_\-CHAR\label{opcodes_8h_a137a2c90bc7aa8b889a767d0d607567daf6d89f8525516b2e89d22b7bc922d4c0}
+}]Gets a char-\/typed static field. \index{GETSTATIC\_\-SHORT@{GETSTATIC\_\-SHORT}!opcodes.h@{opcodes.h}}\index{opcodes.h@{opcodes.h}!GETSTATIC\_\-SHORT@{GETSTATIC\_\-SHORT}}\item[{\em 
+GETSTATIC\_\-SHORT\label{opcodes_8h_a137a2c90bc7aa8b889a767d0d607567da6edb8ec4e4f1b7412ffeed7636ff1f26}
+}]Gets a short-\/typed static field. \index{GETSTATIC\_\-INT@{GETSTATIC\_\-INT}!opcodes.h@{opcodes.h}}\index{opcodes.h@{opcodes.h}!GETSTATIC\_\-INT@{GETSTATIC\_\-INT}}\item[{\em 
+GETSTATIC\_\-INT\label{opcodes_8h_a137a2c90bc7aa8b889a767d0d607567daca3e899b443be0fb23056746bec39f5a}
+}]Gets an int-\/typed static field. \index{GETSTATIC\_\-FLOAT@{GETSTATIC\_\-FLOAT}!opcodes.h@{opcodes.h}}\index{opcodes.h@{opcodes.h}!GETSTATIC\_\-FLOAT@{GETSTATIC\_\-FLOAT}}\item[{\em 
+GETSTATIC\_\-FLOAT\label{opcodes_8h_a137a2c90bc7aa8b889a767d0d607567da3e19ee462da3ea1d2c8beec09c7b43f5}
+}]Gets a float-\/typed static field. \index{GETSTATIC\_\-LONG@{GETSTATIC\_\-LONG}!opcodes.h@{opcodes.h}}\index{opcodes.h@{opcodes.h}!GETSTATIC\_\-LONG@{GETSTATIC\_\-LONG}}\item[{\em 
+GETSTATIC\_\-LONG\label{opcodes_8h_a137a2c90bc7aa8b889a767d0d607567da9513d9c19e7a50df01829e0d58cc2413}
+}]Gets a long-\/typed static field. \index{GETSTATIC\_\-DOUBLE@{GETSTATIC\_\-DOUBLE}!opcodes.h@{opcodes.h}}\index{opcodes.h@{opcodes.h}!GETSTATIC\_\-DOUBLE@{GETSTATIC\_\-DOUBLE}}\item[{\em 
+GETSTATIC\_\-DOUBLE\label{opcodes_8h_a137a2c90bc7aa8b889a767d0d607567da22fc4d72bc93d8bfe213701ef14fb553}
+}]Gets a double-\/typed static field. \index{GETSTATIC\_\-REFERENCE@{GETSTATIC\_\-REFERENCE}!opcodes.h@{opcodes.h}}\index{opcodes.h@{opcodes.h}!GETSTATIC\_\-REFERENCE@{GETSTATIC\_\-REFERENCE}}\item[{\em 
+GETSTATIC\_\-REFERENCE\label{opcodes_8h_a137a2c90bc7aa8b889a767d0d607567daf1265c06e51dd88ce800761b91fe579a}
+}]Gets a reference-\/typed static field. \index{PUTSTATIC\_\-BYTE@{PUTSTATIC\_\-BYTE}!opcodes.h@{opcodes.h}}\index{opcodes.h@{opcodes.h}!PUTSTATIC\_\-BYTE@{PUTSTATIC\_\-BYTE}}\item[{\em 
+PUTSTATIC\_\-BYTE\label{opcodes_8h_a137a2c90bc7aa8b889a767d0d607567da03fa30e3e2627a362d4b264337b50da1}
+}]Sets a byte-\/typed static field. \index{PUTSTATIC\_\-BOOL@{PUTSTATIC\_\-BOOL}!opcodes.h@{opcodes.h}}\index{opcodes.h@{opcodes.h}!PUTSTATIC\_\-BOOL@{PUTSTATIC\_\-BOOL}}\item[{\em 
+PUTSTATIC\_\-BOOL\label{opcodes_8h_a137a2c90bc7aa8b889a767d0d607567da584e4e898764b291241467e08e634d3b}
+}]Sets a bool-\/typed static field. \index{PUTSTATIC\_\-CHAR@{PUTSTATIC\_\-CHAR}!opcodes.h@{opcodes.h}}\index{opcodes.h@{opcodes.h}!PUTSTATIC\_\-CHAR@{PUTSTATIC\_\-CHAR}}\item[{\em 
+PUTSTATIC\_\-CHAR\label{opcodes_8h_a137a2c90bc7aa8b889a767d0d607567da5f229f003d716e2a8a4bd7214e29d0cb}
+}]Sets a char-\/typed static field. \index{PUTSTATIC\_\-SHORT@{PUTSTATIC\_\-SHORT}!opcodes.h@{opcodes.h}}\index{opcodes.h@{opcodes.h}!PUTSTATIC\_\-SHORT@{PUTSTATIC\_\-SHORT}}\item[{\em 
+PUTSTATIC\_\-SHORT\label{opcodes_8h_a137a2c90bc7aa8b889a767d0d607567da0c15651f0ae4825562dd9bd43c788247}
+}]Sets a short-\/typed static field (same as PUTSTATIC\_\-CHAR). \index{PUTSTATIC\_\-INT@{PUTSTATIC\_\-INT}!opcodes.h@{opcodes.h}}\index{opcodes.h@{opcodes.h}!PUTSTATIC\_\-INT@{PUTSTATIC\_\-INT}}\item[{\em 
+PUTSTATIC\_\-INT\label{opcodes_8h_a137a2c90bc7aa8b889a767d0d607567da26843370bc9c2a0cb3d2164ec7af5a44}
+}]Sets an int-\/typed static field. \index{PUTSTATIC\_\-FLOAT@{PUTSTATIC\_\-FLOAT}!opcodes.h@{opcodes.h}}\index{opcodes.h@{opcodes.h}!PUTSTATIC\_\-FLOAT@{PUTSTATIC\_\-FLOAT}}\item[{\em 
+PUTSTATIC\_\-FLOAT\label{opcodes_8h_a137a2c90bc7aa8b889a767d0d607567da9200d8e6aa34a6d60fd9006b76a0a752}
+}]Sets a float-\/typed static field. \index{PUTSTATIC\_\-LONG@{PUTSTATIC\_\-LONG}!opcodes.h@{opcodes.h}}\index{opcodes.h@{opcodes.h}!PUTSTATIC\_\-LONG@{PUTSTATIC\_\-LONG}}\item[{\em 
+PUTSTATIC\_\-LONG\label{opcodes_8h_a137a2c90bc7aa8b889a767d0d607567da6eabe6e427244fd1af3840460fd7481b}
+}]Sets a long-\/typed static field. \index{PUTSTATIC\_\-DOUBLE@{PUTSTATIC\_\-DOUBLE}!opcodes.h@{opcodes.h}}\index{opcodes.h@{opcodes.h}!PUTSTATIC\_\-DOUBLE@{PUTSTATIC\_\-DOUBLE}}\item[{\em 
+PUTSTATIC\_\-DOUBLE\label{opcodes_8h_a137a2c90bc7aa8b889a767d0d607567daff1747c94fcc7432518c5c30c47e1b4e}
+}]Sets a double-\/typed static field. \index{PUTSTATIC\_\-REFERENCE@{PUTSTATIC\_\-REFERENCE}!opcodes.h@{opcodes.h}}\index{opcodes.h@{opcodes.h}!PUTSTATIC\_\-REFERENCE@{PUTSTATIC\_\-REFERENCE}}\item[{\em 
+PUTSTATIC\_\-REFERENCE\label{opcodes_8h_a137a2c90bc7aa8b889a767d0d607567da92f011005ff02958296c8d993f26964f}
+}]Sets a reference-\/typed static field. \index{GETFIELD\_\-BYTE@{GETFIELD\_\-BYTE}!opcodes.h@{opcodes.h}}\index{opcodes.h@{opcodes.h}!GETFIELD\_\-BYTE@{GETFIELD\_\-BYTE}}\item[{\em 
+GETFIELD\_\-BYTE\label{opcodes_8h_a137a2c90bc7aa8b889a767d0d607567da1f93b38ae95717086d086cfd803e45ae}
+}]Gets a byte-\/typed field. \index{GETFIELD\_\-BOOL@{GETFIELD\_\-BOOL}!opcodes.h@{opcodes.h}}\index{opcodes.h@{opcodes.h}!GETFIELD\_\-BOOL@{GETFIELD\_\-BOOL}}\item[{\em 
+GETFIELD\_\-BOOL\label{opcodes_8h_a137a2c90bc7aa8b889a767d0d607567dab3138a15e05897674db63d1d039382df}
+}]Gets a bool-\/typed field. \index{GETFIELD\_\-CHAR@{GETFIELD\_\-CHAR}!opcodes.h@{opcodes.h}}\index{opcodes.h@{opcodes.h}!GETFIELD\_\-CHAR@{GETFIELD\_\-CHAR}}\item[{\em 
+GETFIELD\_\-CHAR\label{opcodes_8h_a137a2c90bc7aa8b889a767d0d607567da72ff87425061c275c850aebe5bed01a4}
+}]Gets a char-\/typed field. \index{GETFIELD\_\-SHORT@{GETFIELD\_\-SHORT}!opcodes.h@{opcodes.h}}\index{opcodes.h@{opcodes.h}!GETFIELD\_\-SHORT@{GETFIELD\_\-SHORT}}\item[{\em 
+GETFIELD\_\-SHORT\label{opcodes_8h_a137a2c90bc7aa8b889a767d0d607567dabce4c3cecd89eb1e8a7b26342c5a3488}
+}]Gets a short-\/typed field. \index{GETFIELD\_\-INT@{GETFIELD\_\-INT}!opcodes.h@{opcodes.h}}\index{opcodes.h@{opcodes.h}!GETFIELD\_\-INT@{GETFIELD\_\-INT}}\item[{\em 
+GETFIELD\_\-INT\label{opcodes_8h_a137a2c90bc7aa8b889a767d0d607567dac6d468e305946e6a2e31bf76efcd8f7d}
+}]Gets an int-\/typed field. \index{GETFIELD\_\-FLOAT@{GETFIELD\_\-FLOAT}!opcodes.h@{opcodes.h}}\index{opcodes.h@{opcodes.h}!GETFIELD\_\-FLOAT@{GETFIELD\_\-FLOAT}}\item[{\em 
+GETFIELD\_\-FLOAT\label{opcodes_8h_a137a2c90bc7aa8b889a767d0d607567dac92f4d65122180e89b68ead1347892f6}
+}]Gets a float-\/typed field. \index{GETFIELD\_\-LONG@{GETFIELD\_\-LONG}!opcodes.h@{opcodes.h}}\index{opcodes.h@{opcodes.h}!GETFIELD\_\-LONG@{GETFIELD\_\-LONG}}\item[{\em 
+GETFIELD\_\-LONG\label{opcodes_8h_a137a2c90bc7aa8b889a767d0d607567da66c90606692c2aa0f81bb8235c80192c}
+}]Gets a long-\/typed field. \index{GETFIELD\_\-DOUBLE@{GETFIELD\_\-DOUBLE}!opcodes.h@{opcodes.h}}\index{opcodes.h@{opcodes.h}!GETFIELD\_\-DOUBLE@{GETFIELD\_\-DOUBLE}}\item[{\em 
+GETFIELD\_\-DOUBLE\label{opcodes_8h_a137a2c90bc7aa8b889a767d0d607567da35bf735549eda66161a942836b8e9f52}
+}]Gets a double-\/typed field. \index{GETFIELD\_\-REFERENCE@{GETFIELD\_\-REFERENCE}!opcodes.h@{opcodes.h}}\index{opcodes.h@{opcodes.h}!GETFIELD\_\-REFERENCE@{GETFIELD\_\-REFERENCE}}\item[{\em 
+GETFIELD\_\-REFERENCE\label{opcodes_8h_a137a2c90bc7aa8b889a767d0d607567da879b6cd5ff8b881836f6eb4b3bf1e2c0}
+}]Gets a reference-\/typed field. \index{PUTFIELD\_\-BYTE@{PUTFIELD\_\-BYTE}!opcodes.h@{opcodes.h}}\index{opcodes.h@{opcodes.h}!PUTFIELD\_\-BYTE@{PUTFIELD\_\-BYTE}}\item[{\em 
+PUTFIELD\_\-BYTE\label{opcodes_8h_a137a2c90bc7aa8b889a767d0d607567daa2d61256ef650890be57e4438cb9e444}
+}]Sets a byte-\/typed field. \index{PUTFIELD\_\-BOOL@{PUTFIELD\_\-BOOL}!opcodes.h@{opcodes.h}}\index{opcodes.h@{opcodes.h}!PUTFIELD\_\-BOOL@{PUTFIELD\_\-BOOL}}\item[{\em 
+PUTFIELD\_\-BOOL\label{opcodes_8h_a137a2c90bc7aa8b889a767d0d607567da521777762eb9a98c156d80b8516d982e}
+}]Sets a bool-\/typed field. \index{PUTFIELD\_\-CHAR@{PUTFIELD\_\-CHAR}!opcodes.h@{opcodes.h}}\index{opcodes.h@{opcodes.h}!PUTFIELD\_\-CHAR@{PUTFIELD\_\-CHAR}}\item[{\em 
+PUTFIELD\_\-CHAR\label{opcodes_8h_a137a2c90bc7aa8b889a767d0d607567dab18370b1551a0bf49369cf6143319c91}
+}]Sets a char-\/typed field. \index{PUTFIELD\_\-SHORT@{PUTFIELD\_\-SHORT}!opcodes.h@{opcodes.h}}\index{opcodes.h@{opcodes.h}!PUTFIELD\_\-SHORT@{PUTFIELD\_\-SHORT}}\item[{\em 
+PUTFIELD\_\-SHORT\label{opcodes_8h_a137a2c90bc7aa8b889a767d0d607567dad588a723d8c98d394c70e91041f2c2e2}
+}]Sets a short-\/typed field (same as PUTFIELD\_\-CHAR). \index{PUTFIELD\_\-INT@{PUTFIELD\_\-INT}!opcodes.h@{opcodes.h}}\index{opcodes.h@{opcodes.h}!PUTFIELD\_\-INT@{PUTFIELD\_\-INT}}\item[{\em 
+PUTFIELD\_\-INT\label{opcodes_8h_a137a2c90bc7aa8b889a767d0d607567dafbbd9b74df9b9282cebc1ffb061a7672}
+}]Sets an int-\/typed field. \index{PUTFIELD\_\-FLOAT@{PUTFIELD\_\-FLOAT}!opcodes.h@{opcodes.h}}\index{opcodes.h@{opcodes.h}!PUTFIELD\_\-FLOAT@{PUTFIELD\_\-FLOAT}}\item[{\em 
+PUTFIELD\_\-FLOAT\label{opcodes_8h_a137a2c90bc7aa8b889a767d0d607567da6b1a7e613970059754830801befc211c}
+}]Sets a float-\/typed field. \index{PUTFIELD\_\-LONG@{PUTFIELD\_\-LONG}!opcodes.h@{opcodes.h}}\index{opcodes.h@{opcodes.h}!PUTFIELD\_\-LONG@{PUTFIELD\_\-LONG}}\item[{\em 
+PUTFIELD\_\-LONG\label{opcodes_8h_a137a2c90bc7aa8b889a767d0d607567dae87988049db6bf602442ade6c95136c0}
+}]Sets a long-\/typed field. \index{PUTFIELD\_\-DOUBLE@{PUTFIELD\_\-DOUBLE}!opcodes.h@{opcodes.h}}\index{opcodes.h@{opcodes.h}!PUTFIELD\_\-DOUBLE@{PUTFIELD\_\-DOUBLE}}\item[{\em 
+PUTFIELD\_\-DOUBLE\label{opcodes_8h_a137a2c90bc7aa8b889a767d0d607567da2e88394bea4e7dfe60dc05e54c094425}
+}]Sets a double-\/typed field. \index{PUTFIELD\_\-REFERENCE@{PUTFIELD\_\-REFERENCE}!opcodes.h@{opcodes.h}}\index{opcodes.h@{opcodes.h}!PUTFIELD\_\-REFERENCE@{PUTFIELD\_\-REFERENCE}}\item[{\em 
+PUTFIELD\_\-REFERENCE\label{opcodes_8h_a137a2c90bc7aa8b889a767d0d607567da122c248a851d59d100191b402f470832}
+}]Sets a reference-\/typedef field. \index{INVOKEVIRTUAL\_\-PRELINK@{INVOKEVIRTUAL\_\-PRELINK}!opcodes.h@{opcodes.h}}\index{opcodes.h@{opcodes.h}!INVOKEVIRTUAL\_\-PRELINK@{INVOKEVIRTUAL\_\-PRELINK}}\item[{\em 
+INVOKEVIRTUAL\_\-PRELINK\label{opcodes_8h_a137a2c90bc7aa8b889a767d0d607567da89a5a11fc2802d38e17edfe41ddb0659}
+}]Link a virtual method. \index{INVOKESPECIAL\_\-PRELINK@{INVOKESPECIAL\_\-PRELINK}!opcodes.h@{opcodes.h}}\index{opcodes.h@{opcodes.h}!INVOKESPECIAL\_\-PRELINK@{INVOKESPECIAL\_\-PRELINK}}\item[{\em 
+INVOKESPECIAL\_\-PRELINK\label{opcodes_8h_a137a2c90bc7aa8b889a767d0d607567da1a8ee58e04acebba9766305ad04c507b}
+}]Link a special method. \index{INVOKESTATIC\_\-PRELINK@{INVOKESTATIC\_\-PRELINK}!opcodes.h@{opcodes.h}}\index{opcodes.h@{opcodes.h}!INVOKESTATIC\_\-PRELINK@{INVOKESTATIC\_\-PRELINK}}\item[{\em 
+INVOKESTATIC\_\-PRELINK\label{opcodes_8h_a137a2c90bc7aa8b889a767d0d607567da1a2a57d87de675197a15a24368312574}
+}]Link a static method. \index{INVOKEINTERFACE\_\-PRELINK@{INVOKEINTERFACE\_\-PRELINK}!opcodes.h@{opcodes.h}}\index{opcodes.h@{opcodes.h}!INVOKEINTERFACE\_\-PRELINK@{INVOKEINTERFACE\_\-PRELINK}}\item[{\em 
+INVOKEINTERFACE\_\-PRELINK\label{opcodes_8h_a137a2c90bc7aa8b889a767d0d607567daac5511d5660e8bc22bade1810ee4ecf0}
+}]Link an interface method. \index{NEW\_\-PRELINK@{NEW\_\-PRELINK}!opcodes.h@{opcodes.h}}\index{opcodes.h@{opcodes.h}!NEW\_\-PRELINK@{NEW\_\-PRELINK}}\item[{\em 
+NEW\_\-PRELINK\label{opcodes_8h_a137a2c90bc7aa8b889a767d0d607567daa6aaa03678526ee74b3ae71ffd9ea881}
+}]Link a class to be created. \index{NEWARRAY\_\-PRELINK@{NEWARRAY\_\-PRELINK}!opcodes.h@{opcodes.h}}\index{opcodes.h@{opcodes.h}!NEWARRAY\_\-PRELINK@{NEWARRAY\_\-PRELINK}}\item[{\em 
+NEWARRAY\_\-PRELINK\label{opcodes_8h_a137a2c90bc7aa8b889a767d0d607567da012fa763cd88a675bfab67333c4e5866}
+}]Links an array class to be created. \index{ANEWARRAY\_\-PRELINK@{ANEWARRAY\_\-PRELINK}!opcodes.h@{opcodes.h}}\index{opcodes.h@{opcodes.h}!ANEWARRAY\_\-PRELINK@{ANEWARRAY\_\-PRELINK}}\item[{\em 
+ANEWARRAY\_\-PRELINK\label{opcodes_8h_a137a2c90bc7aa8b889a767d0d607567daa639b46fe12a310ca18dfb9aad97e21e}
+}]Links an array class to be created. \index{CHECKCAST\_\-PRELINK@{CHECKCAST\_\-PRELINK}!opcodes.h@{opcodes.h}}\index{opcodes.h@{opcodes.h}!CHECKCAST\_\-PRELINK@{CHECKCAST\_\-PRELINK}}\item[{\em 
+CHECKCAST\_\-PRELINK\label{opcodes_8h_a137a2c90bc7aa8b889a767d0d607567da1a980a31cfe8c656301a097ad4fb7854}
+}]Links classes requested by a checkcast. \index{INSTANCEOF\_\-PRELINK@{INSTANCEOF\_\-PRELINK}!opcodes.h@{opcodes.h}}\index{opcodes.h@{opcodes.h}!INSTANCEOF\_\-PRELINK@{INSTANCEOF\_\-PRELINK}}\item[{\em 
+INSTANCEOF\_\-PRELINK\label{opcodes_8h_a137a2c90bc7aa8b889a767d0d607567da26eac070ecf878d7f57df8bfbaeaf6f3}
+}]Links the class requested by an instanceof. \index{MULTIANEWARRAY\_\-PRELINK@{MULTIANEWARRAY\_\-PRELINK}!opcodes.h@{opcodes.h}}\index{opcodes.h@{opcodes.h}!MULTIANEWARRAY\_\-PRELINK@{MULTIANEWARRAY\_\-PRELINK}}\item[{\em 
+MULTIANEWARRAY\_\-PRELINK\label{opcodes_8h_a137a2c90bc7aa8b889a767d0d607567dae33bc9319e006b2019b8a8a51dc14d91}
+}]Links classes requested by a MULTIANEWARRAY. \index{MONITORENTER\_\-SPECIAL@{MONITORENTER\_\-SPECIAL}!opcodes.h@{opcodes.h}}\index{opcodes.h@{opcodes.h}!MONITORENTER\_\-SPECIAL@{MONITORENTER\_\-SPECIAL}}\item[{\em 
+MONITORENTER\_\-SPECIAL\label{opcodes_8h_a137a2c90bc7aa8b889a767d0d607567da9c1ed4ffd9676b4bcbf4ad31d0a31f58}
+}]Modified MONITORENTER for synchronized virtual methods. \index{MONITORENTER\_\-SPECIAL\_\-STATIC@{MONITORENTER\_\-SPECIAL\_\-STATIC}!opcodes.h@{opcodes.h}}\index{opcodes.h@{opcodes.h}!MONITORENTER\_\-SPECIAL\_\-STATIC@{MONITORENTER\_\-SPECIAL\_\-STATIC}}\item[{\em 
+MONITORENTER\_\-SPECIAL\_\-STATIC\label{opcodes_8h_a137a2c90bc7aa8b889a767d0d607567dad6980ba3b57ec987648be62ee3652da4}
+}]Modified MONITORENTER for synchronized static methods. \index{IRETURN\_\-MONITOREXIT@{IRETURN\_\-MONITOREXIT}!opcodes.h@{opcodes.h}}\index{opcodes.h@{opcodes.h}!IRETURN\_\-MONITOREXIT@{IRETURN\_\-MONITOREXIT}}\item[{\em 
+IRETURN\_\-MONITOREXIT\label{opcodes_8h_a137a2c90bc7aa8b889a767d0d607567daa399c6968bc2656d07a8da52c0a982a3}
+}]Returns an int and releases the current monitor. \index{LRETURN\_\-MONITOREXIT@{LRETURN\_\-MONITOREXIT}!opcodes.h@{opcodes.h}}\index{opcodes.h@{opcodes.h}!LRETURN\_\-MONITOREXIT@{LRETURN\_\-MONITOREXIT}}\item[{\em 
+LRETURN\_\-MONITOREXIT\label{opcodes_8h_a137a2c90bc7aa8b889a767d0d607567dabcd07922d3cf472d1ebf4634a59fe040}
+}]Returns a long and releases the current monitor. \index{FRETURN\_\-MONITOREXIT@{FRETURN\_\-MONITOREXIT}!opcodes.h@{opcodes.h}}\index{opcodes.h@{opcodes.h}!FRETURN\_\-MONITOREXIT@{FRETURN\_\-MONITOREXIT}}\item[{\em 
+FRETURN\_\-MONITOREXIT\label{opcodes_8h_a137a2c90bc7aa8b889a767d0d607567da16af9a2d94bb83aaca0a792dc42725cb}
+}]Returns a float and releases the current monitor. \index{DRETURN\_\-MONITOREXIT@{DRETURN\_\-MONITOREXIT}!opcodes.h@{opcodes.h}}\index{opcodes.h@{opcodes.h}!DRETURN\_\-MONITOREXIT@{DRETURN\_\-MONITOREXIT}}\item[{\em 
+DRETURN\_\-MONITOREXIT\label{opcodes_8h_a137a2c90bc7aa8b889a767d0d607567da55e085cad982c849eab798f80886f4b9}
+}]Returns a double and releases the current monitor. \index{ARETURN\_\-MONITOREXIT@{ARETURN\_\-MONITOREXIT}!opcodes.h@{opcodes.h}}\index{opcodes.h@{opcodes.h}!ARETURN\_\-MONITOREXIT@{ARETURN\_\-MONITOREXIT}}\item[{\em 
+ARETURN\_\-MONITOREXIT\label{opcodes_8h_a137a2c90bc7aa8b889a767d0d607567dac936e7d27a35f2e296f2760329a1366f}
+}]Returns a reference and releases the current monitor. \index{RETURN\_\-MONITOREXIT@{RETURN\_\-MONITOREXIT}!opcodes.h@{opcodes.h}}\index{opcodes.h@{opcodes.h}!RETURN\_\-MONITOREXIT@{RETURN\_\-MONITOREXIT}}\item[{\em 
+RETURN\_\-MONITOREXIT\label{opcodes_8h_a137a2c90bc7aa8b889a767d0d607567da840d0f205b7b1a1b86b7fe978ced9fdf}
+}]Returns and releases the current monitor. \index{NEW\_\-FINALIZER@{NEW\_\-FINALIZER}!opcodes.h@{opcodes.h}}\index{opcodes.h@{opcodes.h}!NEW\_\-FINALIZER@{NEW\_\-FINALIZER}}\item[{\em 
+NEW\_\-FINALIZER\label{opcodes_8h_a137a2c90bc7aa8b889a767d0d607567da6f8121b694662060a35bcf40167f0fb7}
+}]Same as new but for finalizable objects. \index{LDC\_\-PRELINK@{LDC\_\-PRELINK}!opcodes.h@{opcodes.h}}\index{opcodes.h@{opcodes.h}!LDC\_\-PRELINK@{LDC\_\-PRELINK}}\item[{\em 
+LDC\_\-PRELINK\label{opcodes_8h_a137a2c90bc7aa8b889a767d0d607567da7fe388fc5e176d567a571976b2f7eec3}
+}]Links a load constant opcode. \index{LDC\_\-W\_\-PRELINK@{LDC\_\-W\_\-PRELINK}!opcodes.h@{opcodes.h}}\index{opcodes.h@{opcodes.h}!LDC\_\-W\_\-PRELINK@{LDC\_\-W\_\-PRELINK}}\item[{\em 
+LDC\_\-W\_\-PRELINK\label{opcodes_8h_a137a2c90bc7aa8b889a767d0d607567dacbe98db0d64814ce45023578444dd45f}
+}]Links a load constant wide opcode. \index{METHOD\_\-LOAD@{METHOD\_\-LOAD}!opcodes.h@{opcodes.h}}\index{opcodes.h@{opcodes.h}!METHOD\_\-LOAD@{METHOD\_\-LOAD}}\item[{\em 
+METHOD\_\-LOAD\label{opcodes_8h_a137a2c90bc7aa8b889a767d0d607567da86e72dac43ae695b5bba2acd1604090c}
+}]Loads a method code. \index{METHOD\_\-ABSTRACT@{METHOD\_\-ABSTRACT}!opcodes.h@{opcodes.h}}\index{opcodes.h@{opcodes.h}!METHOD\_\-ABSTRACT@{METHOD\_\-ABSTRACT}}\item[{\em 
+METHOD\_\-ABSTRACT\label{opcodes_8h_a137a2c90bc7aa8b889a767d0d607567da8fc4717c277a6d1deeffddafd4cab2d9}
+}]Dummy opcode for triggering abstract method errors. \index{INVOKE\_\-NATIVE@{INVOKE\_\-NATIVE}!opcodes.h@{opcodes.h}}\index{opcodes.h@{opcodes.h}!INVOKE\_\-NATIVE@{INVOKE\_\-NATIVE}}\item[{\em 
+INVOKE\_\-NATIVE\label{opcodes_8h_a137a2c90bc7aa8b889a767d0d607567dade9fd400c3034f4cdf7dc27d1bbcd829}
+}]Invoke a native method. \index{HALT@{HALT}!opcodes.h@{opcodes.h}}\index{opcodes.h@{opcodes.h}!HALT@{HALT}}\item[{\em 
+HALT\label{opcodes_8h_a137a2c90bc7aa8b889a767d0d607567daa2fd6bbb0c07e28e835ba595e64df78c}
+}]Halt the exection of the interpreter. \end{description}
+\end{Desc}
+
+
+
+Definition at line 52 of file opcodes.h.
+
+\index{opcodes.h@{opcodes.h}!java\_\-opcode\_\-t@{java\_\-opcode\_\-t}}
+\index{java\_\-opcode\_\-t@{java\_\-opcode\_\-t}!opcodes.h@{opcodes.h}}
+\subsubsection[{java\_\-opcode\_\-t}]{\setlength{\rightskip}{0pt plus 5cm}enum {\bf java\_\-opcode\_\-t}}\label{opcodes_8h_a97f314a7497c04c2b60f812a774cb832}
+Java opcodes definition \begin{Desc}
+\item[Enumerator: ]\par
+\begin{description}
+\index{JAVA\_\-NOP@{JAVA\_\-NOP}!opcodes.h@{opcodes.h}}\index{opcodes.h@{opcodes.h}!JAVA\_\-NOP@{JAVA\_\-NOP}}\item[{\em 
+JAVA\_\-NOP\label{opcodes_8h_a97f314a7497c04c2b60f812a774cb832a640d2e3591cb0cc2f8f5c799fc3fe292}
+}]No operation. \index{JAVA\_\-ACONST\_\-NULL@{JAVA\_\-ACONST\_\-NULL}!opcodes.h@{opcodes.h}}\index{opcodes.h@{opcodes.h}!JAVA\_\-ACONST\_\-NULL@{JAVA\_\-ACONST\_\-NULL}}\item[{\em 
+JAVA\_\-ACONST\_\-NULL\label{opcodes_8h_a97f314a7497c04c2b60f812a774cb832a6c6758413d2b5cc69125c8cca90061cf}
+}]Push null. \index{JAVA\_\-ICONST\_\-M1@{JAVA\_\-ICONST\_\-M1}!opcodes.h@{opcodes.h}}\index{opcodes.h@{opcodes.h}!JAVA\_\-ICONST\_\-M1@{JAVA\_\-ICONST\_\-M1}}\item[{\em 
+JAVA\_\-ICONST\_\-M1\label{opcodes_8h_a97f314a7497c04c2b60f812a774cb832ad5084aca6221f22443bfb33af249cd40}
+}]Push integer constant -\/1. \index{JAVA\_\-ICONST\_\-0@{JAVA\_\-ICONST\_\-0}!opcodes.h@{opcodes.h}}\index{opcodes.h@{opcodes.h}!JAVA\_\-ICONST\_\-0@{JAVA\_\-ICONST\_\-0}}\item[{\em 
+JAVA\_\-ICONST\_\-0\label{opcodes_8h_a97f314a7497c04c2b60f812a774cb832afa4ee7103e55c15bd966e9c02c1efa5a}
+}]Push integer constant 0. \index{JAVA\_\-ICONST\_\-1@{JAVA\_\-ICONST\_\-1}!opcodes.h@{opcodes.h}}\index{opcodes.h@{opcodes.h}!JAVA\_\-ICONST\_\-1@{JAVA\_\-ICONST\_\-1}}\item[{\em 
+JAVA\_\-ICONST\_\-1\label{opcodes_8h_a97f314a7497c04c2b60f812a774cb832a9828e2b98e240791dbe960867dc327ab}
+}]Push integer constant 1. \index{JAVA\_\-ICONST\_\-2@{JAVA\_\-ICONST\_\-2}!opcodes.h@{opcodes.h}}\index{opcodes.h@{opcodes.h}!JAVA\_\-ICONST\_\-2@{JAVA\_\-ICONST\_\-2}}\item[{\em 
+JAVA\_\-ICONST\_\-2\label{opcodes_8h_a97f314a7497c04c2b60f812a774cb832a0dcbe7939cf78b0a3cb27038b1b5b7ce}
+}]Push integer constant 2. \index{JAVA\_\-ICONST\_\-3@{JAVA\_\-ICONST\_\-3}!opcodes.h@{opcodes.h}}\index{opcodes.h@{opcodes.h}!JAVA\_\-ICONST\_\-3@{JAVA\_\-ICONST\_\-3}}\item[{\em 
+JAVA\_\-ICONST\_\-3\label{opcodes_8h_a97f314a7497c04c2b60f812a774cb832a0c0e2bac07933dc182d2f80564203d3f}
+}]Push integer constant 3. \index{JAVA\_\-ICONST\_\-4@{JAVA\_\-ICONST\_\-4}!opcodes.h@{opcodes.h}}\index{opcodes.h@{opcodes.h}!JAVA\_\-ICONST\_\-4@{JAVA\_\-ICONST\_\-4}}\item[{\em 
+JAVA\_\-ICONST\_\-4\label{opcodes_8h_a97f314a7497c04c2b60f812a774cb832a3b3e01282a3c1a32b0faff8930ebab51}
+}]Push integer constant 4. \index{JAVA\_\-ICONST\_\-5@{JAVA\_\-ICONST\_\-5}!opcodes.h@{opcodes.h}}\index{opcodes.h@{opcodes.h}!JAVA\_\-ICONST\_\-5@{JAVA\_\-ICONST\_\-5}}\item[{\em 
+JAVA\_\-ICONST\_\-5\label{opcodes_8h_a97f314a7497c04c2b60f812a774cb832a689f406a153245cc4d9f783e03ea5409}
+}]Push integer constant 5. \index{JAVA\_\-LCONST\_\-0@{JAVA\_\-LCONST\_\-0}!opcodes.h@{opcodes.h}}\index{opcodes.h@{opcodes.h}!JAVA\_\-LCONST\_\-0@{JAVA\_\-LCONST\_\-0}}\item[{\em 
+JAVA\_\-LCONST\_\-0\label{opcodes_8h_a97f314a7497c04c2b60f812a774cb832aa09cd6d7b5a412e8538fd71258e244f3}
+}]Push long constant 0. \index{JAVA\_\-LCONST\_\-1@{JAVA\_\-LCONST\_\-1}!opcodes.h@{opcodes.h}}\index{opcodes.h@{opcodes.h}!JAVA\_\-LCONST\_\-1@{JAVA\_\-LCONST\_\-1}}\item[{\em 
+JAVA\_\-LCONST\_\-1\label{opcodes_8h_a97f314a7497c04c2b60f812a774cb832a69627e0f859c24787de0a96c2b9e10cd}
+}]Push long constant 1. \index{JAVA\_\-FCONST\_\-0@{JAVA\_\-FCONST\_\-0}!opcodes.h@{opcodes.h}}\index{opcodes.h@{opcodes.h}!JAVA\_\-FCONST\_\-0@{JAVA\_\-FCONST\_\-0}}\item[{\em 
+JAVA\_\-FCONST\_\-0\label{opcodes_8h_a97f314a7497c04c2b60f812a774cb832a758ab12162ccc7ad20428249727030fb}
+}]Push float constant 0.0. \index{JAVA\_\-FCONST\_\-1@{JAVA\_\-FCONST\_\-1}!opcodes.h@{opcodes.h}}\index{opcodes.h@{opcodes.h}!JAVA\_\-FCONST\_\-1@{JAVA\_\-FCONST\_\-1}}\item[{\em 
+JAVA\_\-FCONST\_\-1\label{opcodes_8h_a97f314a7497c04c2b60f812a774cb832a3d397c03dbb102bb22238748ad753b34}
+}]Push float constant 1.0. \index{JAVA\_\-FCONST\_\-2@{JAVA\_\-FCONST\_\-2}!opcodes.h@{opcodes.h}}\index{opcodes.h@{opcodes.h}!JAVA\_\-FCONST\_\-2@{JAVA\_\-FCONST\_\-2}}\item[{\em 
+JAVA\_\-FCONST\_\-2\label{opcodes_8h_a97f314a7497c04c2b60f812a774cb832a00f21c206f53f80f8d6ca3190c016d5e}
+}]Push float constant 2.0. \index{JAVA\_\-DCONST\_\-0@{JAVA\_\-DCONST\_\-0}!opcodes.h@{opcodes.h}}\index{opcodes.h@{opcodes.h}!JAVA\_\-DCONST\_\-0@{JAVA\_\-DCONST\_\-0}}\item[{\em 
+JAVA\_\-DCONST\_\-0\label{opcodes_8h_a97f314a7497c04c2b60f812a774cb832ac89c84fecb187debe4063a38241be556}
+}]Push double constant 0.0. \index{JAVA\_\-DCONST\_\-1@{JAVA\_\-DCONST\_\-1}!opcodes.h@{opcodes.h}}\index{opcodes.h@{opcodes.h}!JAVA\_\-DCONST\_\-1@{JAVA\_\-DCONST\_\-1}}\item[{\em 
+JAVA\_\-DCONST\_\-1\label{opcodes_8h_a97f314a7497c04c2b60f812a774cb832af9e51edb7eac3d7804d4ac320893ff92}
+}]Push double constant 1.0. \index{JAVA\_\-BIPUSH@{JAVA\_\-BIPUSH}!opcodes.h@{opcodes.h}}\index{opcodes.h@{opcodes.h}!JAVA\_\-BIPUSH@{JAVA\_\-BIPUSH}}\item[{\em 
+JAVA\_\-BIPUSH\label{opcodes_8h_a97f314a7497c04c2b60f812a774cb832aa180fa89340a4f1470341d435f403ac7}
+}]Push a byte sign-\/extended to an integer. \index{JAVA\_\-SIPUSH@{JAVA\_\-SIPUSH}!opcodes.h@{opcodes.h}}\index{opcodes.h@{opcodes.h}!JAVA\_\-SIPUSH@{JAVA\_\-SIPUSH}}\item[{\em 
+JAVA\_\-SIPUSH\label{opcodes_8h_a97f314a7497c04c2b60f812a774cb832a12eca07e70cf56024773104954b68a33}
+}]Push a short sign-\/extended to an integer. \index{JAVA\_\-LDC@{JAVA\_\-LDC}!opcodes.h@{opcodes.h}}\index{opcodes.h@{opcodes.h}!JAVA\_\-LDC@{JAVA\_\-LDC}}\item[{\em 
+JAVA\_\-LDC\label{opcodes_8h_a97f314a7497c04c2b60f812a774cb832aea0abd6cf60c6befa582d5abc56de430}
+}]Push item from runtime constant pool using a 1-\/byte index. \index{JAVA\_\-LDC\_\-W@{JAVA\_\-LDC\_\-W}!opcodes.h@{opcodes.h}}\index{opcodes.h@{opcodes.h}!JAVA\_\-LDC\_\-W@{JAVA\_\-LDC\_\-W}}\item[{\em 
+JAVA\_\-LDC\_\-W\label{opcodes_8h_a97f314a7497c04c2b60f812a774cb832ae0df1f305c2ae49ed7c435555950d8bb}
+}]Push item from runtime constant pool using a 2-\/byte index. \index{JAVA\_\-LDC2\_\-W@{JAVA\_\-LDC2\_\-W}!opcodes.h@{opcodes.h}}\index{opcodes.h@{opcodes.h}!JAVA\_\-LDC2\_\-W@{JAVA\_\-LDC2\_\-W}}\item[{\em 
+JAVA\_\-LDC2\_\-W\label{opcodes_8h_a97f314a7497c04c2b60f812a774cb832abe04e274cff5b25219aeba3ddb0683be}
+}]Push double-\/word item from runtime constant pool. \index{JAVA\_\-ILOAD@{JAVA\_\-ILOAD}!opcodes.h@{opcodes.h}}\index{opcodes.h@{opcodes.h}!JAVA\_\-ILOAD@{JAVA\_\-ILOAD}}\item[{\em 
+JAVA\_\-ILOAD\label{opcodes_8h_a97f314a7497c04c2b60f812a774cb832abf1e28f204fc60e4d14c423d8da1e33e}
+}]Load int from local variable. \index{JAVA\_\-LLOAD@{JAVA\_\-LLOAD}!opcodes.h@{opcodes.h}}\index{opcodes.h@{opcodes.h}!JAVA\_\-LLOAD@{JAVA\_\-LLOAD}}\item[{\em 
+JAVA\_\-LLOAD\label{opcodes_8h_a97f314a7497c04c2b60f812a774cb832a79fcb09a093aafa14516daecc35f5d9a}
+}]Load long from local variable. \index{JAVA\_\-FLOAD@{JAVA\_\-FLOAD}!opcodes.h@{opcodes.h}}\index{opcodes.h@{opcodes.h}!JAVA\_\-FLOAD@{JAVA\_\-FLOAD}}\item[{\em 
+JAVA\_\-FLOAD\label{opcodes_8h_a97f314a7497c04c2b60f812a774cb832a9953ce4038cb8a85fbf59099dacc3583}
+}]Load float from local variable. \index{JAVA\_\-DLOAD@{JAVA\_\-DLOAD}!opcodes.h@{opcodes.h}}\index{opcodes.h@{opcodes.h}!JAVA\_\-DLOAD@{JAVA\_\-DLOAD}}\item[{\em 
+JAVA\_\-DLOAD\label{opcodes_8h_a97f314a7497c04c2b60f812a774cb832a221d91b0cbb1d2c2b3d67710c1e85837}
+}]Load double from local variable. \index{JAVA\_\-ALOAD@{JAVA\_\-ALOAD}!opcodes.h@{opcodes.h}}\index{opcodes.h@{opcodes.h}!JAVA\_\-ALOAD@{JAVA\_\-ALOAD}}\item[{\em 
+JAVA\_\-ALOAD\label{opcodes_8h_a97f314a7497c04c2b60f812a774cb832abc9b856a6a8ecd7a2ccb215d8dd1ce20}
+}]Load reference from local variable. \index{JAVA\_\-ILOAD\_\-0@{JAVA\_\-ILOAD\_\-0}!opcodes.h@{opcodes.h}}\index{opcodes.h@{opcodes.h}!JAVA\_\-ILOAD\_\-0@{JAVA\_\-ILOAD\_\-0}}\item[{\em 
+JAVA\_\-ILOAD\_\-0\label{opcodes_8h_a97f314a7497c04c2b60f812a774cb832ac77ec58933eec884fd009d945bf485e9}
+}]Load int from the first local variable. \index{JAVA\_\-ILOAD\_\-1@{JAVA\_\-ILOAD\_\-1}!opcodes.h@{opcodes.h}}\index{opcodes.h@{opcodes.h}!JAVA\_\-ILOAD\_\-1@{JAVA\_\-ILOAD\_\-1}}\item[{\em 
+JAVA\_\-ILOAD\_\-1\label{opcodes_8h_a97f314a7497c04c2b60f812a774cb832a698ff67a00354118c4da700d12c58a19}
+}]Load int from the second local variable. \index{JAVA\_\-ILOAD\_\-2@{JAVA\_\-ILOAD\_\-2}!opcodes.h@{opcodes.h}}\index{opcodes.h@{opcodes.h}!JAVA\_\-ILOAD\_\-2@{JAVA\_\-ILOAD\_\-2}}\item[{\em 
+JAVA\_\-ILOAD\_\-2\label{opcodes_8h_a97f314a7497c04c2b60f812a774cb832a5acaa09cec56431d545edd488daefef7}
+}]Load int from the third local variable. \index{JAVA\_\-ILOAD\_\-3@{JAVA\_\-ILOAD\_\-3}!opcodes.h@{opcodes.h}}\index{opcodes.h@{opcodes.h}!JAVA\_\-ILOAD\_\-3@{JAVA\_\-ILOAD\_\-3}}\item[{\em 
+JAVA\_\-ILOAD\_\-3\label{opcodes_8h_a97f314a7497c04c2b60f812a774cb832aa8b761b0f9d5efb7545df97992aa4b48}
+}]Load int from the fourth local variable. \index{JAVA\_\-LLOAD\_\-0@{JAVA\_\-LLOAD\_\-0}!opcodes.h@{opcodes.h}}\index{opcodes.h@{opcodes.h}!JAVA\_\-LLOAD\_\-0@{JAVA\_\-LLOAD\_\-0}}\item[{\em 
+JAVA\_\-LLOAD\_\-0\label{opcodes_8h_a97f314a7497c04c2b60f812a774cb832a79ddacd49e15c7a99d32a65c7836eb19}
+}]Load long from the first local variable. \index{JAVA\_\-LLOAD\_\-1@{JAVA\_\-LLOAD\_\-1}!opcodes.h@{opcodes.h}}\index{opcodes.h@{opcodes.h}!JAVA\_\-LLOAD\_\-1@{JAVA\_\-LLOAD\_\-1}}\item[{\em 
+JAVA\_\-LLOAD\_\-1\label{opcodes_8h_a97f314a7497c04c2b60f812a774cb832a97651cb97ae25dc09e2022082ebbdbef}
+}]Load long from the second local variable. \index{JAVA\_\-LLOAD\_\-2@{JAVA\_\-LLOAD\_\-2}!opcodes.h@{opcodes.h}}\index{opcodes.h@{opcodes.h}!JAVA\_\-LLOAD\_\-2@{JAVA\_\-LLOAD\_\-2}}\item[{\em 
+JAVA\_\-LLOAD\_\-2\label{opcodes_8h_a97f314a7497c04c2b60f812a774cb832a142c3b6e86fc2b83ecb3a0e1ec326152}
+}]Load long from the third local variable. \index{JAVA\_\-LLOAD\_\-3@{JAVA\_\-LLOAD\_\-3}!opcodes.h@{opcodes.h}}\index{opcodes.h@{opcodes.h}!JAVA\_\-LLOAD\_\-3@{JAVA\_\-LLOAD\_\-3}}\item[{\em 
+JAVA\_\-LLOAD\_\-3\label{opcodes_8h_a97f314a7497c04c2b60f812a774cb832adbd994244720f3063506bd5fab6b2601}
+}]Load long from the fourth local variable. \index{JAVA\_\-FLOAD\_\-0@{JAVA\_\-FLOAD\_\-0}!opcodes.h@{opcodes.h}}\index{opcodes.h@{opcodes.h}!JAVA\_\-FLOAD\_\-0@{JAVA\_\-FLOAD\_\-0}}\item[{\em 
+JAVA\_\-FLOAD\_\-0\label{opcodes_8h_a97f314a7497c04c2b60f812a774cb832a36d29047b51d66bd725b5da3bc7c7996}
+}]Load float from the first local variable. \index{JAVA\_\-FLOAD\_\-1@{JAVA\_\-FLOAD\_\-1}!opcodes.h@{opcodes.h}}\index{opcodes.h@{opcodes.h}!JAVA\_\-FLOAD\_\-1@{JAVA\_\-FLOAD\_\-1}}\item[{\em 
+JAVA\_\-FLOAD\_\-1\label{opcodes_8h_a97f314a7497c04c2b60f812a774cb832ab93443603053e6bbedc891cefdd4e13b}
+}]Load float from the second local variable. \index{JAVA\_\-FLOAD\_\-2@{JAVA\_\-FLOAD\_\-2}!opcodes.h@{opcodes.h}}\index{opcodes.h@{opcodes.h}!JAVA\_\-FLOAD\_\-2@{JAVA\_\-FLOAD\_\-2}}\item[{\em 
+JAVA\_\-FLOAD\_\-2\label{opcodes_8h_a97f314a7497c04c2b60f812a774cb832a05da8547d415a871c45a27dd3ad7537d}
+}]Load float from the third local variable. \index{JAVA\_\-FLOAD\_\-3@{JAVA\_\-FLOAD\_\-3}!opcodes.h@{opcodes.h}}\index{opcodes.h@{opcodes.h}!JAVA\_\-FLOAD\_\-3@{JAVA\_\-FLOAD\_\-3}}\item[{\em 
+JAVA\_\-FLOAD\_\-3\label{opcodes_8h_a97f314a7497c04c2b60f812a774cb832a077327f4504a6e289e021e0298d8c03c}
+}]Load float from the fourth local variable. \index{JAVA\_\-DLOAD\_\-0@{JAVA\_\-DLOAD\_\-0}!opcodes.h@{opcodes.h}}\index{opcodes.h@{opcodes.h}!JAVA\_\-DLOAD\_\-0@{JAVA\_\-DLOAD\_\-0}}\item[{\em 
+JAVA\_\-DLOAD\_\-0\label{opcodes_8h_a97f314a7497c04c2b60f812a774cb832a2323274f92a36f7c494b15300f2889c1}
+}]Load double from the first local variable. \index{JAVA\_\-DLOAD\_\-1@{JAVA\_\-DLOAD\_\-1}!opcodes.h@{opcodes.h}}\index{opcodes.h@{opcodes.h}!JAVA\_\-DLOAD\_\-1@{JAVA\_\-DLOAD\_\-1}}\item[{\em 
+JAVA\_\-DLOAD\_\-1\label{opcodes_8h_a97f314a7497c04c2b60f812a774cb832ab76c0aa76300f40c91f0ae2a515e5b91}
+}]Load double from the second local variable. \index{JAVA\_\-DLOAD\_\-2@{JAVA\_\-DLOAD\_\-2}!opcodes.h@{opcodes.h}}\index{opcodes.h@{opcodes.h}!JAVA\_\-DLOAD\_\-2@{JAVA\_\-DLOAD\_\-2}}\item[{\em 
+JAVA\_\-DLOAD\_\-2\label{opcodes_8h_a97f314a7497c04c2b60f812a774cb832a731319476a19d23e0ba83dd9bbdca5ab}
+}]Load double from the third local variable. \index{JAVA\_\-DLOAD\_\-3@{JAVA\_\-DLOAD\_\-3}!opcodes.h@{opcodes.h}}\index{opcodes.h@{opcodes.h}!JAVA\_\-DLOAD\_\-3@{JAVA\_\-DLOAD\_\-3}}\item[{\em 
+JAVA\_\-DLOAD\_\-3\label{opcodes_8h_a97f314a7497c04c2b60f812a774cb832a383192630d4e5afdde6c136aba0b46b5}
+}]Load double from the fourth local variable. \index{JAVA\_\-ALOAD\_\-0@{JAVA\_\-ALOAD\_\-0}!opcodes.h@{opcodes.h}}\index{opcodes.h@{opcodes.h}!JAVA\_\-ALOAD\_\-0@{JAVA\_\-ALOAD\_\-0}}\item[{\em 
+JAVA\_\-ALOAD\_\-0\label{opcodes_8h_a97f314a7497c04c2b60f812a774cb832a8edb5fff29cbcafddf60d282e43abaf5}
+}]Load reference from the first local variable. \index{JAVA\_\-ALOAD\_\-1@{JAVA\_\-ALOAD\_\-1}!opcodes.h@{opcodes.h}}\index{opcodes.h@{opcodes.h}!JAVA\_\-ALOAD\_\-1@{JAVA\_\-ALOAD\_\-1}}\item[{\em 
+JAVA\_\-ALOAD\_\-1\label{opcodes_8h_a97f314a7497c04c2b60f812a774cb832a4f56e96ec4e7434b62ceea31acc21a93}
+}]Load reference from the second local variable. \index{JAVA\_\-ALOAD\_\-2@{JAVA\_\-ALOAD\_\-2}!opcodes.h@{opcodes.h}}\index{opcodes.h@{opcodes.h}!JAVA\_\-ALOAD\_\-2@{JAVA\_\-ALOAD\_\-2}}\item[{\em 
+JAVA\_\-ALOAD\_\-2\label{opcodes_8h_a97f314a7497c04c2b60f812a774cb832a9f883dc3751055b70e86969fd2f5627e}
+}]Load reference from the third local variable. \index{JAVA\_\-ALOAD\_\-3@{JAVA\_\-ALOAD\_\-3}!opcodes.h@{opcodes.h}}\index{opcodes.h@{opcodes.h}!JAVA\_\-ALOAD\_\-3@{JAVA\_\-ALOAD\_\-3}}\item[{\em 
+JAVA\_\-ALOAD\_\-3\label{opcodes_8h_a97f314a7497c04c2b60f812a774cb832a0bceb4445666498c4e7402b498eead69}
+}]Load reference from the fourth local variable. \index{JAVA\_\-IALOAD@{JAVA\_\-IALOAD}!opcodes.h@{opcodes.h}}\index{opcodes.h@{opcodes.h}!JAVA\_\-IALOAD@{JAVA\_\-IALOAD}}\item[{\em 
+JAVA\_\-IALOAD\label{opcodes_8h_a97f314a7497c04c2b60f812a774cb832aee5e05c35620b004bae3fd038ce16f4b}
+}]Load int from array. \index{JAVA\_\-LALOAD@{JAVA\_\-LALOAD}!opcodes.h@{opcodes.h}}\index{opcodes.h@{opcodes.h}!JAVA\_\-LALOAD@{JAVA\_\-LALOAD}}\item[{\em 
+JAVA\_\-LALOAD\label{opcodes_8h_a97f314a7497c04c2b60f812a774cb832ad629e7b17dd59dd34d0cd4b0061cbc95}
+}]Load long from array. \index{JAVA\_\-FALOAD@{JAVA\_\-FALOAD}!opcodes.h@{opcodes.h}}\index{opcodes.h@{opcodes.h}!JAVA\_\-FALOAD@{JAVA\_\-FALOAD}}\item[{\em 
+JAVA\_\-FALOAD\label{opcodes_8h_a97f314a7497c04c2b60f812a774cb832a074c6a0c63f462ea4722db8784a382cd}
+}]Load float from array. \index{JAVA\_\-DALOAD@{JAVA\_\-DALOAD}!opcodes.h@{opcodes.h}}\index{opcodes.h@{opcodes.h}!JAVA\_\-DALOAD@{JAVA\_\-DALOAD}}\item[{\em 
+JAVA\_\-DALOAD\label{opcodes_8h_a97f314a7497c04c2b60f812a774cb832a4a03f8f21cb2b38ea6e7f2b37378e2cd}
+}]Load double from array. \index{JAVA\_\-AALOAD@{JAVA\_\-AALOAD}!opcodes.h@{opcodes.h}}\index{opcodes.h@{opcodes.h}!JAVA\_\-AALOAD@{JAVA\_\-AALOAD}}\item[{\em 
+JAVA\_\-AALOAD\label{opcodes_8h_a97f314a7497c04c2b60f812a774cb832abe2f684c11fbdf1c0f213b167dac8693}
+}]Load reference from array. \index{JAVA\_\-BALOAD@{JAVA\_\-BALOAD}!opcodes.h@{opcodes.h}}\index{opcodes.h@{opcodes.h}!JAVA\_\-BALOAD@{JAVA\_\-BALOAD}}\item[{\em 
+JAVA\_\-BALOAD\label{opcodes_8h_a97f314a7497c04c2b60f812a774cb832a5073415e84a4e6c0d584417427f46a95}
+}]Load byte or boolean from array. \index{JAVA\_\-CALOAD@{JAVA\_\-CALOAD}!opcodes.h@{opcodes.h}}\index{opcodes.h@{opcodes.h}!JAVA\_\-CALOAD@{JAVA\_\-CALOAD}}\item[{\em 
+JAVA\_\-CALOAD\label{opcodes_8h_a97f314a7497c04c2b60f812a774cb832a2e2d50484f4b6b0856160c253c5efef3}
+}]Load char from array. \index{JAVA\_\-SALOAD@{JAVA\_\-SALOAD}!opcodes.h@{opcodes.h}}\index{opcodes.h@{opcodes.h}!JAVA\_\-SALOAD@{JAVA\_\-SALOAD}}\item[{\em 
+JAVA\_\-SALOAD\label{opcodes_8h_a97f314a7497c04c2b60f812a774cb832abbd1d30c0eec1807fec0021e67fa1e74}
+}]Load short from array. \index{JAVA\_\-ISTORE@{JAVA\_\-ISTORE}!opcodes.h@{opcodes.h}}\index{opcodes.h@{opcodes.h}!JAVA\_\-ISTORE@{JAVA\_\-ISTORE}}\item[{\em 
+JAVA\_\-ISTORE\label{opcodes_8h_a97f314a7497c04c2b60f812a774cb832aaab57a40c6dccded857c8ccd1c80ea5f}
+}]Store int into local variable. \index{JAVA\_\-LSTORE@{JAVA\_\-LSTORE}!opcodes.h@{opcodes.h}}\index{opcodes.h@{opcodes.h}!JAVA\_\-LSTORE@{JAVA\_\-LSTORE}}\item[{\em 
+JAVA\_\-LSTORE\label{opcodes_8h_a97f314a7497c04c2b60f812a774cb832a36ab23e9d435935d0f08e1105d917742}
+}]Store long into local variable. \index{JAVA\_\-FSTORE@{JAVA\_\-FSTORE}!opcodes.h@{opcodes.h}}\index{opcodes.h@{opcodes.h}!JAVA\_\-FSTORE@{JAVA\_\-FSTORE}}\item[{\em 
+JAVA\_\-FSTORE\label{opcodes_8h_a97f314a7497c04c2b60f812a774cb832abcb6909fdedfde0f78492ecc9c0cacb5}
+}]Store float into local variable. \index{JAVA\_\-DSTORE@{JAVA\_\-DSTORE}!opcodes.h@{opcodes.h}}\index{opcodes.h@{opcodes.h}!JAVA\_\-DSTORE@{JAVA\_\-DSTORE}}\item[{\em 
+JAVA\_\-DSTORE\label{opcodes_8h_a97f314a7497c04c2b60f812a774cb832a15330328df8c662e74c8c111361bbf0a}
+}]Store double into local variable. \index{JAVA\_\-ASTORE@{JAVA\_\-ASTORE}!opcodes.h@{opcodes.h}}\index{opcodes.h@{opcodes.h}!JAVA\_\-ASTORE@{JAVA\_\-ASTORE}}\item[{\em 
+JAVA\_\-ASTORE\label{opcodes_8h_a97f314a7497c04c2b60f812a774cb832a496068710efcd698bf21b415c6330342}
+}]Store reference into local variable. \index{JAVA\_\-ISTORE\_\-0@{JAVA\_\-ISTORE\_\-0}!opcodes.h@{opcodes.h}}\index{opcodes.h@{opcodes.h}!JAVA\_\-ISTORE\_\-0@{JAVA\_\-ISTORE\_\-0}}\item[{\em 
+JAVA\_\-ISTORE\_\-0\label{opcodes_8h_a97f314a7497c04c2b60f812a774cb832a62ff6ef85f6d89c1524904feabfba42c}
+}]Store int into the first local variable. \index{JAVA\_\-ISTORE\_\-1@{JAVA\_\-ISTORE\_\-1}!opcodes.h@{opcodes.h}}\index{opcodes.h@{opcodes.h}!JAVA\_\-ISTORE\_\-1@{JAVA\_\-ISTORE\_\-1}}\item[{\em 
+JAVA\_\-ISTORE\_\-1\label{opcodes_8h_a97f314a7497c04c2b60f812a774cb832acfffce318bfc81b13511b4d3841124b1}
+}]Store int into the second local variable. \index{JAVA\_\-ISTORE\_\-2@{JAVA\_\-ISTORE\_\-2}!opcodes.h@{opcodes.h}}\index{opcodes.h@{opcodes.h}!JAVA\_\-ISTORE\_\-2@{JAVA\_\-ISTORE\_\-2}}\item[{\em 
+JAVA\_\-ISTORE\_\-2\label{opcodes_8h_a97f314a7497c04c2b60f812a774cb832a429158c52cf6366f9d38e88edafc3bf5}
+}]Store int into the third local variable. \index{JAVA\_\-ISTORE\_\-3@{JAVA\_\-ISTORE\_\-3}!opcodes.h@{opcodes.h}}\index{opcodes.h@{opcodes.h}!JAVA\_\-ISTORE\_\-3@{JAVA\_\-ISTORE\_\-3}}\item[{\em 
+JAVA\_\-ISTORE\_\-3\label{opcodes_8h_a97f314a7497c04c2b60f812a774cb832ae090918964b0d26173f21476340267c3}
+}]Store int into the fourth local variable. \index{JAVA\_\-LSTORE\_\-0@{JAVA\_\-LSTORE\_\-0}!opcodes.h@{opcodes.h}}\index{opcodes.h@{opcodes.h}!JAVA\_\-LSTORE\_\-0@{JAVA\_\-LSTORE\_\-0}}\item[{\em 
+JAVA\_\-LSTORE\_\-0\label{opcodes_8h_a97f314a7497c04c2b60f812a774cb832a72836ab43cd89fb00ae4c91351a8371c}
+}]Store long into the first local variable. \index{JAVA\_\-LSTORE\_\-1@{JAVA\_\-LSTORE\_\-1}!opcodes.h@{opcodes.h}}\index{opcodes.h@{opcodes.h}!JAVA\_\-LSTORE\_\-1@{JAVA\_\-LSTORE\_\-1}}\item[{\em 
+JAVA\_\-LSTORE\_\-1\label{opcodes_8h_a97f314a7497c04c2b60f812a774cb832ad1ccaf685f50837faca474a897c24d70}
+}]Store long into the second local variable. \index{JAVA\_\-LSTORE\_\-2@{JAVA\_\-LSTORE\_\-2}!opcodes.h@{opcodes.h}}\index{opcodes.h@{opcodes.h}!JAVA\_\-LSTORE\_\-2@{JAVA\_\-LSTORE\_\-2}}\item[{\em 
+JAVA\_\-LSTORE\_\-2\label{opcodes_8h_a97f314a7497c04c2b60f812a774cb832a858b5a9f2c92751fd11e1184e22c844a}
+}]Store long into the third local variable. \index{JAVA\_\-LSTORE\_\-3@{JAVA\_\-LSTORE\_\-3}!opcodes.h@{opcodes.h}}\index{opcodes.h@{opcodes.h}!JAVA\_\-LSTORE\_\-3@{JAVA\_\-LSTORE\_\-3}}\item[{\em 
+JAVA\_\-LSTORE\_\-3\label{opcodes_8h_a97f314a7497c04c2b60f812a774cb832a11742f291442b0ada5ba242339274813}
+}]Store long into the fourth local variable. \index{JAVA\_\-FSTORE\_\-0@{JAVA\_\-FSTORE\_\-0}!opcodes.h@{opcodes.h}}\index{opcodes.h@{opcodes.h}!JAVA\_\-FSTORE\_\-0@{JAVA\_\-FSTORE\_\-0}}\item[{\em 
+JAVA\_\-FSTORE\_\-0\label{opcodes_8h_a97f314a7497c04c2b60f812a774cb832a1e435d848a72f2e486fe041f00b5e0af}
+}]Store float into the first local variable. \index{JAVA\_\-FSTORE\_\-1@{JAVA\_\-FSTORE\_\-1}!opcodes.h@{opcodes.h}}\index{opcodes.h@{opcodes.h}!JAVA\_\-FSTORE\_\-1@{JAVA\_\-FSTORE\_\-1}}\item[{\em 
+JAVA\_\-FSTORE\_\-1\label{opcodes_8h_a97f314a7497c04c2b60f812a774cb832aa7a0aa3ffac4fcd17759c855bde2eff0}
+}]Store float into the second local variable. \index{JAVA\_\-FSTORE\_\-2@{JAVA\_\-FSTORE\_\-2}!opcodes.h@{opcodes.h}}\index{opcodes.h@{opcodes.h}!JAVA\_\-FSTORE\_\-2@{JAVA\_\-FSTORE\_\-2}}\item[{\em 
+JAVA\_\-FSTORE\_\-2\label{opcodes_8h_a97f314a7497c04c2b60f812a774cb832acca8a02cb2187483df99b10009eae18d}
+}]Store float into the third local variable. \index{JAVA\_\-FSTORE\_\-3@{JAVA\_\-FSTORE\_\-3}!opcodes.h@{opcodes.h}}\index{opcodes.h@{opcodes.h}!JAVA\_\-FSTORE\_\-3@{JAVA\_\-FSTORE\_\-3}}\item[{\em 
+JAVA\_\-FSTORE\_\-3\label{opcodes_8h_a97f314a7497c04c2b60f812a774cb832abeae96345927646db52da5a1fe0c0fe2}
+}]Store float into the fourth local variable. \index{JAVA\_\-DSTORE\_\-0@{JAVA\_\-DSTORE\_\-0}!opcodes.h@{opcodes.h}}\index{opcodes.h@{opcodes.h}!JAVA\_\-DSTORE\_\-0@{JAVA\_\-DSTORE\_\-0}}\item[{\em 
+JAVA\_\-DSTORE\_\-0\label{opcodes_8h_a97f314a7497c04c2b60f812a774cb832a57d7403758b2e49f5020b3a71e7ea34d}
+}]Store double into the first local variable. \index{JAVA\_\-DSTORE\_\-1@{JAVA\_\-DSTORE\_\-1}!opcodes.h@{opcodes.h}}\index{opcodes.h@{opcodes.h}!JAVA\_\-DSTORE\_\-1@{JAVA\_\-DSTORE\_\-1}}\item[{\em 
+JAVA\_\-DSTORE\_\-1\label{opcodes_8h_a97f314a7497c04c2b60f812a774cb832ad3f214a3a1a2f6967bdfd8a9c742f034}
+}]Store double into the second local variable. \index{JAVA\_\-DSTORE\_\-2@{JAVA\_\-DSTORE\_\-2}!opcodes.h@{opcodes.h}}\index{opcodes.h@{opcodes.h}!JAVA\_\-DSTORE\_\-2@{JAVA\_\-DSTORE\_\-2}}\item[{\em 
+JAVA\_\-DSTORE\_\-2\label{opcodes_8h_a97f314a7497c04c2b60f812a774cb832a68d051d9341b830f905873819fe0a57e}
+}]Store double into the third local variable. \index{JAVA\_\-DSTORE\_\-3@{JAVA\_\-DSTORE\_\-3}!opcodes.h@{opcodes.h}}\index{opcodes.h@{opcodes.h}!JAVA\_\-DSTORE\_\-3@{JAVA\_\-DSTORE\_\-3}}\item[{\em 
+JAVA\_\-DSTORE\_\-3\label{opcodes_8h_a97f314a7497c04c2b60f812a774cb832a5859c751349a51018a7a09a31ec6a5eb}
+}]Store double into the fourth local variable. \index{JAVA\_\-ASTORE\_\-0@{JAVA\_\-ASTORE\_\-0}!opcodes.h@{opcodes.h}}\index{opcodes.h@{opcodes.h}!JAVA\_\-ASTORE\_\-0@{JAVA\_\-ASTORE\_\-0}}\item[{\em 
+JAVA\_\-ASTORE\_\-0\label{opcodes_8h_a97f314a7497c04c2b60f812a774cb832aff32a31b53d5052d8170baf3b2e3c185}
+}]Store reference into the first local variable. \index{JAVA\_\-ASTORE\_\-1@{JAVA\_\-ASTORE\_\-1}!opcodes.h@{opcodes.h}}\index{opcodes.h@{opcodes.h}!JAVA\_\-ASTORE\_\-1@{JAVA\_\-ASTORE\_\-1}}\item[{\em 
+JAVA\_\-ASTORE\_\-1\label{opcodes_8h_a97f314a7497c04c2b60f812a774cb832a1e597e8762fb4270514454d8a9314318}
+}]Store reference into the second local variable. \index{JAVA\_\-ASTORE\_\-2@{JAVA\_\-ASTORE\_\-2}!opcodes.h@{opcodes.h}}\index{opcodes.h@{opcodes.h}!JAVA\_\-ASTORE\_\-2@{JAVA\_\-ASTORE\_\-2}}\item[{\em 
+JAVA\_\-ASTORE\_\-2\label{opcodes_8h_a97f314a7497c04c2b60f812a774cb832ac9e6bdc036a9c8ea72485ed619c47cbc}
+}]Store reference into the third local variable. \index{JAVA\_\-ASTORE\_\-3@{JAVA\_\-ASTORE\_\-3}!opcodes.h@{opcodes.h}}\index{opcodes.h@{opcodes.h}!JAVA\_\-ASTORE\_\-3@{JAVA\_\-ASTORE\_\-3}}\item[{\em 
+JAVA\_\-ASTORE\_\-3\label{opcodes_8h_a97f314a7497c04c2b60f812a774cb832a0bd098d5b153839aae417c354455f5df}
+}]Store reference into the fourth local variable. \index{JAVA\_\-IASTORE@{JAVA\_\-IASTORE}!opcodes.h@{opcodes.h}}\index{opcodes.h@{opcodes.h}!JAVA\_\-IASTORE@{JAVA\_\-IASTORE}}\item[{\em 
+JAVA\_\-IASTORE\label{opcodes_8h_a97f314a7497c04c2b60f812a774cb832a19a988b01496ed27e3e45a815e79bb41}
+}]Store into int array. \index{JAVA\_\-LASTORE@{JAVA\_\-LASTORE}!opcodes.h@{opcodes.h}}\index{opcodes.h@{opcodes.h}!JAVA\_\-LASTORE@{JAVA\_\-LASTORE}}\item[{\em 
+JAVA\_\-LASTORE\label{opcodes_8h_a97f314a7497c04c2b60f812a774cb832a2c355439146c628b6cfc19c0f5836ec3}
+}]Store into long array. \index{JAVA\_\-FASTORE@{JAVA\_\-FASTORE}!opcodes.h@{opcodes.h}}\index{opcodes.h@{opcodes.h}!JAVA\_\-FASTORE@{JAVA\_\-FASTORE}}\item[{\em 
+JAVA\_\-FASTORE\label{opcodes_8h_a97f314a7497c04c2b60f812a774cb832a25317bda7e61fa88e095292fa4d2df2a}
+}]Store into float array. \index{JAVA\_\-DASTORE@{JAVA\_\-DASTORE}!opcodes.h@{opcodes.h}}\index{opcodes.h@{opcodes.h}!JAVA\_\-DASTORE@{JAVA\_\-DASTORE}}\item[{\em 
+JAVA\_\-DASTORE\label{opcodes_8h_a97f314a7497c04c2b60f812a774cb832adcf4f1a670a2b5352055ecf5a1ec7494}
+}]Store into double array. \index{JAVA\_\-AASTORE@{JAVA\_\-AASTORE}!opcodes.h@{opcodes.h}}\index{opcodes.h@{opcodes.h}!JAVA\_\-AASTORE@{JAVA\_\-AASTORE}}\item[{\em 
+JAVA\_\-AASTORE\label{opcodes_8h_a97f314a7497c04c2b60f812a774cb832a08f55caf559d0bb2fd1f8f8b1a02c3af}
+}]Store into reference array. \index{JAVA\_\-BASTORE@{JAVA\_\-BASTORE}!opcodes.h@{opcodes.h}}\index{opcodes.h@{opcodes.h}!JAVA\_\-BASTORE@{JAVA\_\-BASTORE}}\item[{\em 
+JAVA\_\-BASTORE\label{opcodes_8h_a97f314a7497c04c2b60f812a774cb832af831401d3b44a034b2fe077a4857f8a7}
+}]Store into byte array. \index{JAVA\_\-CASTORE@{JAVA\_\-CASTORE}!opcodes.h@{opcodes.h}}\index{opcodes.h@{opcodes.h}!JAVA\_\-CASTORE@{JAVA\_\-CASTORE}}\item[{\em 
+JAVA\_\-CASTORE\label{opcodes_8h_a97f314a7497c04c2b60f812a774cb832a832cd388600334368d74e8b540a79ecc}
+}]Store into char array. \index{JAVA\_\-SASTORE@{JAVA\_\-SASTORE}!opcodes.h@{opcodes.h}}\index{opcodes.h@{opcodes.h}!JAVA\_\-SASTORE@{JAVA\_\-SASTORE}}\item[{\em 
+JAVA\_\-SASTORE\label{opcodes_8h_a97f314a7497c04c2b60f812a774cb832aa36564bb9f0d1763b0b5136492dd46cf}
+}]Store into short array. \index{JAVA\_\-POP@{JAVA\_\-POP}!opcodes.h@{opcodes.h}}\index{opcodes.h@{opcodes.h}!JAVA\_\-POP@{JAVA\_\-POP}}\item[{\em 
+JAVA\_\-POP\label{opcodes_8h_a97f314a7497c04c2b60f812a774cb832ac048c12fd206967bde4114964ad4ab31}
+}]Pop the top operand stack value. \index{JAVA\_\-POP2@{JAVA\_\-POP2}!opcodes.h@{opcodes.h}}\index{opcodes.h@{opcodes.h}!JAVA\_\-POP2@{JAVA\_\-POP2}}\item[{\em 
+JAVA\_\-POP2\label{opcodes_8h_a97f314a7497c04c2b60f812a774cb832adb6e22d9c62db6bae0c2ec4a266dc8c6}
+}]Pop the one or two top operand stack values. \index{JAVA\_\-DUP@{JAVA\_\-DUP}!opcodes.h@{opcodes.h}}\index{opcodes.h@{opcodes.h}!JAVA\_\-DUP@{JAVA\_\-DUP}}\item[{\em 
+JAVA\_\-DUP\label{opcodes_8h_a97f314a7497c04c2b60f812a774cb832ad317e80e3c6717852b10cf76f1c1e7b0}
+}]Duplicate the top operand stack value. \index{JAVA\_\-DUP\_\-X1@{JAVA\_\-DUP\_\-X1}!opcodes.h@{opcodes.h}}\index{opcodes.h@{opcodes.h}!JAVA\_\-DUP\_\-X1@{JAVA\_\-DUP\_\-X1}}\item[{\em 
+JAVA\_\-DUP\_\-X1\label{opcodes_8h_a97f314a7497c04c2b60f812a774cb832af14ed3ec01707a113898be6c0d81dc43}
+}]Duplicate the top operand stack value and insert two values down. \index{JAVA\_\-DUP\_\-X2@{JAVA\_\-DUP\_\-X2}!opcodes.h@{opcodes.h}}\index{opcodes.h@{opcodes.h}!JAVA\_\-DUP\_\-X2@{JAVA\_\-DUP\_\-X2}}\item[{\em 
+JAVA\_\-DUP\_\-X2\label{opcodes_8h_a97f314a7497c04c2b60f812a774cb832a3bd91221cf29ca6085515316834598f7}
+}]Duplicate the top operand stack value and insert two or three values down. \index{JAVA\_\-DUP2@{JAVA\_\-DUP2}!opcodes.h@{opcodes.h}}\index{opcodes.h@{opcodes.h}!JAVA\_\-DUP2@{JAVA\_\-DUP2}}\item[{\em 
+JAVA\_\-DUP2\label{opcodes_8h_a97f314a7497c04c2b60f812a774cb832a09c05fbfdf61cda2e1228aa35be1cf06}
+}]Duplicate the top operand stack value and insert two or three values down$\ast$/. \index{JAVA\_\-DUP2\_\-X1@{JAVA\_\-DUP2\_\-X1}!opcodes.h@{opcodes.h}}\index{opcodes.h@{opcodes.h}!JAVA\_\-DUP2\_\-X1@{JAVA\_\-DUP2\_\-X1}}\item[{\em 
+JAVA\_\-DUP2\_\-X1\label{opcodes_8h_a97f314a7497c04c2b60f812a774cb832adb496f0307030d45dbc864e751e05acb}
+}]Duplicate the top one or two operand stack values and insert two or three values down$\ast$/. \index{JAVA\_\-DUP2\_\-X2@{JAVA\_\-DUP2\_\-X2}!opcodes.h@{opcodes.h}}\index{opcodes.h@{opcodes.h}!JAVA\_\-DUP2\_\-X2@{JAVA\_\-DUP2\_\-X2}}\item[{\em 
+JAVA\_\-DUP2\_\-X2\label{opcodes_8h_a97f314a7497c04c2b60f812a774cb832a96854c73ca14e7e35662b37b9a8835ce}
+}]Duplicate the top one or two operand stack values and insert two, three, or four values down. \index{JAVA\_\-SWAP@{JAVA\_\-SWAP}!opcodes.h@{opcodes.h}}\index{opcodes.h@{opcodes.h}!JAVA\_\-SWAP@{JAVA\_\-SWAP}}\item[{\em 
+JAVA\_\-SWAP\label{opcodes_8h_a97f314a7497c04c2b60f812a774cb832a2c6751a07e7d48ac0a8c2a5ae5a161a6}
+}]Swap the top two operand stack values. \index{JAVA\_\-IADD@{JAVA\_\-IADD}!opcodes.h@{opcodes.h}}\index{opcodes.h@{opcodes.h}!JAVA\_\-IADD@{JAVA\_\-IADD}}\item[{\em 
+JAVA\_\-IADD\label{opcodes_8h_a97f314a7497c04c2b60f812a774cb832a679c1a2c27124b99c67a40ce6aa33b0b}
+}]Add int. \index{JAVA\_\-LADD@{JAVA\_\-LADD}!opcodes.h@{opcodes.h}}\index{opcodes.h@{opcodes.h}!JAVA\_\-LADD@{JAVA\_\-LADD}}\item[{\em 
+JAVA\_\-LADD\label{opcodes_8h_a97f314a7497c04c2b60f812a774cb832afb33eab745ce7d45f57b1055d339fb34}
+}]Add long. \index{JAVA\_\-FADD@{JAVA\_\-FADD}!opcodes.h@{opcodes.h}}\index{opcodes.h@{opcodes.h}!JAVA\_\-FADD@{JAVA\_\-FADD}}\item[{\em 
+JAVA\_\-FADD\label{opcodes_8h_a97f314a7497c04c2b60f812a774cb832a8b333e6a943221e0777fb520f4c03d11}
+}]Add float. \index{JAVA\_\-DADD@{JAVA\_\-DADD}!opcodes.h@{opcodes.h}}\index{opcodes.h@{opcodes.h}!JAVA\_\-DADD@{JAVA\_\-DADD}}\item[{\em 
+JAVA\_\-DADD\label{opcodes_8h_a97f314a7497c04c2b60f812a774cb832ada7f274f9e317656ec20efb675d54801}
+}]Add double. \index{JAVA\_\-ISUB@{JAVA\_\-ISUB}!opcodes.h@{opcodes.h}}\index{opcodes.h@{opcodes.h}!JAVA\_\-ISUB@{JAVA\_\-ISUB}}\item[{\em 
+JAVA\_\-ISUB\label{opcodes_8h_a97f314a7497c04c2b60f812a774cb832ad830135d740a47c6a53930d9389ddab3}
+}]Substract int. \index{JAVA\_\-LSUB@{JAVA\_\-LSUB}!opcodes.h@{opcodes.h}}\index{opcodes.h@{opcodes.h}!JAVA\_\-LSUB@{JAVA\_\-LSUB}}\item[{\em 
+JAVA\_\-LSUB\label{opcodes_8h_a97f314a7497c04c2b60f812a774cb832a8c7070bb6299128ebe76ad7f6cbcf382}
+}]Substract long. \index{JAVA\_\-FSUB@{JAVA\_\-FSUB}!opcodes.h@{opcodes.h}}\index{opcodes.h@{opcodes.h}!JAVA\_\-FSUB@{JAVA\_\-FSUB}}\item[{\em 
+JAVA\_\-FSUB\label{opcodes_8h_a97f314a7497c04c2b60f812a774cb832af049c1b7dc801053c7bde28f03f3352b}
+}]Substract float. \index{JAVA\_\-DSUB@{JAVA\_\-DSUB}!opcodes.h@{opcodes.h}}\index{opcodes.h@{opcodes.h}!JAVA\_\-DSUB@{JAVA\_\-DSUB}}\item[{\em 
+JAVA\_\-DSUB\label{opcodes_8h_a97f314a7497c04c2b60f812a774cb832ada8b100ca9a4092a5a1831dac0744ef2}
+}]Sustract double. \index{JAVA\_\-IMUL@{JAVA\_\-IMUL}!opcodes.h@{opcodes.h}}\index{opcodes.h@{opcodes.h}!JAVA\_\-IMUL@{JAVA\_\-IMUL}}\item[{\em 
+JAVA\_\-IMUL\label{opcodes_8h_a97f314a7497c04c2b60f812a774cb832a4b29fc28d15168adbc7c9b187ee0eb49}
+}]Multiply int. \index{JAVA\_\-LMUL@{JAVA\_\-LMUL}!opcodes.h@{opcodes.h}}\index{opcodes.h@{opcodes.h}!JAVA\_\-LMUL@{JAVA\_\-LMUL}}\item[{\em 
+JAVA\_\-LMUL\label{opcodes_8h_a97f314a7497c04c2b60f812a774cb832a98a5ec7d5c6248074afd7cb710e542af}
+}]Multiply long. \index{JAVA\_\-FMUL@{JAVA\_\-FMUL}!opcodes.h@{opcodes.h}}\index{opcodes.h@{opcodes.h}!JAVA\_\-FMUL@{JAVA\_\-FMUL}}\item[{\em 
+JAVA\_\-FMUL\label{opcodes_8h_a97f314a7497c04c2b60f812a774cb832aba4d51a6cfc468ec83b0a7fa2ac14377}
+}]Multiply float. \index{JAVA\_\-DMUL@{JAVA\_\-DMUL}!opcodes.h@{opcodes.h}}\index{opcodes.h@{opcodes.h}!JAVA\_\-DMUL@{JAVA\_\-DMUL}}\item[{\em 
+JAVA\_\-DMUL\label{opcodes_8h_a97f314a7497c04c2b60f812a774cb832ac097b1baa8e1eec4773abd43f54593a3}
+}]Multiply double. \index{JAVA\_\-IDIV@{JAVA\_\-IDIV}!opcodes.h@{opcodes.h}}\index{opcodes.h@{opcodes.h}!JAVA\_\-IDIV@{JAVA\_\-IDIV}}\item[{\em 
+JAVA\_\-IDIV\label{opcodes_8h_a97f314a7497c04c2b60f812a774cb832a86e27942e118d0e369efe669a68439d8}
+}]Divide int. \index{JAVA\_\-LDIV@{JAVA\_\-LDIV}!opcodes.h@{opcodes.h}}\index{opcodes.h@{opcodes.h}!JAVA\_\-LDIV@{JAVA\_\-LDIV}}\item[{\em 
+JAVA\_\-LDIV\label{opcodes_8h_a97f314a7497c04c2b60f812a774cb832a5e3f3c7a2d36bc739f680483260a7fb2}
+}]Divide long. \index{JAVA\_\-FDIV@{JAVA\_\-FDIV}!opcodes.h@{opcodes.h}}\index{opcodes.h@{opcodes.h}!JAVA\_\-FDIV@{JAVA\_\-FDIV}}\item[{\em 
+JAVA\_\-FDIV\label{opcodes_8h_a97f314a7497c04c2b60f812a774cb832a3074d4c96fe078140b2a86005426cb56}
+}]Divide float. \index{JAVA\_\-DDIV@{JAVA\_\-DDIV}!opcodes.h@{opcodes.h}}\index{opcodes.h@{opcodes.h}!JAVA\_\-DDIV@{JAVA\_\-DDIV}}\item[{\em 
+JAVA\_\-DDIV\label{opcodes_8h_a97f314a7497c04c2b60f812a774cb832ae09ec673d36d7bd7fabf12915514810f}
+}]Divide double. \index{JAVA\_\-IREM@{JAVA\_\-IREM}!opcodes.h@{opcodes.h}}\index{opcodes.h@{opcodes.h}!JAVA\_\-IREM@{JAVA\_\-IREM}}\item[{\em 
+JAVA\_\-IREM\label{opcodes_8h_a97f314a7497c04c2b60f812a774cb832a50e49b49839cf5e61c8694af614c582d}
+}]Remainder int. \index{JAVA\_\-LREM@{JAVA\_\-LREM}!opcodes.h@{opcodes.h}}\index{opcodes.h@{opcodes.h}!JAVA\_\-LREM@{JAVA\_\-LREM}}\item[{\em 
+JAVA\_\-LREM\label{opcodes_8h_a97f314a7497c04c2b60f812a774cb832a3dfbb3fbd13493707cd87c815da99c71}
+}]Remainder long. \index{JAVA\_\-FREM@{JAVA\_\-FREM}!opcodes.h@{opcodes.h}}\index{opcodes.h@{opcodes.h}!JAVA\_\-FREM@{JAVA\_\-FREM}}\item[{\em 
+JAVA\_\-FREM\label{opcodes_8h_a97f314a7497c04c2b60f812a774cb832a60cd5f23c136f689e5ff5d84821e16b2}
+}]Remainder float. \index{JAVA\_\-DREM@{JAVA\_\-DREM}!opcodes.h@{opcodes.h}}\index{opcodes.h@{opcodes.h}!JAVA\_\-DREM@{JAVA\_\-DREM}}\item[{\em 
+JAVA\_\-DREM\label{opcodes_8h_a97f314a7497c04c2b60f812a774cb832a0d5d39f559f5a133930c436cea9da101}
+}]Remainder double. \index{JAVA\_\-INEG@{JAVA\_\-INEG}!opcodes.h@{opcodes.h}}\index{opcodes.h@{opcodes.h}!JAVA\_\-INEG@{JAVA\_\-INEG}}\item[{\em 
+JAVA\_\-INEG\label{opcodes_8h_a97f314a7497c04c2b60f812a774cb832af8ab06d3604b215ff36a08f29e3d7779}
+}]Negate int. \index{JAVA\_\-LNEG@{JAVA\_\-LNEG}!opcodes.h@{opcodes.h}}\index{opcodes.h@{opcodes.h}!JAVA\_\-LNEG@{JAVA\_\-LNEG}}\item[{\em 
+JAVA\_\-LNEG\label{opcodes_8h_a97f314a7497c04c2b60f812a774cb832ac25c7f3322886be1c7a3bfed5934e5ff}
+}]Negate long. \index{JAVA\_\-FNEG@{JAVA\_\-FNEG}!opcodes.h@{opcodes.h}}\index{opcodes.h@{opcodes.h}!JAVA\_\-FNEG@{JAVA\_\-FNEG}}\item[{\em 
+JAVA\_\-FNEG\label{opcodes_8h_a97f314a7497c04c2b60f812a774cb832a49d1ab3b66e01d2cbc144d1b4e56d12d}
+}]Negate float. \index{JAVA\_\-DNEG@{JAVA\_\-DNEG}!opcodes.h@{opcodes.h}}\index{opcodes.h@{opcodes.h}!JAVA\_\-DNEG@{JAVA\_\-DNEG}}\item[{\em 
+JAVA\_\-DNEG\label{opcodes_8h_a97f314a7497c04c2b60f812a774cb832a662c1c318821b830ca284c5b4da36454}
+}]Negate double. \index{JAVA\_\-ISHL@{JAVA\_\-ISHL}!opcodes.h@{opcodes.h}}\index{opcodes.h@{opcodes.h}!JAVA\_\-ISHL@{JAVA\_\-ISHL}}\item[{\em 
+JAVA\_\-ISHL\label{opcodes_8h_a97f314a7497c04c2b60f812a774cb832af08ba1b0d8600eb12c30500205bf11cc}
+}]Shift left int. \index{JAVA\_\-LSHL@{JAVA\_\-LSHL}!opcodes.h@{opcodes.h}}\index{opcodes.h@{opcodes.h}!JAVA\_\-LSHL@{JAVA\_\-LSHL}}\item[{\em 
+JAVA\_\-LSHL\label{opcodes_8h_a97f314a7497c04c2b60f812a774cb832a385720d57c9946f3f636491248cc3b88}
+}]Shift left long. \index{JAVA\_\-ISHR@{JAVA\_\-ISHR}!opcodes.h@{opcodes.h}}\index{opcodes.h@{opcodes.h}!JAVA\_\-ISHR@{JAVA\_\-ISHR}}\item[{\em 
+JAVA\_\-ISHR\label{opcodes_8h_a97f314a7497c04c2b60f812a774cb832aa93e02e839b975654c88425d337bfb3a}
+}]Arithmetic shift right int. \index{JAVA\_\-LSHR@{JAVA\_\-LSHR}!opcodes.h@{opcodes.h}}\index{opcodes.h@{opcodes.h}!JAVA\_\-LSHR@{JAVA\_\-LSHR}}\item[{\em 
+JAVA\_\-LSHR\label{opcodes_8h_a97f314a7497c04c2b60f812a774cb832a2c37aac4a119460e2c92bc25f0723597}
+}]Arithmetic shift right long. \index{JAVA\_\-IUSHR@{JAVA\_\-IUSHR}!opcodes.h@{opcodes.h}}\index{opcodes.h@{opcodes.h}!JAVA\_\-IUSHR@{JAVA\_\-IUSHR}}\item[{\em 
+JAVA\_\-IUSHR\label{opcodes_8h_a97f314a7497c04c2b60f812a774cb832af280870f1f7883782bc3b3609da6afea}
+}]Logical shift right int. \index{JAVA\_\-LUSHR@{JAVA\_\-LUSHR}!opcodes.h@{opcodes.h}}\index{opcodes.h@{opcodes.h}!JAVA\_\-LUSHR@{JAVA\_\-LUSHR}}\item[{\em 
+JAVA\_\-LUSHR\label{opcodes_8h_a97f314a7497c04c2b60f812a774cb832ab98bb65f2db9a1252ae50844545c59a3}
+}]Logical shift right long. \index{JAVA\_\-IAND@{JAVA\_\-IAND}!opcodes.h@{opcodes.h}}\index{opcodes.h@{opcodes.h}!JAVA\_\-IAND@{JAVA\_\-IAND}}\item[{\em 
+JAVA\_\-IAND\label{opcodes_8h_a97f314a7497c04c2b60f812a774cb832a9c545bf870b51bcd773334c6de9db468}
+}]Boolean AND int. \index{JAVA\_\-LAND@{JAVA\_\-LAND}!opcodes.h@{opcodes.h}}\index{opcodes.h@{opcodes.h}!JAVA\_\-LAND@{JAVA\_\-LAND}}\item[{\em 
+JAVA\_\-LAND\label{opcodes_8h_a97f314a7497c04c2b60f812a774cb832a070f5e17fdb88ee348e4e1697e751ba9}
+}]Boolean AND long. \index{JAVA\_\-IOR@{JAVA\_\-IOR}!opcodes.h@{opcodes.h}}\index{opcodes.h@{opcodes.h}!JAVA\_\-IOR@{JAVA\_\-IOR}}\item[{\em 
+JAVA\_\-IOR\label{opcodes_8h_a97f314a7497c04c2b60f812a774cb832abdb52d61f59c7f11eed4b0125ff9b688}
+}]Boolean OR int. \index{JAVA\_\-LOR@{JAVA\_\-LOR}!opcodes.h@{opcodes.h}}\index{opcodes.h@{opcodes.h}!JAVA\_\-LOR@{JAVA\_\-LOR}}\item[{\em 
+JAVA\_\-LOR\label{opcodes_8h_a97f314a7497c04c2b60f812a774cb832accc0ce80c19ed3b7ebf55426cec6f713}
+}]Boolean OR long. \index{JAVA\_\-IXOR@{JAVA\_\-IXOR}!opcodes.h@{opcodes.h}}\index{opcodes.h@{opcodes.h}!JAVA\_\-IXOR@{JAVA\_\-IXOR}}\item[{\em 
+JAVA\_\-IXOR\label{opcodes_8h_a97f314a7497c04c2b60f812a774cb832a6483c5dd50e0f694519fee6c58d92b92}
+}]Boolean XOR int. \index{JAVA\_\-LXOR@{JAVA\_\-LXOR}!opcodes.h@{opcodes.h}}\index{opcodes.h@{opcodes.h}!JAVA\_\-LXOR@{JAVA\_\-LXOR}}\item[{\em 
+JAVA\_\-LXOR\label{opcodes_8h_a97f314a7497c04c2b60f812a774cb832a5ee0c5e854aa1fb5ab7899a827aebd74}
+}]Boolean XOR long. \index{JAVA\_\-IINC@{JAVA\_\-IINC}!opcodes.h@{opcodes.h}}\index{opcodes.h@{opcodes.h}!JAVA\_\-IINC@{JAVA\_\-IINC}}\item[{\em 
+JAVA\_\-IINC\label{opcodes_8h_a97f314a7497c04c2b60f812a774cb832a7ef37fe54378441ac6d0993b9ed7cf84}
+}]Increment local variable by constant. \index{JAVA\_\-I2L@{JAVA\_\-I2L}!opcodes.h@{opcodes.h}}\index{opcodes.h@{opcodes.h}!JAVA\_\-I2L@{JAVA\_\-I2L}}\item[{\em 
+JAVA\_\-I2L\label{opcodes_8h_a97f314a7497c04c2b60f812a774cb832aaccb7f1a7093327f4353dc5cea0ef295}
+}]Convert int to long. \index{JAVA\_\-I2F@{JAVA\_\-I2F}!opcodes.h@{opcodes.h}}\index{opcodes.h@{opcodes.h}!JAVA\_\-I2F@{JAVA\_\-I2F}}\item[{\em 
+JAVA\_\-I2F\label{opcodes_8h_a97f314a7497c04c2b60f812a774cb832a493ce1ac44cd8c1474a6a931b8a6de64}
+}]Convert int to float. \index{JAVA\_\-I2D@{JAVA\_\-I2D}!opcodes.h@{opcodes.h}}\index{opcodes.h@{opcodes.h}!JAVA\_\-I2D@{JAVA\_\-I2D}}\item[{\em 
+JAVA\_\-I2D\label{opcodes_8h_a97f314a7497c04c2b60f812a774cb832a9f75e0e0bbe4b71e5c0ce9649310c64c}
+}]Convert int to double. \index{JAVA\_\-L2I@{JAVA\_\-L2I}!opcodes.h@{opcodes.h}}\index{opcodes.h@{opcodes.h}!JAVA\_\-L2I@{JAVA\_\-L2I}}\item[{\em 
+JAVA\_\-L2I\label{opcodes_8h_a97f314a7497c04c2b60f812a774cb832aa9cd37b2d728b0323c46a6359633f77d}
+}]Convert long to int. \index{JAVA\_\-L2F@{JAVA\_\-L2F}!opcodes.h@{opcodes.h}}\index{opcodes.h@{opcodes.h}!JAVA\_\-L2F@{JAVA\_\-L2F}}\item[{\em 
+JAVA\_\-L2F\label{opcodes_8h_a97f314a7497c04c2b60f812a774cb832a1f166aae19912e02679efaae22b0e2b3}
+}]Convert long to float. \index{JAVA\_\-L2D@{JAVA\_\-L2D}!opcodes.h@{opcodes.h}}\index{opcodes.h@{opcodes.h}!JAVA\_\-L2D@{JAVA\_\-L2D}}\item[{\em 
+JAVA\_\-L2D\label{opcodes_8h_a97f314a7497c04c2b60f812a774cb832af6e4f259da71244d6c04c68328a0dbd2}
+}]Convert long to double. \index{JAVA\_\-F2I@{JAVA\_\-F2I}!opcodes.h@{opcodes.h}}\index{opcodes.h@{opcodes.h}!JAVA\_\-F2I@{JAVA\_\-F2I}}\item[{\em 
+JAVA\_\-F2I\label{opcodes_8h_a97f314a7497c04c2b60f812a774cb832a5f9557d7fdba1424f0fba0aa6a631d82}
+}]Convert float to int. \index{JAVA\_\-F2L@{JAVA\_\-F2L}!opcodes.h@{opcodes.h}}\index{opcodes.h@{opcodes.h}!JAVA\_\-F2L@{JAVA\_\-F2L}}\item[{\em 
+JAVA\_\-F2L\label{opcodes_8h_a97f314a7497c04c2b60f812a774cb832a00f664c1a15d563404354d0f64060a0e}
+}]Convert float to long. \index{JAVA\_\-F2D@{JAVA\_\-F2D}!opcodes.h@{opcodes.h}}\index{opcodes.h@{opcodes.h}!JAVA\_\-F2D@{JAVA\_\-F2D}}\item[{\em 
+JAVA\_\-F2D\label{opcodes_8h_a97f314a7497c04c2b60f812a774cb832a1c5185266eb977b6ba49501389e07e28}
+}]Convert float to double. \index{JAVA\_\-D2I@{JAVA\_\-D2I}!opcodes.h@{opcodes.h}}\index{opcodes.h@{opcodes.h}!JAVA\_\-D2I@{JAVA\_\-D2I}}\item[{\em 
+JAVA\_\-D2I\label{opcodes_8h_a97f314a7497c04c2b60f812a774cb832ab1035cce10cf0b5a206408a5bdb86c88}
+}]Convert double to int. \index{JAVA\_\-D2L@{JAVA\_\-D2L}!opcodes.h@{opcodes.h}}\index{opcodes.h@{opcodes.h}!JAVA\_\-D2L@{JAVA\_\-D2L}}\item[{\em 
+JAVA\_\-D2L\label{opcodes_8h_a97f314a7497c04c2b60f812a774cb832a5564f61388304eddb75c15cce7423b3e}
+}]Convert double to long. \index{JAVA\_\-D2F@{JAVA\_\-D2F}!opcodes.h@{opcodes.h}}\index{opcodes.h@{opcodes.h}!JAVA\_\-D2F@{JAVA\_\-D2F}}\item[{\em 
+JAVA\_\-D2F\label{opcodes_8h_a97f314a7497c04c2b60f812a774cb832a384f840209c7a207e0abd4390e647ec5}
+}]Convert double to float. \index{JAVA\_\-I2B@{JAVA\_\-I2B}!opcodes.h@{opcodes.h}}\index{opcodes.h@{opcodes.h}!JAVA\_\-I2B@{JAVA\_\-I2B}}\item[{\em 
+JAVA\_\-I2B\label{opcodes_8h_a97f314a7497c04c2b60f812a774cb832a48a8bba8ea9a6a91e42c167d1c43ba74}
+}]Convert int to byte. \index{JAVA\_\-I2C@{JAVA\_\-I2C}!opcodes.h@{opcodes.h}}\index{opcodes.h@{opcodes.h}!JAVA\_\-I2C@{JAVA\_\-I2C}}\item[{\em 
+JAVA\_\-I2C\label{opcodes_8h_a97f314a7497c04c2b60f812a774cb832a16424ce946abbc9acc0e5eb927e7fa15}
+}]Convert int to char. \index{JAVA\_\-I2S@{JAVA\_\-I2S}!opcodes.h@{opcodes.h}}\index{opcodes.h@{opcodes.h}!JAVA\_\-I2S@{JAVA\_\-I2S}}\item[{\em 
+JAVA\_\-I2S\label{opcodes_8h_a97f314a7497c04c2b60f812a774cb832aa42750c5d968d722f6c27a1e676cd492}
+}]Convert int to short. \index{JAVA\_\-LCMP@{JAVA\_\-LCMP}!opcodes.h@{opcodes.h}}\index{opcodes.h@{opcodes.h}!JAVA\_\-LCMP@{JAVA\_\-LCMP}}\item[{\em 
+JAVA\_\-LCMP\label{opcodes_8h_a97f314a7497c04c2b60f812a774cb832a54d94ec5b3f0a6618cd0636765371f24}
+}]Long compare. \index{JAVA\_\-FCMPL@{JAVA\_\-FCMPL}!opcodes.h@{opcodes.h}}\index{opcodes.h@{opcodes.h}!JAVA\_\-FCMPL@{JAVA\_\-FCMPL}}\item[{\em 
+JAVA\_\-FCMPL\label{opcodes_8h_a97f314a7497c04c2b60f812a774cb832ab76c5cc4887aaa53cfccf875c177356b}
+}]Float compare NaN negative. \index{JAVA\_\-FCMPG@{JAVA\_\-FCMPG}!opcodes.h@{opcodes.h}}\index{opcodes.h@{opcodes.h}!JAVA\_\-FCMPG@{JAVA\_\-FCMPG}}\item[{\em 
+JAVA\_\-FCMPG\label{opcodes_8h_a97f314a7497c04c2b60f812a774cb832a3366fea8e9571e6b6b913c7b730a7d9c}
+}]Float compare NaN positive. \index{JAVA\_\-DCMPL@{JAVA\_\-DCMPL}!opcodes.h@{opcodes.h}}\index{opcodes.h@{opcodes.h}!JAVA\_\-DCMPL@{JAVA\_\-DCMPL}}\item[{\em 
+JAVA\_\-DCMPL\label{opcodes_8h_a97f314a7497c04c2b60f812a774cb832ac0a59fedee06ef21c51ad66456852f22}
+}]Double compare NaN negative. \index{JAVA\_\-DCMPG@{JAVA\_\-DCMPG}!opcodes.h@{opcodes.h}}\index{opcodes.h@{opcodes.h}!JAVA\_\-DCMPG@{JAVA\_\-DCMPG}}\item[{\em 
+JAVA\_\-DCMPG\label{opcodes_8h_a97f314a7497c04c2b60f812a774cb832a723317901ae8e2577526cf1df65ff00a}
+}]Double compare NaN positive. \index{JAVA\_\-IFEQ@{JAVA\_\-IFEQ}!opcodes.h@{opcodes.h}}\index{opcodes.h@{opcodes.h}!JAVA\_\-IFEQ@{JAVA\_\-IFEQ}}\item[{\em 
+JAVA\_\-IFEQ\label{opcodes_8h_a97f314a7497c04c2b60f812a774cb832a2f9e861d5c11545c1802405ee2b99a53}
+}]Branch if equal to zero. \index{JAVA\_\-IFNE@{JAVA\_\-IFNE}!opcodes.h@{opcodes.h}}\index{opcodes.h@{opcodes.h}!JAVA\_\-IFNE@{JAVA\_\-IFNE}}\item[{\em 
+JAVA\_\-IFNE\label{opcodes_8h_a97f314a7497c04c2b60f812a774cb832a112e3ae5a5884fb5173e67843ca64b4b}
+}]Branch if not equal to zero. \index{JAVA\_\-IFLT@{JAVA\_\-IFLT}!opcodes.h@{opcodes.h}}\index{opcodes.h@{opcodes.h}!JAVA\_\-IFLT@{JAVA\_\-IFLT}}\item[{\em 
+JAVA\_\-IFLT\label{opcodes_8h_a97f314a7497c04c2b60f812a774cb832a49c825915070959b26037c8b69607653}
+}]Branch if lower than zero. \index{JAVA\_\-IFGE@{JAVA\_\-IFGE}!opcodes.h@{opcodes.h}}\index{opcodes.h@{opcodes.h}!JAVA\_\-IFGE@{JAVA\_\-IFGE}}\item[{\em 
+JAVA\_\-IFGE\label{opcodes_8h_a97f314a7497c04c2b60f812a774cb832ac1129ed6497a82650bdc7513038f0d07}
+}]Branch if greater or equal to zero. \index{JAVA\_\-IFGT@{JAVA\_\-IFGT}!opcodes.h@{opcodes.h}}\index{opcodes.h@{opcodes.h}!JAVA\_\-IFGT@{JAVA\_\-IFGT}}\item[{\em 
+JAVA\_\-IFGT\label{opcodes_8h_a97f314a7497c04c2b60f812a774cb832a3661ddc0c2538331c390d5c9edd01702}
+}]Branch if greater than zero. \index{JAVA\_\-IFLE@{JAVA\_\-IFLE}!opcodes.h@{opcodes.h}}\index{opcodes.h@{opcodes.h}!JAVA\_\-IFLE@{JAVA\_\-IFLE}}\item[{\em 
+JAVA\_\-IFLE\label{opcodes_8h_a97f314a7497c04c2b60f812a774cb832ae31e3f39c76fa8490bff811ead9a6d89}
+}]Branch if lower or equal to zero. \index{JAVA\_\-IF\_\-ICMPEQ@{JAVA\_\-IF\_\-ICMPEQ}!opcodes.h@{opcodes.h}}\index{opcodes.h@{opcodes.h}!JAVA\_\-IF\_\-ICMPEQ@{JAVA\_\-IF\_\-ICMPEQ}}\item[{\em 
+JAVA\_\-IF\_\-ICMPEQ\label{opcodes_8h_a97f314a7497c04c2b60f812a774cb832aeac543098f436e85cd3dc566d6919638}
+}]Branch if equal. \index{JAVA\_\-IF\_\-ICMPNE@{JAVA\_\-IF\_\-ICMPNE}!opcodes.h@{opcodes.h}}\index{opcodes.h@{opcodes.h}!JAVA\_\-IF\_\-ICMPNE@{JAVA\_\-IF\_\-ICMPNE}}\item[{\em 
+JAVA\_\-IF\_\-ICMPNE\label{opcodes_8h_a97f314a7497c04c2b60f812a774cb832ab9a1445586ebc695fdd23c783ef9d01d}
+}]Branch if not equal. \index{JAVA\_\-IF\_\-ICMPLT@{JAVA\_\-IF\_\-ICMPLT}!opcodes.h@{opcodes.h}}\index{opcodes.h@{opcodes.h}!JAVA\_\-IF\_\-ICMPLT@{JAVA\_\-IF\_\-ICMPLT}}\item[{\em 
+JAVA\_\-IF\_\-ICMPLT\label{opcodes_8h_a97f314a7497c04c2b60f812a774cb832ad59c3f81eb29021b5b30dc55477e7a1f}
+}]Branch if lower than. \index{JAVA\_\-IF\_\-ICMPGE@{JAVA\_\-IF\_\-ICMPGE}!opcodes.h@{opcodes.h}}\index{opcodes.h@{opcodes.h}!JAVA\_\-IF\_\-ICMPGE@{JAVA\_\-IF\_\-ICMPGE}}\item[{\em 
+JAVA\_\-IF\_\-ICMPGE\label{opcodes_8h_a97f314a7497c04c2b60f812a774cb832a593d1d4c8c04d1ee32f2787b79e70ef3}
+}]Branch if greater or equal. \index{JAVA\_\-IF\_\-ICMPGT@{JAVA\_\-IF\_\-ICMPGT}!opcodes.h@{opcodes.h}}\index{opcodes.h@{opcodes.h}!JAVA\_\-IF\_\-ICMPGT@{JAVA\_\-IF\_\-ICMPGT}}\item[{\em 
+JAVA\_\-IF\_\-ICMPGT\label{opcodes_8h_a97f314a7497c04c2b60f812a774cb832af8d2e49fd2a239e80336d4d85fa390ed}
+}]Branch if greater than. \index{JAVA\_\-IF\_\-ICMPLE@{JAVA\_\-IF\_\-ICMPLE}!opcodes.h@{opcodes.h}}\index{opcodes.h@{opcodes.h}!JAVA\_\-IF\_\-ICMPLE@{JAVA\_\-IF\_\-ICMPLE}}\item[{\em 
+JAVA\_\-IF\_\-ICMPLE\label{opcodes_8h_a97f314a7497c04c2b60f812a774cb832a8bb1d7d6e36b6344827f54921c2c10b8}
+}]Branch if lower or equal. \index{JAVA\_\-IF\_\-ACMPEQ@{JAVA\_\-IF\_\-ACMPEQ}!opcodes.h@{opcodes.h}}\index{opcodes.h@{opcodes.h}!JAVA\_\-IF\_\-ACMPEQ@{JAVA\_\-IF\_\-ACMPEQ}}\item[{\em 
+JAVA\_\-IF\_\-ACMPEQ\label{opcodes_8h_a97f314a7497c04c2b60f812a774cb832a15cda35a16884701e0d09a9cb897267e}
+}]Branch if reference equal. \index{JAVA\_\-IF\_\-ACMPNE@{JAVA\_\-IF\_\-ACMPNE}!opcodes.h@{opcodes.h}}\index{opcodes.h@{opcodes.h}!JAVA\_\-IF\_\-ACMPNE@{JAVA\_\-IF\_\-ACMPNE}}\item[{\em 
+JAVA\_\-IF\_\-ACMPNE\label{opcodes_8h_a97f314a7497c04c2b60f812a774cb832a876b781a7fd7c2138a20c614c8a6b9b4}
+}]Branch if reference not equal. \index{JAVA\_\-GOTO@{JAVA\_\-GOTO}!opcodes.h@{opcodes.h}}\index{opcodes.h@{opcodes.h}!JAVA\_\-GOTO@{JAVA\_\-GOTO}}\item[{\em 
+JAVA\_\-GOTO\label{opcodes_8h_a97f314a7497c04c2b60f812a774cb832ac9bad3716acd8a8e86b09d34ade79263}
+}]Branch always. \index{JAVA\_\-JSR@{JAVA\_\-JSR}!opcodes.h@{opcodes.h}}\index{opcodes.h@{opcodes.h}!JAVA\_\-JSR@{JAVA\_\-JSR}}\item[{\em 
+JAVA\_\-JSR\label{opcodes_8h_a97f314a7497c04c2b60f812a774cb832a1503b4a2de6598f7bfff9bad7000ecd7}
+}]Jump to subroutine. \index{JAVA\_\-RET@{JAVA\_\-RET}!opcodes.h@{opcodes.h}}\index{opcodes.h@{opcodes.h}!JAVA\_\-RET@{JAVA\_\-RET}}\item[{\em 
+JAVA\_\-RET\label{opcodes_8h_a97f314a7497c04c2b60f812a774cb832af05ed6f7e2b6fd3082248f0597eba238}
+}]Return from subroutine. \index{JAVA\_\-TABLESWITCH@{JAVA\_\-TABLESWITCH}!opcodes.h@{opcodes.h}}\index{opcodes.h@{opcodes.h}!JAVA\_\-TABLESWITCH@{JAVA\_\-TABLESWITCH}}\item[{\em 
+JAVA\_\-TABLESWITCH\label{opcodes_8h_a97f314a7497c04c2b60f812a774cb832adc4247eea668340992400e2a457f487b}
+}]Access jump table by index and jump. \index{JAVA\_\-LOOKUPSWITCH@{JAVA\_\-LOOKUPSWITCH}!opcodes.h@{opcodes.h}}\index{opcodes.h@{opcodes.h}!JAVA\_\-LOOKUPSWITCH@{JAVA\_\-LOOKUPSWITCH}}\item[{\em 
+JAVA\_\-LOOKUPSWITCH\label{opcodes_8h_a97f314a7497c04c2b60f812a774cb832a51bae507769b145b1d46f40808cddea3}
+}]Access jump table by key match and jump. \index{JAVA\_\-IRETURN@{JAVA\_\-IRETURN}!opcodes.h@{opcodes.h}}\index{opcodes.h@{opcodes.h}!JAVA\_\-IRETURN@{JAVA\_\-IRETURN}}\item[{\em 
+JAVA\_\-IRETURN\label{opcodes_8h_a97f314a7497c04c2b60f812a774cb832a3957dd17261c4ffda97a2197d25f429c}
+}]Return int from method. \index{JAVA\_\-LRETURN@{JAVA\_\-LRETURN}!opcodes.h@{opcodes.h}}\index{opcodes.h@{opcodes.h}!JAVA\_\-LRETURN@{JAVA\_\-LRETURN}}\item[{\em 
+JAVA\_\-LRETURN\label{opcodes_8h_a97f314a7497c04c2b60f812a774cb832a6e68f7c7fcf735a81d38ea75e2193dcc}
+}]Return long from method. \index{JAVA\_\-FRETURN@{JAVA\_\-FRETURN}!opcodes.h@{opcodes.h}}\index{opcodes.h@{opcodes.h}!JAVA\_\-FRETURN@{JAVA\_\-FRETURN}}\item[{\em 
+JAVA\_\-FRETURN\label{opcodes_8h_a97f314a7497c04c2b60f812a774cb832aa617950c304a0e636f4404ff714620f2}
+}]Return float from method. \index{JAVA\_\-DRETURN@{JAVA\_\-DRETURN}!opcodes.h@{opcodes.h}}\index{opcodes.h@{opcodes.h}!JAVA\_\-DRETURN@{JAVA\_\-DRETURN}}\item[{\em 
+JAVA\_\-DRETURN\label{opcodes_8h_a97f314a7497c04c2b60f812a774cb832a25a469581c0e62a4ec78ee68e1d1a852}
+}]Return double from method. \index{JAVA\_\-ARETURN@{JAVA\_\-ARETURN}!opcodes.h@{opcodes.h}}\index{opcodes.h@{opcodes.h}!JAVA\_\-ARETURN@{JAVA\_\-ARETURN}}\item[{\em 
+JAVA\_\-ARETURN\label{opcodes_8h_a97f314a7497c04c2b60f812a774cb832af8d464ee39d487fca93418b0afdbc439}
+}]Return reference from method. \index{JAVA\_\-RETURN@{JAVA\_\-RETURN}!opcodes.h@{opcodes.h}}\index{opcodes.h@{opcodes.h}!JAVA\_\-RETURN@{JAVA\_\-RETURN}}\item[{\em 
+JAVA\_\-RETURN\label{opcodes_8h_a97f314a7497c04c2b60f812a774cb832accfb8cebfccd62482f89693c8a401d45}
+}]Return void from method. \index{JAVA\_\-GETSTATIC@{JAVA\_\-GETSTATIC}!opcodes.h@{opcodes.h}}\index{opcodes.h@{opcodes.h}!JAVA\_\-GETSTATIC@{JAVA\_\-GETSTATIC}}\item[{\em 
+JAVA\_\-GETSTATIC\label{opcodes_8h_a97f314a7497c04c2b60f812a774cb832a77ed7397f81407dbea0c234185b30dd3}
+}]Get static field from class. \index{JAVA\_\-PUTSTATIC@{JAVA\_\-PUTSTATIC}!opcodes.h@{opcodes.h}}\index{opcodes.h@{opcodes.h}!JAVA\_\-PUTSTATIC@{JAVA\_\-PUTSTATIC}}\item[{\em 
+JAVA\_\-PUTSTATIC\label{opcodes_8h_a97f314a7497c04c2b60f812a774cb832afdc3b792a5525e97d201606df5481253}
+}]Set static field in class. \index{JAVA\_\-GETFIELD@{JAVA\_\-GETFIELD}!opcodes.h@{opcodes.h}}\index{opcodes.h@{opcodes.h}!JAVA\_\-GETFIELD@{JAVA\_\-GETFIELD}}\item[{\em 
+JAVA\_\-GETFIELD\label{opcodes_8h_a97f314a7497c04c2b60f812a774cb832ac8e349e46422a70d7efa11fd08d366f0}
+}]Fetch field from object. \index{JAVA\_\-PUTFIELD@{JAVA\_\-PUTFIELD}!opcodes.h@{opcodes.h}}\index{opcodes.h@{opcodes.h}!JAVA\_\-PUTFIELD@{JAVA\_\-PUTFIELD}}\item[{\em 
+JAVA\_\-PUTFIELD\label{opcodes_8h_a97f314a7497c04c2b60f812a774cb832a0016e3c0d0a983a4af269740ec9a9562}
+}]Set field in object. \index{JAVA\_\-INVOKEVIRTUAL@{JAVA\_\-INVOKEVIRTUAL}!opcodes.h@{opcodes.h}}\index{opcodes.h@{opcodes.h}!JAVA\_\-INVOKEVIRTUAL@{JAVA\_\-INVOKEVIRTUAL}}\item[{\em 
+JAVA\_\-INVOKEVIRTUAL\label{opcodes_8h_a97f314a7497c04c2b60f812a774cb832a39bf7987c8918a9b4db0aa5874ddacc8}
+}]Invoke virtual method. \index{JAVA\_\-INVOKESPECIAL@{JAVA\_\-INVOKESPECIAL}!opcodes.h@{opcodes.h}}\index{opcodes.h@{opcodes.h}!JAVA\_\-INVOKESPECIAL@{JAVA\_\-INVOKESPECIAL}}\item[{\em 
+JAVA\_\-INVOKESPECIAL\label{opcodes_8h_a97f314a7497c04c2b60f812a774cb832adb09d918fff7a8239f7d6f30dcfa48b4}
+}]Invoke special instance method. \index{JAVA\_\-INVOKESTATIC@{JAVA\_\-INVOKESTATIC}!opcodes.h@{opcodes.h}}\index{opcodes.h@{opcodes.h}!JAVA\_\-INVOKESTATIC@{JAVA\_\-INVOKESTATIC}}\item[{\em 
+JAVA\_\-INVOKESTATIC\label{opcodes_8h_a97f314a7497c04c2b60f812a774cb832af1e5b03797aa8300a202066e2c7b75bd}
+}]Invoke a (class) static method. \index{JAVA\_\-INVOKEINTERFACE@{JAVA\_\-INVOKEINTERFACE}!opcodes.h@{opcodes.h}}\index{opcodes.h@{opcodes.h}!JAVA\_\-INVOKEINTERFACE@{JAVA\_\-INVOKEINTERFACE}}\item[{\em 
+JAVA\_\-INVOKEINTERFACE\label{opcodes_8h_a97f314a7497c04c2b60f812a774cb832a7fc15f3838a4332a5f8ab774837772f1}
+}]Invoke interface method. \index{JAVA\_\-NEW@{JAVA\_\-NEW}!opcodes.h@{opcodes.h}}\index{opcodes.h@{opcodes.h}!JAVA\_\-NEW@{JAVA\_\-NEW}}\item[{\em 
+JAVA\_\-NEW\label{opcodes_8h_a97f314a7497c04c2b60f812a774cb832a3e7c61f3bc77c89cdad5f366505f70b0}
+}]Create new object. \index{JAVA\_\-NEWARRAY@{JAVA\_\-NEWARRAY}!opcodes.h@{opcodes.h}}\index{opcodes.h@{opcodes.h}!JAVA\_\-NEWARRAY@{JAVA\_\-NEWARRAY}}\item[{\em 
+JAVA\_\-NEWARRAY\label{opcodes_8h_a97f314a7497c04c2b60f812a774cb832ae426bd9faa274b0539a1e475e374b370}
+}]Create new array. \index{JAVA\_\-ANEWARRAY@{JAVA\_\-ANEWARRAY}!opcodes.h@{opcodes.h}}\index{opcodes.h@{opcodes.h}!JAVA\_\-ANEWARRAY@{JAVA\_\-ANEWARRAY}}\item[{\em 
+JAVA\_\-ANEWARRAY\label{opcodes_8h_a97f314a7497c04c2b60f812a774cb832a84ddcf27de23813c5379e171f28970d8}
+}]Create new array of reference. \index{JAVA\_\-ARRAYLENGTH@{JAVA\_\-ARRAYLENGTH}!opcodes.h@{opcodes.h}}\index{opcodes.h@{opcodes.h}!JAVA\_\-ARRAYLENGTH@{JAVA\_\-ARRAYLENGTH}}\item[{\em 
+JAVA\_\-ARRAYLENGTH\label{opcodes_8h_a97f314a7497c04c2b60f812a774cb832a2756b6fc8aa18c83fa236db19edac8c1}
+}]Get length of array. \index{JAVA\_\-ATHROW@{JAVA\_\-ATHROW}!opcodes.h@{opcodes.h}}\index{opcodes.h@{opcodes.h}!JAVA\_\-ATHROW@{JAVA\_\-ATHROW}}\item[{\em 
+JAVA\_\-ATHROW\label{opcodes_8h_a97f314a7497c04c2b60f812a774cb832aee23c5f6070f9afb00878a63d8bbb2ba}
+}]Throw exception or error. \index{JAVA\_\-CHECKCAST@{JAVA\_\-CHECKCAST}!opcodes.h@{opcodes.h}}\index{opcodes.h@{opcodes.h}!JAVA\_\-CHECKCAST@{JAVA\_\-CHECKCAST}}\item[{\em 
+JAVA\_\-CHECKCAST\label{opcodes_8h_a97f314a7497c04c2b60f812a774cb832a5c47071ced059d9af10e107b6e2ec8b9}
+}]Check whethever object is of given type. \index{JAVA\_\-INSTANCEOF@{JAVA\_\-INSTANCEOF}!opcodes.h@{opcodes.h}}\index{opcodes.h@{opcodes.h}!JAVA\_\-INSTANCEOF@{JAVA\_\-INSTANCEOF}}\item[{\em 
+JAVA\_\-INSTANCEOF\label{opcodes_8h_a97f314a7497c04c2b60f812a774cb832afca7357787e2769d114a6d1b09a7aeca}
+}]Determine if object is of given type. \index{JAVA\_\-MONITORENTER@{JAVA\_\-MONITORENTER}!opcodes.h@{opcodes.h}}\index{opcodes.h@{opcodes.h}!JAVA\_\-MONITORENTER@{JAVA\_\-MONITORENTER}}\item[{\em 
+JAVA\_\-MONITORENTER\label{opcodes_8h_a97f314a7497c04c2b60f812a774cb832a637f678e20615f15360a4e931783cf27}
+}]Enter monitor for object. \index{JAVA\_\-MONITOREXIT@{JAVA\_\-MONITOREXIT}!opcodes.h@{opcodes.h}}\index{opcodes.h@{opcodes.h}!JAVA\_\-MONITOREXIT@{JAVA\_\-MONITOREXIT}}\item[{\em 
+JAVA\_\-MONITOREXIT\label{opcodes_8h_a97f314a7497c04c2b60f812a774cb832a3fe3be08504ee5f0fc3197c51604bc95}
+}]Monitor exit. \index{JAVA\_\-WIDE@{JAVA\_\-WIDE}!opcodes.h@{opcodes.h}}\index{opcodes.h@{opcodes.h}!JAVA\_\-WIDE@{JAVA\_\-WIDE}}\item[{\em 
+JAVA\_\-WIDE\label{opcodes_8h_a97f314a7497c04c2b60f812a774cb832a3b02e48fe581cb5e3e693932c4b0780b}
+}]Extend local variable index by additional bytes. \index{JAVA\_\-MULTIANEWARRAY@{JAVA\_\-MULTIANEWARRAY}!opcodes.h@{opcodes.h}}\index{opcodes.h@{opcodes.h}!JAVA\_\-MULTIANEWARRAY@{JAVA\_\-MULTIANEWARRAY}}\item[{\em 
+JAVA\_\-MULTIANEWARRAY\label{opcodes_8h_a97f314a7497c04c2b60f812a774cb832a2fed12a173489ace5df264239cbf553b}
+}]Create new multidimensional array. \index{JAVA\_\-IFNULL@{JAVA\_\-IFNULL}!opcodes.h@{opcodes.h}}\index{opcodes.h@{opcodes.h}!JAVA\_\-IFNULL@{JAVA\_\-IFNULL}}\item[{\em 
+JAVA\_\-IFNULL\label{opcodes_8h_a97f314a7497c04c2b60f812a774cb832a67f8998052f616d9b9b33784c6fdd8c0}
+}]Branch if reference is null. \index{JAVA\_\-IFNONNULL@{JAVA\_\-IFNONNULL}!opcodes.h@{opcodes.h}}\index{opcodes.h@{opcodes.h}!JAVA\_\-IFNONNULL@{JAVA\_\-IFNONNULL}}\item[{\em 
+JAVA\_\-IFNONNULL\label{opcodes_8h_a97f314a7497c04c2b60f812a774cb832a36e0e9e9e2b0e1555ba0df4c81b9be21}
+}]Branch if reference is not null. \index{JAVA\_\-GOTO\_\-W@{JAVA\_\-GOTO\_\-W}!opcodes.h@{opcodes.h}}\index{opcodes.h@{opcodes.h}!JAVA\_\-GOTO\_\-W@{JAVA\_\-GOTO\_\-W}}\item[{\em 
+JAVA\_\-GOTO\_\-W\label{opcodes_8h_a97f314a7497c04c2b60f812a774cb832a1aea8960cf32bb3ece0a272db2978006}
+}]Branch always wide index. \index{JAVA\_\-JSR\_\-W@{JAVA\_\-JSR\_\-W}!opcodes.h@{opcodes.h}}\index{opcodes.h@{opcodes.h}!JAVA\_\-JSR\_\-W@{JAVA\_\-JSR\_\-W}}\item[{\em 
+JAVA\_\-JSR\_\-W\label{opcodes_8h_a97f314a7497c04c2b60f812a774cb832a90f20f147aa6dca4a96ce5106fe1f4e0}
+}]Branch to subrouting wide index. \end{description}
+\end{Desc}
+
+
+
+Definition at line 323 of file opcodes.h.
+

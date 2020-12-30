@@ -1,0 +1,90 @@
+\section{class\_\-t Struct Reference}
+\label{structclass__t}\index{class\_\-t@{class\_\-t}}
+
+
+{\ttfamily \#include $<$class.h$>$}
+
+\subsection*{Data Fields}
+\begin{DoxyCompactItemize}
+\item 
+char $\ast$ {\bf name}\label{structclass__t_a6350eec8755ca11f99fdf2240e39a84f}
+
+\begin{DoxyCompactList}\small\item\em Class name. \item\end{DoxyCompactList}\item 
+uintptr\_\-t {\bf obj}\label{structclass__t_ad54a0b542edb1d642106c60ff03acea0}
+
+\begin{DoxyCompactList}\small\item\em Java class. \item\end{DoxyCompactList}\item 
+struct {\bf class\_\-t} $\ast$ {\bf parent}\label{structclass__t_a623466da66b2b18d9f6d5d96c382ffb7}
+
+\begin{DoxyCompactList}\small\item\em Parent class, NULL if the class has no parent. \item\end{DoxyCompactList}\item 
+{\bf const\_\-pool\_\-t} $\ast$ {\bf const\_\-pool}\label{structclass__t_ad9829606f2d672045605cc1e4007caa4}
+
+\begin{DoxyCompactList}\small\item\em Constant pool of this class. \item\end{DoxyCompactList}\item 
+uint16\_\-t {\bf access\_\-flags}\label{structclass__t_abc7575fb3263f2a0e033120b14da830b}
+
+\begin{DoxyCompactList}\small\item\em Access flags for this class. \item\end{DoxyCompactList}\item 
+uint16\_\-t {\bf state}\label{structclass__t_a6fe119d35c3df63dd96acd8707aed53d}
+
+\begin{DoxyCompactList}\small\item\em Current class state. \item\end{DoxyCompactList}\item 
+uint16\_\-t {\bf id}\label{structclass__t_a068d530ff6aae94cd9a9d2516639585d}
+
+\begin{DoxyCompactList}\small\item\em Numerical id in the class table. \item\end{DoxyCompactList}\item 
+uint8\_\-t {\bf elem\_\-type}\label{structclass__t_a7dfd81dda898b45dd3d0e0f62f853e4c}
+
+\begin{DoxyCompactList}\small\item\em Primitive type for array classes. \item\end{DoxyCompactList}\item 
+uint8\_\-t {\bf dimensions}\label{structclass__t_a9a43faf1ecc0366bd9004ddc75e1a3f6}
+
+\begin{DoxyCompactList}\small\item\em Number of dimensions for array classes. \item\end{DoxyCompactList}\item 
+struct {\bf class\_\-t} $\ast$ {\bf elem\_\-class}\label{structclass__t_a2e5d89224b905d5d82bae7a463549da8}
+
+\begin{DoxyCompactList}\small\item\em Class of the elements for arrays. \item\end{DoxyCompactList}\item 
+{\bf thread\_\-t} $\ast$ {\bf init\_\-thread}\label{structclass__t_ae4407e5f3ad1eb9999b91f6f359713e9}
+
+\begin{DoxyCompactList}\small\item\em Initializer thread. \item\end{DoxyCompactList}\item 
+uint32\_\-t {\bf ref\_\-n}\label{structclass__t_a6f501c3998098ecfd245c3a5bca1f06b}
+
+\begin{DoxyCompactList}\small\item\em Number of reference fields in the instance. \item\end{DoxyCompactList}\item 
+uint32\_\-t {\bf nref\_\-size}\label{structclass__t_aabf04988cd4a8255a836d4bb780c88a5}
+
+\begin{DoxyCompactList}\small\item\em Size in bytes of the non-\/reference area. \item\end{DoxyCompactList}\item 
+uint32\_\-t {\bf fields\_\-n}\label{structclass__t_a354149e9fce046d89eb3015c718b7e80}
+
+\begin{DoxyCompactList}\small\item\em Number of instance fields. \item\end{DoxyCompactList}\item 
+{\bf field\_\-t} $\ast$ {\bf fields}\label{structclass__t_a89fcd11d1a2b271ea595600eb9fc1c88}
+
+\begin{DoxyCompactList}\small\item\em Field descriptors. \item\end{DoxyCompactList}\item 
+{\bf static\_\-field\_\-t} $\ast$ {\bf static\_\-data}\label{structclass__t_a768eb56d1d8b356a22c456c8cd528686}
+
+\begin{DoxyCompactList}\small\item\em Static fields data. \item\end{DoxyCompactList}\item 
+{\bf method\_\-manager\_\-t} $\ast$ {\bf method\_\-manager}\label{structclass__t_a2074ca81329732cd3ba97dc0260af47c}
+
+\begin{DoxyCompactList}\small\item\em Method manager of this class. \item\end{DoxyCompactList}\item 
+{\bf interface\_\-manager\_\-t} $\ast$ {\bf interface\_\-manager}\label{structclass__t_aafad7fc16adf0616df664e6f3adf7bc8}
+
+\begin{DoxyCompactList}\small\item\em Interface manager of this class. \item\end{DoxyCompactList}\item 
+uint32\_\-t {\bf itable\_\-count}\label{structclass__t_a9b70869b31e6d8782b6800a1d7c3abf7}
+
+\begin{DoxyCompactList}\small\item\em Number of interface table entries. \item\end{DoxyCompactList}\item 
+uint32\_\-t {\bf dtable\_\-count}\label{structclass__t_a5acbab45a6e69d4293539457de6ee7e4}
+
+\begin{DoxyCompactList}\small\item\em Number of entries in the dispatch table. \item\end{DoxyCompactList}\item 
+{\bf method\_\-t} $\ast$$\ast$ {\bf dtable}\label{structclass__t_a8953de31aa23f9094674fe7fc4a2880d}
+
+\begin{DoxyCompactList}\small\item\em Dispatch table. \item\end{DoxyCompactList}\item 
+uint16\_\-t $\ast$ {\bf inames}\label{structclass__t_a231898abddebf7391ca6bbbe6f814fb2}
+
+\begin{DoxyCompactList}\small\item\em Names of the implemented interface methods. \item\end{DoxyCompactList}\item 
+{\bf method\_\-t} $\ast$$\ast$ {\bf itable}\label{structclass__t_a5b0fccfd7694b88ca76cebb1fe5e0545}
+
+\begin{DoxyCompactList}\small\item\em Interface dispatch table. \item\end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+Structure representing a Java class 
+
+Definition at line 141 of file class.h.
+
+
+
+The documentation for this struct was generated from the following file:\begin{DoxyCompactItemize}
+\item 
+src/jelatine/{\bf class.h}\end{DoxyCompactItemize}

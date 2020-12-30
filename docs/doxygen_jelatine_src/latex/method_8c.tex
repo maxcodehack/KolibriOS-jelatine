@@ -1,0 +1,467 @@
+\section{src/jelatine/method.c File Reference}
+\label{method_8c}\index{src/jelatine/method.c@{src/jelatine/method.c}}
+{\ttfamily \#include \char`\"{}wrappers.h\char`\"{}}\par
+{\ttfamily \#include \char`\"{}class.h\char`\"{}}\par
+{\ttfamily \#include \char`\"{}classfile.h\char`\"{}}\par
+{\ttfamily \#include \char`\"{}constantpool.h\char`\"{}}\par
+{\ttfamily \#include \char`\"{}loader.h\char`\"{}}\par
+{\ttfamily \#include \char`\"{}method.h\char`\"{}}\par
+{\ttfamily \#include \char`\"{}memory.h\char`\"{}}\par
+{\ttfamily \#include \char`\"{}native.h\char`\"{}}\par
+{\ttfamily \#include \char`\"{}opcodes.h\char`\"{}}\par
+{\ttfamily \#include \char`\"{}util.h\char`\"{}}\par
+\subsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+void {\bf init\_\-dummy\_\-methods} (void)
+\item 
+{\bf method\_\-manager\_\-t} $\ast$ {\bf mm\_\-create} (uint32\_\-t count)
+\item 
+static void {\bf parse\_\-method\_\-descriptor} ({\bf method\_\-t} $\ast$method)
+\item 
+static void {\bf method\_\-check\_\-access\_\-flags} ({\bf method\_\-t} $\ast$method)
+\item 
+void {\bf mm\_\-add} ({\bf method\_\-manager\_\-t} $\ast$mm, char $\ast$name, char $\ast$descriptor, uint16\_\-t access\_\-flags, {\bf const\_\-pool\_\-t} $\ast$cp, {\bf method\_\-attributes\_\-t} $\ast$attr)
+\item 
+{\bf method\_\-t} $\ast$ {\bf mm\_\-get} ({\bf method\_\-manager\_\-t} $\ast$mm, char $\ast$name, char $\ast$descriptor)
+\item 
+uint32\_\-t {\bf mm\_\-get\_\-count} ({\bf method\_\-manager\_\-t} $\ast$mm)
+\item 
+uint16\_\-t {\bf method\_\-create\_\-packed\_\-index} (const {\bf method\_\-t} $\ast$method)
+\item 
+bool {\bf method\_\-is\_\-init} (const {\bf method\_\-t} $\ast$method)
+\item 
+uint32\_\-t {\bf method\_\-get\_\-code\_\-length} (const {\bf method\_\-t} $\ast$method)
+\item 
+bool {\bf method\_\-compare} (const {\bf method\_\-t} $\ast$method1, const {\bf method\_\-t} $\ast$method2)
+\item 
+void {\bf method\_\-link\_\-native} ({\bf method\_\-t} $\ast$method, char $\ast$class\_\-name)
+\item 
+void {\bf method\_\-purge} ({\bf method\_\-t} $\ast$method)
+\end{DoxyCompactItemize}
+\subsection*{Variables}
+\begin{DoxyCompactItemize}
+\item 
+uint8\_\-t {\bf halt\_\-method\_\-code} [$\,$] = \{ WIDE, HALT, WIDE, HALT \}
+\item 
+{\bf exception\_\-handler\_\-t} {\bf halt\_\-exception\_\-handler}
+\item 
+{\bf method\_\-t} {\bf halt\_\-method}
+\item 
+static uint8\_\-t {\bf abstract\_\-method\_\-code} [$\,$] = \{ WIDE, METHOD\_\-ABSTRACT \}
+\item 
+static uint8\_\-t {\bf load\_\-method\_\-code} [$\,$] = \{ WIDE, METHOD\_\-LOAD \}
+\item 
+static uint8\_\-t {\bf native\_\-method\_\-code} [$\,$] = \{ WIDE, INVOKE\_\-NATIVE \}
+\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+Method handling implementation 
+
+Definition in file {\bf method.c}.
+
+
+
+\subsection{Function Documentation}
+\index{method.c@{method.c}!init\_\-dummy\_\-methods@{init\_\-dummy\_\-methods}}
+\index{init\_\-dummy\_\-methods@{init\_\-dummy\_\-methods}!method.c@{method.c}}
+\subsubsection[{init\_\-dummy\_\-methods}]{\setlength{\rightskip}{0pt plus 5cm}void init\_\-dummy\_\-methods (
+\begin{DoxyParamCaption}
+\item[{void}]{}
+\end{DoxyParamCaption}
+)}\label{method_8c_af2317eea671c257e7c426c6299ea36c9}
+Initializes the dummy methods used by the interpreter 
+
+Definition at line 85 of file method.c.
+
+
+
+References bcl\_\-resolve\_\-class(), exception\_\-handler\_\-t::catch\_\-type, method\_\-t::cp, cp\_\-create\_\-dummy(), method\_\-t::data, and method\_\-t::handlers.
+
+
+
+Referenced by vm\_\-run().
+
+\index{method.c@{method.c}!method\_\-check\_\-access\_\-flags@{method\_\-check\_\-access\_\-flags}}
+\index{method\_\-check\_\-access\_\-flags@{method\_\-check\_\-access\_\-flags}!method.c@{method.c}}
+\subsubsection[{method\_\-check\_\-access\_\-flags}]{\setlength{\rightskip}{0pt plus 5cm}static void method\_\-check\_\-access\_\-flags (
+\begin{DoxyParamCaption}
+\item[{{\bf method\_\-t} $\ast$}]{ method}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily  [static]}}\label{method_8c_a5103a336de09e153866ac852d20d9714}
+Checks the access flags of a method 
+\begin{DoxyParams}{Parameters}
+\item[{\em method}]The method to be checked \end{DoxyParams}
+
+
+Definition at line 281 of file method.c.
+
+
+
+References ACC\_\-ABSTRACT, ACC\_\-FINAL, ACC\_\-NATIVE, ACC\_\-PRIVATE, ACC\_\-PROTECTED, ACC\_\-PUBLIC, ACC\_\-STATIC, ACC\_\-STRICT, ACC\_\-SYNCHRONIZED, method\_\-t::access\_\-flags, class\_\-t::access\_\-flags, c\_\-throw, JAVA\_\-LANG\_\-NOCLASSDEFFOUNDERROR, and method\_\-is\_\-init().
+
+
+
+Referenced by mm\_\-add().
+
+\index{method.c@{method.c}!method\_\-compare@{method\_\-compare}}
+\index{method\_\-compare@{method\_\-compare}!method.c@{method.c}}
+\subsubsection[{method\_\-compare}]{\setlength{\rightskip}{0pt plus 5cm}bool method\_\-compare (
+\begin{DoxyParamCaption}
+\item[{const {\bf method\_\-t} $\ast$}]{ method1, }
+\item[{const {\bf method\_\-t} $\ast$}]{ method2}
+\end{DoxyParamCaption}
+)}\label{method_8c_a1ab7dd5dc22e09ce0780931d4cc9d162}
+Compares two methods signatures 
+\begin{DoxyParams}{Parameters}
+\item[{\em method1}]A pointer to a method structure \item[{\em method2}]A pointer to a method structure \end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+true if the method signatures match, false otherwise 
+\end{DoxyReturn}
+
+
+Definition at line 461 of file method.c.
+
+
+
+References method\_\-t::descriptor, and method\_\-t::name.
+
+
+
+Referenced by create\_\-dispatch\_\-table(), and create\_\-interface\_\-dispatch\_\-table().
+
+\index{method.c@{method.c}!method\_\-create\_\-packed\_\-index@{method\_\-create\_\-packed\_\-index}}
+\index{method\_\-create\_\-packed\_\-index@{method\_\-create\_\-packed\_\-index}!method.c@{method.c}}
+\subsubsection[{method\_\-create\_\-packed\_\-index}]{\setlength{\rightskip}{0pt plus 5cm}uint16\_\-t method\_\-create\_\-packed\_\-index (
+\begin{DoxyParamCaption}
+\item[{const {\bf method\_\-t} $\ast$}]{ method}
+\end{DoxyParamCaption}
+)}\label{method_8c_ac756a86612c03f519190524385233468}
+Creates the packed index of a method 
+\begin{DoxyParams}{Parameters}
+\item[{\em method}]A pointer to a method \end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+The packed index 
+\end{DoxyReturn}
+
+
+Definition at line 423 of file method.c.
+
+
+
+References method\_\-t::args\_\-size, method\_\-t::index, and METHOD\_\-ARGUMENTS\_\-BITS.
+
+
+
+Referenced by bcl\_\-link\_\-opcode().
+
+\index{method.c@{method.c}!method\_\-get\_\-code\_\-length@{method\_\-get\_\-code\_\-length}}
+\index{method\_\-get\_\-code\_\-length@{method\_\-get\_\-code\_\-length}!method.c@{method.c}}
+\subsubsection[{method\_\-get\_\-code\_\-length}]{\setlength{\rightskip}{0pt plus 5cm}uint32\_\-t method\_\-get\_\-code\_\-length (
+\begin{DoxyParamCaption}
+\item[{const {\bf method\_\-t} $\ast$}]{ method}
+\end{DoxyParamCaption}
+)}\label{method_8c_a5d2b7bb1f23dd4e3067030bfdf30478b}
+Gets the length of a method code, the length is automatically adjusted if extra opcodes were added by the translator 
+\begin{DoxyParams}{Parameters}
+\item[{\em method}]A pointer to a method structure \end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+The length of the bytecode in bytes 
+\end{DoxyReturn}
+
+
+Definition at line 447 of file method.c.
+
+
+
+References method\_\-t::code\_\-length, and method\_\-is\_\-synchronized().
+
+
+
+Referenced by load\_\-bytecode(), and translate\_\-bytecode().
+
+\index{method.c@{method.c}!method\_\-is\_\-init@{method\_\-is\_\-init}}
+\index{method\_\-is\_\-init@{method\_\-is\_\-init}!method.c@{method.c}}
+\subsubsection[{method\_\-is\_\-init}]{\setlength{\rightskip}{0pt plus 5cm}bool method\_\-is\_\-init (
+\begin{DoxyParamCaption}
+\item[{const {\bf method\_\-t} $\ast$}]{ method}
+\end{DoxyParamCaption}
+)}\label{method_8c_a0814478d760be935c2768bf41090c1f3}
+Returns true if the method is an initialization method 
+\begin{DoxyParams}{Parameters}
+\item[{\em method}]A pointer to a method \end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+true if an initialization method was passed to the function, false otherwise 
+\end{DoxyReturn}
+
+
+Definition at line 433 of file method.c.
+
+
+
+References method\_\-t::name.
+
+
+
+Referenced by bcl\_\-link\_\-opcode(), create\_\-dispatch\_\-table(), method\_\-check\_\-access\_\-flags(), and resolve\_\-method().
+
+\index{method.c@{method.c}!method\_\-link\_\-native@{method\_\-link\_\-native}}
+\index{method\_\-link\_\-native@{method\_\-link\_\-native}!method.c@{method.c}}
+\subsubsection[{method\_\-link\_\-native}]{\setlength{\rightskip}{0pt plus 5cm}void method\_\-link\_\-native (
+\begin{DoxyParamCaption}
+\item[{{\bf method\_\-t} $\ast$}]{ method, }
+\item[{char $\ast$}]{ class\_\-name}
+\end{DoxyParamCaption}
+)}\label{method_8c_a439cfc4849f305655a094cd661247444}
+Link a native method 
+\begin{DoxyParams}{Parameters}
+\item[{\em method}]A pointer to the method \item[{\em class\_\-name}]The name of the class the method belongs to \end{DoxyParams}
+
+
+Definition at line 476 of file method.c.
+
+
+
+References method\_\-t::access\_\-flags, c\_\-throw, method\_\-t::code, method\_\-t::data, dbg\_\-unreachable, method\_\-t::descriptor, method\_\-t::function, JAVA\_\-LANG\_\-NOCLASSDEFFOUNDERROR, method\_\-t::name, native\_\-method\_\-code, native\_\-method\_\-lookup(), and method\_\-t::return\_\-type.
+
+
+
+Referenced by load\_\-methods().
+
+\index{method.c@{method.c}!method\_\-purge@{method\_\-purge}}
+\index{method\_\-purge@{method\_\-purge}!method.c@{method.c}}
+\subsubsection[{method\_\-purge}]{\setlength{\rightskip}{0pt plus 5cm}void method\_\-purge (
+\begin{DoxyParamCaption}
+\item[{{\bf method\_\-t} $\ast$}]{ method}
+\end{DoxyParamCaption}
+)}\label{method_8c_afae698c11d20505dc3b4407983da0329}
+Frees the code and exception handlers of a method 
+\begin{DoxyParams}{Parameters}
+\item[{\em method}]A pointer to the method \end{DoxyParams}
+
+
+Definition at line 516 of file method.c.
+
+
+
+References method\_\-t::code, method\_\-t::data, gc\_\-free(), and method\_\-t::handlers.
+
+
+
+Referenced by class\_\-purge\_\-initializer().
+
+\index{method.c@{method.c}!mm\_\-add@{mm\_\-add}}
+\index{mm\_\-add@{mm\_\-add}!method.c@{method.c}}
+\subsubsection[{mm\_\-add}]{\setlength{\rightskip}{0pt plus 5cm}void mm\_\-add (
+\begin{DoxyParamCaption}
+\item[{{\bf method\_\-manager\_\-t} $\ast$}]{ mm, }
+\item[{char $\ast$}]{ name, }
+\item[{char $\ast$}]{ descriptor, }
+\item[{uint16\_\-t}]{ access\_\-flags, }
+\item[{{\bf const\_\-pool\_\-t} $\ast$}]{ cp, }
+\item[{{\bf method\_\-attributes\_\-t} $\ast$}]{ attr}
+\end{DoxyParamCaption}
+)}\label{method_8c_ab3c0ba43aea58b5a4e183ee64d0b485a}
+Adds a new method to the method manager 
+\begin{DoxyParams}{Parameters}
+\item[{\em mm}]The method manager \item[{\em name}]The method name \item[{\em descriptor}]The method descriptor \item[{\em access\_\-flags}]Access flags of the method \item[{\em cp}]The method's constant pool \item[{\em attr}]The method attributes \end{DoxyParams}
+
+
+Definition at line 324 of file method.c.
+
+
+
+References abstract\_\-method\_\-code, ACC\_\-ABSTRACT, ACC\_\-NATIVE, method\_\-t::access\_\-flags, c\_\-throw, method\_\-t::code, method\_\-attributes\_\-t::code\_\-found, method\_\-attributes\_\-t::code\_\-length, method\_\-t::code\_\-length, method\_\-attributes\_\-t::code\_\-offset, method\_\-t::cp, method\_\-t::data, method\_\-t::descriptor, method\_\-manager\_\-t::entries, method\_\-attributes\_\-t::exception\_\-table\_\-length, method\_\-t::exception\_\-table\_\-length, method\_\-t::handlers, JAVA\_\-LANG\_\-NOCLASSDEFFOUNDERROR, load\_\-method\_\-code, method\_\-attributes\_\-t::max\_\-locals, method\_\-t::max\_\-locals, method\_\-attributes\_\-t::max\_\-stack, method\_\-t::max\_\-stack, method\_\-check\_\-access\_\-flags(), method\_\-manager\_\-t::methods, mm\_\-get(), method\_\-t::name, method\_\-t::offset, parse\_\-method\_\-descriptor(), and method\_\-manager\_\-t::reserved.
+
+
+
+Referenced by load\_\-methods().
+
+\index{method.c@{method.c}!mm\_\-create@{mm\_\-create}}
+\index{mm\_\-create@{mm\_\-create}!method.c@{method.c}}
+\subsubsection[{mm\_\-create}]{\setlength{\rightskip}{0pt plus 5cm}{\bf method\_\-manager\_\-t}$\ast$ mm\_\-create (
+\begin{DoxyParamCaption}
+\item[{uint32\_\-t}]{ count}
+\end{DoxyParamCaption}
+)}\label{method_8c_ad54ffe38b9ca0850c2e32e6187be516e}
+Creates a method manager 
+\begin{DoxyParams}{Parameters}
+\item[{\em count}]The number of methods the manager will hold \end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+A pointer to the newly created method manager 
+\end{DoxyReturn}
+
+
+Definition at line 98 of file method.c.
+
+
+
+References gc\_\-palloc(), method\_\-manager\_\-t::methods, and method\_\-manager\_\-t::reserved.
+
+
+
+Referenced by load\_\-methods().
+
+\index{method.c@{method.c}!mm\_\-get@{mm\_\-get}}
+\index{mm\_\-get@{mm\_\-get}!method.c@{method.c}}
+\subsubsection[{mm\_\-get}]{\setlength{\rightskip}{0pt plus 5cm}{\bf method\_\-t}$\ast$ mm\_\-get (
+\begin{DoxyParamCaption}
+\item[{{\bf method\_\-manager\_\-t} $\ast$}]{ mm, }
+\item[{char $\ast$}]{ name, }
+\item[{char $\ast$}]{ descriptor}
+\end{DoxyParamCaption}
+)}\label{method_8c_a139bb938a4d205a14196ef06e96052e9}
+Finds a method by its name and descriptor, returns NULL if the method is not found 
+\begin{DoxyParams}{Parameters}
+\item[{\em mm}]A pointer to the method manager \item[{\em name}]The method name \item[{\em descriptor}]The method descriptor \end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+A pointer to the method if it was found, NULL otherwise 
+\end{DoxyReturn}
+
+
+Definition at line 397 of file method.c.
+
+
+
+References method\_\-t::descriptor, method\_\-manager\_\-t::entries, method\_\-manager\_\-t::methods, and method\_\-t::name.
+
+
+
+Referenced by class\_\-purge\_\-initializer(), initialize\_\-class(), java\_\-lang\_\-Class\_\-newInstance(), java\_\-lang\_\-Thread\_\-start(), mm\_\-add(), resolve\_\-method(), and vm\_\-run().
+
+\index{method.c@{method.c}!mm\_\-get\_\-count@{mm\_\-get\_\-count}}
+\index{mm\_\-get\_\-count@{mm\_\-get\_\-count}!method.c@{method.c}}
+\subsubsection[{mm\_\-get\_\-count}]{\setlength{\rightskip}{0pt plus 5cm}uint32\_\-t mm\_\-get\_\-count (
+\begin{DoxyParamCaption}
+\item[{{\bf method\_\-manager\_\-t} $\ast$}]{ mm}
+\end{DoxyParamCaption}
+)}\label{method_8c_ab70bf96e816ccfc7067bd1875d11ac5e}
+Returns the number of methods in the manager 
+\begin{DoxyParams}{Parameters}
+\item[{\em mm}]A pointer to the method manager \end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+The number of methods in the manager 
+\end{DoxyReturn}
+
+
+Definition at line 414 of file method.c.
+
+
+
+References method\_\-manager\_\-t::entries.
+
+
+
+Referenced by create\_\-interface\_\-dispatch\_\-table().
+
+\index{method.c@{method.c}!parse\_\-method\_\-descriptor@{parse\_\-method\_\-descriptor}}
+\index{parse\_\-method\_\-descriptor@{parse\_\-method\_\-descriptor}!method.c@{method.c}}
+\subsubsection[{parse\_\-method\_\-descriptor}]{\setlength{\rightskip}{0pt plus 5cm}static void parse\_\-method\_\-descriptor (
+\begin{DoxyParamCaption}
+\item[{{\bf method\_\-t} $\ast$}]{ method}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily  [static]}}\label{method_8c_a77ec80b9b1bf60a805d6e10b2061289c}
+Parses a method's descriptor, throws an exception upon failure 
+\begin{DoxyParams}{Parameters}
+\item[{\em method}]A pointer to the relevant method \end{DoxyParams}
+
+
+Definition at line 113 of file method.c.
+
+
+
+References method\_\-t::args\_\-size, c\_\-throw, method\_\-t::descriptor, class\_\-t::dimensions, JAVA\_\-LANG\_\-NOCLASSDEFFOUNDERROR, METHOD\_\-ARGUMENTS\_\-MAX, and method\_\-is\_\-static().
+
+
+
+Referenced by mm\_\-add().
+
+
+
+\subsection{Variable Documentation}
+\index{method.c@{method.c}!abstract\_\-method\_\-code@{abstract\_\-method\_\-code}}
+\index{abstract\_\-method\_\-code@{abstract\_\-method\_\-code}!method.c@{method.c}}
+\subsubsection[{abstract\_\-method\_\-code}]{\setlength{\rightskip}{0pt plus 5cm}uint8\_\-t {\bf abstract\_\-method\_\-code}[$\,$] = \{ WIDE, METHOD\_\-ABSTRACT \}\hspace{0.3cm}{\ttfamily  [static]}}\label{method_8c_a5fd2bf516a132004bfca83a0f3ecc83c}
+Holds the dummy code of an abstract method 
+
+Definition at line 71 of file method.c.
+
+
+
+Referenced by mm\_\-add().
+
+\index{method.c@{method.c}!halt\_\-exception\_\-handler@{halt\_\-exception\_\-handler}}
+\index{halt\_\-exception\_\-handler@{halt\_\-exception\_\-handler}!method.c@{method.c}}
+\subsubsection[{halt\_\-exception\_\-handler}]{\setlength{\rightskip}{0pt plus 5cm}{\bf exception\_\-handler\_\-t} {\bf halt\_\-exception\_\-handler}}\label{method_8c_af5347a7347add59dc72308e16762cf85}
+{\bfseries Initial value:}
+\begin{DoxyCode}
+ {
+    0, 
+    4, 
+    halt_method_code, 
+    NULL 
+}
+\end{DoxyCode}
+Dummy exception handler used by the halt method 
+
+Definition at line 45 of file method.c.
+
+\index{method.c@{method.c}!halt\_\-method@{halt\_\-method}}
+\index{halt\_\-method@{halt\_\-method}!method.c@{method.c}}
+\subsubsection[{halt\_\-method}]{\setlength{\rightskip}{0pt plus 5cm}{\bf method\_\-t} {\bf halt\_\-method}}\label{method_8c_a5d0cc5a987b03c6f65b3c21c2e75f966}
+{\bfseries Initial value:}
+\begin{DoxyCode}
+ {
+    "halt_method", 
+    NULL, 
+    NULL, 
+    0, 
+    0, 
+    0, 
+    0, 
+    0, 
+    RET_VOID, 
+    4, 
+    1, 
+    halt_method_code, 
+    { NULL } 
+}
+\end{DoxyCode}
+Halt method structure 
+
+Definition at line 54 of file method.c.
+
+
+
+Referenced by interpreter(), and prepare\_\-for\_\-call().
+
+\index{method.c@{method.c}!halt\_\-method\_\-code@{halt\_\-method\_\-code}}
+\index{halt\_\-method\_\-code@{halt\_\-method\_\-code}!method.c@{method.c}}
+\subsubsection[{halt\_\-method\_\-code}]{\setlength{\rightskip}{0pt plus 5cm}uint8\_\-t {\bf halt\_\-method\_\-code}[$\,$] = \{ WIDE, HALT, WIDE, HALT \}}\label{method_8c_ae6582852e0cf13938b20ea4152136004}
+Dummy variable used to hold the halt method's bytecode 
+
+Definition at line 41 of file method.c.
+
+\index{method.c@{method.c}!load\_\-method\_\-code@{load\_\-method\_\-code}}
+\index{load\_\-method\_\-code@{load\_\-method\_\-code}!method.c@{method.c}}
+\subsubsection[{load\_\-method\_\-code}]{\setlength{\rightskip}{0pt plus 5cm}uint8\_\-t {\bf load\_\-method\_\-code}[$\,$] = \{ WIDE, METHOD\_\-LOAD \}\hspace{0.3cm}{\ttfamily  [static]}}\label{method_8c_a25e16b84c77b56ae6d2da8f790b261db}
+Holds the dummy code of a not-\/yet-\/linked method 
+
+Definition at line 74 of file method.c.
+
+
+
+Referenced by mm\_\-add().
+
+\index{method.c@{method.c}!native\_\-method\_\-code@{native\_\-method\_\-code}}
+\index{native\_\-method\_\-code@{native\_\-method\_\-code}!method.c@{method.c}}
+\subsubsection[{native\_\-method\_\-code}]{\setlength{\rightskip}{0pt plus 5cm}uint8\_\-t {\bf native\_\-method\_\-code}[$\,$] = \{ WIDE, INVOKE\_\-NATIVE \}\hspace{0.3cm}{\ttfamily  [static]}}\label{method_8c_adff00941a3934da466664581ba5b790a}
+Holds the dummy code of a native method 
+
+Definition at line 77 of file method.c.
+
+
+
+Referenced by method\_\-link\_\-native().
+

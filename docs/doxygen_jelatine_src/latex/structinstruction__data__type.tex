@@ -1,0 +1,79 @@
+\section{instruction\_\-data\_\-type Struct Reference}
+\label{structinstruction__data__type}\index{instruction\_\-data\_\-type@{instruction\_\-data\_\-type}}
+\subsection*{Data Fields}
+\begin{DoxyCompactItemize}
+\item 
+opcode\_\-type {\bfseries opcode}\label{structinstruction__data__type_ac8a6433d4f3d988011c3636dc45beba7}
+
+\item 
+unsigned {\bfseries changed}:1\label{structinstruction__data__type_aa3967fe98bea3c6ef547869088335968}
+
+\item 
+int {\bfseries i}\label{structinstruction__data__type_a4b9f68c8709de0bc88accf26086a0276}
+
+\item 
+int $\ast$ {\bfseries ip}\label{structinstruction__data__type_a149b0a6b44365e46fb9a4eed917f2f57}
+
+\item 
+fullinfo\_\-type {\bfseries fi}\label{structinstruction__data__type_ad14fda17cee4ac8d25ca5c5435a4a073}
+
+\end{DoxyCompactItemize}
+\subsection*{Protected Attributes}
+\begin{DoxyCompactItemize}
+\item 
+unsigned {\bfseries is\_\-target}:1\label{structinstruction__data__type_a869115f2f5ba394304d7bdacea6993ac}
+
+\item 
+\begin{tabbing}
+xx\=xx\=xx\=xx\=xx\=xx\=xx\=xx\=xx\=\kill
+union \{\\
+\>int {\bfseries i}\\
+\>int $\ast$ {\bfseries ip}\\
+\>fullinfo\_type {\bfseries fi}\\
+\} {\bfseries operand}\label{structinstruction__data__type_a5cfeca706c914113cba2835ebc035f02}
+\\
+
+\end{tabbing}\item 
+\begin{tabbing}
+xx\=xx\=xx\=xx\=xx\=xx\=xx\=xx\=xx\=\kill
+union \{\\
+\>int {\bfseries i}\\
+\>int $\ast$ {\bfseries ip}\\
+\>fullinfo\_type {\bfseries fi}\\
+\} {\bfseries operand2}\label{structinstruction__data__type_a3538569218e08620a9b339e54b8873e0}
+\\
+
+\end{tabbing}\item 
+fullinfo\_\-type {\bfseries p}\label{structinstruction__data__type_a30d6434e2219e7db70c1c82917dcf1e5}
+
+\item 
+struct {\bf stack\_\-info\_\-type} {\bfseries stack\_\-info}\label{structinstruction__data__type_a49bc9a3ab5e40023a088aa308be1d3ae}
+
+\item 
+struct {\bf register\_\-info\_\-type} {\bfseries register\_\-info}\label{structinstruction__data__type_a6d312c7c87bb8a368d6e7ab7969059fc}
+
+\item 
+flag\_\-type {\bfseries or\_\-flags}\label{structinstruction__data__type_a1cf5decac000591b705925d4583adbe7}
+
+\item 
+flag\_\-type {\bfseries and\_\-flags}\label{structinstruction__data__type_aff59d70f0d5843dea51db6b131a1e19c}
+
+\item 
+unsigned short {\bfseries offset}\label{structinstruction__data__type_ae6e0bc3d5e0e5e72da3d0aef1f9fbfa3}
+
+\item 
+unsigned short {\bfseries length}\label{structinstruction__data__type_a33217ea4a74126f2b34b7b8ae6bbc9a8}
+
+\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+
+
+Definition at line 129 of file check\_\-code.h.
+
+
+
+The documentation for this struct was generated from the following file:\begin{DoxyCompactItemize}
+\item 
+src/preverifier/check\_\-code.h\end{DoxyCompactItemize}

@@ -1,0 +1,62 @@
+\section{src/jelatine/native.h File Reference}
+\label{native_8h}\index{src/jelatine/native.h@{src/jelatine/native.h}}
+{\ttfamily \#include \char`\"{}wrappers.h\char`\"{}}\par
+{\ttfamily \#include \char`\"{}header.h\char`\"{}}\par
+{\ttfamily \#include \char`\"{}method.h\char`\"{}}\par
+\subsection*{Defines}
+\begin{DoxyCompactItemize}
+\item 
+\#define {\bf JELATINE\_\-NATIVE\_\-H}~(1)
+\end{DoxyCompactItemize}
+\subsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+{\bf native\_\-proto\_\-t} {\bf native\_\-method\_\-lookup} (const char $\ast$, const char $\ast$, const char $\ast$)
+\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+Native methods declaration 
+
+Definition in file {\bf native.h}.
+
+
+
+\subsection{Define Documentation}
+\index{native.h@{native.h}!JELATINE\_\-NATIVE\_\-H@{JELATINE\_\-NATIVE\_\-H}}
+\index{JELATINE\_\-NATIVE\_\-H@{JELATINE\_\-NATIVE\_\-H}!native.h@{native.h}}
+\subsubsection[{JELATINE\_\-NATIVE\_\-H}]{\setlength{\rightskip}{0pt plus 5cm}\#define JELATINE\_\-NATIVE\_\-H~(1)}\label{native_8h_a39a2ee08e37c3e97f1d7feffc11cf8bb}
+\doxyref{native.h}{p.}{native_8h} inclusion macro 
+
+Definition at line 28 of file native.h.
+
+
+
+\subsection{Function Documentation}
+\index{native.h@{native.h}!native\_\-method\_\-lookup@{native\_\-method\_\-lookup}}
+\index{native\_\-method\_\-lookup@{native\_\-method\_\-lookup}!native.h@{native.h}}
+\subsubsection[{native\_\-method\_\-lookup}]{\setlength{\rightskip}{0pt plus 5cm}{\bf native\_\-proto\_\-t} native\_\-method\_\-lookup (
+\begin{DoxyParamCaption}
+\item[{const char $\ast$}]{ cl\_\-name, }
+\item[{const char $\ast$}]{ name, }
+\item[{const char $\ast$}]{ desc}
+\end{DoxyParamCaption}
+)}\label{native_8h_a8243fcf0ecc86e4b6fa394ebad1c020d}
+Searches for a native method using the provided class name, method name and signature 
+\begin{DoxyParams}{Parameters}
+\item[{\em cl\_\-name}]Name of the class \item[{\em name}]Name of the method \item[{\em desc}]Descriptor of the method \end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+A pointer to a native method structure or NULL if none is found matching the specified criteria 
+\end{DoxyReturn}
+
+
+Definition at line 544 of file native.c.
+
+
+
+References native\_\-method\_\-desc\_\-t::class\_\-name, native\_\-method\_\-desc\_\-t::descriptor, and native\_\-method\_\-desc\_\-t::func.
+
+
+
+Referenced by method\_\-link\_\-native().
+

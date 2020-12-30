@@ -1,0 +1,212 @@
+\section{jelatine::cldc::io::URL Class Reference}
+\label{classjelatine_1_1cldc_1_1io_1_1_u_r_l}\index{jelatine::cldc::io::URL@{jelatine::cldc::io::URL}}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+{\bf URL} ({\bf String} {\bf name})  throws IllegalArgumentException 
+\item 
+{\bf Hashtable} {\bf getParamsMap} ({\bf String} {\bf params})
+\item 
+{\bf String} {\bf getName} ()
+\item 
+{\bf String} {\bf getScheme} ()
+\item 
+{\bf String} {\bf getTarget} ()
+\item 
+{\bf String} {\bf getParams} ()
+\end{DoxyCompactItemize}
+\subsection*{Package Attributes}
+\begin{DoxyCompactItemize}
+\item 
+{\bf String} {\bf name}
+\item 
+{\bf String} {\bf scheme}
+\item 
+{\bf String} {\bf target}
+\item 
+{\bf String} {\bf params}
+\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+This class stores \doxyref{URL}{p.}{classjelatine_1_1cldc_1_1io_1_1_u_r_l} format as described in RFC 2396. This takes the general form:\par
+ \{scheme\}:[\{target\}][\{params\}]\par
+ where \{scheme\} is the name of a protocol such as http.\par
+ The \{target\} is normally some kind of network address.\par
+ Any \{params\} are formed as a series of equates of the form \char`\"{};x=y\char`\"{}. Example: \char`\"{};type=a\char`\"{}. 
+
+Definition at line 35 of file URL.java.
+
+
+
+\subsection{Constructor \& Destructor Documentation}
+\index{jelatine::cldc::io::URL@{jelatine::cldc::io::URL}!URL@{URL}}
+\index{URL@{URL}!jelatine::cldc::io::URL@{jelatine::cldc::io::URL}}
+\subsubsection[{URL}]{\setlength{\rightskip}{0pt plus 5cm}jelatine::cldc::io::URL::URL (
+\begin{DoxyParamCaption}
+\item[{{\bf String}}]{ name}
+\end{DoxyParamCaption}
+)  throws IllegalArgumentException \hspace{0.3cm}{\ttfamily  [inline]}}\label{classjelatine_1_1cldc_1_1io_1_1_u_r_l_aa305b6c6db7c7eee85094cbd757f7a89}
+Default constructor for an \doxyref{URL}{p.}{classjelatine_1_1cldc_1_1io_1_1_u_r_l} 
+\begin{DoxyParams}{Parameters}
+\item[{\em name}]A string holding the \doxyref{URL}{p.}{classjelatine_1_1cldc_1_1io_1_1_u_r_l} \end{DoxyParams}
+
+
+Definition at line 45 of file URL.java.
+
+
+
+References java::lang::String::indexOf(), name, params, scheme, java::lang::String::substring(), and target.
+
+
+
+\subsection{Member Function Documentation}
+\index{jelatine::cldc::io::URL@{jelatine::cldc::io::URL}!getName@{getName}}
+\index{getName@{getName}!jelatine::cldc::io::URL@{jelatine::cldc::io::URL}}
+\subsubsection[{getName}]{\setlength{\rightskip}{0pt plus 5cm}{\bf String} jelatine::cldc::io::URL::getName (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily  [inline]}}\label{classjelatine_1_1cldc_1_1io_1_1_u_r_l_af4a536e9677ffac6cd10b646f2c12dbc}
+Return the \doxyref{URL}{p.}{classjelatine_1_1cldc_1_1io_1_1_u_r_l} name \begin{DoxyReturn}{Returns}
+The \doxyref{URL}{p.}{classjelatine_1_1cldc_1_1io_1_1_u_r_l} name as a string 
+\end{DoxyReturn}
+
+
+Definition at line 105 of file URL.java.
+
+
+
+References name.
+
+\index{jelatine::cldc::io::URL@{jelatine::cldc::io::URL}!getParams@{getParams}}
+\index{getParams@{getParams}!jelatine::cldc::io::URL@{jelatine::cldc::io::URL}}
+\subsubsection[{getParams}]{\setlength{\rightskip}{0pt plus 5cm}{\bf String} jelatine::cldc::io::URL::getParams (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily  [inline]}}\label{classjelatine_1_1cldc_1_1io_1_1_u_r_l_ab569ea5bb231f7f89581b8a6d61b9fbb}
+Return the \doxyref{URL}{p.}{classjelatine_1_1cldc_1_1io_1_1_u_r_l} parameters \begin{DoxyReturn}{Returns}
+The \doxyref{URL}{p.}{classjelatine_1_1cldc_1_1io_1_1_u_r_l} parameters as a string 
+\end{DoxyReturn}
+
+
+Definition at line 126 of file URL.java.
+
+
+
+References params.
+
+\index{jelatine::cldc::io::URL@{jelatine::cldc::io::URL}!getParamsMap@{getParamsMap}}
+\index{getParamsMap@{getParamsMap}!jelatine::cldc::io::URL@{jelatine::cldc::io::URL}}
+\subsubsection[{getParamsMap}]{\setlength{\rightskip}{0pt plus 5cm}{\bf Hashtable} jelatine::cldc::io::URL::getParamsMap (
+\begin{DoxyParamCaption}
+\item[{{\bf String}}]{ params}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily  [inline]}}\label{classjelatine_1_1cldc_1_1io_1_1_u_r_l_a3fc6d94a192c50041152bc0a1b5cd41c}
+Parses the parameters held by {\itshape params\/} and returns them in an hash table 
+\begin{DoxyParams}{Parameters}
+\item[{\em params}]a string holding the \doxyref{URL}{p.}{classjelatine_1_1cldc_1_1io_1_1_u_r_l} parameters \end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+The parameters parsed in an hash-\/table 
+\end{DoxyReturn}
+
+
+Definition at line 70 of file URL.java.
+
+
+
+References java::lang::String::indexOf(), java::util::Hashtable::put(), and java::lang::String::substring().
+
+\index{jelatine::cldc::io::URL@{jelatine::cldc::io::URL}!getScheme@{getScheme}}
+\index{getScheme@{getScheme}!jelatine::cldc::io::URL@{jelatine::cldc::io::URL}}
+\subsubsection[{getScheme}]{\setlength{\rightskip}{0pt plus 5cm}{\bf String} jelatine::cldc::io::URL::getScheme (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily  [inline]}}\label{classjelatine_1_1cldc_1_1io_1_1_u_r_l_a9b64c2bf31d6fb8604a3700a13d6667b}
+Return the \doxyref{URL}{p.}{classjelatine_1_1cldc_1_1io_1_1_u_r_l} scheme \begin{DoxyReturn}{Returns}
+The \doxyref{URL}{p.}{classjelatine_1_1cldc_1_1io_1_1_u_r_l} scheme as a string 
+\end{DoxyReturn}
+
+
+Definition at line 112 of file URL.java.
+
+
+
+References scheme.
+
+
+
+Referenced by javax::microedition::io::Connector::open().
+
+\index{jelatine::cldc::io::URL@{jelatine::cldc::io::URL}!getTarget@{getTarget}}
+\index{getTarget@{getTarget}!jelatine::cldc::io::URL@{jelatine::cldc::io::URL}}
+\subsubsection[{getTarget}]{\setlength{\rightskip}{0pt plus 5cm}{\bf String} jelatine::cldc::io::URL::getTarget (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily  [inline]}}\label{classjelatine_1_1cldc_1_1io_1_1_u_r_l_abdd4f895987ce97d137da28624b81a1e}
+Return the \doxyref{URL}{p.}{classjelatine_1_1cldc_1_1io_1_1_u_r_l} target \begin{DoxyReturn}{Returns}
+The \doxyref{URL}{p.}{classjelatine_1_1cldc_1_1io_1_1_u_r_l} target as a string 
+\end{DoxyReturn}
+
+
+Definition at line 119 of file URL.java.
+
+
+
+References target.
+
+
+
+\subsection{Field Documentation}
+\index{jelatine::cldc::io::URL@{jelatine::cldc::io::URL}!name@{name}}
+\index{name@{name}!jelatine::cldc::io::URL@{jelatine::cldc::io::URL}}
+\subsubsection[{name}]{\setlength{\rightskip}{0pt plus 5cm}{\bf String} {\bf jelatine::cldc::io::URL::name}\hspace{0.3cm}{\ttfamily  [package]}}\label{classjelatine_1_1cldc_1_1io_1_1_u_r_l_aa9434bd030ca0a24e2a30f3e7ff4c786}
+The \doxyref{URL}{p.}{classjelatine_1_1cldc_1_1io_1_1_u_r_l} name 
+
+Definition at line 37 of file URL.java.
+
+
+
+Referenced by getName(), and URL().
+
+\index{jelatine::cldc::io::URL@{jelatine::cldc::io::URL}!params@{params}}
+\index{params@{params}!jelatine::cldc::io::URL@{jelatine::cldc::io::URL}}
+\subsubsection[{params}]{\setlength{\rightskip}{0pt plus 5cm}{\bf String} {\bf jelatine::cldc::io::URL::params}\hspace{0.3cm}{\ttfamily  [package]}}\label{classjelatine_1_1cldc_1_1io_1_1_u_r_l_ab758e585d9c8d0c38be82d1f738572d2}
+The \doxyref{URL}{p.}{classjelatine_1_1cldc_1_1io_1_1_u_r_l} parameters 
+
+Definition at line 40 of file URL.java.
+
+
+
+Referenced by getParams(), and URL().
+
+\index{jelatine::cldc::io::URL@{jelatine::cldc::io::URL}!scheme@{scheme}}
+\index{scheme@{scheme}!jelatine::cldc::io::URL@{jelatine::cldc::io::URL}}
+\subsubsection[{scheme}]{\setlength{\rightskip}{0pt plus 5cm}{\bf String} {\bf jelatine::cldc::io::URL::scheme}\hspace{0.3cm}{\ttfamily  [package]}}\label{classjelatine_1_1cldc_1_1io_1_1_u_r_l_aef958ff0760de5d4b68edf3b28be1d97}
+The \doxyref{URL}{p.}{classjelatine_1_1cldc_1_1io_1_1_u_r_l} scheme 
+
+Definition at line 38 of file URL.java.
+
+
+
+Referenced by getScheme(), and URL().
+
+\index{jelatine::cldc::io::URL@{jelatine::cldc::io::URL}!target@{target}}
+\index{target@{target}!jelatine::cldc::io::URL@{jelatine::cldc::io::URL}}
+\subsubsection[{target}]{\setlength{\rightskip}{0pt plus 5cm}{\bf String} {\bf jelatine::cldc::io::URL::target}\hspace{0.3cm}{\ttfamily  [package]}}\label{classjelatine_1_1cldc_1_1io_1_1_u_r_l_abd1c05c0805aff2ae6480ec34c56855f}
+The \doxyref{URL}{p.}{classjelatine_1_1cldc_1_1io_1_1_u_r_l} target 
+
+Definition at line 39 of file URL.java.
+
+
+
+Referenced by getTarget(), and URL().
+
+
+
+The documentation for this class was generated from the following file:\begin{DoxyCompactItemize}
+\item 
+src/classpath/jelatine/cldc/io/URL.java\end{DoxyCompactItemize}

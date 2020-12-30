@@ -1,0 +1,231 @@
+\section{class.c File Reference}
+\label{class_8c}\index{class.c@{class.c}}
+{\ttfamily \#include \char`\"{}wrappers.h\char`\"{}}\par
+{\ttfamily \#include \char`\"{}array.h\char`\"{}}\par
+{\ttfamily \#include \char`\"{}class.h\char`\"{}}\par
+{\ttfamily \#include \char`\"{}memory.h\char`\"{}}\par
+{\ttfamily \#include \char`\"{}method.h\char`\"{}}\par
+{\ttfamily \#include \char`\"{}header.h\char`\"{}}\par
+{\ttfamily \#include \char`\"{}util.h\char`\"{}}\par
+\subsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+{\bf interface\_\-manager\_\-t} $\ast$ {\bf im\_\-create} (void)
+\item 
+void {\bf im\_\-add} ({\bf interface\_\-manager\_\-t} $\ast$im, {\bf class\_\-t} $\ast$cl)
+\item 
+void {\bf im\_\-flatten} ({\bf interface\_\-manager\_\-t} $\ast$im)
+\item 
+bool {\bf im\_\-is\_\-present} ({\bf interface\_\-manager\_\-t} $\ast$im, {\bf class\_\-t} $\ast$interface)
+\item 
+bool {\bf class\_\-is\_\-parent} (const {\bf class\_\-t} $\ast$parent, const {\bf class\_\-t} $\ast$child)
+\item 
+void {\bf class\_\-add\_\-field} ({\bf class\_\-t} $\ast$cl, const {\bf field\_\-info\_\-t} $\ast$info, const {\bf field\_\-attributes\_\-t} $\ast$attr)
+\item 
+{\bf field\_\-t} $\ast$ {\bf class\_\-get\_\-field} (const {\bf class\_\-t} $\ast$cl, const char $\ast$name, const char $\ast$descriptor, bool stat)
+\item 
+void {\bf class\_\-purge\_\-initializer} ({\bf class\_\-t} $\ast$cl)
+\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+Class related functions implementation 
+
+Definition in file {\bf class.c}.
+
+
+
+\subsection{Function Documentation}
+\index{class.c@{class.c}!class\_\-add\_\-field@{class\_\-add\_\-field}}
+\index{class\_\-add\_\-field@{class\_\-add\_\-field}!class.c@{class.c}}
+\subsubsection[{class\_\-add\_\-field}]{\setlength{\rightskip}{0pt plus 5cm}void class\_\-add\_\-field (
+\begin{DoxyParamCaption}
+\item[{{\bf class\_\-t} $\ast$}]{ cl, }
+\item[{const {\bf field\_\-info\_\-t} $\ast$}]{ info, }
+\item[{const {\bf field\_\-attributes\_\-t} $\ast$}]{ attr}
+\end{DoxyParamCaption}
+)}\label{class_8c_afee6dde42e250a1a4c3992f33f64f4f8}
+Adds a field to the class 
+\begin{DoxyParams}{Parameters}
+\item[{\em cl}]A pointer to a class being loaded \item[{\em info}]A pointer to the information of the new field \item[{\em attr}]A pointer to the field attributes of the new field \end{DoxyParams}
+
+
+Definition at line 126 of file class.c.
+
+
+
+References field\_\-info\_\-t::access\_\-flags, field\_\-t::access\_\-flags, field\_\-attributes\_\-t::constant\_\-value\_\-found, field\_\-attributes\_\-t::constant\_\-value\_\-index, field\_\-info\_\-t::descriptor, field\_\-t::descriptor, field\_\-is\_\-static(), class\_\-t::fields, class\_\-t::fields\_\-n, field\_\-info\_\-t::name, field\_\-t::name, and field\_\-t::offset.
+
+
+
+Referenced by load\_\-fields().
+
+\index{class.c@{class.c}!class\_\-get\_\-field@{class\_\-get\_\-field}}
+\index{class\_\-get\_\-field@{class\_\-get\_\-field}!class.c@{class.c}}
+\subsubsection[{class\_\-get\_\-field}]{\setlength{\rightskip}{0pt plus 5cm}{\bf field\_\-t}$\ast$ class\_\-get\_\-field (
+\begin{DoxyParamCaption}
+\item[{const {\bf class\_\-t} $\ast$}]{ cl, }
+\item[{const char $\ast$}]{ name, }
+\item[{const char $\ast$}]{ descriptor, }
+\item[{bool}]{ stat}
+\end{DoxyParamCaption}
+)}\label{class_8c_ad120a9290825c466f6836719a64c7434}
+Finds a field by its name and descriptor, this function will only look for the field inside the specified class, not its parents 
+\begin{DoxyParams}{Parameters}
+\item[{\em cl}]A pointer to the class where to look for the field \item[{\em name}]The field name \item[{\em descriptor}]The descriptor name \item[{\em stat}]true if the field looked for is static, false otherwise \end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+A pointer to the field or NULL if none was found 
+\end{DoxyReturn}
+
+
+Definition at line 153 of file class.c.
+
+
+
+References field\_\-t::descriptor, field\_\-is\_\-static(), class\_\-t::fields, class\_\-t::fields\_\-n, and field\_\-t::name.
+
+
+
+Referenced by KNI\_\-GetFieldID(), KNI\_\-GetStaticFieldID(), and lookup\_\-field().
+
+\index{class.c@{class.c}!class\_\-is\_\-parent@{class\_\-is\_\-parent}}
+\index{class\_\-is\_\-parent@{class\_\-is\_\-parent}!class.c@{class.c}}
+\subsubsection[{class\_\-is\_\-parent}]{\setlength{\rightskip}{0pt plus 5cm}bool class\_\-is\_\-parent (
+\begin{DoxyParamCaption}
+\item[{const {\bf class\_\-t} $\ast$}]{ parent, }
+\item[{const {\bf class\_\-t} $\ast$}]{ child}
+\end{DoxyParamCaption}
+)}\label{class_8c_a63d9dc95c0c00386aa32269ce6bdb152}
+Returns true if {\itshape child\/} is a child class of {\itshape parent\/} 
+\begin{DoxyParams}{Parameters}
+\item[{\em parent}]The potentially parent class \item[{\em child}]The potentially child class \end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+true if {\itshape child\/} inherits from {\itshape parent\/}, false otherwise 
+\end{DoxyReturn}
+
+
+Definition at line 108 of file class.c.
+
+
+
+References class\_\-t::parent.
+
+
+
+Referenced by bcl\_\-link\_\-opcode(), interpreter(), resolve\_\-method(), and verify\_\-field\_\-access().
+
+\index{class.c@{class.c}!class\_\-purge\_\-initializer@{class\_\-purge\_\-initializer}}
+\index{class\_\-purge\_\-initializer@{class\_\-purge\_\-initializer}!class.c@{class.c}}
+\subsubsection[{class\_\-purge\_\-initializer}]{\setlength{\rightskip}{0pt plus 5cm}void class\_\-purge\_\-initializer (
+\begin{DoxyParamCaption}
+\item[{{\bf class\_\-t} $\ast$}]{ cl}
+\end{DoxyParamCaption}
+)}\label{class_8c_a473a8bf196f9216eddd6c0be6e0573e3}
+This function unloads the class initializer method 
+\begin{DoxyParams}{Parameters}
+\item[{\em cl}]A pointer to a \doxyref{class\_\-t}{p.}{structclass__t} structure \end{DoxyParams}
+
+
+Definition at line 175 of file class.c.
+
+
+
+References class\_\-t::method\_\-manager, method\_\-purge(), and mm\_\-get().
+
+
+
+Referenced by initialize\_\-class().
+
+\index{class.c@{class.c}!im\_\-add@{im\_\-add}}
+\index{im\_\-add@{im\_\-add}!class.c@{class.c}}
+\subsubsection[{im\_\-add}]{\setlength{\rightskip}{0pt plus 5cm}void im\_\-add (
+\begin{DoxyParamCaption}
+\item[{{\bf interface\_\-manager\_\-t} $\ast$}]{ im, }
+\item[{{\bf class\_\-t} $\ast$}]{ cl}
+\end{DoxyParamCaption}
+)}\label{class_8c_aa5700bf7765dd5f176c092ea724de005}
+Adds a new interface to the manager 
+\begin{DoxyParams}{Parameters}
+\item[{\em im}]A pointer to the interface manager \item[{\em cl}]A pointer to an interface \end{DoxyParams}
+
+
+Definition at line 51 of file class.c.
+
+
+
+References interface\_\-manager\_\-t::entries, gc\_\-free(), gc\_\-malloc(), and interface\_\-manager\_\-t::interfaces.
+
+
+
+Referenced by load\_\-interfaces().
+
+\index{class.c@{class.c}!im\_\-create@{im\_\-create}}
+\index{im\_\-create@{im\_\-create}!class.c@{class.c}}
+\subsubsection[{im\_\-create}]{\setlength{\rightskip}{0pt plus 5cm}{\bf interface\_\-manager\_\-t}$\ast$ im\_\-create (
+\begin{DoxyParamCaption}
+\item[{void}]{}
+\end{DoxyParamCaption}
+)}\label{class_8c_a9370a583b1069a5b1355c4b1e0463129}
+Creates an interface manager \begin{DoxyReturn}{Returns}
+A new interface manager 
+\end{DoxyReturn}
+
+
+Definition at line 40 of file class.c.
+
+
+
+References gc\_\-palloc().
+
+
+
+Referenced by load\_\-interfaces().
+
+\index{class.c@{class.c}!im\_\-flatten@{im\_\-flatten}}
+\index{im\_\-flatten@{im\_\-flatten}!class.c@{class.c}}
+\subsubsection[{im\_\-flatten}]{\setlength{\rightskip}{0pt plus 5cm}void im\_\-flatten (
+\begin{DoxyParamCaption}
+\item[{{\bf interface\_\-manager\_\-t} $\ast$}]{ im}
+\end{DoxyParamCaption}
+)}\label{class_8c_ad26df6fb2b8de6c4a9b62f7f8a8024dd}
+Flattens the interface manager internal representation turning it into a permanent structure 
+\begin{DoxyParams}{Parameters}
+\item[{\em im}]A pointer to the interface manager \end{DoxyParams}
+
+
+Definition at line 74 of file class.c.
+
+
+
+References interface\_\-manager\_\-t::entries, gc\_\-free(), gc\_\-palloc(), and interface\_\-manager\_\-t::interfaces.
+
+
+
+Referenced by load\_\-interfaces().
+
+\index{class.c@{class.c}!im\_\-is\_\-present@{im\_\-is\_\-present}}
+\index{im\_\-is\_\-present@{im\_\-is\_\-present}!class.c@{class.c}}
+\subsubsection[{im\_\-is\_\-present}]{\setlength{\rightskip}{0pt plus 5cm}bool im\_\-is\_\-present (
+\begin{DoxyParamCaption}
+\item[{{\bf interface\_\-manager\_\-t} $\ast$}]{ im, }
+\item[{{\bf class\_\-t} $\ast$}]{ interface}
+\end{DoxyParamCaption}
+)}\label{class_8c_adee4e8e2506f3cf831a87f0518a951aa}
+Checks if an interface is present in the interface manager 
+\begin{DoxyParams}{Parameters}
+\item[{\em im}]A pointer to the interface manager \item[{\em interface}]A pointer to a class \end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+true if the specified interface is present, false otherwise 
+\end{DoxyReturn}
+
+
+Definition at line 88 of file class.c.
+
+
+
+References interface\_\-manager\_\-t::entries, and interface\_\-manager\_\-t::interfaces.
+
+
+
+Referenced by bcl\_\-is\_\-assignable().
+

@@ -1,0 +1,425 @@
+\section{java::lang::Object Class Reference}
+\label{classjava_1_1lang_1_1_object}\index{java::lang::Object@{java::lang::Object}}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+{\bf Object} ()
+\item 
+native final {\bf Class} {\bf getClass} ()
+\item 
+int {\bf hashCode} ()
+\item 
+boolean {\bf equals} ({\bf Object} obj)
+\item 
+{\bf String} {\bf toString} ()
+\item 
+native final void {\bf notify} ()  throws IllegalMonitorStateException
+\item 
+native final void {\bf notifyAll} ()  throws IllegalMonitorStateException
+\item 
+final void {\bf wait} (long ms, int ns)  throws IllegalMonitorStateException, InterruptedException     
+\item 
+final void {\bf wait} (long ms)  throws IllegalMonitorStateException, InterruptedException     
+\item 
+final void {\bf wait} ()  throws IllegalMonitorStateException, InterruptedException     
+\end{DoxyCompactItemize}
+\subsection*{Protected Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+void {\bf finalize} ()  throws Throwable     
+\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+\doxyref{Object}{p.}{classjava_1_1lang_1_1_object} is the ultimate superclass of every class (excepting interfaces). When you define a class that does not extend any other class, it implicitly extends \doxyref{java.lang.Object}{p.}{classjava_1_1lang_1_1_object}. Also, an anonymous class based on an interface will extend \doxyref{Object}{p.}{classjava_1_1lang_1_1_object}.
+
+It provides general-\/purpose methods that every single \doxyref{Object}{p.}{classjava_1_1lang_1_1_object}, regardless of race, sex or creed, implements. All of the public methods may be invoked on arrays or interfaces. The protected methods {\ttfamily clone} and {\ttfamily finalize} are not accessible on arrays or interfaces, but all array types have a public version of {\ttfamily clone} which is accessible.
+
+\begin{DoxyAuthor}{Author}
+John Keiser 
+
+Eric Blake ({\tt ebb9@email.byu.edu}) 
+
+Tom Tromey ({\tt tromey@cygnus.com}) 
+\end{DoxyAuthor}
+
+
+Definition at line 60 of file Object.java.
+
+
+
+\subsection{Constructor \& Destructor Documentation}
+\index{java::lang::Object@{java::lang::Object}!Object@{Object}}
+\index{Object@{Object}!java::lang::Object@{java::lang::Object}}
+\subsubsection[{Object}]{\setlength{\rightskip}{0pt plus 5cm}java::lang::Object::Object (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily  [inline]}}\label{classjava_1_1lang_1_1_object_ae94b2d092ad2deff37ca4f97608087c3}
+The basic constructor. \doxyref{Object}{p.}{classjava_1_1lang_1_1_object} is special, because it has no superclass, so there is no call to super().
+
+
+\begin{DoxyExceptions}{Exceptions}
+\item[{\em \doxyref{OutOfMemoryError}{p.}{classjava_1_1lang_1_1_out_of_memory_error}}]Technically, this constructor never throws an \doxyref{OutOfMemoryError}{p.}{classjava_1_1lang_1_1_out_of_memory_error}, because the memory has already been allocated by this point. But as all instance creation expressions eventually trace back to this constructor, and creating an object allocates memory, we list that possibility here. \end{DoxyExceptions}
+
+
+Definition at line 84 of file Object.java.
+
+
+
+\subsection{Member Function Documentation}
+\index{java::lang::Object@{java::lang::Object}!equals@{equals}}
+\index{equals@{equals}!java::lang::Object@{java::lang::Object}}
+\subsubsection[{equals}]{\setlength{\rightskip}{0pt plus 5cm}boolean java::lang::Object::equals (
+\begin{DoxyParamCaption}
+\item[{{\bf Object}}]{ obj}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily  [inline]}}\label{classjava_1_1lang_1_1_object_ade561a6ba9ef320831a00f455108e5c5}
+Determine whether this \doxyref{Object}{p.}{classjava_1_1lang_1_1_object} is semantically equal to another \doxyref{Object}{p.}{classjava_1_1lang_1_1_object}.
+
+There are some fairly strict requirements on this method which subclasses must follow:\par
+ 
+\begin{DoxyItemize}
+\item It must be transitive. If {\ttfamily a.equals(b)} and {\ttfamily b.equals(c)}, then {\ttfamily a.equals(c)} must be true as well. 
+\item It must be symmetric. {\ttfamily a.equals(b)} and {\ttfamily b.equals(a)} must have the same value. 
+\item It must be reflexive. {\ttfamily a.equals(a)} must always be true. 
+\item It must be consistent. Whichever value a.equals(b) returns on the first invocation must be the value returned on all later invocations. 
+\item {\ttfamily a.equals(null)} must be false. 
+\item It must be consistent with \doxyref{hashCode()}{p.}{classjava_1_1lang_1_1_object_a6c47262521fc94db1015b9866585e7e2}. That is, {\ttfamily a.equals(b)} must imply {\ttfamily a.hashCode() == b.hashCode()}. The reverse is not true; two objects that are not equal may have the same hashcode, but that has the potential to harm hashing performance. 
+\end{DoxyItemize}
+
+This is typically overridden to throw a \doxyref{ClassCastException}{p.}{classjava_1_1lang_1_1_class_cast_exception} if the argument is not comparable to the class performing the comparison, but that is not a requirement. It is legal for {\ttfamily a.equals(b)} to be true even though {\ttfamily a.getClass() != b.getClass()}. Also, it is typical to never cause a \doxyref{NullPointerException}{p.}{classjava_1_1lang_1_1_null_pointer_exception}.
+
+In general, the Collections API (java.util) use the {\ttfamily equals} method rather than the {\ttfamily ==} operator to compare objects.
+
+The default implementation returns {\ttfamily this == o}.
+
+
+\begin{DoxyParams}{Parameters}
+\item[{\em obj}]the \doxyref{Object}{p.}{classjava_1_1lang_1_1_object} to compare to \end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+whether this \doxyref{Object}{p.}{classjava_1_1lang_1_1_object} is semantically equal to another 
+\end{DoxyReturn}
+\begin{DoxySeeAlso}{See also}
+\doxyref{hashCode()}{p.}{classjava_1_1lang_1_1_object_a6c47262521fc94db1015b9866585e7e2} 
+\end{DoxySeeAlso}
+
+
+Definition at line 185 of file Object.java.
+
+\index{java::lang::Object@{java::lang::Object}!finalize@{finalize}}
+\index{finalize@{finalize}!java::lang::Object@{java::lang::Object}}
+\subsubsection[{finalize}]{\setlength{\rightskip}{0pt plus 5cm}void java::lang::Object::finalize (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)  throws {\bf Throwable}     \hspace{0.3cm}{\ttfamily  [inline, protected]}}\label{classjava_1_1lang_1_1_object_ae7941b0c1ff37f29c70e470227463729}
+Called on an object by the Virtual Machine at most once, at some point after the \doxyref{Object}{p.}{classjava_1_1lang_1_1_object} is determined unreachable but before it is destroyed. You would think that this means it eventually is called on every \doxyref{Object}{p.}{classjava_1_1lang_1_1_object}, but this is not necessarily the case. If execution terminates abnormally, garbage collection does not always happen. Thus you cannot rely on this method to always work. For finer control over garbage collection, use references from the java.lang.ref package.
+
+Virtual Machines are free to not call this method if they can determine that it does nothing important; for example, if your class extends \doxyref{Object}{p.}{classjava_1_1lang_1_1_object} and overrides finalize to do simply {\ttfamily super.finalize()}.
+
+\doxyref{finalize()}{p.}{classjava_1_1lang_1_1_object_ae7941b0c1ff37f29c70e470227463729} will be called by a \doxyref{Thread}{p.}{classjava_1_1lang_1_1_thread} that has no locks on any Objects, and may be called concurrently. There are no guarantees on the order in which multiple objects are finalized. This means that \doxyref{finalize()}{p.}{classjava_1_1lang_1_1_object_ae7941b0c1ff37f29c70e470227463729} is usually unsuited for performing actions that must be thread-\/safe, and that your implementation must be use defensive programming if it is to always work.
+
+If an \doxyref{Exception}{p.}{classjava_1_1lang_1_1_exception} is thrown from \doxyref{finalize()}{p.}{classjava_1_1lang_1_1_object_ae7941b0c1ff37f29c70e470227463729} during garbage collection, it will be patently ignored and the \doxyref{Object}{p.}{classjava_1_1lang_1_1_object} will still be destroyed.
+
+It is allowed, although not typical, for user code to call \doxyref{finalize()}{p.}{classjava_1_1lang_1_1_object_ae7941b0c1ff37f29c70e470227463729} directly. User invocation does not affect whether automatic invocation will occur. It is also permitted, although not recommended, for a \doxyref{finalize()}{p.}{classjava_1_1lang_1_1_object_ae7941b0c1ff37f29c70e470227463729} method to \char`\"{}revive\char`\"{} an object by making it reachable from normal code again.
+
+Unlike constructors, \doxyref{finalize()}{p.}{classjava_1_1lang_1_1_object_ae7941b0c1ff37f29c70e470227463729} does not get called for an object's superclass unless the implementation specifically calls {\ttfamily super.finalize()}.
+
+The default implementation does nothing.
+
+
+\begin{DoxyExceptions}{Exceptions}
+\item[{\em \doxyref{Throwable}{p.}{classjava_1_1lang_1_1_throwable}}]permits a subclass to throw anything in an overridden version; but the default throws nothing \end{DoxyExceptions}
+\begin{DoxySeeAlso}{See also}
+\doxyref{System::gc()}{p.}{classjava_1_1lang_1_1_system_a6a6db9c42292bc701452933b653e7234} 
+
+java.lang.ref 
+\end{DoxySeeAlso}
+
+
+Definition at line 460 of file Object.java.
+
+\index{java::lang::Object@{java::lang::Object}!getClass@{getClass}}
+\index{getClass@{getClass}!java::lang::Object@{java::lang::Object}}
+\subsubsection[{getClass}]{\setlength{\rightskip}{0pt plus 5cm}native final {\bf Class} java::lang::Object::getClass (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}\label{classjava_1_1lang_1_1_object_af26fa4d373ef62975876a47bb20005e0}
+Returns the runtime \doxyref{Class}{p.}{classjava_1_1lang_1_1_class} of this \doxyref{Object}{p.}{classjava_1_1lang_1_1_object}.
+
+The class object can also be obtained without a runtime instance by using the class literal, as in: {\ttfamily Foo.class}. Notice that the class literal also works on primitive types, making it useful for reflection purposes.
+
+\begin{DoxyReturn}{Returns}
+the class of this \doxyref{Object}{p.}{classjava_1_1lang_1_1_object} 
+\end{DoxyReturn}
+
+
+Referenced by toString().
+
+\index{java::lang::Object@{java::lang::Object}!hashCode@{hashCode}}
+\index{hashCode@{hashCode}!java::lang::Object@{java::lang::Object}}
+\subsubsection[{hashCode}]{\setlength{\rightskip}{0pt plus 5cm}int java::lang::Object::hashCode (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily  [inline]}}\label{classjava_1_1lang_1_1_object_a6c47262521fc94db1015b9866585e7e2}
+Get a value that represents this \doxyref{Object}{p.}{classjava_1_1lang_1_1_object}, as uniquely as possible within the confines of an int.
+
+There are some requirements on this method which subclasses must follow:\par
+
+
+
+\begin{DoxyItemize}
+\item Semantic equality implies identical hashcodes. In other words, if {\ttfamily a.equals(b)} is true, then {\ttfamily a.hashCode() == b.hashCode()} must be as well. However, the reverse is not necessarily true, and two objects may have the same hashcode without being equal. 
+\item It must be consistent. Whichever value o.hashCode() returns on the first invocation must be the value returned on all later invocations as long as the object exists. Notice, however, that the result of hashCode may change between separate executions of a Virtual Machine, because it is not invoked on the same object. 
+\end{DoxyItemize}
+
+Notice that since {\ttfamily hashCode} is used in \doxyref{java.util.Hashtable}{p.}{classjava_1_1util_1_1_hashtable} and other hashing classes, a poor implementation will degrade the performance of hashing (so don't blindly implement it as returning a constant!). Also, if calculating the hash is time-\/consuming, a class may consider caching the results.
+
+The default implementation returns {\ttfamily System.identityHashCode(this)}
+
+\begin{DoxyReturn}{Returns}
+the hash code for this \doxyref{Object}{p.}{classjava_1_1lang_1_1_object} 
+\end{DoxyReturn}
+\begin{DoxySeeAlso}{See also}
+\doxyref{equals(Object)}{p.}{classjava_1_1lang_1_1_object_ade561a6ba9ef320831a00f455108e5c5} 
+
+\doxyref{System::identityHashCode(Object)}{p.}{classjava_1_1lang_1_1_system_a3097228bc913a850b7491503602e1c48} 
+\end{DoxySeeAlso}
+
+
+Definition at line 137 of file Object.java.
+
+
+
+Referenced by toString().
+
+\index{java::lang::Object@{java::lang::Object}!notify@{notify}}
+\index{notify@{notify}!java::lang::Object@{java::lang::Object}}
+\subsubsection[{notify}]{\setlength{\rightskip}{0pt plus 5cm}native final void java::lang::Object::notify (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)  throws {\bf IllegalMonitorStateException}}\label{classjava_1_1lang_1_1_object_adc709a0d1a1f0651f05ce1e6a68f6d18}
+Wakes up one of the \doxyref{Thread}{p.}{classjava_1_1lang_1_1_thread}s that has called {\ttfamily wait} on this \doxyref{Object}{p.}{classjava_1_1lang_1_1_object}. Only the owner of a lock on this \doxyref{Object}{p.}{classjava_1_1lang_1_1_object} may call this method. This lock is obtained by a {\ttfamily synchronized} method or statement.
+
+The \doxyref{Thread}{p.}{classjava_1_1lang_1_1_thread} to wake up is chosen arbitrarily. The awakened thread is not guaranteed to be the next thread to actually obtain the lock on this object.
+
+This thread still holds a lock on the object, so it is typical to release the lock by exiting the synchronized code, calling \doxyref{wait()}{p.}{classjava_1_1lang_1_1_object_ab11d88be366164e0f7906583c0432574}, or calling \doxyref{Thread\#sleep(long)}{p.}{classjava_1_1lang_1_1_thread_a6e3299562e3f3de2dc3e7b512ad03813}, so that the newly awakened thread can actually resume. The awakened thread will most likely be awakened with an \doxyref{InterruptedException}{p.}{classjava_1_1lang_1_1_interrupted_exception}, but that is not guaranteed.
+
+
+\begin{DoxyExceptions}{Exceptions}
+\item[{\em \doxyref{IllegalMonitorStateException}{p.}{classjava_1_1lang_1_1_illegal_monitor_state_exception}}]if this \doxyref{Thread}{p.}{classjava_1_1lang_1_1_thread} does not own the lock on the \doxyref{Object}{p.}{classjava_1_1lang_1_1_object} \end{DoxyExceptions}
+\begin{DoxySeeAlso}{See also}
+\doxyref{notifyAll()}{p.}{classjava_1_1lang_1_1_object_ae1f425e385bfe63f94a445b9d44f4848} 
+
+\doxyref{wait()}{p.}{classjava_1_1lang_1_1_object_ab11d88be366164e0f7906583c0432574} 
+
+\doxyref{wait(long)}{p.}{classjava_1_1lang_1_1_object_aa3d24b1890593ee52397bd8182066656} 
+
+\doxyref{wait(long, int)}{p.}{classjava_1_1lang_1_1_object_a8a152925ade1e94a5ab5833ea9b3132e} 
+
+\doxyref{Thread}{p.}{classjava_1_1lang_1_1_thread} 
+\end{DoxySeeAlso}
+\index{java::lang::Object@{java::lang::Object}!notifyAll@{notifyAll}}
+\index{notifyAll@{notifyAll}!java::lang::Object@{java::lang::Object}}
+\subsubsection[{notifyAll}]{\setlength{\rightskip}{0pt plus 5cm}native final void java::lang::Object::notifyAll (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)  throws {\bf IllegalMonitorStateException}}\label{classjava_1_1lang_1_1_object_ae1f425e385bfe63f94a445b9d44f4848}
+Wakes up all of the \doxyref{Thread}{p.}{classjava_1_1lang_1_1_thread}s that have called {\ttfamily wait} on this \doxyref{Object}{p.}{classjava_1_1lang_1_1_object}. Only the owner of a lock on this \doxyref{Object}{p.}{classjava_1_1lang_1_1_object} may call this method. This lock is obtained by a {\ttfamily synchronized} method or statement.
+
+There are no guarantees as to which thread will next obtain the lock on the object.
+
+This thread still holds a lock on the object, so it is typical to release the lock by exiting the synchronized code, calling \doxyref{wait()}{p.}{classjava_1_1lang_1_1_object_ab11d88be366164e0f7906583c0432574}, or calling \doxyref{Thread\#sleep(long)}{p.}{classjava_1_1lang_1_1_thread_a6e3299562e3f3de2dc3e7b512ad03813}, so that one of the newly awakened threads can actually resume. The resuming thread will most likely be awakened with an \doxyref{InterruptedException}{p.}{classjava_1_1lang_1_1_interrupted_exception}, but that is not guaranteed.
+
+
+\begin{DoxyExceptions}{Exceptions}
+\item[{\em \doxyref{IllegalMonitorStateException}{p.}{classjava_1_1lang_1_1_illegal_monitor_state_exception}}]if this \doxyref{Thread}{p.}{classjava_1_1lang_1_1_thread} does not own the lock on the \doxyref{Object}{p.}{classjava_1_1lang_1_1_object} \end{DoxyExceptions}
+\begin{DoxySeeAlso}{See also}
+\doxyref{notify()}{p.}{classjava_1_1lang_1_1_object_adc709a0d1a1f0651f05ce1e6a68f6d18} 
+
+\doxyref{wait()}{p.}{classjava_1_1lang_1_1_object_ab11d88be366164e0f7906583c0432574} 
+
+\doxyref{wait(long)}{p.}{classjava_1_1lang_1_1_object_aa3d24b1890593ee52397bd8182066656} 
+
+\doxyref{wait(long, int)}{p.}{classjava_1_1lang_1_1_object_a8a152925ade1e94a5ab5833ea9b3132e} 
+
+\doxyref{Thread}{p.}{classjava_1_1lang_1_1_thread} 
+\end{DoxySeeAlso}
+\index{java::lang::Object@{java::lang::Object}!toString@{toString}}
+\index{toString@{toString}!java::lang::Object@{java::lang::Object}}
+\subsubsection[{toString}]{\setlength{\rightskip}{0pt plus 5cm}{\bf String} java::lang::Object::toString (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily  [inline]}}\label{classjava_1_1lang_1_1_object_a3470e3428fa1aec1cb7ccbb54503da6b}
+Convert this \doxyref{Object}{p.}{classjava_1_1lang_1_1_object} to a human-\/readable \doxyref{String}{p.}{classjava_1_1lang_1_1_string}. There are no limits placed on how long this \doxyref{String}{p.}{classjava_1_1lang_1_1_string} should be or what it should contain. We suggest you make it as intuitive as possible to be able to place it into \doxyref{System.out.println()}{p.}{classjava_1_1io_1_1_print_stream_a242361ca1ebff745a37e4980ae093e75} and such.
+
+It is typical, but not required, to ensure that this method never completes abruptly with a \doxyref{RuntimeException}{p.}{classjava_1_1lang_1_1_runtime_exception}.
+
+This method will be called when performing string concatenation with this object. If the result is {\ttfamily null}, string concatenation will instead use {\ttfamily \char`\"{}null\char`\"{}}.
+
+The default implementation returns {\ttfamily \doxyref{getClass()}{p.}{classjava_1_1lang_1_1_object_af26fa4d373ef62975876a47bb20005e0}.getName() + \char`\"{}@\char`\"{} + \doxyref{Integer.toHexString}{p.}{classjava_1_1lang_1_1_integer_a466a61080bc7a8cca2acb84e87701820}(\doxyref{hashCode()}{p.}{classjava_1_1lang_1_1_object_a6c47262521fc94db1015b9866585e7e2})}.
+
+\begin{DoxyReturn}{Returns}
+the \doxyref{String}{p.}{classjava_1_1lang_1_1_string} representing this \doxyref{Object}{p.}{classjava_1_1lang_1_1_object}, which may be null 
+\end{DoxyReturn}
+
+\begin{DoxyExceptions}{Exceptions}
+\item[{\em \doxyref{OutOfMemoryError}{p.}{classjava_1_1lang_1_1_out_of_memory_error}}]The default implementation creates a new \doxyref{String}{p.}{classjava_1_1lang_1_1_string} object, therefore it must allocate memory \end{DoxyExceptions}
+\begin{DoxySeeAlso}{See also}
+\doxyref{getClass()}{p.}{classjava_1_1lang_1_1_object_af26fa4d373ef62975876a47bb20005e0} 
+
+\doxyref{hashCode()}{p.}{classjava_1_1lang_1_1_object_a6c47262521fc94db1015b9866585e7e2} 
+
+\doxyref{Class::getName()}{p.}{classjava_1_1lang_1_1_class_a5776036387f11a9e14c907b40de74579} 
+
+\doxyref{Integer::toHexString(int)}{p.}{classjava_1_1lang_1_1_integer_a466a61080bc7a8cca2acb84e87701820} 
+\end{DoxySeeAlso}
+
+
+Definition at line 218 of file Object.java.
+
+
+
+References getClass(), java::lang::Class::getName(), and hashCode().
+
+
+
+Referenced by java::lang::StringBuffer::append(), java::lang::StringBuffer::insert(), and java::lang::String::valueOf().
+
+\index{java::lang::Object@{java::lang::Object}!wait@{wait}}
+\index{wait@{wait}!java::lang::Object@{java::lang::Object}}
+\subsubsection[{wait}]{\setlength{\rightskip}{0pt plus 5cm}final void java::lang::Object::wait (
+\begin{DoxyParamCaption}
+\item[{long}]{ ms, }
+\item[{int}]{ ns}
+\end{DoxyParamCaption}
+)  throws {\bf IllegalMonitorStateException}, {\bf InterruptedException}     \hspace{0.3cm}{\ttfamily  [inline]}}\label{classjava_1_1lang_1_1_object_a8a152925ade1e94a5ab5833ea9b3132e}
+Waits a specified amount of time (or indefinitely if the time specified is 0) for someone to call \doxyref{notify()}{p.}{classjava_1_1lang_1_1_object_adc709a0d1a1f0651f05ce1e6a68f6d18} or \doxyref{notifyAll()}{p.}{classjava_1_1lang_1_1_object_ae1f425e385bfe63f94a445b9d44f4848} on this \doxyref{Object}{p.}{classjava_1_1lang_1_1_object}, waking up this \doxyref{Thread}{p.}{classjava_1_1lang_1_1_thread}.
+
+The \doxyref{Thread}{p.}{classjava_1_1lang_1_1_thread} that calls wait must have a lock on this \doxyref{Object}{p.}{classjava_1_1lang_1_1_object}, obtained by a {\ttfamily synchronized} method or statement. After calling wait, the thread loses the lock on this object until the method completes (abruptly or normally), at which time it regains the lock. All locks held on other objects remain in force, even though the thread is inactive. Therefore, caution must be used to avoid deadlock.
+
+Usually, this call will complete normally if the time expires, or abruptly with \doxyref{InterruptedException}{p.}{classjava_1_1lang_1_1_interrupted_exception} if another thread called notify, but neither result is guaranteed.
+
+The waiting period is nowhere near as precise as nanoseconds; considering that even wait(int) is inaccurate, how much can you expect? But on supporting implementations, this offers somewhat more granularity than milliseconds.
+
+
+\begin{DoxyParams}{Parameters}
+\item[{\em ms}]the number of milliseconds to wait (1,000 milliseconds = 1 second) \item[{\em ns}]the number of nanoseconds to wait over and above ms (1,000,000 nanoseconds = 1 millisecond) \end{DoxyParams}
+
+\begin{DoxyExceptions}{Exceptions}
+\item[{\em \doxyref{IllegalArgumentException}{p.}{classjava_1_1lang_1_1_illegal_argument_exception}}]if ms $<$ 0 or ns is not in the range 0 to 999,999 \item[{\em \doxyref{IllegalMonitorStateException}{p.}{classjava_1_1lang_1_1_illegal_monitor_state_exception}}]if this \doxyref{Thread}{p.}{classjava_1_1lang_1_1_thread} does not own a lock on this \doxyref{Object}{p.}{classjava_1_1lang_1_1_object} \item[{\em \doxyref{InterruptedException}{p.}{classjava_1_1lang_1_1_interrupted_exception}}]if some other \doxyref{Thread}{p.}{classjava_1_1lang_1_1_thread} interrupts this \doxyref{Thread}{p.}{classjava_1_1lang_1_1_thread} \end{DoxyExceptions}
+\begin{DoxySeeAlso}{See also}
+\doxyref{notify()}{p.}{classjava_1_1lang_1_1_object_adc709a0d1a1f0651f05ce1e6a68f6d18} 
+
+\doxyref{notifyAll()}{p.}{classjava_1_1lang_1_1_object_ae1f425e385bfe63f94a445b9d44f4848} 
+
+\doxyref{wait()}{p.}{classjava_1_1lang_1_1_object_ab11d88be366164e0f7906583c0432574} 
+
+\doxyref{wait(long)}{p.}{classjava_1_1lang_1_1_object_aa3d24b1890593ee52397bd8182066656} 
+
+\doxyref{Thread}{p.}{classjava_1_1lang_1_1_thread} 
+\end{DoxySeeAlso}
+
+
+Definition at line 316 of file Object.java.
+
+\index{java::lang::Object@{java::lang::Object}!wait@{wait}}
+\index{wait@{wait}!java::lang::Object@{java::lang::Object}}
+\subsubsection[{wait}]{\setlength{\rightskip}{0pt plus 5cm}final void java::lang::Object::wait (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)  throws {\bf IllegalMonitorStateException}, {\bf InterruptedException}     \hspace{0.3cm}{\ttfamily  [inline]}}\label{classjava_1_1lang_1_1_object_ab11d88be366164e0f7906583c0432574}
+Waits indefinitely for \doxyref{notify()}{p.}{classjava_1_1lang_1_1_object_adc709a0d1a1f0651f05ce1e6a68f6d18} or \doxyref{notifyAll()}{p.}{classjava_1_1lang_1_1_object_ae1f425e385bfe63f94a445b9d44f4848} to be called on the \doxyref{Object}{p.}{classjava_1_1lang_1_1_object} in question. Implementation is identical to wait(0).
+
+The \doxyref{Thread}{p.}{classjava_1_1lang_1_1_thread} that calls wait must have a lock on this \doxyref{Object}{p.}{classjava_1_1lang_1_1_object}, obtained by a {\ttfamily synchronized} method or statement. After calling wait, the thread loses the lock on this object until the method completes (abruptly or normally), at which time it regains the lock. All locks held on other objects remain in force, even though the thread is inactive. Therefore, caution must be used to avoid deadlock.
+
+While it is typical that this method will complete abruptly with an \doxyref{InterruptedException}{p.}{classjava_1_1lang_1_1_interrupted_exception}, it is not guaranteed. So, it is typical to call wait inside an infinite loop:\par
+
+
+
+\begin{DoxyPre}
+ try
+   \{
+     while (true)
+       lock.wait();
+   \}
+ catch (\doxyref{InterruptedException}{p.}{classjava_1_1lang_1_1_interrupted_exception} e)
+   \{
+   \}
+ \end{DoxyPre}
+
+
+
+\begin{DoxyExceptions}{Exceptions}
+\item[{\em \doxyref{IllegalMonitorStateException}{p.}{classjava_1_1lang_1_1_illegal_monitor_state_exception}}]if this \doxyref{Thread}{p.}{classjava_1_1lang_1_1_thread} does not own a lock on this \doxyref{Object}{p.}{classjava_1_1lang_1_1_object} \item[{\em \doxyref{InterruptedException}{p.}{classjava_1_1lang_1_1_interrupted_exception}}]if some other \doxyref{Thread}{p.}{classjava_1_1lang_1_1_thread} interrupts this \doxyref{Thread}{p.}{classjava_1_1lang_1_1_thread} \end{DoxyExceptions}
+\begin{DoxySeeAlso}{See also}
+\doxyref{notify()}{p.}{classjava_1_1lang_1_1_object_adc709a0d1a1f0651f05ce1e6a68f6d18} 
+
+\doxyref{notifyAll()}{p.}{classjava_1_1lang_1_1_object_ae1f425e385bfe63f94a445b9d44f4848} 
+
+\doxyref{wait(long)}{p.}{classjava_1_1lang_1_1_object_aa3d24b1890593ee52397bd8182066656} 
+
+\doxyref{wait(long, int)}{p.}{classjava_1_1lang_1_1_object_a8a152925ade1e94a5ab5833ea9b3132e} 
+
+\doxyref{Thread}{p.}{classjava_1_1lang_1_1_thread} 
+\end{DoxySeeAlso}
+
+
+Definition at line 409 of file Object.java.
+
+
+
+Referenced by wait().
+
+\index{java::lang::Object@{java::lang::Object}!wait@{wait}}
+\index{wait@{wait}!java::lang::Object@{java::lang::Object}}
+\subsubsection[{wait}]{\setlength{\rightskip}{0pt plus 5cm}final void java::lang::Object::wait (
+\begin{DoxyParamCaption}
+\item[{long}]{ ms}
+\end{DoxyParamCaption}
+)  throws {\bf IllegalMonitorStateException}, {\bf InterruptedException}     \hspace{0.3cm}{\ttfamily  [inline]}}\label{classjava_1_1lang_1_1_object_aa3d24b1890593ee52397bd8182066656}
+Waits a specified amount of time (or indefinitely if the time specified is 0) for someone to call \doxyref{notify()}{p.}{classjava_1_1lang_1_1_object_adc709a0d1a1f0651f05ce1e6a68f6d18} or \doxyref{notifyAll()}{p.}{classjava_1_1lang_1_1_object_ae1f425e385bfe63f94a445b9d44f4848} on this \doxyref{Object}{p.}{classjava_1_1lang_1_1_object}, waking up this \doxyref{Thread}{p.}{classjava_1_1lang_1_1_thread}.
+
+The \doxyref{Thread}{p.}{classjava_1_1lang_1_1_thread} that calls wait must have a lock on this \doxyref{Object}{p.}{classjava_1_1lang_1_1_object}, obtained by a {\ttfamily synchronized} method or statement. After calling wait, the thread loses the lock on this object until the method completes (abruptly or normally), at which time it regains the lock. All locks held on other objects remain in force, even though the thread is inactive. Therefore, caution must be used to avoid deadlock.
+
+Usually, this call will complete normally if the time expires, or abruptly with \doxyref{InterruptedException}{p.}{classjava_1_1lang_1_1_interrupted_exception} if another thread called notify, but neither result is guaranteed.
+
+The waiting period is only $\ast$roughly$\ast$ the amount of time you requested. It cannot be exact because of the overhead of the call itself. Most Virtual Machiness treat the argument as a lower limit on the time spent waiting, but even that is not guaranteed. Besides, some other thread may hold the lock on the object when the time expires, so the current thread may still have to wait to reobtain the lock.
+
+
+\begin{DoxyParams}{Parameters}
+\item[{\em ms}]the minimum number of milliseconds to wait (1000 milliseconds = 1 second), or 0 for an indefinite wait \end{DoxyParams}
+
+\begin{DoxyExceptions}{Exceptions}
+\item[{\em \doxyref{IllegalArgumentException}{p.}{classjava_1_1lang_1_1_illegal_argument_exception}}]if ms $<$ 0 \item[{\em \doxyref{IllegalMonitorStateException}{p.}{classjava_1_1lang_1_1_illegal_monitor_state_exception}}]if this \doxyref{Thread}{p.}{classjava_1_1lang_1_1_thread} does not own a lock on this \doxyref{Object}{p.}{classjava_1_1lang_1_1_object} \item[{\em \doxyref{InterruptedException}{p.}{classjava_1_1lang_1_1_interrupted_exception}}]if some other \doxyref{Thread}{p.}{classjava_1_1lang_1_1_thread} interrupts this \doxyref{Thread}{p.}{classjava_1_1lang_1_1_thread} \end{DoxyExceptions}
+\begin{DoxySeeAlso}{See also}
+\doxyref{notify()}{p.}{classjava_1_1lang_1_1_object_adc709a0d1a1f0651f05ce1e6a68f6d18} 
+
+\doxyref{notifyAll()}{p.}{classjava_1_1lang_1_1_object_ae1f425e385bfe63f94a445b9d44f4848} 
+
+\doxyref{wait()}{p.}{classjava_1_1lang_1_1_object_ab11d88be366164e0f7906583c0432574} 
+
+\doxyref{wait(long, int)}{p.}{classjava_1_1lang_1_1_object_a8a152925ade1e94a5ab5833ea9b3132e} 
+
+\doxyref{Thread}{p.}{classjava_1_1lang_1_1_thread} 
+\end{DoxySeeAlso}
+
+
+Definition at line 365 of file Object.java.
+
+
+
+References wait().
+
+
+
+The documentation for this class was generated from the following file:\begin{DoxyCompactItemize}
+\item 
+src/classpath/java/lang/Object.java\end{DoxyCompactItemize}

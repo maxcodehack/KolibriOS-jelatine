@@ -1,0 +1,356 @@
+\section{jstring.c File Reference}
+\label{jstring_8c}\index{jstring.c@{jstring.c}}
+{\ttfamily \#include \char`\"{}wrappers.h\char`\"{}}\par
+{\ttfamily \#include \char`\"{}class.h\char`\"{}}\par
+{\ttfamily \#include \char`\"{}jstring.h\char`\"{}}\par
+{\ttfamily \#include \char`\"{}memory.h\char`\"{}}\par
+{\ttfamily \#include \char`\"{}thread.h\char`\"{}}\par
+{\ttfamily \#include \char`\"{}utf8\_\-string.h\char`\"{}}\par
+{\ttfamily \#include \char`\"{}util.h\char`\"{}}\par
+\subsection*{Data Structures}
+\begin{DoxyCompactItemize}
+\item 
+struct {\bf jstring\_\-manager\_\-t}
+\end{DoxyCompactItemize}
+\subsection*{Typedefs}
+\begin{DoxyCompactItemize}
+\item 
+typedef struct {\bf jstring\_\-manager\_\-t} {\bf jstring\_\-manager\_\-t}
+\end{DoxyCompactItemize}
+\subsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+static void {\bf jsm\_\-rehash} (uint32\_\-t)
+\item 
+static void {\bf jsm\_\-rehash\_\-literals} (uint32\_\-t)
+\item 
+static uint32\_\-t {\bf jstring\_\-hash} (const uint16\_\-t $\ast$, uint32\_\-t, uint32\_\-t)
+\item 
+static bool {\bf jstring\_\-equals} (const {\bf java\_\-lang\_\-String\_\-t} $\ast$, const {\bf java\_\-lang\_\-String\_\-t} $\ast$)
+\item 
+void {\bf jsm\_\-init} (uint32\_\-t log2cap, uint32\_\-t load)
+\item 
+void {\bf jsm\_\-set\_\-classes} ({\bf class\_\-t} $\ast$str\_\-cl, {\bf class\_\-t} $\ast$char\_\-array\_\-cl)
+\item 
+void {\bf jsm\_\-mark} (void)
+\item 
+void {\bf jsm\_\-purge} (void)
+\item 
+{\bf java\_\-lang\_\-String\_\-t} $\ast$ {\bf jstring\_\-intern} ({\bf java\_\-lang\_\-String\_\-t} $\ast$jstr)
+\item 
+{\bf java\_\-lang\_\-String\_\-t} $\ast$ {\bf jstring\_\-create\_\-literal} (const char $\ast$src)
+\item 
+{\bf java\_\-lang\_\-String\_\-t} $\ast$ {\bf jstring\_\-create\_\-from\_\-utf8} (const char $\ast$src)
+\item 
+{\bf java\_\-lang\_\-String\_\-t} $\ast$ {\bf jstring\_\-create\_\-from\_\-unicode} (const uint16\_\-t $\ast$uchar, uint32\_\-t length)
+\end{DoxyCompactItemize}
+\subsection*{Variables}
+\begin{DoxyCompactItemize}
+\item 
+static {\bf jstring\_\-manager\_\-t} {\bf jsm}
+\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+Java String manager implementation 
+
+Definition in file {\bf jstring.c}.
+
+
+
+\subsection{Typedef Documentation}
+\index{jstring.c@{jstring.c}!jstring\_\-manager\_\-t@{jstring\_\-manager\_\-t}}
+\index{jstring\_\-manager\_\-t@{jstring\_\-manager\_\-t}!jstring.c@{jstring.c}}
+\subsubsection[{jstring\_\-manager\_\-t}]{\setlength{\rightskip}{0pt plus 5cm}typedef struct {\bf jstring\_\-manager\_\-t} {\bf jstring\_\-manager\_\-t}}\label{jstring_8c_a30a655150af91395570ea2884ebda110}
+Typedef for struct \doxyref{jstring\_\-manager\_\-t}{p.}{structjstring__manager__t} 
+
+Definition at line 57 of file jstring.c.
+
+
+
+\subsection{Function Documentation}
+\index{jstring.c@{jstring.c}!jsm\_\-init@{jsm\_\-init}}
+\index{jsm\_\-init@{jsm\_\-init}!jstring.c@{jstring.c}}
+\subsubsection[{jsm\_\-init}]{\setlength{\rightskip}{0pt plus 5cm}void jsm\_\-init (
+\begin{DoxyParamCaption}
+\item[{uint32\_\-t}]{ log2cap, }
+\item[{uint32\_\-t}]{ load}
+\end{DoxyParamCaption}
+)}\label{jstring_8c_aba16038d657c4cb0ce5822c21a33c839}
+Creates and initializes the Java string manager with an initial capacity of 2 $^\wedge$ {\itshape log2cap\/} capacity entries 
+\begin{DoxyParams}{Parameters}
+\item[{\em log2cap}]The binary logarythm of the initial capacity \item[{\em load}]Maximum load before a rehash is needed \end{DoxyParams}
+
+
+Definition at line 86 of file jstring.c.
+
+
+
+References jstring\_\-manager\_\-t::buckets, jstring\_\-manager\_\-t::capacity, jstring\_\-manager\_\-t::entries, gc\_\-malloc(), jstring\_\-manager\_\-t::init\_\-capacity, jstring\_\-manager\_\-t::lit\_\-buckets, jstring\_\-manager\_\-t::lit\_\-capacity, jstring\_\-manager\_\-t::lit\_\-entries, jstring\_\-manager\_\-t::lit\_\-init\_\-capacity, jstring\_\-manager\_\-t::lit\_\-load, and jstring\_\-manager\_\-t::load.
+
+
+
+Referenced by vm\_\-init().
+
+\index{jstring.c@{jstring.c}!jsm\_\-mark@{jsm\_\-mark}}
+\index{jsm\_\-mark@{jsm\_\-mark}!jstring.c@{jstring.c}}
+\subsubsection[{jsm\_\-mark}]{\setlength{\rightskip}{0pt plus 5cm}void jsm\_\-mark (
+\begin{DoxyParamCaption}
+\item[{void}]{}
+\end{DoxyParamCaption}
+)}\label{jstring_8c_ae2502b5c60bf151554f6b898bf914d10}
+Marks the Java literals present in the manager. This function doesn't acquire the VM lock as it can be called only when all the threads have been stopped 
+
+Definition at line 122 of file jstring.c.
+
+
+
+References gc\_\-mark\_\-reference(), JAVA\_\-LANG\_\-STRING\_\-PTR2REF, jstring\_\-manager\_\-t::lit\_\-buckets, jstring\_\-manager\_\-t::lit\_\-capacity, and java\_\-lang\_\-String\_\-t::next.
+
+
+
+Referenced by gc\_\-mark().
+
+\index{jstring.c@{jstring.c}!jsm\_\-purge@{jsm\_\-purge}}
+\index{jsm\_\-purge@{jsm\_\-purge}!jstring.c@{jstring.c}}
+\subsubsection[{jsm\_\-purge}]{\setlength{\rightskip}{0pt plus 5cm}void jsm\_\-purge (
+\begin{DoxyParamCaption}
+\item[{void}]{}
+\end{DoxyParamCaption}
+)}\label{jstring_8c_af0a30cf5f3f45a83a3c7409b23cc5f68}
+Purge the Java string manager from all the unused Java strings. This function must be called after \doxyref{jsm\_\-mark()}{p.}{jstring_8c_ae2502b5c60bf151554f6b898bf914d10}. This function doesn't acquire the VM lock as it can be called only when all the threads have been stopped 
+
+Definition at line 141 of file jstring.c.
+
+
+
+References jstring\_\-manager\_\-t::buckets, jstring\_\-manager\_\-t::capacity, jstring\_\-manager\_\-t::entries, java\_\-lang\_\-String\_\-t::header, header\_\-is\_\-marked(), and java\_\-lang\_\-String\_\-t::next.
+
+
+
+Referenced by gc\_\-collect().
+
+\index{jstring.c@{jstring.c}!jsm\_\-rehash@{jsm\_\-rehash}}
+\index{jsm\_\-rehash@{jsm\_\-rehash}!jstring.c@{jstring.c}}
+\subsubsection[{jsm\_\-rehash}]{\setlength{\rightskip}{0pt plus 5cm}static void jsm\_\-rehash (
+\begin{DoxyParamCaption}
+\item[{uint32\_\-t}]{ capacity}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily  [static]}}\label{jstring_8c_a2cb8a3e5197802f80b6053a2c52df906}
+Rehashes the Java string manager. This function doesn't acquire the VM lock as it can be called only when all the threads have been stopped 
+\begin{DoxyParams}{Parameters}
+\item[{\em capacity}]The new capacity \end{DoxyParams}
+
+
+Definition at line 174 of file jstring.c.
+
+
+
+References jstring\_\-manager\_\-t::buckets, java\_\-lang\_\-String\_\-t::cachedHashCode, jstring\_\-manager\_\-t::capacity, gc\_\-free(), gc\_\-malloc(), and java\_\-lang\_\-String\_\-t::next.
+
+
+
+Referenced by jstring\_\-intern().
+
+\index{jstring.c@{jstring.c}!jsm\_\-rehash\_\-literals@{jsm\_\-rehash\_\-literals}}
+\index{jsm\_\-rehash\_\-literals@{jsm\_\-rehash\_\-literals}!jstring.c@{jstring.c}}
+\subsubsection[{jsm\_\-rehash\_\-literals}]{\setlength{\rightskip}{0pt plus 5cm}static void jsm\_\-rehash\_\-literals (
+\begin{DoxyParamCaption}
+\item[{uint32\_\-t}]{ capacity}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily  [static]}}\label{jstring_8c_a73e7bd996116ac73bdbadd7e29e29434}
+Rehashes the Java string manager literals hash-\/table. This function doesn't acquire the VM lock as it can be called only when all the threads have been stopped 
+\begin{DoxyParams}{Parameters}
+\item[{\em capacity}]The new capacity \end{DoxyParams}
+
+
+Definition at line 210 of file jstring.c.
+
+
+
+References jstring\_\-manager\_\-t::buckets, java\_\-lang\_\-String\_\-t::cachedHashCode, gc\_\-free(), gc\_\-malloc(), jstring\_\-manager\_\-t::lit\_\-buckets, jstring\_\-manager\_\-t::lit\_\-capacity, and java\_\-lang\_\-String\_\-t::next.
+
+
+
+Referenced by jstring\_\-create\_\-literal().
+
+\index{jstring.c@{jstring.c}!jsm\_\-set\_\-classes@{jsm\_\-set\_\-classes}}
+\index{jsm\_\-set\_\-classes@{jsm\_\-set\_\-classes}!jstring.c@{jstring.c}}
+\subsubsection[{jsm\_\-set\_\-classes}]{\setlength{\rightskip}{0pt plus 5cm}void jsm\_\-set\_\-classes (
+\begin{DoxyParamCaption}
+\item[{{\bf class\_\-t} $\ast$}]{ str\_\-cl, }
+\item[{{\bf class\_\-t} $\ast$}]{ char\_\-array\_\-cl}
+\end{DoxyParamCaption}
+)}\label{jstring_8c_a6674768a7543a000d65a526d8b6061dc}
+Passes the pointers to the java.lang.String class and the [C array class to the Java string manager, the manager is not really functional until this second initialization step has been done 
+\begin{DoxyParams}{Parameters}
+\item[{\em str\_\-cl}]A pointer to the java.lang.String class \item[{\em char\_\-array\_\-cl}]A pointer to the [C class \end{DoxyParams}
+
+
+Definition at line 112 of file jstring.c.
+
+
+
+References jstring\_\-manager\_\-t::char\_\-array\_\-cl, and jstring\_\-manager\_\-t::str\_\-cl.
+
+
+
+Referenced by bcl\_\-preload\_\-bootstrap\_\-classes().
+
+\index{jstring.c@{jstring.c}!jstring\_\-create\_\-from\_\-unicode@{jstring\_\-create\_\-from\_\-unicode}}
+\index{jstring\_\-create\_\-from\_\-unicode@{jstring\_\-create\_\-from\_\-unicode}!jstring.c@{jstring.c}}
+\subsubsection[{jstring\_\-create\_\-from\_\-unicode}]{\setlength{\rightskip}{0pt plus 5cm}{\bf java\_\-lang\_\-String\_\-t}$\ast$ jstring\_\-create\_\-from\_\-unicode (
+\begin{DoxyParamCaption}
+\item[{const uint16\_\-t $\ast$}]{ uchar, }
+\item[{uint32\_\-t}]{ length}
+\end{DoxyParamCaption}
+)}\label{jstring_8c_a6a41ca2e4ab5d35f7791780d0ccdcc70}
+Creates a new Java string from an Unicode array 
+\begin{DoxyParams}{Parameters}
+\item[{\em uchar}]A pointer to the source array \item[{\em length}]The string length \end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+A Java reference to the newly created string 
+\end{DoxyReturn}
+
+
+Definition at line 429 of file jstring.c.
+
+
+
+References array\_\-get\_\-data(), java\_\-lang\_\-String\_\-t::cachedHashCode, java\_\-lang\_\-String\_\-t::count, gc\_\-new(), gc\_\-new\_\-array\_\-nonref(), JAVA\_\-LANG\_\-STRING\_\-REF2PTR, java\_\-lang\_\-String\_\-t::next, java\_\-lang\_\-String\_\-t::offset, jstring\_\-manager\_\-t::str\_\-cl, T\_\-CHAR, thread\_\-pop\_\-root(), thread\_\-push\_\-root(), and java\_\-lang\_\-String\_\-t::value.
+
+
+
+Referenced by KNI\_\-NewString().
+
+\index{jstring.c@{jstring.c}!jstring\_\-create\_\-from\_\-utf8@{jstring\_\-create\_\-from\_\-utf8}}
+\index{jstring\_\-create\_\-from\_\-utf8@{jstring\_\-create\_\-from\_\-utf8}!jstring.c@{jstring.c}}
+\subsubsection[{jstring\_\-create\_\-from\_\-utf8}]{\setlength{\rightskip}{0pt plus 5cm}{\bf java\_\-lang\_\-String\_\-t}$\ast$ jstring\_\-create\_\-from\_\-utf8 (
+\begin{DoxyParamCaption}
+\item[{const char $\ast$}]{ src}
+\end{DoxyParamCaption}
+)}\label{jstring_8c_a56de1c2f8a445896fb3cc26a6491acd8}
+Creates a new Java string from an utf8 string 
+\begin{DoxyParams}{Parameters}
+\item[{\em src}]A pointer to the source string \end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+A Java reference to the newly created string 
+\end{DoxyReturn}
+
+
+Definition at line 387 of file jstring.c.
+
+
+
+References array\_\-get\_\-data(), c\_\-throw, java\_\-lang\_\-String\_\-t::cachedHashCode, java\_\-lang\_\-String\_\-t::count, gc\_\-new(), gc\_\-new\_\-array\_\-nonref(), JAVA\_\-LANG\_\-NOCLASSDEFFOUNDERROR, JAVA\_\-LANG\_\-STRING\_\-REF2PTR, java\_\-lang\_\-String\_\-t::next, java\_\-lang\_\-String\_\-t::offset, jstring\_\-manager\_\-t::str\_\-cl, T\_\-CHAR, thread\_\-pop\_\-root(), thread\_\-push\_\-root(), utf8\_\-check(), utf8\_\-to\_\-java(), utf8\_\-to\_\-java\_\-length(), and java\_\-lang\_\-String\_\-t::value.
+
+
+
+Referenced by java\_\-lang\_\-Class\_\-getInternalName(), KNI\_\-NewStringUTF(), KNI\_\-ThrowNew(), and thread\_\-create\_\-main().
+
+\index{jstring.c@{jstring.c}!jstring\_\-create\_\-literal@{jstring\_\-create\_\-literal}}
+\index{jstring\_\-create\_\-literal@{jstring\_\-create\_\-literal}!jstring.c@{jstring.c}}
+\subsubsection[{jstring\_\-create\_\-literal}]{\setlength{\rightskip}{0pt plus 5cm}{\bf java\_\-lang\_\-String\_\-t}$\ast$ jstring\_\-create\_\-literal (
+\begin{DoxyParamCaption}
+\item[{const char $\ast$}]{ src}
+\end{DoxyParamCaption}
+)}\label{jstring_8c_aa8866bd535dbf85d514a7db5555ab1e2}
+Creates a new Java string literal from an utf8 string and interns it in the literal hash-\/table 
+\begin{DoxyParams}{Parameters}
+\item[{\em src}]A pointer to the source string \end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+A Java reference to the newly created string 
+\end{DoxyReturn}
+
+
+Definition at line 318 of file jstring.c.
+
+
+
+References array\_\-get\_\-data(), c\_\-throw, gc\_\-new(), gc\_\-new\_\-array\_\-nonref(), JAVA\_\-LANG\_\-NOCLASSDEFFOUNDERROR, JAVA\_\-LANG\_\-STRING\_\-REF2PTR, jsm\_\-rehash\_\-literals(), jstring\_\-hash(), jstring\_\-manager\_\-t::lit\_\-buckets, jstring\_\-manager\_\-t::lit\_\-capacity, jstring\_\-manager\_\-t::lit\_\-entries, jstring\_\-manager\_\-t::lit\_\-init\_\-capacity, jstring\_\-manager\_\-t::str\_\-cl, T\_\-CHAR, thread\_\-pop\_\-root(), thread\_\-push\_\-root(), tm\_\-lock(), tm\_\-unlock(), utf8\_\-check(), utf8\_\-to\_\-java(), and utf8\_\-to\_\-java\_\-length().
+
+
+
+Referenced by cp\_\-create(), and vm\_\-run().
+
+\index{jstring.c@{jstring.c}!jstring\_\-equals@{jstring\_\-equals}}
+\index{jstring\_\-equals@{jstring\_\-equals}!jstring.c@{jstring.c}}
+\subsubsection[{jstring\_\-equals}]{\setlength{\rightskip}{0pt plus 5cm}static bool jstring\_\-equals (
+\begin{DoxyParamCaption}
+\item[{const {\bf java\_\-lang\_\-String\_\-t} $\ast$}]{ str1, }
+\item[{const {\bf java\_\-lang\_\-String\_\-t} $\ast$}]{ str2}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily  [static]}}\label{jstring_8c_afbc76db1001759ed8a7f1b4031ab52fa}
+Compares two java strings 
+\begin{DoxyParams}{Parameters}
+\item[{\em str1}]A pointer to a Java string \item[{\em str2}]A pointer to a Java string \end{DoxyParams}
+
+
+Definition at line 481 of file jstring.c.
+
+
+
+References array\_\-get\_\-data(), java\_\-lang\_\-String\_\-t::count, java\_\-lang\_\-String\_\-t::offset, and java\_\-lang\_\-String\_\-t::value.
+
+
+
+Referenced by jstring\_\-intern().
+
+\index{jstring.c@{jstring.c}!jstring\_\-hash@{jstring\_\-hash}}
+\index{jstring\_\-hash@{jstring\_\-hash}!jstring.c@{jstring.c}}
+\subsubsection[{jstring\_\-hash}]{\setlength{\rightskip}{0pt plus 5cm}static uint32\_\-t jstring\_\-hash (
+\begin{DoxyParamCaption}
+\item[{const uint16\_\-t $\ast$}]{ data, }
+\item[{uint32\_\-t}]{ offset, }
+\item[{uint32\_\-t}]{ count}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily  [static]}}\label{jstring_8c_a634f1e4eaeb9ee84d4ad4ae0e0ad820d}
+Calculates the hash of a Java string 
+\begin{DoxyParams}{Parameters}
+\item[{\em data}]The source array with the string character's \item[{\em offset}]The offset \item[{\em count}]The length \end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+The computed hash for this string 
+\end{DoxyReturn}
+
+
+Definition at line 464 of file jstring.c.
+
+
+
+Referenced by jstring\_\-create\_\-literal(), and jstring\_\-intern().
+
+\index{jstring.c@{jstring.c}!jstring\_\-intern@{jstring\_\-intern}}
+\index{jstring\_\-intern@{jstring\_\-intern}!jstring.c@{jstring.c}}
+\subsubsection[{jstring\_\-intern}]{\setlength{\rightskip}{0pt plus 5cm}{\bf java\_\-lang\_\-String\_\-t}$\ast$ jstring\_\-intern (
+\begin{DoxyParamCaption}
+\item[{{\bf java\_\-lang\_\-String\_\-t} $\ast$}]{ jstr}
+\end{DoxyParamCaption}
+)}\label{jstring_8c_a59e3f9e64e1da9b5b6dd4ed7fecac631}
+Interns a java.lang.String object, helper function used for implementing java.lang.String.intern() 
+\begin{DoxyParams}{Parameters}
+\item[{\em jstr}]A pointer to a java.lang.String object \end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+A pointer to the interned string 
+\end{DoxyReturn}
+
+
+Definition at line 247 of file jstring.c.
+
+
+
+References array\_\-get\_\-data(), jstring\_\-manager\_\-t::buckets, java\_\-lang\_\-String\_\-t::cachedHashCode, jstring\_\-manager\_\-t::capacity, java\_\-lang\_\-String\_\-t::count, jstring\_\-manager\_\-t::entries, jstring\_\-manager\_\-t::init\_\-capacity, jsm\_\-rehash(), jstring\_\-equals(), jstring\_\-hash(), jstring\_\-manager\_\-t::lit\_\-buckets, jstring\_\-manager\_\-t::lit\_\-capacity, jstring\_\-manager\_\-t::load, java\_\-lang\_\-String\_\-t::next, java\_\-lang\_\-String\_\-t::offset, tm\_\-lock(), tm\_\-unlock(), and java\_\-lang\_\-String\_\-t::value.
+
+
+
+Referenced by java\_\-lang\_\-String\_\-intern().
+
+
+
+\subsection{Variable Documentation}
+\index{jstring.c@{jstring.c}!jsm@{jsm}}
+\index{jsm@{jsm}!jstring.c@{jstring.c}}
+\subsubsection[{jsm}]{\setlength{\rightskip}{0pt plus 5cm}{\bf jstring\_\-manager\_\-t} {\bf jsm}\hspace{0.3cm}{\ttfamily  [static]}}\label{jstring_8c_a27eabe2fb309bb2d07163e1fdf2687c6}
+Global Java strings manager 
+
+Definition at line 64 of file jstring.c.
+

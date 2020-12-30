@@ -1,0 +1,331 @@
+\section{java::io::InputStream Class Reference}
+\label{classjava_1_1io_1_1_input_stream}\index{java::io::InputStream@{java::io::InputStream}}
+Inheritance diagram for java::io::InputStream:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=0.840841cm]{classjava_1_1io_1_1_input_stream}
+\end{center}
+\end{figure}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+{\bf InputStream} ()
+\item 
+int {\bf available} ()  throws IOException     
+\item 
+void {\bf close} ()  throws IOException     
+\item 
+void {\bf mark} (int readLimit)
+\item 
+boolean {\bf markSupported} ()
+\item 
+abstract int {\bf read} ()  throws IOException
+\item 
+int {\bf read} (byte[$\,$] b)  throws IOException     
+\item 
+int {\bf read} (byte[$\,$] b, int off, int len)  throws IOException     
+\item 
+void {\bf reset} ()  throws IOException     
+\item 
+long {\bf skip} (long n)  throws IOException     
+\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+This abstract class forms the base of the hierarchy of classes that read input as a stream of bytes. It provides a common set of methods for reading bytes from streams. Subclasses implement and extend these methods to read bytes from a particular input source such as a file or network connection.
+
+\begin{DoxyAuthor}{Author}
+Aaron M. Renn ({\tt arenn@urbanophile.com}) 
+
+Warren Levy ({\tt warrenl@cygnus.com}) 
+\end{DoxyAuthor}
+
+
+Definition at line 51 of file InputStream.java.
+
+
+
+\subsection{Constructor \& Destructor Documentation}
+\index{java::io::InputStream@{java::io::InputStream}!InputStream@{InputStream}}
+\index{InputStream@{InputStream}!java::io::InputStream@{java::io::InputStream}}
+\subsubsection[{InputStream}]{\setlength{\rightskip}{0pt plus 5cm}java::io::InputStream::InputStream (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily  [inline]}}\label{classjava_1_1io_1_1_input_stream_a76572a45d31e7565cc685b03f2f9c701}
+Default, no-\/arg, public constructor 
+
+Definition at line 56 of file InputStream.java.
+
+
+
+\subsection{Member Function Documentation}
+\index{java::io::InputStream@{java::io::InputStream}!available@{available}}
+\index{available@{available}!java::io::InputStream@{java::io::InputStream}}
+\subsubsection[{available}]{\setlength{\rightskip}{0pt plus 5cm}int java::io::InputStream::available (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)  throws {\bf IOException}     \hspace{0.3cm}{\ttfamily  [inline]}}\label{classjava_1_1io_1_1_input_stream_ac07ebf2845751f87e46269188517d440}
+This method returns the number of bytes that can be read from this stream before a read can block. A return of 0 indicates that blocking might (or might not) occur on the very next read attempt. 
+
+This method always returns 0 in this class
+
+\begin{DoxyReturn}{Returns}
+The number of bytes that can be read before blocking could occur
+\end{DoxyReturn}
+
+\begin{DoxyExceptions}{Exceptions}
+\item[{\em \doxyref{IOException}{p.}{classjava_1_1io_1_1_i_o_exception}}]If an error occurs \end{DoxyExceptions}
+
+
+Reimplemented in {\bf java::io::ByteArrayInputStream} \doxyref{}{p.}{classjava_1_1io_1_1_byte_array_input_stream_a6c7b1721379e0b6c123414981853063e}, and {\bf jelatine::VMResourceStream} \doxyref{}{p.}{classjelatine_1_1_v_m_resource_stream_aa585878dc07190441eada47550e45591}.
+
+
+
+Definition at line 71 of file InputStream.java.
+
+
+
+Referenced by java::io::DataInputStream::available(), and java::io::InputStreamReader::ready().
+
+\index{java::io::InputStream@{java::io::InputStream}!close@{close}}
+\index{close@{close}!java::io::InputStream@{java::io::InputStream}}
+\subsubsection[{close}]{\setlength{\rightskip}{0pt plus 5cm}void java::io::InputStream::close (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)  throws {\bf IOException}     \hspace{0.3cm}{\ttfamily  [inline]}}\label{classjava_1_1io_1_1_input_stream_a56b97e764f0e48a8e8d8ad76f2d2bc59}
+This method closes the stream. Any futher attempts to read from the stream may generate an {\ttfamily \doxyref{IOException}{p.}{classjava_1_1io_1_1_i_o_exception}} 
+
+This method does nothing in this class, but subclasses may override this method in order to provide additional functionality.
+
+
+\begin{DoxyExceptions}{Exceptions}
+\item[{\em \doxyref{IOException}{p.}{classjava_1_1io_1_1_i_o_exception}}]If an error occurs, which can only happen in a subclass \end{DoxyExceptions}
+
+
+Reimplemented in {\bf java::io::ByteArrayInputStream} \doxyref{}{p.}{classjava_1_1io_1_1_byte_array_input_stream_ac9ab98af603f7e8139a0646acee5dee5}.
+
+
+
+Definition at line 86 of file InputStream.java.
+
+
+
+Referenced by java::io::InputStreamReader::close(), and java::io::DataInputStream::close().
+
+\index{java::io::InputStream@{java::io::InputStream}!mark@{mark}}
+\index{mark@{mark}!java::io::InputStream@{java::io::InputStream}}
+\subsubsection[{mark}]{\setlength{\rightskip}{0pt plus 5cm}void java::io::InputStream::mark (
+\begin{DoxyParamCaption}
+\item[{int}]{ readLimit}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily  [inline]}}\label{classjava_1_1io_1_1_input_stream_a61b4efb59f7b73de65907bfd22c8602d}
+This method marks a position in the input to which the stream can be \char`\"{}reset\char`\"{} by calling the {\ttfamily \doxyref{reset()}{p.}{classjava_1_1io_1_1_input_stream_abfa6e5234c9c27f40563e25a70957d94}} method. The parameter {\ttfamily readlimit} is the number of bytes that can be read from the stream after setting the mark before the mark becomes invalid. For example, if {\ttfamily \doxyref{mark()}{p.}{classjava_1_1io_1_1_input_stream_a61b4efb59f7b73de65907bfd22c8602d}} is called with a read limit of 10, then when 11 bytes of data are read from the stream before the {\ttfamily \doxyref{reset()}{p.}{classjava_1_1io_1_1_input_stream_abfa6e5234c9c27f40563e25a70957d94}} method is called, then the mark is invalid and the stream object instance is not required to remember the mark. 
+
+This method does nothing in this class, but subclasses may override it to provide mark/reset functionality.
+
+
+\begin{DoxyParams}{Parameters}
+\item[{\em readLimit}]The number of bytes that can be read before the mark becomes invalid \end{DoxyParams}
+
+
+Reimplemented in {\bf java::io::ByteArrayInputStream} \doxyref{}{p.}{classjava_1_1io_1_1_byte_array_input_stream_a45c3a494b22171e337abfd039260f098}.
+
+
+
+Definition at line 108 of file InputStream.java.
+
+
+
+Referenced by java::io::InputStreamReader::mark(), and java::io::DataInputStream::mark().
+
+\index{java::io::InputStream@{java::io::InputStream}!markSupported@{markSupported}}
+\index{markSupported@{markSupported}!java::io::InputStream@{java::io::InputStream}}
+\subsubsection[{markSupported}]{\setlength{\rightskip}{0pt plus 5cm}boolean java::io::InputStream::markSupported (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily  [inline]}}\label{classjava_1_1io_1_1_input_stream_a0cb884e77a326313c39604bd4a032da5}
+This method returns a boolean that indicates whether the mark/reset methods are supported in this class. Those methods can be used to remember a specific point in the stream and reset the stream to that point. 
+
+This method always returns {\ttfamily false} in this class, but subclasses can override this method to return {\ttfamily true} if they support mark/reset functionality.
+
+\begin{DoxyReturn}{Returns}
+{\ttfamily true} if mark/reset functionality is supported, {\ttfamily false} otherwise 
+\end{DoxyReturn}
+
+
+Reimplemented in {\bf java::io::ByteArrayInputStream} \doxyref{}{p.}{classjava_1_1io_1_1_byte_array_input_stream_a55a6b6a48ac628a0a4e0236eb9165849}.
+
+
+
+Definition at line 126 of file InputStream.java.
+
+
+
+Referenced by java::io::DataInputStream::markSupported().
+
+\index{java::io::InputStream@{java::io::InputStream}!read@{read}}
+\index{read@{read}!java::io::InputStream@{java::io::InputStream}}
+\subsubsection[{read}]{\setlength{\rightskip}{0pt plus 5cm}int java::io::InputStream::read (
+\begin{DoxyParamCaption}
+\item[{byte[$\,$]}]{ b, }
+\item[{int}]{ off, }
+\item[{int}]{ len}
+\end{DoxyParamCaption}
+)  throws {\bf IOException}     \hspace{0.3cm}{\ttfamily  [inline]}}\label{classjava_1_1io_1_1_input_stream_a8dd0e8c89c31b11f0bff0039ec4f7a71}
+This method read bytes from a stream and stores them into a caller supplied buffer. It starts storing the data at index {\ttfamily off} into the buffer and attempts to read {\ttfamily len} bytes. This method can return before reading the number of bytes requested. The actual number of bytes read is returned as an int. A -\/1 is returned to indicate the end of the stream. 
+
+This method will block until some data can be read. 
+
+This method operates by calling the single byte {\ttfamily \doxyref{read()}{p.}{classjava_1_1io_1_1_input_stream_a2663225289237a9aefef92a835ad4a9b}} method in a loop until the desired number of bytes are read. The read loop stops short if the end of the stream is encountered or if an \doxyref{IOException}{p.}{classjava_1_1io_1_1_i_o_exception} is encountered on any read operation except the first. If the first attempt to read a bytes fails, the \doxyref{IOException}{p.}{classjava_1_1io_1_1_i_o_exception} is allowed to propagate upward. And subsequent \doxyref{IOException}{p.}{classjava_1_1io_1_1_i_o_exception} is caught and treated identically to an end of stream condition. Subclasses can (and should if possible) override this method to provide a more efficient implementation.
+
+
+\begin{DoxyParams}{Parameters}
+\item[{\em b}]The array into which the bytes read should be stored \item[{\em off}]The offset into the array to start storing bytes \item[{\em len}]The requested number of bytes to read\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+The actual number of bytes read, or -\/1 if end of stream.
+\end{DoxyReturn}
+
+\begin{DoxyExceptions}{Exceptions}
+\item[{\em \doxyref{IOException}{p.}{classjava_1_1io_1_1_i_o_exception}}]If an error occurs. \end{DoxyExceptions}
+
+
+Reimplemented in {\bf java::io::ByteArrayInputStream} \doxyref{}{p.}{classjava_1_1io_1_1_byte_array_input_stream_a183ca9d02ec99d3cfdd6760cfd80d779}, and {\bf jelatine::cldc::io::socket::ProtocolImpl::SocketInputStream} \doxyref{}{p.}{classjelatine_1_1cldc_1_1io_1_1socket_1_1_protocol_impl_1_1_socket_input_stream_a5a81d669582c70f8716b88eed4fd5ac3}.
+
+
+
+Definition at line 194 of file InputStream.java.
+
+
+
+References read().
+
+\index{java::io::InputStream@{java::io::InputStream}!read@{read}}
+\index{read@{read}!java::io::InputStream@{java::io::InputStream}}
+\subsubsection[{read}]{\setlength{\rightskip}{0pt plus 5cm}abstract int java::io::InputStream::read (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)  throws {\bf IOException}\hspace{0.3cm}{\ttfamily  [pure virtual]}}\label{classjava_1_1io_1_1_input_stream_a2663225289237a9aefef92a835ad4a9b}
+This method reads an unsigned byte from the input stream and returns it as an int in the range of 0-\/255. This method also will return -\/1 if the end of the stream has been reached. 
+
+This method will block until the byte can be read.
+
+\begin{DoxyReturn}{Returns}
+The byte read or -\/1 if end of stream
+\end{DoxyReturn}
+
+\begin{DoxyExceptions}{Exceptions}
+\item[{\em \doxyref{IOException}{p.}{classjava_1_1io_1_1_i_o_exception}}]If an error occurs \end{DoxyExceptions}
+
+
+Implemented in {\bf java::io::ByteArrayInputStream} \doxyref{}{p.}{classjava_1_1io_1_1_byte_array_input_stream_af393b73b82c26d99a4d51451eb71815d}, {\bf jelatine::cldc::io::socket::ProtocolImpl::SocketInputStream} \doxyref{}{p.}{classjelatine_1_1cldc_1_1io_1_1socket_1_1_protocol_impl_1_1_socket_input_stream_a97d9765b75aa610ac425a1a3659e4d1c}, and {\bf jelatine::VMResourceStream} \doxyref{}{p.}{classjelatine_1_1_v_m_resource_stream_a44260a484b4eb7e0aac40c772657ff96}.
+
+
+
+Referenced by java::io::InputStreamReader::read(), read(), java::io::DataInputStream::read(), java::io::DataInputStream::readBoolean(), java::io::DataInputStream::readByte(), java::io::DataInputStream::readFully(), java::io::DataInputStream::readUnsignedByte(), and skip().
+
+\index{java::io::InputStream@{java::io::InputStream}!read@{read}}
+\index{read@{read}!java::io::InputStream@{java::io::InputStream}}
+\subsubsection[{read}]{\setlength{\rightskip}{0pt plus 5cm}int java::io::InputStream::read (
+\begin{DoxyParamCaption}
+\item[{byte[$\,$]}]{ b}
+\end{DoxyParamCaption}
+)  throws {\bf IOException}     \hspace{0.3cm}{\ttfamily  [inline]}}\label{classjava_1_1io_1_1_input_stream_a8501f410c04fd75e03de52446d4303df}
+This method reads bytes from a stream and stores them into a caller supplied buffer. This method attempts to completely fill the buffer, but can return before doing so. The actual number of bytes read is returned as an int. A -\/1 is returned to indicate the end of the stream. 
+
+This method will block until some data can be read. 
+
+This method operates by calling an overloaded read method like so: {\ttfamily read(b, 0, b.length)}
+
+
+\begin{DoxyParams}{Parameters}
+\item[{\em b}]The buffer into which the bytes read will be stored.\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+The number of bytes read or -\/1 if end of stream.
+\end{DoxyReturn}
+
+\begin{DoxyExceptions}{Exceptions}
+\item[{\em \doxyref{IOException}{p.}{classjava_1_1io_1_1_i_o_exception}}]If an error occurs. \end{DoxyExceptions}
+
+
+Reimplemented in {\bf jelatine::cldc::io::socket::ProtocolImpl::SocketInputStream} \doxyref{}{p.}{classjelatine_1_1cldc_1_1io_1_1socket_1_1_protocol_impl_1_1_socket_input_stream_adeba3080296d5efef26c087fa49a6c16}.
+
+
+
+Definition at line 161 of file InputStream.java.
+
+
+
+References read().
+
+\index{java::io::InputStream@{java::io::InputStream}!reset@{reset}}
+\index{reset@{reset}!java::io::InputStream@{java::io::InputStream}}
+\subsubsection[{reset}]{\setlength{\rightskip}{0pt plus 5cm}void java::io::InputStream::reset (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)  throws {\bf IOException}     \hspace{0.3cm}{\ttfamily  [inline]}}\label{classjava_1_1io_1_1_input_stream_abfa6e5234c9c27f40563e25a70957d94}
+This method resets a stream to the point where the {\ttfamily \doxyref{mark()}{p.}{classjava_1_1io_1_1_input_stream_a61b4efb59f7b73de65907bfd22c8602d}} method was called. Any bytes that were read after the mark point was set will be re-\/read during subsequent reads. 
+
+This method always throws an \doxyref{IOException}{p.}{classjava_1_1io_1_1_i_o_exception} in this class, but subclasses can override this method if they provide mark/reset functionality.
+
+
+\begin{DoxyExceptions}{Exceptions}
+\item[{\em \doxyref{IOException}{p.}{classjava_1_1io_1_1_i_o_exception}}]Always thrown for this class \end{DoxyExceptions}
+
+
+Reimplemented in {\bf java::io::ByteArrayInputStream} \doxyref{}{p.}{classjava_1_1io_1_1_byte_array_input_stream_a57a1c68617c78010ce5262fe04435c5c}.
+
+
+
+Definition at line 235 of file InputStream.java.
+
+
+
+Referenced by java::io::InputStreamReader::reset(), and java::io::DataInputStream::reset().
+
+\index{java::io::InputStream@{java::io::InputStream}!skip@{skip}}
+\index{skip@{skip}!java::io::InputStream@{java::io::InputStream}}
+\subsubsection[{skip}]{\setlength{\rightskip}{0pt plus 5cm}long java::io::InputStream::skip (
+\begin{DoxyParamCaption}
+\item[{long}]{ n}
+\end{DoxyParamCaption}
+)  throws {\bf IOException}     \hspace{0.3cm}{\ttfamily  [inline]}}\label{classjava_1_1io_1_1_input_stream_a3fa1c9184c17121247014f14d4268640}
+This method skips the specified number of bytes in the stream. It returns the actual number of bytes skipped, which may be less than the requested amount. 
+
+This method reads and discards bytes into a byte array until the specified number of bytes were skipped or until either the end of stream is reached or a read attempt returns a short count. Subclasses can override this metho to provide a more efficient implementation where one exists.
+
+
+\begin{DoxyParams}{Parameters}
+\item[{\em n}]The requested number of bytes to skip\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+The actual number of bytes skipped.
+\end{DoxyReturn}
+
+\begin{DoxyExceptions}{Exceptions}
+\item[{\em \doxyref{IOException}{p.}{classjava_1_1io_1_1_i_o_exception}}]If an error occurs \end{DoxyExceptions}
+
+
+Reimplemented in {\bf java::io::ByteArrayInputStream} \doxyref{}{p.}{classjava_1_1io_1_1_byte_array_input_stream_a531d07c7ef83db55076575cd0a394810}.
+
+
+
+Definition at line 257 of file InputStream.java.
+
+
+
+References read().
+
+
+
+Referenced by java::io::DataInputStream::skip(), and java::io::DataInputStream::skipBytes().
+
+
+
+The documentation for this class was generated from the following file:\begin{DoxyCompactItemize}
+\item 
+src/classpath/java/io/InputStream.java\end{DoxyCompactItemize}

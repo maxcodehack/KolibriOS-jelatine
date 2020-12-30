@@ -1,0 +1,1067 @@
+\section{java::lang::StringBuffer Class Reference}
+\label{classjava_1_1lang_1_1_string_buffer}\index{java::lang::StringBuffer@{java::lang::StringBuffer}}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+{\bf StringBuffer} ()
+\item 
+{\bf StringBuffer} (int capacity)
+\item 
+{\bf StringBuffer} ({\bf String} str)
+\item 
+synchronized int {\bf length} ()
+\item 
+synchronized int {\bf capacity} ()
+\item 
+synchronized void {\bf ensureCapacity} (int minimumCapacity)
+\item 
+synchronized void {\bf setLength} (int newLength)
+\item 
+synchronized char {\bf charAt} (int index)
+\item 
+synchronized void {\bf getChars} (int srcOffset, int srcEnd, char[$\,$] dst, int dstOffset)
+\item 
+synchronized void {\bf setCharAt} (int index, char ch)
+\item 
+{\bf StringBuffer} {\bf append} ({\bf Object} obj)
+\item 
+synchronized {\bf StringBuffer} {\bf append} ({\bf String} str)
+\item 
+synchronized {\bf StringBuffer} {\bf append} ({\bf StringBuffer} stringBuffer)
+\item 
+{\bf StringBuffer} {\bf append} (char[$\,$] data)
+\item 
+synchronized {\bf StringBuffer} {\bf append} (char[$\,$] data, int offset, int {\bf count})
+\item 
+{\bf StringBuffer} {\bf append} (boolean bool)
+\item 
+synchronized {\bf StringBuffer} {\bf append} (char ch)
+\item 
+{\bf StringBuffer} {\bf append} (int inum)
+\item 
+{\bf StringBuffer} {\bf append} (long lnum)
+\item 
+{\bf StringBuffer} {\bf append} (float fnum)
+\item 
+{\bf StringBuffer} {\bf append} (double dnum)
+\item 
+synchronized {\bf StringBuffer} {\bf delete} (int start, int end)
+\item 
+{\bf StringBuffer} {\bf deleteCharAt} (int index)
+\item 
+{\bf StringBuffer} {\bf insert} (int offset, {\bf Object} obj)
+\item 
+synchronized {\bf StringBuffer} {\bf insert} (int offset, {\bf String} str)
+\item 
+{\bf StringBuffer} {\bf insert} (int offset, char[$\,$] data)
+\item 
+{\bf StringBuffer} {\bf insert} (int offset, boolean bool)
+\item 
+synchronized {\bf StringBuffer} {\bf insert} (int offset, char ch)
+\item 
+{\bf StringBuffer} {\bf insert} (int offset, int inum)
+\item 
+{\bf StringBuffer} {\bf insert} (int offset, long lnum)
+\item 
+{\bf StringBuffer} {\bf insert} (int offset, float fnum)
+\item 
+{\bf StringBuffer} {\bf insert} (int offset, double dnum)
+\item 
+synchronized {\bf StringBuffer} {\bf reverse} ()
+\item 
+{\bf String} {\bf toString} ()
+\end{DoxyCompactItemize}
+\subsection*{Package Attributes}
+\begin{DoxyCompactItemize}
+\item 
+int {\bf count}
+\item 
+char[$\,$] {\bf value}
+\item 
+boolean {\bf shared}
+\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+{\ttfamily \doxyref{StringBuffer}{p.}{classjava_1_1lang_1_1_string_buffer}} represents a changeable {\ttfamily \doxyref{String}{p.}{classjava_1_1lang_1_1_string}}. It provides the operations required to modify the {\ttfamily \doxyref{StringBuffer}{p.}{classjava_1_1lang_1_1_string_buffer}}, including insert, replace, delete, append, and reverse. It is thread-\/safe; meaning that all modifications to a buffer are in synchronized methods.
+
+{\ttfamily \doxyref{StringBuffer}{p.}{classjava_1_1lang_1_1_string_buffer}}s are variable-\/length in nature, so even if you initialize them to a certain size, they can still grow larger than that. {\itshape Capacity\/} indicates the number of characters the {\ttfamily \doxyref{StringBuffer}{p.}{classjava_1_1lang_1_1_string_buffer}} can have in it before it has to grow (growing the char array is an expensive operation involving {\ttfamily new}).
+
+Incidentally, compilers often implement the \doxyref{String}{p.}{classjava_1_1lang_1_1_string} operator \char`\"{}+\char`\"{} by using a {\ttfamily \doxyref{StringBuffer}{p.}{classjava_1_1lang_1_1_string_buffer}} operation:\par
+ {\ttfamily a + b}\par
+ is the same as\par
+ {\ttfamily new \doxyref{StringBuffer()}{p.}{classjava_1_1lang_1_1_string_buffer_a4c9ecbdda2c9417f42fcda31dea2ace1}.append(a).append(b).\doxyref{toString()}{p.}{classjava_1_1lang_1_1_string_buffer_aa4999ff69a5535cd0a281d1e20f1dcd5}}.
+
+Classpath's \doxyref{StringBuffer}{p.}{classjava_1_1lang_1_1_string_buffer} is capable of sharing memory with Strings for efficiency. This will help when a \doxyref{StringBuffer}{p.}{classjava_1_1lang_1_1_string_buffer} is converted to a \doxyref{String}{p.}{classjava_1_1lang_1_1_string} and the \doxyref{StringBuffer}{p.}{classjava_1_1lang_1_1_string_buffer} is not changed after that (quite common when performing string concatenation).
+
+\begin{DoxyAuthor}{Author}
+Paul Fisher 
+
+John Keiser 
+
+Tom Tromey 
+
+Eric Blake ({\tt ebb9@email.byu.edu}) 
+\end{DoxyAuthor}
+\begin{DoxySeeAlso}{See also}
+\doxyref{String}{p.}{classjava_1_1lang_1_1_string} 
+\end{DoxySeeAlso}
+\begin{DoxySince}{Since}
+1.0 
+\end{DoxySince}
+
+
+Definition at line 74 of file StringBuffer.java.
+
+
+
+\subsection{Constructor \& Destructor Documentation}
+\index{java::lang::StringBuffer@{java::lang::StringBuffer}!StringBuffer@{StringBuffer}}
+\index{StringBuffer@{StringBuffer}!java::lang::StringBuffer@{java::lang::StringBuffer}}
+\subsubsection[{StringBuffer}]{\setlength{\rightskip}{0pt plus 5cm}java::lang::StringBuffer::StringBuffer (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily  [inline]}}\label{classjava_1_1lang_1_1_string_buffer_a4c9ecbdda2c9417f42fcda31dea2ace1}
+Create a new \doxyref{StringBuffer}{p.}{classjava_1_1lang_1_1_string_buffer} with default capacity 16. 
+
+Definition at line 105 of file StringBuffer.java.
+
+\index{java::lang::StringBuffer@{java::lang::StringBuffer}!StringBuffer@{StringBuffer}}
+\index{StringBuffer@{StringBuffer}!java::lang::StringBuffer@{java::lang::StringBuffer}}
+\subsubsection[{StringBuffer}]{\setlength{\rightskip}{0pt plus 5cm}java::lang::StringBuffer::StringBuffer (
+\begin{DoxyParamCaption}
+\item[{int}]{ capacity}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily  [inline]}}\label{classjava_1_1lang_1_1_string_buffer_a0a6108b5ce31892589f4a6475761c6cb}
+Create an empty {\ttfamily \doxyref{StringBuffer}{p.}{classjava_1_1lang_1_1_string_buffer}} with the specified initial capacity.
+
+
+\begin{DoxyParams}{Parameters}
+\item[{\em capacity}]the initial capacity \end{DoxyParams}
+
+\begin{DoxyExceptions}{Exceptions}
+\item[{\em \doxyref{NegativeArraySizeException}{p.}{classjava_1_1lang_1_1_negative_array_size_exception}}]if capacity is negative \end{DoxyExceptions}
+
+
+Definition at line 117 of file StringBuffer.java.
+
+
+
+References value.
+
+\index{java::lang::StringBuffer@{java::lang::StringBuffer}!StringBuffer@{StringBuffer}}
+\index{StringBuffer@{StringBuffer}!java::lang::StringBuffer@{java::lang::StringBuffer}}
+\subsubsection[{StringBuffer}]{\setlength{\rightskip}{0pt plus 5cm}java::lang::StringBuffer::StringBuffer (
+\begin{DoxyParamCaption}
+\item[{{\bf String}}]{ str}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily  [inline]}}\label{classjava_1_1lang_1_1_string_buffer_adb754ab8897a2d1dcd45598044bfe12c}
+Create a new {\ttfamily \doxyref{StringBuffer}{p.}{classjava_1_1lang_1_1_string_buffer}} with the characters in the specified {\ttfamily \doxyref{String}{p.}{classjava_1_1lang_1_1_string}}. Initial capacity will be the size of the \doxyref{String}{p.}{classjava_1_1lang_1_1_string} plus 16.
+
+
+\begin{DoxyParams}{Parameters}
+\item[{\em str}]the {\ttfamily \doxyref{String}{p.}{classjava_1_1lang_1_1_string}} to convert \end{DoxyParams}
+
+\begin{DoxyExceptions}{Exceptions}
+\item[{\em \doxyref{NullPointerException}{p.}{classjava_1_1lang_1_1_null_pointer_exception}}]if str is null \end{DoxyExceptions}
+
+
+Definition at line 130 of file StringBuffer.java.
+
+
+
+References java::lang::String::count, count, java::lang::String::getChars(), and value.
+
+
+
+\subsection{Member Function Documentation}
+\index{java::lang::StringBuffer@{java::lang::StringBuffer}!append@{append}}
+\index{append@{append}!java::lang::StringBuffer@{java::lang::StringBuffer}}
+\subsubsection[{append}]{\setlength{\rightskip}{0pt plus 5cm}{\bf StringBuffer} java::lang::StringBuffer::append (
+\begin{DoxyParamCaption}
+\item[{{\bf Object}}]{ obj}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily  [inline]}}\label{classjava_1_1lang_1_1_string_buffer_afbadcb91c1b0fe9fb643c95f8e4e6968}
+Append the {\ttfamily \doxyref{String}{p.}{classjava_1_1lang_1_1_string}} value of the argument to this {\ttfamily \doxyref{StringBuffer}{p.}{classjava_1_1lang_1_1_string_buffer}}. Uses {\ttfamily \doxyref{String.valueOf()}{p.}{classjava_1_1lang_1_1_string_acb43db982bccae8d9570cc2795656884}} to convert to {\ttfamily \doxyref{String}{p.}{classjava_1_1lang_1_1_string}}.
+
+
+\begin{DoxyParams}{Parameters}
+\item[{\em obj}]the {\ttfamily \doxyref{Object}{p.}{classjava_1_1lang_1_1_object}} to convert and append \end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+this {\ttfamily \doxyref{StringBuffer}{p.}{classjava_1_1lang_1_1_string_buffer}} 
+\end{DoxyReturn}
+\begin{DoxySeeAlso}{See also}
+\doxyref{String::valueOf(Object)}{p.}{classjava_1_1lang_1_1_string_acb43db982bccae8d9570cc2795656884} 
+
+\doxyref{append(String)}{p.}{classjava_1_1lang_1_1_string_buffer_ace323930dbbbb41ef00051fd3636b22b} 
+\end{DoxySeeAlso}
+
+
+Definition at line 286 of file StringBuffer.java.
+
+
+
+References java::lang::Object::toString().
+
+
+
+Referenced by append().
+
+\index{java::lang::StringBuffer@{java::lang::StringBuffer}!append@{append}}
+\index{append@{append}!java::lang::StringBuffer@{java::lang::StringBuffer}}
+\subsubsection[{append}]{\setlength{\rightskip}{0pt plus 5cm}synchronized {\bf StringBuffer} java::lang::StringBuffer::append (
+\begin{DoxyParamCaption}
+\item[{{\bf String}}]{ str}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily  [inline]}}\label{classjava_1_1lang_1_1_string_buffer_ace323930dbbbb41ef00051fd3636b22b}
+Append the {\ttfamily \doxyref{String}{p.}{classjava_1_1lang_1_1_string}} to this {\ttfamily \doxyref{StringBuffer}{p.}{classjava_1_1lang_1_1_string_buffer}}. If str is null, the \doxyref{String}{p.}{classjava_1_1lang_1_1_string} \char`\"{}null\char`\"{} is appended.
+
+
+\begin{DoxyParams}{Parameters}
+\item[{\em str}]the {\ttfamily \doxyref{String}{p.}{classjava_1_1lang_1_1_string}} to append \end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+this {\ttfamily \doxyref{StringBuffer}{p.}{classjava_1_1lang_1_1_string_buffer}} 
+\end{DoxyReturn}
+
+
+Definition at line 298 of file StringBuffer.java.
+
+
+
+References count, java::lang::String::count, java::lang::String::getChars(), and value.
+
+\index{java::lang::StringBuffer@{java::lang::StringBuffer}!append@{append}}
+\index{append@{append}!java::lang::StringBuffer@{java::lang::StringBuffer}}
+\subsubsection[{append}]{\setlength{\rightskip}{0pt plus 5cm}{\bf StringBuffer} java::lang::StringBuffer::append (
+\begin{DoxyParamCaption}
+\item[{long}]{ lnum}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily  [inline]}}\label{classjava_1_1lang_1_1_string_buffer_aa48126fc76b0e6d069bdc700df9f9850}
+Append the {\ttfamily \doxyref{String}{p.}{classjava_1_1lang_1_1_string}} value of the argument to this {\ttfamily \doxyref{StringBuffer}{p.}{classjava_1_1lang_1_1_string_buffer}}. Uses {\ttfamily \doxyref{String.valueOf()}{p.}{classjava_1_1lang_1_1_string_acb43db982bccae8d9570cc2795656884}} to convert to {\ttfamily \doxyref{String}{p.}{classjava_1_1lang_1_1_string}}.
+
+
+\begin{DoxyParams}{Parameters}
+\item[{\em lnum}]the {\ttfamily long} to convert and append \end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+this {\ttfamily \doxyref{StringBuffer}{p.}{classjava_1_1lang_1_1_string_buffer}} 
+\end{DoxyReturn}
+\begin{DoxySeeAlso}{See also}
+\doxyref{String::valueOf(long)}{p.}{classjava_1_1lang_1_1_string_a5fc8a425f7aadb6748c57fbbb33de71e} 
+\end{DoxySeeAlso}
+
+
+Definition at line 427 of file StringBuffer.java.
+
+
+
+References append().
+
+\index{java::lang::StringBuffer@{java::lang::StringBuffer}!append@{append}}
+\index{append@{append}!java::lang::StringBuffer@{java::lang::StringBuffer}}
+\subsubsection[{append}]{\setlength{\rightskip}{0pt plus 5cm}{\bf StringBuffer} java::lang::StringBuffer::append (
+\begin{DoxyParamCaption}
+\item[{float}]{ fnum}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily  [inline]}}\label{classjava_1_1lang_1_1_string_buffer_aaaaddc9e25378d7f90cc5334d9c07ea5}
+Append the {\ttfamily \doxyref{String}{p.}{classjava_1_1lang_1_1_string}} value of the argument to this {\ttfamily \doxyref{StringBuffer}{p.}{classjava_1_1lang_1_1_string_buffer}}. Uses {\ttfamily \doxyref{String.valueOf()}{p.}{classjava_1_1lang_1_1_string_acb43db982bccae8d9570cc2795656884}} to convert to {\ttfamily \doxyref{String}{p.}{classjava_1_1lang_1_1_string}}.
+
+
+\begin{DoxyParams}{Parameters}
+\item[{\em fnum}]the {\ttfamily float} to convert and append \end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+this {\ttfamily \doxyref{StringBuffer}{p.}{classjava_1_1lang_1_1_string_buffer}} 
+\end{DoxyReturn}
+\begin{DoxySeeAlso}{See also}
+\doxyref{String::valueOf(float)}{p.}{classjava_1_1lang_1_1_string_aa7ccc72ef8d7f32de6fb76938c31c82d} 
+\end{DoxySeeAlso}
+
+
+Definition at line 441 of file StringBuffer.java.
+
+
+
+References append().
+
+\index{java::lang::StringBuffer@{java::lang::StringBuffer}!append@{append}}
+\index{append@{append}!java::lang::StringBuffer@{java::lang::StringBuffer}}
+\subsubsection[{append}]{\setlength{\rightskip}{0pt plus 5cm}{\bf StringBuffer} java::lang::StringBuffer::append (
+\begin{DoxyParamCaption}
+\item[{double}]{ dnum}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily  [inline]}}\label{classjava_1_1lang_1_1_string_buffer_a240d25c45d709f3326f02d615b26aa96}
+Append the {\ttfamily \doxyref{String}{p.}{classjava_1_1lang_1_1_string}} value of the argument to this {\ttfamily \doxyref{StringBuffer}{p.}{classjava_1_1lang_1_1_string_buffer}}. Uses {\ttfamily \doxyref{String.valueOf()}{p.}{classjava_1_1lang_1_1_string_acb43db982bccae8d9570cc2795656884}} to convert to {\ttfamily \doxyref{String}{p.}{classjava_1_1lang_1_1_string}}.
+
+
+\begin{DoxyParams}{Parameters}
+\item[{\em dnum}]the {\ttfamily double} to convert and append \end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+this {\ttfamily \doxyref{StringBuffer}{p.}{classjava_1_1lang_1_1_string_buffer}} 
+\end{DoxyReturn}
+\begin{DoxySeeAlso}{See also}
+\doxyref{String::valueOf(double)}{p.}{classjava_1_1lang_1_1_string_aab7ba8466a3d6bfab85df721fd9ae007} 
+\end{DoxySeeAlso}
+
+
+Definition at line 455 of file StringBuffer.java.
+
+
+
+References append().
+
+\index{java::lang::StringBuffer@{java::lang::StringBuffer}!append@{append}}
+\index{append@{append}!java::lang::StringBuffer@{java::lang::StringBuffer}}
+\subsubsection[{append}]{\setlength{\rightskip}{0pt plus 5cm}synchronized {\bf StringBuffer} java::lang::StringBuffer::append (
+\begin{DoxyParamCaption}
+\item[{{\bf StringBuffer}}]{ stringBuffer}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily  [inline]}}\label{classjava_1_1lang_1_1_string_buffer_a5557fa6865a243b28094b62dcda4e826}
+Append the {\ttfamily \doxyref{StringBuffer}{p.}{classjava_1_1lang_1_1_string_buffer}} value of the argument to this {\ttfamily \doxyref{StringBuffer}{p.}{classjava_1_1lang_1_1_string_buffer}}. This behaves the same as {\ttfamily append((\doxyref{Object}{p.}{classjava_1_1lang_1_1_object}) stringBuffer)}, except it is more efficient.
+
+
+\begin{DoxyParams}{Parameters}
+\item[{\em stringBuffer}]the {\ttfamily \doxyref{StringBuffer}{p.}{classjava_1_1lang_1_1_string_buffer}} to convert and append \end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+this {\ttfamily \doxyref{StringBuffer}{p.}{classjava_1_1lang_1_1_string_buffer}} 
+\end{DoxyReturn}
+\begin{DoxySeeAlso}{See also}
+\doxyref{append(Object)}{p.}{classjava_1_1lang_1_1_string_buffer_afbadcb91c1b0fe9fb643c95f8e4e6968} 
+\end{DoxySeeAlso}
+\begin{DoxySince}{Since}
+1.4 
+\end{DoxySince}
+
+
+Definition at line 320 of file StringBuffer.java.
+
+
+
+References append(), count, and value.
+
+\index{java::lang::StringBuffer@{java::lang::StringBuffer}!append@{append}}
+\index{append@{append}!java::lang::StringBuffer@{java::lang::StringBuffer}}
+\subsubsection[{append}]{\setlength{\rightskip}{0pt plus 5cm}{\bf StringBuffer} java::lang::StringBuffer::append (
+\begin{DoxyParamCaption}
+\item[{char[$\,$]}]{ data}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily  [inline]}}\label{classjava_1_1lang_1_1_string_buffer_a06627e4dfabbb418dc9234fef6359129}
+Append the {\ttfamily char} array to this {\ttfamily \doxyref{StringBuffer}{p.}{classjava_1_1lang_1_1_string_buffer}}. This is similar (but more efficient) than {\ttfamily append(new String(data))}, except in the case of null.
+
+
+\begin{DoxyParams}{Parameters}
+\item[{\em data}]the {\ttfamily char[]} to append \end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+this {\ttfamily \doxyref{StringBuffer}{p.}{classjava_1_1lang_1_1_string_buffer}} 
+\end{DoxyReturn}
+
+\begin{DoxyExceptions}{Exceptions}
+\item[{\em \doxyref{NullPointerException}{p.}{classjava_1_1lang_1_1_null_pointer_exception}}]if {\ttfamily str} is {\ttfamily null} \end{DoxyExceptions}
+\begin{DoxySeeAlso}{See also}
+\doxyref{append}{p.}{classjava_1_1lang_1_1_string_buffer_afbadcb91c1b0fe9fb643c95f8e4e6968}(char[], int, int) 
+\end{DoxySeeAlso}
+
+
+Definition at line 346 of file StringBuffer.java.
+
+
+
+References append().
+
+\index{java::lang::StringBuffer@{java::lang::StringBuffer}!append@{append}}
+\index{append@{append}!java::lang::StringBuffer@{java::lang::StringBuffer}}
+\subsubsection[{append}]{\setlength{\rightskip}{0pt plus 5cm}synchronized {\bf StringBuffer} java::lang::StringBuffer::append (
+\begin{DoxyParamCaption}
+\item[{char[$\,$]}]{ data, }
+\item[{int}]{ offset, }
+\item[{int}]{ count}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily  [inline]}}\label{classjava_1_1lang_1_1_string_buffer_a527d8920a0687b7b19398a2106beac6b}
+Append part of the {\ttfamily char} array to this {\ttfamily \doxyref{StringBuffer}{p.}{classjava_1_1lang_1_1_string_buffer}}. This is similar (but more efficient) than {\ttfamily append(new String(data, offset, count))}, except in the case of null.
+
+
+\begin{DoxyParams}{Parameters}
+\item[{\em data}]the {\ttfamily char[]} to append \item[{\em offset}]the start location in {\ttfamily str} \item[{\em count}]the number of characters to get from {\ttfamily str} \end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+this {\ttfamily \doxyref{StringBuffer}{p.}{classjava_1_1lang_1_1_string_buffer}} 
+\end{DoxyReturn}
+
+\begin{DoxyExceptions}{Exceptions}
+\item[{\em \doxyref{NullPointerException}{p.}{classjava_1_1lang_1_1_null_pointer_exception}}]if {\ttfamily str} is {\ttfamily null} \item[{\em \doxyref{IndexOutOfBoundsException}{p.}{classjava_1_1lang_1_1_index_out_of_bounds_exception}}]if offset or count is out of range (while unspecified, this is a \doxyref{StringIndexOutOfBoundsException}{p.}{classjava_1_1lang_1_1_string_index_out_of_bounds_exception}) \end{DoxyExceptions}
+
+
+Definition at line 365 of file StringBuffer.java.
+
+
+
+References value.
+
+\index{java::lang::StringBuffer@{java::lang::StringBuffer}!append@{append}}
+\index{append@{append}!java::lang::StringBuffer@{java::lang::StringBuffer}}
+\subsubsection[{append}]{\setlength{\rightskip}{0pt plus 5cm}{\bf StringBuffer} java::lang::StringBuffer::append (
+\begin{DoxyParamCaption}
+\item[{boolean}]{ bool}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily  [inline]}}\label{classjava_1_1lang_1_1_string_buffer_aee98b478f218792f51f27bec9321b8bc}
+Append the {\ttfamily \doxyref{String}{p.}{classjava_1_1lang_1_1_string}} value of the argument to this {\ttfamily \doxyref{StringBuffer}{p.}{classjava_1_1lang_1_1_string_buffer}}. Uses {\ttfamily \doxyref{String.valueOf()}{p.}{classjava_1_1lang_1_1_string_acb43db982bccae8d9570cc2795656884}} to convert to {\ttfamily \doxyref{String}{p.}{classjava_1_1lang_1_1_string}}.
+
+
+\begin{DoxyParams}{Parameters}
+\item[{\em bool}]the {\ttfamily boolean} to convert and append \end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+this {\ttfamily \doxyref{StringBuffer}{p.}{classjava_1_1lang_1_1_string_buffer}} 
+\end{DoxyReturn}
+\begin{DoxySeeAlso}{See also}
+\doxyref{String::valueOf(boolean)}{p.}{classjava_1_1lang_1_1_string_a6771350eab92abb928b7d6754d1b0715} 
+\end{DoxySeeAlso}
+
+
+Definition at line 385 of file StringBuffer.java.
+
+
+
+References append().
+
+\index{java::lang::StringBuffer@{java::lang::StringBuffer}!append@{append}}
+\index{append@{append}!java::lang::StringBuffer@{java::lang::StringBuffer}}
+\subsubsection[{append}]{\setlength{\rightskip}{0pt plus 5cm}synchronized {\bf StringBuffer} java::lang::StringBuffer::append (
+\begin{DoxyParamCaption}
+\item[{char}]{ ch}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily  [inline]}}\label{classjava_1_1lang_1_1_string_buffer_a5fd96df5a9da41879ebf7da7c52f9b2f}
+Append the {\ttfamily char} to this {\ttfamily \doxyref{StringBuffer}{p.}{classjava_1_1lang_1_1_string_buffer}}.
+
+
+\begin{DoxyParams}{Parameters}
+\item[{\em ch}]the {\ttfamily char} to append \end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+this {\ttfamily \doxyref{StringBuffer}{p.}{classjava_1_1lang_1_1_string_buffer}} 
+\end{DoxyReturn}
+
+
+Definition at line 396 of file StringBuffer.java.
+
+
+
+References count, and value.
+
+\index{java::lang::StringBuffer@{java::lang::StringBuffer}!append@{append}}
+\index{append@{append}!java::lang::StringBuffer@{java::lang::StringBuffer}}
+\subsubsection[{append}]{\setlength{\rightskip}{0pt plus 5cm}{\bf StringBuffer} java::lang::StringBuffer::append (
+\begin{DoxyParamCaption}
+\item[{int}]{ inum}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily  [inline]}}\label{classjava_1_1lang_1_1_string_buffer_a65637a7ae0e62a16251d656fe1559064}
+Append the {\ttfamily \doxyref{String}{p.}{classjava_1_1lang_1_1_string}} value of the argument to this {\ttfamily \doxyref{StringBuffer}{p.}{classjava_1_1lang_1_1_string_buffer}}. Uses {\ttfamily \doxyref{String.valueOf()}{p.}{classjava_1_1lang_1_1_string_acb43db982bccae8d9570cc2795656884}} to convert to {\ttfamily \doxyref{String}{p.}{classjava_1_1lang_1_1_string}}.
+
+
+\begin{DoxyParams}{Parameters}
+\item[{\em inum}]the {\ttfamily int} to convert and append \end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+this {\ttfamily \doxyref{StringBuffer}{p.}{classjava_1_1lang_1_1_string_buffer}} 
+\end{DoxyReturn}
+\begin{DoxySeeAlso}{See also}
+\doxyref{String::valueOf(int)}{p.}{classjava_1_1lang_1_1_string_acab2b7aedc377c92d516c146372c55c1} 
+\end{DoxySeeAlso}
+
+
+Definition at line 413 of file StringBuffer.java.
+
+
+
+References append().
+
+\index{java::lang::StringBuffer@{java::lang::StringBuffer}!capacity@{capacity}}
+\index{capacity@{capacity}!java::lang::StringBuffer@{java::lang::StringBuffer}}
+\subsubsection[{capacity}]{\setlength{\rightskip}{0pt plus 5cm}synchronized int java::lang::StringBuffer::capacity (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily  [inline]}}\label{classjava_1_1lang_1_1_string_buffer_a1d154190d659b6eb7c4a424b952e3448}
+Get the total number of characters this {\ttfamily \doxyref{StringBuffer}{p.}{classjava_1_1lang_1_1_string_buffer}} can support before it must be grown. Not to be confused with {\itshape length\/}.
+
+\begin{DoxyReturn}{Returns}
+the capacity of this {\ttfamily \doxyref{StringBuffer}{p.}{classjava_1_1lang_1_1_string_buffer}} 
+\end{DoxyReturn}
+\begin{DoxySeeAlso}{See also}
+\doxyref{length()}{p.}{classjava_1_1lang_1_1_string_buffer_aa763a1eca4cd542e4aae5d8023f7e1ae} 
+
+\doxyref{ensureCapacity(int)}{p.}{classjava_1_1lang_1_1_string_buffer_aa13aca65ac9a4656a750562f84b8be9c} 
+\end{DoxySeeAlso}
+
+
+Definition at line 160 of file StringBuffer.java.
+
+
+
+References value.
+
+\index{java::lang::StringBuffer@{java::lang::StringBuffer}!charAt@{charAt}}
+\index{charAt@{charAt}!java::lang::StringBuffer@{java::lang::StringBuffer}}
+\subsubsection[{charAt}]{\setlength{\rightskip}{0pt plus 5cm}synchronized char java::lang::StringBuffer::charAt (
+\begin{DoxyParamCaption}
+\item[{int}]{ index}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily  [inline]}}\label{classjava_1_1lang_1_1_string_buffer_ad92bb032fff053eb4f6eebfb6938c85f}
+Get the character at the specified index.
+
+
+\begin{DoxyParams}{Parameters}
+\item[{\em index}]the index of the character to get, starting at 0 \end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+the character at the specified index 
+\end{DoxyReturn}
+
+\begin{DoxyExceptions}{Exceptions}
+\item[{\em \doxyref{IndexOutOfBoundsException}{p.}{classjava_1_1lang_1_1_index_out_of_bounds_exception}}]if index is negative or $>$= \doxyref{length()}{p.}{classjava_1_1lang_1_1_string_buffer_aa763a1eca4cd542e4aae5d8023f7e1ae} \end{DoxyExceptions}
+
+
+Definition at line 226 of file StringBuffer.java.
+
+
+
+References count, and value.
+
+
+
+Referenced by java::lang::Class::getResourceAsStream().
+
+\index{java::lang::StringBuffer@{java::lang::StringBuffer}!delete@{delete}}
+\index{delete@{delete}!java::lang::StringBuffer@{java::lang::StringBuffer}}
+\subsubsection[{delete}]{\setlength{\rightskip}{0pt plus 5cm}synchronized {\bf StringBuffer} java::lang::StringBuffer::delete (
+\begin{DoxyParamCaption}
+\item[{int}]{ start, }
+\item[{int}]{ end}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily  [inline]}}\label{classjava_1_1lang_1_1_string_buffer_ab6514de89dd7fb2f688cd7a632c63f60}
+Delete characters from this {\ttfamily \doxyref{StringBuffer}{p.}{classjava_1_1lang_1_1_string_buffer}}. {\ttfamily delete(10, 12)} will delete 10 and 11, but not 12. It is harmless for end to be larger than \doxyref{length()}{p.}{classjava_1_1lang_1_1_string_buffer_aa763a1eca4cd542e4aae5d8023f7e1ae}.
+
+
+\begin{DoxyParams}{Parameters}
+\item[{\em start}]the first character to delete \item[{\em end}]the index after the last character to delete \end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+this {\ttfamily \doxyref{StringBuffer}{p.}{classjava_1_1lang_1_1_string_buffer}} 
+\end{DoxyReturn}
+
+\begin{DoxyExceptions}{Exceptions}
+\item[{\em \doxyref{StringIndexOutOfBoundsException}{p.}{classjava_1_1lang_1_1_string_index_out_of_bounds_exception}}]if start or end are out of bounds \end{DoxyExceptions}
+\begin{DoxySince}{Since}
+1.2 
+\end{DoxySince}
+
+
+Definition at line 471 of file StringBuffer.java.
+
+
+
+References count, and value.
+
+
+
+Referenced by java::lang::Class::getResourceAsStream().
+
+\index{java::lang::StringBuffer@{java::lang::StringBuffer}!deleteCharAt@{deleteCharAt}}
+\index{deleteCharAt@{deleteCharAt}!java::lang::StringBuffer@{java::lang::StringBuffer}}
+\subsubsection[{deleteCharAt}]{\setlength{\rightskip}{0pt plus 5cm}{\bf StringBuffer} java::lang::StringBuffer::deleteCharAt (
+\begin{DoxyParamCaption}
+\item[{int}]{ index}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily  [inline]}}\label{classjava_1_1lang_1_1_string_buffer_a7adf04c78d675337052981ece32251ef}
+Delete a character from this {\ttfamily \doxyref{StringBuffer}{p.}{classjava_1_1lang_1_1_string_buffer}}.
+
+
+\begin{DoxyParams}{Parameters}
+\item[{\em index}]the index of the character to delete \end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+this {\ttfamily \doxyref{StringBuffer}{p.}{classjava_1_1lang_1_1_string_buffer}} 
+\end{DoxyReturn}
+
+\begin{DoxyExceptions}{Exceptions}
+\item[{\em \doxyref{StringIndexOutOfBoundsException}{p.}{classjava_1_1lang_1_1_string_index_out_of_bounds_exception}}]if index is out of bounds \end{DoxyExceptions}
+\begin{DoxySince}{Since}
+1.2 
+\end{DoxySince}
+
+
+Definition at line 497 of file StringBuffer.java.
+
+
+
+Referenced by java::lang::Class::getResourceAsStream().
+
+\index{java::lang::StringBuffer@{java::lang::StringBuffer}!ensureCapacity@{ensureCapacity}}
+\index{ensureCapacity@{ensureCapacity}!java::lang::StringBuffer@{java::lang::StringBuffer}}
+\subsubsection[{ensureCapacity}]{\setlength{\rightskip}{0pt plus 5cm}synchronized void java::lang::StringBuffer::ensureCapacity (
+\begin{DoxyParamCaption}
+\item[{int}]{ minimumCapacity}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily  [inline]}}\label{classjava_1_1lang_1_1_string_buffer_aa13aca65ac9a4656a750562f84b8be9c}
+Increase the capacity of this {\ttfamily \doxyref{StringBuffer}{p.}{classjava_1_1lang_1_1_string_buffer}}. This will ensure that an expensive growing operation will not occur until {\ttfamily minimumCapacity} is reached. The buffer is grown to the larger of {\ttfamily minimumCapacity} and {\ttfamily \doxyref{capacity()}{p.}{classjava_1_1lang_1_1_string_buffer_a1d154190d659b6eb7c4a424b952e3448} $\ast$ 2 + 2}, if it is not already large enough.
+
+
+\begin{DoxyParams}{Parameters}
+\item[{\em minimumCapacity}]the new capacity \end{DoxyParams}
+\begin{DoxySeeAlso}{See also}
+\doxyref{capacity()}{p.}{classjava_1_1lang_1_1_string_buffer_a1d154190d659b6eb7c4a424b952e3448} 
+\end{DoxySeeAlso}
+
+
+Definition at line 175 of file StringBuffer.java.
+
+\index{java::lang::StringBuffer@{java::lang::StringBuffer}!getChars@{getChars}}
+\index{getChars@{getChars}!java::lang::StringBuffer@{java::lang::StringBuffer}}
+\subsubsection[{getChars}]{\setlength{\rightskip}{0pt plus 5cm}synchronized void java::lang::StringBuffer::getChars (
+\begin{DoxyParamCaption}
+\item[{int}]{ srcOffset, }
+\item[{int}]{ srcEnd, }
+\item[{char[$\,$]}]{ dst, }
+\item[{int}]{ dstOffset}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily  [inline]}}\label{classjava_1_1lang_1_1_string_buffer_a54bc055462cb7f90a9331c1cfe8ab706}
+Get the specified array of characters. {\ttfamily srcOffset -\/ srcEnd} characters will be copied into the array you pass in.
+
+
+\begin{DoxyParams}{Parameters}
+\item[{\em srcOffset}]the index to start copying from (inclusive) \item[{\em srcEnd}]the index to stop copying from (exclusive) \item[{\em dst}]the array to copy into \item[{\em dstOffset}]the index to start copying into \end{DoxyParams}
+
+\begin{DoxyExceptions}{Exceptions}
+\item[{\em \doxyref{NullPointerException}{p.}{classjava_1_1lang_1_1_null_pointer_exception}}]if dst is null \item[{\em \doxyref{IndexOutOfBoundsException}{p.}{classjava_1_1lang_1_1_index_out_of_bounds_exception}}]if any source or target indices are out of range (while unspecified, source problems cause a \doxyref{StringIndexOutOfBoundsException}{p.}{classjava_1_1lang_1_1_string_index_out_of_bounds_exception}, and dest problems cause an \doxyref{ArrayIndexOutOfBoundsException}{p.}{classjava_1_1lang_1_1_array_index_out_of_bounds_exception}) \end{DoxyExceptions}
+\begin{DoxySeeAlso}{See also}
+\doxyref{System::arraycopy(Object, int, Object, int, int)}{p.}{classjava_1_1lang_1_1_system_ae22472a9b820e1c8699e858f82c41f39} 
+\end{DoxySeeAlso}
+
+
+Definition at line 249 of file StringBuffer.java.
+
+
+
+References count, and value.
+
+\index{java::lang::StringBuffer@{java::lang::StringBuffer}!insert@{insert}}
+\index{insert@{insert}!java::lang::StringBuffer@{java::lang::StringBuffer}}
+\subsubsection[{insert}]{\setlength{\rightskip}{0pt plus 5cm}{\bf StringBuffer} java::lang::StringBuffer::insert (
+\begin{DoxyParamCaption}
+\item[{int}]{ offset, }
+\item[{boolean}]{ bool}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily  [inline]}}\label{classjava_1_1lang_1_1_string_buffer_abf0541183a797cdb4bd62376a1ab01c2}
+Insert the {\ttfamily \doxyref{String}{p.}{classjava_1_1lang_1_1_string}} value of the argument into this {\ttfamily \doxyref{StringBuffer}{p.}{classjava_1_1lang_1_1_string_buffer}}. Uses {\ttfamily \doxyref{String.valueOf()}{p.}{classjava_1_1lang_1_1_string_acb43db982bccae8d9570cc2795656884}} to convert to {\ttfamily \doxyref{String}{p.}{classjava_1_1lang_1_1_string}}.
+
+
+\begin{DoxyParams}{Parameters}
+\item[{\em offset}]the place to insert in this buffer \item[{\em bool}]the {\ttfamily boolean} to convert and insert \end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+this {\ttfamily \doxyref{StringBuffer}{p.}{classjava_1_1lang_1_1_string_buffer}} 
+\end{DoxyReturn}
+
+\begin{DoxyExceptions}{Exceptions}
+\item[{\em \doxyref{StringIndexOutOfBoundsException}{p.}{classjava_1_1lang_1_1_string_index_out_of_bounds_exception}}]if offset is out of bounds \end{DoxyExceptions}
+\begin{DoxySeeAlso}{See also}
+\doxyref{String::valueOf(boolean)}{p.}{classjava_1_1lang_1_1_string_a6771350eab92abb928b7d6754d1b0715} 
+\end{DoxySeeAlso}
+
+
+Definition at line 575 of file StringBuffer.java.
+
+
+
+References insert().
+
+\index{java::lang::StringBuffer@{java::lang::StringBuffer}!insert@{insert}}
+\index{insert@{insert}!java::lang::StringBuffer@{java::lang::StringBuffer}}
+\subsubsection[{insert}]{\setlength{\rightskip}{0pt plus 5cm}{\bf StringBuffer} java::lang::StringBuffer::insert (
+\begin{DoxyParamCaption}
+\item[{int}]{ offset, }
+\item[{float}]{ fnum}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily  [inline]}}\label{classjava_1_1lang_1_1_string_buffer_a57678b01ef0877322f5befec06032419}
+Insert the {\ttfamily \doxyref{String}{p.}{classjava_1_1lang_1_1_string}} value of the argument into this {\ttfamily \doxyref{StringBuffer}{p.}{classjava_1_1lang_1_1_string_buffer}}. Uses {\ttfamily \doxyref{String.valueOf()}{p.}{classjava_1_1lang_1_1_string_acb43db982bccae8d9570cc2795656884}} to convert to {\ttfamily \doxyref{String}{p.}{classjava_1_1lang_1_1_string}}.
+
+
+\begin{DoxyParams}{Parameters}
+\item[{\em offset}]the place to insert in this buffer \item[{\em fnum}]the {\ttfamily float} to convert and insert \end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+this {\ttfamily \doxyref{StringBuffer}{p.}{classjava_1_1lang_1_1_string_buffer}} 
+\end{DoxyReturn}
+
+\begin{DoxyExceptions}{Exceptions}
+\item[{\em \doxyref{StringIndexOutOfBoundsException}{p.}{classjava_1_1lang_1_1_string_index_out_of_bounds_exception}}]if offset is out of bounds \end{DoxyExceptions}
+\begin{DoxySeeAlso}{See also}
+\doxyref{String::valueOf(float)}{p.}{classjava_1_1lang_1_1_string_aa7ccc72ef8d7f32de6fb76938c31c82d} 
+\end{DoxySeeAlso}
+
+
+Definition at line 643 of file StringBuffer.java.
+
+
+
+References insert().
+
+\index{java::lang::StringBuffer@{java::lang::StringBuffer}!insert@{insert}}
+\index{insert@{insert}!java::lang::StringBuffer@{java::lang::StringBuffer}}
+\subsubsection[{insert}]{\setlength{\rightskip}{0pt plus 5cm}{\bf StringBuffer} java::lang::StringBuffer::insert (
+\begin{DoxyParamCaption}
+\item[{int}]{ offset, }
+\item[{double}]{ dnum}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily  [inline]}}\label{classjava_1_1lang_1_1_string_buffer_af6ba650d5311ea9186fd2437a196a05d}
+Insert the {\ttfamily \doxyref{String}{p.}{classjava_1_1lang_1_1_string}} value of the argument into this {\ttfamily \doxyref{StringBuffer}{p.}{classjava_1_1lang_1_1_string_buffer}}. Uses {\ttfamily \doxyref{String.valueOf()}{p.}{classjava_1_1lang_1_1_string_acb43db982bccae8d9570cc2795656884}} to convert to {\ttfamily \doxyref{String}{p.}{classjava_1_1lang_1_1_string}}.
+
+
+\begin{DoxyParams}{Parameters}
+\item[{\em offset}]the place to insert in this buffer \item[{\em dnum}]the {\ttfamily double} to convert and insert \end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+this {\ttfamily \doxyref{StringBuffer}{p.}{classjava_1_1lang_1_1_string_buffer}} 
+\end{DoxyReturn}
+
+\begin{DoxyExceptions}{Exceptions}
+\item[{\em \doxyref{StringIndexOutOfBoundsException}{p.}{classjava_1_1lang_1_1_string_index_out_of_bounds_exception}}]if offset is out of bounds \end{DoxyExceptions}
+\begin{DoxySeeAlso}{See also}
+\doxyref{String::valueOf(double)}{p.}{classjava_1_1lang_1_1_string_aab7ba8466a3d6bfab85df721fd9ae007} 
+\end{DoxySeeAlso}
+
+
+Definition at line 659 of file StringBuffer.java.
+
+
+
+References insert().
+
+\index{java::lang::StringBuffer@{java::lang::StringBuffer}!insert@{insert}}
+\index{insert@{insert}!java::lang::StringBuffer@{java::lang::StringBuffer}}
+\subsubsection[{insert}]{\setlength{\rightskip}{0pt plus 5cm}{\bf StringBuffer} java::lang::StringBuffer::insert (
+\begin{DoxyParamCaption}
+\item[{int}]{ offset, }
+\item[{{\bf Object}}]{ obj}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily  [inline]}}\label{classjava_1_1lang_1_1_string_buffer_addb045ab17ac52687e3dbb24a75b78fd}
+Insert the {\ttfamily \doxyref{String}{p.}{classjava_1_1lang_1_1_string}} value of the argument into this {\ttfamily \doxyref{StringBuffer}{p.}{classjava_1_1lang_1_1_string_buffer}}. Uses {\ttfamily \doxyref{String.valueOf()}{p.}{classjava_1_1lang_1_1_string_acb43db982bccae8d9570cc2795656884}} to convert to {\ttfamily \doxyref{String}{p.}{classjava_1_1lang_1_1_string}}.
+
+
+\begin{DoxyParams}{Parameters}
+\item[{\em offset}]the place to insert in this buffer \item[{\em obj}]the {\ttfamily \doxyref{Object}{p.}{classjava_1_1lang_1_1_object}} to convert and insert \end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+this {\ttfamily \doxyref{StringBuffer}{p.}{classjava_1_1lang_1_1_string_buffer}} 
+\end{DoxyReturn}
+
+\begin{DoxyExceptions}{Exceptions}
+\item[{\em \doxyref{StringIndexOutOfBoundsException}{p.}{classjava_1_1lang_1_1_string_index_out_of_bounds_exception}}]if offset is out of bounds \end{DoxyExceptions}
+\begin{DoxySeeAlso}{See also}
+\doxyref{String::valueOf(Object)}{p.}{classjava_1_1lang_1_1_string_acb43db982bccae8d9570cc2795656884} 
+\end{DoxySeeAlso}
+
+
+Definition at line 513 of file StringBuffer.java.
+
+
+
+References java::lang::Object::toString().
+
+
+
+Referenced by java::lang::Class::getResourceAsStream(), and insert().
+
+\index{java::lang::StringBuffer@{java::lang::StringBuffer}!insert@{insert}}
+\index{insert@{insert}!java::lang::StringBuffer@{java::lang::StringBuffer}}
+\subsubsection[{insert}]{\setlength{\rightskip}{0pt plus 5cm}synchronized {\bf StringBuffer} java::lang::StringBuffer::insert (
+\begin{DoxyParamCaption}
+\item[{int}]{ offset, }
+\item[{{\bf String}}]{ str}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily  [inline]}}\label{classjava_1_1lang_1_1_string_buffer_aaa5acae328ee6321491c64e08f419ec1}
+Insert the {\ttfamily \doxyref{String}{p.}{classjava_1_1lang_1_1_string}} argument into this {\ttfamily \doxyref{StringBuffer}{p.}{classjava_1_1lang_1_1_string_buffer}}. If str is null, the \doxyref{String}{p.}{classjava_1_1lang_1_1_string} \char`\"{}null\char`\"{} is used instead.
+
+
+\begin{DoxyParams}{Parameters}
+\item[{\em offset}]the place to insert in this buffer \item[{\em str}]the {\ttfamily \doxyref{String}{p.}{classjava_1_1lang_1_1_string}} to insert \end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+this {\ttfamily \doxyref{StringBuffer}{p.}{classjava_1_1lang_1_1_string_buffer}} 
+\end{DoxyReturn}
+
+\begin{DoxyExceptions}{Exceptions}
+\item[{\em \doxyref{StringIndexOutOfBoundsException}{p.}{classjava_1_1lang_1_1_string_index_out_of_bounds_exception}}]if offset is out of bounds \end{DoxyExceptions}
+
+
+Definition at line 528 of file StringBuffer.java.
+
+
+
+References java::lang::String::count, count, java::lang::String::getChars(), and value.
+
+\index{java::lang::StringBuffer@{java::lang::StringBuffer}!insert@{insert}}
+\index{insert@{insert}!java::lang::StringBuffer@{java::lang::StringBuffer}}
+\subsubsection[{insert}]{\setlength{\rightskip}{0pt plus 5cm}{\bf StringBuffer} java::lang::StringBuffer::insert (
+\begin{DoxyParamCaption}
+\item[{int}]{ offset, }
+\item[{int}]{ inum}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily  [inline]}}\label{classjava_1_1lang_1_1_string_buffer_a0f2ed463275f938abce6e725c847a860}
+Insert the {\ttfamily \doxyref{String}{p.}{classjava_1_1lang_1_1_string}} value of the argument into this {\ttfamily \doxyref{StringBuffer}{p.}{classjava_1_1lang_1_1_string_buffer}}. Uses {\ttfamily \doxyref{String.valueOf()}{p.}{classjava_1_1lang_1_1_string_acb43db982bccae8d9570cc2795656884}} to convert to {\ttfamily \doxyref{String}{p.}{classjava_1_1lang_1_1_string}}.
+
+
+\begin{DoxyParams}{Parameters}
+\item[{\em offset}]the place to insert in this buffer \item[{\em inum}]the {\ttfamily int} to convert and insert \end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+this {\ttfamily \doxyref{StringBuffer}{p.}{classjava_1_1lang_1_1_string_buffer}} 
+\end{DoxyReturn}
+
+\begin{DoxyExceptions}{Exceptions}
+\item[{\em \doxyref{StringIndexOutOfBoundsException}{p.}{classjava_1_1lang_1_1_string_index_out_of_bounds_exception}}]if offset is out of bounds \end{DoxyExceptions}
+\begin{DoxySeeAlso}{See also}
+\doxyref{String::valueOf(int)}{p.}{classjava_1_1lang_1_1_string_acab2b7aedc377c92d516c146372c55c1} 
+\end{DoxySeeAlso}
+
+
+Definition at line 611 of file StringBuffer.java.
+
+
+
+References insert().
+
+\index{java::lang::StringBuffer@{java::lang::StringBuffer}!insert@{insert}}
+\index{insert@{insert}!java::lang::StringBuffer@{java::lang::StringBuffer}}
+\subsubsection[{insert}]{\setlength{\rightskip}{0pt plus 5cm}{\bf StringBuffer} java::lang::StringBuffer::insert (
+\begin{DoxyParamCaption}
+\item[{int}]{ offset, }
+\item[{long}]{ lnum}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily  [inline]}}\label{classjava_1_1lang_1_1_string_buffer_ae2e29044b1da66d4d36bbc126ac02eef}
+Insert the {\ttfamily \doxyref{String}{p.}{classjava_1_1lang_1_1_string}} value of the argument into this {\ttfamily \doxyref{StringBuffer}{p.}{classjava_1_1lang_1_1_string_buffer}}. Uses {\ttfamily \doxyref{String.valueOf()}{p.}{classjava_1_1lang_1_1_string_acb43db982bccae8d9570cc2795656884}} to convert to {\ttfamily \doxyref{String}{p.}{classjava_1_1lang_1_1_string}}.
+
+
+\begin{DoxyParams}{Parameters}
+\item[{\em offset}]the place to insert in this buffer \item[{\em lnum}]the {\ttfamily long} to convert and insert \end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+this {\ttfamily \doxyref{StringBuffer}{p.}{classjava_1_1lang_1_1_string_buffer}} 
+\end{DoxyReturn}
+
+\begin{DoxyExceptions}{Exceptions}
+\item[{\em \doxyref{StringIndexOutOfBoundsException}{p.}{classjava_1_1lang_1_1_string_index_out_of_bounds_exception}}]if offset is out of bounds \end{DoxyExceptions}
+\begin{DoxySeeAlso}{See also}
+\doxyref{String::valueOf(long)}{p.}{classjava_1_1lang_1_1_string_a5fc8a425f7aadb6748c57fbbb33de71e} 
+\end{DoxySeeAlso}
+
+
+Definition at line 627 of file StringBuffer.java.
+
+
+
+References insert().
+
+\index{java::lang::StringBuffer@{java::lang::StringBuffer}!insert@{insert}}
+\index{insert@{insert}!java::lang::StringBuffer@{java::lang::StringBuffer}}
+\subsubsection[{insert}]{\setlength{\rightskip}{0pt plus 5cm}synchronized {\bf StringBuffer} java::lang::StringBuffer::insert (
+\begin{DoxyParamCaption}
+\item[{int}]{ offset, }
+\item[{char}]{ ch}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily  [inline]}}\label{classjava_1_1lang_1_1_string_buffer_a362807f95aa5823e2e69fd4292446c0e}
+Insert the {\ttfamily char} argument into this {\ttfamily \doxyref{StringBuffer}{p.}{classjava_1_1lang_1_1_string_buffer}}.
+
+
+\begin{DoxyParams}{Parameters}
+\item[{\em offset}]the place to insert in this buffer \item[{\em ch}]the {\ttfamily char} to insert \end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+this {\ttfamily \doxyref{StringBuffer}{p.}{classjava_1_1lang_1_1_string_buffer}} 
+\end{DoxyReturn}
+
+\begin{DoxyExceptions}{Exceptions}
+\item[{\em \doxyref{StringIndexOutOfBoundsException}{p.}{classjava_1_1lang_1_1_string_index_out_of_bounds_exception}}]if offset is out of bounds \end{DoxyExceptions}
+
+
+Definition at line 588 of file StringBuffer.java.
+
+
+
+References count, and value.
+
+\index{java::lang::StringBuffer@{java::lang::StringBuffer}!insert@{insert}}
+\index{insert@{insert}!java::lang::StringBuffer@{java::lang::StringBuffer}}
+\subsubsection[{insert}]{\setlength{\rightskip}{0pt plus 5cm}{\bf StringBuffer} java::lang::StringBuffer::insert (
+\begin{DoxyParamCaption}
+\item[{int}]{ offset, }
+\item[{char[$\,$]}]{ data}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily  [inline]}}\label{classjava_1_1lang_1_1_string_buffer_a23c13e5c578f6064b2ffd1f19ea26c59}
+Insert the {\ttfamily char[]} argument into this {\ttfamily \doxyref{StringBuffer}{p.}{classjava_1_1lang_1_1_string_buffer}}.
+
+
+\begin{DoxyParams}{Parameters}
+\item[{\em offset}]the place to insert in this buffer \item[{\em data}]the {\ttfamily char[]} to insert \end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+this {\ttfamily \doxyref{StringBuffer}{p.}{classjava_1_1lang_1_1_string_buffer}} 
+\end{DoxyReturn}
+
+\begin{DoxyExceptions}{Exceptions}
+\item[{\em \doxyref{NullPointerException}{p.}{classjava_1_1lang_1_1_null_pointer_exception}}]if {\ttfamily data} is {\ttfamily null} \item[{\em \doxyref{StringIndexOutOfBoundsException}{p.}{classjava_1_1lang_1_1_string_index_out_of_bounds_exception}}]if offset is out of bounds \end{DoxyExceptions}
+
+
+Definition at line 554 of file StringBuffer.java.
+
+
+
+References value.
+
+\index{java::lang::StringBuffer@{java::lang::StringBuffer}!length@{length}}
+\index{length@{length}!java::lang::StringBuffer@{java::lang::StringBuffer}}
+\subsubsection[{length}]{\setlength{\rightskip}{0pt plus 5cm}synchronized int java::lang::StringBuffer::length (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily  [inline]}}\label{classjava_1_1lang_1_1_string_buffer_aa763a1eca4cd542e4aae5d8023f7e1ae}
+Get the length of the {\ttfamily \doxyref{String}{p.}{classjava_1_1lang_1_1_string}} this {\ttfamily \doxyref{StringBuffer}{p.}{classjava_1_1lang_1_1_string_buffer}} would create. Not to be confused with the {\itshape capacity\/} of the {\ttfamily \doxyref{StringBuffer}{p.}{classjava_1_1lang_1_1_string_buffer}}.
+
+\begin{DoxyReturn}{Returns}
+the length of this {\ttfamily \doxyref{StringBuffer}{p.}{classjava_1_1lang_1_1_string_buffer}} 
+\end{DoxyReturn}
+\begin{DoxySeeAlso}{See also}
+\doxyref{capacity()}{p.}{classjava_1_1lang_1_1_string_buffer_a1d154190d659b6eb7c4a424b952e3448} 
+
+\doxyref{setLength(int)}{p.}{classjava_1_1lang_1_1_string_buffer_a03e07716aa2e480dd8d8b257ea723d33} 
+\end{DoxySeeAlso}
+
+
+Definition at line 147 of file StringBuffer.java.
+
+
+
+References count.
+
+
+
+Referenced by java::lang::Class::getResourceAsStream().
+
+\index{java::lang::StringBuffer@{java::lang::StringBuffer}!reverse@{reverse}}
+\index{reverse@{reverse}!java::lang::StringBuffer@{java::lang::StringBuffer}}
+\subsubsection[{reverse}]{\setlength{\rightskip}{0pt plus 5cm}synchronized {\bf StringBuffer} java::lang::StringBuffer::reverse (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily  [inline]}}\label{classjava_1_1lang_1_1_string_buffer_ac2b671b8fd5f20fa7699620a649cbdd3}
+Reverse the characters in this \doxyref{StringBuffer}{p.}{classjava_1_1lang_1_1_string_buffer}. The same sequence of characters exists, but in the reverse index ordering.
+
+\begin{DoxyReturn}{Returns}
+this {\ttfamily \doxyref{StringBuffer}{p.}{classjava_1_1lang_1_1_string_buffer}} 
+\end{DoxyReturn}
+
+
+Definition at line 670 of file StringBuffer.java.
+
+
+
+References count, and value.
+
+\index{java::lang::StringBuffer@{java::lang::StringBuffer}!setCharAt@{setCharAt}}
+\index{setCharAt@{setCharAt}!java::lang::StringBuffer@{java::lang::StringBuffer}}
+\subsubsection[{setCharAt}]{\setlength{\rightskip}{0pt plus 5cm}synchronized void java::lang::StringBuffer::setCharAt (
+\begin{DoxyParamCaption}
+\item[{int}]{ index, }
+\item[{char}]{ ch}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily  [inline]}}\label{classjava_1_1lang_1_1_string_buffer_a01b4bbe5e6d2dbf33c47738f0dfb3417}
+Set the character at the specified index.
+
+
+\begin{DoxyParams}{Parameters}
+\item[{\em index}]the index of the character to set starting at 0 \item[{\em ch}]the value to set that character to \end{DoxyParams}
+
+\begin{DoxyExceptions}{Exceptions}
+\item[{\em \doxyref{IndexOutOfBoundsException}{p.}{classjava_1_1lang_1_1_index_out_of_bounds_exception}}]if index is negative or $>$= \doxyref{length()}{p.}{classjava_1_1lang_1_1_string_buffer_aa763a1eca4cd542e4aae5d8023f7e1ae} (while unspecified, this is a \doxyref{StringIndexOutOfBoundsException}{p.}{classjava_1_1lang_1_1_string_index_out_of_bounds_exception}) \end{DoxyExceptions}
+
+
+Definition at line 266 of file StringBuffer.java.
+
+
+
+References count, and value.
+
+
+
+Referenced by java::lang::Class::getResourceAsStream().
+
+\index{java::lang::StringBuffer@{java::lang::StringBuffer}!setLength@{setLength}}
+\index{setLength@{setLength}!java::lang::StringBuffer@{java::lang::StringBuffer}}
+\subsubsection[{setLength}]{\setlength{\rightskip}{0pt plus 5cm}synchronized void java::lang::StringBuffer::setLength (
+\begin{DoxyParamCaption}
+\item[{int}]{ newLength}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily  [inline]}}\label{classjava_1_1lang_1_1_string_buffer_a03e07716aa2e480dd8d8b257ea723d33}
+Set the length of this \doxyref{StringBuffer}{p.}{classjava_1_1lang_1_1_string_buffer}. If the new length is greater than the current length, all the new characters are set to 0. If the new length is less than the current length, the first {\ttfamily newLength} characters of the old array will be preserved, and the remaining characters are truncated.
+
+
+\begin{DoxyParams}{Parameters}
+\item[{\em newLength}]the new length \end{DoxyParams}
+
+\begin{DoxyExceptions}{Exceptions}
+\item[{\em \doxyref{IndexOutOfBoundsException}{p.}{classjava_1_1lang_1_1_index_out_of_bounds_exception}}]if the new length is negative (while unspecified, this is a \doxyref{StringIndexOutOfBoundsException}{p.}{classjava_1_1lang_1_1_string_index_out_of_bounds_exception}) \end{DoxyExceptions}
+\begin{DoxySeeAlso}{See also}
+\doxyref{length()}{p.}{classjava_1_1lang_1_1_string_buffer_aa763a1eca4cd542e4aae5d8023f7e1ae} 
+\end{DoxySeeAlso}
+
+
+Definition at line 192 of file StringBuffer.java.
+
+
+
+References count, and value.
+
+\index{java::lang::StringBuffer@{java::lang::StringBuffer}!toString@{toString}}
+\index{toString@{toString}!java::lang::StringBuffer@{java::lang::StringBuffer}}
+\subsubsection[{toString}]{\setlength{\rightskip}{0pt plus 5cm}{\bf String} java::lang::StringBuffer::toString (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily  [inline]}}\label{classjava_1_1lang_1_1_string_buffer_aa4999ff69a5535cd0a281d1e20f1dcd5}
+Convert this {\ttfamily \doxyref{StringBuffer}{p.}{classjava_1_1lang_1_1_string_buffer}} to a {\ttfamily \doxyref{String}{p.}{classjava_1_1lang_1_1_string}}. The \doxyref{String}{p.}{classjava_1_1lang_1_1_string} is composed of the characters currently in this \doxyref{StringBuffer}{p.}{classjava_1_1lang_1_1_string_buffer}. Note that the result is a copy, and that future modifications to this buffer do not affect the \doxyref{String}{p.}{classjava_1_1lang_1_1_string}.
+
+\begin{DoxyReturn}{Returns}
+the characters in this \doxyref{StringBuffer}{p.}{classjava_1_1lang_1_1_string_buffer} 
+\end{DoxyReturn}
+
+
+Definition at line 693 of file StringBuffer.java.
+
+
+
+Referenced by java::lang::Class::getResourceAsStream().
+
+
+
+\subsection{Field Documentation}
+\index{java::lang::StringBuffer@{java::lang::StringBuffer}!count@{count}}
+\index{count@{count}!java::lang::StringBuffer@{java::lang::StringBuffer}}
+\subsubsection[{count}]{\setlength{\rightskip}{0pt plus 5cm}int {\bf java::lang::StringBuffer::count}\hspace{0.3cm}{\ttfamily  [package]}}\label{classjava_1_1lang_1_1_string_buffer_a46e25a8200037db8124169e22f53e123}
+Index of next available character (and thus the size of the current string contents). Note that this has permissions set this way so that \doxyref{String}{p.}{classjava_1_1lang_1_1_string} can get the value. 
+
+Definition at line 81 of file StringBuffer.java.
+
+
+
+Referenced by append(), charAt(), delete(), getChars(), insert(), length(), reverse(), setCharAt(), setLength(), java::lang::String::String(), and StringBuffer().
+
+\index{java::lang::StringBuffer@{java::lang::StringBuffer}!shared@{shared}}
+\index{shared@{shared}!java::lang::StringBuffer@{java::lang::StringBuffer}}
+\subsubsection[{shared}]{\setlength{\rightskip}{0pt plus 5cm}boolean {\bf java::lang::StringBuffer::shared}\hspace{0.3cm}{\ttfamily  [package]}}\label{classjava_1_1lang_1_1_string_buffer_a80d63e488176711cf7973a46a698c17b}
+True if the buffer is shared with another object (\doxyref{StringBuffer}{p.}{classjava_1_1lang_1_1_string_buffer} or \doxyref{String}{p.}{classjava_1_1lang_1_1_string}); this means the buffer must be copied before writing to it again. Note that this has permissions set this way so that \doxyref{String}{p.}{classjava_1_1lang_1_1_string} can get the value. 
+
+Definition at line 95 of file StringBuffer.java.
+
+
+
+Referenced by java::lang::String::String().
+
+\index{java::lang::StringBuffer@{java::lang::StringBuffer}!value@{value}}
+\index{value@{value}!java::lang::StringBuffer@{java::lang::StringBuffer}}
+\subsubsection[{value}]{\setlength{\rightskip}{0pt plus 5cm}char [$\,$] {\bf java::lang::StringBuffer::value}\hspace{0.3cm}{\ttfamily  [package]}}\label{classjava_1_1lang_1_1_string_buffer_a71c01dbe58be47817b845d201a8b03fb}
+The buffer. Note that this has permissions set this way so that \doxyref{String}{p.}{classjava_1_1lang_1_1_string} can get the value. 
+
+Definition at line 87 of file StringBuffer.java.
+
+
+
+Referenced by append(), capacity(), charAt(), delete(), getChars(), insert(), reverse(), setCharAt(), setLength(), java::lang::String::String(), and StringBuffer().
+
+
+
+The documentation for this class was generated from the following file:\begin{DoxyCompactItemize}
+\item 
+src/classpath/java/lang/StringBuffer.java\end{DoxyCompactItemize}

@@ -1,0 +1,311 @@
+\section{header.h File Reference}
+\label{header_8h}\index{header.h@{header.h}}
+{\ttfamily \#include \char`\"{}wrappers.h\char`\"{}}\par
+\subsection*{Defines}
+\begin{DoxyCompactItemize}
+\item 
+\#define {\bf JELATINE\_\-HEADER\_\-H}~(1)
+\item 
+\#define {\bf HEADER\_\-RESERVED}~(2)
+\item 
+\#define {\bf HEADER\_\-MARK\_\-SHIFT}~(0)
+\item 
+\#define {\bf HEADER\_\-JAVA\_\-OBJECT\_\-SHIFT}~(1)
+\item 
+\#define {\bf HEADER\_\-PCP\_\-MASK}~($\sim$(((uintptr\_\-t) 1 $<$$<$ HEADER\_\-RESERVED) -\/ 1))
+\item 
+\#define {\bf HEADER\_\-SIZE\_\-MASK}~HEADER\_\-PCP\_\-MASK
+\end{DoxyCompactItemize}
+\subsection*{Typedefs}
+\begin{DoxyCompactItemize}
+\item 
+typedef uintptr\_\-t {\bf header\_\-t}
+\end{DoxyCompactItemize}
+\subsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+static bool {\bf header\_\-is\_\-object} ({\bf header\_\-t} $\ast$header)
+\item 
+static {\bf header\_\-t} {\bf header\_\-create\_\-object} (struct {\bf class\_\-t} $\ast$cl)
+\item 
+static {\bf header\_\-t} {\bf header\_\-create\_\-c} (size\_\-t size)
+\item 
+static struct {\bf class\_\-t} $\ast$ {\bf header\_\-get\_\-class} ({\bf header\_\-t} $\ast$header)
+\item 
+static size\_\-t {\bf header\_\-get\_\-size} ({\bf header\_\-t} $\ast$header)
+\item 
+static bool {\bf header\_\-is\_\-marked} ({\bf header\_\-t} $\ast$header)
+\item 
+static void {\bf header\_\-set\_\-mark} ({\bf header\_\-t} $\ast$header)
+\item 
+static void {\bf header\_\-clear\_\-mark} ({\bf header\_\-t} $\ast$header)
+\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+Object header related definitions and type declarations 
+
+Definition in file {\bf header.h}.
+
+
+
+\subsection{Define Documentation}
+\index{header.h@{header.h}!HEADER\_\-JAVA\_\-OBJECT\_\-SHIFT@{HEADER\_\-JAVA\_\-OBJECT\_\-SHIFT}}
+\index{HEADER\_\-JAVA\_\-OBJECT\_\-SHIFT@{HEADER\_\-JAVA\_\-OBJECT\_\-SHIFT}!header.h@{header.h}}
+\subsubsection[{HEADER\_\-JAVA\_\-OBJECT\_\-SHIFT}]{\setlength{\rightskip}{0pt plus 5cm}\#define HEADER\_\-JAVA\_\-OBJECT\_\-SHIFT~(1)}\label{header_8h_a34a2417d843e699d4815a56b5125414f}
+Shift value used to obtain the C object bit 
+
+Definition at line 77 of file header.h.
+
+
+
+Referenced by header\_\-is\_\-object().
+
+\index{header.h@{header.h}!HEADER\_\-MARK\_\-SHIFT@{HEADER\_\-MARK\_\-SHIFT}}
+\index{HEADER\_\-MARK\_\-SHIFT@{HEADER\_\-MARK\_\-SHIFT}!header.h@{header.h}}
+\subsubsection[{HEADER\_\-MARK\_\-SHIFT}]{\setlength{\rightskip}{0pt plus 5cm}\#define HEADER\_\-MARK\_\-SHIFT~(0)}\label{header_8h_a555278c37b83a59233b36564e350d4d0}
+Shift value used to obtain the mark bit 
+
+Definition at line 74 of file header.h.
+
+
+
+Referenced by header\_\-clear\_\-mark(), and header\_\-is\_\-marked().
+
+\index{header.h@{header.h}!HEADER\_\-PCP\_\-MASK@{HEADER\_\-PCP\_\-MASK}}
+\index{HEADER\_\-PCP\_\-MASK@{HEADER\_\-PCP\_\-MASK}!header.h@{header.h}}
+\subsubsection[{HEADER\_\-PCP\_\-MASK}]{\setlength{\rightskip}{0pt plus 5cm}\#define HEADER\_\-PCP\_\-MASK~($\sim$(((uintptr\_\-t) 1 $<$$<$ HEADER\_\-RESERVED) -\/ 1))}\label{header_8h_adb76303d3f884230ff864e7ebaa7d3c5}
+Mask used to extract the packed class pointer from the header 
+
+Definition at line 80 of file header.h.
+
+\index{header.h@{header.h}!HEADER\_\-RESERVED@{HEADER\_\-RESERVED}}
+\index{HEADER\_\-RESERVED@{HEADER\_\-RESERVED}!header.h@{header.h}}
+\subsubsection[{HEADER\_\-RESERVED}]{\setlength{\rightskip}{0pt plus 5cm}\#define HEADER\_\-RESERVED~(2)}\label{header_8h_a3ec0307326f42b2af02373b334801d7f}
+Reserved bits in the header a Java object or C allocation
+
+At the moment 2 bits are reserved, bit 31 is set if the object is marked and bit 30 is set if this is a Java object. The mark bit is always set for C objects 
+
+Definition at line 69 of file header.h.
+
+
+
+Referenced by gc\_\-sweep(), header\_\-create\_\-c(), and header\_\-create\_\-object().
+
+\index{header.h@{header.h}!HEADER\_\-SIZE\_\-MASK@{HEADER\_\-SIZE\_\-MASK}}
+\index{HEADER\_\-SIZE\_\-MASK@{HEADER\_\-SIZE\_\-MASK}!header.h@{header.h}}
+\subsubsection[{HEADER\_\-SIZE\_\-MASK}]{\setlength{\rightskip}{0pt plus 5cm}\#define HEADER\_\-SIZE\_\-MASK~HEADER\_\-PCP\_\-MASK}\label{header_8h_a1de93f166fedbb2dfcd5a8e0a98c2919}
+Mask used to extract the size of an allocation from the header 
+
+Definition at line 83 of file header.h.
+
+\index{header.h@{header.h}!JELATINE\_\-HEADER\_\-H@{JELATINE\_\-HEADER\_\-H}}
+\index{JELATINE\_\-HEADER\_\-H@{JELATINE\_\-HEADER\_\-H}!header.h@{header.h}}
+\subsubsection[{JELATINE\_\-HEADER\_\-H}]{\setlength{\rightskip}{0pt plus 5cm}\#define JELATINE\_\-HEADER\_\-H~(1)}\label{header_8h_a19da5c2999357f821269534f73e1cab9}
+\doxyref{header.h}{p.}{header_8h} inclusion macro 
+
+Definition at line 28 of file header.h.
+
+
+
+\subsection{Typedef Documentation}
+\index{header.h@{header.h}!header\_\-t@{header\_\-t}}
+\index{header\_\-t@{header\_\-t}!header.h@{header.h}}
+\subsubsection[{header\_\-t}]{\setlength{\rightskip}{0pt plus 5cm}typedef uintptr\_\-t {\bf header\_\-t}}\label{header_8h_a35c8fb83b9813f42ad4b46afe9e68d0a}
+Represents the meta-\/data added to an object including the object description and the extra fields used by the gc 
+
+Definition at line 34 of file header.h.
+
+
+
+\subsection{Function Documentation}
+\index{header.h@{header.h}!header\_\-clear\_\-mark@{header\_\-clear\_\-mark}}
+\index{header\_\-clear\_\-mark@{header\_\-clear\_\-mark}!header.h@{header.h}}
+\subsubsection[{header\_\-clear\_\-mark}]{\setlength{\rightskip}{0pt plus 5cm}static void header\_\-clear\_\-mark (
+\begin{DoxyParamCaption}
+\item[{{\bf header\_\-t} $\ast$}]{ header}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily  [inline, static]}}\label{header_8h_aeed7054ab33239b2e7db09bdd7790ad6}
+Clears the mark bit of an object's header 
+\begin{DoxyParams}{Parameters}
+\item[{\em header}]A pointer to an object header \end{DoxyParams}
+
+
+Definition at line 171 of file header.h.
+
+
+
+References HEADER\_\-MARK\_\-SHIFT.
+
+
+
+Referenced by gc\_\-sweep().
+
+\index{header.h@{header.h}!header\_\-create\_\-c@{header\_\-create\_\-c}}
+\index{header\_\-create\_\-c@{header\_\-create\_\-c}!header.h@{header.h}}
+\subsubsection[{header\_\-create\_\-c}]{\setlength{\rightskip}{0pt plus 5cm}static {\bf header\_\-t} header\_\-create\_\-c (
+\begin{DoxyParamCaption}
+\item[{size\_\-t}]{ size}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily  [inline, static]}}\label{header_8h_a79bc7d370b3b9099dfd97532472d6490}
+Creates a C object header of the specified size 
+\begin{DoxyParams}{Parameters}
+\item[{\em size}]The size of the C object \end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+A Java object header 
+\end{DoxyReturn}
+
+
+Definition at line 125 of file header.h.
+
+
+
+References HEADER\_\-RESERVED.
+
+
+
+Referenced by gc\_\-malloc().
+
+\index{header.h@{header.h}!header\_\-create\_\-object@{header\_\-create\_\-object}}
+\index{header\_\-create\_\-object@{header\_\-create\_\-object}!header.h@{header.h}}
+\subsubsection[{header\_\-create\_\-object}]{\setlength{\rightskip}{0pt plus 5cm}static {\bf header\_\-t} header\_\-create\_\-object (
+\begin{DoxyParamCaption}
+\item[{struct {\bf class\_\-t} $\ast$}]{ cl}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily  [inline, static]}}\label{header_8h_ad9c5d60f0a81e81df7ac9a3c46a52d0c}
+Creates a Java object header from the pointer to the class the object belongs to 
+\begin{DoxyParams}{Parameters}
+\item[{\em cl}]A pointer to a \doxyref{class\_\-t}{p.}{structclass__t} structuer \end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+A Java object header 
+\end{DoxyReturn}
+
+
+Definition at line 115 of file header.h.
+
+
+
+References HEADER\_\-RESERVED.
+
+
+
+Referenced by gc\_\-new(), gc\_\-new\_\-array\_\-nonref(), and gc\_\-new\_\-array\_\-ref().
+
+\index{header.h@{header.h}!header\_\-get\_\-class@{header\_\-get\_\-class}}
+\index{header\_\-get\_\-class@{header\_\-get\_\-class}!header.h@{header.h}}
+\subsubsection[{header\_\-get\_\-class}]{\setlength{\rightskip}{0pt plus 5cm}static struct {\bf class\_\-t}$\ast$ header\_\-get\_\-class (
+\begin{DoxyParamCaption}
+\item[{{\bf header\_\-t} $\ast$}]{ header}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily  [static, read]}}\label{header_8h_aa9d845eef21dbd1fdbbdbba0f030babe}
+Extracts the class pointer from an object header 
+\begin{DoxyParams}{Parameters}
+\item[{\em header}]pointer to an object header \end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+The class pointer embedded in the header 
+\end{DoxyReturn}
+
+
+Definition at line 135 of file header.h.
+
+
+
+References header\_\-is\_\-object().
+
+
+
+Referenced by array\_\-get\_\-nref\_\-size(), array\_\-get\_\-ref\_\-n(), arraycopy\_\-ref(), gc\_\-mark\_\-reference(), gc\_\-sweep(), interpreter(), java\_\-lang\_\-Object\_\-getClass(), java\_\-lang\_\-System\_\-arraycopy(), java\_\-lang\_\-Thread\_\-start(), KNI\_\-GetObjectClass(), and KNI\_\-IsInstanceOf().
+
+\index{header.h@{header.h}!header\_\-get\_\-size@{header\_\-get\_\-size}}
+\index{header\_\-get\_\-size@{header\_\-get\_\-size}!header.h@{header.h}}
+\subsubsection[{header\_\-get\_\-size}]{\setlength{\rightskip}{0pt plus 5cm}static size\_\-t header\_\-get\_\-size (
+\begin{DoxyParamCaption}
+\item[{{\bf header\_\-t} $\ast$}]{ header}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily  [inline, static]}}\label{header_8h_a6cda50fa8770389bd92bd4269bacf2d5}
+Extracts the size of a C object from an object header 
+\begin{DoxyParams}{Parameters}
+\item[{\em header}]A pointer to an object header \end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+The size of the C object 
+\end{DoxyReturn}
+
+
+Definition at line 145 of file header.h.
+
+
+
+References header\_\-is\_\-object().
+
+
+
+Referenced by gc\_\-free(), and gc\_\-sweep().
+
+\index{header.h@{header.h}!header\_\-is\_\-marked@{header\_\-is\_\-marked}}
+\index{header\_\-is\_\-marked@{header\_\-is\_\-marked}!header.h@{header.h}}
+\subsubsection[{header\_\-is\_\-marked}]{\setlength{\rightskip}{0pt plus 5cm}static bool header\_\-is\_\-marked (
+\begin{DoxyParamCaption}
+\item[{{\bf header\_\-t} $\ast$}]{ header}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily  [inline, static]}}\label{header_8h_a63b7011adb8d891fef27bb0304aa4228}
+Checks if the header's 'marked' bit is set 
+\begin{DoxyParams}{Parameters}
+\item[{\em header}]A pointer to an object header \end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+True if the header is marked, false otherwise 
+\end{DoxyReturn}
+
+
+Definition at line 155 of file header.h.
+
+
+
+References HEADER\_\-MARK\_\-SHIFT.
+
+
+
+Referenced by gc\_\-mark\_\-finalizable(), gc\_\-mark\_\-reference(), gc\_\-purge\_\-weakref\_\-list(), gc\_\-sweep(), jsm\_\-purge(), and tm\_\-purge().
+
+\index{header.h@{header.h}!header\_\-is\_\-object@{header\_\-is\_\-object}}
+\index{header\_\-is\_\-object@{header\_\-is\_\-object}!header.h@{header.h}}
+\subsubsection[{header\_\-is\_\-object}]{\setlength{\rightskip}{0pt plus 5cm}static bool header\_\-is\_\-object (
+\begin{DoxyParamCaption}
+\item[{{\bf header\_\-t} $\ast$}]{ header}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily  [inline, static]}}\label{header_8h_a42b43929daad2afe0eb296429feaaf98}
+Checks if the header's 'Java object' bit is set 
+\begin{DoxyParams}{Parameters}
+\item[{\em header}]A pointer to an object header \end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+True if the header belongs to a Java object, false otherwise 
+\end{DoxyReturn}
+
+
+Definition at line 105 of file header.h.
+
+
+
+References HEADER\_\-JAVA\_\-OBJECT\_\-SHIFT.
+
+
+
+Referenced by gc\_\-mark\_\-reference(), gc\_\-sweep(), header\_\-get\_\-class(), and header\_\-get\_\-size().
+
+\index{header.h@{header.h}!header\_\-set\_\-mark@{header\_\-set\_\-mark}}
+\index{header\_\-set\_\-mark@{header\_\-set\_\-mark}!header.h@{header.h}}
+\subsubsection[{header\_\-set\_\-mark}]{\setlength{\rightskip}{0pt plus 5cm}static void header\_\-set\_\-mark (
+\begin{DoxyParamCaption}
+\item[{{\bf header\_\-t} $\ast$}]{ header}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily  [inline, static]}}\label{header_8h_a6e06171c87e46d8a7ee6aa7cd26923a2}
+Sets the mark bit of an object's header 
+\begin{DoxyParams}{Parameters}
+\item[{\em header}]A pointer to an object header \end{DoxyParams}
+
+
+Definition at line 163 of file header.h.
+
+
+
+Referenced by gc\_\-mark\_\-reference(), and gc\_\-sweep().
+

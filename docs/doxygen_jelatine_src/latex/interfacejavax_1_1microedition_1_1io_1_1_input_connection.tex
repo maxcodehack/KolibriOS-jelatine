@@ -1,0 +1,60 @@
+\section{javax::microedition::io::InputConnection Interface Reference}
+\label{interfacejavax_1_1microedition_1_1io_1_1_input_connection}\index{javax::microedition::io::InputConnection@{javax::microedition::io::InputConnection}}
+Inheritance diagram for javax::microedition::io::InputConnection:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=4.000000cm]{interfacejavax_1_1microedition_1_1io_1_1_input_connection}
+\end{center}
+\end{figure}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+{\bf InputStream} {\bf openInputStream} ()  throws IOException
+\item 
+{\bf DataInputStream} {\bf openDataInputStream} ()  throws IOException
+\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+This interface an input stream's connection methods 
+
+Definition at line 30 of file InputConnection.java.
+
+
+
+\subsection{Member Function Documentation}
+\index{javax::microedition::io::InputConnection@{javax::microedition::io::InputConnection}!openDataInputStream@{openDataInputStream}}
+\index{openDataInputStream@{openDataInputStream}!javax::microedition::io::InputConnection@{javax::microedition::io::InputConnection}}
+\subsubsection[{openDataInputStream}]{\setlength{\rightskip}{0pt plus 5cm}{\bf DataInputStream} javax::microedition::io::InputConnection::openDataInputStream (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)  throws {\bf IOException}}\label{interfacejavax_1_1microedition_1_1io_1_1_input_connection_a779b2c2897b09aa35ed2c466f2c53af4}
+Return a new, opened data input stream for a connection \begin{DoxyReturn}{Returns}
+An input stream object 
+\end{DoxyReturn}
+
+\begin{DoxyExceptions}{Exceptions}
+\item[{\em IOException}]If an error occurs \end{DoxyExceptions}
+
+
+Referenced by javax::microedition::io::Connector::openDataInputStream().
+
+\index{javax::microedition::io::InputConnection@{javax::microedition::io::InputConnection}!openInputStream@{openInputStream}}
+\index{openInputStream@{openInputStream}!javax::microedition::io::InputConnection@{javax::microedition::io::InputConnection}}
+\subsubsection[{openInputStream}]{\setlength{\rightskip}{0pt plus 5cm}{\bf InputStream} javax::microedition::io::InputConnection::openInputStream (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)  throws {\bf IOException}}\label{interfacejavax_1_1microedition_1_1io_1_1_input_connection_a717dd555bf03d54a4d1074ad17c90a6b}
+Return a new, opened input stream for a connection \begin{DoxyReturn}{Returns}
+An input stream object 
+\end{DoxyReturn}
+
+\begin{DoxyExceptions}{Exceptions}
+\item[{\em IOException}]If any I/O error occurs \end{DoxyExceptions}
+
+
+The documentation for this interface was generated from the following file:\begin{DoxyCompactItemize}
+\item 
+src/classpath/javax/microedition/io/InputConnection.java\end{DoxyCompactItemize}

@@ -1,0 +1,80 @@
+\section{java\_\-lang\_\-Throwable.h File Reference}
+\label{java__lang___throwable_8h}\index{java\_\-lang\_\-Throwable.h@{java\_\-lang\_\-Throwable.h}}
+{\ttfamily \#include \char`\"{}wrappers.h\char`\"{}}\par
+\subsection*{Data Structures}
+\begin{DoxyCompactItemize}
+\item 
+struct {\bf java\_\-lang\_\-Throwable\_\-t}
+\end{DoxyCompactItemize}
+\subsection*{Defines}
+\begin{DoxyCompactItemize}
+\item 
+\#define {\bf JELATINE\_\-JAVA\_\-LANG\_\-THROWABLE\_\-H}~(1)
+\item 
+\#define {\bf JAVA\_\-LANG\_\-THROWABLE\_\-REF2PTR}(r)
+\item 
+\#define {\bf JAVA\_\-LANG\_\-THROWABLE\_\-PTR2REF}(p)~((uintptr\_\-t) (p) + offsetof({\bf java\_\-lang\_\-Throwable\_\-t}, header))
+\end{DoxyCompactItemize}
+\subsection*{Typedefs}
+\begin{DoxyCompactItemize}
+\item 
+typedef struct {\bf java\_\-lang\_\-Throwable\_\-t} {\bf java\_\-lang\_\-Throwable\_\-t}
+\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+Java Class 'java.lang.Throwable' declaration 
+
+Definition in file {\bf java\_\-lang\_\-Throwable.h}.
+
+
+
+\subsection{Define Documentation}
+\index{java\_\-lang\_\-Throwable.h@{java\_\-lang\_\-Throwable.h}!JAVA\_\-LANG\_\-THROWABLE\_\-PTR2REF@{JAVA\_\-LANG\_\-THROWABLE\_\-PTR2REF}}
+\index{JAVA\_\-LANG\_\-THROWABLE\_\-PTR2REF@{JAVA\_\-LANG\_\-THROWABLE\_\-PTR2REF}!java_lang_Throwable.h@{java\_\-lang\_\-Throwable.h}}
+\subsubsection[{JAVA\_\-LANG\_\-THROWABLE\_\-PTR2REF}]{\setlength{\rightskip}{0pt plus 5cm}\#define JAVA\_\-LANG\_\-THROWABLE\_\-PTR2REF(
+\begin{DoxyParamCaption}
+\item[{}]{p}
+\end{DoxyParamCaption}
+)~((uintptr\_\-t) (p) + offsetof({\bf java\_\-lang\_\-Throwable\_\-t}, header))}\label{java__lang___throwable_8h_a2c988b8a1479bebfcce71edaceb9dd78}
+Turns a C pointer into a reference to a Java Throwable object 
+
+Definition at line 47 of file java\_\-lang\_\-Throwable.h.
+
+\index{java\_\-lang\_\-Throwable.h@{java\_\-lang\_\-Throwable.h}!JAVA\_\-LANG\_\-THROWABLE\_\-REF2PTR@{JAVA\_\-LANG\_\-THROWABLE\_\-REF2PTR}}
+\index{JAVA\_\-LANG\_\-THROWABLE\_\-REF2PTR@{JAVA\_\-LANG\_\-THROWABLE\_\-REF2PTR}!java_lang_Throwable.h@{java\_\-lang\_\-Throwable.h}}
+\subsubsection[{JAVA\_\-LANG\_\-THROWABLE\_\-REF2PTR}]{\setlength{\rightskip}{0pt plus 5cm}\#define JAVA\_\-LANG\_\-THROWABLE\_\-REF2PTR(
+\begin{DoxyParamCaption}
+\item[{}]{r}
+\end{DoxyParamCaption}
+)}\label{java__lang___throwable_8h_a3e600ef9d40b9b9d8a6ba34ce714ea37}
+{\bfseries Value:}
+\begin{DoxyCode}
+((java_lang_Throwable_t *) ((r) \
+                                    - offsetof(java_lang_Throwable_t, header)))
+\end{DoxyCode}
+Turns a reference to a Java Throwable object into a C pointer 
+
+Definition at line 42 of file java\_\-lang\_\-Throwable.h.
+
+
+
+Referenced by KNI\_\-ThrowNew().
+
+\index{java\_\-lang\_\-Throwable.h@{java\_\-lang\_\-Throwable.h}!JELATINE\_\-JAVA\_\-LANG\_\-THROWABLE\_\-H@{JELATINE\_\-JAVA\_\-LANG\_\-THROWABLE\_\-H}}
+\index{JELATINE\_\-JAVA\_\-LANG\_\-THROWABLE\_\-H@{JELATINE\_\-JAVA\_\-LANG\_\-THROWABLE\_\-H}!java_lang_Throwable.h@{java\_\-lang\_\-Throwable.h}}
+\subsubsection[{JELATINE\_\-JAVA\_\-LANG\_\-THROWABLE\_\-H}]{\setlength{\rightskip}{0pt plus 5cm}\#define JELATINE\_\-JAVA\_\-LANG\_\-THROWABLE\_\-H~(1)}\label{java__lang___throwable_8h_a9d306b51913a08201899780cf5ce065f}
+\doxyref{java\_\-lang\_\-Throwable.h}{p.}{java__lang___throwable_8h} inclusion macro 
+
+Definition at line 28 of file java\_\-lang\_\-Throwable.h.
+
+
+
+\subsection{Typedef Documentation}
+\index{java\_\-lang\_\-Throwable.h@{java\_\-lang\_\-Throwable.h}!java\_\-lang\_\-Throwable\_\-t@{java\_\-lang\_\-Throwable\_\-t}}
+\index{java\_\-lang\_\-Throwable\_\-t@{java\_\-lang\_\-Throwable\_\-t}!java_lang_Throwable.h@{java\_\-lang\_\-Throwable.h}}
+\subsubsection[{java\_\-lang\_\-Throwable\_\-t}]{\setlength{\rightskip}{0pt plus 5cm}typedef struct {\bf java\_\-lang\_\-Throwable\_\-t} {\bf java\_\-lang\_\-Throwable\_\-t}}\label{java__lang___throwable_8h_a72d70ad3a2fb9990c8592e9133b91d8d}
+Typedef for struct \doxyref{java\_\-lang\_\-Throwable\_\-t}{p.}{structjava__lang___throwable__t} 
+
+Definition at line 39 of file java\_\-lang\_\-Throwable.h.
+

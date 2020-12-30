@@ -1,0 +1,83 @@
+\section{jelatine::VMFinalizer Class Reference}
+\label{classjelatine_1_1_v_m_finalizer}\index{jelatine::VMFinalizer@{jelatine::VMFinalizer}}
+Inheritance diagram for jelatine::VMFinalizer:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=2.000000cm]{classjelatine_1_1_v_m_finalizer}
+\end{center}
+\end{figure}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+void {\bf run} ()
+\item 
+void {\bf finalize} ()
+\end{DoxyCompactItemize}
+\subsection*{Static Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+static native {\bf VMFinalizer} {\bf getNextObject} ()
+\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+Internal VM class used for finalizing other objects. This class uses a number of tricks to achieve its purpose. For example all objects which need to be finalized are cast to \doxyref{VMFinalizer}{p.}{classjelatine_1_1_v_m_finalizer} even though they do not inherit from the class. Since this is done only for invoking the \doxyref{finalize()}{p.}{classjelatine_1_1_v_m_finalizer_aa55391599dee7938a5756cd7bb3103c9} method which is available in every class the call works 
+
+Definition at line 32 of file VMFinalizer.java.
+
+
+
+\subsection{Member Function Documentation}
+\index{jelatine::VMFinalizer@{jelatine::VMFinalizer}!finalize@{finalize}}
+\index{finalize@{finalize}!jelatine::VMFinalizer@{jelatine::VMFinalizer}}
+\subsubsection[{finalize}]{\setlength{\rightskip}{0pt plus 5cm}void jelatine::VMFinalizer::finalize (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily  [inline]}}\label{classjelatine_1_1_v_m_finalizer_aa55391599dee7938a5756cd7bb3103c9}
+Make \doxyref{java.lang.Object.finalize()}{p.}{classjava_1_1lang_1_1_object_ae7941b0c1ff37f29c70e470227463729} public so we can call it 
+
+Definition at line 65 of file VMFinalizer.java.
+
+
+
+Referenced by run().
+
+\index{jelatine::VMFinalizer@{jelatine::VMFinalizer}!getNextObject@{getNextObject}}
+\index{getNextObject@{getNextObject}!jelatine::VMFinalizer@{jelatine::VMFinalizer}}
+\subsubsection[{getNextObject}]{\setlength{\rightskip}{0pt plus 5cm}static native {\bf VMFinalizer} jelatine::VMFinalizer::getNextObject (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily  [static]}}\label{classjelatine_1_1_v_m_finalizer_a402080d7359b0e2bbe604ee8ac90d9de}
+Gets the next object in the finalization queue \begin{DoxyReturn}{Returns}
+An object or null if the queue is empty 
+\end{DoxyReturn}
+
+
+Referenced by run().
+
+\index{jelatine::VMFinalizer@{jelatine::VMFinalizer}!run@{run}}
+\index{run@{run}!jelatine::VMFinalizer@{jelatine::VMFinalizer}}
+\subsubsection[{run}]{\setlength{\rightskip}{0pt plus 5cm}void jelatine::VMFinalizer::run (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily  [inline]}}\label{classjelatine_1_1_v_m_finalizer_a9b30540b99b306b2f91e51081d3641cd}
+Implements the \doxyref{java.lang.Runnable.run()}{p.}{interfacejava_1_1lang_1_1_runnable_a23205ccce9343ac2e3c050951827774f} method 
+
+Implements {\bf java::lang::Runnable} \doxyref{}{p.}{interfacejava_1_1lang_1_1_runnable_a23205ccce9343ac2e3c050951827774f}.
+
+
+
+Definition at line 43 of file VMFinalizer.java.
+
+
+
+References finalize(), and getNextObject().
+
+
+
+The documentation for this class was generated from the following file:\begin{DoxyCompactItemize}
+\item 
+src/classpath/jelatine/VMFinalizer.java\end{DoxyCompactItemize}

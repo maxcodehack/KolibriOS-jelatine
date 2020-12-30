@@ -1,0 +1,634 @@
+\section{src/jelatine/constantpool.c File Reference}
+\label{constantpool_8c}\index{src/jelatine/constantpool.c@{src/jelatine/constantpool.c}}
+{\ttfamily \#include \char`\"{}wrappers.h\char`\"{}}\par
+{\ttfamily \#include \char`\"{}class.h\char`\"{}}\par
+{\ttfamily \#include \char`\"{}constantpool.h\char`\"{}}\par
+{\ttfamily \#include \char`\"{}jstring.h\char`\"{}}\par
+{\ttfamily \#include \char`\"{}memory.h\char`\"{}}\par
+{\ttfamily \#include \char`\"{}utf8\_\-string.h\char`\"{}}\par
+{\ttfamily \#include \char`\"{}util.h\char`\"{}}\par
+\subsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+static {\bf const\_\-pool\_\-type\_\-t} {\bf tag\_\-read} (uint8\_\-t $\ast$tags, uint32\_\-t entry)
+\item 
+static void {\bf tag\_\-write} (uint8\_\-t $\ast$tags, uint32\_\-t entry, {\bf const\_\-pool\_\-type\_\-t} data)
+\item 
+{\bf const\_\-pool\_\-t} $\ast$ {\bf cp\_\-create} ({\bf class\_\-t} $\ast$cl, {\bf class\_\-file\_\-t} $\ast$cf)
+\item 
+{\bf const\_\-pool\_\-t} $\ast$ {\bf cp\_\-create\_\-dummy} (void)
+\item 
+{\bf const\_\-pool\_\-type\_\-t} {\bf cp\_\-get\_\-tag} ({\bf const\_\-pool\_\-t} $\ast$cp, uint16\_\-t entry)
+\item 
+void {\bf cp\_\-set\_\-tag\_\-and\_\-data} ({\bf const\_\-pool\_\-t} $\ast$cp, uint16\_\-t entry, uint8\_\-t tag, void $\ast$data)
+\item 
+char $\ast$ {\bf cp\_\-get\_\-class\_\-name} ({\bf const\_\-pool\_\-t} $\ast$cp, uint16\_\-t entry)
+\item 
+char $\ast$ {\bf cp\_\-get\_\-string} ({\bf const\_\-pool\_\-t} $\ast$cp, uint16\_\-t entry)
+\item 
+uintptr\_\-t {\bf cp\_\-get\_\-ref} ({\bf const\_\-pool\_\-t} $\ast$cp, uint16\_\-t entry)
+\item 
+int32\_\-t {\bf cp\_\-get\_\-integer} ({\bf const\_\-pool\_\-t} $\ast$cp, uint16\_\-t entry)
+\item 
+int64\_\-t {\bf cp\_\-get\_\-long} ({\bf const\_\-pool\_\-t} $\ast$cp, uint16\_\-t entry)
+\item 
+char $\ast$ {\bf cp\_\-get\_\-name\_\-and\_\-type\_\-name} ({\bf const\_\-pool\_\-t} $\ast$cp, uint16\_\-t entry)
+\item 
+char $\ast$ {\bf cp\_\-get\_\-name\_\-and\_\-type\_\-type} ({\bf const\_\-pool\_\-t} $\ast$cp, uint16\_\-t entry)
+\item 
+uint16\_\-t {\bf cp\_\-get\_\-fieldref\_\-class} ({\bf const\_\-pool\_\-t} $\ast$cp, uint16\_\-t entry)
+\item 
+char $\ast$ {\bf cp\_\-get\_\-fieldref\_\-name} ({\bf const\_\-pool\_\-t} $\ast$cp, uint16\_\-t entry)
+\item 
+char $\ast$ {\bf cp\_\-get\_\-fieldref\_\-type} ({\bf const\_\-pool\_\-t} $\ast$cp, uint16\_\-t entry)
+\item 
+char $\ast$ {\bf cp\_\-get\_\-methodref\_\-name} ({\bf const\_\-pool\_\-t} $\ast$cp, uint16\_\-t entry)
+\item 
+char $\ast$ {\bf cp\_\-get\_\-methodref\_\-descriptor} ({\bf const\_\-pool\_\-t} $\ast$cp, uint16\_\-t entry)
+\item 
+uint16\_\-t {\bf cp\_\-get\_\-methodref\_\-class} ({\bf const\_\-pool\_\-t} $\ast$cp, uint16\_\-t entry)
+\item 
+char $\ast$ {\bf cp\_\-get\_\-interfacemethodref\_\-name} ({\bf const\_\-pool\_\-t} $\ast$cp, uint16\_\-t entry)
+\item 
+char $\ast$ {\bf cp\_\-get\_\-interfacemethodref\_\-descriptor} ({\bf const\_\-pool\_\-t} $\ast$cp, uint16\_\-t entry)
+\item 
+uint16\_\-t {\bf cp\_\-get\_\-interfacemethodref\_\-class} ({\bf const\_\-pool\_\-t} $\ast$cp, uint16\_\-t entry)
+\end{DoxyCompactItemize}
+\subsection*{Variables}
+\begin{DoxyCompactItemize}
+\item 
+static {\bf const\_\-pool\_\-t} {\bf dummy\_\-cp} = \{ 0, NULL, \{ 0 \} \}
+\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+Constant pool functions implementation 
+
+Definition in file {\bf constantpool.c}.
+
+
+
+\subsection{Function Documentation}
+\index{constantpool.c@{constantpool.c}!cp\_\-create@{cp\_\-create}}
+\index{cp\_\-create@{cp\_\-create}!constantpool.c@{constantpool.c}}
+\subsubsection[{cp\_\-create}]{\setlength{\rightskip}{0pt plus 5cm}{\bf const\_\-pool\_\-t}$\ast$ cp\_\-create (
+\begin{DoxyParamCaption}
+\item[{{\bf class\_\-t} $\ast$}]{ cl, }
+\item[{{\bf class\_\-file\_\-t} $\ast$}]{ cf}
+\end{DoxyParamCaption}
+)}\label{constantpool_8c_af084a3a43384ed0cd932dcbab1d50642}
+Creates a new constant-\/pool from the specified class-\/file 
+\begin{DoxyParams}{Parameters}
+\item[{\em cl}]A pointer to the class owning the constant pool \item[{\em cf}]A pointer to an open class-\/file \end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+A pointer to the newly created constant-\/pool 
+\end{DoxyReturn}
+
+
+Definition at line 74 of file constantpool.c.
+
+
+
+References c\_\-throw, cf\_\-load\_\-u1(), cf\_\-load\_\-u2(), cf\_\-load\_\-u4(), CONSTANT\_\-Class, CONSTANT\_\-Double, CONSTANT\_\-Fieldref, CONSTANT\_\-Float, CONSTANT\_\-Integer, CONSTANT\_\-InterfaceMethodref, CONSTANT\_\-Long, CONSTANT\_\-Methodref, CONSTANT\_\-NameAndType, CONSTANT\_\-String, CONSTANT\_\-Utf8, cp\_\-data\_\-get\_\-ptr(), cp\_\-data\_\-get\_\-uint16(), cp\_\-data\_\-set\_\-double(), cp\_\-data\_\-set\_\-fieldref\_\-class(), cp\_\-data\_\-set\_\-fieldref\_\-name\_\-and\_\-type(), cp\_\-data\_\-set\_\-float(), cp\_\-data\_\-set\_\-int32(), cp\_\-data\_\-set\_\-int64(), cp\_\-data\_\-set\_\-name\_\-and\_\-type\_\-descriptor(), cp\_\-data\_\-set\_\-name\_\-and\_\-type\_\-name(), cp\_\-data\_\-set\_\-ptr(), cp\_\-data\_\-set\_\-uint16(), cp\_\-data\_\-set\_\-uintptr(), const\_\-pool\_\-t::data, const\_\-pool\_\-t::entries, gc\_\-free(), gc\_\-malloc(), gc\_\-palloc(), JAVA\_\-LANG\_\-NOCLASSDEFFOUNDERROR, JAVA\_\-LANG\_\-STRING\_\-PTR2REF, jstring\_\-create\_\-literal(), size\_\-div\_\-inf(), tag\_\-read(), tag\_\-write(), const\_\-pool\_\-t::tags, utf8\_\-check(), and utf8\_\-intern().
+
+
+
+Referenced by derive\_\-class().
+
+\index{constantpool.c@{constantpool.c}!cp\_\-create\_\-dummy@{cp\_\-create\_\-dummy}}
+\index{cp\_\-create\_\-dummy@{cp\_\-create\_\-dummy}!constantpool.c@{constantpool.c}}
+\subsubsection[{cp\_\-create\_\-dummy}]{\setlength{\rightskip}{0pt plus 5cm}{\bf const\_\-pool\_\-t}$\ast$ cp\_\-create\_\-dummy (
+\begin{DoxyParamCaption}
+\item[{void}]{}
+\end{DoxyParamCaption}
+)}\label{constantpool_8c_a68ebbeeba74cfd1407cfadfbb0b6d211}
+Creates a dummy, empty constant pool used by array classes \begin{DoxyReturn}{Returns}
+A pointer to the dummy constant pool 
+\end{DoxyReturn}
+
+
+Definition at line 248 of file constantpool.c.
+
+
+
+Referenced by init\_\-dummy\_\-methods(), and load\_\-class().
+
+\index{constantpool.c@{constantpool.c}!cp\_\-get\_\-class\_\-name@{cp\_\-get\_\-class\_\-name}}
+\index{cp\_\-get\_\-class\_\-name@{cp\_\-get\_\-class\_\-name}!constantpool.c@{constantpool.c}}
+\subsubsection[{cp\_\-get\_\-class\_\-name}]{\setlength{\rightskip}{0pt plus 5cm}char$\ast$ cp\_\-get\_\-class\_\-name (
+\begin{DoxyParamCaption}
+\item[{{\bf const\_\-pool\_\-t} $\ast$}]{ cp, }
+\item[{uint16\_\-t}]{ entry}
+\end{DoxyParamCaption}
+)}\label{constantpool_8c_aa58e66f46bf0f17866c40b9cc91826b0}
+Gets the the name of a class, fails if the {\itshape entry\/} parameter is out of range or if the relevant entry has a tag different from CONSTANT\_\-Class 
+\begin{DoxyParams}{Parameters}
+\item[{\em cp}]A pointer to a valid constant pool object \item[{\em entry}]The constant pool entry number \end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+The index of the class name contained in the specified entry 
+\end{DoxyReturn}
+
+
+Definition at line 291 of file constantpool.c.
+
+
+
+References c\_\-throw, CONSTANT\_\-Class, CONSTANT\_\-Class\_\-resolved, cp\_\-data\_\-get\_\-ptr(), cp\_\-data\_\-get\_\-uint16(), cp\_\-get\_\-string(), cp\_\-get\_\-tag(), const\_\-pool\_\-t::data, and JAVA\_\-LANG\_\-NOCLASSDEFFOUNDERROR.
+
+
+
+Referenced by bcl\_\-link\_\-opcode(), derive\_\-class(), and resolve\_\-class().
+
+\index{constantpool.c@{constantpool.c}!cp\_\-get\_\-fieldref\_\-class@{cp\_\-get\_\-fieldref\_\-class}}
+\index{cp\_\-get\_\-fieldref\_\-class@{cp\_\-get\_\-fieldref\_\-class}!constantpool.c@{constantpool.c}}
+\subsubsection[{cp\_\-get\_\-fieldref\_\-class}]{\setlength{\rightskip}{0pt plus 5cm}uint16\_\-t cp\_\-get\_\-fieldref\_\-class (
+\begin{DoxyParamCaption}
+\item[{{\bf const\_\-pool\_\-t} $\ast$}]{ cp, }
+\item[{uint16\_\-t}]{ entry}
+\end{DoxyParamCaption}
+)}\label{constantpool_8c_aab6e2c101c25d4e148029224f7a39d61}
+Gets the class index from a CONSTANT\_\-Fieldref 
+\begin{DoxyParams}{Parameters}
+\item[{\em cp}]A pointer to a valid constant pool object \item[{\em entry}]The constant pool entry number \end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+The index of the class held by the specified entry 
+\end{DoxyReturn}
+
+
+Definition at line 468 of file constantpool.c.
+
+
+
+References c\_\-throw, CONSTANT\_\-Fieldref, cp\_\-data\_\-get\_\-fieldref\_\-class(), cp\_\-get\_\-tag(), const\_\-pool\_\-t::data, and JAVA\_\-LANG\_\-NOCLASSDEFFOUNDERROR.
+
+
+
+Referenced by resolve\_\-instance\_\-field(), and resolve\_\-static\_\-field().
+
+\index{constantpool.c@{constantpool.c}!cp\_\-get\_\-fieldref\_\-name@{cp\_\-get\_\-fieldref\_\-name}}
+\index{cp\_\-get\_\-fieldref\_\-name@{cp\_\-get\_\-fieldref\_\-name}!constantpool.c@{constantpool.c}}
+\subsubsection[{cp\_\-get\_\-fieldref\_\-name}]{\setlength{\rightskip}{0pt plus 5cm}char$\ast$ cp\_\-get\_\-fieldref\_\-name (
+\begin{DoxyParamCaption}
+\item[{{\bf const\_\-pool\_\-t} $\ast$}]{ cp, }
+\item[{uint16\_\-t}]{ entry}
+\end{DoxyParamCaption}
+)}\label{constantpool_8c_a772123a7c39180d42fc2f0844d3c7557}
+Gets the field name from a CONSTANT\_\-Fieldref 
+\begin{DoxyParams}{Parameters}
+\item[{\em cp}]A pointer to a valid constant pool object \item[{\em entry}]The constant pool entry number \end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+The name of the field held by the specified entry 
+\end{DoxyReturn}
+
+
+Definition at line 485 of file constantpool.c.
+
+
+
+References c\_\-throw, CONSTANT\_\-Fieldref, cp\_\-data\_\-get\_\-fieldref\_\-name\_\-and\_\-type(), cp\_\-get\_\-name\_\-and\_\-type\_\-name(), cp\_\-get\_\-tag(), const\_\-pool\_\-t::data, and JAVA\_\-LANG\_\-NOCLASSDEFFOUNDERROR.
+
+
+
+Referenced by resolve\_\-instance\_\-field(), and resolve\_\-static\_\-field().
+
+\index{constantpool.c@{constantpool.c}!cp\_\-get\_\-fieldref\_\-type@{cp\_\-get\_\-fieldref\_\-type}}
+\index{cp\_\-get\_\-fieldref\_\-type@{cp\_\-get\_\-fieldref\_\-type}!constantpool.c@{constantpool.c}}
+\subsubsection[{cp\_\-get\_\-fieldref\_\-type}]{\setlength{\rightskip}{0pt plus 5cm}char$\ast$ cp\_\-get\_\-fieldref\_\-type (
+\begin{DoxyParamCaption}
+\item[{{\bf const\_\-pool\_\-t} $\ast$}]{ cp, }
+\item[{uint16\_\-t}]{ entry}
+\end{DoxyParamCaption}
+)}\label{constantpool_8c_acc8894f2da9d2f56f0841d309f227238}
+Gets the field descriptor from a CONSTANT\_\-Fieldref 
+\begin{DoxyParams}{Parameters}
+\item[{\em cp}]A pointer to a valid constant pool object \item[{\em entry}]The constant pool entry number \end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+The descriptor of the field held by the specified entry 
+\end{DoxyReturn}
+
+
+Definition at line 504 of file constantpool.c.
+
+
+
+References c\_\-throw, CONSTANT\_\-Fieldref, cp\_\-data\_\-get\_\-fieldref\_\-name\_\-and\_\-type(), cp\_\-get\_\-name\_\-and\_\-type\_\-type(), cp\_\-get\_\-tag(), const\_\-pool\_\-t::data, and JAVA\_\-LANG\_\-NOCLASSDEFFOUNDERROR.
+
+
+
+Referenced by resolve\_\-instance\_\-field(), and resolve\_\-static\_\-field().
+
+\index{constantpool.c@{constantpool.c}!cp\_\-get\_\-integer@{cp\_\-get\_\-integer}}
+\index{cp\_\-get\_\-integer@{cp\_\-get\_\-integer}!constantpool.c@{constantpool.c}}
+\subsubsection[{cp\_\-get\_\-integer}]{\setlength{\rightskip}{0pt plus 5cm}int32\_\-t cp\_\-get\_\-integer (
+\begin{DoxyParamCaption}
+\item[{{\bf const\_\-pool\_\-t} $\ast$}]{ cp, }
+\item[{uint16\_\-t}]{ entry}
+\end{DoxyParamCaption}
+)}\label{constantpool_8c_af79f62eb26b06b607185c28e0da9228b}
+Gets a CONSTANT\_\-Integer value in the specified entry of the constant pool fails if the {\itshape entry\/} parameter is out of range or if the relevant entry has a tag different from CONSTANT\_\-Integer 
+\begin{DoxyParams}{Parameters}
+\item[{\em cp}]A pointer to a valid constant pool object \item[{\em entry}]The constant pool entry number \end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+The value of the integer contained in the specified entry 
+\end{DoxyReturn}
+
+
+Definition at line 352 of file constantpool.c.
+
+
+
+References c\_\-throw, CONSTANT\_\-Integer, cp\_\-data\_\-get\_\-int32(), cp\_\-get\_\-tag(), const\_\-pool\_\-t::data, and JAVA\_\-LANG\_\-NOCLASSDEFFOUNDERROR.
+
+
+
+Referenced by initialize\_\-static\_\-fields().
+
+\index{constantpool.c@{constantpool.c}!cp\_\-get\_\-interfacemethodref\_\-class@{cp\_\-get\_\-interfacemethodref\_\-class}}
+\index{cp\_\-get\_\-interfacemethodref\_\-class@{cp\_\-get\_\-interfacemethodref\_\-class}!constantpool.c@{constantpool.c}}
+\subsubsection[{cp\_\-get\_\-interfacemethodref\_\-class}]{\setlength{\rightskip}{0pt plus 5cm}uint16\_\-t cp\_\-get\_\-interfacemethodref\_\-class (
+\begin{DoxyParamCaption}
+\item[{{\bf const\_\-pool\_\-t} $\ast$}]{ cp, }
+\item[{uint16\_\-t}]{ entry}
+\end{DoxyParamCaption}
+)}\label{constantpool_8c_a3dcd86062270ba36a6bfddcc9367072d}
+Gets the class index from a CONSTANT\_\-InterfaceMethodref 
+\begin{DoxyParams}{Parameters}
+\item[{\em cp}]A pointer to a valid constant pool object \item[{\em entry}]The constant pool entry number \end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+The entry corresponding to the method's class 
+\end{DoxyReturn}
+
+
+Definition at line 615 of file constantpool.c.
+
+
+
+References c\_\-throw, CONSTANT\_\-InterfaceMethodref, cp\_\-data\_\-get\_\-fieldref\_\-class(), cp\_\-get\_\-tag(), const\_\-pool\_\-t::data, and JAVA\_\-LANG\_\-NOCLASSDEFFOUNDERROR.
+
+
+
+Referenced by resolve\_\-method().
+
+\index{constantpool.c@{constantpool.c}!cp\_\-get\_\-interfacemethodref\_\-descriptor@{cp\_\-get\_\-interfacemethodref\_\-descriptor}}
+\index{cp\_\-get\_\-interfacemethodref\_\-descriptor@{cp\_\-get\_\-interfacemethodref\_\-descriptor}!constantpool.c@{constantpool.c}}
+\subsubsection[{cp\_\-get\_\-interfacemethodref\_\-descriptor}]{\setlength{\rightskip}{0pt plus 5cm}char$\ast$ cp\_\-get\_\-interfacemethodref\_\-descriptor (
+\begin{DoxyParamCaption}
+\item[{{\bf const\_\-pool\_\-t} $\ast$}]{ cp, }
+\item[{uint16\_\-t}]{ entry}
+\end{DoxyParamCaption}
+)}\label{constantpool_8c_a8db8e7d0f76a4f8404b31d6906a65e76}
+Gets the method descriptor from a CONSTANT\_\-InterfaceMethodref structure 
+\begin{DoxyParams}{Parameters}
+\item[{\em cp}]A pointer to a valid constant pool object \item[{\em entry}]The constant pool entry number \end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+The descriptor of the method held by the specified entry 
+\end{DoxyReturn}
+
+
+Definition at line 596 of file constantpool.c.
+
+
+
+References c\_\-throw, CONSTANT\_\-InterfaceMethodref, cp\_\-data\_\-get\_\-fieldref\_\-name\_\-and\_\-type(), cp\_\-get\_\-name\_\-and\_\-type\_\-type(), cp\_\-get\_\-tag(), const\_\-pool\_\-t::data, and JAVA\_\-LANG\_\-NOCLASSDEFFOUNDERROR.
+
+
+
+Referenced by resolve\_\-method().
+
+\index{constantpool.c@{constantpool.c}!cp\_\-get\_\-interfacemethodref\_\-name@{cp\_\-get\_\-interfacemethodref\_\-name}}
+\index{cp\_\-get\_\-interfacemethodref\_\-name@{cp\_\-get\_\-interfacemethodref\_\-name}!constantpool.c@{constantpool.c}}
+\subsubsection[{cp\_\-get\_\-interfacemethodref\_\-name}]{\setlength{\rightskip}{0pt plus 5cm}char$\ast$ cp\_\-get\_\-interfacemethodref\_\-name (
+\begin{DoxyParamCaption}
+\item[{{\bf const\_\-pool\_\-t} $\ast$}]{ cp, }
+\item[{uint16\_\-t}]{ entry}
+\end{DoxyParamCaption}
+)}\label{constantpool_8c_a65b0a5dd99d6c37c79410ec583210fc7}
+Gets the method name from a CONSTANT\_\-InterfaceMethodref 
+\begin{DoxyParams}{Parameters}
+\item[{\em cp}]A pointer to a valid constant pool object \item[{\em entry}]The constant pool entry number \end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+The name of the method held by the specified entry 
+\end{DoxyReturn}
+
+
+Definition at line 577 of file constantpool.c.
+
+
+
+References c\_\-throw, CONSTANT\_\-InterfaceMethodref, cp\_\-data\_\-get\_\-fieldref\_\-name\_\-and\_\-type(), cp\_\-get\_\-name\_\-and\_\-type\_\-name(), cp\_\-get\_\-tag(), const\_\-pool\_\-t::data, and JAVA\_\-LANG\_\-NOCLASSDEFFOUNDERROR.
+
+
+
+Referenced by resolve\_\-method().
+
+\index{constantpool.c@{constantpool.c}!cp\_\-get\_\-long@{cp\_\-get\_\-long}}
+\index{cp\_\-get\_\-long@{cp\_\-get\_\-long}!constantpool.c@{constantpool.c}}
+\subsubsection[{cp\_\-get\_\-long}]{\setlength{\rightskip}{0pt plus 5cm}int64\_\-t cp\_\-get\_\-long (
+\begin{DoxyParamCaption}
+\item[{{\bf const\_\-pool\_\-t} $\ast$}]{ cp, }
+\item[{uint16\_\-t}]{ entry}
+\end{DoxyParamCaption}
+)}\label{constantpool_8c_adf47fb47faca972146ca4d24a2308fb9}
+Gets a constant long value in the specified entry of the constant pool fails if the {\itshape entry\/} parameter is out of range or if the relevant entry has a tag different from CONSTANT\_\-Long 
+\begin{DoxyParams}{Parameters}
+\item[{\em cp}]A pointer to a valid constant pool object \item[{\em entry}]The constant pool entry number \end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+The value of the long contained in the specified entry 
+\end{DoxyReturn}
+
+
+Definition at line 392 of file constantpool.c.
+
+
+
+References c\_\-throw, CONSTANT\_\-Long, cp\_\-data\_\-get\_\-int64(), cp\_\-get\_\-tag(), const\_\-pool\_\-t::data, and JAVA\_\-LANG\_\-NOCLASSDEFFOUNDERROR.
+
+
+
+Referenced by initialize\_\-static\_\-fields().
+
+\index{constantpool.c@{constantpool.c}!cp\_\-get\_\-methodref\_\-class@{cp\_\-get\_\-methodref\_\-class}}
+\index{cp\_\-get\_\-methodref\_\-class@{cp\_\-get\_\-methodref\_\-class}!constantpool.c@{constantpool.c}}
+\subsubsection[{cp\_\-get\_\-methodref\_\-class}]{\setlength{\rightskip}{0pt plus 5cm}uint16\_\-t cp\_\-get\_\-methodref\_\-class (
+\begin{DoxyParamCaption}
+\item[{{\bf const\_\-pool\_\-t} $\ast$}]{ cp, }
+\item[{uint16\_\-t}]{ entry}
+\end{DoxyParamCaption}
+)}\label{constantpool_8c_a5ac83a1d7c726b7f060b8f3656201fd8}
+Gets the class index from a CONSTANT\_\-Methodref 
+\begin{DoxyParams}{Parameters}
+\item[{\em cp}]A pointer to a valid constant pool object \item[{\em entry}]The constant pool entry number \end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+The class index held by the specified entry 
+\end{DoxyReturn}
+
+
+Definition at line 560 of file constantpool.c.
+
+
+
+References c\_\-throw, CONSTANT\_\-Methodref, cp\_\-data\_\-get\_\-fieldref\_\-class(), cp\_\-get\_\-tag(), const\_\-pool\_\-t::data, and JAVA\_\-LANG\_\-NOCLASSDEFFOUNDERROR.
+
+
+
+Referenced by resolve\_\-method().
+
+\index{constantpool.c@{constantpool.c}!cp\_\-get\_\-methodref\_\-descriptor@{cp\_\-get\_\-methodref\_\-descriptor}}
+\index{cp\_\-get\_\-methodref\_\-descriptor@{cp\_\-get\_\-methodref\_\-descriptor}!constantpool.c@{constantpool.c}}
+\subsubsection[{cp\_\-get\_\-methodref\_\-descriptor}]{\setlength{\rightskip}{0pt plus 5cm}char$\ast$ cp\_\-get\_\-methodref\_\-descriptor (
+\begin{DoxyParamCaption}
+\item[{{\bf const\_\-pool\_\-t} $\ast$}]{ cp, }
+\item[{uint16\_\-t}]{ entry}
+\end{DoxyParamCaption}
+)}\label{constantpool_8c_a671285a9bb5450a2befd86560f7b92aa}
+Gets the method descriptor from a CONSTANT\_\-Methodref structure 
+\begin{DoxyParams}{Parameters}
+\item[{\em cp}]A pointer to a valid constant pool object \item[{\em entry}]The constant pool entry number \end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+The descriptor of the method held by the specified entry 
+\end{DoxyReturn}
+
+
+Definition at line 541 of file constantpool.c.
+
+
+
+References c\_\-throw, CONSTANT\_\-Methodref, cp\_\-data\_\-get\_\-fieldref\_\-name\_\-and\_\-type(), cp\_\-get\_\-name\_\-and\_\-type\_\-type(), cp\_\-get\_\-tag(), const\_\-pool\_\-t::data, and JAVA\_\-LANG\_\-NOCLASSDEFFOUNDERROR.
+
+
+
+Referenced by resolve\_\-method().
+
+\index{constantpool.c@{constantpool.c}!cp\_\-get\_\-methodref\_\-name@{cp\_\-get\_\-methodref\_\-name}}
+\index{cp\_\-get\_\-methodref\_\-name@{cp\_\-get\_\-methodref\_\-name}!constantpool.c@{constantpool.c}}
+\subsubsection[{cp\_\-get\_\-methodref\_\-name}]{\setlength{\rightskip}{0pt plus 5cm}char$\ast$ cp\_\-get\_\-methodref\_\-name (
+\begin{DoxyParamCaption}
+\item[{{\bf const\_\-pool\_\-t} $\ast$}]{ cp, }
+\item[{uint16\_\-t}]{ entry}
+\end{DoxyParamCaption}
+)}\label{constantpool_8c_ac641cf4b07ed5a42f057898142f479ed}
+Gets the method name from a CONSTANT\_\-Methodref 
+\begin{DoxyParams}{Parameters}
+\item[{\em cp}]A pointer to a valid constant pool object \item[{\em entry}]The constant pool entry number \end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+The name of the method held by the specified entry 
+\end{DoxyReturn}
+
+
+Definition at line 522 of file constantpool.c.
+
+
+
+References c\_\-throw, CONSTANT\_\-Methodref, cp\_\-data\_\-get\_\-fieldref\_\-name\_\-and\_\-type(), cp\_\-get\_\-name\_\-and\_\-type\_\-name(), cp\_\-get\_\-tag(), const\_\-pool\_\-t::data, and JAVA\_\-LANG\_\-NOCLASSDEFFOUNDERROR.
+
+
+
+Referenced by resolve\_\-method().
+
+\index{constantpool.c@{constantpool.c}!cp\_\-get\_\-name\_\-and\_\-type\_\-name@{cp\_\-get\_\-name\_\-and\_\-type\_\-name}}
+\index{cp\_\-get\_\-name\_\-and\_\-type\_\-name@{cp\_\-get\_\-name\_\-and\_\-type\_\-name}!constantpool.c@{constantpool.c}}
+\subsubsection[{cp\_\-get\_\-name\_\-and\_\-type\_\-name}]{\setlength{\rightskip}{0pt plus 5cm}char$\ast$ cp\_\-get\_\-name\_\-and\_\-type\_\-name (
+\begin{DoxyParamCaption}
+\item[{{\bf const\_\-pool\_\-t} $\ast$}]{ cp, }
+\item[{uint16\_\-t}]{ entry}
+\end{DoxyParamCaption}
+)}\label{constantpool_8c_a39a5b24dbfa32bbb385c79c12cd707f9}
+Gets the name from a CONSTANT\_\-NameAndType entry 
+\begin{DoxyParams}{Parameters}
+\item[{\em cp}]A pointer to a valid constant pool object \item[{\em entry}]The constant pool entry number \end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+The name of the class held by the specified entry 
+\end{DoxyReturn}
+
+
+Definition at line 430 of file constantpool.c.
+
+
+
+References c\_\-throw, CONSTANT\_\-NameAndType, cp\_\-data\_\-get\_\-name\_\-and\_\-type\_\-name(), cp\_\-get\_\-string(), cp\_\-get\_\-tag(), const\_\-pool\_\-t::data, and JAVA\_\-LANG\_\-NOCLASSDEFFOUNDERROR.
+
+
+
+Referenced by cp\_\-get\_\-fieldref\_\-name(), cp\_\-get\_\-interfacemethodref\_\-name(), and cp\_\-get\_\-methodref\_\-name().
+
+\index{constantpool.c@{constantpool.c}!cp\_\-get\_\-name\_\-and\_\-type\_\-type@{cp\_\-get\_\-name\_\-and\_\-type\_\-type}}
+\index{cp\_\-get\_\-name\_\-and\_\-type\_\-type@{cp\_\-get\_\-name\_\-and\_\-type\_\-type}!constantpool.c@{constantpool.c}}
+\subsubsection[{cp\_\-get\_\-name\_\-and\_\-type\_\-type}]{\setlength{\rightskip}{0pt plus 5cm}char$\ast$ cp\_\-get\_\-name\_\-and\_\-type\_\-type (
+\begin{DoxyParamCaption}
+\item[{{\bf const\_\-pool\_\-t} $\ast$}]{ cp, }
+\item[{uint16\_\-t}]{ entry}
+\end{DoxyParamCaption}
+)}\label{constantpool_8c_a7f8c03c364aebef203409dcc1d4541c1}
+Gets the descriptor from a CONSTANT\_\-NameAndType entry 
+\begin{DoxyParams}{Parameters}
+\item[{\em cp}]A pointer to a valid constant pool object \item[{\em entry}]The constant pool entry number \end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+The name of the class held by the specified entry 
+\end{DoxyReturn}
+
+
+Definition at line 449 of file constantpool.c.
+
+
+
+References c\_\-throw, CONSTANT\_\-NameAndType, cp\_\-data\_\-get\_\-name\_\-and\_\-type\_\-descriptor(), cp\_\-get\_\-string(), cp\_\-get\_\-tag(), const\_\-pool\_\-t::data, and JAVA\_\-LANG\_\-NOCLASSDEFFOUNDERROR.
+
+
+
+Referenced by cp\_\-get\_\-fieldref\_\-type(), cp\_\-get\_\-interfacemethodref\_\-descriptor(), and cp\_\-get\_\-methodref\_\-descriptor().
+
+\index{constantpool.c@{constantpool.c}!cp\_\-get\_\-ref@{cp\_\-get\_\-ref}}
+\index{cp\_\-get\_\-ref@{cp\_\-get\_\-ref}!constantpool.c@{constantpool.c}}
+\subsubsection[{cp\_\-get\_\-ref}]{\setlength{\rightskip}{0pt plus 5cm}uintptr\_\-t cp\_\-get\_\-ref (
+\begin{DoxyParamCaption}
+\item[{{\bf const\_\-pool\_\-t} $\ast$}]{ cp, }
+\item[{uint16\_\-t}]{ entry}
+\end{DoxyParamCaption}
+)}\label{constantpool_8c_a40f28994e5865a2d8dc21429f4b9745c}
+Gets a CONSTANT\_\-String or CONSTANT\_\-Class value in the specified entry of the constant pool fails if the {\itshape entry\/} parameter is out of range or if the relevant entry has a tag different from CONSTANT\_\-String or CONSTANT\_\-Class 
+\begin{DoxyParams}{Parameters}
+\item[{\em cp}]A pointer to a valid constant pool object \item[{\em entry}]The constant pool entry number \end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+A Java reference to the string 
+\end{DoxyReturn}
+
+
+Definition at line 333 of file constantpool.c.
+
+
+
+References c\_\-throw, CONSTANT\_\-Class, CONSTANT\_\-String, cp\_\-data\_\-get\_\-uintptr(), cp\_\-get\_\-tag(), const\_\-pool\_\-t::data, and JAVA\_\-LANG\_\-NOCLASSDEFFOUNDERROR.
+
+
+
+Referenced by initialize\_\-static\_\-fields().
+
+\index{constantpool.c@{constantpool.c}!cp\_\-get\_\-string@{cp\_\-get\_\-string}}
+\index{cp\_\-get\_\-string@{cp\_\-get\_\-string}!constantpool.c@{constantpool.c}}
+\subsubsection[{cp\_\-get\_\-string}]{\setlength{\rightskip}{0pt plus 5cm}char$\ast$ cp\_\-get\_\-string (
+\begin{DoxyParamCaption}
+\item[{{\bf const\_\-pool\_\-t} $\ast$}]{ cp, }
+\item[{uint16\_\-t}]{ entry}
+\end{DoxyParamCaption}
+)}\label{constantpool_8c_aacd5b87c0226a2e27a062406ba16d778}
+Gets a string stored in the specified entry of the constant pool, fails if the {\itshape entry\/} parameter is out of range or if the relevant entry has a tag different from CONSTANT\_\-Utf8 
+\begin{DoxyParams}{Parameters}
+\item[{\em cp}]A pointer to a valid constant pool object \item[{\em entry}]The constant pool entry number \end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+A pointer to the string contained in the specified entry 
+\end{DoxyReturn}
+
+
+Definition at line 315 of file constantpool.c.
+
+
+
+References c\_\-throw, CONSTANT\_\-Utf8, cp\_\-data\_\-get\_\-ptr(), cp\_\-get\_\-tag(), const\_\-pool\_\-t::data, and JAVA\_\-LANG\_\-NOCLASSDEFFOUNDERROR.
+
+
+
+Referenced by cp\_\-get\_\-class\_\-name(), cp\_\-get\_\-name\_\-and\_\-type\_\-name(), cp\_\-get\_\-name\_\-and\_\-type\_\-type(), load\_\-field\_\-attributes(), load\_\-field\_\-info(), load\_\-method\_\-attributes(), and load\_\-methods().
+
+\index{constantpool.c@{constantpool.c}!cp\_\-get\_\-tag@{cp\_\-get\_\-tag}}
+\index{cp\_\-get\_\-tag@{cp\_\-get\_\-tag}!constantpool.c@{constantpool.c}}
+\subsubsection[{cp\_\-get\_\-tag}]{\setlength{\rightskip}{0pt plus 5cm}{\bf const\_\-pool\_\-type\_\-t} cp\_\-get\_\-tag (
+\begin{DoxyParamCaption}
+\item[{{\bf const\_\-pool\_\-t} $\ast$}]{ cp, }
+\item[{uint16\_\-t}]{ entry}
+\end{DoxyParamCaption}
+)}\label{constantpool_8c_ac2c6bf451e560e5d11f5403bb731d894}
+Gets the tag of an element of the constant pool 
+\begin{DoxyParams}{Parameters}
+\item[{\em cp}]A pointer to a valid constant pool object \item[{\em entry}]The constant pool entry number \end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+The tag of the specified constant pool entry 
+\end{DoxyReturn}
+
+
+Definition at line 258 of file constantpool.c.
+
+
+
+References c\_\-throw, const\_\-pool\_\-t::entries, JAVA\_\-LANG\_\-NOCLASSDEFFOUNDERROR, tag\_\-read(), and const\_\-pool\_\-t::tags.
+
+
+
+Referenced by bcl\_\-link\_\-opcode(), cp\_\-get\_\-class\_\-name(), cp\_\-get\_\-fieldref\_\-class(), cp\_\-get\_\-fieldref\_\-name(), cp\_\-get\_\-fieldref\_\-type(), cp\_\-get\_\-integer(), cp\_\-get\_\-interfacemethodref\_\-class(), cp\_\-get\_\-interfacemethodref\_\-descriptor(), cp\_\-get\_\-interfacemethodref\_\-name(), cp\_\-get\_\-long(), cp\_\-get\_\-methodref\_\-class(), cp\_\-get\_\-methodref\_\-descriptor(), cp\_\-get\_\-methodref\_\-name(), cp\_\-get\_\-name\_\-and\_\-type\_\-name(), cp\_\-get\_\-name\_\-and\_\-type\_\-type(), cp\_\-get\_\-ref(), cp\_\-get\_\-resolved\_\-class(), cp\_\-get\_\-resolved\_\-instance\_\-field(), cp\_\-get\_\-resolved\_\-interfacemethod(), cp\_\-get\_\-resolved\_\-method(), cp\_\-get\_\-resolved\_\-static\_\-field(), cp\_\-get\_\-string(), resolve\_\-class(), resolve\_\-instance\_\-field(), resolve\_\-method(), resolve\_\-static\_\-field(), and translate\_\-bytecode().
+
+\index{constantpool.c@{constantpool.c}!cp\_\-set\_\-tag\_\-and\_\-data@{cp\_\-set\_\-tag\_\-and\_\-data}}
+\index{cp\_\-set\_\-tag\_\-and\_\-data@{cp\_\-set\_\-tag\_\-and\_\-data}!constantpool.c@{constantpool.c}}
+\subsubsection[{cp\_\-set\_\-tag\_\-and\_\-data}]{\setlength{\rightskip}{0pt plus 5cm}void cp\_\-set\_\-tag\_\-and\_\-data (
+\begin{DoxyParamCaption}
+\item[{{\bf const\_\-pool\_\-t} $\ast$}]{ cp, }
+\item[{uint16\_\-t}]{ entry, }
+\item[{uint8\_\-t}]{ tag, }
+\item[{void $\ast$}]{ data}
+\end{DoxyParamCaption}
+)}\label{constantpool_8c_ad70d2ac6e2bdf8efb28d89b9bedbceca}
+Sets the tag and data of an element of the constant pool, the data is a generic pointer, this function is used for replacing index-\/based reference with direct pointers after resolution 
+\begin{DoxyParams}{Parameters}
+\item[{\em cp}]A pointer to a valid constant pool object \item[{\em entry}]The constant pool entry number \item[{\em tag}]The new tag \item[{\em data}]The new data \end{DoxyParams}
+
+
+Definition at line 276 of file constantpool.c.
+
+
+
+References cp\_\-data\_\-set\_\-ptr(), const\_\-pool\_\-t::data, tag\_\-write(), and const\_\-pool\_\-t::tags.
+
+
+
+Referenced by derive\_\-class(), resolve\_\-class(), resolve\_\-instance\_\-field(), resolve\_\-method(), and resolve\_\-static\_\-field().
+
+\index{constantpool.c@{constantpool.c}!tag\_\-read@{tag\_\-read}}
+\index{tag\_\-read@{tag\_\-read}!constantpool.c@{constantpool.c}}
+\subsubsection[{tag\_\-read}]{\setlength{\rightskip}{0pt plus 5cm}static {\bf const\_\-pool\_\-type\_\-t} tag\_\-read (
+\begin{DoxyParamCaption}
+\item[{uint8\_\-t $\ast$}]{ tags, }
+\item[{uint32\_\-t}]{ entry}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily  [static]}}\label{constantpool_8c_afbc49ab6d04acdfadd44cb678c428d10}
+Reads a tag from the tag array 
+\begin{DoxyParams}{Parameters}
+\item[{\em tags}]A pointer to the tag array \item[{\em entry}]The entry to be read \end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+The requested entry 
+\end{DoxyReturn}
+
+
+Definition at line 49 of file constantpool.c.
+
+
+
+Referenced by cp\_\-create(), and cp\_\-get\_\-tag().
+
+\index{constantpool.c@{constantpool.c}!tag\_\-write@{tag\_\-write}}
+\index{tag\_\-write@{tag\_\-write}!constantpool.c@{constantpool.c}}
+\subsubsection[{tag\_\-write}]{\setlength{\rightskip}{0pt plus 5cm}static void tag\_\-write (
+\begin{DoxyParamCaption}
+\item[{uint8\_\-t $\ast$}]{ tags, }
+\item[{uint32\_\-t}]{ entry, }
+\item[{{\bf const\_\-pool\_\-type\_\-t}}]{ data}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily  [static]}}\label{constantpool_8c_a29f4e864f0f929a1e1e7cbfe5c9490eb}
+Writes a tag in the tag array 
+\begin{DoxyParams}{Parameters}
+\item[{\em tags}]A pointer to the tag array \item[{\em entry}]The entry to be writtend to \item[{\em data}]The new tag data \end{DoxyParams}
+
+
+Definition at line 61 of file constantpool.c.
+
+
+
+Referenced by cp\_\-create(), and cp\_\-set\_\-tag\_\-and\_\-data().
+
+
+
+\subsection{Variable Documentation}
+\index{constantpool.c@{constantpool.c}!dummy\_\-cp@{dummy\_\-cp}}
+\index{dummy\_\-cp@{dummy\_\-cp}!constantpool.c@{constantpool.c}}
+\subsubsection[{dummy\_\-cp}]{\setlength{\rightskip}{0pt plus 5cm}{\bf const\_\-pool\_\-t} {\bf dummy\_\-cp} = \{ 0, NULL, \{ 0 \} \}\hspace{0.3cm}{\ttfamily  [static]}}\label{constantpool_8c_a76f70385d2bef1b1710472e20273c340}
+Dummy constant pool used by array classes 
+
+Definition at line 38 of file constantpool.c.
+

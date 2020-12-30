@@ -1,0 +1,41 @@
+\section{java\_\-lang\_\-String\_\-t Struct Reference}
+\label{structjava__lang___string__t}\index{java\_\-lang\_\-String\_\-t@{java\_\-lang\_\-String\_\-t}}
+
+
+{\ttfamily \#include $<$java\_\-lang\_\-String.h$>$}
+
+\subsection*{Data Fields}
+\begin{DoxyCompactItemize}
+\item 
+{\bf array\_\-t} $\ast$ {\bf value}\label{structjava__lang___string__t_ac72ca9b82fd67d2de30f5b6f601fe140}
+
+\begin{DoxyCompactList}\small\item\em Chars of the string. \item\end{DoxyCompactList}\item 
+{\bf header\_\-t} {\bf header}\label{structjava__lang___string__t_ab0e2de0d3b1114c3f47a3b079bda724a}
+
+\begin{DoxyCompactList}\small\item\em Embedded header. \item\end{DoxyCompactList}\item 
+struct {\bf java\_\-lang\_\-String\_\-t} $\ast$ {\bf next}\label{structjava__lang___string__t_a4d801acf464b9779fc69c5f4fc533981}
+
+\begin{DoxyCompactList}\small\item\em Next string in the bucket. \item\end{DoxyCompactList}\item 
+uint32\_\-t {\bf count}\label{structjava__lang___string__t_a246c1dff3077fc001f57f92ae1237753}
+
+\begin{DoxyCompactList}\small\item\em Number of characters. \item\end{DoxyCompactList}\item 
+uint32\_\-t {\bf cachedHashCode}\label{structjava__lang___string__t_ab8ee0c152b97b86b95cc61b5c43bc51d}
+
+\begin{DoxyCompactList}\small\item\em Cached hash-\/code. \item\end{DoxyCompactList}\item 
+uint32\_\-t {\bf offset}\label{structjava__lang___string__t_a8a18d8f01ca600ce18c290b875e4d612}
+
+\begin{DoxyCompactList}\small\item\em Start offset inside the value array. \item\end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+java.lang.String instance layout
+
+Notice that the 'next' pointer is in the non-\/reference area of the object, this is due to the fact that it is handled explicitely by the garbage collector 
+
+Definition at line 40 of file java\_\-lang\_\-String.h.
+
+
+
+The documentation for this struct was generated from the following file:\begin{DoxyCompactItemize}
+\item 
+{\bf java\_\-lang\_\-String.h}\end{DoxyCompactItemize}

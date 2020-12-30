@@ -1,0 +1,744 @@
+Wed Oct 14 10:28:49 CEST 2009  Gabriele Svelto <gabriele.svelto@gmail.com>
+  * Bumped to version 0.9.4.
+
+Tue Oct 13 19:29:01 CEST 2009  Gabriele Svelto <gabriele.svelto@gmail.com>
+  * Fixed a bug when loading and executing LOOKUPSWITCH and TABLESWITCH opcodes.
+  
+  This fixes bug #2877993.
+
+Sun Oct 11 18:48:07 CEST 2009  Gabriele Svelto <gabriele.svelto@gmail.com>
+  * Fixed a small glitch when printing the call trace.
+  
+  When the execution would unwind back to the program/thread entry point because
+  of an uncaught exception the printing code would output _way_ more whitespace
+  than needed.
+
+Sun Oct 11 18:28:01 CEST 2009  Gabriele Svelto <gabriele.svelto@gmail.com>
+  * Make C-side exception values consistent with longjmp() semantics.
+  
+  This fixes bug #2876383.
+
+Thu Oct  8 19:00:19 CEST 2009  Gabriele Svelto <gabriele.svelto@gmail.com>
+  * Copies of reference arrays with non-zero offset were broken, fixed.
+  
+  This fixes bug #2874669.
+
+Sat Oct  3 11:42:58 CEST 2009  Gabriele Svelto <gabriele.svelto@gmail.com>
+  * Resolved instance fields weren't tagged as such, fixed.
+
+Tue Sep 29 23:57:47 CEST 2009  Gabriele Svelto <gabriele.svelto@gmail.com>
+  * Fix a GC-related race condition triggered during thread termination.
+  
+  This fixes bug #2723319.
+
+Sat Aug 15 20:55:49 CEST 2009  Gabriele Svelto <gabriele.svelto@gmail.com>
+  * Some minor optimizations to the interpreter.
+
+Sun Aug  2 18:07:00 CEST 2009  Gabriele Svelto <gabriele.svelto@gmail.com>
+  * Removed the predefined class IDs used for bootstrap classes.
+
+Tue Aug  4 11:53:55 CEST 2009  Gabriele Svelto <gabriele.svelto@gmail.com>
+  * Made the class file access functions more robust.
+  
+  This also fixes bug #2830446.
+
+Sat Aug  1 00:34:03 CEST 2009  Gabriele Svelto <gabriele.svelto@gmail.com>
+  * Cleaned up the code for allocating arrays of primitive types.
+
+Fri Jul 31 15:57:37 CEST 2009  Gabriele Svelto <gabriele.svelto@gmail.com>
+  * Renamed bcl_find_class_by_name() to bcl_find_class().
+
+Thu Jul 30 16:37:10 CEST 2009  Gabriele Svelto <gabriele.svelto@gmail.com>
+  * Added an helper function for getting basic array class names.
+
+Thu Jul 30 14:46:26 CEST 2009  Gabriele Svelto <gabriele.svelto@gmail.com>
+  * Refactored the class preloading mechanism and bootstrap process.
+
+Mon Jul 27 21:26:29 CEST 2009  Gabriele Svelto <gabriele.svelto@gmail.com>
+  * Improved and corrected the code for copying arrays of references.
+  
+  This also fixes bug #2827660.
+
+Sun Jul 26 23:27:16 CEST 2009  Gabriele Svelto <gabriele.svelto@gmail.com>
+  * KNI_ThrowNew ignored the message parameter, fixed.
+  
+  This fixes bug #2827164.
+
+Thu Aug  6 12:20:30 CEST 2009  Gabriele Svelto <gabriele.svelto@gmail.com>
+  tagged jelatine-0.9.3
+
+Mon Jun  1 23:01:23 CEST 2009  Gabriele Svelto <gabriele.svelto@gmail.com>
+  * Bumped to version 0.9.3.
+
+Thu May 28 16:01:46 CEST 2009  Gabriele Svelto <gabriele.svelto@gmail.com>
+  * Refactored the code that creates the virtual dispatch table.
+
+Wed May 13 15:33:07 CEST 2009  Gabriele Svelto <gabriele.svelto@gmail.com>
+  * Turned the constant pool data array into a flexible array.
+
+Wed May 13 15:31:15 CEST 2009  Gabriele Svelto <gabriele.svelto@gmail.com>
+  * Slightly improved the code dealing with interrupted exceptions.
+
+Tue May 12 15:52:05 CEST 2009  Gabriele Svelto <gabriele.svelto@gmail.com>
+  * Various code cleanups.
+
+Fri May  1 01:02:57 CEST 2009  Gabriele Svelto <gabriele.svelto@gmail.com>
+  * java.lang.Object.wait() timeout was often miscalculated, fixed.
+  
+  This fixes bug #2784687.
+
+Fri May  1 00:58:21 CEST 2009  Gabriele Svelto <gabriele.svelto@gmail.com>
+  * currentTimeMillis() could return a negative time, fixed.
+  
+  This fixes bug #2784673.
+
+Fri May  1 00:57:35 CEST 2009  Gabriele Svelto <gabriele.svelto@gmail.com>
+  * ProtocolImpl threw a non-existing exception, fixed.
+  
+  This fixes bug #2764800.
+
+Mon Apr  6 17:50:02 CEST 2009  Gabriele Svelto <gabriele.svelto@gmail.com>
+  * Some coding style-related cleanups.
+
+Mon Apr  6 17:42:34 CEST 2009  Gabriele Svelto <gabriele.svelto@gmail.com>
+  * Invoking super-class methods with INVOKESPECIAL was broken, fixed.
+  
+  This fixes bug #2737852.
+
+Mon Apr  6 18:00:33 CEST 2009  Gabriele Svelto <gabriele.svelto@gmail.com>
+  * Support for using multiple JAR files was broken, fixed.
+  
+  This fixes bug #2727075.
+
+Mon Apr  6 17:59:34 CEST 2009  Gabriele Svelto <gabriele.svelto@gmail.com>
+  tagged jelatine-0.9.2
+
+Sat Mar 28 16:55:27 CET 2009  Gabriele Svelto <gabriele.svelto@gmail.com>
+  * Bumped to version 0.9.2.
+
+Sat Mar 28 16:32:48 CET 2009  Gabriele Svelto <gabriele.svelto@gmail.com>
+  * Coalesced a few opcodes to reduce the interpreter footprint.
+
+Sat Mar 28 16:22:55 CET 2009  Gabriele Svelto <gabriele.svelto@gmail.com>
+  * Added support for multiple classpaths for user classes.
+  
+  The code dealing with class files was rewritten and refactored so that
+  JAR-related functionality is made completely transparent to the bootstrap
+  class loader. A few changes were also made to the bootstrap process to
+  accomodate for the new classpath system.
+
+Sat Mar 28 16:21:35 CET 2009  Gabriele Svelto <gabriele.svelto@gmail.com>
+  * Added support for loading CONSTANT_Class entries with LDC and LDC_W opcodes.
+  
+  This fixes bug #2401957.
+
+Tue Mar 17 14:09:13 CET 2009  Gabriele Svelto <gabriele.svelto@gmail.com>
+  * Shrinked the interpreter by making the dispatch table static.
+
+Tue Mar 17 11:23:43 CET 2009  Gabriele Svelto <gabriele.svelto@gmail.com>
+  * Shifts on long operands where limited to 31 positions instead of 63, fixed.
+  
+  This fixes bug #2689880.
+
+Mon Mar 16 12:38:51 CET 2009  Gabriele Svelto <gabriele.svelto@gmail.com>
+  * Improved Double.parseDouble() when dealing with large exponents.
+
+Tue Mar 10 10:58:38 CET 2009  Gabriele Svelto <gabriele.svelto@gmail.com>
+  * Implemented java.lang.Double.parseDouble().
+
+Mon Mar  9 12:14:34 CET 2009  Gabriele Svelto <gabriele.svelto@gmail.com>
+  * Character.isDigit() was broken, fixed.
+  
+  This fixes bug #2674728.
+
+Wed Feb 25 11:04:49 CET 2009  Gabriele Svelto <gabriele.svelto@gmail.com>
+  * Removed the stand-alone linked lists, they are not needed anymore.
+
+Tue Mar 10 10:57:48 CET 2009  Gabriele Svelto <gabriele.svelto@gmail.com>
+  * Added the pow() method to java.lang.Math.
+
+Tue Mar 10 10:57:32 CET 2009  Gabriele Svelto <gabriele.svelto@gmail.com>
+  * Added some missing documentation.
+
+Tue Jan 27 16:09:42 CET 2009  Gabriele Svelto <gabriele.svelto@gmail.com>
+  tagged jelatine-0.9.1
+
+Tue Jan 27 16:04:34 CET 2009  Gabriele Svelto <gabriele.svelto@gmail.com>
+  * Bumped to version 0.9.1.
+
+Tue Jan 27 16:03:49 CET 2009  Gabriele Svelto <gabriele.svelto@gmail.com>
+  * Updated the copyright notices.
+
+Sat Jan 24 16:26:25 CET 2009  Gabriele Svelto <gabriele.svelto@gmail.com>
+  * Fallback to gettimeofday() if clock_gettime() is not available.
+  
+  A few time-related fixes were also rolled in.
+
+Sun Jan 25 21:58:27 CET 2009  Gabriele Svelto <gabriele.svelto@gmail.com>
+  * Made socket support optional.
+  
+  Also fixed make dist targets and DESTDIR installations.
+
+Sun Jan 25 21:12:16 CET 2009  Guillaume Legris <guillaume.legris@gmail.com>
+  * Added socket connection implementation.
+  
+  Also allowed javax packages to be loaded from the bootclasspath jar.
+
+Sat Jan 24 16:27:53 CET 2009  Gabriele Svelto <gabriele.svelto@gmail.com>
+  * Relocated the assertions in gc_free() so as to ignore NULL pointers.
+
+Wed Jan 21 16:24:07 CET 2009  Gabriele Svelto <gabriele.svelto@gmail.com>
+  * Optimized permanent allocations.
+  
+  Permanent objects are now allocated from a segregated part of the heap and
+  do not have any overhead contrary to regular allocations which incur in a
+  4 or 8 byte overhead depending on the target alignment restrictions.
+
+Tue Jan 20 12:44:08 CET 2009  Gabriele Svelto <gabriele.svelto@gmail.com>
+  * Refactored and simplified the array copy code.
+
+Tue Jan 20 12:25:32 CET 2009  Gabriele Svelto <gabriele.svelto@gmail.com>
+  * Simplified some allocation code.
+
+Tue Jan 20 12:13:47 CET 2009  Gabriele Svelto <gabriele.svelto@gmail.com>
+  * Fixed a bug which caused the GC to be invoked too often.
+
+Tue Jan 20 09:23:21 CET 2009  Gabriele Svelto <gabriele.svelto@gmail.com>
+  * Array allocation function didn't print out their result, fixed.
+
+Mon Jan 19 21:57:14 CET 2009  Gabriele Svelto <gabriele.svelto@gmail.com>
+  * More refactoring in the garbage collector.
+
+Mon Jan 19 21:54:02 CET 2009  Gabriele Svelto <gabriele.svelto@gmail.com>
+  * Made the threads detachable so as not to waste memory when they quit.
+
+Mon Jan 19 21:44:33 CET 2009  Gabriele Svelto <gabriele.svelto@gmail.com>
+  * Fixed a problem with the Thread object layout.
+
+Thu Jan 15 19:38:20 CET 2009  Gabriele Svelto <gabriele.svelto@gmail.com>
+  * Second round of refactoring to the garbage collector.
+  
+  A lot of changes have been made to the garbage collector. Byte-based offsets
+  and pointers replaced the previous word-based algorythms to make it more
+  robust and cleaner. C pointers embedded into Java objects are now made using
+  the placeholder VMPointer class and the type-specific layout has been
+  entirely removed. The threading system was also modified to reflect the
+  changes to the way a virtual machine thread was tied to its Java Thread
+  object. A lot of significant bugs were also fixed in the process.
+
+Fri Jan  9 10:17:12 CET 2009  Gabriele Svelto <gabriele.svelto@gmail.com>
+  * Partially restored the functionality of Thread.interrupt().
+
+Wed Jan  7 15:20:58 CET 2009  Gabriele Svelto <gabriele.svelto@gmail.com>
+  * Small fix for the previous patch.
+
+Wed Jan  7 15:16:59 CET 2009  Guillaume Legris <guillaume.legris@gmail.com>
+  * Fixed a bug which prevents accessing protected methods of a parent class from a different package.
+
+Wed Jan  7 12:02:34 CET 2009  Guillaume Legris <guillaume.legris@gmail.com>
+  * Fixed bad hashcode computation.
+
+Wed Jan  7 10:15:22 CET 2009  Gabriele Svelto <gabriele.svelto@gmail.com>
+  * The default constructor was not called in Class.newInstance(), fixed.
+  
+  This fixes bugs #2454864 and #1819575.
+
+Wed Jan  7 09:50:08 CET 2009  Gabriele Svelto <gabriele.svelto@gmail.com>
+  * Class.isInstance was broken, fixed.
+  
+  This fixes bug #2491014.
+
+Wed Jan  7 09:57:26 CET 2009  Guillaume Legris <guillaume.legris@gmail.com>
+  * Do not count the finalizer internal thread as active user thread.
+
+Wed Dec 24 17:24:47 CET 2008  Gabriele Svelto <gabriele.svelto@gmail.com>
+  * Empty constant strings had a null value argument, fixed.
+  
+  This fixes bug #2454860.
+
+Mon Dec 22 11:16:24 CET 2008  Gabriele Svelto <gabriele.svelto@gmail.com>
+  * The ARRAYLENGTH opcode didn't check for null references, fixed.
+  
+  This fixes bug #2454852.
+
+Mon Dec 22 09:58:02 CET 2008  Gabriele Svelto <gabriele.svelto@gmail.com>
+  * Made java.lang.System.arraycopy() deal properly with incompatible arrays.
+  
+  This fixes bug #2454829.
+
+Wed Dec 24 12:42:11 CET 2008  Guillaume Legris <guillaume.legris@gmail.com>
+  * Added name Thread-0 to the default VM thread.
+  
+  This fixes bug #2454869.
+
+Sun Dec 21 13:55:56 CET 2008  Gabriele Svelto <gabriele.svelto@gmail.com>
+  * Various fixes to enable building under MacOS X.
+
+Sun Dec 21 13:49:05 CET 2008  Guillaume Legris <guillaume.legris@gmail.com>
+  * Added default name to anonymous threads in order to be compliant with the specs.
+
+Wed Dec 17 12:26:11 CET 2008  Gabriele Svelto <gabriele.svelto@gmail.com>
+  * Fixed a race condition in thread_join().
+  
+  This fixes bug #2439414.
+
+Wed Dec 17 09:28:11 CET 2008  Gabriele Svelto <gabriele.svelto@gmail.com>
+  * Removed the gc_calloc() function and all its uses.
+
+Wed Dec 17 12:23:43 CET 2008  Gabriele Svelto <gabriele.svelto@gmail.com>
+  * First round of refactoring to the memory allocation subsystem.
+  
+  The helper functions used for dealing with array allocation have been moved
+  inside the code dealing with the garbage collected heap. The code used for
+  calculating array sizes and such has been refactored and streamlined. The
+  memory allocation subsystem has been also streamlined to accomodate for the
+  new functions. The class size in words of a class has been removed from the
+  class structure and layout code, the remaining code using it will be removed
+  soon.
+
+Thu Dec 11 16:26:04 CET 2008  Gabriele Svelto <gabriele.svelto@gmail.com>
+  * Renamed the garbage collected heap functions.
+
+Thu Dec 11 15:19:05 CET 2008  Gabriele Svelto <gabriele.svelto@gmail.com>
+  * Switched the codebase to C99.
+
+Tue Dec  9 20:13:03 CET 2008  Gabriele Svelto <gabriele.svelto@gmail.com>
+  * Quieted a few warnings in the preverifier.
+
+Mon Dec  8 18:31:24 CET 2008  Gabriele Svelto <gabriele.svelto@gmail.com>
+  * More TODO entries added.
+
+Mon Dec  8 14:55:10 CET 2008  Gabriele Svelto <gabriele.svelto@gmail.com>
+  * Some refactoring to the native methods types.
+
+Fri Dec  5 21:31:29 CET 2008  Gabriele Svelto <gabriele.svelto@gmail.com>
+  * Updated the Doxygen configuration file.
+
+Fri Dec  5 21:30:53 CET 2008  Gabriele Svelto <gabriele.svelto@gmail.com>
+  * Consolidated and made more compact the code dealing with static fields.
+
+Wed Dec  3 18:08:57 CET 2008  Gabriele Svelto <gabriele.svelto@gmail.com>
+  * Refactored some code in the constant pool with significant code size savings.
+
+Wed Dec  3 17:26:45 CET 2008  Gabriele Svelto <gabriele.svelto@gmail.com>
+  * More TODOs for the next version.
+
+Mon Dec  1 19:48:10 CET 2008  Gabriele Svelto <gabriele.svelto@gmail.com>
+  tagged jelatine-0.9
+
+Mon Dec  1 19:48:04 CET 2008  Gabriele Svelto <gabriele.svelto@gmail.com>
+  * Bumped to version 0.9.
+
+Sun Nov 30 20:36:45 CET 2008  Gabriele Svelto <gabriele.svelto@gmail.com>
+  * Fixed a deadlock arising in producer/consumer scenarios.
+
+Sat Nov 29 00:46:36 CET 2008  Gabriele Svelto <gabriele.svelto@gmail.com>
+  * Various minor fixes.
+
+Sat Nov 29 00:12:11 CET 2008  Gabriele Svelto <gabriele.svelto@gmail.com>
+  * Various cleanups for the Doxygen-based documentation.
+
+Fri Nov 28 20:35:42 CET 2008  Gabriele Svelto <gabriele.svelto@gmail.com>
+  * Updated the generic installation instructions.
+
+Fri Nov 28 20:31:55 CET 2008  Gabriele Svelto <gabriele.svelto@gmail.com>
+  * Made building the preverifier optional.
+
+Mon Nov 24 23:14:22 CET 2008  Gabriele Svelto <gabriele.svelto@gmail.com>
+  * Never take the PC address, performance regression fixed.
+
+Mon Nov 24 22:08:22 CET 2008  Gabriele Svelto <gabriele.svelto@gmail.com>
+  * Fixed a constant for 64-bit targets.
+
+Mon Nov 24 19:59:06 CET 2008  Gabriele Svelto <gabriele.svelto@gmail.com>
+  * Fixed a bug when calling native functions returning doubles.
+
+Mon Nov 24 17:43:38 CET 2008  Gabriele Svelto <gabriele.svelto@gmail.com>
+  * Various thread-related fixes.
+
+Wed Nov 19 18:04:33 CET 2008  Gabriele Svelto <gabriele.svelto@gmail.com>
+  * Entry in the class loader is serialized, removed the SPIN opcode.
+
+Wed Nov 19 16:52:14 CET 2008  Gabriele Svelto <gabriele.svelto@gmail.com>
+  * Interface loading could use an uninitialized variable, fixed.
+
+Wed Nov 19 16:51:34 CET 2008  Gabriele Svelto <gabriele.svelto@gmail.com>
+  * Made all the iterators statically allocated, removed the generic iterator.
+
+Wed Nov 19 16:49:47 CET 2008  Gabriele Svelto <gabriele.svelto@gmail.com>
+  * Reworked the C-side pseudo-exceptions.
+
+Fri Nov 14 21:22:13 CET 2008  Gabriele Svelto <gabriele.svelto@gmail.com>
+  * The 'interrupted' field of a Java Thread wasn't handled properly, fixed.
+
+Wed Nov 12 10:57:36 CET 2008  Gabriele Svelto <gabriele.svelto@gmail.com>
+  * Fixed a problem with the finalizer thread.
+
+Mon Nov 10 16:02:50 CET 2008  Gabriele Svelto <gabriele.svelto@gmail.com>
+  * Make GNU/Pth threads interruptible.
+
+Sat Nov  8 23:47:16 CET 2008  Gabriele Svelto <gabriele.svelto@gmail.com>
+  * Fixed some KNI methods which didn't release the reference handles properly.
+
+Sat Nov  8 11:33:10 CET 2008  Gabriele Svelto <gabriele.svelto@gmail.com>
+  * Made the instance field iterator statically allocated.
+
+Mon Nov  3 21:59:30 CET 2008  Gabriele Svelto <gabriele.svelto@gmail.com>
+  * Changed how the interpreter throws its exceptions.
+
+Sun Nov  2 17:10:13 CET 2008  Gabriele Svelto <gabriele.svelto@gmail.com>
+  * Removed a function which was not used anymore.
+
+Sun Nov  2 17:07:14 CET 2008  Gabriele Svelto <gabriele.svelto@gmail.com>
+  * Make the configure script reject unknown values of the thread model option.
+
+Thu Oct 30 18:45:15 CET 2008  Gabriele Svelto <gabriele.svelto@gmail.com>
+  * Various fixes to the GNU/Pth thread model.
+
+Thu Oct 30 17:14:19 CET 2008  Gabriele Svelto <gabriele.svelto@gmail.com>
+  * Rewrote the monitor coalesced hash-table and fixed its interactions with the GC.
+
+Thu Oct 30 11:52:48 CET 2008  Gabriele Svelto <gabriele.svelto@gmail.com>
+  * Refactored the printing code redirecting everything to stderr.
+
+Tue Oct 28 14:48:32 CET 2008  Gabriele Svelto <gabriele.svelto@gmail.com>
+  * Various clean ups to the interpreter.
+
+Tue Oct 28 14:47:50 CET 2008  Gabriele Svelto <gabriele.svelto@gmail.com>
+  * Headers weren't modified properly during pointer-reversal GC, fixed.
+
+Mon Oct 27 15:32:23 CET 2008  Gabriele Svelto <gabriele.svelto@gmail.com>
+  * java.lang.Class.forName() didn't slashify class names properly, fixed.
+
+Mon Oct 27 15:19:43 CET 2008  Gabriele Svelto <gabriele.svelto@gmail.com>
+  * Monitor allocation was broken, fixed.
+
+Mon Oct 27 15:19:03 CET 2008  Gabriele Svelto <gabriele.svelto@gmail.com>
+  * Removed an unused #define.
+
+Mon Oct 27 15:18:51 CET 2008  Gabriele Svelto <gabriele.svelto@gmail.com>
+  * Added the --stack-size option and fixed bug #2180030.
+
+Sat Oct 25 10:56:08 CEST 2008  Gabriele Svelto <gabriele.svelto@gmail.com>
+  * Changed the VMThread join() and sleep() methods to their new internal form.
+
+Sat Oct 25 10:49:45 CEST 2008  Gabriele Svelto <gabriele.svelto@gmail.com>
+  * Fixed a bug when linking ANEWARRAY opcodes.
+
+Fri Oct 24 16:59:13 CEST 2008  Gabriele Svelto <gabriele.svelto@gmail.com>
+  * Rewrote the stack management.
+  
+  Jelatine used automatically growing stacks holding both the evaluation stack
+  of a method and the stack frame. This however caused strict-aliasing related
+  problems and made stack frames manipulation complex and hard to understand.
+  This patch changes the way stacks are allocated and used: they are now fixed
+  in size (though with overflow checking), and the evaluation stacks and stack
+  frames are now split with the first being allocated at the beginning on the
+  stack segment and growing upward and the latter starting at the end and
+  growing downward. All the necessary modifications were also made (interpreter,
+  KNI functions, etc...).
+
+Fri Oct 24 15:32:04 CEST 2008  Gabriele Svelto <gabriele.svelto@gmail.com>
+  * Printing was broken, fixed.
+
+Fri Oct 24 15:30:23 CEST 2008  Gabriele Svelto <gabriele.svelto@gmail.com>
+  * Class initialization was messed up, fixed.
+
+Fri Oct 24 15:28:45 CEST 2008  Gabriele Svelto <gabriele.svelto@gmail.com>
+  * Removed a redundant explicit NullPointerException.
+
+Fri Oct 24 12:06:44 CEST 2008  Gabriele Svelto <gabriele.svelto@gmail.com>
+  * Fixed a bug when linking GETFIELD/PUTFIELD opcodes.
+
+Sun Oct 19 17:57:27 CEST 2008  Gabriele Svelto <gabriele.svelto@gmail.com>
+  * Update the Doxygen configuration file.
+
+Sat Oct 18 11:45:49 CEST 2008  Gabriele Svelto <gabriele.svelto@gmail.com>
+  * Make compilation of some thread related methods conditional.
+
+Sat Oct 18 10:54:01 CEST 2008  Gabriele Svelto <gabriele.svelto@gmail.com>
+  * Made constant the method parameter of many functions.
+
+Sat Oct 18 10:53:40 CEST 2008  Gabriele Svelto <gabriele.svelto@gmail.com>
+  * Quieted a few warnings and fixed a variable name mismatch.
+
+Fri Oct 17 16:40:35 CEST 2008  Gabriele Svelto <gabriele.svelto@gmail.com>
+  * Added the INVOKE_NATIVE opcode to the printing routines.
+
+Fri Oct 17 16:39:50 CEST 2008  Gabriele Svelto <gabriele.svelto@gmail.com>
+  * Some restructuring in the interpreter.
+
+Tue Oct 14 16:26:47 CEST 2008  Gabriele Svelto <gabriele.svelto@gmail.com>
+  * Notifying an object nobody was waiting on was broken, fixed.
+
+Tue Oct 14 10:45:26 CEST 2008  Gabriele Svelto <gabriele.svelto@gmail.com>
+  * Reshuffled the initialization of the first thread to play nice with the GC.
+
+Tue Oct 14 10:20:20 CEST 2008  Gabriele Svelto <gabriele.svelto@gmail.com>
+  * Move class_is_array() before its first use.
+
+Tue Oct 14 10:12:50 CEST 2008  Gabriele Svelto <gabriele.svelto@gmail.com>
+  * Massive overhaul of the threading system.
+  
+  Jelatine threading implementation has been completely rewritten. Many parts of
+  the VM were modified and other fairly disruptive changes to the interpreter
+  and the class loader went in. The codebase compiles after this record but is
+  likely to be completely broken
+
+Mon May 26 20:01:11 CEST 2008  Gabriele Svelto <gabriele.svelto@gmail.com>
+  * Add checks for thread local storage.
+
+Mon May 26 20:00:33 CEST 2008  Gabriele Svelto <gabriele.svelto@gmail.com>
+  * Fixed a bug when checking for zziplib.
+
+Thu Apr 24 09:40:52 CEST 2008  Gabriele Svelto <gabriele.svelto@gmail.com>
+  * Some basic refactoring to the VM bootstrap process.
+
+Mon Apr 21 11:03:55 CEST 2008  Gabriele Svelto <gabriele.svelto@gmail.com>
+  * Refactored the bootstrap class loader entry points.
+
+Mon Apr 21 11:02:12 CEST 2008  Gabriele Svelto <gabriele.svelto@gmail.com>
+  * Quieted a few warnings.
+
+Sun Apr  6 15:28:21 CEST 2008  Gabriele Svelto <gabriele.svelto@gmail.com>
+  * Fixed a bug in method/field access control.
+  
+  This fixes bug #1935991.
+
+Sun Apr  6 12:23:27 CEST 2008  Gabriele Svelto <gabriele.svelto@gmail.com>
+  * Fix an endianness problem on ARMs with middle-endian doubles.
+
+Thu Mar 27 16:54:01 CET 2008  Gabriele Svelto <gabriele.svelto@gmail.com>
+  * Added configuration print out to the configure script.
+
+Mon Mar 17 09:51:04 CET 2008  Gabriele Svelto <gabriele.svelto@gmail.com>
+  * Fixed a compilation problem when JAR file support was disabled.
+
+Fri Mar  7 11:43:17 CET 2008  Gabriele Svelto <gabriele.svelto@gmail.com>
+  * Make place for the addition of real threads.
+
+Fri Mar  7 10:38:14 CET 2008  Gabriele Svelto <gabriele.svelto@gmail.com>
+  * Improved the configure script and added the tests for thread libraries.
+
+Tue Mar  4 14:24:25 CET 2008  Gabriele Svelto <gabriele.svelto@gmail.com>
+  * Simplified some code for manipulating arrays.
+
+Tue Mar  4 09:56:59 CET 2008  Gabriele Svelto <gabriele.svelto@gmail.com>
+  * Fix for bug #1905608 on Linux/SPARC32.
+
+Tue Feb 26 19:11:11 CET 2008  Gabriele Svelto <gabriele.svelto@gmail.com>
+  * Bumped to version 0.8.10.
+
+Tue Feb 26 19:07:51 CET 2008  Gabriele Svelto <gabriele.svelto@gmail.com>
+  * Refactored the configure script external tests.
+  
+  Removed the run-time test for aligned access, rewrote the remaining tests to
+  better match the current practice.
+
+Tue Feb 26 18:59:58 CET 2008  Gabriele Svelto <gabriele.svelto@gmail.com>
+  * Makes the machine run correctly when FP support is disabled.
+  
+  This fixes bug #1897862.
+
+Tue Feb 26 18:33:04 CET 2008  Gabriele Svelto <gabriele.svelto@gmail.com>
+  * More refactoring to the class loader.
+
+Tue Feb 26 18:32:21 CET 2008  Gabriele Svelto <gabriele.svelto@gmail.com>
+  * Replaced the unaligned access macros with functions.
+  
+  This fixes bug #1902338.
+
+Tue Feb 26 18:29:19 CET 2008  Gabriele Svelto <gabriele.svelto@gmail.com>
+  * Fixes the bootstrap code for java.lang.Thread.
+  
+  This fixes bug #1902362.
+
+Mon Feb 25 09:46:21 CET 2008  Gabriele Svelto <gabriele.svelto@gmail.com>
+  * Fixed a few type mismatches which caused bug #1901028.
+
+Wed Feb 20 14:46:59 CET 2008  Gabriele Svelto <gabriele.svelto@gmail.com>
+  * Removed the unaligned access macros.
+  
+  The macros used for accessing unaligned memory locations have been removed.
+  They have been replaced with typed static inline functions using memcpy() thus
+  letting the compiler optimize it away if needed. This improves performance on
+  targets which support unaligned loads when cross-compiling.
+
+Wed Feb 20 14:45:51 CET 2008  Gabriele Svelto <gabriele.svelto@gmail.com>
+  * Unified the 16-bit integer stores.
+
+Wed Feb 20 14:27:40 CET 2008  Gabriele Svelto <gabriele.svelto@gmail.com>
+  * Fixed a warning when building without FP support.
+
+Tue Feb 19 16:53:09 CET 2008  Gabriele Svelto <gabriele.svelto@gmail.com>
+  * Made the dispatch table a static constant.
+  
+  This also fixes bug #1896902 which caused the build to fail when floating
+  point support was disabled at configure time.
+
+Fri Feb 15 16:23:14 CET 2008  Gabriele Svelto <gabriele.svelto@gmail.com>
+  * Bumped to version 0.8.9.
+
+Fri Feb 15 15:07:41 CET 2008  Gabriele Svelto <gabriele.svelto@gmail.com>
+  * Fixes a strict-aliasing violation which caused bug #1867805 on ARM targets.
+
+Fri Feb 15 15:05:08 CET 2008  Gabriele Svelto <gabriele.svelto@gmail.com>
+  * Make the finalizer thread much more aggressive.
+
+Fri Feb 15 11:38:46 CET 2008  Gabriele Svelto <gabriele.svelto@gmail.com>
+  * Replaced the ROUND_SIZE macros with some cleaner inline functions.
+
+Fri Feb 15 11:38:02 CET 2008  Gabriele Svelto <gabriele.svelto@gmail.com>
+  * Replaced some macros with inline functions.
+
+Fri Feb 15 11:37:29 CET 2008  Gabriele Svelto <gabriele.svelto@gmail.com>
+  * Aesthetic fixes.
+
+Fri Feb 15 11:31:13 CET 2008  Gabriele Svelto <gabriele.svelto@gmail.com>
+  * More refactoring to the UTF-8 string manager.
+
+Thu Feb 14 11:40:04 CET 2008  Gabriele Svelto <gabriele.svelto@gmail.com>
+  * Fixed a few quirks unearthed by valgrind when creating threads during bootstrap.
+
+Thu Feb 14 10:25:47 CET 2008  Gabriele Svelto <gabriele.svelto@gmail.com>
+  * Fixed a memory leak.
+
+Wed Feb 13 14:43:07 CET 2008  Gabriele Svelto <gabriele.svelto@gmail.com>
+  * Fixes for the debugging infrastructure.
+
+Wed Feb 13 14:42:26 CET 2008  Gabriele Svelto <gabriele.svelto@gmail.com>
+  * More code refactoring.
+
+Wed Feb 13 14:40:34 CET 2008  Gabriele Svelto <gabriele.svelto@gmail.com>
+  * Various source-level documentation fixes.
+
+Wed Feb 13 14:31:20 CET 2008  Gabriele Svelto <gabriele.svelto@gmail.com>
+  * Changed the name of the global Java string manager.
+
+Wed Feb 13 12:40:56 CET 2008  Gabriele Svelto <gabriele.svelto@gmail.com>
+  * Updated the Doxygen configuration file.
+
+Wed Feb 13 10:59:38 CET 2008  Gabriele Svelto <gabriele.svelto@gmail.com>
+  * Use PKG_CHECK_ZZIPLIB instead of PKG_CHECK_MODULES to detect zziplib.
+
+Tue Feb 12 16:10:08 CET 2008  Gabriele Svelto <gabriele.svelto@gmail.com>
+  * Fixed a bad bug when allocating Java objects.
+  
+  Fixed a regression introduced in version 0.8.4 which caused the size of
+  non-array Java objects to be up to four times as much their actual size. This
+  was a very bad bug and it's a shame that it went unnoticed for so long.
+
+Tue Feb 12 16:06:50 CET 2008  Gabriele Svelto <gabriele.svelto@gmail.com>
+  * Fixed a few option getters.
+
+Tue Feb 12 10:17:50 CET 2008  Gabriele Svelto <gabriele.svelto@gmail.com>
+  * Fixed a memory leak during thread termination.
+
+Tue Feb 12 10:16:02 CET 2008  Gabriele Svelto <gabriele.svelto@gmail.com>
+  * Made the marking of a few roots accurate.
+
+Tue Feb 12 09:32:14 CET 2008  Gabriele Svelto <gabriele.svelto@gmail.com>
+  * Reformatted the class loader code.
+
+Mon Feb 11 16:06:37 CET 2008  Gabriele Svelto <gabriele.svelto@gmail.com>
+  * A few aesthetic changes to the interpreter header file.
+
+Fri Dec 21 15:31:58 CET 2007  Gabriele Svelto <gabriele.svelto@gmail.com>
+  * More refactoring to the string managers and virtual machine facilities.
+
+Fri Dec 21 14:26:25 CET 2007  Gabriele Svelto <gabriele.svelto@gmail.com>
+  * Switched to the GPLv3 and updated the copyright notices.
+
+Wed Dec 19 14:28:41 CET 2007  Gabriele Svelto <gabriele.svelto@gmail.com>
+  * Moved some method-related declarations.
+
+Wed Dec 19 14:19:42 CET 2007  Gabriele Svelto <gabriele.svelto@gmail.com>
+  * Refactored vm.h and vm.c.
+
+Wed Dec 19 14:08:47 CET 2007  Gabriele Svelto <gabriele.svelto@gmail.com>
+  * Reworked the string management code.
+  
+  The code used to manage strings - both native and Java ones - has been
+  heavily modified and refactored. A bug which prevented the String.intern()
+  method from working was squashed in the process.
+
+Wed Dec 19 14:02:39 CET 2007  Gabriele Svelto <gabriele.svelto@gmail.com>
+  * Trimmed some whitespace.
+
+Wed Dec 19 13:52:02 CET 2007  Gabriele Svelto <gabriele.svelto@gmail.com>
+  * Added a calloc()-like memory allocation function.
+
+Wed Dec 19 13:36:47 CET 2007  Gabriele Svelto <gabriele.svelto@gmail.com>
+  * Trimmed some space.
+
+Wed Dec 19 12:40:01 CET 2007  Gabriele Svelto <gabriele.svelto@gmail.com>
+  * Added some helper functions for manipulating classes.
+
+Thu Dec 13 17:03:59 CET 2007  Gabriele Svelto <gabriele.svelto@gmail.com>
+  * Refactored thread.c and thread.h.
+
+Thu Dec 13 16:58:48 CET 2007  Gabriele Svelto <gabriele.svelto@gmail.com>
+  * Refactored opcodes.h.
+
+Thu Dec 13 14:58:20 CET 2007  Gabriele Svelto <gabriele.svelto@gmail.com>
+  * Refactored native.c and native.h.
+
+Thu Dec 13 14:57:31 CET 2007  Gabriele Svelto <gabriele.svelto@gmail.com>
+  * Refactored method.c and method.h.
+  
+  Refactored the code to follow the new coding conventions. Removed the 
+  accessor macros and their corresponding functions and replaced both with 
+  static inline functions in the header file.
+
+Tue Dec 11 16:52:45 CET 2007  Gabriele Svelto <gabriele.svelto@gmail.com>
+  * Refactored the headers mirroring the Java bootstrap classes.
+
+Sun Dec  9 20:19:32 CET 2007  Gabriele Svelto <gabriele.svelto@gmail.com>
+  * Refactored interpreter.c and interpreter.h.
+  
+  Refactored the code to follow the new coding conventions. Removed some 
+  unused variables and cleaned up some paths in the most complex opcodes.
+
+Sun Dec  9 19:28:13 CET 2007  Gabriele Svelto <gabriele.svelto@gmail.com>
+  * Refactored field.c and field.h.
+  
+  Refactored the code to follow the new coding conventions. Removed the 
+  macros and their corresponding functions and replaced both with static 
+  inline functions in the header file.
+
+Sun Dec  9 16:55:12 CET 2007  Gabriele Svelto <gabriele.svelto@gmail.com>
+  * Refactored constantpool.h and constantpool.c.
+
+Sun Dec  9 16:39:46 CET 2007  Gabriele Svelto <gabriele.svelto@gmail.com>
+  * Refactored classes.h, classfile.c and classfile.h.
+
+Sun Dec  9 16:29:44 CET 2007  Gabriele Svelto <gabriele.svelto@gmail.com>
+  * Refactored class.h and class.h.
+  
+  Refactored the code to follow the new coding conventions. Removed the
+  accessor macros and their corresponding functions and replaced both with
+  static inline functions in the header file.
+
+Sun Dec  9 13:12:05 CET 2007  Gabriele Svelto <gabriele.svelto@gmail.com>
+  * Refactored field.c and field.h.
+  
+  Refactored the code to follow the new coding conventions. Removed the 
+  accessor macros and their corresponding functions and replaced both with 
+  static inline functions in the header file.
+
+Sat Dec  8 13:07:32 CET 2007  Gabriele Svelto <gabriele.svelto@gmail.com>
+  * Complete refactoring of the debugging facilities.
+  
+  The debugging facilities have been completely rewritten. Debugging 
+  functionality is now significantly less intrusive and C-side exceptions 
+  are easier to use and have a much better notation. Also removed a lot of 
+  redundant inclusions.
+
+Sat Dec  8 12:24:15 CET 2007  Gabriele Svelto <gabriele.svelto@gmail.com>
+  * Removed some unused variables.
+
+Fri Dec  7 12:09:16 CET 2007  Gabriele Svelto <gabriele.svelto@gmail.com>
+  * Improved floating point NaN wrappers.
+
+Fri Dec  7 11:20:20 CET 2007  Gabriele Svelto <gabriele.svelto@gmail.com>
+  * Initial import.

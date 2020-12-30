@@ -1,0 +1,30 @@
+\section{const\_\-pool\_\-t Struct Reference}
+\label{structconst__pool__t}\index{const\_\-pool\_\-t@{const\_\-pool\_\-t}}
+
+
+{\ttfamily \#include $<$constantpool.h$>$}
+
+\subsection*{Data Fields}
+\begin{DoxyCompactItemize}
+\item 
+uint16\_\-t {\bf entries}\label{structconst__pool__t_a7609a76e3f8bc953fc9a84efc5f481a9}
+
+\begin{DoxyCompactList}\small\item\em Number of entries in the costant-\/pool. \item\end{DoxyCompactList}\item 
+uint8\_\-t $\ast$ {\bf tags}\label{structconst__pool__t_a0c4d557e3988489fa5c8086441bc3321}
+
+\begin{DoxyCompactList}\small\item\em Tags array. \item\end{DoxyCompactList}\item 
+jword\_\-t {\bf data} [$\,$]\label{structconst__pool__t_ac66e0b111cfacb5f4355be85929668e7}
+
+\begin{DoxyCompactList}\small\item\em Data array. \item\end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+Structure representing a class' constant pool. Note that the first entry of the constant pool is usually unaccessible, yet the \doxyref{cp\_\-set\_\-tag\_\-and\_\-data()}{p.}{constantpool_8c_ad70d2ac6e2bdf8efb28d89b9bedbceca} is allowed to access it. The entry there contained is a pointer to the class to which the constant pool belongs too 
+
+Definition at line 74 of file constantpool.h.
+
+
+
+The documentation for this struct was generated from the following file:\begin{DoxyCompactItemize}
+\item 
+src/jelatine/{\bf constantpool.h}\end{DoxyCompactItemize}

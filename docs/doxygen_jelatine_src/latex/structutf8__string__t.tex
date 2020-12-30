@@ -1,0 +1,25 @@
+\section{utf8\_\-string\_\-t Struct Reference}
+\label{structutf8__string__t}\index{utf8\_\-string\_\-t@{utf8\_\-string\_\-t}}
+\subsection*{Data Fields}
+\begin{DoxyCompactItemize}
+\item 
+struct {\bf utf8\_\-string\_\-t} $\ast$ {\bf next}\label{structutf8__string__t_a77a7a2e16c8cefe509f7d9ca9d315e4c}
+
+\begin{DoxyCompactList}\small\item\em Next string in the bucket. \item\end{DoxyCompactList}\item 
+char {\bf data} [$\,$]\label{structutf8__string__t_ad77a06e419d01185d65ba43d53a39605}
+
+\begin{DoxyCompactList}\small\item\em Variable size array holding the string data. \item\end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+String in the (Java class file modified) UTF8 format
+
+The string data can be both in the plain UTF8 format or in its Java class file variation, the string manager doesn't care about it, only the conversion functions do. The ones going from the Java class file modified format start with the jutf8\_\- prefix, the ones working on plain UTF8 strings begin with the utf8\_\- prefix. Note that the structure holds only a pointer to the next object in the hash table, and the data array is used as a C89-\/compatible variable size array. 
+
+Definition at line 46 of file utf8\_\-string.c.
+
+
+
+The documentation for this struct was generated from the following file:\begin{DoxyCompactItemize}
+\item 
+src/jelatine/{\bf utf8\_\-string.c}\end{DoxyCompactItemize}

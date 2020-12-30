@@ -1,0 +1,53 @@
+\section{java::lang::Runnable Interface Reference}
+\label{interfacejava_1_1lang_1_1_runnable}\index{java::lang::Runnable@{java::lang::Runnable}}
+Inheritance diagram for java::lang::Runnable:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=2.000000cm]{interfacejava_1_1lang_1_1_runnable}
+\end{center}
+\end{figure}
+\subsection*{Package Functions}
+\begin{DoxyCompactItemize}
+\item 
+void {\bf run} ()
+\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+\doxyref{Runnable}{p.}{interfacejava_1_1lang_1_1_runnable} is an interface you implement to indicate that your class can be executed as the main part of a \doxyref{Thread}{p.}{classjava_1_1lang_1_1_thread}, among other places. When you want an entry point to run a piece of code, implement this interface and override run.
+
+\begin{DoxyAuthor}{Author}
+Paul Fisher 
+
+Tom Tromey ({\tt tromey@cygnus.com}) 
+\end{DoxyAuthor}
+\begin{DoxySeeAlso}{See also}
+\doxyref{Thread}{p.}{classjava_1_1lang_1_1_thread} 
+\end{DoxySeeAlso}
+
+
+Definition at line 51 of file Runnable.java.
+
+
+
+\subsection{Member Function Documentation}
+\index{java::lang::Runnable@{java::lang::Runnable}!run@{run}}
+\index{run@{run}!java::lang::Runnable@{java::lang::Runnable}}
+\subsubsection[{run}]{\setlength{\rightskip}{0pt plus 5cm}void java::lang::Runnable::run (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily  [package]}}\label{interfacejava_1_1lang_1_1_runnable_a23205ccce9343ac2e3c050951827774f}
+This method will be called by whoever wishes to run your class implementing \doxyref{Runnable}{p.}{interfacejava_1_1lang_1_1_runnable}. Note that there are no restrictions on what you are allowed to do in the run method, except that you cannot throw a checked exception. 
+
+Implemented in {\bf java::lang::Thread} \doxyref{}{p.}{classjava_1_1lang_1_1_thread_a1e00c525905d96211c184d515cee2418}, and {\bf jelatine::VMFinalizer} \doxyref{}{p.}{classjelatine_1_1_v_m_finalizer_a9b30540b99b306b2f91e51081d3641cd}.
+
+
+
+Referenced by java::lang::Thread::run().
+
+
+
+The documentation for this interface was generated from the following file:\begin{DoxyCompactItemize}
+\item 
+src/classpath/java/lang/Runnable.java\end{DoxyCompactItemize}

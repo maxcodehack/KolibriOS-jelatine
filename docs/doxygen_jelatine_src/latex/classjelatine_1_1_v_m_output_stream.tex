@@ -1,0 +1,76 @@
+\section{jelatine::VMOutputStream Class Reference}
+\label{classjelatine_1_1_v_m_output_stream}\index{jelatine::VMOutputStream@{jelatine::VMOutputStream}}
+Inheritance diagram for jelatine::VMOutputStream:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=2.000000cm]{classjelatine_1_1_v_m_output_stream}
+\end{center}
+\end{figure}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+{\bf VMOutputStream} ({\bf String} type)
+\item 
+void {\bf write} (int b)
+\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+Internal VM class used for handling System's standard error and output streams 
+
+Definition at line 30 of file VMOutputStream.java.
+
+
+
+\subsection{Constructor \& Destructor Documentation}
+\index{jelatine::VMOutputStream@{jelatine::VMOutputStream}!VMOutputStream@{VMOutputStream}}
+\index{VMOutputStream@{VMOutputStream}!jelatine::VMOutputStream@{jelatine::VMOutputStream}}
+\subsubsection[{VMOutputStream}]{\setlength{\rightskip}{0pt plus 5cm}jelatine::VMOutputStream::VMOutputStream (
+\begin{DoxyParamCaption}
+\item[{{\bf String}}]{ type}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily  [inline]}}\label{classjelatine_1_1_v_m_output_stream_a4f8ab62593c6e7e6f6875240b23e38db}
+Creates a new stream of the specified type 
+\begin{DoxyParams}{Parameters}
+\item[{\em type}]Stream type \end{DoxyParams}
+
+
+Definition at line 41 of file VMOutputStream.java.
+
+
+
+References java::lang::String::equals().
+
+
+
+\subsection{Member Function Documentation}
+\index{jelatine::VMOutputStream@{jelatine::VMOutputStream}!write@{write}}
+\index{write@{write}!jelatine::VMOutputStream@{jelatine::VMOutputStream}}
+\subsubsection[{write}]{\setlength{\rightskip}{0pt plus 5cm}void jelatine::VMOutputStream::write (
+\begin{DoxyParamCaption}
+\item[{int}]{ b}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily  [inline, virtual]}}\label{classjelatine_1_1_v_m_output_stream_a5b723df03a9d59202481ecd23affb48c}
+This method writes a single byte to the output stream. The byte written is the low eight bits of the {\ttfamily int} passed and a argument. 
+
+Subclasses must provide an implementation of this abstract method
+
+
+\begin{DoxyParams}{Parameters}
+\item[{\em b}]The byte to be written to the output stream, passed as the low eight bits of an {\ttfamily int}\end{DoxyParams}
+
+\begin{DoxyExceptions}{Exceptions}
+\item[{\em IOException}]If an error occurs \end{DoxyExceptions}
+
+
+Implements {\bf java::io::OutputStream} \doxyref{}{p.}{classjava_1_1io_1_1_output_stream_acb393205e8e2e494c27c289439a8d160}.
+
+
+
+Definition at line 60 of file VMOutputStream.java.
+
+
+
+The documentation for this class was generated from the following file:\begin{DoxyCompactItemize}
+\item 
+src/classpath/jelatine/VMOutputStream.java\end{DoxyCompactItemize}

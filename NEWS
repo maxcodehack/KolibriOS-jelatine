@@ -1,0 +1,230 @@
+Jelatine release news.
+
+* Version 0.9.4
+===============
+- A lot of bad bugs were fixed
+- More code refactoring and cleanup
+- A few minor optimizations were implemented
+
+* Version 0.9.3
+===============
+- More major bugs were fixed
+- Added partial support for version 50 classfiles
+- Some code refactoring and cleanup, minor static footprint reduction
+- A small optimization, in the form of a change to the constant pool structure,
+  was added
+
+* Version 0.9.2
+===============
+- A few major bugs which went unnoticed for a long time were fixed
+- Classes with a version number of 51 are now partially supported
+- The VM static footprint was shrunk by ~5%
+- Multiple classpaths are now supported for the --classpath option
+- Double.parseDouble() has been implemented
+
+* Version 0.9.1
+===============
+- Optimized the memory consumption of permanent C allocations, this shaved a
+  few KiBs of memory from the bootstrap process
+- Significant improvements in the multi-threading implementation, lots of
+  thread-related bugs were fixed and Thread.interrupt() works much better than
+  in the previous version
+- Basic socket support was added by Guillaume Legris
+- Many important bug fixes in various parts of the VM
+- Rewritten the code base using C99 features, many parts were simplified and
+  made more readable (especially the GC). The refactoring also made the static
+  footprint of the VM go down a bit
+- Improved OS X support
+
+* Version 0.9.0
+===============
+- Massive overhaul of the whole virtual machine
+- Three threading models are now supported: POSIX threads, GNU/Pth threads and
+  no threading
+- The KVM native interface (KNI) is now implemented
+- Quite a bit of nasty bugs were fixed
+- The interpreter has gone through further optimizations, especially to
+  virtual method calls
+- The VM static and dynamic memory footprint have gone down a bit
+- The build system has been improved with configuration reporting and better
+  support for cross-compilation
+- The whole codebase has been audited and cleaned up, especially the aspects
+  regarding exceptions, the build system and documentation have been improved
+
+* Version 0.8.10
+================
+- Some minor improvements to the interpreter allowed for some reductions in the
+  VM static footprint
+- Fixed a bad bug which caused random crashes in the bootstrap code when using
+  threads
+- Fixed the build problems with printing and floating-point support removal
+- Fixed a couple of types which caused problems with more recent versions of gcc
+  and 64-bit machines
+
+* Version 0.8.9
+===============
+- Reworked the string handling/conversion code and fixed a bug which caused
+  incorrect calculation of the hash value of certain literals. Fixed a bug
+  which prevented String.intern() from working correctly
+- Fixed a few minor memory leaks when terminating a thread's execution and when
+  dealing with JAR files
+- Fixed a *very embarassing* bug introduced in version 0.8.4 which caused non
+  array objects to occupy as much as four times the memory they actually
+  required. Memory consumption is down *a lot* from the previous version.
+- Made the process of finalizing objects much more aggressive, this can be very
+  useful when memory pressure is high and there are objects which hold a lot of
+  memory waiting for finalization
+- A lot of code refactoring, this paves the way for some changes which will be
+  introduced in the next version
+- The Doxygen documentation has been updated and corrected
+
+* Version 0.8.8
+===============
+- Added support for finalizer
+- Implemented the java.lang.Class.getResourceAsStream() method
+- Fixed a problem caused by violating the strict aliasing constraints of the C
+  language, tested with various versions of the gcc compiler and removed  the
+  -fno-strict-aliasing flag from the default build, this should provide a
+  healthy performance boost
+- Minor optimizations to the interpreter
+- Fixed a number of serious bugs:
+  - when an interface inherited methods from another interface the virtual table
+    wasn't built correctly
+  - when looking up a static field the superinterfaces of a class weren't
+    scanned for it
+  - the Object.wait() method didn't work as it should
+  - command line  parameters weren't passed in the correct order to the Java
+    application's main() method
+  - copying boolean arrays with java.lang.System.arraycopy() corrupted the stack
+  - the Class.forName() method didn't turn the class name into the internal
+    format before looking for it
+  - fixed a couple of minor bugs when dealing with utf8 strings
+- Fixed a few small memory leaks in the class loader
+- Cleaned up the classpath and simplified the class structure, this saves a bit
+  of memory and reduces the classpath static footprint
+- Reorganized the opcode translation system, now Java opcodes are clearly
+  separated from the internal opcodes improving their manipulation
+- Fixed a bug in the configure script which accepted older versions of zziplib
+  which did not offer the required functionality
+- Fixed a bug in the classpath which prevented it from being compiled with the
+  Eclipse Java Compiler, also fixed a number of warnings produced by ech when
+  compiling
+
+* Version 0.8.7
+===============
+- Added an internal preverifier by modifying Sun's one. This allows the
+  classpath to be compiled with Sun's javac compilers shipped with version
+  1.4, 1.5 and 1.6 of the JDK. Previously builds with version 1.4 and 1.6 were
+  unsupported
+- classpath files are now automatically installed into $prefix/share/jelatine,
+  by the default the VM will look them up there if no bootclasspath is
+  specified
+- Fixed a bug which prevented the labels-as-values test to run by default,
+  as a consequence baseline performance for the VM should be significantly
+  improved
+- Fixed a small bug related to NaN handling on exotic machines
+- Fixed a number of warnings which might turn out when using the latest versions
+  of gcc or by testing the machine with valgrind
+
+* Version 0.8.6
+===============
+- Added JAR support. Now a JAR file can be passed instead of a directory to
+  both the --bootclasspath and --classpath options for use by the VM
+- Fixed a bug in the garbage collector which prevented architectures where the
+  pointer size was half the maximum alignment constraint from working properly.
+  Thanks to this now Jelatine runs on Linux/SPARC targets
+- Now supports full VPATH builds which weren't supported in the classpath
+  subdirectory
+
+* Version 0.8.5
+===============
+- Major rewrite of the basic type system, some problems are still present
+  on Linux/SPARC targets (32-bit pointers but natural alignment required for
+  64-bit types), hopefully this will be fixed in the next release
+- Merged the VM library and front-end into a monolithical application, library
+  use of the VM will be rewritten later with better integration as it was
+  quite poor
+- Many important bugs were fixed including a couple of mistakes when allocating
+  method code, incorrect behaviour in the verifier when handling LDC_W opcodes
+  and more
+- Minor optimizations to the garbage collector
+- The previous version should be considered unreleased, I actually put it in the
+  wild for a few days but quickly realized that it was horribly buggy and so I
+  withdrew it as soon as possible, don't use it, all of its improvements are
+  present in this version
+- Added some primitive bytecode and method printing facilities, these can be
+  enabled with the --enable-printing flag of the configure script and later
+  activated in the VM by passing the --print-methods or --print-opcodes options
+  when invoking jelatine
+
+* Version 0.8.4
+===============
+- Modified the field layout procedure so that it can produce more compact
+  objects. This is done by reusing padding bytes at the end of the previous
+  generation in the inheritance chain if possible
+- Class initialization methods are now unloaded after they have been called as
+  they are used only once, this helps save a bit of memory on complex classes
+- Fixed a number of bugs affecting big-endian machines as well as machines
+  requiring natural alignment for types larger than 1 byte
+- Fixed a bug which caused large reference arrays to be mishandled when using
+  pointer reversal
+
+* Version 0.8.3
+===============
+- Compressed the constant-pool of any class by 10% by storing a couple of tags
+  in a single byte integer instead of just one
+- Removed the dependence from libpopt in the front-end
+- The pointer-reversal based algorythm is now the default used by the garbage
+  collector
+- Fixed a couple of bugs regarding NaN use in the interpreter
+- Adapted to use autoconf 2.60
+- Introduced more tests and wrappers to adapt better to different environments
+- Cleaned up the Doxygen documentation and fixed a lot of typos which made a
+  big part of the comments to be ignored
+- Finished cleaning up the resolution process in the interpreter, now all direct
+  references to the system class loader have been removed from there. Startup
+  speed should also have improved as a side-effect.
+- Executable size is now below 90 KiB when compiled with -Os
+
+* Version 0.8.2
+===============
+
+- Complete rewrite of the loading process, including method and class handling,
+  this should provide somewhat faster startup times
+- The interpreter has been cleaned-up and old testing code has been removed
+- Class loader code is now much cleaner though work on the way classes are
+  managed must still be done
+- Complete rewrite of the method binding process, method management was greatly
+  simplified and made much cleaner
+- Changed the way private, static and initialization methods are called. The
+  relevant bytecodes do not access anymore the virtual dispatch table for
+  private and initialization method and the static dispatch table for static
+  ones. Early tests show a slight increase in performance. The static dispatch
+  table has been removed thus removing references from the loader too. This
+  change should be applied also the opcodes accessing the global class table in
+  future versions.
+- Removed the limits on the maximum number of private and static methods which
+  could be declared, relieved the limits on the number of virtual methods
+- Doxygen documentation has been improved though quite a bit of work must still
+  be done about it
+- Fixed a bug which made malformed classfiles with duplicated field entries pass
+  the loader consistency checks
+- Fixed a slight bug in the interpreter
+
+* Version 0.8.1a
+================
+
+- Fixed a problem which made the build process fail if JAR file support was
+  disabled
+
+* Version 0.8.1
+===============
+
+- Reworked field management and layout, should provide a minor performance
+  improvement and the related code is much cleaner now and easy to modify
+- Fixed a couple of minor problems
+
+* Version 0.8
+=============
+
+- INITIAL RELEASE

@@ -1,0 +1,1016 @@
+2007-11-27   Gabriele Svelto <gabriele.svelto@gmail.com>
+	* memory.h: Major code refactoring
+	* memory.c: Major code refactoring
+
+2007-11-26   Gabriele Svelto <gabriele.svelto@gmail.com>
+	* memory.c (push_temp_root): Fixed a bug when growing the temporary
+	root array
+	* memory.c (register_weak_ref): New function
+	* memory.h (register_weak_ref): New prototype
+	* native.c (java_lang_ref_WeakReference_addToWeakReferenceList):
+	Modified to use register_weak_ref
+
+2007-11-18   Gabriele Svelto <gabriele.svelto@gmail.com>
+	* configure.ac: Bumped version to 0.8.8
+	* INSTALL: Updated
+	* NEWS: Added information about the new version
+	* README: Bumped the version number and added more information
+
+2007-11-16   Gabriele Svelto <gabriele.svelto@gmail.com>
+	* src/jelatine/classfile.c (cf_open): Fixed a memory leak
+	* src/jelatine/constantpool.c (cp_create): Nul-terminate UTF8 strings
+	before passing them to utf8_string_create()
+	* src/jelatine/utf8_string.c (string_manager_rehash): Fixed a bug when
+	calculating a string's hash value
+
+2007-11-15   Gabriele Svelto <gabriele.svelto@gmail.com>
+	* src/jelatine/jlock.h (lock_manager_t): New fields 'cached' and
+	'unused' were added
+	* src/jelatine/jlock.c (monitor_create, monitor_dispose): Make use of
+	the cached unused monitors if some are available instead of allocating
+	new ones
+
+2007-11-14   Gabriele Svelto <gabriele.svelto@gmail.com>
+	* src/jelatine/main.c (parse_command_line_args): Handle the
+	--print-memory option
+	* src/jelatine/memory.c (jnew, heap_collect, mark_reference, sweep,
+	jmalloc, jfree): Added printing facilities
+	* src/jelatine/vm.h (vm_options_t): New field 'print_memory'
+	* src/jelatine/vm.h (vm_opts_set_print_memory,
+	vm_opts_get_print_memory): New macros
+
+2007-11-06   Gabriele Svelto <gabriele.svelto@gmail.com>
+	* src/jelatine/field.c (fm_layout_jelatine_VMResourceStream): Added
+	the 'available' field
+	* src/jelatine/jelatine_VMResourceStream.h: Added the 'available'
+	field and the relevant macros
+	* src/jelatine/loader.c (resolve_static_field): The resolution
+	procedure didn't look into the superinterfaces of a class before
+	looking into its parent class, fixed
+	* src/jelatine/native.c (jelatine_VMResourceStream_open): Get the
+	uncompressed file size
+	* src/jelatine/native.c (jelatine_VMResourceStream_read): Update the
+	uncompressed file size
+
+2007-11-02   Gabriele Svelto <gabriele.svelto@gmail.com>
+	* src/configure.ac: Removed VMFile support
+	* src/classpath/Makefile.in: Removed VMFile.java and
+	FileInputStream.java dependency
+	* src/classpath/VMFile.java: Removed file
+	* src/classpath/io/FileInputStream.java: Removed file
+	* src/classpath/java/lang/Class.java (getResourceAsStream): Corrected
+	a bug when creating the resource absolute path
+	* src/jelatine/Makefile.am: Removed jelatine_VMFile.h dependency
+	* src/jelatine/field.c: Removed VMFile support
+	* src/jelatine/jelatine_VMFile.h: Removed file
+	* src/jelatine/loader.c: Removed VMFile support
+	* src/jelatine/native.c (java_lang_Class_forName): The class names
+	weren't properly turned into the internal format, fixed
+	* src/jelatine/native.c: Removed VMFile support
+
+2007-10-24   Gabriele Svelto <gabriele.svelto@gmail.com>
+	* src/jelatine/native.c (java_lang_System_arraycopy): Fixed a bug
+	which corrupted the stack pointer when copying boolean arrays
+	* src/jelatine/print.c (print_method_unwind): New function
+	* src/jelatine/print.h (print_method_unwind): New prototype & macro
+	* src/jelatine/interpreter.c (interpreter): Abrupt method termination
+	is shown when printing is enabled
+
+2007-10-24   Gabriele Svelto <gabriele.svelto@gmail.com>
+	* src/jelatine/native.c: Enable jelatine.VMResourceStream methods only
+	when JEL_JARFILE_SUPPORT is defined
+
+2007-10-22   Gabriele Svelto <gabriele.svelto@gmail.com>
+	* src/classpath/java/lang/Class.java (getResourceAsStream):
+	Implemented using VMResourceStream
+	* src/classpath/jelatine/VMResourceStream.java: New file
+	* src/classpath/Makefile.in: Added the VMResourceStream class
+	* src/jelatine/field.c (fm_layout_jelatine_VMResourceStream): New
+	function
+	* src/jelatine/field.h (fm_layout_jelatine_VMResourceStream): New
+	prototype
+	* src/jelatine/jelatine_VMResourceStream.h: New file
+	* src/jelatine/loader.c (type_specific_layout): Modified to accomodate
+	for the VMResourceStream class
+	* src/jelatine/native.c (java_lang_Class_getResourceAsStream): Removed
+	function
+	* src/jelatine/native.c (jelatine_VMResourceStream_open,
+	jelatine_VMResourceStream_read, jelatine_VMResourceStream_finalize):
+	New functions
+	* src/jelatine/Makefile.am: Added the jelatine_VMResourceStream.h
+	file to the 'jelatine' dependencies
+
+2007-10-08   Gabriele Svelto <gabriele.svelto@gmail.com>
+	* src/jelatine/loader.c (derive_class): Support for classes with a
+	major version number of 50
+	* src/jelatine/memory.c (mark_finalizable): Mark the objects waiting
+	to be finalized
+	* src/jelatine/native.c (java_lang_Runtime_freeMemory,
+	java_lang_Runtime_totalMemory, java_lang_Runtime_gc): The stack
+	pointer wasn't adjusted properly upon return, fixed
+	* src/jelatine/thread.c (thread_yield): Infinite timeouts were broken,
+	fixed
+	* src/jelatine/vm.c (vm_create): The command line parameters were
+	passed to the Java application in the wrong order, fixed
+
+2007-10-02   Gabriele Svelto <gabriele.svelto@gmail.com>
+	* src/classpath/java/lang/Double.java (toString, parseDouble,
+	doubleToLongBits, longBitsToDouble): Modified to use the new native
+	functions
+	* src/classpath/jelatine/VMDouble.java: Removed file
+	* src/jelatine/native.c (java_lang_Double_toString,
+	java_lang_Double_parseDouble, java_lang_Double_doubleToLongBits,
+	java_lang_Double_longBitsToDouble): New functions, replace their VM*
+	equivalents, also fixed a bug in java_lang_Double_toString
+	* src/jelatine/native.c (jelatine_VMDouble_toString,
+	jelatine_VMDouble_parseDouble, jelatine_VMDouble_doubleToLongBits,
+	jelatine_VMDouble_longBitsToDouble): Removed functions
+
+2007-09-30   Gabriele Svelto <gabriele.svelto@gmail.com>
+	* src/classpath/java/lang/Float.java (toString, floatToIntBits,
+	intBitsToFloat): Modified to use the new native functions
+	* src/classpath/java/lang/Runtime.java (exit, freeMemory, totalMemory,
+	gc): Modified to use the new native functions
+	* src/classpath/jelatine/VMFloat.java: Removed file
+	* src/classpath/jelatine/VMRuntime.java: Removed file
+	* src/jelatine/native.c (java_lang_Runtime_exit,
+	java_lang_Runtime_freeMemory, java_lang_Runtime_totalMemory,
+	java_lang_Runtime_gc, java_lang_Float_toString,
+	java_lang_Float_floatToIntBits, java_lang_Float_intBitsToFloat): New
+	functions, replace their VM* equivalents
+	* src/jelatine/native.c (jelatine_VMRuntime_exit,
+	jelatine_VMRuntime_freeMemory, jelatine_VMRuntime_totalMemory,
+	jelatine_VMRuntime_gc, jelatine_VMFloat_toString,
+	jelatine_VMFloat_floatToIntBits, jelatine_VMFloat_intBitsToFloat):
+	Removed functions
+
+2007-09-29   Gabriele Svelto <gabriele.svelto@gmail.com>
+	* src/classpath/java/lang/System.java (currentTimeMillis, arraycopy,
+	identityHashCode, getProperty): Modified to use the new native
+	functions
+	* src/classpath/java/io/ByteArrayInputStream.java: Use System instead
+	of VMSystem
+	* src/classpath/java/io/ByteArrayOutputStream.java: Use System instead
+	of VMSystem
+	* src/classpath/java/lang/String.java: Use System instead of VMSystem
+	* src/classpath/java/lang/StringBufer.java: Use System instead of
+	VMSystem
+	* src/classpath/java/lang/System.java (makeStandardOutputStream,
+	makeStandardErrorStream): New methods
+	* src/classpath/jelatine/VMSystem.java: Removed file
+	* src/jelatine/native.c (java_lang_System_currentTimeMillis,
+	java_lang_System_arraycopy, java_lang_System_getProperty): New
+	functions, replace their VM* equivalents
+	* src/jelatine/native.c (jelatine_VMSystem_currentTimeMillis,
+	jelatine_VMSystem_arraycopy, jelatine_VMSystem_getProperty): Removed
+	functions
+
+2007-09-26   Gabriele Svelto <gabriele.svelto@gmail.com>
+	* src/classpath/java/lang/Class.java (forName, newInstance,
+	isInstance, isAssignableFrom, getResourceAsStream): Modified to use
+	the new native methods
+	* src/classpath/jelatine/VMClass.java: Removed file
+	* src/jelatine/loader.c (load_interfaces): Fixed a major bug which
+	made interface hierarchy inconsistent when an interface inherited
+	another interface, also fixed a minor memory leak
+	* src/jelatine/native.c (java_lang_Class_forName,
+	java_lang_Class_newInstance, java_lang_Class_isInstance,
+	java_lang_Class_isAssignableFrom, java_lang_Class_getResourceAsStream):
+	New functions, replace their VM* equivalents
+	* src/jelatine/native.c (jelatine_VMClass_forName,
+	jelatine_VMClass_newInstance, jelatine_VMClass_isInstance,
+	jelatine_VMClass_isAssignableFrom,
+	jelatine_VMClass_getResourceAsStream): Removed functions
+	* src/jelatine/memory.c (register_with_finalizer): Fixed a problem
+	when dealing with compacted class pointers when pointer reversal is
+	enabled
+	* src/jelatine/thread.c (thread_restart): Fixed the assertion to cope
+	with the finalizer thread
+	* src/jelatine/print.c (print_bytecode): Fixed a few duplicated cases
+
+2007-09-21   Gabriele Svelto <gabriele.svelto@gmail.com>
+	* configure.ac: Removed the definition of JEL_CLASSPATH_DEFAULT, it
+	has been moved to src/jelatine/Makefile.am
+	* src/jelatine/Makefile.am: Adds JEL_CLASSPATH_DEFAULT to the
+	AM_CPPFLAGS for inclusion in the executable
+	* classpath: Fixed a number of warnings when compiling with ECJ
+
+2007-09-11   Gabriele Svelto <gabriele.svelto@gmail.com>
+	* memory.c (mark_finalizable): Fixed a bug
+	* memory.c (get_finalizable_object): New function
+	* memory.h (get_finalizable_object): New prototype
+	* thread.h (thread_state_t): New value THREAD_FINALIZER
+	* native.c (jelatine_VMFinalizer_getNextObject): New function
+
+2007-09-10   Gabriele Svelto <gabriele.svelto@gmail.com>
+	* configure.ac: Modified zziplib's minimum version required for
+	building
+	* src/classpath/jelatine/VMFinalizer.java (run): Modified to take into
+	account that a finalizer might throw an exception
+	* src/classpath/jelatine/String.java (String): Removed the use of the
+	clone() method which does not exist under the CLDC spec
+
+2007-08-08   Gabriele Svelto <gabriele.svelto@gmail.com>
+	* configure.ac: Removed the vm.h.in output file, now defines the
+	JEL_CLASSPATH_DEFAULT macro directly in the config.h output file
+	* src/jelatine/Makefile.am: Removed the vm.h.in dependencies
+	* src/jelatine/vm.h.in: Removed file
+	* src/jelatine/vm.h: New file
+	* classpath/java/lang/ref/WeakReference.java (addToWeakReferenceList):
+	Moved from jelatine.VMWeakReference
+	* classpath/jelatine/VMWeakReference.java: Removed file
+	* classpath/Makefile.in: Removed the VMWeakReference dependency
+	* jelatine/native.c
+	(java_lang_ref_WeakReference_addToWeakReferenceList): New function,
+	replaces its VM* equivalent
+	* jelatine/native.c (jelatine_VMWeakReference_addToWeakReferenceList):
+	Removed function
+
+2007-07-09   Gabriele Svelto <gabriele.svelto@gmail.com>
+	* Doxyfile.in: Modified to correctly find the sources when building
+	outside of the source directory
+	* classpath/java/lang/Object.java (getClass, wait, notify, notifyAll):
+	Turned into native methods, removed the jelatine.VMObject dependency
+	* classpath/java/lang/String.java (intern): Turned into a native
+	method, removed the jelatine.VMString dependency
+	* classpath/jelatine/VMFinalizer.java: New file
+	* classpath/jelatine/VMObject.java: Removed file
+	* classpath/jelatine/VMString.java: Removed file
+	* classpath/Makefile.in: Modified to build the VMFinalizer class,
+	removed VMObject and VMString from the dependencies
+	* jelatine/vm.c (vm_create): Launch the finalization thread during
+	the startup process
+	* jelatine/native.c (java_lang_Object_getClass, java_lang_Object_wait,
+	java_lang_Object_notify, java_lang_Object_notifyAll,
+	java_lang_String_intern): New functions, replace their VM* equivalents
+	* jelatine/native.c (jelatine_VMObject_getClass, jelatine_VMObject_wait,
+	jelatine_VMObject_notify, jelatine_VMObject_notifyAll,
+	jelatine_VMString_intern): Removed functions
+
+2007-07-06   Gabriele Svelto <gabriele.svelto@gmail.com>
+	* jelatine/header.h (header_get_next_finalizable,
+	header_set_next_finalizable): Moved to jelatine/memory.c and renamed
+	* jelatine/header.c (header_set_next_finalizable,
+	header_get_next_finalizable): Moved to jelatine/memory.c and renamed
+	* jelatine/memory.c (set_next_finalizable, get_next_finalizable):
+	Modified versions of header_get_next_finalizable() and
+	header_set_finalizable()
+
+2007-06-27   Gabriele Svelto <gabriele.svelto@gmail.com>
+	* jelatine/loader.c (layout_fields): Cleaned up the boundary
+	conditions
+	* jelatine/memory.c (register_with_finalizer): New function
+
+2007-06-23   Gabriele Svelto <gabriele.svelto@gmail.com>
+	* jelatine/header.c (header_set_next_finalizable,
+	header_get_next_finalizable): New functions
+	* jelatine/header.h (header_get_next_finalizable,
+	header_set_next_finalizable): New prototypes
+	* jelatine/interpreter.c (interpreter): Register finalizable objects
+	with the garbage collector
+	* jelatine/memory.c (heap_init, heap_teardown): Modified to create the
+	bitmap directly inside the unified heap instead of allocating it
+	separately
+	* jelatine/memory.c (bitmap_create, bitmap_dispose): Removed functions
+	* jelatine/memory.c (register_finalizable_object): New function
+	* jelatine/memory.h (register_finalizable_object): New prototype
+
+2007-06-22   Gabriele Svelto <gabriele.svelto@gmail.com>
+	* jelatine/classfile.h (access_flags_t): Added ACC_HAS_FINALIZER entry
+	* jelatine/class.c (class_has_finalizer): New function
+	* jelatine/class.h (class_has_finalizer): New prototype / macro
+	* jelatine/interpreter.c (interpreter): Added the NEW_FINALIZER opcode
+	and modified the NEW_PRELINK opcode to replace itself with
+	NEW_FINALIZER instead of NEW when needed
+	* jelatine/loader.c (assign_interface_indexes): The method iterator
+	wasn't fred this caused a memory leak, fixed
+	* jelatine/loader.c (create_dispatch_table): Set the index of the
+	finalize() method as a global constant when creating java.lang.Object's
+	dispatch table
+	* jelatine/loader.c (load_methods): Improved the sanity checks when
+	working	with interfaces. Marks classes with a non-empty finalize()
+	method with the ACC_HAS_FINALIZER flag. Didn't release the method
+	iterator causing a memory leak, fixed
+	* jelatine/loader.c (load_method_attribute_Code): Fixed a minor bug in
+	the code that checked the length of a method
+	* jelatine/loader.c (get_finalize_index): New function
+	* jelatine/loader.c (finalize_index): New static variable
+	* jelatine/loader.h (get_finalize_index): New prototype
+	* jelatine/opcodes.h (opcode_t): Added NEW_FINALIZER opcode
+
+2007-06-21   Gabriele Svelto <gabriele.svelto@gmail.com>
+	* jelatine/loader.c (load_methods): Check that interface methods are
+	not static, except for <clinit>
+	* java/lang/Object.java (finalize): New method
+
+2007-06-20   Gabriele Svelto <gabriele.svelto@gmail.com>
+	* jelatine/method.c (mm_add, parse_method_arguments): Modified to fix
+	the optimization problem caused by strict aliasing violations when
+	using methods with no arguments nor local variables but which return a
+	value
+
+2007-06-13   Gabriele Svelto <gabriele.svelto@gmail.com>
+	* jelatine/method.h (METHOD_ARGUMENTS_MAX): Corrected
+	* jelatine/method.c (parse_method_descriptor): Take into account the
+	implicit object reference when calculating the number of arguments of a
+	non-static method
+	* jelatine/interpreter.c (interpreter): Removed the single slot
+	adjustement for	the 'this' reference in the INVOKEVIRTUAL,
+	INVOKESPECIAL, INVOKEINTERFACE and INVOKESUPER opcodes. This is a minor
+	optimization to the interpreter
+
+2007-06-06   Gabriele Svelto <gabriele.svelto@gmail.com>
+	* jelatine/bytecode.c (translate_bytecode): Readapted to use the new
+	opcode types
+	* jelatine/interpreter.c (interpreter): The INVOKEVIRTUAL,
+	INVOKESPECIAL, INVOKESTATIC, INVOKEINTERFACE and INVOKESUPER opcodes,
+	as well as the class initialization procedure requested non-needed
+	extra stack slots, fixed
+	* jelatine(loader.c (load_bytecode, get_type_specific_opcode): Modified
+	to use the new opcode types
+	* jelatine/opcodes.h (java_opcode_t): New type, derived from opcode_t,
+	removed	all the	VM-specific opcodes and appended the JAVA_ prefix to
+	all the	opcode names
+	* jelatine/opcodes.h (internal_opcode_t): New type, derived from
+	opcode_t, includes all the VM-specific opcodes as well as the Java ones
+	used unmodified. Rearranged the actual opcodes for freeing some more
+	opcode space
+	* jelatine/thread.c (thread_prepare): When growing the stack
+	STACK_FRAME_SLOTS extra slots were requested even if they weren't
+	needed, fixed
+
+2007-05-22   Gabriele Svelto <gabriele.svelto@gmail.com>
+	* jelatine/classfile.h (class_file_t): Fixed the documentation
+	* jelatine/constpool.h (cp_data_set_ptr, cp_data_get_ptr,
+	cp_data_Set_uintptr, cp_data_get_uintptr, cp_data_set_uint16,
+	cp_data_get_uint16, cp_data_set_int32, cp_data_get_int32,
+	cp_data_set_float, cp_data_get_float, cp_data_set_int64,
+	cp_data_get_int64, cp_data_set_double, cp_data_get_double,
+	cp_data_set_fieldref_class, cp_data_get_fieldref_class,
+	cp_data_set_fieldref_name_and_type,
+	cp_data_get_fieldref_name_and_type, cp_data_set_name_and_type_name,
+	cp_data_get_name_and_type_name, cp_data_set_name_and_type_descriptor,
+	cp_data_get_name_and_type_descriptor): Fixed the documentation
+	* jelatine/vm.h.in (JEL_CLASSPATH_DEFAULT): Fixed the documentation
+	* jelatine(wrappers.h (JWORD_SIZE, JWORD_LOG2SIZE, REF_SIZE,
+	REF_LOG2SIZE, reference_t): Removed obsolete documentation
+
+2007-05-10   Gabriele Svelto <gabriele.svelto@gmail.com>
+	* configure.ac: Removed the AX_CFLAGS_GCC_OPTION which set the
+	-fno-strict-aliasing option as it is not necessary anymore
+	* m4/ax_cflags_gcc_option.m4: Deleted file
+	* m4/Makefile.am: Removed the ax_cflags_gcc_option.m4 file as a
+	dependency
+
+2007-05-04   Gabriele Svelto <gabriele.svelto@gmail.com>
+	* configure.ac: Bumped version to 0.8.7, fixed a bug which prevented
+	the script from testing the labels-as-values GNU extension
+	* Doxyfile.in: Excluded the preverifier directory
+	* INSTALL: Modified to take into account the new installation system
+	* NEWS: Added information about the new version
+	* README: Bumped the version number and added more information
+	* src/Makefile.am: Changed EXTRA_DIST to include classpath/Makefile.in
+	instead of classpath/Makefile
+	* src/jelatine/memory.c (heap_init): Clear the heap after having
+	allocated it, this fixes various warnings from valgrind
+	* src/preverifier/check_code.c (push_stack): Fixed a warning
+	* src/preverifier/jar.c (inflateHuffman): Fixed a warning
+	* src/preverifier/jar_support.c (loadJARfile): Fixed a warning
+	* src/preverifier/oobj.h: Commented out the DEBUG_VERIFIER define so
+	that we do not include debugging code in production builds
+	* src/preverifier/util.c (Str2ID): Fixed a warning
+
+2007-05-03   Gabriele Svelto <gabriele.svelto@gmail.com>
+	* configure.ac: Modified to emit vm.h as an output file
+	* src/classpath/Makefile.in: Fixed a bug which caused internal classes
+	not to be included in the JAR file
+	* src/jelatine/Makefile.am: Modifed to not distribute the vm.h file
+	and remove it during a distclean
+	* src/jelatine/vm.h: Deleted file
+
+2007-05-01   Gabriele Svelto <gabriele.svelto@gmail.com>
+	* src/jelatine/Makefile.am: Added rules for preprocessing vm.h.in
+	* src/jelatine/vm.h.in: New file
+	* src/jelatine/vm.h (JEL_CLASSPATH_DEFAULT): New macro
+
+2007-04-30   Gabriele Svelto <gabriele.svelto@gmail.com>
+	* configure.ac: Fixed a bug which caused JAR support to be enabled even
+	if the zziplib check failed
+	* src/classpath/Makefile.in: Added rules for uninstalling classpath
+	files
+	* src/preverifier/check_code.c (verify_opcode_operands,
+	initialize_exception_table, instruction_length): Turned long
+	into uint32_t when used for a 32-bit quantity
+	* src/preverifier/classloader.c (get4bytes): Return an uint32_t
+	instead of an unsigned long
+	* src/preverifier/classloader.c (get2bytes): Return an uint16_t
+	instead of an unsigned short
+	* src/preverifier/classloader.c (get1bytes): Return an uint8_t instead
+	of an unsigned char
+
+2007-04-29   Gabriele Svelto <gabriele.svelto@gmail.com>
+	* configure.ac: Added arpa/inet.h to the scanned headers
+	* src/preverifier/wrappers.h: Included arpa/inet.h
+	* src/preverifier/oobj.h (UCALIGN): Turned int to size_t
+
+2007-04-27   Gabriele Svelto <gabriele.svelto@gmail.com>
+	* INSTALL: Changed to account for the installation of the classpath
+	files
+	* configure.ac: Added the 'jar_support' output variable
+	* src/classpath/Makefile: Cleaned up the existing rules and fixed a
+	bug when cleaning, added support for installing the .class or .jar files
+
+2007-04-25   Gabriele Svelto <gabriele.svelto@gmail.com>
+	* src/jelatine/*.h: Changed the inclusion macros
+
+2007-04-20   Gabriele Svelto <gabriele.svelto@gmail.com>
+	* configure.ac: Added checks for various headers needed by the
+	preverifier and enabled system extensions
+	* src/Makefile.am: Added the preverifer target
+	* src/classpath/Makefile.in: Modified to use the internal preverifer
+	* src/jelatine/main.c: Corrected a potential problem with nan
+	replacement macros when enabling POSIX extensions
+	* src/preverifer: New tool
+	* src/preverifier/check_class.c: New file
+	* src/preverifier/check_code.c: New file
+	* src/preverifier/check_code.h: New file
+	* src/preverifier/classloader.c: New file
+	* src/preverifier/classresolver.c: New file
+	* src/preverifier/convert_md.c: New file
+	* src/preverifier/convert_md.h: New file
+	* src/preverifier/file.c: New file
+	* src/preverifier/inlinejsr.c: New file
+	* src/preverifier/jar.c: New file
+	* src/preverifier/jar.h: New file
+	* src/preverifier/jarint.h: New file
+	* src/preverifier/jartables.h: New file
+	* src/preverifier/jar_support.c: New file
+	* src/preverifier/locale_md.h: New file
+	* src/preverifier/main.c: New file
+	* src/preverifier/oobj.h: New file
+	* src/preverifier/opcodes.h: New file
+	* src/preverifier/path.h: New file
+	* src/preverifier/path_md.h: New file
+	* src/preverifier/signature.h: New file
+	* src/preverifier/stubs.c: New file
+	* src/preverifier/sys_api.h: New file
+	* src/preverifier/sysmacros_md.h: New file
+	* src/preverifier/sys_support.c: New file
+	* src/preverifier/tree.h: New file
+	* src/preverifier/typecodes.h: New file
+	* src/preverifier/typedefs.h: New file
+	* src/preverifier/typedefs_md.h: New file
+	* src/preverifier/utf.c: New file
+	* src/preverifier/utf.h: New file
+	* src/preverifier/util.c: New file
+	* src/preverifier/wrappers.h: New file
+
+2007-04-19   Gabriele Svelto <gabriele.svelto@gmail.com>
+	* configure.ac: Bumped version to 0.8.6
+	* main.c (main): Modified the help message
+	* INSTALL: Updated with information about the zziplib dependance
+	* NEWS: Added information about the new version
+	* README: Modified the version number
+	* TODO: Updated
+
+2007-04-13   Gabriele Svelto <gabriele.svelto@gmail.com>
+	* configure.ac: Added a check for jar/fastjar
+	* loader.c (cf_open_jar, cf_close, cf_load_u1, cf_load_u2, cf_load_u4,
+	cf_seek): Added support for JAR files
+	* loader.h (class_file_t): Added support for JAR files
+	* src/Makefile.am (install-data-local, uninstall-local): New rules
+	* src/classpath/Makefile: Added a conditional rule to create
+	consolidate the classpath classes into a JAR file
+
+2007-04-12   Gabriele Svelto <gabriele.svelto@gmail.com>
+	* configure.ac: Modified to check for zziplib instead of zlib
+	* loader.c (loader_init, loader_teardown): Added support for JAR files
+	* util.c (efopen): Refactored
+
+2007-03-26   Gabriele Svelto <gabriele.svelto@gmail.com>
+	* thread.c (stack_crawler): Fixed a bug which appeared on Linux/SPARC
+	where the pointer-size was half of the maximum alignment constraint
+
+2007-03-21   Gabriele Svelto <gabriele.svelto@gmail.com>
+	* configure.ac: Added src/classpath/Makefile and m4/Makefile to the
+	AC_OUTPUT targets
+	* m4/Makefile: Generated from the corresponding Makefile.in
+	* m4/Makefile.am: New file
+	* src/classpath/Makefile: Generated from the corresponding Makefile.in
+	this fixes VPATH builds
+	* src/classpath/Makefile.in: New file
+
+2007-03-09   Gabriele Svelto <gabriele.svelto@gmail.com>
+	* Doxyfile.in: Used @PACKAGENAME@ and @PACKAGEVERSION@ instead of
+	@PACKAGE_NAME@ and @PACKAGE_VERSION@, fixed
+
+2007-03-05   Gabriele Svelto <gabriele.svelto@gmail.com>
+	* configure.ac: Bumped version to 0.8.5
+	* NEWS: Added information about the new version
+	* README: Modified the version number
+	* TODO: Updated
+	* Doxyfile.in: Updated to version 1.4.7 of Doxygen
+	* loader.c (layout_fields): Fixed uses of sizeof(header_t), the header
+	size must be rounded to sizeof(jword_t)
+
+2007-02-28   Gabriele Svelto <gabriele.svelto@gmail.com>
+	* constantpool.h (cp_set_tag_and_data): Modified the prototype to
+	accept a pointer instead of a jword_t
+	* constantpool.h (cp_data_set_ptr, cp_data_get_ptr,
+	cp_data_set_uintptr, cp_data_get_uintptr, cp_data_set_uint16,
+	cp_data_get_uint16, cp_data_set_int32, cp_data_get_int32,
+	cp_data_set_int64, cp_data_get_int64, cp_data_set_float,
+	cp_data_get_float, cp_data_set_double, cp_data_get_double,
+	cp_data_set_fieldref_class, cp_data_get_fieldref_class,
+	cp_data_set_fieldref_name_and_type, cp_data_get_fieldref_name_and_type,
+	cp_data_set_name_and_type_name, cp_data_get_name_and_type_name,
+	cp_data_set_name_and_type_descriptor,
+	cp_data_get_name_and_type_descriptor): New macros
+	* constantpool.c (cp_set_tag_and_data): Modified to use a pointer for
+	the data instead of a jword_t
+	* constantpool.c (cp_create, cp_get_class, cp_get_class_name,
+	cp_get_string, cp_get_jstring, cp_get_integer, cp_get_float,
+	cp_get_double, cp_get_name_and_type_name, cp_get_name_and_type_type,
+	cp_get_fieldref_class, cp_get_fieldref_name, cp_get_fieldref_type,
+	cp_get_methodref_name, cp_get_methodref_descriptor,
+	cp_get_methodref_class, cp_get_interfacemethodref_name,
+	cp_get_interfacemethodref_descriptor, cp_get_interfacemethodref_class,
+	cp_get_resolved_class, cp_get_resolved_instance_field,
+	cp_get_resolved_static_field, cp_get_resolved_method,
+	cp_get_resolved_interfacemethod, cp_print): Modified to use the new
+	cp_data_* macros
+	* constantpool.c (cp_get_data): Removed function
+	* interpreter.c (interpreter): Modified to use the new cp_data_* macros
+
+2007-02-27   Gabriele Svelto <gabriele.svelto@gmail.com>
+	* header.h (header_t): Changed to uintptr_t
+	* memory.c (jmalloc, jnew): Fixed a problem on machines with higher
+	alignment constraints than the pointer size
+
+2007-02-21   Gabriele Svelto <gabriele.svelto@gmail.com>
+	* interpreter.c (interpreter): Fixed a few warnings about int to
+	pointer conversions on machines with higher alignment constraints than
+	the pointer size
+	* loader.c (resolve_class): Fixed a warning about int to pointer
+	conversion, see above
+	* m4/ax_check_aligned_access_required.m4: Removed file
+	* m4/jel_check_align: Updated to work even with -O3
+
+2007-02-20   Gabriele Svelto <gabriele.svelto@gmail.com>
+	* class.c (class_get_nref_size): Bug-fix, changed to use the size in
+	words instead of the size in bytes, this was a bug introduced with the
+	new layout system
+	* class.h (class_get_nref_size): Bug-fix, changed to use the size in
+	words instead of the size in bytes, see above
+	* vm.c (vm_create): Bugfix, the java arguments were stored in the
+	wrong order
+
+2007-02-19   Gabriele Svelto <gabriele.svelto@gmail.com>
+	* bytecode.c (translate_bytecode): Fixed a bug when dealing LDC_W
+	opcodes, verification would fail even though the opcode was valid
+
+2007-02-16   Gabriele Svelto <gabriele.svelto@gmail.com>
+	* interpreter.c (interpreter): Fixed a bug in OPCODE(ANEWARRAY_PRELINK),
+	used malloc() for a temporary instead of jmalloc()
+	* loader.c (load_bytecode): Fixed a bug, used malloc() instead of
+	jmalloc() for a method code
+	* vm.c (vm_create): Enable collections only after the VM has been
+	bootstrapped and added the array "[C" class to the bootstrapped
+	classes
+
+2007-02-07   Gabriele Svelto <gabriele.svelto@gmail.com>
+	* field.c (fm_layout_jelatine_VMFile): Conditionalized
+
+2007-01-29   Gabriele Svelto <gabriele.svelto@gmail.com>
+	* loader.c (layout_fields): Fixed a bug introduced in version 0.8.4
+	which made the layout procedure ignore the byte-sized fields of an
+	object
+	* array.h (ARRAY_HEADER_SIZE, REF_ARRAY_HEADER_SIZE): Fixed a bug
+	introduced in version 0.8.4, header size was not calculated correctly,
+	this caused an increase in memory consumption
+
+2007-01-28   Gabriele Svelto <gabriele.svelto@gmail.com>
+	* field.c (fm_layout_java_lang_Thread, fm_layout_java_lang_String,
+	fm_layout_java_lang_ref_Reference, fm_layout_jelatine_VMFile,
+	fm_layout_java_lang_ref_WeakReference, fm_layout_java_lang_Throwable):
+	Modified to use the new macros
+	* java_lang_ref_Reference.h (JAVA_LANG_REF_REFERENCE_REFERENT_OFFSET):
+	New macro
+	* java_lang_ref_WeakReference.h
+	(JAVA_LANG_REF_WEAKREFERENCE_NEXT_OFFSET): New macro
+	* java_lang_String.h (JAVA_LANG_STRING_VALUE_OFFSET,
+	JAVA_LANG_STRING_NEXT_OFFSET, JAVA_LANG_STRING_COUNT_OFFSET,
+	JAVA_LANG_STRING_CACHEDHASHCODE_OFFSET,
+	JAVA_LANG_STRING_OFFSET_OFFSET): New macros
+	* java_lang_Thread.h (JAVA_LANG_THREAD_NAME_OFFSET,
+	JAVA_LANG_THREAD_RUNNABLE_OFFSET, JAVA_LANG_THREAD_VMTHREAD_OFFSET,
+	JAVA_LANG_THREAD_PRIORITY_OFFSET): New macros
+	* java_lang_Throwable.h (JAVA_LANG_THROWABLE_DETAILMESSAGE_OFFSET):
+	New macro
+	* jelatine_VMFile.h (JELATINE_VMFILE_NAME_OFFSET,
+	JELATINE_VMFILE_FILE_OFFSET): New macros
+	* memory.c (heap_gc_enable): New function
+	* memory.c (heap_collect): Don't run before the machine has finished
+	the initialization of all its subsystems
+	* memory.h (heap_gc_enable): New prototype
+	* vm.c (vm_create): Fixed a bug, the collector could be triggered
+	before the VM had finished the initialization phase
+
+2007-01-26   Gabriele Svelto <gabriele.svelto@gmail.com>
+	* interpreter.c (interpreter): Major code cleanup, added appropriate
+	calls for printing method invocations and returns
+	* print.c (print_method_call, print_method_ret): New functions
+
+2007-01-24   Gabriele Svelto <gabriele.svelto@gmail.com>
+	* src/jelatine/print.h: New file
+	* src/jelatine/print.c: New file
+	* src/jelatine/Makefile.am: Added print.h and print.c to the sources
+	* bytecode.c (print_bytecodes): Moved to print.c
+	* main.c (parse_command_line_args): Modified to accept tracing and
+	printing options
+
+2007-01-23   Gabriele Svelto <gabriele.svelto@gmail.com>
+	* main.c (parse_command_line_args): Adapted to use the VM options
+	global structure
+	* thread.c (thread_create): Added support for method printing
+	* vm.c (vm_options_t): New type
+	* vm.c (vm_opts_set_classpath, vm_opts_get_classpath,
+	vm_opts_set_bootclasspath, vm_opts_get_bootclasspath,
+	vm_opts_set_heap_size, vm_opts_get_heap_size, vm_opts_set_main_class,
+	vm_opts_get_main_class, vm_opts_set_jargs, vm_opts_get_jargs,
+	vm_opts_set_jargs_b, vm_opts_get_jargs_n, vm_opts_set_trace_methods,
+	vm_opts_get_trace_methods, vm_opts_set_trace_opcodes,
+	vm_opts_get_trace_opcodes, vm_opts_set_print_methods,
+	vm_opts_get_print_methods, vm_opts_set_print_opcodes,
+	vm_opts_get_print_opcodes, vm_opts_set_version, vm_opts_get_version,
+	vm_opts_set_help, vm_opts_get_help): New macros
+
+2007-01-20   Gabriele Svelto <gabriele.svelto@gmail.com>
+	* src/jelatine/main.c (__nan, __nan_value): Variables moved from
+	wrappers.c
+	* src/jelatine/wrappers.c: Removed file
+	* main.c (vm_opt_trace_methods, vm_opt_trace_bytecodes,
+	vm_opt_print_methods, vm_opt_print_bytecodes): New functions
+	* main.c (vm_opt_trace_methods, vm_opt_trace_bytecodes,
+	vm_opt_print_methods, vm_opt_print_bytecodes): New prototypes
+	* wrappers.h: Removed 'pthread.h' include
+
+2007-01-19   Gabriele Svelto <gabriele.svelto@gmail.com>
+	* configure.ac: Updated to accomodate for the new directory structure,
+	removed references to the POSIX Thread library, all other files using
+	POSIX functions for thread specific data have been modified
+	accordingly
+	* Makefile.am: Same as above
+	* src/Makefile.am: Removed the 'libjelatine' directory
+	* src/libjelatine: Merged directory into 'src/jelatine'
+
+2007-01-18   Gabriele Svelto <gabriele.svelto@gmail.com>
+	* configure.ac: Updated to use m4sh to better reflect modern autoconf
+	practice. Testing for built-in functions is now delegated to
+	JEL_CHECK_BUILTIN
+	* m4/jel_builtin.m4: New file
+	* wrappers.c: New file
+	* wrappers.h (NAN): Removed the use of nan() as it is only available
+	in C99, this fixes a warning with older versions of gcc
+
+2007-01-17   Gabriele Svelto <gabriele.svelto@gmail.com>
+	* interpreter.c (intepreter): Fixed a bug in OPCODE(NEWARRAY),
+	OPCODE(ANEWARRAY), OPCODE(MULTIANEWARRAY), OPCODE(MONITORENTER_SPECIAL)
+	* java_lang_Class.h (JAVA_LANG_CLASS_REF_N, JAVA_LANG_CLASS_NREF_S):
+	New macros
+	* java_lang_ref_Reference.h: New file, used to fix a bug as Reference
+	layout didn't match the WeakReference one
+	* java_lang_ref_WeakReference.h (JAVA_LANG_REF_WEAKREFERENCE_REF_N,
+	JAVA_LANG_REF_WEAKREFERENCE_NREF_S): New macros
+	* java_lang_String.h (JAVA_LANG_STRING_REF_N, JAVA_LANG_STRING_NREF_S):
+	New macros
+	* java_lang_Thread.h (JAVA_LANG_THREAD_REF_N, JAVA_LANG_THREAD_NREF_S):
+	New macros
+	* java_lang_Throwable.h (JAVA_LANG_THROWABLE_REF_N,
+	JAVA_LANG_THROWABLE_NREF_S): New macros
+	* jelatine_VMFile.h (JELATINE_VMFILE_REF_N, JELATINE_VMFILE_NREF_S):
+	New macros
+	* loader.c (type_specific_layout): Modified to use the new macros
+	* memory.c (jnew, sweep): Added rounding of the number of references on
+	machines were they are smaller than jwords
+	* memory.c (jnew): Minor optimization
+
+2007-01-16   Gabriele Svelto <gabriele.svelto@gmail.com>
+	* configure.ac: Updated copyright notice, bumped version to 0.8.4
+	* NEWS: Added information about the new version
+	* README: Modified the version number
+	* TODO: Updated
+
+2007-01-15   Gabriele Svelto <gabriele.svelto@gmail.com>
+	* class.h (class_purge_initializer): New prototype
+	* class.c (class_purge_initializer): New method
+	* interpreter.c (interpreter): Modified the class initialization
+	procedure to unload the class initialization method once it is not
+	needed anymore
+	* method.h (method_purge): New prototype
+	* method.c (method_purge): New method
+
+2007-01-12   Gabriele Svelto <gabriele.svelto@gmail.com>
+	* array.h (ref_array_t): New type
+	* array.h (ARRAY_SIZE, REF_ARRAY_SIZE): New macros
+	* array.h (new_array_nonref, new_array_ref): Modified to use the new
+	macros
+	* header.h (header_set_count, header_get_count): Updated prototypes
+	* header.c (header_create_gc_counter, header_restore, header_set_count,
+	header_get_count): Modified to accomodate for reference arrays
+	* memory.c (mark_reference): Fixed a bug which would cause non
+	reference arrays to be scanned precisely when pointer reversal was
+	disabled, fixed a bug which might cause an overflow for reference
+	arrays when pointer reversal was enabled
+
+2006-12-14   Gabriele Svelto <gabriele.svelto@gmail.com>
+	* configure.ac: Modified to use JEL_CHECK_ALIGN
+	* constantpool.c (cp_create, cp_get_long): Fixed a bug on machines
+	requiring natural alignment for 64-bit types
+	* jel_check_align.m4 (JEL_CHECK_ALIGN): New autoconf macro
+	* m4/jel_check_align.m4: New file
+	* wrappers.h: Modified a few inclusions and rewrote the unaligned
+	access macros, this fixed a bug on big-endian machines
+
+2006-12-05   Gabriele Svelto <gabriele.svelto@gmail.com>
+	* jar.h (jar_file_open, jar_file_close): Renamed functions to jar_open
+	and jar_close
+	* jar.h (jar_class_size, jar_class_data, jar_dispose_class): New
+	prototypes
+	* jar.c (jar_class_size, jar_get_class, jar_dispose_class,
+	jar_seek, jar_rewind, jar_scan): New functions
+
+2006-11-27   Gabriele Svelto <gabriele.svelto@gmail.com>
+	* m4/ax_check_aligned_access_required.m4: New file
+	* m4/Makefile.am: Added ax_check_aligned_access_required.m4 to
+	EXTRA_DIST
+	* configure.ac: Changed to use AX_CHECK_ALIGNED_ACCESS_REQUIRED, removed
+	* wrappers.h: Use the HAVE_ALIGNED_ACCESS_REQUIRED macro instead of
+	JEL_NATURAL_ALIGNMENT
+	* bytecode.c: Use the HAVE_ALIGNED_ACCESS_REQUIRED macro instead of
+	JEL_NATURAL_ALIGNMENT 
+
+2006-11-23   Gabriele Svelto <gabriele.svelto@gmail.com>
+	* m4: New direcotry
+	* m4/ax_clfags_gcc_option.m4: New file
+	* m4/Makefile.am: New file
+	* configure.ac: Modified to use the 'm4' directory for the external
+	macros and AX_CFLAGS_GCC_OPTION() to check for -fno-strict-aliasing 
+	* Makefile.am: Modified to pass the correct flags to aclocal
+
+2006-11-21   Gabriele Svelto <gabriele.svelto@gmail.com>
+	* Doxygen.in: Modified so that the package name and version number are
+	set by autoconf
+	* class.h (class_t): Added the nref_words field, the nref_size field
+	now holds the size in byte of the instance instead of the size in words
+	* loader.c (layout_fields): Changed so that the size of the parent
+	instance is rounded only before calculating the size of a child and
+	depending on the child's fields instead of being rounded to JWORD_SIZE
+	* main.c (main): Modified so that the package name and version number
+	are set by autoconf
+	* wrappers.h (ROUND_SIZE): New macro
+
+2006-11-18   Gabriele Svelto <gabriele.svelto@gmail.com>
+	* configure.ac: Bumped version to 0.8.3
+	* NEWS: Added information about the new version
+	* README: Modified the version number
+	* TODO: Updated
+	* interpreter.c (interpreter): Modified OPCODE(CHECKCAST_PRELINK) and
+	OPCODE(INSTANCEOF_PRELINK) to use the new resolution functions and
+	modified OPCODE(CHECKCAST) and OPCODE(INSTANCEOF_PRELINK) to obtain the
+	class pointer from the constant pool instead of the class table.
+	Removed all direct reference to the system class loader from the
+	function, the loader is now always accessed thru his interface
+	* loader.h (loader_link_checkcast): Removed prototype
+	* loader.c (loader_link_checkcast): Removed function
+
+2006-11-16   Gabriele Svelto <gabriele.svelto@gmail.com>
+	* array.c (new_array_nonref): Removed the 'cl' parameter, the function
+	now obtains the class pointer by itself
+	* interpreter.c (interpreter): Modified OPCODE(NEW), OPCODE(NEWARRAY),
+	OPCODE(ANEWARRAY) to use loader_get_class_by_id() instead of accessing
+	the class-table directly. Modified OPCODE(MULTIANEWARRAY_PRELINK) to use
+	the new resolution functions and modified OPCODE(MULTIANEWARRAY) to
+	obtain the class pointer from the constant pool instead of the class
+	table
+	* loader.h (loader_get_class_by_id): New prototype
+	* loader.h (loader_link_anewarray, loader_link_multianewarray) : Removed
+	prototypes
+	* loader.c (loader_get_class_by_id): New function
+	* loader.c (loader_link_anewarray, loader_link_multianewarray): Removed
+	functions
+
+2006-11-09   Gabriele Svelto <gabriele.svelto@gmail.com>
+	* configure.ac: Turned the __builtin_nan() check from AC_COMPILE_IFELSE()
+	to AC_LINK_IFELSE()
+	* interpreter.c (interpreter): Adapted OPCODE(NEW_PRELINK) and
+	OPCODE(NEWARRAY_PRELINK) to use the new	resolution functions, modified
+	OPCODE(NEW) to obtain the class pointer from the constant pool instead of
+	the class-table
+	* loader.c (loader_link_new, loader_link_newarray): Removed functions
+	* loader.h (loader_link_new, loader_link_newarray): Removed prototypes
+
+2006-11-08   Gabriele Svelto <gabriele.svelto@gmail.com>
+	* loader.c (loader_resolve_class): Removed function
+	* loader.c (resolve_class, resolve_class_by_name): New functions, modified
+	from the previous version for setting the resolved class in the constant
+	pool and reusing it after the first time
+
+2006-11-05   Gabriele Svelto <gabriele.svelto@gmail.com>
+	* Doxyfile: Enabled the source browser, bumped the version to the
+	correct one
+	* docs (TODO, note.txt): Removed obsolete files
+	* array.c (array_copy_nonref): Removed obsolete prototype
+	* interpreter.c: Removed the math.h inclusion, moved it to the
+	wrappers.h file
+
+2006-11-03   Gabriele Svelto <gabriele.svelto@gmail.com>
+	* configure.ac: Removed checks for libpopt as it is not required
+	anymore. Removed the flag for disabling the front-end. Turned
+	--enable-prgc into --disable-prgc, the pointer-reversal based garbage
+	collector is now the default choice for the VM. Removed the checks for
+	the IDIV workaround. Added checks for __builtin_nan() and nan()
+	* interpreter.c (interpreter): Modified to use NAN instead of
+	JEL_SP_NAN and JEL_DP_NAN, the behaviour conforming to Java is always
+	enforced for integer divions instead of relying on a workaround when
+	it is not the default behaviour on the target machine.
+	* main.c (parse_command_line_args): New function
+	* main.c: Removed the dependency on libpopt
+	* src/Makefile.an: Removed conditional compilation for the target
+	jelatine
+	* wrappers.h (JEL_SP_NAN, JEL_DP_NAN): Removed definitions, both were
+	replaced by the use of NAN, a suitable wrapper has been introduced for
+	systems lacking its definition
+	* INSTALL: Modified to reflect the changes in the configuration
+	process
+	* README: Modified to reflect the changes in the front-end
+	* TODO: Compaction of the constant-pool done
+
+2006-10-14   Gabriele Svelto <gabriele.svelto@gmail.com>
+	* jar.c (jar_file_open, jar_file_close, jar_load_u2, jar_load_u4): New
+	functions
+
+2006-10-11   Gabriele Svelto <gabriele.svelto@gmail.com>
+	* constpool.c (tag_read, tag_write): New functions
+	* constpool.c (cp_create, cp_get_tag, cp_set_tag_and_data,
+	cp_get_class_name, cp_get_string, cp_get_jstring, cp_get_integer,
+	cp_get_float, cp_get_long, cp_get_double, cp_get_name_and_type_name,
+	cp_get_name_and_type_type, cp_get_fieldref_class, cp_get_fieldref_name,
+	cp_get_fieldref_type, cp_get_methodref_name, cp_get_methodref_descriptor,
+	cp_get_methodref_class, cp_get_interfacemethodref_name,
+	cp_get_interfacemethodref_descriptor, cp_get_interfacemethodref_class,
+	cp_get_resolved_instance_field, cp_get_resovled_static_field,
+	cp_get_resolved_method, cp_get_resolved_interfacemethod, cp_print):
+	Modified to use the new tag_read() and tag_write() functions
+	* wrappers.h: Added a conditional include of inttypes.h
+
+2006-09-28   Gabriele Svelto <gabriele.svelto@gmail.com>
+	* configure.ac: Cleaned-up to be more compliant with the guidelines
+	present in autoconf's documentation. Now requires autoconf 2.60
+	* wrappers.h: Removed the integer wrappers as those are now handled by
+	autoconf, cleaned up the Doxygen documentation
+
+2006-09-11   Gabriele Svelto <gabriele.svelto@gmail.com>
+	* configure.ac: Bumped version to 0.8.2
+	* NEWS: Added information about the new version
+	* README: Added the new version
+	* TODO: Updated
+	* INSTALL: Slightly updated, should be rewritten with more examples
+	* loader.c (resolve_method): Fixed a couple of bugs introduced with
+	the changes to the loading process
+
+2006-09-07   Gabriele Svelto <gabriele.svelto@gmail.com>
+	* field.c (fm_layout): Removed function
+	* field.c (fm_instance_field_iterator, fm_instance_iterator_has_next,
+	fm_instance_iterator_get_next, fm_instance_iterator_dispose): New
+	functions
+	* field.c (fm_instance_iterator_data_t): New type
+	* interpreter.c (OPCODE(INVOKEVIRTUAL_PRELINK),
+	OPCODE(INVOKESPECIAL_PRELINK), OPCODE(INVOKEINTERFACE_PRELINK),
+	OPCODE(INVOKESTATIC_PRELINK)): Modified to use the new resolution
+	procedure
+	* interpreter.c (OPCODE(INVOKESPECIAL), OPCODE(INVOKESTATIC)): Modified
+	to use the new direct call system
+	* interpreter.c (OPCODE(INVOKESPECIAL_SUPER)): Turned into
+	OPCODE(INVOKESUPER)
+	* method.c (mm_assign_interface_indexes, mm_link_native_methods):
+	Removed functions
+	* method.c (method_set_index, method_get_index, method_link_native):
+	New functions
+	* method.h (method_set_index, method_get_index, method_link_native):
+	Declared function
+	* opcodes.h (INVOKESPECIAL_SUPER): Turned to INVOKESUPER
+	* loader.c (loader_link_invokevirtual, loader_link_field,
+	loader_link_invokespecial, loader_link_invokeinterface,
+	loader_link_invokestatic): Removed functions
+	* loader.c (resolve_method): Modified to update the constant-pool and
+	use it as a shortcut if the requested method has already been resolved
+
+2006-08-29   Gabriele Svelto <gabriele.svelto@gmail.com>
+	* class.c (im_iterator_data_t): New type
+	* class.c (im_flatten, im_iterator_has_next, im_iterator_get_next,
+	im_iterator_dispose, im_is_present): New functions
+	* intblocks.h: Removed file
+	* interpreter.h: Integrated the contents of intblocks.h
+	* loader.c (get_interfaces, create_static_dispatch_table,
+	get_smethod_count, increase_smethods): Removed functions
+	* loader.c (create_dispatch_table): New function
+	* method.h (method_manager_t): Removed the dtable and dtable_count
+	fields
+	* method.c (mm_iterator_data_t): New type
+	* method.c (method_set_index, mm_get_iterator, mm_iterator_has_next,
+	mm_iterator_get_next, mm_iterator_dispose, method_compare):
+	New functions
+	* method.c (mm_create_dispatch_table): Removed function
+
+2006-07-23   Gabriele Svelto <gabriele.svelto@gmail.com>
+
+	* interpreter.c (interpreter): Fixed DCONST0 and DCONST1 opdcodes
+	which used long-double values, this didn't affect the program behaviour
+	luckily
+
+2006-07-21   Gabriele Svelto <gabriele.svelto@gmail.com>
+
+	* class.c (im_create, im_add): New functions
+	* class.h (class_t): The field dtable_count has been removed
+	(interface_manager_t): New type
+	* loader.c (create_dispatch_table, create_interface_dispatch_table,
+	create_static_dispatch_table, next_interface_method_id): Removed
+	functions
+	(loader_next_interface_id): New function
+	(derive_class): Modified to use the new method & interface manager
+	* method.c (mm_assign_interface_indexes, mm_create_dispatch_table):
+	New functions
+
+2006-07-20   Gabriele Svelto <gabriele.svelto@gmail.com>
+
+	* bytecode.c (translate_bytecode): Modified to use the method_t type and
+	removed old code triggered by the JEL_DISABLE_SYNC_OPT definition
+	* class.c (class_get_method_by_name_and_desc): Removed function
+	* field.c (fm_add_instance, fm_add_static): Fixed a bug which allowed
+	for duplicated field entries when a malformed class file was used
+	* loader.c (load_methods): Modified to accomodate for the new method
+	management policy
+	* loader.h (stable_entry_t): Removed type
+	(loader_t): Removed the smethod_count and stable fields
+	* method.c (method_get_code_length): Modified to use the method_t type
+	(check_method_access_flags,parse_method_descriptor): Modified to
+	accomodate for the new method management policy
+	(mm_create,mm_add,mm_get,mm_set_const_pool,mm_check_consistency,
+	mm_link_native_methods): New functions
+	* method.h (java_method_t, native_method_t): Removed types
+
+2006-07-19   Gabriele Svelto <gabriele.svelto@gmail.com>
+
+	* configure.ac: Bumped version to 0.8.1a
+	* classfile.h (jar_file_t): Fixed a compilation problem when jar file
+	support was disabled
+	* classfile.c (cf_open_jar): Fixed a compilation problem when jar file
+	support was disabled
+
+2006-07-18   Gabriele Svelto <gabriele.svelto@gmail.com>
+
+	* configure.ac: Bumped version to 0.8.1
+	* memory.c (mark_reference): Fixed a problem which caused an error
+	when the pointer-reversal algorythm was disabled
+
+2006-07-14   Gabriele Svelto <gabriele.svelto@gmail.com>
+
+	* field.h
+	(static_field_t, field_manager_t): New types
+	* field.c
+	(fm_create,fm_add_instance,fm_add_static,fm_layout,
+	fm_layout_java_lang_String,fm_layout_java_lang_ref_Reference,
+	fm_layout_java_lang_ref_WeakReference,fm_layout_java_lang_Throwable,
+	fm_layout_jelatine_VMFile,fm_ref_n,fm_nref_size,fm_get_instance,
+	fm_get_static,fm_mark_static,sfield_is_private,sfield_is_protected,
+	sfield_is_public): New functions
+	* class.h
+	(class_t): Modified, now holds the field manager instead of the field
+	descriptors
+	* class.c
+	(class_get_field_by_name_and_desc): Removed function
+	* classfile.h
+	(CONSTANT_Class_resolved,CONSTANT_Fieldref_resolved,
+	CONSTANT_Methodref_resolved,CONSTANT_InterfaceMethodref_resolved): New
+	* constantpool.c
+	(cp_get_resolved_instance_field, cp_get_resolved_static_field,
+	cp_get_class_name): New	functions
+	(cp_get_class_name_index): Removed function
+	(cp_get_fieldref_class, cp_get_methodref_class,
+	cp_get_interfacemethodref_class): Modified to use cp_get_class_name()
+	instead of cp_get_class_name_index()
+	* interpreter.c
+	(interpreter): Modified to accomodate for the new field management and
+	layout system, replaced the raw access functions to the constant pool.
+	Now uses cp_get_class() to extract the current class pointer and
+	cp_get_class_name() instead of cp_get_class_name_index()
+	* loader.c
+	(resolve_instance_field,resolve_static_field): New functions
+	(loader_link_field,layout_fields,): Removed function
+	(loader_mark,type_specific_layout,derive_class): Modified to accomodate
+	for the new field management and layout system
+	(resolve_class,load_interfaces,load_bytecode,loader_link_new,
+	loader_link_new_array,loader_link_multianewarray,loader_link_checkcast,
+	loader_link_instanceof): Now uses cp_get_class_name() instead of
+	cp_get_class_name_index()

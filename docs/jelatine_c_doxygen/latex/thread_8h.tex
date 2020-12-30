@@ -1,0 +1,816 @@
+\section{thread.h File Reference}
+\label{thread_8h}\index{thread.h@{thread.h}}
+{\ttfamily \#include \char`\"{}wrappers.h\char`\"{}}\par
+{\ttfamily \#include \char`\"{}method.h\char`\"{}}\par
+\subsection*{Data Structures}
+\begin{DoxyCompactItemize}
+\item 
+struct {\bf stack\_\-frame\_\-t}
+\item 
+struct {\bf thread\_\-t}
+\end{DoxyCompactItemize}
+\subsection*{Defines}
+\begin{DoxyCompactItemize}
+\item 
+\#define {\bf JELATINE\_\-THREAD\_\-H}~(1)
+\item 
+\#define {\bf JEL\_\-TLS}
+\item 
+\#define {\bf THREAD\_\-TMP\_\-ROOTS}~(2)
+\end{DoxyCompactItemize}
+\subsection*{Typedefs}
+\begin{DoxyCompactItemize}
+\item 
+typedef void $\ast$ {\bf native\_\-key\_\-t}
+\item 
+typedef int {\bf native\_\-thread\_\-t}
+\item 
+typedef int {\bf native\_\-mutex\_\-t}
+\item 
+typedef int {\bf native\_\-cond\_\-t}
+\item 
+typedef struct {\bf stack\_\-frame\_\-t} {\bf stack\_\-frame\_\-t}
+\item 
+typedef struct {\bf thread\_\-t} {\bf thread\_\-t}
+\end{DoxyCompactItemize}
+\subsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+static void $\ast$ {\bf native\_\-key\_\-get} ({\bf native\_\-key\_\-t} key)
+\item 
+static void {\bf native\_\-key\_\-set} ({\bf native\_\-key\_\-t} $\ast$key, void $\ast$value)
+\item 
+void {\bf tm\_\-init} (void)
+\item 
+void {\bf tm\_\-teardown} (void)
+\item 
+void {\bf tm\_\-register} ({\bf thread\_\-t} $\ast$)
+\item 
+void {\bf tm\_\-unregister} ({\bf thread\_\-t} $\ast$)
+\item 
+uint32\_\-t {\bf tm\_\-active} (void)
+\item 
+void {\bf tm\_\-mark} (void)
+\item 
+void {\bf tm\_\-purge} (void)
+\item 
+void {\bf tm\_\-lock} ()
+\item 
+void {\bf tm\_\-unlock} ()
+\item 
+void {\bf tm\_\-stop\_\-the\_\-world} (void)
+\item 
+void {\bf monitor\_\-init} (void)
+\item 
+void {\bf monitor\_\-enter} ({\bf thread\_\-t} $\ast$, uintptr\_\-t)
+\item 
+bool {\bf monitor\_\-exit} ({\bf thread\_\-t} $\ast$, uintptr\_\-t)
+\item 
+void {\bf thread\_\-push\_\-root} (uintptr\_\-t $\ast$)
+\item 
+void {\bf thread\_\-pop\_\-root} (void)
+\item 
+void {\bf thread\_\-init} ({\bf thread\_\-t} $\ast$)
+\item 
+uintptr\_\-t {\bf thread\_\-create\_\-main} ({\bf thread\_\-t} $\ast$, {\bf method\_\-t} $\ast$, uintptr\_\-t $\ast$)
+\item 
+void {\bf thread\_\-sleep} (int64\_\-t)
+\item 
+void {\bf thread\_\-launch} (uintptr\_\-t $\ast$, {\bf method\_\-t} $\ast$)
+\item 
+void {\bf thread\_\-may\_\-block} (void)
+\item 
+void {\bf thread\_\-resumes} (void)
+\item 
+void {\bf thread\_\-interrupt} ({\bf thread\_\-t} $\ast$)
+\item 
+void {\bf thread\_\-yield} (void)
+\item 
+void {\bf thread\_\-join} (uintptr\_\-t $\ast$)
+\item 
+bool {\bf thread\_\-wait} (uintptr\_\-t, uint64\_\-t, uint32\_\-t)
+\item 
+bool {\bf thread\_\-notify} (uintptr\_\-t, bool)
+\item 
+static {\bf thread\_\-t} $\ast$ {\bf thread\_\-self} (void)
+\end{DoxyCompactItemize}
+\subsection*{Variables}
+\begin{DoxyCompactItemize}
+\item 
+JEL\_\-TLS {\bf native\_\-key\_\-t} {\bf self}
+\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+C object used to implement the java.lang.Thread class 
+
+Definition in file {\bf thread.h}.
+
+
+
+\subsection{Define Documentation}
+\index{thread.h@{thread.h}!JEL\_\-TLS@{JEL\_\-TLS}}
+\index{JEL\_\-TLS@{JEL\_\-TLS}!thread.h@{thread.h}}
+\subsubsection[{JEL\_\-TLS}]{\setlength{\rightskip}{0pt plus 5cm}\#define JEL\_\-TLS}\label{thread_8h_ab85f33bbe91c60bd05eaaf49eb1527f6}
+Thread-\/local storage class if one is available, otherwise set to an empty definition 
+
+Definition at line 78 of file thread.h.
+
+\index{thread.h@{thread.h}!JELATINE\_\-THREAD\_\-H@{JELATINE\_\-THREAD\_\-H}}
+\index{JELATINE\_\-THREAD\_\-H@{JELATINE\_\-THREAD\_\-H}!thread.h@{thread.h}}
+\subsubsection[{JELATINE\_\-THREAD\_\-H}]{\setlength{\rightskip}{0pt plus 5cm}\#define JELATINE\_\-THREAD\_\-H~(1)}\label{thread_8h_ae2bf75a422b4661b5d7d84f86be72d2c}
+\doxyref{thread.h}{p.}{thread_8h} inclusion macro 
+
+Definition at line 28 of file thread.h.
+
+\index{thread.h@{thread.h}!THREAD\_\-TMP\_\-ROOTS@{THREAD\_\-TMP\_\-ROOTS}}
+\index{THREAD\_\-TMP\_\-ROOTS@{THREAD\_\-TMP\_\-ROOTS}!thread.h@{thread.h}}
+\subsubsection[{THREAD\_\-TMP\_\-ROOTS}]{\setlength{\rightskip}{0pt plus 5cm}\#define THREAD\_\-TMP\_\-ROOTS~(2)}\label{thread_8h_a2eadc42c4d5788d7fa498f777aa366ed}
+Defines the initial number of temporary root pointers available 
+
+Definition at line 140 of file thread.h.
+
+
+
+Referenced by thread\_\-start(), and vm\_\-run().
+
+
+
+\subsection{Typedef Documentation}
+\index{thread.h@{thread.h}!native\_\-cond\_\-t@{native\_\-cond\_\-t}}
+\index{native\_\-cond\_\-t@{native\_\-cond\_\-t}!thread.h@{thread.h}}
+\subsubsection[{native\_\-cond\_\-t}]{\setlength{\rightskip}{0pt plus 5cm}{\bf native\_\-cond\_\-t}}\label{thread_8h_a611d65970e314b6221bfab8101a8e371}
+Represents a condition variable structure of the host machine 
+
+Definition at line 68 of file thread.h.
+
+\index{thread.h@{thread.h}!native\_\-key\_\-t@{native\_\-key\_\-t}}
+\index{native\_\-key\_\-t@{native\_\-key\_\-t}!thread.h@{thread.h}}
+\subsubsection[{native\_\-key\_\-t}]{\setlength{\rightskip}{0pt plus 5cm}{\bf native\_\-key\_\-t}}\label{thread_8h_ab9239b56e6ab52f948746f9ac1f35c52}
+Represents a thread-\/local storage key of the host machine 
+
+Definition at line 65 of file thread.h.
+
+\index{thread.h@{thread.h}!native\_\-mutex\_\-t@{native\_\-mutex\_\-t}}
+\index{native\_\-mutex\_\-t@{native\_\-mutex\_\-t}!thread.h@{thread.h}}
+\subsubsection[{native\_\-mutex\_\-t}]{\setlength{\rightskip}{0pt plus 5cm}{\bf native\_\-mutex\_\-t}}\label{thread_8h_aade68172864640942e3b78667ba96baf}
+Represents a mutex structure of the host machine 
+
+Definition at line 67 of file thread.h.
+
+\index{thread.h@{thread.h}!native\_\-thread\_\-t@{native\_\-thread\_\-t}}
+\index{native\_\-thread\_\-t@{native\_\-thread\_\-t}!thread.h@{thread.h}}
+\subsubsection[{native\_\-thread\_\-t}]{\setlength{\rightskip}{0pt plus 5cm}{\bf native\_\-thread\_\-t}}\label{thread_8h_af16d90c859cea3a54df5ff093e2b8748}
+Represents a thread structure of the host machine 
+
+Definition at line 66 of file thread.h.
+
+\index{thread.h@{thread.h}!stack\_\-frame\_\-t@{stack\_\-frame\_\-t}}
+\index{stack\_\-frame\_\-t@{stack\_\-frame\_\-t}!thread.h@{thread.h}}
+\subsubsection[{stack\_\-frame\_\-t}]{\setlength{\rightskip}{0pt plus 5cm}typedef struct {\bf stack\_\-frame\_\-t} {\bf stack\_\-frame\_\-t}}\label{thread_8h_a246ebd45c7db08c86d60a0ae9c75c501}
+Typedef for struct \doxyref{stack\_\-frame\_\-t}{p.}{structstack__frame__t} 
+
+Definition at line 137 of file thread.h.
+
+\index{thread.h@{thread.h}!thread\_\-t@{thread\_\-t}}
+\index{thread\_\-t@{thread\_\-t}!thread.h@{thread.h}}
+\subsubsection[{thread\_\-t}]{\setlength{\rightskip}{0pt plus 5cm}typedef struct {\bf thread\_\-t} {\bf thread\_\-t}}\label{thread_8h_a6e84f6599234bedf30a8b88f56e8fd48}
+Typedef for struct \doxyref{thread\_\-t}{p.}{structthread__t} 
+
+Definition at line 185 of file thread.h.
+
+
+
+\subsection{Function Documentation}
+\index{thread.h@{thread.h}!monitor\_\-enter@{monitor\_\-enter}}
+\index{monitor\_\-enter@{monitor\_\-enter}!thread.h@{thread.h}}
+\subsubsection[{monitor\_\-enter}]{\setlength{\rightskip}{0pt plus 5cm}void monitor\_\-enter (
+\begin{DoxyParamCaption}
+\item[{{\bf thread\_\-t} $\ast$}]{ thread, }
+\item[{uintptr\_\-t}]{ ref}
+\end{DoxyParamCaption}
+)}\label{thread_8h_a7ffa8908c9389997b19a7f76a217dd87}
+Implements the MONITOR\_\-ENTER opcode 
+\begin{DoxyParams}{Parameters}
+\item[{\em thread}]The thread requesting the monitor \item[{\em ref}]A Java object reference \end{DoxyParams}
+
+
+Definition at line 728 of file thread.c.
+
+
+
+References thread\_\-manager\_\-t::buckets, thread\_\-manager\_\-t::capacity, monitor\_\-t::count, thread\_\-manager\_\-t::entries, monitor\_\-t::next, monitor\_\-t::owner, monitor\_\-t::ref, thread\_\-yield(), tm\_\-hash(), tm\_\-lock(), tm\_\-rehash(), and tm\_\-unlock().
+
+
+
+Referenced by gc\_\-mark\_\-finalizable(), initialize\_\-class(), interpreter(), and thread\_\-wait().
+
+\index{thread.h@{thread.h}!monitor\_\-exit@{monitor\_\-exit}}
+\index{monitor\_\-exit@{monitor\_\-exit}!thread.h@{thread.h}}
+\subsubsection[{monitor\_\-exit}]{\setlength{\rightskip}{0pt plus 5cm}bool monitor\_\-exit (
+\begin{DoxyParamCaption}
+\item[{{\bf thread\_\-t} $\ast$}]{ thread, }
+\item[{uintptr\_\-t}]{ ref}
+\end{DoxyParamCaption}
+)}\label{thread_8h_a3f324a60cee80606775853103d8c07a9}
+Implements the MONITOR\_\-EXIT opcode 
+\begin{DoxyParams}{Parameters}
+\item[{\em thread}]A pointer to the thread relinquishing the monitor \item[{\em ref}]The object on which the monitor was taken \end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+true if everything went well, false if {\itshape thread\/} didn't own the monitor and thus MONITOR\_\-EXIT would fail 
+\end{DoxyReturn}
+
+
+Definition at line 801 of file thread.c.
+
+
+
+References thread\_\-manager\_\-t::buckets, thread\_\-manager\_\-t::capacity, monitor\_\-t::count, monitor\_\-t::next, monitor\_\-t::owner, monitor\_\-t::ref, tm\_\-hash(), tm\_\-lock(), and tm\_\-unlock().
+
+
+
+Referenced by gc\_\-mark\_\-finalizable(), initialize\_\-class(), and interpreter().
+
+\index{thread.h@{thread.h}!monitor\_\-init@{monitor\_\-init}}
+\index{monitor\_\-init@{monitor\_\-init}!thread.h@{thread.h}}
+\subsubsection[{monitor\_\-init}]{\setlength{\rightskip}{0pt plus 5cm}void monitor\_\-init (
+\begin{DoxyParamCaption}
+\item[{void}]{}
+\end{DoxyParamCaption}
+)}\label{thread_8h_a4ed7bc305d187db7d6018d2a0b2dd53e}
+Initialization of the Java monitors subsystem 
+
+Definition at line 718 of file thread.c.
+
+
+
+References thread\_\-manager\_\-t::buckets, thread\_\-manager\_\-t::capacity, gc\_\-malloc(), and TM\_\-CAPACITY.
+
+
+
+Referenced by vm\_\-init().
+
+\index{thread.h@{thread.h}!native\_\-key\_\-get@{native\_\-key\_\-get}}
+\index{native\_\-key\_\-get@{native\_\-key\_\-get}!thread.h@{thread.h}}
+\subsubsection[{native\_\-key\_\-get}]{\setlength{\rightskip}{0pt plus 5cm}static void$\ast$ native\_\-key\_\-get (
+\begin{DoxyParamCaption}
+\item[{{\bf native\_\-key\_\-t}}]{ key}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily  [inline, static]}}\label{thread_8h_a2ce388e4554e21f5d155e82c6767b80f}
+Returns the value of a native thread-\/local storage key 
+\begin{DoxyParams}{Parameters}
+\item[{\em key}]The TLS key to be read \end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+The value held in the TLS key 
+\end{DoxyReturn}
+
+
+Definition at line 89 of file thread.h.
+
+
+
+Referenced by thread\_\-self().
+
+\index{thread.h@{thread.h}!native\_\-key\_\-set@{native\_\-key\_\-set}}
+\index{native\_\-key\_\-set@{native\_\-key\_\-set}!thread.h@{thread.h}}
+\subsubsection[{native\_\-key\_\-set}]{\setlength{\rightskip}{0pt plus 5cm}static void native\_\-key\_\-set (
+\begin{DoxyParamCaption}
+\item[{{\bf native\_\-key\_\-t} $\ast$}]{ key, }
+\item[{void $\ast$}]{ value}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily  [inline, static]}}\label{thread_8h_add83c9e657b28f40a51811b5751d14a6}
+Sets the value of native thread-\/local storage key 
+\begin{DoxyParams}{Parameters}
+\item[{\em key}]A pointer to the TLS key \item[{\em value}]The value to be stored in the key \end{DoxyParams}
+
+
+Definition at line 108 of file thread.h.
+
+
+
+Referenced by thread\_\-set\_\-self().
+
+\index{thread.h@{thread.h}!thread\_\-create\_\-main@{thread\_\-create\_\-main}}
+\index{thread\_\-create\_\-main@{thread\_\-create\_\-main}!thread.h@{thread.h}}
+\subsubsection[{thread\_\-create\_\-main}]{\setlength{\rightskip}{0pt plus 5cm}uintptr\_\-t thread\_\-create\_\-main (
+\begin{DoxyParamCaption}
+\item[{{\bf thread\_\-t} $\ast$}]{ thread, }
+\item[{{\bf method\_\-t} $\ast$}]{ run, }
+\item[{uintptr\_\-t $\ast$}]{ args}
+\end{DoxyParamCaption}
+)}\label{thread_8h_adf9460bb91d49ac309d5fdded4ddc06c}
+Creates the main thread. This function doesn't return until the main thread has finished execution as it uses the current native/green thread instead of creating a new one 
+\begin{DoxyParams}{Parameters}
+\item[{\em thread}]The main thread pre-\/allocated structure \item[{\em run}]The main method \item[{\em args}]A pointer to a reference to the arguments array \end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+The reference to an uncaught exception if the main method terminated abruptly or JNULL 
+\end{DoxyReturn}
+
+
+Definition at line 896 of file thread.c.
+
+
+
+References bcl\_\-find\_\-class(), thread\_\-t::cond, thread\_\-t::exception, thread\_\-t::fp, gc\_\-free(), gc\_\-malloc(), gc\_\-new(), interpreter(), JAVA\_\-LANG\_\-STRING\_\-PTR2REF, JAVA\_\-LANG\_\-THREAD\_\-REF2PTR, jstring\_\-create\_\-from\_\-utf8(), native\_\-cond\_\-broadcast(), thread\_\-t::obj, opts\_\-get\_\-stack\_\-size(), thread\_\-t::pointers, thread\_\-t::roots, thread\_\-t::sp, thread\_\-t::stack, tm\_\-lock(), tm\_\-unlock(), and tm\_\-unregister().
+
+
+
+Referenced by vm\_\-run().
+
+\index{thread.h@{thread.h}!thread\_\-init@{thread\_\-init}}
+\index{thread\_\-init@{thread\_\-init}!thread.h@{thread.h}}
+\subsubsection[{thread\_\-init}]{\setlength{\rightskip}{0pt plus 5cm}void thread\_\-init (
+\begin{DoxyParamCaption}
+\item[{{\bf thread\_\-t} $\ast$}]{ thread}
+\end{DoxyParamCaption}
+)}\label{thread_8h_ae60399e81194d05ef4984b9a6c49bee2}
+Initializes all the thread-\/local structures required for normal operation of a thread including the thread's self reference 
+\begin{DoxyParams}{Parameters}
+\item[{\em thread}]A pointer to the thread's own structure \end{DoxyParams}
+
+
+Definition at line 880 of file thread.c.
+
+
+
+References thread\_\-t::cond, native\_\-cond\_\-create(), and thread\_\-set\_\-self().
+
+
+
+Referenced by thread\_\-start(), and vm\_\-run().
+
+\index{thread.h@{thread.h}!thread\_\-interrupt@{thread\_\-interrupt}}
+\index{thread\_\-interrupt@{thread\_\-interrupt}!thread.h@{thread.h}}
+\subsubsection[{thread\_\-interrupt}]{\setlength{\rightskip}{0pt plus 5cm}void thread\_\-interrupt (
+\begin{DoxyParamCaption}
+\item[{{\bf thread\_\-t} $\ast$}]{ thread}
+\end{DoxyParamCaption}
+)}\label{thread_8h_a035735febd7f131216a8b15696baa6c4}
+Interrupts a thread. This function is used for implementing the java.lang.Thread.interrupt() method and can interrupt immediately the java.lang.Object.wait() and java.lang.Thread.sleep() methods but only asynchronously the java.lang.Thread.join() method 
+\begin{DoxyParams}{Parameters}
+\item[{\em thread}]A pointer to the thread to be interrupted \end{DoxyParams}
+
+
+Definition at line 1130 of file thread.c.
+
+
+
+References thread\_\-t::cond\_\-int, thread\_\-t::interrupted, native\_\-cond\_\-signal(), tm\_\-lock(), and tm\_\-unlock().
+
+
+
+Referenced by java\_\-lang\_\-Thread\_\-interrupt().
+
+\index{thread.h@{thread.h}!thread\_\-join@{thread\_\-join}}
+\index{thread\_\-join@{thread\_\-join}!thread.h@{thread.h}}
+\subsubsection[{thread\_\-join}]{\setlength{\rightskip}{0pt plus 5cm}void thread\_\-join (
+\begin{DoxyParamCaption}
+\item[{uintptr\_\-t $\ast$}]{ thread}
+\end{DoxyParamCaption}
+)}\label{thread_8h_a4acffc49c568da9fb2c9fa99c14a21c1}
+Joins on the passed thread 
+\begin{DoxyParams}{Parameters}
+\item[{\em thread}]A pointer to the reference to the Java thread the function will join on \end{DoxyParams}
+
+
+Definition at line 1155 of file thread.c.
+
+
+
+References thread\_\-t::cond, JAVA\_\-LANG\_\-THREAD\_\-REF2PTR, KNI\_\-ThrowNew(), thread\_\-manager\_\-t::lock, native\_\-cond\_\-wait(), self, thread\_\-may\_\-block(), thread\_\-resumes(), thread\_\-self(), tm\_\-lock(), and tm\_\-unlock().
+
+
+
+Referenced by java\_\-lang\_\-Thread\_\-join().
+
+\index{thread.h@{thread.h}!thread\_\-launch@{thread\_\-launch}}
+\index{thread\_\-launch@{thread\_\-launch}!thread.h@{thread.h}}
+\subsubsection[{thread\_\-launch}]{\setlength{\rightskip}{0pt plus 5cm}void thread\_\-launch (
+\begin{DoxyParamCaption}
+\item[{uintptr\_\-t $\ast$}]{ ref, }
+\item[{{\bf method\_\-t} $\ast$}]{ run}
+\end{DoxyParamCaption}
+)}\label{thread_8h_a97b1b1a04e2c211a5b6befed8306f211}
+Creates a new thread executing the provided method 
+\begin{DoxyParams}{Parameters}
+\item[{\em ref}]The java.lang.Thread object associated with this thread \item[{\em run}]The first method executed by this thread \end{DoxyParams}
+
+
+Definition at line 1053 of file thread.c.
+
+
+
+References thread\_\-payload\_\-t::cond, gc\_\-free(), gc\_\-malloc(), thread\_\-manager\_\-t::lock, native\_\-cond\_\-create(), native\_\-cond\_\-dispose(), native\_\-cond\_\-wait(), native\_\-thread\_\-create(), thread\_\-payload\_\-t::ref, thread\_\-payload\_\-t::run, thread\_\-payload\_\-t::thread, thread\_\-may\_\-block(), thread\_\-resumes(), thread\_\-start(), tm\_\-lock(), and tm\_\-unlock().
+
+
+
+Referenced by java\_\-lang\_\-Thread\_\-start(), and vm\_\-run().
+
+\index{thread.h@{thread.h}!thread\_\-may\_\-block@{thread\_\-may\_\-block}}
+\index{thread\_\-may\_\-block@{thread\_\-may\_\-block}!thread.h@{thread.h}}
+\subsubsection[{thread\_\-may\_\-block}]{\setlength{\rightskip}{0pt plus 5cm}void thread\_\-may\_\-block (
+\begin{DoxyParamCaption}
+\item[{void}]{}
+\end{DoxyParamCaption}
+)}\label{thread_8h_a03786001437bbdc8e075ea14dccdf472}
+Flags the calling thread as potentially blocked. This function must be called every time a thread might block for a long time in order to avoid livelocks. Two examples might be when the thread takes a lock or when it calls a blocking native method like recv(). When the thread has finished the blocking operation \doxyref{thread\_\-resumes()}{p.}{thread_8c_a9031ff3a12bd9c5c11e4a28eace73c17} must be called 
+
+Definition at line 1086 of file thread.c.
+
+
+
+References self, and thread\_\-self().
+
+
+
+Referenced by thread\_\-join(), thread\_\-launch(), thread\_\-sleep(), thread\_\-wait(), and tm\_\-lock().
+
+\index{thread.h@{thread.h}!thread\_\-notify@{thread\_\-notify}}
+\index{thread\_\-notify@{thread\_\-notify}!thread.h@{thread.h}}
+\subsubsection[{thread\_\-notify}]{\setlength{\rightskip}{0pt plus 5cm}bool thread\_\-notify (
+\begin{DoxyParamCaption}
+\item[{uintptr\_\-t}]{ ref, }
+\item[{bool}]{ broadcast}
+\end{DoxyParamCaption}
+)}\label{thread_8h_aea44c2ad4923e3551668c882daa593f0}
+Implements the functionliaty required by java.lang.Object.notify() 
+\begin{DoxyParams}{Parameters}
+\item[{\em ref}]The object used for the notification \item[{\em broadcast}]If true, wake up all the threads waiting on this object, otherwise wake up only one thread \end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+true if everything goes well, false if the monitor associated with {\itshape ref\/} was not owned by {\itshape thread\/}. In the latter case an IllegalMonitorStateException should be thrown 
+\end{DoxyReturn}
+
+
+Definition at line 1255 of file thread.c.
+
+
+
+References thread\_\-manager\_\-t::buckets, thread\_\-manager\_\-t::capacity, monitor\_\-t::cond, native\_\-cond\_\-broadcast(), native\_\-cond\_\-signal(), monitor\_\-t::next, monitor\_\-t::owner, monitor\_\-t::ref, thread\_\-self(), tm\_\-hash(), tm\_\-lock(), and tm\_\-unlock().
+
+
+
+Referenced by gc\_\-mark\_\-finalizable(), initialize\_\-class(), java\_\-lang\_\-Object\_\-notify(), and java\_\-lang\_\-Object\_\-notifyAll().
+
+\index{thread.h@{thread.h}!thread\_\-pop\_\-root@{thread\_\-pop\_\-root}}
+\index{thread\_\-pop\_\-root@{thread\_\-pop\_\-root}!thread.h@{thread.h}}
+\subsubsection[{thread\_\-pop\_\-root}]{\setlength{\rightskip}{0pt plus 5cm}void thread\_\-pop\_\-root (
+\begin{DoxyParamCaption}
+\item[{void}]{}
+\end{DoxyParamCaption}
+)}\label{thread_8h_a89170b6f329c3edc3a16b4a72475080e}
+Pop a temporary root from a thread's stack 
+
+Definition at line 871 of file thread.c.
+
+
+
+References thread\_\-t::roots, thread\_\-self(), and thread\_\-t::used.
+
+
+
+Referenced by gc\_\-new\_\-multiarray(), java\_\-lang\_\-Class\_\-forName(), jstring\_\-create\_\-from\_\-unicode(), jstring\_\-create\_\-from\_\-utf8(), jstring\_\-create\_\-literal(), and vm\_\-run().
+
+\index{thread.h@{thread.h}!thread\_\-push\_\-root@{thread\_\-push\_\-root}}
+\index{thread\_\-push\_\-root@{thread\_\-push\_\-root}!thread.h@{thread.h}}
+\subsubsection[{thread\_\-push\_\-root}]{\setlength{\rightskip}{0pt plus 5cm}void thread\_\-push\_\-root (
+\begin{DoxyParamCaption}
+\item[{uintptr\_\-t $\ast$}]{ ref}
+\end{DoxyParamCaption}
+)}\label{thread_8h_a0d3665728c5ef1508c33b6e063c0437f}
+Push a temporary root on the current thread's stack 
+\begin{DoxyParams}{Parameters}
+\item[{\em ref}]A pointer to an object reference to be pushed on the temporary root stack \end{DoxyParams}
+
+
+Definition at line 849 of file thread.c.
+
+
+
+References thread\_\-t::capacity, gc\_\-free(), gc\_\-malloc(), thread\_\-t::pointers, thread\_\-t::roots, thread\_\-self(), and thread\_\-t::used.
+
+
+
+Referenced by \_\-KNI\_\-push\_\-handle(), gc\_\-new\_\-multiarray(), jstring\_\-create\_\-from\_\-unicode(), jstring\_\-create\_\-from\_\-utf8(), jstring\_\-create\_\-literal(), and vm\_\-run().
+
+\index{thread.h@{thread.h}!thread\_\-resumes@{thread\_\-resumes}}
+\index{thread\_\-resumes@{thread\_\-resumes}!thread.h@{thread.h}}
+\subsubsection[{thread\_\-resumes}]{\setlength{\rightskip}{0pt plus 5cm}void thread\_\-resumes (
+\begin{DoxyParamCaption}
+\item[{void}]{}
+\end{DoxyParamCaption}
+)}\label{thread_8h_a9031ff3a12bd9c5c11e4a28eace73c17}
+Restores a thread to its steady state after a blocking operation. Before returning however this function checks if a global stop-\/the-\/world has been requested, if so it waits until it is asked to resume execution. This function must be always called after a blocking operation and coupled with a previous call to \doxyref{thread\_\-may\_\-block()}{p.}{thread_8c_a03786001437bbdc8e075ea14dccdf472} 
+
+Definition at line 1100 of file thread.c.
+
+
+
+References thread\_\-manager\_\-t::lock, native\_\-mutex\_\-lock(), native\_\-mutex\_\-unlock(), self, and thread\_\-self().
+
+
+
+Referenced by thread\_\-join(), thread\_\-launch(), thread\_\-sleep(), thread\_\-wait(), and tm\_\-lock().
+
+\index{thread.h@{thread.h}!thread\_\-self@{thread\_\-self}}
+\index{thread\_\-self@{thread\_\-self}!thread.h@{thread.h}}
+\subsubsection[{thread\_\-self}]{\setlength{\rightskip}{0pt plus 5cm}static {\bf thread\_\-t}$\ast$ thread\_\-self (
+\begin{DoxyParamCaption}
+\item[{void}]{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily  [inline, static]}}\label{thread_8h_a0b986ef26be74e117fd741180bff7ba7}
+Return a pointer to the execution thread's \doxyref{thread\_\-t}{p.}{structthread__t} structure \begin{DoxyReturn}{Returns}
+A pointer to this thread own structure 
+\end{DoxyReturn}
+
+
+Definition at line 277 of file thread.h.
+
+
+
+References native\_\-key\_\-get().
+
+
+
+Referenced by bcl\_\-link\_\-method(), bcl\_\-link\_\-opcode(), c\_\-clear\_\-exception(), c\_\-print\_\-exception(), c\_\-throw\_\-dbg(), gc\_\-mark\_\-finalizable(), interpreter(), java\_\-lang\_\-Class\_\-newInstance(), java\_\-lang\_\-Thread\_\-currentThread(), KNI\_\-GetClassPointer(), KNI\_\-GetParameterAsBoolean(), KNI\_\-GetParameterAsByte(), KNI\_\-GetParameterAsChar(), KNI\_\-GetParameterAsInt(), KNI\_\-GetParameterAsLong(), KNI\_\-GetParameterAsObject(), KNI\_\-GetParameterAsShort(), KNI\_\-GetThisPointer(), KNI\_\-ThrowNew(), resolve\_\-method(), resolve\_\-static\_\-field(), thread\_\-join(), thread\_\-may\_\-block(), thread\_\-notify(), thread\_\-pop\_\-root(), thread\_\-push\_\-root(), thread\_\-resumes(), thread\_\-sleep(), thread\_\-wait(), and tm\_\-stop\_\-the\_\-world().
+
+\index{thread.h@{thread.h}!thread\_\-sleep@{thread\_\-sleep}}
+\index{thread\_\-sleep@{thread\_\-sleep}!thread.h@{thread.h}}
+\subsubsection[{thread\_\-sleep}]{\setlength{\rightskip}{0pt plus 5cm}void thread\_\-sleep (
+\begin{DoxyParamCaption}
+\item[{int64\_\-t}]{ ms}
+\end{DoxyParamCaption}
+)}\label{thread_8h_a58596bded41b35b2520fd2cde2139b11}
+Implements the functionality required by the java.lang.Thread.sleep() method, waiting for the number of milliseconds specified by {\itshape ms\/} 
+\begin{DoxyParams}{Parameters}
+\item[{\em ms}]The number of milliseconds to wait \end{DoxyParams}
+
+
+Definition at line 941 of file thread.c.
+
+
+
+References KNI\_\-ThrowNew(), thread\_\-manager\_\-t::lock, native\_\-cond\_\-create(), native\_\-cond\_\-timed\_\-wait(), self, thread\_\-may\_\-block(), thread\_\-resumes(), thread\_\-self(), tm\_\-lock(), and tm\_\-unlock().
+
+
+
+Referenced by java\_\-lang\_\-Thread\_\-sleep().
+
+\index{thread.h@{thread.h}!thread\_\-wait@{thread\_\-wait}}
+\index{thread\_\-wait@{thread\_\-wait}!thread.h@{thread.h}}
+\subsubsection[{thread\_\-wait}]{\setlength{\rightskip}{0pt plus 5cm}bool thread\_\-wait (
+\begin{DoxyParamCaption}
+\item[{uintptr\_\-t}]{ ref, }
+\item[{uint64\_\-t}]{ millis, }
+\item[{uint32\_\-t}]{ nanos}
+\end{DoxyParamCaption}
+)}\label{thread_8h_a05d91ca50adefb55a0536c17a9933707}
+Implements the functionality required by java.lang.Object.wait() and friends, waiting on an object until it is notified by notify() or notifyAll() or until a timeout occurs (if {\itshape nanos\/} or {\itshape millis\/} or both ar non-\/zero) 
+\begin{DoxyParams}{Parameters}
+\item[{\em ref}]The object on which to wait \item[{\em millis}]Number of milliseconds before a timeout occurs \item[{\em nanos}]Number of nanoseconds before a timeout occurs \end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+true if everything goes well, false if the monitor associated with {\itshape ref\/} was not owned {\itshape thread\/}. In the latter case an IllegalMonitorStateException should be thrown 
+\end{DoxyReturn}
+
+
+Definition at line 1192 of file thread.c.
+
+
+
+References thread\_\-manager\_\-t::buckets, thread\_\-manager\_\-t::capacity, monitor\_\-t::cond, monitor\_\-t::count, gc\_\-malloc(), KNI\_\-ThrowNew(), thread\_\-manager\_\-t::lock, monitor\_\-enter(), native\_\-cond\_\-create(), native\_\-cond\_\-timed\_\-wait(), native\_\-cond\_\-wait(), monitor\_\-t::next, monitor\_\-t::owner, monitor\_\-t::ref, self, thread\_\-may\_\-block(), thread\_\-resumes(), thread\_\-self(), tm\_\-hash(), tm\_\-lock(), and tm\_\-unlock().
+
+
+
+Referenced by initialize\_\-class(), and java\_\-lang\_\-Object\_\-\_\-wait().
+
+\index{thread.h@{thread.h}!thread\_\-yield@{thread\_\-yield}}
+\index{thread\_\-yield@{thread\_\-yield}!thread.h@{thread.h}}
+\subsubsection[{thread\_\-yield}]{\setlength{\rightskip}{0pt plus 5cm}void thread\_\-yield (
+\begin{DoxyParamCaption}
+\item[{void}]{}
+\end{DoxyParamCaption}
+)}\label{thread_8h_aaa9229e0f462f60bb9550919fa3d7699}
+Causes the currently executing thread object to temporarily pause and allow other threads to execute 
+
+Definition at line 1145 of file thread.c.
+
+
+
+References native\_\-thread\_\-yield().
+
+
+
+Referenced by java\_\-lang\_\-Thread\_\-yield(), monitor\_\-enter(), and tm\_\-stop\_\-the\_\-world().
+
+\index{thread.h@{thread.h}!tm\_\-active@{tm\_\-active}}
+\index{tm\_\-active@{tm\_\-active}!thread.h@{thread.h}}
+\subsubsection[{tm\_\-active}]{\setlength{\rightskip}{0pt plus 5cm}uint32\_\-t tm\_\-active (
+\begin{DoxyParamCaption}
+\item[{void}]{}
+\end{DoxyParamCaption}
+)}\label{thread_8h_a43fb6f3b594c051fe46c87de22b22d18}
+Returns the number of active threads in the system \begin{DoxyReturn}{Returns}
+Returns the number of active threads 
+\end{DoxyReturn}
+
+
+Definition at line 475 of file thread.c.
+
+
+
+References thread\_\-manager\_\-t::active.
+
+
+
+Referenced by java\_\-lang\_\-Thread\_\-activeCount().
+
+\index{thread.h@{thread.h}!tm\_\-init@{tm\_\-init}}
+\index{tm\_\-init@{tm\_\-init}!thread.h@{thread.h}}
+\subsubsection[{tm\_\-init}]{\setlength{\rightskip}{0pt plus 5cm}void tm\_\-init (
+\begin{DoxyParamCaption}
+\item[{void}]{}
+\end{DoxyParamCaption}
+)}\label{thread_8h_aae7ce893bece6c8625d9e4796b95857c}
+Initialize the thread manager, this does not include the initialization of the Java monitors subsystem because the thread manager is initialized before the heap manager 
+
+Definition at line 392 of file thread.c.
+
+
+
+References thread\_\-manager\_\-t::lock, native\_\-key\_\-create(), native\_\-mutex\_\-create(), and vm\_\-fail().
+
+
+
+Referenced by vm\_\-run().
+
+\index{thread.h@{thread.h}!tm\_\-lock@{tm\_\-lock}}
+\index{tm\_\-lock@{tm\_\-lock}!thread.h@{thread.h}}
+\subsubsection[{tm\_\-lock}]{\setlength{\rightskip}{0pt plus 5cm}void tm\_\-lock (
+\begin{DoxyParamCaption}
+\item[{void}]{}
+\end{DoxyParamCaption}
+)}\label{thread_8h_ae120f0312256767a010d7d2cd6c093a9}
+Try to gain the ownership of the machine-\/wide lock. This function will return only when the caller has the ownership of the lock in the meantime the calling thread is considered blocked. It is safe to call this function repeatedly from the same thread as long as \doxyref{tm\_\-unlock()}{p.}{thread_8c_a41cea2a84276c6dadfe29e7a7b7a42c3} is called the same number of times to release the lock 
+
+Definition at line 659 of file thread.c.
+
+
+
+References thread\_\-manager\_\-t::lock, native\_\-mutex\_\-lock(), thread\_\-may\_\-block(), and thread\_\-resumes().
+
+
+
+Referenced by bcl\_\-find\_\-class(), bcl\_\-get\_\-class\_\-by\_\-id(), bcl\_\-link\_\-method(), bcl\_\-link\_\-opcode(), bcl\_\-resolve\_\-class(), gc\_\-collect(), gc\_\-free(), gc\_\-free\_\-memory(), gc\_\-malloc(), gc\_\-new(), gc\_\-new\_\-array\_\-nonref(), gc\_\-new\_\-array\_\-ref(), gc\_\-palloc(), gc\_\-register\_\-weak\_\-ref(), jstring\_\-create\_\-literal(), jstring\_\-intern(), monitor\_\-enter(), monitor\_\-exit(), thread\_\-create\_\-main(), thread\_\-interrupt(), thread\_\-join(), thread\_\-launch(), thread\_\-notify(), thread\_\-sleep(), thread\_\-start(), thread\_\-wait(), tm\_\-teardown(), and utf8\_\-intern().
+
+\index{thread.h@{thread.h}!tm\_\-mark@{tm\_\-mark}}
+\index{tm\_\-mark@{tm\_\-mark}!thread.h@{thread.h}}
+\subsubsection[{tm\_\-mark}]{\setlength{\rightskip}{0pt plus 5cm}void tm\_\-mark (
+\begin{DoxyParamCaption}
+\item[{void}]{}
+\end{DoxyParamCaption}
+)}\label{thread_8h_a7b3f7083c4dbe45ebf32ecdc25b32b30}
+Marks all the references reacheable from the threads 
+
+Definition at line 486 of file thread.c.
+
+
+
+References thread\_\-t::exception, gc\_\-mark\_\-potential(), gc\_\-mark\_\-reference(), thread\_\-t::next, thread\_\-t::obj, thread\_\-t::pointers, thread\_\-manager\_\-t::queue, thread\_\-t::roots, thread\_\-t::stack, and thread\_\-t::used.
+
+
+
+Referenced by gc\_\-mark().
+
+\index{thread.h@{thread.h}!tm\_\-purge@{tm\_\-purge}}
+\index{tm\_\-purge@{tm\_\-purge}!thread.h@{thread.h}}
+\subsubsection[{tm\_\-purge}]{\setlength{\rightskip}{0pt plus 5cm}void tm\_\-purge (
+\begin{DoxyParamCaption}
+\item[{void}]{}
+\end{DoxyParamCaption}
+)}\label{thread_8h_ac31a6e3b71ba2958d50145e68d92c1b0}
+Purge the monitor table by clearing the entries associated with dead objects, also purge the associated conditions 
+
+Definition at line 526 of file thread.c.
+
+
+
+References thread\_\-manager\_\-t::buckets, thread\_\-manager\_\-t::capacity, monitor\_\-t::cond, thread\_\-manager\_\-t::entries, gc\_\-free(), header\_\-is\_\-marked(), native\_\-cond\_\-dispose(), monitor\_\-t::next, monitor\_\-t::ref, and tm\_\-hash().
+
+
+
+Referenced by gc\_\-collect().
+
+\index{thread.h@{thread.h}!tm\_\-register@{tm\_\-register}}
+\index{tm\_\-register@{tm\_\-register}!thread.h@{thread.h}}
+\subsubsection[{tm\_\-register}]{\setlength{\rightskip}{0pt plus 5cm}void tm\_\-register (
+\begin{DoxyParamCaption}
+\item[{{\bf thread\_\-t} $\ast$}]{ thread}
+\end{DoxyParamCaption}
+)}\label{thread_8h_a57127804feddc613f5417fd08f4c1412}
+Register a new thread in the thread manager 
+\begin{DoxyParams}{Parameters}
+\item[{\em thread}]A pointer to the new thread \end{DoxyParams}
+
+
+Definition at line 441 of file thread.c.
+
+
+
+References thread\_\-manager\_\-t::active, thread\_\-t::next, and thread\_\-manager\_\-t::queue.
+
+
+
+Referenced by thread\_\-start(), and vm\_\-run().
+
+\index{thread.h@{thread.h}!tm\_\-stop\_\-the\_\-world@{tm\_\-stop\_\-the\_\-world}}
+\index{tm\_\-stop\_\-the\_\-world@{tm\_\-stop\_\-the\_\-world}!thread.h@{thread.h}}
+\subsubsection[{tm\_\-stop\_\-the\_\-world}]{\setlength{\rightskip}{0pt plus 5cm}void tm\_\-stop\_\-the\_\-world (
+\begin{DoxyParamCaption}
+\item[{void}]{}
+\end{DoxyParamCaption}
+)}\label{thread_8h_ae4b44560fe8bd193fbefb926f12fdb79}
+Waits for all threads to stop. The calling thread must have taken the VM lock for this to happen safely 
+
+Definition at line 683 of file thread.c.
+
+
+
+References thread\_\-t::blocked, thread\_\-t::next, thread\_\-manager\_\-t::queue, thread\_\-t::stopped, thread\_\-self(), and thread\_\-yield().
+
+
+
+Referenced by gc\_\-collect(), and tm\_\-teardown().
+
+\index{thread.h@{thread.h}!tm\_\-teardown@{tm\_\-teardown}}
+\index{tm\_\-teardown@{tm\_\-teardown}!thread.h@{thread.h}}
+\subsubsection[{tm\_\-teardown}]{\setlength{\rightskip}{0pt plus 5cm}void tm\_\-teardown (
+\begin{DoxyParamCaption}
+\item[{void}]{}
+\end{DoxyParamCaption}
+)}\label{thread_8h_adab665c0fe19fdbb2b076bf9806e5c6d}
+Tears down the thread manager 
+
+Definition at line 412 of file thread.c.
+
+
+
+References thread\_\-manager\_\-t::lock, thread\_\-t::native, native\_\-key\_\-dispose(), native\_\-mutex\_\-dispose(), thread\_\-t::next, thread\_\-manager\_\-t::queue, tm\_\-lock(), tm\_\-stop\_\-the\_\-world(), and tm\_\-unlock().
+
+
+
+Referenced by vm\_\-run().
+
+\index{thread.h@{thread.h}!tm\_\-unlock@{tm\_\-unlock}}
+\index{tm\_\-unlock@{tm\_\-unlock}!thread.h@{thread.h}}
+\subsubsection[{tm\_\-unlock}]{\setlength{\rightskip}{0pt plus 5cm}void tm\_\-unlock (
+\begin{DoxyParamCaption}
+\item[{void}]{}
+\end{DoxyParamCaption}
+)}\label{thread_8h_a28a54c075b154ea6572ad2007761ddd9}
+Release the ownership of the machine-\/wide lock 
+
+Definition at line 668 of file thread.c.
+
+
+
+References thread\_\-manager\_\-t::lock, and native\_\-mutex\_\-unlock().
+
+
+
+Referenced by bcl\_\-find\_\-class(), bcl\_\-get\_\-class\_\-by\_\-id(), bcl\_\-link\_\-method(), bcl\_\-link\_\-opcode(), bcl\_\-resolve\_\-class(), gc\_\-collect(), gc\_\-free(), gc\_\-free\_\-memory(), gc\_\-malloc(), gc\_\-new(), gc\_\-new\_\-array\_\-nonref(), gc\_\-new\_\-array\_\-ref(), gc\_\-palloc(), gc\_\-register\_\-weak\_\-ref(), jstring\_\-create\_\-literal(), jstring\_\-intern(), monitor\_\-enter(), monitor\_\-exit(), thread\_\-create\_\-main(), thread\_\-interrupt(), thread\_\-join(), thread\_\-launch(), thread\_\-notify(), thread\_\-sleep(), thread\_\-start(), thread\_\-wait(), tm\_\-teardown(), and utf8\_\-intern().
+
+\index{thread.h@{thread.h}!tm\_\-unregister@{tm\_\-unregister}}
+\index{tm\_\-unregister@{tm\_\-unregister}!thread.h@{thread.h}}
+\subsubsection[{tm\_\-unregister}]{\setlength{\rightskip}{0pt plus 5cm}void tm\_\-unregister (
+\begin{DoxyParamCaption}
+\item[{{\bf thread\_\-t} $\ast$}]{ thread}
+\end{DoxyParamCaption}
+)}\label{thread_8h_a4ad761c643a47fe0d3c6a94634433d8c}
+Unregister a dying thread 
+\begin{DoxyParams}{Parameters}
+\item[{\em thread}]A thread which has finished execution \end{DoxyParams}
+
+
+Definition at line 451 of file thread.c.
+
+
+
+References thread\_\-manager\_\-t::active, thread\_\-t::next, and thread\_\-manager\_\-t::queue.
+
+
+
+Referenced by thread\_\-create\_\-main(), and thread\_\-start().
+
+
+
+\subsection{Variable Documentation}
+\index{thread.h@{thread.h}!self@{self}}
+\index{self@{self}!thread.h@{thread.h}}
+\subsubsection[{self}]{\setlength{\rightskip}{0pt plus 5cm}JEL\_\-TLS {\bf native\_\-key\_\-t} {\bf self}}\label{thread_8h_a7955dc6b2bfbeec4a414147113a76255}
+Thread-\/local self pointer of a thread 
+
+Definition at line 375 of file thread.c.
+
+
+
+Referenced by c\_\-clear\_\-exception(), c\_\-print\_\-exception(), c\_\-throw\_\-dbg(), thread\_\-join(), thread\_\-may\_\-block(), thread\_\-resumes(), thread\_\-sleep(), and thread\_\-wait().
+

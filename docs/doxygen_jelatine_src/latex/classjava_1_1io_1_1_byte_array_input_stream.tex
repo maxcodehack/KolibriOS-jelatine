@@ -1,0 +1,344 @@
+\section{java::io::ByteArrayInputStream Class Reference}
+\label{classjava_1_1io_1_1_byte_array_input_stream}\index{java::io::ByteArrayInputStream@{java::io::ByteArrayInputStream}}
+Inheritance diagram for java::io::ByteArrayInputStream:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=2.000000cm]{classjava_1_1io_1_1_byte_array_input_stream}
+\end{center}
+\end{figure}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+{\bf ByteArrayInputStream} (byte[$\,$] buffer)
+\item 
+{\bf ByteArrayInputStream} (byte[$\,$] buffer, int offset, int length)
+\item 
+synchronized int {\bf read} ()
+\item 
+synchronized int {\bf read} (byte[$\,$] buffer, int offset, int length)
+\item 
+synchronized long {\bf skip} (long n)
+\item 
+synchronized int {\bf available} ()
+\item 
+boolean {\bf markSupported} ()
+\item 
+synchronized void {\bf mark} (int readLimit)
+\item 
+synchronized void {\bf reset} ()
+\item 
+synchronized void {\bf close} ()  throws IOException     
+\end{DoxyCompactItemize}
+\subsection*{Protected Attributes}
+\begin{DoxyCompactItemize}
+\item 
+byte[$\,$] {\bf buf}
+\item 
+int {\bf count}
+\item 
+int {\bf mark}
+\item 
+int {\bf pos}
+\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+This class permits an array of bytes to be read as an input stream.
+
+\begin{DoxyAuthor}{Author}
+Warren Levy ({\tt warrenl@cygnus.com}) 
+
+Aaron M. Renn ({\tt arenn@urbanophile.com}) 
+\end{DoxyAuthor}
+
+
+Definition at line 48 of file ByteArrayInputStream.java.
+
+
+
+\subsection{Constructor \& Destructor Documentation}
+\index{java::io::ByteArrayInputStream@{java::io::ByteArrayInputStream}!ByteArrayInputStream@{ByteArrayInputStream}}
+\index{ByteArrayInputStream@{ByteArrayInputStream}!java::io::ByteArrayInputStream@{java::io::ByteArrayInputStream}}
+\subsubsection[{ByteArrayInputStream}]{\setlength{\rightskip}{0pt plus 5cm}java::io::ByteArrayInputStream::ByteArrayInputStream (
+\begin{DoxyParamCaption}
+\item[{byte[$\,$]}]{ buffer}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily  [inline]}}\label{classjava_1_1io_1_1_byte_array_input_stream_a5f08bcb32558c6718874c4aed8a583fa}
+Create a new \doxyref{ByteArrayInputStream}{p.}{classjava_1_1io_1_1_byte_array_input_stream} that will read bytes from the passed in byte array. This stream will read from the beginning to the end of the array. It is identical to calling an overloaded constructor as {\ttfamily \doxyref{ByteArrayInputStream}{p.}{classjava_1_1io_1_1_byte_array_input_stream}(buf, 0, buf.length)}. 
+
+Note that this array is not copied. If its contents are changed while this stream is being read, those changes will be reflected in the bytes supplied to the reader. Please use caution in changing the contents of the buffer while this stream is open.
+
+
+\begin{DoxyParams}{Parameters}
+\item[{\em buffer}]The byte array buffer this stream will read from. \end{DoxyParams}
+
+
+Definition at line 89 of file ByteArrayInputStream.java.
+
+\index{java::io::ByteArrayInputStream@{java::io::ByteArrayInputStream}!ByteArrayInputStream@{ByteArrayInputStream}}
+\index{ByteArrayInputStream@{ByteArrayInputStream}!java::io::ByteArrayInputStream@{java::io::ByteArrayInputStream}}
+\subsubsection[{ByteArrayInputStream}]{\setlength{\rightskip}{0pt plus 5cm}java::io::ByteArrayInputStream::ByteArrayInputStream (
+\begin{DoxyParamCaption}
+\item[{byte[$\,$]}]{ buffer, }
+\item[{int}]{ offset, }
+\item[{int}]{ length}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily  [inline]}}\label{classjava_1_1io_1_1_byte_array_input_stream_a7893311a4fb7d489a0e99c484778abe2}
+Create a new \doxyref{ByteArrayInputStream}{p.}{classjava_1_1io_1_1_byte_array_input_stream} that will read bytes from the passed in byte array. This stream will read from position {\ttfamily offset} in the array for a length of {\ttfamily length} bytes past {\ttfamily offset}. If the stream is reset to a position before {\ttfamily offset} then more than {\ttfamily length} bytes can be read from the stream. The {\ttfamily length} value should be viewed as the array index one greater than the last position in the buffer to read. 
+
+Note that this array is not copied. If its contents are changed while this stream is being read, those changes will be reflected in the bytes supplied to the reader. Please use caution in changing the contents of the buffer while this stream is open.
+
+
+\begin{DoxyParams}{Parameters}
+\item[{\em buffer}]The byte array buffer this stream will read from. \item[{\em offset}]The index into the buffer to start reading bytes from \item[{\em length}]The number of bytes to read from the buffer \end{DoxyParams}
+
+
+Definition at line 113 of file ByteArrayInputStream.java.
+
+
+
+References buf, count, mark, and pos.
+
+
+
+\subsection{Member Function Documentation}
+\index{java::io::ByteArrayInputStream@{java::io::ByteArrayInputStream}!available@{available}}
+\index{available@{available}!java::io::ByteArrayInputStream@{java::io::ByteArrayInputStream}}
+\subsubsection[{available}]{\setlength{\rightskip}{0pt plus 5cm}synchronized int java::io::ByteArrayInputStream::available (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily  [inline]}}\label{classjava_1_1io_1_1_byte_array_input_stream_a6c7b1721379e0b6c123414981853063e}
+This method returns the number of bytes available to be read from this stream. The value returned will be equal to {\ttfamily count -\/ pos}.
+
+\begin{DoxyReturn}{Returns}
+The number of bytes that can be read from this stream before blocking, which is all of them 
+\end{DoxyReturn}
+
+
+Reimplemented from {\bf java::io::InputStream} \doxyref{}{p.}{classjava_1_1io_1_1_input_stream_ac07ebf2845751f87e46269188517d440}.
+
+
+
+Definition at line 209 of file ByteArrayInputStream.java.
+
+
+
+References count, and pos.
+
+\index{java::io::ByteArrayInputStream@{java::io::ByteArrayInputStream}!close@{close}}
+\index{close@{close}!java::io::ByteArrayInputStream@{java::io::ByteArrayInputStream}}
+\subsubsection[{close}]{\setlength{\rightskip}{0pt plus 5cm}synchronized void java::io::ByteArrayInputStream::close (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)  throws {\bf IOException}     \hspace{0.3cm}{\ttfamily  [inline]}}\label{classjava_1_1io_1_1_byte_array_input_stream_ac9ab98af603f7e8139a0646acee5dee5}
+This method closes this input stream and releases any system resources associated with it. 
+
+For this class it does nothing. 
+
+Reimplemented from {\bf java::io::InputStream} \doxyref{}{p.}{classjava_1_1io_1_1_input_stream_a56b97e764f0e48a8e8d8ad76f2d2bc59}.
+
+
+
+Definition at line 265 of file ByteArrayInputStream.java.
+
+\index{java::io::ByteArrayInputStream@{java::io::ByteArrayInputStream}!mark@{mark}}
+\index{mark@{mark}!java::io::ByteArrayInputStream@{java::io::ByteArrayInputStream}}
+\subsubsection[{mark}]{\setlength{\rightskip}{0pt plus 5cm}synchronized void {\bf java::io::ByteArrayInputStream::mark} (
+\begin{DoxyParamCaption}
+\item[{int}]{ readLimit}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily  [inline]}}\label{classjava_1_1io_1_1_byte_array_input_stream_a45c3a494b22171e337abfd039260f098}
+This method sets the mark position in this stream to the current position. Note that the {\ttfamily readlimit} parameter in this method does nothing as this stream is always capable of remembering all the bytes int it. 
+
+Note that in this class the mark position is set by default to position 0 in the stream. This is in constrast to some other stream types where there is no default mark position.
+
+
+\begin{DoxyParams}{Parameters}
+\item[{\em readLimit}]The number of bytes this stream must remember. This parameter is ignored. \end{DoxyParams}
+
+
+Reimplemented from {\bf java::io::InputStream} \doxyref{}{p.}{classjava_1_1io_1_1_input_stream_a61b4efb59f7b73de65907bfd22c8602d}.
+
+
+
+Definition at line 241 of file ByteArrayInputStream.java.
+
+
+
+References mark, and pos.
+
+\index{java::io::ByteArrayInputStream@{java::io::ByteArrayInputStream}!markSupported@{markSupported}}
+\index{markSupported@{markSupported}!java::io::ByteArrayInputStream@{java::io::ByteArrayInputStream}}
+\subsubsection[{markSupported}]{\setlength{\rightskip}{0pt plus 5cm}boolean java::io::ByteArrayInputStream::markSupported (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily  [inline]}}\label{classjava_1_1io_1_1_byte_array_input_stream_a55a6b6a48ac628a0a4e0236eb9165849}
+This method overrides the {\ttfamily markSupported} method in {\ttfamily \doxyref{InputStream}{p.}{classjava_1_1io_1_1_input_stream}} in order to return {\ttfamily true} -\/ indicating that this stream class supports mark/reset functionality.
+
+\begin{DoxyReturn}{Returns}
+{\ttfamily true} to indicate that this class supports mark/reset. 
+\end{DoxyReturn}
+
+
+Reimplemented from {\bf java::io::InputStream} \doxyref{}{p.}{classjava_1_1io_1_1_input_stream_a0cb884e77a326313c39604bd4a032da5}.
+
+
+
+Definition at line 223 of file ByteArrayInputStream.java.
+
+\index{java::io::ByteArrayInputStream@{java::io::ByteArrayInputStream}!read@{read}}
+\index{read@{read}!java::io::ByteArrayInputStream@{java::io::ByteArrayInputStream}}
+\subsubsection[{read}]{\setlength{\rightskip}{0pt plus 5cm}synchronized int java::io::ByteArrayInputStream::read (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily  [inline, virtual]}}\label{classjava_1_1io_1_1_byte_array_input_stream_af393b73b82c26d99a4d51451eb71815d}
+This method reads one byte from the stream. The {\ttfamily pos} counter is advanced to the next byte to be read. The byte read is returned as an int in the range of 0-\/255. If the stream position is already at the end of the buffer, no byte is read and a -\/1 is returned in order to indicate the end of the stream.
+
+\begin{DoxyReturn}{Returns}
+The byte read, or -\/1 if end of stream 
+\end{DoxyReturn}
+
+
+Implements {\bf java::io::InputStream} \doxyref{}{p.}{classjava_1_1io_1_1_input_stream_a2663225289237a9aefef92a835ad4a9b}.
+
+
+
+Definition at line 137 of file ByteArrayInputStream.java.
+
+
+
+References buf, count, and pos.
+
+\index{java::io::ByteArrayInputStream@{java::io::ByteArrayInputStream}!read@{read}}
+\index{read@{read}!java::io::ByteArrayInputStream@{java::io::ByteArrayInputStream}}
+\subsubsection[{read}]{\setlength{\rightskip}{0pt plus 5cm}synchronized int java::io::ByteArrayInputStream::read (
+\begin{DoxyParamCaption}
+\item[{byte[$\,$]}]{ buffer, }
+\item[{int}]{ offset, }
+\item[{int}]{ length}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily  [inline]}}\label{classjava_1_1io_1_1_byte_array_input_stream_a183ca9d02ec99d3cfdd6760cfd80d779}
+This method reads bytes from the stream and stores them into a caller supplied buffer. It starts storing the data at index {\ttfamily offset} into the buffer and attempts to read {\ttfamily len} bytes. This method can return before reading the number of bytes requested if the end of the stream is encountered first. The actual number of bytes read is returned. If no bytes can be read because the stream is already at the end of stream position, a -\/1 is returned. 
+
+This method does not block.
+
+
+\begin{DoxyParams}{Parameters}
+\item[{\em buffer}]The array into which the bytes read should be stored. \item[{\em offset}]The offset into the array to start storing bytes \item[{\em length}]The requested number of bytes to read\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+The actual number of bytes read, or -\/1 if end of stream. 
+\end{DoxyReturn}
+
+
+Reimplemented from {\bf java::io::InputStream} \doxyref{}{p.}{classjava_1_1io_1_1_input_stream_a8dd0e8c89c31b11f0bff0039ec4f7a71}.
+
+
+
+Definition at line 163 of file ByteArrayInputStream.java.
+
+
+
+References buf, count, and pos.
+
+\index{java::io::ByteArrayInputStream@{java::io::ByteArrayInputStream}!reset@{reset}}
+\index{reset@{reset}!java::io::ByteArrayInputStream@{java::io::ByteArrayInputStream}}
+\subsubsection[{reset}]{\setlength{\rightskip}{0pt plus 5cm}synchronized void java::io::ByteArrayInputStream::reset (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily  [inline]}}\label{classjava_1_1io_1_1_byte_array_input_stream_a57a1c68617c78010ce5262fe04435c5c}
+This method sets the read position in the stream to the mark point by setting the {\ttfamily pos} variable equal to the {\ttfamily mark} variable. Since a mark can be set anywhere in the array, the mark/reset methods int this class can be used to provide random search capabilities for this type of stream. 
+
+Reimplemented from {\bf java::io::InputStream} \doxyref{}{p.}{classjava_1_1io_1_1_input_stream_abfa6e5234c9c27f40563e25a70957d94}.
+
+
+
+Definition at line 254 of file ByteArrayInputStream.java.
+
+
+
+References mark, and pos.
+
+\index{java::io::ByteArrayInputStream@{java::io::ByteArrayInputStream}!skip@{skip}}
+\index{skip@{skip}!java::io::ByteArrayInputStream@{java::io::ByteArrayInputStream}}
+\subsubsection[{skip}]{\setlength{\rightskip}{0pt plus 5cm}synchronized long java::io::ByteArrayInputStream::skip (
+\begin{DoxyParamCaption}
+\item[{long}]{ n}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily  [inline]}}\label{classjava_1_1io_1_1_byte_array_input_stream_a531d07c7ef83db55076575cd0a394810}
+This method attempts to skip the requested number of bytes in the input stream. It does this by advancing the {\ttfamily pos} value by the specified number of bytes. It this would exceed the length of the buffer, then only enough bytes are skipped to position the stream at the end of the buffer. The actual number of bytes skipped is returned.
+
+
+\begin{DoxyParams}{Parameters}
+\item[{\em n}]The requested number of bytes to skip\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+The actual number of bytes skipped. 
+\end{DoxyReturn}
+
+
+Reimplemented from {\bf java::io::InputStream} \doxyref{}{p.}{classjava_1_1io_1_1_input_stream_a3fa1c9184c17121247014f14d4268640}.
+
+
+
+Definition at line 188 of file ByteArrayInputStream.java.
+
+
+
+References count, and pos.
+
+
+
+\subsection{Field Documentation}
+\index{java::io::ByteArrayInputStream@{java::io::ByteArrayInputStream}!buf@{buf}}
+\index{buf@{buf}!java::io::ByteArrayInputStream@{java::io::ByteArrayInputStream}}
+\subsubsection[{buf}]{\setlength{\rightskip}{0pt plus 5cm}byte [$\,$] {\bf java::io::ByteArrayInputStream::buf}\hspace{0.3cm}{\ttfamily  [protected]}}\label{classjava_1_1io_1_1_byte_array_input_stream_a71f085caf905f8c00f3d2477b7a4f6ee}
+The array that contains the data supplied during read operations 
+
+Definition at line 53 of file ByteArrayInputStream.java.
+
+
+
+Referenced by ByteArrayInputStream(), and read().
+
+\index{java::io::ByteArrayInputStream@{java::io::ByteArrayInputStream}!count@{count}}
+\index{count@{count}!java::io::ByteArrayInputStream@{java::io::ByteArrayInputStream}}
+\subsubsection[{count}]{\setlength{\rightskip}{0pt plus 5cm}int {\bf java::io::ByteArrayInputStream::count}\hspace{0.3cm}{\ttfamily  [protected]}}\label{classjava_1_1io_1_1_byte_array_input_stream_a787a3a76060d369dd1b524d05736d919}
+This indicates the maximum number of bytes that can be read from this stream. It is the array index of the position after the last valid byte in the buffer {\ttfamily buf} 
+
+Definition at line 60 of file ByteArrayInputStream.java.
+
+
+
+Referenced by available(), ByteArrayInputStream(), read(), and skip().
+
+\index{java::io::ByteArrayInputStream@{java::io::ByteArrayInputStream}!mark@{mark}}
+\index{mark@{mark}!java::io::ByteArrayInputStream@{java::io::ByteArrayInputStream}}
+\subsubsection[{mark}]{\setlength{\rightskip}{0pt plus 5cm}int {\bf java::io::ByteArrayInputStream::mark}\hspace{0.3cm}{\ttfamily  [protected]}}\label{classjava_1_1io_1_1_byte_array_input_stream_a77d1703e50daae8696fd00973c08fc62}
+The currently marked position in the stream. This defaults to 0, so a reset operation on the stream resets it to read from array index 0 in the buffer -\/ even if the stream was initially created with an offset greater than 0 
+
+Definition at line 68 of file ByteArrayInputStream.java.
+
+
+
+Referenced by ByteArrayInputStream(), mark(), and reset().
+
+\index{java::io::ByteArrayInputStream@{java::io::ByteArrayInputStream}!pos@{pos}}
+\index{pos@{pos}!java::io::ByteArrayInputStream@{java::io::ByteArrayInputStream}}
+\subsubsection[{pos}]{\setlength{\rightskip}{0pt plus 5cm}int {\bf java::io::ByteArrayInputStream::pos}\hspace{0.3cm}{\ttfamily  [protected]}}\label{classjava_1_1io_1_1_byte_array_input_stream_af76a433b612651c92d57cc30f4995e40}
+The array index of the next byte to be read from the buffer {\ttfamily buf} 
+
+Definition at line 74 of file ByteArrayInputStream.java.
+
+
+
+Referenced by available(), ByteArrayInputStream(), mark(), read(), reset(), and skip().
+
+
+
+The documentation for this class was generated from the following file:\begin{DoxyCompactItemize}
+\item 
+src/classpath/java/io/ByteArrayInputStream.java\end{DoxyCompactItemize}

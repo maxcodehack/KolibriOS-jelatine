@@ -1,0 +1,548 @@
+\section{java::lang::Math Class Reference}
+\label{classjava_1_1lang_1_1_math}\index{java::lang::Math@{java::lang::Math}}
+\subsection*{Static Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+static native double {\bf sin} (double a)
+\item 
+static native double {\bf cos} (double a)
+\item 
+static native double {\bf tan} (double a)
+\item 
+static native double {\bf log} (double a)
+\item 
+static native double {\bf exp} (double a)
+\item 
+static native double {\bf pow} (double a, double b)
+\item 
+static double {\bf toRadians} (double degrees)
+\item 
+static double {\bf toDegrees} (double rads)
+\item 
+static native double {\bf sqrt} (double a)
+\item 
+static native double {\bf ceil} (double a)
+\item 
+static native double {\bf floor} (double a)
+\item 
+static int {\bf abs} (int i)
+\item 
+static long {\bf abs} (long l)
+\item 
+static float {\bf abs} (float f)
+\item 
+static double {\bf abs} (double d)
+\item 
+static int {\bf max} (int a, int b)
+\item 
+static long {\bf max} (long a, long b)
+\item 
+static float {\bf max} (float a, float b)
+\item 
+static double {\bf max} (double a, double b)
+\item 
+static int {\bf min} (int a, int b)
+\item 
+static long {\bf min} (long a, long b)
+\item 
+static float {\bf min} (float a, float b)
+\item 
+static double {\bf min} (double a, double b)
+\end{DoxyCompactItemize}
+\subsection*{Static Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+static final double {\bf E} = 2.718281828459045
+\item 
+static final double {\bf PI} = 3.141592653589793
+\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+Helper class containing useful mathematical functions and constants. 
+
+Note that angles are specified in radians. Conversion functions are provided for your convenience.
+
+\begin{DoxyAuthor}{Author}
+Paul Fisher 
+
+John Keiser 
+
+Eric Blake ({\tt ebb9@email.byu.edu}) 
+\end{DoxyAuthor}
+\begin{DoxySince}{Since}
+1.0 
+\end{DoxySince}
+
+
+Definition at line 53 of file Math.java.
+
+
+
+\subsection{Member Function Documentation}
+\index{java::lang::Math@{java::lang::Math}!abs@{abs}}
+\index{abs@{abs}!java::lang::Math@{java::lang::Math}}
+\subsubsection[{abs}]{\setlength{\rightskip}{0pt plus 5cm}static int java::lang::Math::abs (
+\begin{DoxyParamCaption}
+\item[{int}]{ i}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily  [inline, static]}}\label{classjava_1_1lang_1_1_math_a132af2d7f30772fcc5033aae05e82208}
+Take the absolute value of the argument. (Absolute value means make it positive.) 
+
+Note that the the largest negative value (\doxyref{Integer.MIN\_\-VALUE}{p.}{classjava_1_1lang_1_1_integer_a985dc2ca31fd0050622cf02a790f9b91}) cannot be made positive. In this case, because of the rules of negation in a computer, MIN\_\-VALUE is what will be returned. This is a {\itshape negative\/} value. You have been warned.
+
+
+\begin{DoxyParams}{Parameters}
+\item[{\em i}]the number to take the absolute value of \end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+the absolute value 
+\end{DoxyReturn}
+\begin{DoxySeeAlso}{See also}
+\doxyref{Integer::MIN\_\-VALUE}{p.}{classjava_1_1lang_1_1_integer_a985dc2ca31fd0050622cf02a790f9b91} 
+\end{DoxySeeAlso}
+
+
+Definition at line 205 of file Math.java.
+
+\index{java::lang::Math@{java::lang::Math}!abs@{abs}}
+\index{abs@{abs}!java::lang::Math@{java::lang::Math}}
+\subsubsection[{abs}]{\setlength{\rightskip}{0pt plus 5cm}static long java::lang::Math::abs (
+\begin{DoxyParamCaption}
+\item[{long}]{ l}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily  [inline, static]}}\label{classjava_1_1lang_1_1_math_ac86b701a64d1cbaf343eab46c1d88811}
+Take the absolute value of the argument. (Absolute value means make it positive.) 
+
+Note that the the largest negative value (\doxyref{Long.MIN\_\-VALUE}{p.}{classjava_1_1lang_1_1_long_a3f0ac4efd87ac019a672d076cb34b5f0}) cannot be made positive. In this case, because of the rules of negation in a computer, MIN\_\-VALUE is what will be returned. This is a {\itshape negative\/} value. You have been warned.
+
+
+\begin{DoxyParams}{Parameters}
+\item[{\em l}]the number to take the absolute value of \end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+the absolute value 
+\end{DoxyReturn}
+\begin{DoxySeeAlso}{See also}
+\doxyref{Long::MIN\_\-VALUE}{p.}{classjava_1_1lang_1_1_long_a3f0ac4efd87ac019a672d076cb34b5f0} 
+\end{DoxySeeAlso}
+
+
+Definition at line 224 of file Math.java.
+
+\index{java::lang::Math@{java::lang::Math}!abs@{abs}}
+\index{abs@{abs}!java::lang::Math@{java::lang::Math}}
+\subsubsection[{abs}]{\setlength{\rightskip}{0pt plus 5cm}static float java::lang::Math::abs (
+\begin{DoxyParamCaption}
+\item[{float}]{ f}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily  [inline, static]}}\label{classjava_1_1lang_1_1_math_ad3c0b4208b5b918f09c116ae9285e5a5}
+Take the absolute value of the argument. (Absolute value means make it positive.) 
+
+This is equivalent, but faster than, calling {\ttfamily \doxyref{Float.intBitsToFloat}{p.}{classjava_1_1lang_1_1_float_a2492e2696c7b6a22d452c0a55d086ca7}(0x7fffffff \& Float.floatToIntBits(a))}.
+
+
+\begin{DoxyParams}{Parameters}
+\item[{\em f}]the number to take the absolute value of \end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+the absolute value 
+\end{DoxyReturn}
+
+
+Definition at line 240 of file Math.java.
+
+\index{java::lang::Math@{java::lang::Math}!abs@{abs}}
+\index{abs@{abs}!java::lang::Math@{java::lang::Math}}
+\subsubsection[{abs}]{\setlength{\rightskip}{0pt plus 5cm}static double java::lang::Math::abs (
+\begin{DoxyParamCaption}
+\item[{double}]{ d}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily  [inline, static]}}\label{classjava_1_1lang_1_1_math_ad92f5da68a499d735634cb7bdfe74d08}
+Take the absolute value of the argument. (Absolute value means make it positive.)
+
+This is equivalent, but faster than, calling {\ttfamily \doxyref{Double.longBitsToDouble}{p.}{classjava_1_1lang_1_1_double_a8647bc9948f61076a4157bf9f6b35bf4}(Double.doubleToLongBits(a) $<$$<$ 1) $>$$>$$>$ 1);}.
+
+
+\begin{DoxyParams}{Parameters}
+\item[{\em d}]the number to take the absolute value of \end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+the absolute value 
+\end{DoxyReturn}
+
+
+Definition at line 256 of file Math.java.
+
+\index{java::lang::Math@{java::lang::Math}!ceil@{ceil}}
+\index{ceil@{ceil}!java::lang::Math@{java::lang::Math}}
+\subsubsection[{ceil}]{\setlength{\rightskip}{0pt plus 5cm}static native double java::lang::Math::ceil (
+\begin{DoxyParamCaption}
+\item[{double}]{ a}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily  [static]}}\label{classjava_1_1lang_1_1_math_a49265e01e9ae877ddbf0876b40e63583}
+Take the nearest integer that is that is greater than or equal to the argument. If the argument is NaN, infinite, or zero, the result is the same; if the argument is between -\/1 and 0, the result is negative zero. Note that {\ttfamily Math.ceil(x) == -\/Math.floor(-\/x)}.
+
+
+\begin{DoxyParams}{Parameters}
+\item[{\em a}]the value to act upon \end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+the nearest integer $>$= {\ttfamily a} 
+\end{DoxyReturn}
+\index{java::lang::Math@{java::lang::Math}!cos@{cos}}
+\index{cos@{cos}!java::lang::Math@{java::lang::Math}}
+\subsubsection[{cos}]{\setlength{\rightskip}{0pt plus 5cm}static native double java::lang::Math::cos (
+\begin{DoxyParamCaption}
+\item[{double}]{ a}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily  [static]}}\label{classjava_1_1lang_1_1_math_ac9c06b2e2c7388ed99cbfa5553f516b5}
+The trigonometric function {\itshape cos\/}. The cosine of NaN or infinity is NaN. This is accurate within 1 ulp, and is semi-\/monotonic.
+
+
+\begin{DoxyParams}{Parameters}
+\item[{\em a}]the angle (in radians) \end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+cos(a) 
+\end{DoxyReturn}
+\index{java::lang::Math@{java::lang::Math}!exp@{exp}}
+\index{exp@{exp}!java::lang::Math@{java::lang::Math}}
+\subsubsection[{exp}]{\setlength{\rightskip}{0pt plus 5cm}static native double java::lang::Math::exp (
+\begin{DoxyParamCaption}
+\item[{double}]{ a}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily  [static]}}\label{classjava_1_1lang_1_1_math_af9f7b737a704aa666aaa24ab9e227144}
+The function {\itshape exp\/}.
+
+
+\begin{DoxyParams}{Parameters}
+\item[{\em a}]the value \end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+exp(a) 
+\end{DoxyReturn}
+\index{java::lang::Math@{java::lang::Math}!floor@{floor}}
+\index{floor@{floor}!java::lang::Math@{java::lang::Math}}
+\subsubsection[{floor}]{\setlength{\rightskip}{0pt plus 5cm}static native double java::lang::Math::floor (
+\begin{DoxyParamCaption}
+\item[{double}]{ a}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily  [static]}}\label{classjava_1_1lang_1_1_math_aa91af4877b7d3962def85c5b62f3e0f0}
+Take the nearest integer that is that is less than or equal to the argument. If the argument is NaN, infinite, or zero, the result is the same. Note that {\ttfamily Math.ceil(x) == -\/Math.floor(-\/x)}.
+
+
+\begin{DoxyParams}{Parameters}
+\item[{\em a}]the value to act upon \end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+the nearest integer $<$= {\ttfamily a} 
+\end{DoxyReturn}
+\index{java::lang::Math@{java::lang::Math}!log@{log}}
+\index{log@{log}!java::lang::Math@{java::lang::Math}}
+\subsubsection[{log}]{\setlength{\rightskip}{0pt plus 5cm}static native double java::lang::Math::log (
+\begin{DoxyParamCaption}
+\item[{double}]{ a}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily  [static]}}\label{classjava_1_1lang_1_1_math_a3282ccb1e26e8caa7a0543a7d6953864}
+The function {\itshape log\/}.
+
+
+\begin{DoxyParams}{Parameters}
+\item[{\em a}]the value \end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+log(a) 
+\end{DoxyReturn}
+\index{java::lang::Math@{java::lang::Math}!max@{max}}
+\index{max@{max}!java::lang::Math@{java::lang::Math}}
+\subsubsection[{max}]{\setlength{\rightskip}{0pt plus 5cm}static int java::lang::Math::max (
+\begin{DoxyParamCaption}
+\item[{int}]{ a, }
+\item[{int}]{ b}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily  [inline, static]}}\label{classjava_1_1lang_1_1_math_aedab226e814a356f7343138391a78f91}
+Return whichever argument is larger.
+
+
+\begin{DoxyParams}{Parameters}
+\item[{\em a}]the first number \item[{\em b}]a second number \end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+the larger of the two numbers 
+\end{DoxyReturn}
+
+
+Definition at line 268 of file Math.java.
+
+\index{java::lang::Math@{java::lang::Math}!max@{max}}
+\index{max@{max}!java::lang::Math@{java::lang::Math}}
+\subsubsection[{max}]{\setlength{\rightskip}{0pt plus 5cm}static long java::lang::Math::max (
+\begin{DoxyParamCaption}
+\item[{long}]{ a, }
+\item[{long}]{ b}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily  [inline, static]}}\label{classjava_1_1lang_1_1_math_a1f4e82cb5146684c38ffbd431babc3a3}
+Return whichever argument is larger.
+
+
+\begin{DoxyParams}{Parameters}
+\item[{\em a}]the first number \item[{\em b}]a second number \end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+the larger of the two numbers 
+\end{DoxyReturn}
+
+
+Definition at line 280 of file Math.java.
+
+\index{java::lang::Math@{java::lang::Math}!max@{max}}
+\index{max@{max}!java::lang::Math@{java::lang::Math}}
+\subsubsection[{max}]{\setlength{\rightskip}{0pt plus 5cm}static float java::lang::Math::max (
+\begin{DoxyParamCaption}
+\item[{float}]{ a, }
+\item[{float}]{ b}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily  [inline, static]}}\label{classjava_1_1lang_1_1_math_ab4611534aec2be72937860bda421ef6d}
+Return whichever argument is larger. If either argument is NaN, the result is NaN, and when comparing 0 and -\/0, 0 is always larger.
+
+
+\begin{DoxyParams}{Parameters}
+\item[{\em a}]the first number \item[{\em b}]a second number \end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+the larger of the two numbers 
+\end{DoxyReturn}
+
+
+Definition at line 293 of file Math.java.
+
+\index{java::lang::Math@{java::lang::Math}!max@{max}}
+\index{max@{max}!java::lang::Math@{java::lang::Math}}
+\subsubsection[{max}]{\setlength{\rightskip}{0pt plus 5cm}static double java::lang::Math::max (
+\begin{DoxyParamCaption}
+\item[{double}]{ a, }
+\item[{double}]{ b}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily  [inline, static]}}\label{classjava_1_1lang_1_1_math_ae0f0f7f1b5c3590b0b3629044a197459}
+Return whichever argument is larger. If either argument is NaN, the result is NaN, and when comparing 0 and -\/0, 0 is always larger.
+
+
+\begin{DoxyParams}{Parameters}
+\item[{\em a}]the first number \item[{\em b}]a second number \end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+the larger of the two numbers 
+\end{DoxyReturn}
+
+
+Definition at line 316 of file Math.java.
+
+\index{java::lang::Math@{java::lang::Math}!min@{min}}
+\index{min@{min}!java::lang::Math@{java::lang::Math}}
+\subsubsection[{min}]{\setlength{\rightskip}{0pt plus 5cm}static double java::lang::Math::min (
+\begin{DoxyParamCaption}
+\item[{double}]{ a, }
+\item[{double}]{ b}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily  [inline, static]}}\label{classjava_1_1lang_1_1_math_a1202a3342f7b7a6a247f4446c07109a2}
+Return whichever argument is smaller. If either argument is NaN, the result is NaN, and when comparing 0 and -\/0, -\/0 is always smaller.
+
+
+\begin{DoxyParams}{Parameters}
+\item[{\em a}]the first number \item[{\em b}]a second number \end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+the smaller of the two numbers 
+\end{DoxyReturn}
+
+
+Definition at line 385 of file Math.java.
+
+\index{java::lang::Math@{java::lang::Math}!min@{min}}
+\index{min@{min}!java::lang::Math@{java::lang::Math}}
+\subsubsection[{min}]{\setlength{\rightskip}{0pt plus 5cm}static int java::lang::Math::min (
+\begin{DoxyParamCaption}
+\item[{int}]{ a, }
+\item[{int}]{ b}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily  [inline, static]}}\label{classjava_1_1lang_1_1_math_ae8b0a2ff274caac8786bf0817b977e9b}
+Return whichever argument is smaller.
+
+
+\begin{DoxyParams}{Parameters}
+\item[{\em a}]the first number \item[{\em b}]a second number \end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+the smaller of the two numbers 
+\end{DoxyReturn}
+
+
+Definition at line 338 of file Math.java.
+
+\index{java::lang::Math@{java::lang::Math}!min@{min}}
+\index{min@{min}!java::lang::Math@{java::lang::Math}}
+\subsubsection[{min}]{\setlength{\rightskip}{0pt plus 5cm}static long java::lang::Math::min (
+\begin{DoxyParamCaption}
+\item[{long}]{ a, }
+\item[{long}]{ b}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily  [inline, static]}}\label{classjava_1_1lang_1_1_math_ac50886fb53777f7baee75d9acf8fb28e}
+Return whichever argument is smaller.
+
+
+\begin{DoxyParams}{Parameters}
+\item[{\em a}]the first number \item[{\em b}]a second number \end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+the smaller of the two numbers 
+\end{DoxyReturn}
+
+
+Definition at line 350 of file Math.java.
+
+\index{java::lang::Math@{java::lang::Math}!min@{min}}
+\index{min@{min}!java::lang::Math@{java::lang::Math}}
+\subsubsection[{min}]{\setlength{\rightskip}{0pt plus 5cm}static float java::lang::Math::min (
+\begin{DoxyParamCaption}
+\item[{float}]{ a, }
+\item[{float}]{ b}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily  [inline, static]}}\label{classjava_1_1lang_1_1_math_ac7f6801ab59dbe9c6d76463bf2c8775d}
+Return whichever argument is smaller. If either argument is NaN, the result is NaN, and when comparing 0 and -\/0, -\/0 is always smaller.
+
+
+\begin{DoxyParams}{Parameters}
+\item[{\em a}]the first number \item[{\em b}]a second number \end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+the smaller of the two numbers 
+\end{DoxyReturn}
+
+
+Definition at line 363 of file Math.java.
+
+\index{java::lang::Math@{java::lang::Math}!pow@{pow}}
+\index{pow@{pow}!java::lang::Math@{java::lang::Math}}
+\subsubsection[{pow}]{\setlength{\rightskip}{0pt plus 5cm}static native double java::lang::Math::pow (
+\begin{DoxyParamCaption}
+\item[{double}]{ a, }
+\item[{double}]{ b}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily  [static]}}\label{classjava_1_1lang_1_1_math_aff07b813f28cb208d3b59ab0faf4759f}
+The function {\itshape pow\/}.
+
+
+\begin{DoxyParams}{Parameters}
+\item[{\em a}]the base \item[{\em b}]the exponent \end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+a$^\wedge$b 
+\end{DoxyReturn}
+\index{java::lang::Math@{java::lang::Math}!sin@{sin}}
+\index{sin@{sin}!java::lang::Math@{java::lang::Math}}
+\subsubsection[{sin}]{\setlength{\rightskip}{0pt plus 5cm}static native double java::lang::Math::sin (
+\begin{DoxyParamCaption}
+\item[{double}]{ a}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily  [static]}}\label{classjava_1_1lang_1_1_math_a83122090e7085a0d8ec5204e9335a8f7}
+The trigonometric function {\itshape sin\/}. The sine of NaN or infinity is NaN, and the sine of 0 retains its sign. This is accurate within 1 ulp, and is semi-\/monotonic.
+
+
+\begin{DoxyParams}{Parameters}
+\item[{\em a}]the angle (in radians) \end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+sin(a) 
+\end{DoxyReturn}
+\index{java::lang::Math@{java::lang::Math}!sqrt@{sqrt}}
+\index{sqrt@{sqrt}!java::lang::Math@{java::lang::Math}}
+\subsubsection[{sqrt}]{\setlength{\rightskip}{0pt plus 5cm}static native double java::lang::Math::sqrt (
+\begin{DoxyParamCaption}
+\item[{double}]{ a}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily  [static]}}\label{classjava_1_1lang_1_1_math_a04526d66d4b0e9d6f440c17e936679b5}
+Take a square root. If the argument is NaN or negative, the result is NaN; if the argument is positive infinity, the result is positive infinity; and if the result is either zero, the result is the same. This is accurate within the limits of doubles.
+
+For other roots, use pow(a, 1 / rootNumber).
+
+
+\begin{DoxyParams}{Parameters}
+\item[{\em a}]the numeric argument \end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+the square root of the argument 
+\end{DoxyReturn}
+\index{java::lang::Math@{java::lang::Math}!tan@{tan}}
+\index{tan@{tan}!java::lang::Math@{java::lang::Math}}
+\subsubsection[{tan}]{\setlength{\rightskip}{0pt plus 5cm}static native double java::lang::Math::tan (
+\begin{DoxyParamCaption}
+\item[{double}]{ a}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily  [static]}}\label{classjava_1_1lang_1_1_math_afbc7cd80c240207b7f3c594255500a52}
+The trigonometric function {\itshape tan\/}. The tangent of NaN or infinity is NaN, and the tangent of 0 retains its sign. This is accurate within 1 ulp, and is semi-\/monotonic.
+
+
+\begin{DoxyParams}{Parameters}
+\item[{\em a}]the angle (in radians) \end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+tan(a) 
+\end{DoxyReturn}
+\index{java::lang::Math@{java::lang::Math}!toDegrees@{toDegrees}}
+\index{toDegrees@{toDegrees}!java::lang::Math@{java::lang::Math}}
+\subsubsection[{toDegrees}]{\setlength{\rightskip}{0pt plus 5cm}static double java::lang::Math::toDegrees (
+\begin{DoxyParamCaption}
+\item[{double}]{ rads}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily  [inline, static]}}\label{classjava_1_1lang_1_1_math_a42251fefdd32ba2e34d7634fdbb55431}
+Convert from radians to degrees. The formula for this is degrees = radians $\ast$ (180/pi); however it is not always exact given the limitations of floating point numbers.
+
+
+\begin{DoxyParams}{Parameters}
+\item[{\em rads}]an angle in radians \end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+the angle in degrees 
+\end{DoxyReturn}
+\begin{DoxySince}{Since}
+1.2 
+\end{DoxySince}
+
+
+Definition at line 152 of file Math.java.
+
+
+
+References PI.
+
+\index{java::lang::Math@{java::lang::Math}!toRadians@{toRadians}}
+\index{toRadians@{toRadians}!java::lang::Math@{java::lang::Math}}
+\subsubsection[{toRadians}]{\setlength{\rightskip}{0pt plus 5cm}static double java::lang::Math::toRadians (
+\begin{DoxyParamCaption}
+\item[{double}]{ degrees}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily  [inline, static]}}\label{classjava_1_1lang_1_1_math_a40514d8a77e203c942825c31b6089620}
+Convert from degrees to radians. The formula for this is radians = degrees $\ast$ (pi/180); however it is not always exact given the limitations of floating point numbers.
+
+
+\begin{DoxyParams}{Parameters}
+\item[{\em degrees}]an angle in degrees \end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+the angle in radians 
+\end{DoxyReturn}
+\begin{DoxySince}{Since}
+1.2 
+\end{DoxySince}
+
+
+Definition at line 138 of file Math.java.
+
+
+
+References PI.
+
+
+
+\subsection{Field Documentation}
+\index{java::lang::Math@{java::lang::Math}!E@{E}}
+\index{E@{E}!java::lang::Math@{java::lang::Math}}
+\subsubsection[{E}]{\setlength{\rightskip}{0pt plus 5cm}final double {\bf java::lang::Math::E} = 2.718281828459045\hspace{0.3cm}{\ttfamily  [static]}}\label{classjava_1_1lang_1_1_math_ad9c718eccd6323acd63216667a01c3d7}
+The most accurate approximation to the mathematical constant {\itshape e\/}: {\ttfamily 2.718281828459045}. Used in natural log and exp. 
+
+Definition at line 66 of file Math.java.
+
+\index{java::lang::Math@{java::lang::Math}!PI@{PI}}
+\index{PI@{PI}!java::lang::Math@{java::lang::Math}}
+\subsubsection[{PI}]{\setlength{\rightskip}{0pt plus 5cm}final double {\bf java::lang::Math::PI} = 3.141592653589793\hspace{0.3cm}{\ttfamily  [static]}}\label{classjava_1_1lang_1_1_math_aa2e4706a00dad91553020bb73d76af43}
+The most accurate approximation to the mathematical constant {\itshape pi\/}: {\ttfamily 3.141592653589793}. This is the ratio of a circle's diameter to its circumference. 
+
+Definition at line 73 of file Math.java.
+
+
+
+Referenced by toDegrees(), and toRadians().
+
+
+
+The documentation for this class was generated from the following file:\begin{DoxyCompactItemize}
+\item 
+src/classpath/java/lang/Math.java\end{DoxyCompactItemize}

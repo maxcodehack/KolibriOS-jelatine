@@ -1,0 +1,68 @@
+\section{java::lang::Error Class Reference}
+\label{classjava_1_1lang_1_1_error}\index{java::lang::Error@{java::lang::Error}}
+Inheritance diagram for java::lang::Error:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=4.000000cm]{classjava_1_1lang_1_1_error}
+\end{center}
+\end{figure}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+{\bf Error} ()
+\item 
+{\bf Error} ({\bf String} s)
+\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+Applications should not try to catch errors since they indicate abnormal conditions. An abnormal condition is something which should not occur, or which should not be recovered from. This latter category includes {\ttfamily ThreadDeath} and {\ttfamily AssertionError}.
+
+A method is not required to declare any subclass of {\ttfamily \doxyref{Error}{p.}{classjava_1_1lang_1_1_error}} in its {\ttfamily throws} clause which might be thrown but not caught while executing the method.
+
+\begin{DoxyAuthor}{Author}
+Brian Jones 
+
+Tom Tromey ({\tt tromey@cygnus.com}) 
+
+Eric Blake ({\tt ebb9@email.byu.edu}) 
+\end{DoxyAuthor}
+
+
+Definition at line 55 of file Error.java.
+
+
+
+\subsection{Constructor \& Destructor Documentation}
+\index{java::lang::Error@{java::lang::Error}!Error@{Error}}
+\index{Error@{Error}!java::lang::Error@{java::lang::Error}}
+\subsubsection[{Error}]{\setlength{\rightskip}{0pt plus 5cm}java::lang::Error::Error (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily  [inline]}}\label{classjava_1_1lang_1_1_error_a0ee207ec1f64f68cdc7b5c1bdca08ebb}
+Create an error without a message. The cause remains uninitialized. 
+
+Definition at line 60 of file Error.java.
+
+\index{java::lang::Error@{java::lang::Error}!Error@{Error}}
+\index{Error@{Error}!java::lang::Error@{java::lang::Error}}
+\subsubsection[{Error}]{\setlength{\rightskip}{0pt plus 5cm}java::lang::Error::Error (
+\begin{DoxyParamCaption}
+\item[{{\bf String}}]{ s}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily  [inline]}}\label{classjava_1_1lang_1_1_error_ae67272e6977ecc5b411c63110b072682}
+Create an error with a message. The cause remains uninitialized.
+
+
+\begin{DoxyParams}{Parameters}
+\item[{\em s}]the message string \end{DoxyParams}
+
+
+Definition at line 69 of file Error.java.
+
+
+
+The documentation for this class was generated from the following file:\begin{DoxyCompactItemize}
+\item 
+src/classpath/java/lang/Error.java\end{DoxyCompactItemize}

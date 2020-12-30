@@ -1,0 +1,9 @@
+jelatine/VMOutputStream.java
+jelatine/VMPointer.java
+jelatine/VMFinalizer.java
+jelatine/VMResourceStream.java
+jelatine/VMCalendar.java
+jelatine/VMTimeZone.java
+jelatine/cldc/io/Protocol.java
+jelatine/cldc/io/URL.java
+jelatine/cldc/io/socket/ProtocolImpl.java

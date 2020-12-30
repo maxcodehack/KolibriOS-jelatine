@@ -1,0 +1,67 @@
+ Jelatine 0.9.4
+ ==============
+
+ Jelatine is a Java virtual machine written against the Connected Limited
+Device Configuration specification of the Java 2 Micro Edition body of
+standards. Jelatine was designed to work in very small, memory-constrained
+embedded environments, it needs just 32 KiB of RAM for running non-trivial Java
+applications. Jelatine is an interpreted VM and it is fairly fast compared to
+other interpreted VMs.
+
+ Requirements
+ ============
+
+ Jelatine should run on 16-, 32- and 64-bit processors with at least 32 KiB of
+available RAM for the heap. 64-bit processors may need a slightly larger
+minimal heap, 64 KiB will probably suffice. Jelatine is written in ANSI C and
+uses only a minimal amount of C library functions, and a couple of POSIX ones.
+Thread support requires either POSIX threads or GNU/Pth. It should be easy to
+replace it on architectures which do not support it, overall all Unix-like
+architectures should be enough for running Jelatine. For building the classpath
+you need version 1.4 or above of Sun's JDK or the ECJ compiler and the zziplib
+library if you want JAR file support.
+
+ Building and installing
+ =======================
+
+Please see the INSTALL file for full instructions.
+
+ Feedback
+ ========
+
+Jelatine is still in an early stage of developement, it has already been tested
+with fairly complex Java code but it still needs a lot of testing. All feedback
+on its compatibility, stability, performance, bugs, etc... is welcome; feel
+free to contact me at the following address: gabriele.svelto@gmail.com
+
+ Features
+ ========
+
+- Very small memory footprint and high allocation efficiency, designed for
+  heaps below 1 MiB of RAM
+
+- Single word object header, all allocations (including C allocations and Java
+  objects) have only 4 bytes of overhead (on 32-bit architectures). Permanent
+  C allocations do not have any overhead
+
+- Multiple threading systems are available: no threading, soft-threads using
+  GNU/Pth and OS-based threads through POSIX threads
+
+- Finalizers are fully supported
+
+- Stop the world mark-and-sweep garbage collection
+
+- Unified heap, C and Java objects are allocated from a signle
+  garbage-collected heap
+
+- Compact class and bytecode representation in memory
+
+- Fine-grained lazy binding and unloading of single-use methods saves memory
+  and makes VM bootstrap very fast
+
+- Switched and threaded interprers are available depending on compiler features
+
+- Code is documented using Doxygen
+
+- Includes a modified version of Sun's tool for preprocessing classes to be
+  used in a J2ME CLDC environment

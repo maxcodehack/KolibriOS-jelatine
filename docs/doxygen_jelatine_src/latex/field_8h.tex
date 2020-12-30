@@ -1,0 +1,416 @@
+\section{src/jelatine/field.h File Reference}
+\label{field_8h}\index{src/jelatine/field.h@{src/jelatine/field.h}}
+{\ttfamily \#include \char`\"{}wrappers.h\char`\"{}}\par
+{\ttfamily \#include \char`\"{}classfile.h\char`\"{}}\par
+\subsection*{Data Structures}
+\begin{DoxyCompactItemize}
+\item 
+struct {\bf field\_\-t}
+\item 
+struct {\bf static\_\-field\_\-t}
+\item 
+struct {\bf field\_\-iterator\_\-t}
+\end{DoxyCompactItemize}
+\subsection*{Defines}
+\begin{DoxyCompactItemize}
+\item 
+\#define {\bf JELATINE\_\-FIELD\_\-H}~(1)
+\end{DoxyCompactItemize}
+\subsection*{Typedefs}
+\begin{DoxyCompactItemize}
+\item 
+typedef struct {\bf field\_\-t} {\bf field\_\-t}
+\item 
+typedef struct {\bf static\_\-field\_\-t} {\bf static\_\-field\_\-t}
+\item 
+typedef struct {\bf field\_\-iterator\_\-t} {\bf field\_\-iterator\_\-t}
+\end{DoxyCompactItemize}
+\subsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+size\_\-t {\bf field\_\-size} (const {\bf field\_\-t} $\ast$)
+\item 
+void {\bf field\_\-parse\_\-descriptor} (const char $\ast$)
+\item 
+uintptr\_\-t {\bf static\_\-field\_\-data\_\-ptr} ({\bf static\_\-field\_\-t} $\ast$)
+\item 
+static bool {\bf field\_\-is\_\-static} (const {\bf field\_\-t} $\ast$field)
+\item 
+static bool {\bf field\_\-is\_\-private} (const {\bf field\_\-t} $\ast$field)
+\item 
+static bool {\bf field\_\-is\_\-protected} (const {\bf field\_\-t} $\ast$field)
+\item 
+static bool {\bf field\_\-is\_\-public} (const {\bf field\_\-t} $\ast$field)
+\item 
+static bool {\bf field\_\-is\_\-reference} (const {\bf field\_\-t} $\ast$field)
+\item 
+{\bf field\_\-iterator\_\-t} {\bf field\_\-itr} (struct {\bf class\_\-t} $\ast$, bool)
+\item 
+{\bf field\_\-t} $\ast$ {\bf field\_\-itr\_\-get\_\-next} ({\bf field\_\-iterator\_\-t} $\ast$)
+\item 
+static {\bf field\_\-iterator\_\-t} {\bf instance\_\-field\_\-itr} (struct {\bf class\_\-t} $\ast$cl)
+\item 
+static {\bf field\_\-iterator\_\-t} {\bf static\_\-field\_\-itr} (struct {\bf class\_\-t} $\ast$cl)
+\item 
+static bool {\bf field\_\-itr\_\-has\_\-next} ({\bf field\_\-iterator\_\-t} itr)
+\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+Field structure and interface 
+
+Definition in file {\bf field.h}.
+
+
+
+\subsection{Define Documentation}
+\index{field.h@{field.h}!JELATINE\_\-FIELD\_\-H@{JELATINE\_\-FIELD\_\-H}}
+\index{JELATINE\_\-FIELD\_\-H@{JELATINE\_\-FIELD\_\-H}!field.h@{field.h}}
+\subsubsection[{JELATINE\_\-FIELD\_\-H}]{\setlength{\rightskip}{0pt plus 5cm}\#define JELATINE\_\-FIELD\_\-H~(1)}\label{field_8h_aa722bbb1b62e7f209bc471919eb26f10}
+\doxyref{class.h}{p.}{class_8h} inclusion macro 
+
+Definition at line 28 of file field.h.
+
+
+
+\subsection{Typedef Documentation}
+\index{field.h@{field.h}!field\_\-iterator\_\-t@{field\_\-iterator\_\-t}}
+\index{field\_\-iterator\_\-t@{field\_\-iterator\_\-t}!field.h@{field.h}}
+\subsubsection[{field\_\-iterator\_\-t}]{\setlength{\rightskip}{0pt plus 5cm}typedef struct {\bf field\_\-iterator\_\-t} {\bf field\_\-iterator\_\-t}}\label{field_8h_ad31c492e71761dc1766eb1b7b21b675a}
+Typedef for the struct \doxyref{field\_\-iterator\_\-t}{p.}{structfield__iterator__t} 
+
+Definition at line 145 of file field.h.
+
+\index{field.h@{field.h}!field\_\-t@{field\_\-t}}
+\index{field\_\-t@{field\_\-t}!field.h@{field.h}}
+\subsubsection[{field\_\-t}]{\setlength{\rightskip}{0pt plus 5cm}typedef struct {\bf field\_\-t} {\bf field\_\-t}}\label{field_8h_a8e3205a9a1e9d9c7608c678d900f845e}
+Typedef for struct \doxyref{field\_\-t}{p.}{structfield__t} 
+
+Definition at line 52 of file field.h.
+
+\index{field.h@{field.h}!static\_\-field\_\-t@{static\_\-field\_\-t}}
+\index{static\_\-field\_\-t@{static\_\-field\_\-t}!field.h@{field.h}}
+\subsubsection[{static\_\-field\_\-t}]{\setlength{\rightskip}{0pt plus 5cm}typedef struct {\bf static\_\-field\_\-t} {\bf static\_\-field\_\-t}}\label{field_8h_a14e0c64c38ebfd7d87158f70ebc7edbe}
+Typedef for struct \doxyref{static\_\-field\_\-t}{p.}{structstatic__field__t} 
+
+Definition at line 73 of file field.h.
+
+
+
+\subsection{Function Documentation}
+\index{field.h@{field.h}!field\_\-is\_\-private@{field\_\-is\_\-private}}
+\index{field\_\-is\_\-private@{field\_\-is\_\-private}!field.h@{field.h}}
+\subsubsection[{field\_\-is\_\-private}]{\setlength{\rightskip}{0pt plus 5cm}static bool field\_\-is\_\-private (
+\begin{DoxyParamCaption}
+\item[{const {\bf field\_\-t} $\ast$}]{ field}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily  [inline, static]}}\label{field_8h_a14d51c40d76b168632629d03581de56e}
+Checks if a field is private 
+\begin{DoxyParams}{Parameters}
+\item[{\em field}]A pointer to a \doxyref{field\_\-t}{p.}{structfield__t} structure \end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+true if the field is private, false otherwise 
+\end{DoxyReturn}
+
+
+Definition at line 100 of file field.h.
+
+
+
+References field\_\-t::access\_\-flags.
+
+
+
+Referenced by verify\_\-field\_\-access().
+
+\index{field.h@{field.h}!field\_\-is\_\-protected@{field\_\-is\_\-protected}}
+\index{field\_\-is\_\-protected@{field\_\-is\_\-protected}!field.h@{field.h}}
+\subsubsection[{field\_\-is\_\-protected}]{\setlength{\rightskip}{0pt plus 5cm}static bool field\_\-is\_\-protected (
+\begin{DoxyParamCaption}
+\item[{const {\bf field\_\-t} $\ast$}]{ field}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily  [inline, static]}}\label{field_8h_a239045a8f81f0bd5056b06ee76f91050}
+Checks if a field is protected 
+\begin{DoxyParams}{Parameters}
+\item[{\em field}]A pointer to a \doxyref{field\_\-t}{p.}{structfield__t} structure \end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+true if the field is protected, false otherwise 
+\end{DoxyReturn}
+
+
+Definition at line 109 of file field.h.
+
+
+
+References field\_\-t::access\_\-flags.
+
+
+
+Referenced by verify\_\-field\_\-access().
+
+\index{field.h@{field.h}!field\_\-is\_\-public@{field\_\-is\_\-public}}
+\index{field\_\-is\_\-public@{field\_\-is\_\-public}!field.h@{field.h}}
+\subsubsection[{field\_\-is\_\-public}]{\setlength{\rightskip}{0pt plus 5cm}static bool field\_\-is\_\-public (
+\begin{DoxyParamCaption}
+\item[{const {\bf field\_\-t} $\ast$}]{ field}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily  [inline, static]}}\label{field_8h_abeb3cb8deab0b1619946fcfdde23aa79}
+Checks if a field is public 
+\begin{DoxyParams}{Parameters}
+\item[{\em field}]A pointer to a \doxyref{field\_\-t}{p.}{structfield__t} structure \end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+true if the field is public, false otherwise 
+\end{DoxyReturn}
+
+
+Definition at line 118 of file field.h.
+
+
+
+References field\_\-t::access\_\-flags.
+
+
+
+Referenced by verify\_\-field\_\-access().
+
+\index{field.h@{field.h}!field\_\-is\_\-reference@{field\_\-is\_\-reference}}
+\index{field\_\-is\_\-reference@{field\_\-is\_\-reference}!field.h@{field.h}}
+\subsubsection[{field\_\-is\_\-reference}]{\setlength{\rightskip}{0pt plus 5cm}static bool field\_\-is\_\-reference (
+\begin{DoxyParamCaption}
+\item[{const {\bf field\_\-t} $\ast$}]{ field}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily  [inline, static]}}\label{field_8h_a94d6773ce3da77910362617078832944}
+Checks if a field is a reference to an object 
+\begin{DoxyParams}{Parameters}
+\item[{\em field}]A pointer to a field \end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+true if the field holds a reference to an object, false otherwise 
+\end{DoxyReturn}
+
+
+Definition at line 127 of file field.h.
+
+
+
+References field\_\-t::descriptor.
+
+
+
+Referenced by bcl\_\-mark().
+
+\index{field.h@{field.h}!field\_\-is\_\-static@{field\_\-is\_\-static}}
+\index{field\_\-is\_\-static@{field\_\-is\_\-static}!field.h@{field.h}}
+\subsubsection[{field\_\-is\_\-static}]{\setlength{\rightskip}{0pt plus 5cm}static bool field\_\-is\_\-static (
+\begin{DoxyParamCaption}
+\item[{const {\bf field\_\-t} $\ast$}]{ field}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily  [inline, static]}}\label{field_8h_a0f056c0554b6a88707eaa9a04d9c85b6}
+Checks if a field is static 
+\begin{DoxyParams}{Parameters}
+\item[{\em field}]A pointer to a \doxyref{field\_\-t}{p.}{structfield__t} structure \end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+true if the field is static, false otherwise 
+\end{DoxyReturn}
+
+
+Definition at line 91 of file field.h.
+
+
+
+References field\_\-t::access\_\-flags.
+
+
+
+Referenced by class\_\-add\_\-field(), class\_\-get\_\-field(), field\_\-itr\_\-find\_\-next(), KNI\_\-GetFieldID(), and KNI\_\-GetStaticFieldID().
+
+\index{field.h@{field.h}!field\_\-itr@{field\_\-itr}}
+\index{field\_\-itr@{field\_\-itr}!field.h@{field.h}}
+\subsubsection[{field\_\-itr}]{\setlength{\rightskip}{0pt plus 5cm}{\bf field\_\-iterator\_\-t} field\_\-itr (
+\begin{DoxyParamCaption}
+\item[{{\bf class\_\-t} $\ast$}]{ cl, }
+\item[{bool}]{ stat}
+\end{DoxyParamCaption}
+)}\label{field_8h_aa83fdd0f7586f67232e64a1722ff1bab}
+Returns an iterator for navigating the instance or static fields of a class depending on the value of stat 
+\begin{DoxyParams}{Parameters}
+\item[{\em cl}]A pointer to a class \item[{\em stat}]true if a static field iterator is needed, false otherwise \end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+An initialized iterator 
+\end{DoxyReturn}
+
+
+Definition at line 224 of file field.c.
+
+
+
+References field\_\-iterator\_\-t::end, field\_\-itr\_\-find\_\-next(), class\_\-t::fields, class\_\-t::fields\_\-n, field\_\-iterator\_\-t::next, and field\_\-iterator\_\-t::stat.
+
+
+
+Referenced by instance\_\-field\_\-itr(), and static\_\-field\_\-itr().
+
+\index{field.h@{field.h}!field\_\-itr\_\-get\_\-next@{field\_\-itr\_\-get\_\-next}}
+\index{field\_\-itr\_\-get\_\-next@{field\_\-itr\_\-get\_\-next}!field.h@{field.h}}
+\subsubsection[{field\_\-itr\_\-get\_\-next}]{\setlength{\rightskip}{0pt plus 5cm}{\bf field\_\-t}$\ast$ field\_\-itr\_\-get\_\-next (
+\begin{DoxyParamCaption}
+\item[{{\bf field\_\-iterator\_\-t} $\ast$}]{ itr}
+\end{DoxyParamCaption}
+)}\label{field_8h_a7e4dfbc0db8c44126789e38b2fccd4ad}
+Returns the next field of this iteration 
+\begin{DoxyParams}{Parameters}
+\item[{\em itr}]A field iterator \end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+The next field available 
+\end{DoxyReturn}
+
+
+Definition at line 240 of file field.c.
+
+
+
+References field\_\-iterator\_\-t::end, field\_\-itr\_\-find\_\-next(), field\_\-itr\_\-has\_\-next(), field\_\-iterator\_\-t::next, and field\_\-iterator\_\-t::stat.
+
+
+
+Referenced by bcl\_\-mark(), initialize\_\-static\_\-fields(), and layout\_\-fields().
+
+\index{field.h@{field.h}!field\_\-itr\_\-has\_\-next@{field\_\-itr\_\-has\_\-next}}
+\index{field\_\-itr\_\-has\_\-next@{field\_\-itr\_\-has\_\-next}!field.h@{field.h}}
+\subsubsection[{field\_\-itr\_\-has\_\-next}]{\setlength{\rightskip}{0pt plus 5cm}static bool field\_\-itr\_\-has\_\-next (
+\begin{DoxyParamCaption}
+\item[{{\bf field\_\-iterator\_\-t}}]{ itr}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily  [inline, static]}}\label{field_8h_a2fb75ca7b7bf901da853dbfc193063eb}
+Returns true if there are still fields which can be iterated over, false otherwise 
+\begin{DoxyParams}{Parameters}
+\item[{\em itr}]A field iterator \end{DoxyParams}
+
+
+Definition at line 180 of file field.h.
+
+
+
+References field\_\-iterator\_\-t::next.
+
+
+
+Referenced by bcl\_\-mark(), field\_\-itr\_\-get\_\-next(), initialize\_\-static\_\-fields(), and layout\_\-fields().
+
+\index{field.h@{field.h}!field\_\-parse\_\-descriptor@{field\_\-parse\_\-descriptor}}
+\index{field\_\-parse\_\-descriptor@{field\_\-parse\_\-descriptor}!field.h@{field.h}}
+\subsubsection[{field\_\-parse\_\-descriptor}]{\setlength{\rightskip}{0pt plus 5cm}void field\_\-parse\_\-descriptor (
+\begin{DoxyParamCaption}
+\item[{const char $\ast$}]{ desc}
+\end{DoxyParamCaption}
+)}\label{field_8h_ad8125de1e53207adc4b5b021bd244aaa}
+Checks if a field descriptor is valid 
+\begin{DoxyParams}{Parameters}
+\item[{\em desc}]A field descriptor \end{DoxyParams}
+
+
+Definition at line 74 of file field.c.
+
+
+
+References c\_\-throw, and JAVA\_\-LANG\_\-NOCLASSDEFFOUNDERROR.
+
+
+
+Referenced by verify\_\-field().
+
+\index{field.h@{field.h}!field\_\-size@{field\_\-size}}
+\index{field\_\-size@{field\_\-size}!field.h@{field.h}}
+\subsubsection[{field\_\-size}]{\setlength{\rightskip}{0pt plus 5cm}size\_\-t field\_\-size (
+\begin{DoxyParamCaption}
+\item[{const {\bf field\_\-t} $\ast$}]{ field}
+\end{DoxyParamCaption}
+)}\label{field_8h_aaa26e9bf21908022b2cfe803539d23a7}
+Returns the size in bytes of a field 
+\begin{DoxyParams}{Parameters}
+\item[{\em field}]A pointer to a field \end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+The size in bytes of the field 
+\end{DoxyReturn}
+
+
+Definition at line 38 of file field.c.
+
+
+
+References dbg\_\-unreachable, and field\_\-t::descriptor.
+
+\index{field.h@{field.h}!instance\_\-field\_\-itr@{instance\_\-field\_\-itr}}
+\index{instance\_\-field\_\-itr@{instance\_\-field\_\-itr}!field.h@{field.h}}
+\subsubsection[{instance\_\-field\_\-itr}]{\setlength{\rightskip}{0pt plus 5cm}static {\bf field\_\-iterator\_\-t} instance\_\-field\_\-itr (
+\begin{DoxyParamCaption}
+\item[{struct {\bf class\_\-t} $\ast$}]{ cl}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily  [inline, static]}}\label{field_8h_acb72dce509a2d073ee57fd070d6a6ab9}
+Returns an iterator for navigating the instance fields of a class 
+\begin{DoxyParams}{Parameters}
+\item[{\em cl}]A pointer to a class \end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+An initialized iterator 
+\end{DoxyReturn}
+
+
+Definition at line 162 of file field.h.
+
+
+
+References field\_\-itr().
+
+
+
+Referenced by layout\_\-fields().
+
+\index{field.h@{field.h}!static\_\-field\_\-data\_\-ptr@{static\_\-field\_\-data\_\-ptr}}
+\index{static\_\-field\_\-data\_\-ptr@{static\_\-field\_\-data\_\-ptr}!field.h@{field.h}}
+\subsubsection[{static\_\-field\_\-data\_\-ptr}]{\setlength{\rightskip}{0pt plus 5cm}uintptr\_\-t static\_\-field\_\-data\_\-ptr (
+\begin{DoxyParamCaption}
+\item[{{\bf static\_\-field\_\-t} $\ast$}]{ static\_\-field}
+\end{DoxyParamCaption}
+)}\label{field_8h_a06ec755557daffde57e63739303b0973}
+Returns a pointer to the actual data of a static field 
+\begin{DoxyParams}{Parameters}
+\item[{\em static\_\-field}]A pointer to a static field \end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+The address of the static field data 
+\end{DoxyReturn}
+
+
+Definition at line 174 of file field.c.
+
+
+
+References static\_\-field\_\-t::data, dbg\_\-unreachable, field\_\-t::descriptor, and static\_\-field\_\-t::field.
+
+
+
+Referenced by KNI\_\-GetStaticFieldID(), and resolve\_\-static\_\-field().
+
+\index{field.h@{field.h}!static\_\-field\_\-itr@{static\_\-field\_\-itr}}
+\index{static\_\-field\_\-itr@{static\_\-field\_\-itr}!field.h@{field.h}}
+\subsubsection[{static\_\-field\_\-itr}]{\setlength{\rightskip}{0pt plus 5cm}static {\bf field\_\-iterator\_\-t} static\_\-field\_\-itr (
+\begin{DoxyParamCaption}
+\item[{struct {\bf class\_\-t} $\ast$}]{ cl}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily  [inline, static]}}\label{field_8h_a3b3d452170a7bc0ea6c92e3ed478615b}
+Returns an iterator for navigating the static fields of a class 
+\begin{DoxyParams}{Parameters}
+\item[{\em cl}]A pointer to a class \end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+An initialized iterator 
+\end{DoxyReturn}
+
+
+Definition at line 171 of file field.h.
+
+
+
+References field\_\-itr().
+
+
+
+Referenced by bcl\_\-mark(), and initialize\_\-static\_\-fields().
+

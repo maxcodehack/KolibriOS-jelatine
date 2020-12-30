@@ -1,0 +1,185 @@
+\section{java::util::TimeZone Class Reference}
+\label{classjava_1_1util_1_1_time_zone}\index{java::util::TimeZone@{java::util::TimeZone}}
+Inheritance diagram for java::util::TimeZone:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=2.000000cm]{classjava_1_1util_1_1_time_zone}
+\end{center}
+\end{figure}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+abstract int {\bf getOffset} (int era, int year, int month, int day, int dayOfWeek, int milliseconds)  throws IllegalArgumentException
+\item 
+abstract int {\bf getRawOffset} ()
+\item 
+abstract boolean {\bf useDaylightTime} ()
+\item 
+String {\bf getID} ()
+\end{DoxyCompactItemize}
+\subsection*{Static Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+static {\bf TimeZone} {\bf getTimeZone} (String ID)
+\item 
+static {\bf TimeZone} {\bf getDefault} ()
+\item 
+static String[$\,$] {\bf getAvailableIDs} ()
+\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+This class represents a time zone offset and handles daylight savings.
+
+You can get the default time zone with {\ttfamily getDefault}. This represents the time zone where program is running.
+
+Another way to create a time zone is {\ttfamily getTimeZone}, where you can give an identifier as parameter. For instance, the identifier of the Central European Time zone is \char`\"{}CET\char`\"{}.
+
+With the {\ttfamily getAvailableIDs} method, you can get all the supported time zone identifiers.
+
+\begin{DoxySeeAlso}{See also}
+\doxyref{Calendar}{p.}{classjava_1_1util_1_1_calendar} 
+
+SimpleTimeZone 
+\end{DoxySeeAlso}
+\begin{DoxyAuthor}{Author}
+Jochen Hoenicke 
+\end{DoxyAuthor}
+
+
+Definition at line 61 of file TimeZone.java.
+
+
+
+\subsection{Member Function Documentation}
+\index{java::util::TimeZone@{java::util::TimeZone}!getAvailableIDs@{getAvailableIDs}}
+\index{getAvailableIDs@{getAvailableIDs}!java::util::TimeZone@{java::util::TimeZone}}
+\subsubsection[{getAvailableIDs}]{\setlength{\rightskip}{0pt plus 5cm}static String [$\,$] java::util::TimeZone::getAvailableIDs (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily  [inline, static]}}\label{classjava_1_1util_1_1_time_zone_a533d1a1ebb80915571e5e5e3471c1d09}
+Gets all the avaible IDs supported
+
+\begin{DoxyReturn}{Returns}
+An array with all the supported IDs 
+\end{DoxyReturn}
+
+
+Definition at line 142 of file TimeZone.java.
+
+\index{java::util::TimeZone@{java::util::TimeZone}!getDefault@{getDefault}}
+\index{getDefault@{getDefault}!java::util::TimeZone@{java::util::TimeZone}}
+\subsubsection[{getDefault}]{\setlength{\rightskip}{0pt plus 5cm}static {\bf TimeZone} java::util::TimeZone::getDefault (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily  [inline, static]}}\label{classjava_1_1util_1_1_time_zone_a6ca6de2eb2b98ba018f84323969ad1f2}
+Returns the time zone under which the host is running. This can be changed with setDefault.
+
+\begin{DoxyReturn}{Returns}
+A clone of the current default time zone for this host. 
+\end{DoxyReturn}
+
+
+Definition at line 129 of file TimeZone.java.
+
+
+
+Referenced by java::util::Calendar::Calendar(), and getTimeZone().
+
+\index{java::util::TimeZone@{java::util::TimeZone}!getID@{getID}}
+\index{getID@{getID}!java::util::TimeZone@{java::util::TimeZone}}
+\subsubsection[{getID}]{\setlength{\rightskip}{0pt plus 5cm}String java::util::TimeZone::getID (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily  [inline]}}\label{classjava_1_1util_1_1_time_zone_a176ce20dd4440a37fe25d67d8930b4aa}
+Gets the identifier of this time zone. For instance, PST for Pacific Standard Time. \begin{DoxyReturn}{Returns}
+the ID of this time zone. 
+\end{DoxyReturn}
+
+
+Definition at line 105 of file TimeZone.java.
+
+
+
+Referenced by jelatine::VMTimeZone::toString(), and java::util::Date::toString().
+
+\index{java::util::TimeZone@{java::util::TimeZone}!getOffset@{getOffset}}
+\index{getOffset@{getOffset}!java::util::TimeZone@{java::util::TimeZone}}
+\subsubsection[{getOffset}]{\setlength{\rightskip}{0pt plus 5cm}abstract int java::util::TimeZone::getOffset (
+\begin{DoxyParamCaption}
+\item[{int}]{ era, }
+\item[{int}]{ year, }
+\item[{int}]{ month, }
+\item[{int}]{ day, }
+\item[{int}]{ dayOfWeek, }
+\item[{int}]{ milliseconds}
+\end{DoxyParamCaption}
+)  throws IllegalArgumentException\hspace{0.3cm}{\ttfamily  [pure virtual]}}\label{classjava_1_1util_1_1_time_zone_ad4f8eca476045f66b4b393543df1ba31}
+Gets the time zone offset, for current date, modified in case of daylight savings. This is the offset to add to UTC to get the local time. 
+\begin{DoxyParams}{Parameters}
+\item[{\em era}]the era of the given date \item[{\em year}]the year of the given date \item[{\em month}]the month of the given date, 0 for January. \item[{\em day}]the day of month \item[{\em dayOfWeek}]the day of week \item[{\em milliseconds}]the millis in the day (in local standard time) \end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+the time zone offset in milliseconds. 
+\end{DoxyReturn}
+
+
+Implemented in {\bf jelatine::VMTimeZone} \doxyref{}{p.}{classjelatine_1_1_v_m_time_zone_ad6ebe9060d8820ac90f2ff5261453254}.
+
+\index{java::util::TimeZone@{java::util::TimeZone}!getRawOffset@{getRawOffset}}
+\index{getRawOffset@{getRawOffset}!java::util::TimeZone@{java::util::TimeZone}}
+\subsubsection[{getRawOffset}]{\setlength{\rightskip}{0pt plus 5cm}abstract int java::util::TimeZone::getRawOffset (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily  [pure virtual]}}\label{classjava_1_1util_1_1_time_zone_adbc442f64e69f518bd67aa6dfdcb9f1c}
+Gets the time zone offset, ignoring daylight savings. This is the offset to add to UTC to get the local time. \begin{DoxyReturn}{Returns}
+the time zone offset in milliseconds. 
+\end{DoxyReturn}
+
+
+Implemented in {\bf jelatine::VMTimeZone} \doxyref{}{p.}{classjelatine_1_1_v_m_time_zone_a33f78cf6f3a9d11adc6522321a3b43e0}.
+
+
+
+Referenced by java::util::Calendar::clear().
+
+\index{java::util::TimeZone@{java::util::TimeZone}!getTimeZone@{getTimeZone}}
+\index{getTimeZone@{getTimeZone}!java::util::TimeZone@{java::util::TimeZone}}
+\subsubsection[{getTimeZone}]{\setlength{\rightskip}{0pt plus 5cm}static {\bf TimeZone} java::util::TimeZone::getTimeZone (
+\begin{DoxyParamCaption}
+\item[{String}]{ ID}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily  [inline, static]}}\label{classjava_1_1util_1_1_time_zone_a1f5fa13db3786924391a17bc118d87a2}
+Gets the \doxyref{TimeZone}{p.}{classjava_1_1util_1_1_time_zone} for the given ID. 
+\begin{DoxyParams}{Parameters}
+\item[{\em ID}]the time zone identifier. \end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+The time zone for the identifier or GMT, if no such time zone exists. 
+\end{DoxyReturn}
+
+
+Definition at line 117 of file TimeZone.java.
+
+
+
+References getDefault().
+
+\index{java::util::TimeZone@{java::util::TimeZone}!useDaylightTime@{useDaylightTime}}
+\index{useDaylightTime@{useDaylightTime}!java::util::TimeZone@{java::util::TimeZone}}
+\subsubsection[{useDaylightTime}]{\setlength{\rightskip}{0pt plus 5cm}abstract boolean java::util::TimeZone::useDaylightTime (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily  [pure virtual]}}\label{classjava_1_1util_1_1_time_zone_ae7869f57c67c330fd2d3e9de5144d4ed}
+Returns true, if this time zone uses Daylight Savings Time. 
+
+Implemented in {\bf jelatine::VMTimeZone} \doxyref{}{p.}{classjelatine_1_1_v_m_time_zone_a53ca7ae649c8ce43937cb1e2005d660b}.
+
+
+
+The documentation for this class was generated from the following file:\begin{DoxyCompactItemize}
+\item 
+src/classpath/java/util/TimeZone.java\end{DoxyCompactItemize}

@@ -1,0 +1,137 @@
+\section{src/jelatine/interpreter.h File Reference}
+\label{interpreter_8h}\index{src/jelatine/interpreter.h@{src/jelatine/interpreter.h}}
+{\ttfamily \#include \char`\"{}wrappers.h\char`\"{}}\par
+{\ttfamily \#include \char`\"{}method.h\char`\"{}}\par
+\subsection*{Defines}
+\begin{DoxyCompactItemize}
+\item 
+\#define {\bf JELATINE\_\-INTERPRETER\_\-H}~(1)
+\item 
+\#define {\bf PRINT\_\-OPCODE}()
+\item 
+\#define {\bf INTERPRETER\_\-PROLOG}
+\item 
+\#define {\bf INTERPRETER\_\-EPILOG}
+\item 
+\#define {\bf OPCODE}(x)
+\item 
+\#define {\bf DISPATCH}~goto dispatch
+\end{DoxyCompactItemize}
+\subsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+void {\bf interpreter} ({\bf method\_\-t} $\ast$)
+\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+Bytecode interpreter interface 
+
+Definition in file {\bf interpreter.h}.
+
+
+
+\subsection{Define Documentation}
+\index{interpreter.h@{interpreter.h}!DISPATCH@{DISPATCH}}
+\index{DISPATCH@{DISPATCH}!interpreter.h@{interpreter.h}}
+\subsubsection[{DISPATCH}]{\setlength{\rightskip}{0pt plus 5cm}\#define DISPATCH~goto dispatch}\label{interpreter_8h_a40314433b5f301aaff50f5597553cc8d}
+Dispatches the next interpreter, jumps back to the interpreter prolog or straight to the next opcode 
+
+Definition at line 92 of file interpreter.h.
+
+\index{interpreter.h@{interpreter.h}!INTERPRETER\_\-EPILOG@{INTERPRETER\_\-EPILOG}}
+\index{INTERPRETER\_\-EPILOG@{INTERPRETER\_\-EPILOG}!interpreter.h@{interpreter.h}}
+\subsubsection[{INTERPRETER\_\-EPILOG}]{\setlength{\rightskip}{0pt plus 5cm}\#define INTERPRETER\_\-EPILOG}\label{interpreter_8h_a26ce79d01b400be0168b321204e5c080}
+{\bfseries Value:}
+\begin{DoxyCode}
+}\
+\
+return;
+\end{DoxyCode}
+As for the prolog, closes the switch statement or does nothing 
+
+Definition at line 68 of file interpreter.h.
+
+
+
+Referenced by interpreter().
+
+\index{interpreter.h@{interpreter.h}!INTERPRETER\_\-PROLOG@{INTERPRETER\_\-PROLOG}}
+\index{INTERPRETER\_\-PROLOG@{INTERPRETER\_\-PROLOG}!interpreter.h@{interpreter.h}}
+\subsubsection[{INTERPRETER\_\-PROLOG}]{\setlength{\rightskip}{0pt plus 5cm}\#define INTERPRETER\_\-PROLOG}\label{interpreter_8h_a429881bd46a4f7ae30795590bf300052}
+{\bfseries Value:}
+\begin{DoxyCode}
+dispatch:\
+    switch (*pc) {
+\end{DoxyCode}
+Macro used for creating the prolog of the interpreter, expands into the head of a switch statement if the labels-\/as-\/values extension is not available, into a direct jump otherwise 
+
+Definition at line 56 of file interpreter.h.
+
+
+
+Referenced by interpreter().
+
+\index{interpreter.h@{interpreter.h}!JELATINE\_\-INTERPRETER\_\-H@{JELATINE\_\-INTERPRETER\_\-H}}
+\index{JELATINE\_\-INTERPRETER\_\-H@{JELATINE\_\-INTERPRETER\_\-H}!interpreter.h@{interpreter.h}}
+\subsubsection[{JELATINE\_\-INTERPRETER\_\-H}]{\setlength{\rightskip}{0pt plus 5cm}\#define JELATINE\_\-INTERPRETER\_\-H~(1)}\label{interpreter_8h_af2668ba0331bc7bc8c704db1a528ae30}
+\doxyref{interpreter.h}{p.}{interpreter_8h} inclusion macro 
+
+Definition at line 28 of file interpreter.h.
+
+\index{interpreter.h@{interpreter.h}!OPCODE@{OPCODE}}
+\index{OPCODE@{OPCODE}!interpreter.h@{interpreter.h}}
+\subsubsection[{OPCODE}]{\setlength{\rightskip}{0pt plus 5cm}\#define OPCODE(
+\begin{DoxyParamCaption}
+\item[{}]{x}
+\end{DoxyParamCaption}
+)}\label{interpreter_8h_ad53d337feac7203106555f2b6af076de}
+{\bfseries Value:}
+\begin{DoxyCode}
+case x: \
+    PRINT_OPCODE();
+\end{DoxyCode}
+Declares an opcode, expands into a case statement or into a label 
+
+Definition at line 81 of file interpreter.h.
+
+
+
+Referenced by interpreter().
+
+\index{interpreter.h@{interpreter.h}!PRINT\_\-OPCODE@{PRINT\_\-OPCODE}}
+\index{PRINT\_\-OPCODE@{PRINT\_\-OPCODE}!interpreter.h@{interpreter.h}}
+\subsubsection[{PRINT\_\-OPCODE}]{\setlength{\rightskip}{0pt plus 5cm}\#define PRINT\_\-OPCODE(
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}\label{interpreter_8h_aaa0bb7aa82ccb93d3958c82326ed08b2}
+Macro used in the OPCODE macro to print out an opcode when it is executed 
+
+Definition at line 44 of file interpreter.h.
+
+
+
+\subsection{Function Documentation}
+\index{interpreter.h@{interpreter.h}!interpreter@{interpreter}}
+\index{interpreter@{interpreter}!interpreter.h@{interpreter.h}}
+\subsubsection[{interpreter}]{\setlength{\rightskip}{0pt plus 5cm}void interpreter (
+\begin{DoxyParamCaption}
+\item[{{\bf method\_\-t} $\ast$}]{ main\_\-method}
+\end{DoxyParamCaption}
+)}\label{interpreter_8h_a897167540b84f725328eed1bfce3ee80}
+Launches the interpreter 
+\begin{DoxyParams}{Parameters}
+\item[{\em main\_\-method}]The entry point \end{DoxyParams}
+
+
+Definition at line 98 of file interpreter.c.
+
+
+
+References method\_\-t::args\_\-size, array\_\-get\_\-data(), array\_\-length(), array\_\-ref\_\-get\_\-data(), bcl\_\-get\_\-class\_\-by\_\-id(), bcl\_\-is\_\-assignable(), bcl\_\-link\_\-method(), bcl\_\-link\_\-opcode(), bcl\_\-resolve\_\-class(), c\_\-throw, exception\_\-handler\_\-t::catch\_\-type, stack\_\-frame\_\-t::cl, class\_\-get\_\-object(), class\_\-is\_\-parent(), method\_\-t::code, method\_\-t::cp, cp\_\-data\_\-get\_\-int32(), cp\_\-data\_\-get\_\-int64(), cp\_\-data\_\-get\_\-ptr(), cp\_\-data\_\-get\_\-uintptr(), cp\_\-get\_\-class(), method\_\-t::data, const\_\-pool\_\-t::data, dbg\_\-unreachable, class\_\-t::dimensions, class\_\-t::dtable, class\_\-t::elem\_\-class, class\_\-t::elem\_\-type, thread\_\-t::exception, method\_\-t::exception\_\-table\_\-length, thread\_\-t::fp, method\_\-t::function, gc\_\-new(), gc\_\-new\_\-array\_\-nonref(), gc\_\-new\_\-array\_\-ref(), gc\_\-new\_\-multiarray(), halt\_\-method, exception\_\-handler\_\-t::handler\_\-pc, method\_\-t::handlers, array\_\-t::header, header\_\-get\_\-class(), class\_\-t::inames, INTERPRETER\_\-EPILOG, INTERPRETER\_\-PROLOG, class\_\-t::itable, class\_\-t::itable\_\-count, JAVA\_\-LANG\_\-VIRTUALMACHINEERROR, load\_\-int16\_\-un, load\_\-int32\_\-un, load\_\-uint16\_\-un, stack\_\-frame\_\-t::locals, method\_\-t::max\_\-locals, method\_\-t::max\_\-stack, stack\_\-frame\_\-t::method, method\_\-is\_\-static(), method\_\-is\_\-synchronized(), method\_\-unpack\_\-arguments(), method\_\-unpack\_\-index(), monitor\_\-enter(), monitor\_\-exit(), class\_\-t::name, OPCODE, class\_\-t::parent, stack\_\-frame\_\-t::pc, prepare\_\-for\_\-call(), print\_\-method\_\-call, print\_\-method\_\-ret, print\_\-method\_\-unwind, PT\_\-BYTE, RET\_\-DOUBLE, RET\_\-FLOAT, RET\_\-INT, RET\_\-LONG, RET\_\-OBJECT, RET\_\-VOID, method\_\-t::return\_\-type, SAVE\_\-STATE, size\_\-ceil(), thread\_\-t::sp, and thread\_\-self().
+
+
+
+Referenced by initialize\_\-class(), java\_\-lang\_\-Class\_\-newInstance(), thread\_\-create\_\-main(), and thread\_\-start().
+

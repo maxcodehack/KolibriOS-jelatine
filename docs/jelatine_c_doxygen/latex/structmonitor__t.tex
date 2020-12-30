@@ -1,0 +1,32 @@
+\section{monitor\_\-t Struct Reference}
+\label{structmonitor__t}\index{monitor\_\-t@{monitor\_\-t}}
+\subsection*{Data Fields}
+\begin{DoxyCompactItemize}
+\item 
+struct {\bf monitor\_\-t} $\ast$ {\bf next}\label{structmonitor__t_a2b9d19abbcae80bfe2fddbd936a1380a}
+
+\begin{DoxyCompactList}\small\item\em Next monitor in the list. \item\end{DoxyCompactList}\item 
+uintptr\_\-t {\bf ref}\label{structmonitor__t_ac81af8d01fdb8bb48b8ba7901d997347}
+
+\begin{DoxyCompactList}\small\item\em Object associated with this monitor. \item\end{DoxyCompactList}\item 
+{\bf thread\_\-t} $\ast$ {\bf owner}\label{structmonitor__t_aec28adc3a660b72c8dbfbe5c9044d0cf}
+
+\begin{DoxyCompactList}\small\item\em Owner thread, NULL if the monitor is unlocked. \item\end{DoxyCompactList}\item 
+size\_\-t {\bf count}\label{structmonitor__t_af971ff0283195e45d60e657ac52b446e}
+
+\begin{DoxyCompactList}\small\item\em Number of times the monitor was acquired. \item\end{DoxyCompactList}\item 
+{\bf native\_\-cond\_\-t} $\ast$ {\bf cond}\label{structmonitor__t_ab405e53ba3c808e4726047384fcb8831}
+
+\begin{DoxyCompactList}\small\item\em Condition variable associated with the monitor. \item\end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+Represents a Java monitor 
+
+Definition at line 338 of file thread.c.
+
+
+
+The documentation for this struct was generated from the following file:\begin{DoxyCompactItemize}
+\item 
+{\bf thread.c}\end{DoxyCompactItemize}

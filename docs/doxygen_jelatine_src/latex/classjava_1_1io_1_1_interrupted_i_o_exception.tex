@@ -1,0 +1,82 @@
+\section{java::io::InterruptedIOException Class Reference}
+\label{classjava_1_1io_1_1_interrupted_i_o_exception}\index{java::io::InterruptedIOException@{java::io::InterruptedIOException}}
+Inheritance diagram for java::io::InterruptedIOException:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=2.000000cm]{classjava_1_1io_1_1_interrupted_i_o_exception}
+\end{center}
+\end{figure}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+{\bf InterruptedIOException} ()
+\item 
+{\bf InterruptedIOException} (String message)
+\end{DoxyCompactItemize}
+\subsection*{Data Fields}
+\begin{DoxyCompactItemize}
+\item 
+int {\bf bytesTransferred}
+\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+This exception is thrown when a in process I/O operation is interrupted for some reason. The field bytesTransferred will contain the number of bytes that were read/written prior to the interruption.
+
+\begin{DoxyAuthor}{Author}
+Aaron M. Renn ({\tt arenn@urbanophile.com}) 
+
+Tom Tromey ({\tt tromey@cygnus.com}) 
+\end{DoxyAuthor}
+\begin{DoxySeeAlso}{See also}
+Thread::interrupt() 
+\end{DoxySeeAlso}
+
+
+Definition at line 49 of file InterruptedIOException.java.
+
+
+
+\subsection{Constructor \& Destructor Documentation}
+\index{java::io::InterruptedIOException@{java::io::InterruptedIOException}!InterruptedIOException@{InterruptedIOException}}
+\index{InterruptedIOException@{InterruptedIOException}!java::io::InterruptedIOException@{java::io::InterruptedIOException}}
+\subsubsection[{InterruptedIOException}]{\setlength{\rightskip}{0pt plus 5cm}java::io::InterruptedIOException::InterruptedIOException (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily  [inline]}}\label{classjava_1_1io_1_1_interrupted_i_o_exception_aaf95c13c4247f4f2e62de5f93d63b0c7}
+Create an extends without a descriptive error message. 
+
+Definition at line 59 of file InterruptedIOException.java.
+
+\index{java::io::InterruptedIOException@{java::io::InterruptedIOException}!InterruptedIOException@{InterruptedIOException}}
+\index{InterruptedIOException@{InterruptedIOException}!java::io::InterruptedIOException@{java::io::InterruptedIOException}}
+\subsubsection[{InterruptedIOException}]{\setlength{\rightskip}{0pt plus 5cm}java::io::InterruptedIOException::InterruptedIOException (
+\begin{DoxyParamCaption}
+\item[{String}]{ message}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily  [inline]}}\label{classjava_1_1io_1_1_interrupted_i_o_exception_aa059bee8b81f04d93a385a611940367d}
+Create an exception with a descriptive error message.
+
+
+\begin{DoxyParams}{Parameters}
+\item[{\em message}]the descriptive error message \end{DoxyParams}
+
+
+Definition at line 68 of file InterruptedIOException.java.
+
+
+
+\subsection{Field Documentation}
+\index{java::io::InterruptedIOException@{java::io::InterruptedIOException}!bytesTransferred@{bytesTransferred}}
+\index{bytesTransferred@{bytesTransferred}!java::io::InterruptedIOException@{java::io::InterruptedIOException}}
+\subsubsection[{bytesTransferred}]{\setlength{\rightskip}{0pt plus 5cm}int {\bf java::io::InterruptedIOException::bytesTransferred}}\label{classjava_1_1io_1_1_interrupted_i_o_exception_a774dad93f8d2a176dfe04e289238cd12}
+The number of bytes read/written prior to the interruption. 
+
+Definition at line 54 of file InterruptedIOException.java.
+
+
+
+The documentation for this class was generated from the following file:\begin{DoxyCompactItemize}
+\item 
+src/classpath/java/io/InterruptedIOException.java\end{DoxyCompactItemize}

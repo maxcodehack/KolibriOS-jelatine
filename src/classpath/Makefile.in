@@ -1,0 +1,638 @@
+###############################################################################
+##   Copyright © 2005-2011 by Gabriele Svelto                                ##
+##   gabriele.svelto@gmail.com                                               ##
+##                                                                           ##
+##   This file is part of Jelatine.                                          ##
+##                                                                           ##
+##   Jelatine is free software: you can redistribute it and/or modify        ##
+##   it under the terms of the GNU General Public License as published by    ##
+##   the Free Software Foundation, either version 3 of the License, or       ##
+##   (at your option) any later version.                                     ##
+##                                                                           ##
+##   Jelatine is distributed in the hope that it will be useful,             ##
+##   but WITHOUT ANY WARRANTY; without even the implied warranty of          ##
+##   MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the           ##
+##   GNU General Public License for more details.                            ##
+##                                                                           ##
+##   You should have received a copy of the GNU General Public License       ##
+##   along with Jelatine.  If not, see <http://www.gnu.org/licenses/>.       ##
+###############################################################################
+
+JAR = @JAR@
+JAVAC = @JAVAC@
+JAVACFLAGS = @JAVACFLAGS@ -classpath @srcdir@ -bootclasspath @srcdir@ -d . -source 1.4
+
+prefix = @prefix@
+datadir = @datadir@
+datarootdir = @datarootdir@
+pkgdatadir = $(datadir)/@PACKAGE@
+
+install_sh = @install_sh@
+mkinstalldirs = $(install_sh) -d
+install_sh_DATA = $(install_sh) -c -m 644
+
+# Class names
+
+class_names = \
+    java.io.ByteArrayInputStream \
+    java.io.ByteArrayOutputStream \
+    java.io.DataInput \
+    java.io.DataInputStream \
+    java.io.DataOutput \
+    java.io.DataOutputStream \
+    java.io.EOFException \
+    java.io.InputStream \
+    java.io.InputStreamReader \
+    java.io.InterruptedIOException \
+    java.io.IOException \
+    java.io.OutputStream \
+    java.io.OutputStreamWriter \
+    java.io.PrintStream \
+    java.io.Reader \
+    java.io.UnsupportedEncodingException \
+    java.io.UTFDataFormatException \
+    java.io.Writer \
+    java.lang.ArithmeticException \
+    java.lang.ArrayIndexOutOfBoundsException \
+    java.lang.ArrayStoreException \
+    java.lang.Boolean \
+    java.lang.Byte \
+    java.lang.Character \
+    java.lang.Class \
+    java.lang.ClassCastException \
+    java.lang.ClassNotFoundException \
+    java.lang.Double \
+    java.lang.Error \
+    java.lang.Exception \
+    java.lang.Float \
+    java.lang.IllegalAccessException \
+    java.lang.IllegalArgumentException \
+    java.lang.IllegalMonitorStateException \
+    java.lang.IllegalThreadStateException \
+    java.lang.IndexOutOfBoundsException \
+    java.lang.InstantiationException \
+    java.lang.Integer \
+    java.lang.InterruptedException \
+    java.lang.Long \
+    java.lang.Math \
+    java.lang.NegativeArraySizeException \
+    java.lang.NoClassDefFoundError \
+    java.lang.NullPointerException \
+    java.lang.NumberFormatException \
+    java.lang.Object \
+    java.lang.OutOfMemoryError \
+    java.lang.Runnable \
+    java.lang.Runtime \
+    java.lang.RuntimeException \
+    java.lang.SecurityException \
+    java.lang.Short \
+    java.lang.String \
+    java.lang.StringBuffer \
+    java.lang.StringIndexOutOfBoundsException \
+    java.lang.System \
+    java.lang.Thread \
+    java.lang.Throwable \
+    java.lang.VirtualMachineError \
+    java.lang.ref.Reference \
+    java.lang.ref.WeakReference \
+    java.util.Calendar \
+    java.util.Date \
+    java.util.EmptyStackException \
+    java.util.Enumeration \
+    java.util.Hashtable \
+    java.util.NoSuchElementException \
+    java.util.Random \
+    java.util.TimeZone \
+    java.util.Vector \
+    java.util.Hashtable$$Enumerator \
+    java.util.Hashtable$$HashEntry \
+    java.util.Vector$$1 \
+    javax.microedition.io.Connection \
+    javax.microedition.io.ConnectionNotFoundException \
+    javax.microedition.io.Connector \
+    javax.microedition.io.ContentConnection \
+    javax.microedition.io.Datagram \
+    javax.microedition.io.DatagramConnection \
+    javax.microedition.io.InputConnection \
+    javax.microedition.io.OutputConnection \
+    javax.microedition.io.StreamConnection \
+    javax.microedition.io.StreamConnectionNotifier \
+    jelatine.VMCalendar \
+    jelatine.VMFinalizer \
+    jelatine.VMOutputStream \
+    jelatine.VMPointer \
+    jelatine.VMResourceStream \
+    jelatine.VMTimeZone \
+    jelatine.cldc.io.Protocol \
+    jelatine.cldc.io.URL \
+    jelatine.cldc.io.socket.ProtocolImpl \
+    jelatine.cldc.io.socket.ProtocolImpl$$SocketInputStream \
+    jelatine.cldc.io.socket.ProtocolImpl$$SocketOutputStream
+
+# Built classes
+
+java_io_classes = \
+    java/io/ByteArrayInputStream.class \
+    java/io/ByteArrayOutputStream.class \
+    java/io/DataInput.class \
+    java/io/DataInputStream.class \
+    java/io/DataOutput.class \
+    java/io/DataOutputStream.class \
+    java/io/EOFException.class \
+    java/io/InputStream.class \
+    java/io/InputStreamReader.class \
+    java/io/InterruptedIOException.class \
+    java/io/IOException.class \
+    java/io/OutputStream.class \
+    java/io/OutputStreamWriter.class \
+    java/io/PrintStream.class \
+    java/io/Reader.class \
+    java/io/UnsupportedEncodingException.class \
+    java/io/UTFDataFormatException.class \
+    java/io/Writer.class
+
+java_lang_classes = \
+    java/lang/ArithmeticException.class \
+    java/lang/ArrayIndexOutOfBoundsException.class \
+    java/lang/ArrayStoreException.class \
+    java/lang/Boolean.class \
+    java/lang/Byte.class \
+    java/lang/Character.class \
+    java/lang/Class.class \
+    java/lang/ClassCastException.class \
+    java/lang/ClassNotFoundException.class \
+    java/lang/Double.class \
+    java/lang/Error.class \
+    java/lang/Exception.class \
+    java/lang/Float.class \
+    java/lang/IllegalAccessException.class \
+    java/lang/IllegalArgumentException.class \
+    java/lang/IllegalMonitorStateException.class \
+    java/lang/IllegalThreadStateException.class \
+    java/lang/IndexOutOfBoundsException.class \
+    java/lang/InstantiationException.class \
+    java/lang/Integer.class \
+    java/lang/InterruptedException.class \
+    java/lang/Long.class \
+    java/lang/Math.class \
+    java/lang/NegativeArraySizeException.class \
+    java/lang/NoClassDefFoundError.class \
+    java/lang/NullPointerException.class \
+    java/lang/NumberFormatException.class \
+    java/lang/Object.class \
+    java/lang/OutOfMemoryError.class \
+    java/lang/Runnable.class \
+    java/lang/Runtime.class \
+    java/lang/RuntimeException.class \
+    java/lang/SecurityException.class \
+    java/lang/Short.class \
+    java/lang/String.class \
+    java/lang/StringBuffer.class \
+    java/lang/StringIndexOutOfBoundsException.class \
+    java/lang/System.class \
+    java/lang/Thread.class \
+    java/lang/Throwable.class \
+    java/lang/VirtualMachineError.class
+
+java_lang_ref_classes = \
+    java/lang/ref/Reference.class \
+    java/lang/ref/WeakReference.class
+
+java_util_classes = \
+    java/util/Calendar.class \
+    java/util/Date.class \
+    java/util/EmptyStackException.class \
+    java/util/Enumeration.class \
+    java/util/Hashtable.class \
+    java/util/NoSuchElementException.class \
+    java/util/Random.class \
+    java/util/TimeZone.class \
+    java/util/Vector.class
+
+java_util_internal_classes = \
+    java/util/Hashtable$$Enumerator.class \
+    java/util/Hashtable$$HashEntry.class \
+    java/util/Vector$$1.class
+
+java_util_all_classes = \
+    $(java_util_classes) \
+    $(java_util_internal_classes)
+
+javax_microedition_io_classes = \
+    javax/microedition/io/Connection.class \
+    javax/microedition/io/ConnectionNotFoundException.class \
+    javax/microedition/io/Connector.class \
+    javax/microedition/io/ContentConnection.class \
+    javax/microedition/io/Datagram.class \
+    javax/microedition/io/DatagramConnection.class \
+    javax/microedition/io/InputConnection.class \
+    javax/microedition/io/OutputConnection.class \
+    javax/microedition/io/StreamConnection.class \
+    javax/microedition/io/StreamConnectionNotifier.class
+
+jelatine_classes = \
+    jelatine/VMCalendar.class \
+    jelatine/VMFinalizer.class \
+    jelatine/VMOutputStream.class \
+    jelatine/VMPointer.class \
+    jelatine/VMResourceStream.class \
+    jelatine/VMTimeZone.class
+
+jelatine_cldc_io_classes = \
+    jelatine/cldc/io/Protocol.class \
+    jelatine/cldc/io/URL.class
+
+jelatine_cldc_io_socket_classes = \
+    jelatine/cldc/io/socket/ProtocolImpl.class
+
+jelatine_cldc_io_socket_internal_classes = \
+    jelatine/cldc/io/socket/ProtocolImpl$$SocketInputStream.class \
+    jelatine/cldc/io/socket/ProtocolImpl$$SocketOutputStream.class
+
+jelatine_cldc_io_socket_all_classes = \
+    $(jelatine_cldc_io_socket_classes) \
+    $(jelatine_cldc_io_socket_internal_classes)
+
+all_classes = \
+    $(java_io_classes) \
+    $(java_lang_classes) \
+    $(java_lang_ref_classes) \
+    $(java_util_classes) \
+    $(java_util_internal_classes) \
+    $(javax_microedition_io_classes) \
+    $(jelatine_classes) \
+    $(jelatine_cldc_io_classes) \
+    $(jelatine_cldc_io_socket_classes) \
+    $(jelatine_cldc_io_socket_internal_classes)
+
+# Output of the preverifier
+
+prev_java_io_classes = \
+    output/java/io/ByteArrayInputStream.class \
+    output/java/io/ByteArrayOutputStream.class \
+    output/java/io/DataInput.class \
+    output/java/io/DataInputStream.class \
+    output/java/io/DataOutput.class \
+    output/java/io/DataOutputStream.class \
+    output/java/io/EOFException.class \
+    output/java/io/InputStream.class \
+    output/java/io/InputStreamReader.class \
+    output/java/io/InterruptedIOException.class \
+    output/java/io/IOException.class \
+    output/java/io/OutputStream.class \
+    output/java/io/OutputStreamWriter.class \
+    output/java/io/PrintStream.class \
+    output/java/io/Reader.class \
+    output/java/io/UnsupportedEncodingException.class \
+    output/java/io/UTFDataFormatException.class \
+    output/java/io/Writer.class
+
+prev_java_lang_classes = \
+    output/java/lang/ArithmeticException.class \
+    output/java/lang/ArrayIndexOutOfBoundsException.class \
+    output/java/lang/ArrayStoreException.class \
+    output/java/lang/Boolean.class \
+    output/java/lang/Byte.class \
+    output/java/lang/Character.class \
+    output/java/lang/Class.class \
+    output/java/lang/ClassCastException.class \
+    output/java/lang/ClassNotFoundException.class \
+    output/java/lang/Double.class \
+    output/java/lang/Error.class \
+    output/java/lang/Exception.class \
+    output/java/lang/Float.class \
+    output/java/lang/IllegalAccessException.class \
+    output/java/lang/IllegalArgumentException.class \
+    output/java/lang/IllegalMonitorStateException.class \
+    output/java/lang/IllegalThreadStateException.class \
+    output/java/lang/IndexOutOfBoundsException.class \
+    output/java/lang/InstantiationException.class \
+    output/java/lang/Integer.class \
+    output/java/lang/InterruptedException.class \
+    output/java/lang/Long.class \
+    output/java/lang/Math.class \
+    output/java/lang/NegativeArraySizeException.class \
+    output/java/lang/NoClassDefFoundError.class \
+    output/java/lang/NullPointerException.class \
+    output/java/lang/NumberFormatException.class \
+    output/java/lang/Object.class \
+    output/java/lang/OutOfMemoryError.class \
+    output/java/lang/Runnable.class \
+    output/java/lang/Runtime.class \
+    output/java/lang/RuntimeException.class \
+    output/java/lang/SecurityException.class \
+    output/java/lang/Short.class \
+    output/java/lang/String.class \
+    output/java/lang/StringBuffer.class \
+    output/java/lang/StringIndexOutOfBoundsException.class \
+    output/java/lang/System.class \
+    output/java/lang/Thread.class \
+    output/java/lang/Throwable.class \
+    output/java/lang/VirtualMachineError.class
+
+prev_java_lang_ref_classes = \
+    output/java/lang/ref/Reference.class \
+    output/java/lang/ref/WeakReference.class
+
+prev_java_util_classes = \
+    output/java/util/Calendar.class \
+    output/java/util/Date.class \
+    output/java/util/EmptyStackException.class \
+    output/java/util/Enumeration.class \
+    output/java/util/Hashtable.class \
+    output/java/util/NoSuchElementException.class \
+    output/java/util/Random.class \
+    output/java/util/TimeZone.class \
+    output/java/util/Vector.class
+
+prev_java_util_internal_classes = \
+    output/java/util/Hashtable$$Enumerator.class \
+    output/java/util/Hashtable$$HashEntry.class \
+    output/java/util/Vector$$1.class
+
+prev_java_util_all_classes = \
+    $(prev_java_util_classes) \
+    $(prev_java_util_internal_classes)
+
+prev_javax_microedition_io_classes = \
+    output/javax/microedition/io/Connection.class \
+    output/javax/microedition/io/ConnectionNotFoundException.class \
+    output/javax/microedition/io/Connector.class \
+    output/javax/microedition/io/ContentConnection.class \
+    output/javax/microedition/io/Datagram.class \
+    output/javax/microedition/io/DatagramConnection.class \
+    output/javax/microedition/io/InputConnection.class \
+    output/javax/microedition/io/OutputConnection.class \
+    output/javax/microedition/io/StreamConnection.class \
+    output/javax/microedition/io/StreamConnectionNotifier.class
+
+prev_jelatine_classes = \
+    output/jelatine/VMCalendar.class \
+    output/jelatine/VMFinalizer.class \
+    output/jelatine/VMOutputStream.class \
+    output/jelatine/VMPointer.class \
+    output/jelatine/VMResourceStream.class \
+    output/jelatine/VMTimeZone.class
+
+prev_jelatine_cldc_io_classes = \
+    output/jelatine/cldc/io/Protocol.class \
+    output/jelatine/cldc/io/URL.class
+
+prev_jelatine_cldc_io_socket_classes = \
+    output/jelatine/cldc/io/socket/ProtocolImpl.class
+
+prev_jelatine_cldc_io_socket_internal_classes = \
+    output/jelatine/cldc/io/socket/ProtocolImpl$$SocketInputStream.class \
+    output/jelatine/cldc/io/socket/ProtocolImpl$$SocketOutputStream.class
+
+prev_jelatine_cldc_io_socket_all_classes = \
+    $(prev_jelatine_cldc_io_socket_classes) \
+    $(prev_jelatine_cldc_io_socket_internal_classes)
+
+prev_all_classes = \
+    $(prev_java_io_classes) \
+    $(prev_java_lang_classes) \
+    $(prev_java_lang_ref_classes) \
+    $(prev_java_util_classes) \
+    $(prev_java_util_internal_classes) \
+    $(prev_javax_microedition_io_classes) \
+    $(prev_jelatine_classes) \
+    $(prev_jelatine_cldc_io_classes) \
+    $(prev_jelatine_cldc_io_socket_classes) \
+    $(prev_jelatine_cldc_io_socket_internal_classes)
+
+ifeq (@jar_support@, no)
+all: $(prev_all_classes)
+else
+all: classpath.jar
+endif
+
+classpath.jar: $(prev_all_classes)
+	@JAR@ cf classpath.jar -C output java/io/*.class java/lang/*.class \
+	java/lang/ref/*.class java/util/*.class \
+	javax/microedition/io/*.class jelatine/*.class \
+	jelatine/cldc/io/*.class jelatine/cldc/io/socket/*.class
+
+$(java_io_classes) $(java_lang_classes) $(java_lang_ref_classes) \
+$(java_util_classes) $(javax_microedition_io_classes) \
+$(jelatine_classes) $(jelatine_cldc_io_classes) \
+$(jelatine_cldc_io_socket_classes) : %.class : @srcdir@/%.java
+	$(JAVAC) $(JAVACFLAGS) $<
+
+$(prev_all_classes): preverification
+
+preverification: $(java_io_classes) $(java_lang_classes) \
+                 $(java_lang_ref_classes) $(java_util_classes) \
+                 $(javax_microedition_io_classes) $(jelatine_classes) \
+		 $(jelatine_cldc_io_classes) $(jelatine_cldc_io_socket_classes)
+	@preverifier@ -classpath . $(class_names); \
+	touch preverification
+
+distdir:
+	mkdir $(distdir)/java; \
+	mkdir $(distdir)/java/io; \
+	mkdir $(distdir)/java/lang; \
+	mkdir $(distdir)/java/lang/ref; \
+	mkdir $(distdir)/java/util; \
+	mkdir $(distdir)/javax; \
+	mkdir $(distdir)/javax/microedition; \
+	mkdir $(distdir)/javax/microedition/io; \
+	mkdir $(distdir)/jelatine; \
+	mkdir $(distdir)/jelatine/cldc; \
+	mkdir $(distdir)/jelatine/cldc/io; \
+	mkdir $(distdir)/jelatine/cldc/io/socket; \
+	cp @srcdir@/java/io/*.java $(distdir)/java/io; \
+	cp @srcdir@/java/lang/*.java $(distdir)/java/lang; \
+	cp @srcdir@/java/lang/ref/*.java $(distdir)/java/lang/ref; \
+	cp @srcdir@/java/util/*.java $(distdir)/java/util; \
+	cp @srcdir@/javax/microedition/io/*.java $(distdir)/javax/microedition/io; \
+	cp @srcdir@/jelatine/*.java $(distdir)/jelatine; \
+	cp @srcdir@/jelatine/cldc/io/*.java $(distdir)/jelatine/cldc/io; \
+	cp @srcdir@/jelatine/cldc/io/socket/*.java $(distdir)/jelatine/cldc/io/socket
+
+mostlyclean: clean
+distclean: clean
+maintainer-clean: clean
+
+install: install-data
+
+install-data: install-data-local
+
+ifeq (@jar_support@, no)
+install-data-local: preverify
+else
+install-data-local: classpath.jar
+endif
+ifeq (@jar_support@, no)
+	$(mkinstalldirs) $(DESTDIR)$(pkgdatadir)/classpath; \
+	$(mkinstalldirs) $(DESTDIR)$(pkgdatadir)/classpath/java; \
+	$(mkinstalldirs) $(DESTDIR)$(pkgdatadir)/classpath/java/io
+	@list='$(java_io_classes)'; for p in $$list; do \
+	f="`echo $$p | sed -e 's|^.*/||'`"; \
+ 	    if test -f "$$p"; then \
+	        echo " $(install_sh_DATA) $$p $(DESTDIR)$(pkgdatadir)/classpath/java/io/$$f"; \
+	        $(install_sh_DATA) $$p $(DESTDIR)$(pkgdatadir)/classpath/java/io/$$f; \
+	    elif test -d "$$p"; then \
+	        $(mkinstalldirs) $(DESTDIR)$(pkgdatadir)/classpath/java/io/$$f; \
+	    fi; \
+	done; \
+	$(mkinstalldirs) $(DESTDIR)$(pkgdatadir)/classpath/java/lang
+	@list='$(java_lang_classes)'; for p in $$list; do \
+	f="`echo $$p | sed -e 's|^.*/||'`"; \
+ 	    if test -f "$$p"; then \
+	        echo " $(install_sh_DATA) $$p $(DESTDIR)$(pkgdatadir)/classpath/java/lang/$$f"; \
+	        $(install_sh_DATA) $$p $(DESTDIR)$(pkgdatadir)/classpath/java/lang/$$f; \
+	    elif test -d "$$p"; then \
+	        $(mkinstalldirs) $(DESTDIR)$(pkgdatadir)/classpath/java/lang/$$f; \
+	    fi; \
+	done; \
+	$(mkinstalldirs) $(DESTDIR)$(pkgdatadir)/classpath/java/lang/ref
+	@list='$(java_lang_ref_classes)'; for p in $$list; do \
+	f="`echo $$p | sed -e 's|^.*/||'`"; \
+ 	    if test -f "$$p"; then \
+	        echo " $(install_sh_DATA) $$p $(DESTDIR)$(pkgdatadir)/classpath/java/lang/ref/$$f"; \
+	        $(install_sh_DATA) $$p $(DESTDIR)$(pkgdatadir)/classpath/java/lang/ref/$$f; \
+	    elif test -d "$$p"; then \
+	        $(mkinstalldirs) $(DESTDIR)$(pkgdatadir)/classpath/java/lang/ref/$$f; \
+	    fi; \
+	done; \
+	$(mkinstalldirs) $(DESTDIR)$(pkgdatadir)/classpath/java/util
+	@list='$(java_util_classes) $(java_util_internal_classes)'; for p in $$list; do \
+	f="`echo $$p | sed -e 's|^.*/||'`"; \
+ 	    if test -f "$$p"; then \
+	        echo " $(install_sh_DATA) $$p $(DESTDIR)$(pkgdatadir)/classpath/java/util/$$f"; \
+	        $(install_sh_DATA) $$p $(DESTDIR)$(pkgdatadir)/classpath/java/util/$$f; \
+	    elif test -d "$$p"; then \
+	        $(mkinstalldirs) $(DESTDIR)$(pkgdatadir)/classpath/java/util/$$f; \
+	    fi; \
+	done; \
+	$(mkinstalldirs) $(DESTDIR)$(pkgdatadir)/classpath/javax; \
+	$(mkinstalldirs) $(DESTDIR)$(pkgdatadir)/classpath/javax/microedition; \
+	$(mkinstalldirs) $(DESTDIR)$(pkgdatadir)/classpath/javax/microedition/io
+	@list='$(javax_microedition_io_classes)'; for p in $$list; do \
+	f="`echo $$p | sed -e 's|^.*/||'`"; \
+ 	    if test -f "$$p"; then \
+	        echo " $(install_sh_DATA) $$p $(DESTDIR)$(pkgdatadir)/classpath/javax/microedition/io/$$f"; \
+	        $(install_sh_DATA) $$p $(DESTDIR)$(pkgdatadir)/classpath/javax/microedition/io/$$f; \
+	    elif test -d "$$p"; then \
+	        $(mkinstalldirs) $(DESTDIR)$(pkgdatadir)/classpath/javax/microedition/io/$$f; \
+	    fi; \
+	done; \
+	$(mkinstalldirs) $(DESTDIR)$(pkgdatadir)/classpath/jelatine
+	@list='$(jelatine_classes)'; for p in $$list; do \
+	f="`echo $$p | sed -e 's|^.*/||'`"; \
+	    if test -f "$$p"; then \
+	        echo " $(install_sh_DATA) $$p $(DESTDIR)$(pkgdatadir)/classpath/jelatine/$$f"; \
+	        $(install_sh_DATA) $$p $(DESTDIR)$(pkgdatadir)/classpath/jelatine/$$f; \
+	    elif test -d "$$p"; then \
+	        $(mkinstalldirs) $(DESTDIR)$(pkgdatadir)/classpath/jelatine/$$f; \
+	    fi; \
+	done; \
+	$(mkinstalldirs) $(DESTDIR)$(pkgdatadir)/classpath/jelatine/cldc; \
+	$(mkinstalldirs) $(DESTDIR)$(pkgdatadir)/classpath/jelatine/cldc/io
+	@list='$(jelatine_cldc_io_classes)'; for p in $$list; do \
+	f="`echo $$p | sed -e 's|^.*/||'`"; \
+	    if test -f "$$p"; then \
+	        echo " $(install_sh_DATA) $$p $(DESTDIR)$(pkgdatadir)/classpath/jelatine/cldc/io/$$f"; \
+	        $(install_sh_DATA) $$p $(DESTDIR)$(pkgdatadir)/classpath/jelatine/cldc/io/$$f; \
+	    elif test -d "$$p"; then \
+	        $(mkinstalldirs) $(DESTDIR)$(pkgdatadir)/classpath/jelatine/cldc/io/$$f; \
+	    fi; \
+	done; \
+	$(mkinstalldirs) $(DESTDIR)$(pkgdatadir)/classpath/jelatine/cldc/io/socket
+	@list='$(jelatine_cldc_io_socket_classes) $(jelatine_cldc_io_socket_internal_classes)'; for p in $$list; do \
+	f="`echo $$p | sed -e 's|^.*/||'`"; \
+	    if test -f "$$p"; then \
+	        echo " $(install_sh_DATA) $$p $(DESTDIR)$(pkgdatadir)/classpath/jelatine/cldc/io/socket/$$f"; \
+	        $(install_sh_DATA) $$p $(DESTDIR)$(pkgdatadir)/classpath/jelatine/cldc/io/socket/$$f; \
+	    elif test -d "$$p"; then \
+	        $(mkinstalldirs) $(DESTDIR)$(pkgdatadir)/classpath/jelatine/cldc/io/socket/$$f; \
+	    fi; \
+	done
+else
+	echo " $(install_sh_DATA) classpath.jar $(DESTDIR)$(pkgdatadir)/classpath.jar"; \
+	$(install_sh_DATA) classpath.jar $(DESTDIR)$(pkgdatadir)/classpath.jar
+endif
+
+uninstall: uninstall-local
+
+uninstall-local:
+ifeq (@jar_support@, no)
+	@list='$(java_io_classes)'; for p in $$list; do \
+		f="`echo $$p | sed -e 's|^.*/||'`"; \
+		if test -f "$$p"; then \
+			echo " rm -f $(DESTDIR)$(pkgdatadir)/classpath/java/io/$$f"; \
+			rm -f $(DESTDIR)$(pkgdatadir)/classpath/java/io/$$f; \
+		fi; \
+	done;
+	@list='$(java_lang_classes)'; for p in $$list; do \
+		f="`echo $$p | sed -e 's|^.*/||'`"; \
+		if test -f "$$p"; then \
+			echo " rm -f $(DESTDIR)$(pkgdatadir)/classpath/java/lang/$$f"; \
+			rm -f $(DESTDIR)$(pkgdatadir)/classpath/java/lang/$$f; \
+		fi; \
+	done;
+	@list='$(java_lang_ref_classes)'; for p in $$list; do \
+		f="`echo $$p | sed -e 's|^.*/||'`"; \
+		if test -f "$$p"; then \
+			echo " rm -f $(DESTDIR)$(pkgdatadir)/classpath/java/lang/ref/$$f"; \
+			rm -f $(DESTDIR)$(pkgdatadir)/classpath/java/lang/ref/$$f; \
+		fi; \
+	done;
+	@list='$(java_util_classes) $(java_util_internal_classes)'; for p in $$list; do \
+		f="`echo $$p | sed -e 's|^.*/||'`"; \
+		if test -f "$$p"; then \
+			echo " rm -f $(DESTDIR)$(pkgdatadir)/classpath/java/util/$$f"; \
+			rm -f $(DESTDIR)$(pkgdatadir)/classpath/java/util/$$f; \
+		fi; \
+	done;
+	@list='$(javax_microedition_io_classes)'; for p in $$list; do \
+		f="`echo $$p | sed -e 's|^.*/||'`"; \
+		if test -f "$$p"; then \
+			echo " rm -f $(DESTDIR)$(pkgdatadir)/classpath/javax/microedition/io/$$f"; \
+			rm -f $(DESTDIR)$(pkgdatadir)/classpath/javax/microedition/io/$$f; \
+		fi; \
+	done;
+	@list='$(jelatine_classes)'; for p in $$list; do \
+		f="`echo $$p | sed -e 's|^.*/||'`"; \
+		if test -f "$$p"; then \
+			echo " rm -f $(DESTDIR)$(pkgdatadir)/classpath/jelatine/$$f"; \
+			rm -f $(DESTDIR)$(pkgdatadir)/classpath/jelatine/$$f; \
+		fi; \
+	done;
+	@list='$(jelatine_cldc_io_classes)'; for p in $$list; do \
+		f="`echo $$p | sed -e 's|^.*/||'`"; \
+		if test -f "$$p"; then \
+			echo " rm -f $(DESTDIR)$(pkgdatadir)/classpath/jelatine/cldc/io/$$f"; \
+			rm -f $(DESTDIR)$(pkgdatadir)/classpath/jelatine/cldc/io/$$f; \
+		fi; \
+	done;
+	@list='$(jelatine_cldc_io_socket_classes) $(jelatine_cldc_io_socket_internal_classes)'; for p in $$list; do \
+		f="`echo $$p | sed -e 's|^.*/||'`"; \
+		if test -f "$$p"; then \
+			echo " rm -f $(DESTDIR)$(pkgdatadir)/classpath/jelatine/cldc/io/socket/$$f"; \
+			rm -f $(DESTDIR)$(pkgdatadir)/classpath/jelatine/cldc/io/socket/$$f; \
+		fi; \
+	done
+else
+	echo " rm -f $(DESTDIR)$(pkgdatadir)/classpath.jar"; \
+	rm classpath.jar $(DESTDIR)$(pkgdatadir)/classpath.jar
+endif
+
+clean:
+	rm -f java/io/*.class; \
+	rm -f java/lang/*.class; \
+	rm -f java/lang/ref/*.class; \
+	rm -f java/util/*.class; \
+	rm -f javax/microedition/io/*.class; \
+	rm -f jelatine/*.class; \
+	rm -f jelatine/cldc/io/*.class; \
+	rm -f jelatine/cldc/io/socket/*.class; \
+	rm -rf classpath.jar; \
+	rm -rf output; \
+	rm -f preverification
+
+EMPTY_AUTOMAKE_TARGETS = install-exec install-info installdirs check \
+                         installcheck dvi pdf ps info html tags ctags
+.PHONY: $(EMPTY_AUTOMAKE_TARGETS) preverify install install-data \
+        install-data-local uninstall-local uninstall

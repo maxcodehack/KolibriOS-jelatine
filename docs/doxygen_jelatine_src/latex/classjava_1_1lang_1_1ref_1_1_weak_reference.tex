@@ -1,0 +1,72 @@
+\section{java::lang::ref::WeakReference Class Reference}
+\label{classjava_1_1lang_1_1ref_1_1_weak_reference}\index{java::lang::ref::WeakReference@{java::lang::ref::WeakReference}}
+Inheritance diagram for java::lang::ref::WeakReference:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=2.000000cm]{classjava_1_1lang_1_1ref_1_1_weak_reference}
+\end{center}
+\end{figure}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+{\bf WeakReference} ({\bf Object} referent)
+\end{DoxyCompactItemize}
+\subsection*{Static Package Functions}
+\begin{DoxyCompactItemize}
+\item 
+static native void {\bf addToWeakReferenceList} ({\bf WeakReference} ref)
+\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+A weak reference will be cleared, if the object is only weakly reachable. It is useful for lookup tables, where you aren't interested in an entry, if the key isn't reachable anymore. {\ttfamily WeakHashtable} is a complete implementation of such a table. \par
+
+
+It is also useful to make objects unique: You create a set of weak references to those objects, and when you create a new object you look in this set, if the object already exists and return it. If an object is not referenced anymore, the reference will automatically cleared, and you may remove it from the set. \par
+
+
+\begin{DoxyAuthor}{Author}
+Jochen Hoenicke 
+\end{DoxyAuthor}
+\begin{DoxySeeAlso}{See also}
+java.util.WeakHashMap 
+\end{DoxySeeAlso}
+
+
+Definition at line 58 of file WeakReference.java.
+
+
+
+\subsection{Constructor \& Destructor Documentation}
+\index{java::lang::ref::WeakReference@{java::lang::ref::WeakReference}!WeakReference@{WeakReference}}
+\index{WeakReference@{WeakReference}!java::lang::ref::WeakReference@{java::lang::ref::WeakReference}}
+\subsubsection[{WeakReference}]{\setlength{\rightskip}{0pt plus 5cm}java::lang::ref::WeakReference::WeakReference (
+\begin{DoxyParamCaption}
+\item[{{\bf Object}}]{ referent}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily  [inline]}}\label{classjava_1_1lang_1_1ref_1_1_weak_reference_a7e6f38b8c9e73131d182c0aeab7f6c83}
+Create a new weak reference, that is not registered to any queue. 
+\begin{DoxyParams}{Parameters}
+\item[{\em referent}]the object we refer to. \end{DoxyParams}
+
+
+Definition at line 76 of file WeakReference.java.
+
+
+
+\subsection{Member Function Documentation}
+\index{java::lang::ref::WeakReference@{java::lang::ref::WeakReference}!addToWeakReferenceList@{addToWeakReferenceList}}
+\index{addToWeakReferenceList@{addToWeakReferenceList}!java::lang::ref::WeakReference@{java::lang::ref::WeakReference}}
+\subsubsection[{addToWeakReferenceList}]{\setlength{\rightskip}{0pt plus 5cm}static native void java::lang::ref::WeakReference::addToWeakReferenceList (
+\begin{DoxyParamCaption}
+\item[{{\bf WeakReference}}]{ ref}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily  [static, package]}}\label{classjava_1_1lang_1_1ref_1_1_weak_reference_aa513e90c2547ca833ea75b927964c517}
+Adds a weak reference to the internal list 
+\begin{DoxyParams}{Parameters}
+\item[{\em ref}]A reference \end{DoxyParams}
+
+
+The documentation for this class was generated from the following file:\begin{DoxyCompactItemize}
+\item 
+src/classpath/java/lang/ref/WeakReference.java\end{DoxyCompactItemize}

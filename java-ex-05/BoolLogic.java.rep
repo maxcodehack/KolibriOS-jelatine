@@ -1,0 +1,31 @@
+rm: cannot remove directory `tmp_preproc/': Is a directory
+
+Found 1 semantic error compiling "c:/algoritm/c_src/JVMs/tinyvm_0_2_6/muvm_tests/examples_from_book/05/tmp_preproc/BoolLogic.java":
+
+                        <
+     1. class BoolLogic {
+   . . .
+    54. } }
+        -->
+*** Semantic Error: A class file was not generated for the type "BoolLogic" because a library method that it depends on was not found. See system messages for more information.
+
+Found 7 system errors:
+
+*** Semantic Error: A non-standard version of the type "java.lang.StringBuffer" was found. Class files that depend on this tynot exists:BoolLogic.class
+Error compile: tmp_preproc/BoolLogic.java
+rd version of the type "java.lang.StringBuffer" was found. Class files that depend on this type may not have been generated.
+
+
+*** Semantic Error: A non-standard version of the type "java.lang.StringBuffer" was found. Class files that depend on this type may not have been generated.
+
+
+*** Semantic Error: A non-standard version of the type "java.lang.StringBuffer" was found. Class files that depend on this type may not have been generated.
+
+
+*** Semantic Error: A non-standard version of the type "java.lang.StringBuffer" was found. Class files that depend on this type may not have been generated.
+
+
+*** Semantic Error: A non-standard version of the type "java.lang.StringBuffer" was found. Class files that depend on this type may not have been generated.
+
+
+*** Semantic Error: A non-standard version of the type "java.lang.StringBuffer" was found. Class files that depend on this type may not have been generated.

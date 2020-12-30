@@ -1,0 +1,2174 @@
+\section{src/jelatine/kni.h File Reference}
+\label{kni_8h}\index{src/jelatine/kni.h@{src/jelatine/kni.h}}
+{\ttfamily \#include \char`\"{}wrappers.h\char`\"{}}\par
+{\ttfamily \#include \char`\"{}array.h\char`\"{}}\par
+{\ttfamily \#include \char`\"{}class.h\char`\"{}}\par
+{\ttfamily \#include \char`\"{}loader.h\char`\"{}}\par
+{\ttfamily \#include \char`\"{}thread.h\char`\"{}}\par
+{\ttfamily \#include \char`\"{}java\_\-lang\_\-String.h\char`\"{}}\par
+\subsection*{Defines}
+\begin{DoxyCompactItemize}
+\item 
+\#define {\bf JELATINE\_\-KNI\_\-H}~(1)
+\item 
+\#define {\bf KNI\_\-RETURNTYPE\_\-VOID}~void
+\item 
+\#define {\bf KNI\_\-RETURNTYPE\_\-BOOLEAN}~int32\_\-t
+\item 
+\#define {\bf KNI\_\-RETURNTYPE\_\-BYTE}~int32\_\-t
+\item 
+\#define {\bf KNI\_\-RETURNTYPE\_\-CHAR}~int32\_\-t
+\item 
+\#define {\bf KNI\_\-RETURNTYPE\_\-SHORT}~int32\_\-t
+\item 
+\#define {\bf KNI\_\-RETURNTYPE\_\-INT}~int32\_\-t
+\item 
+\#define {\bf KNI\_\-RETURNTYPE\_\-LONG}~int64\_\-t
+\item 
+\#define {\bf KNI\_\-RETURNTYPE\_\-FLOAT}~float
+\item 
+\#define {\bf KNI\_\-RETURNTYPE\_\-DOUBLE}~double
+\item 
+\#define {\bf KNI\_\-RETURNTYPE\_\-OBJECT}~uintptr\_\-t
+\item 
+\#define {\bf KNI\_\-FALSE}~(0)
+\item 
+\#define {\bf KNI\_\-TRUE}~(1)
+\item 
+\#define {\bf KNI\_\-OK}~(0)
+\item 
+\#define {\bf KNI\_\-ERR}~(-\/1)
+\item 
+\#define {\bf KNI\_\-ENOMEM}~(-\/4)
+\item 
+\#define {\bf KNI\_\-EINVAL}~(-\/6)
+\item 
+\#define {\bf KNI\_\-VERSION}~(0x00010000)
+\item 
+\#define {\bf KNI\_\-ReturnVoid}()~return
+\item 
+\#define {\bf KNI\_\-ReturnBoolean}(value)~return (value) ? 1 : 0
+\item 
+\#define {\bf KNI\_\-ReturnByte}(value)~return ({\bf jbyte}) (value)
+\item 
+\#define {\bf KNI\_\-ReturnChar}(value)~return ({\bf jchar}) (value)
+\item 
+\#define {\bf KNI\_\-ReturnShort}(value)~return ({\bf jshort}) (value)
+\item 
+\#define {\bf KNI\_\-ReturnInt}(value)~return ({\bf jint}) (value)
+\item 
+\#define {\bf KNI\_\-ReturnLong}(value)~return ({\bf jlong}) (value)
+\item 
+\#define {\bf KNI\_\-StartHandles}(n)
+\item 
+\#define {\bf KNI\_\-DeclareHandle}(handle)~{\bf jobject} handle = \_\-KNI\_\-push\_\-handle(\&\_\-\_\-handles\_\-\_\-[\_\-\_\-declared\_\-count\_\-\_\-++])
+\item 
+\#define {\bf KNI\_\-EndHandles}()
+\item 
+\#define {\bf KNI\_\-EndHandlesAndReturnObject}(objectHandle)
+\end{DoxyCompactItemize}
+\subsection*{Typedefs}
+\begin{DoxyCompactItemize}
+\item 
+typedef uint8\_\-t {\bf jboolean}
+\item 
+typedef uint8\_\-t {\bf jbyte}
+\item 
+typedef uint16\_\-t {\bf jchar}
+\item 
+typedef int16\_\-t {\bf jshort}
+\item 
+typedef int32\_\-t {\bf jint}
+\item 
+typedef int64\_\-t {\bf jlong}
+\item 
+typedef float {\bf jfloat}
+\item 
+typedef double {\bf jdouble}
+\item 
+typedef {\bf jint} {\bf jsize}
+\item 
+typedef uintptr\_\-t $\ast$ {\bf jobject}
+\item 
+typedef uintptr\_\-t $\ast$ {\bf jclass}
+\item 
+typedef {\bf jobject} {\bf jthrowable}
+\item 
+typedef {\bf jobject} {\bf jstring}
+\item 
+typedef {\bf jobject} {\bf jarray}
+\item 
+typedef {\bf jarray} {\bf jbooleanArray}
+\item 
+typedef {\bf jarray} {\bf jbyteArray}
+\item 
+typedef {\bf jarray} {\bf jcharArray}
+\item 
+typedef {\bf jarray} {\bf jshortArray}
+\item 
+typedef {\bf jarray} {\bf jintArray}
+\item 
+typedef {\bf jarray} {\bf jlongArray}
+\item 
+typedef {\bf jarray} {\bf jfloatArray}
+\item 
+typedef {\bf jarray} {\bf jdoubleArray}
+\item 
+typedef {\bf jarray} {\bf jobjectArray}
+\item 
+typedef uintptr\_\-t {\bf jfieldID}
+\end{DoxyCompactItemize}
+\subsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+static {\bf jint} {\bf KNI\_\-GetVersion} (void)
+\item 
+static void {\bf KNI\_\-FindClass} (const char $\ast$name, {\bf jclass} classHandle)
+\item 
+static void {\bf KNI\_\-GetSuperClass} ({\bf jclass} classHandle, {\bf jclass} superClassHandle)
+\item 
+static {\bf jboolean} {\bf KNI\_\-IsAssignableFrom} ({\bf jclass} cl1, {\bf jclass} cl2)
+\item 
+{\bf jint} {\bf KNI\_\-ThrowNew} (const char $\ast$, const char $\ast$)
+\item 
+void {\bf KNI\_\-FatalError} (const char $\ast$)
+\item 
+static void {\bf KNI\_\-GetObjectClass} ({\bf jobject} objectHandle, {\bf jclass} classHandle)
+\item 
+static {\bf jboolean} {\bf KNI\_\-IsInstanceOf} ({\bf jobject} objectHandle, {\bf jclass} classHandle)
+\item 
+{\bf jfieldID} {\bf KNI\_\-GetFieldID} ({\bf jclass} classHandle, const char $\ast$name, const char $\ast$signature)
+\item 
+static {\bf jboolean} {\bf KNI\_\-GetBooleanField} ({\bf jobject} objectHandle, {\bf jfieldID} fieldID)
+\item 
+static {\bf jbyte} {\bf KNI\_\-GetByteField} ({\bf jobject} objectHandle, {\bf jfieldID} fieldID)
+\item 
+static {\bf jchar} {\bf KNI\_\-GetCharField} ({\bf jobject} objectHandle, {\bf jfieldID} fieldID)
+\item 
+static {\bf jshort} {\bf KNI\_\-GetShortField} ({\bf jobject} objectHandle, {\bf jfieldID} fieldID)
+\item 
+static {\bf jint} {\bf KNI\_\-GetIntField} ({\bf jobject} objectHandle, {\bf jfieldID} fieldID)
+\item 
+static {\bf jlong} {\bf KNI\_\-GetLongField} ({\bf jobject} objectHandle, {\bf jfieldID} fieldID)
+\item 
+static void {\bf KNI\_\-GetObjectField} ({\bf jobject} objectHandle, {\bf jfieldID} fieldID, {\bf jobject} toHandle)
+\item 
+static void {\bf KNI\_\-SetBooleanField} ({\bf jobject} objectHandle, {\bf jfieldID} fieldID, {\bf jboolean} value)
+\item 
+static void {\bf KNI\_\-SetByteField} ({\bf jobject} objectHandle, {\bf jfieldID} fieldID, {\bf jbyte} value)
+\item 
+static void {\bf KNI\_\-SetCharField} ({\bf jobject} objectHandle, {\bf jfieldID} fieldID, {\bf jchar} value)
+\item 
+static void {\bf KNI\_\-SetShortField} ({\bf jobject} objectHandle, {\bf jfieldID} fieldID, {\bf jshort} value)
+\item 
+static void {\bf KNI\_\-SetIntField} ({\bf jobject} objectHandle, {\bf jfieldID} fieldID, {\bf jint} value)
+\item 
+static void {\bf KNI\_\-SetLongField} ({\bf jobject} objectHandle, {\bf jfieldID} fieldID, {\bf jlong} value)
+\item 
+static void {\bf KNI\_\-SetObjectField} ({\bf jobject} objectHandle, {\bf jfieldID} fieldID, {\bf jobject} fromHandle)
+\item 
+{\bf jfieldID} {\bf KNI\_\-GetStaticFieldID} ({\bf jclass}, const char $\ast$, const char $\ast$)
+\item 
+static {\bf jboolean} {\bf KNI\_\-GetStaticBooleanField} ({\bf jclass} classHandle ATTRIBUTE\_\-UNUSED, {\bf jfieldID} fieldID)
+\item 
+static {\bf jbyte} {\bf KNI\_\-GetStaticByteField} ({\bf jclass} classHandle ATTRIBUTE\_\-UNUSED, {\bf jfieldID} fieldID)
+\item 
+static {\bf jchar} {\bf KNI\_\-GetStaticCharField} ({\bf jclass} classHandle ATTRIBUTE\_\-UNUSED, {\bf jfieldID} fieldID)
+\item 
+static {\bf jshort} {\bf KNI\_\-GetStaticShortField} ({\bf jclass} classHandle ATTRIBUTE\_\-UNUSED, {\bf jfieldID} fieldID)
+\item 
+static {\bf jint} {\bf KNI\_\-GetStaticIntField} ({\bf jclass} classHandle ATTRIBUTE\_\-UNUSED, {\bf jfieldID} fieldID)
+\item 
+static {\bf jlong} {\bf KNI\_\-GetStaticLongField} ({\bf jclass} classHandle ATTRIBUTE\_\-UNUSED, {\bf jfieldID} fieldID)
+\item 
+static void {\bf KNI\_\-GetStaticObjectField} ({\bf jclass} classHandle ATTRIBUTE\_\-UNUSED, {\bf jfieldID} fieldID, {\bf jobject} toHandle)
+\item 
+static void {\bf KNI\_\-SetStaticBooleanField} ({\bf jclass} classHandle ATTRIBUTE\_\-UNUSED, {\bf jfieldID} fieldID, {\bf jboolean} value)
+\item 
+static void {\bf KNI\_\-SetStaticByteField} ({\bf jclass} classHandle ATTRIBUTE\_\-UNUSED, {\bf jfieldID} fieldID, {\bf jbyte} value)
+\item 
+static void {\bf KNI\_\-SetStaticCharField} ({\bf jclass} classHandle ATTRIBUTE\_\-UNUSED, {\bf jfieldID} fieldID, {\bf jchar} value)
+\item 
+static void {\bf KNI\_\-SetStaticShortField} ({\bf jclass} classHandle ATTRIBUTE\_\-UNUSED, {\bf jfieldID} fieldID, {\bf jshort} value)
+\item 
+static void {\bf KNI\_\-SetStaticIntField} ({\bf jclass} classHandle ATTRIBUTE\_\-UNUSED, {\bf jfieldID} fieldID, {\bf jint} value)
+\item 
+static void {\bf KNI\_\-SetStaticLongField} ({\bf jclass} classHandle ATTRIBUTE\_\-UNUSED, {\bf jfieldID} fieldID, {\bf jlong} value)
+\item 
+static void {\bf KNI\_\-SetStaticObjectField} ({\bf jclass} classHandle ATTRIBUTE\_\-UNUSED, {\bf jfieldID} fieldID, {\bf jobject} fromHandle)
+\item 
+static {\bf jsize} {\bf KNI\_\-GetStringLength} ({\bf jstring} stringHandle)
+\item 
+void {\bf KNI\_\-GetStringRegion} ({\bf jstring}, {\bf jsize}, {\bf jsize}, {\bf jchar} $\ast$)
+\item 
+static void {\bf KNI\_\-NewString} (const {\bf jchar} $\ast$uchars, {\bf jsize} length, {\bf jobject} stringHandle)
+\item 
+static void {\bf KNI\_\-NewStringUTF} (const char $\ast$utf8chars, {\bf jobject} stringHandle)
+\item 
+static {\bf jsize} {\bf KNI\_\-GetArrayLength} ({\bf jarray} array)
+\item 
+static {\bf jboolean} {\bf KNI\_\-GetBooleanArrayElement} ({\bf jbooleanArray} arrayHandle, {\bf jsize} index)
+\item 
+static {\bf jbyte} {\bf KNI\_\-GetByteArrayElement} ({\bf jbyteArray} arrayHandle, {\bf jsize} index)
+\item 
+static {\bf jchar} {\bf KNI\_\-GetCharArrayElement} ({\bf jcharArray} arrayHandle, {\bf jsize} index)
+\item 
+static {\bf jshort} {\bf KNI\_\-GetShortArrayElement} ({\bf jshortArray} arrayHandle, {\bf jsize} index)
+\item 
+static {\bf jint} {\bf KNI\_\-GetIntArrayElement} ({\bf jintArray} arrayHandle, {\bf jsize} index)
+\item 
+static {\bf jlong} {\bf KNI\_\-GetLongArrayElement} ({\bf jlongArray} arrayHandle, {\bf jsize} index)
+\item 
+static void {\bf KNI\_\-GetObjectArrayElement} ({\bf jobjectArray} arrayHandle, {\bf jint} index, {\bf jobject} toHandle)
+\item 
+static void {\bf KNI\_\-SetBooleanArrayElement} ({\bf jbooleanArray} arrayHandle, {\bf jsize} index, {\bf jboolean} value)
+\item 
+static void {\bf KNI\_\-SetByteArrayElement} ({\bf jbyteArray} arrayHandle, {\bf jsize} index, {\bf jbyte} value)
+\item 
+static void {\bf KNI\_\-SetCharArrayElement} ({\bf jcharArray} arrayHandle, {\bf jsize} index, {\bf jchar} value)
+\item 
+static void {\bf KNI\_\-SetShortArrayElement} ({\bf jshortArray} arrayHandle, {\bf jsize} index, {\bf jshort} value)
+\item 
+static void {\bf KNI\_\-SetIntArrayElement} ({\bf jintArray} arrayHandle, {\bf jsize} index, {\bf jint} value)
+\item 
+static void {\bf KNI\_\-SetLongArrayElement} ({\bf jlongArray} arrayHandle, {\bf jsize} index, {\bf jlong} value)
+\item 
+static void {\bf KNI\_\-SetObjectArrayElement} ({\bf jobjectArray} arrayHandle, {\bf jint} index, {\bf jobject} fromHandle)
+\item 
+static void {\bf KNI\_\-GetRawArrayRegion} ({\bf jarray} arrayHandle, {\bf jsize} offset, {\bf jsize} n, {\bf jbyte} $\ast$dstBuffer)
+\item 
+static void {\bf KNI\_\-SetRawArrayRegion} ({\bf jarray} arrayHandle, {\bf jsize} offset, {\bf jsize} n, const {\bf jbyte} $\ast$srcBuffer)
+\item 
+static {\bf jboolean} {\bf KNI\_\-GetParameterAsBoolean} ({\bf jint} index)
+\item 
+static {\bf jbyte} {\bf KNI\_\-GetParameterAsByte} ({\bf jint} index)
+\item 
+static {\bf jchar} {\bf KNI\_\-GetParameterAsChar} ({\bf jint} index)
+\item 
+static {\bf jshort} {\bf KNI\_\-GetParameterAsShort} ({\bf jint} index)
+\item 
+static {\bf jint} {\bf KNI\_\-GetParameterAsInt} ({\bf jint} index)
+\item 
+static {\bf jlong} {\bf KNI\_\-GetParameterAsLong} ({\bf jint} index)
+\item 
+static void {\bf KNI\_\-GetParameterAsObject} ({\bf jint} index, {\bf jobject} toHandle)
+\item 
+static void {\bf KNI\_\-GetThisPointer} ({\bf jobject} toHandle)
+\item 
+static void {\bf KNI\_\-GetClassPointer} ({\bf jclass} toHandle)
+\item 
+static {\bf jobject} {\bf \_\-KNI\_\-push\_\-handle} ({\bf jobject} handle)
+\item 
+static {\bf jboolean} {\bf KNI\_\-IsNullHandle} ({\bf jobject} handle)
+\item 
+static {\bf jboolean} {\bf KNI\_\-IsSameObject} ({\bf jobject} obj1, {\bf jobject} obj2)
+\item 
+static void {\bf KNI\_\-ReleaseHandle} ({\bf jobject} handle)
+\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+CLDC native interface 
+
+Definition in file {\bf kni.h}.
+
+
+
+\subsection{Define Documentation}
+\index{kni.h@{kni.h}!JELATINE\_\-KNI\_\-H@{JELATINE\_\-KNI\_\-H}}
+\index{JELATINE\_\-KNI\_\-H@{JELATINE\_\-KNI\_\-H}!kni.h@{kni.h}}
+\subsubsection[{JELATINE\_\-KNI\_\-H}]{\setlength{\rightskip}{0pt plus 5cm}\#define JELATINE\_\-KNI\_\-H~(1)}\label{kni_8h_ab0d4096e068567db91765777723e9b04}
+\doxyref{kni.h}{p.}{kni_8h} inclusion macro 
+
+Definition at line 28 of file kni.h.
+
+\index{kni.h@{kni.h}!KNI\_\-DeclareHandle@{KNI\_\-DeclareHandle}}
+\index{KNI\_\-DeclareHandle@{KNI\_\-DeclareHandle}!kni.h@{kni.h}}
+\subsubsection[{KNI\_\-DeclareHandle}]{\setlength{\rightskip}{0pt plus 5cm}\#define KNI\_\-DeclareHandle(
+\begin{DoxyParamCaption}
+\item[{}]{handle}
+\end{DoxyParamCaption}
+)~{\bf jobject} handle = \_\-KNI\_\-push\_\-handle(\&\_\-\_\-handles\_\-\_\-[\_\-\_\-declared\_\-count\_\-\_\-++])}\label{kni_8h_a6504eaedd3ec94870f1e8961874780c8}
+Declares a handle that can be used as an input, output, or in/out parameter to an appropriate KNI function. The initial value of the handle is unspecified. If the programmer has not allocated enough space for the handle in the preceding call to KNI\_\-StartHandles, the behavior of this function is unspecified 
+\begin{DoxyParams}{Parameters}
+\item[{\em handle}]The name by which the handle will be identified between the calls to KNI\_\-StartHandles and KNI\_\-EndHandles / KNI\_\-EndHandlesAndReturnObject \end{DoxyParams}
+
+
+Definition at line 1481 of file kni.h.
+
+
+
+Referenced by java\_\-lang\_\-Class\_\-forName(), java\_\-lang\_\-Class\_\-getInternalName(), java\_\-lang\_\-Class\_\-isAssignableFrom(), java\_\-lang\_\-Class\_\-isInstance(), java\_\-lang\_\-Class\_\-newInstance(), java\_\-lang\_\-Object\_\-\_\-wait(), java\_\-lang\_\-Object\_\-getClass(), java\_\-lang\_\-Object\_\-notify(), java\_\-lang\_\-Object\_\-notifyAll(), java\_\-lang\_\-ref\_\-WeakReference\_\-addToWeakReferenceList(), java\_\-lang\_\-String\_\-intern(), java\_\-lang\_\-System\_\-arraycopy(), java\_\-lang\_\-System\_\-identityHashCode(), java\_\-lang\_\-Thread\_\-currentThread(), java\_\-lang\_\-Thread\_\-interrupt(), java\_\-lang\_\-Thread\_\-join(), and java\_\-lang\_\-Thread\_\-start().
+
+\index{kni.h@{kni.h}!KNI\_\-EINVAL@{KNI\_\-EINVAL}}
+\index{KNI\_\-EINVAL@{KNI\_\-EINVAL}!kni.h@{kni.h}}
+\subsubsection[{KNI\_\-EINVAL}]{\setlength{\rightskip}{0pt plus 5cm}\#define KNI\_\-EINVAL~(-\/6)}\label{kni_8h_a4a86645651ea53009d541d29579e3754}
+Failure due to incorrect arguments 
+
+Definition at line 181 of file kni.h.
+
+\index{kni.h@{kni.h}!KNI\_\-EndHandles@{KNI\_\-EndHandles}}
+\index{KNI\_\-EndHandles@{KNI\_\-EndHandles}!kni.h@{kni.h}}
+\subsubsection[{KNI\_\-EndHandles}]{\setlength{\rightskip}{0pt plus 5cm}\#define KNI\_\-EndHandles(
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}\label{kni_8h_a17809718c17208ad72a029307eed828b}
+{\bfseries Value:}
+\begin{DoxyCode}
+while (__declared_count__--) { \
+        thread_pop_root(); \
+    } \
+}
+\end{DoxyCode}
+Undeclares and unallocates the handles defined after the preceding \doxyref{KNI\_\-StartHandles()}{p.}{kni_8h_a8cbf1161fd4aefef5a0609c9aefcae84} call 
+
+Definition at line 1516 of file kni.h.
+
+
+
+Referenced by java\_\-lang\_\-Class\_\-isAssignableFrom(), java\_\-lang\_\-Class\_\-isInstance(), java\_\-lang\_\-Object\_\-\_\-wait(), java\_\-lang\_\-Object\_\-notify(), java\_\-lang\_\-Object\_\-notifyAll(), java\_\-lang\_\-ref\_\-WeakReference\_\-addToWeakReferenceList(), java\_\-lang\_\-System\_\-arraycopy(), java\_\-lang\_\-System\_\-identityHashCode(), java\_\-lang\_\-Thread\_\-interrupt(), java\_\-lang\_\-Thread\_\-join(), and java\_\-lang\_\-Thread\_\-start().
+
+\index{kni.h@{kni.h}!KNI\_\-EndHandlesAndReturnObject@{KNI\_\-EndHandlesAndReturnObject}}
+\index{KNI\_\-EndHandlesAndReturnObject@{KNI\_\-EndHandlesAndReturnObject}!kni.h@{kni.h}}
+\subsubsection[{KNI\_\-EndHandlesAndReturnObject}]{\setlength{\rightskip}{0pt plus 5cm}\#define KNI\_\-EndHandlesAndReturnObject(
+\begin{DoxyParamCaption}
+\item[{}]{objectHandle}
+\end{DoxyParamCaption}
+)}\label{kni_8h_a7a76770a6cd3ea1795ad562a7dfe0de5}
+{\bfseries Value:}
+\begin{DoxyCode}
+while (__declared_count__--) { \
+        thread_pop_root(); \
+    } \
+    return (uintptr_t) *objectHandle; \
+}
+\end{DoxyCode}
+Undeclares and unallocates the handles defined after the preceding KNI\_\-StartHandles call. At the same time, this function will terminate the execution of the native function immediately and return an object reference back to the caller 
+\begin{DoxyParams}{Parameters}
+\item[{\em objectHandle}]The handle from which the result value will be read \end{DoxyParams}
+
+
+Definition at line 1528 of file kni.h.
+
+
+
+Referenced by java\_\-lang\_\-Class\_\-forName(), java\_\-lang\_\-Class\_\-getInternalName(), java\_\-lang\_\-Class\_\-newInstance(), java\_\-lang\_\-Object\_\-getClass(), java\_\-lang\_\-String\_\-intern(), and java\_\-lang\_\-Thread\_\-currentThread().
+
+\index{kni.h@{kni.h}!KNI\_\-ENOMEM@{KNI\_\-ENOMEM}}
+\index{KNI\_\-ENOMEM@{KNI\_\-ENOMEM}!kni.h@{kni.h}}
+\subsubsection[{KNI\_\-ENOMEM}]{\setlength{\rightskip}{0pt plus 5cm}\#define KNI\_\-ENOMEM~(-\/4)}\label{kni_8h_a7de078777ced656cc2071a1192cdf40e}
+Failure due to lack of available memory 
+
+Definition at line 180 of file kni.h.
+
+\index{kni.h@{kni.h}!KNI\_\-ERR@{KNI\_\-ERR}}
+\index{KNI\_\-ERR@{KNI\_\-ERR}!kni.h@{kni.h}}
+\subsubsection[{KNI\_\-ERR}]{\setlength{\rightskip}{0pt plus 5cm}\#define KNI\_\-ERR~(-\/1)}\label{kni_8h_a17e572008bafe84383d6018406d45658}
+Generic failure return value for a KNI function 
+
+Definition at line 179 of file kni.h.
+
+\index{kni.h@{kni.h}!KNI\_\-FALSE@{KNI\_\-FALSE}}
+\index{KNI\_\-FALSE@{KNI\_\-FALSE}!kni.h@{kni.h}}
+\subsubsection[{KNI\_\-FALSE}]{\setlength{\rightskip}{0pt plus 5cm}\#define KNI\_\-FALSE~(0)}\label{kni_8h_a507acdc76c91014a92e627b4e8d54999}
+'false' value of a java 'boolean' 
+
+Definition at line 163 of file kni.h.
+
+\index{kni.h@{kni.h}!KNI\_\-OK@{KNI\_\-OK}}
+\index{KNI\_\-OK@{KNI\_\-OK}!kni.h@{kni.h}}
+\subsubsection[{KNI\_\-OK}]{\setlength{\rightskip}{0pt plus 5cm}\#define KNI\_\-OK~(0)}\label{kni_8h_ac9dd4c9633de33cf9a0183f43bb0d5a6}
+Success return value for a KNI function 
+
+Definition at line 178 of file kni.h.
+
+\index{kni.h@{kni.h}!KNI\_\-ReturnBoolean@{KNI\_\-ReturnBoolean}}
+\index{KNI\_\-ReturnBoolean@{KNI\_\-ReturnBoolean}!kni.h@{kni.h}}
+\subsubsection[{KNI\_\-ReturnBoolean}]{\setlength{\rightskip}{0pt plus 5cm}\#define KNI\_\-ReturnBoolean(
+\begin{DoxyParamCaption}
+\item[{}]{value}
+\end{DoxyParamCaption}
+)~return (value) ? 1 : 0}\label{kni_8h_aabf17587ac7366f7fc6efcb6c59d4f6f}
+Returns a boolean value from a native function. Calling the function will terminate the execution of the native function immediately 
+\begin{DoxyParams}{Parameters}
+\item[{\em value}]The result value of the native method \end{DoxyParams}
+
+
+Definition at line 1399 of file kni.h.
+
+
+
+Referenced by java\_\-lang\_\-Class\_\-isAssignableFrom(), and java\_\-lang\_\-Class\_\-isInstance().
+
+\index{kni.h@{kni.h}!KNI\_\-ReturnByte@{KNI\_\-ReturnByte}}
+\index{KNI\_\-ReturnByte@{KNI\_\-ReturnByte}!kni.h@{kni.h}}
+\subsubsection[{KNI\_\-ReturnByte}]{\setlength{\rightskip}{0pt plus 5cm}\#define KNI\_\-ReturnByte(
+\begin{DoxyParamCaption}
+\item[{}]{value}
+\end{DoxyParamCaption}
+)~return ({\bf jbyte}) (value)}\label{kni_8h_a0894bb43ffdc3395f1dab1a6cbd86bd5}
+Returns a byte value from a native function. Calling the function will terminate execution of the native function immediately 
+\begin{DoxyParams}{Parameters}
+\item[{\em value}]The result value of the native method \end{DoxyParams}
+
+
+Definition at line 1405 of file kni.h.
+
+\index{kni.h@{kni.h}!KNI\_\-ReturnChar@{KNI\_\-ReturnChar}}
+\index{KNI\_\-ReturnChar@{KNI\_\-ReturnChar}!kni.h@{kni.h}}
+\subsubsection[{KNI\_\-ReturnChar}]{\setlength{\rightskip}{0pt plus 5cm}\#define KNI\_\-ReturnChar(
+\begin{DoxyParamCaption}
+\item[{}]{value}
+\end{DoxyParamCaption}
+)~return ({\bf jchar}) (value)}\label{kni_8h_afdbd668dd0870326328b375039cd59df}
+Returns a char value from a native function. Calling the function will terminate execution of the native function immediately 
+\begin{DoxyParams}{Parameters}
+\item[{\em value}]The result value of the native method \end{DoxyParams}
+
+
+Definition at line 1411 of file kni.h.
+
+\index{kni.h@{kni.h}!KNI\_\-ReturnInt@{KNI\_\-ReturnInt}}
+\index{KNI\_\-ReturnInt@{KNI\_\-ReturnInt}!kni.h@{kni.h}}
+\subsubsection[{KNI\_\-ReturnInt}]{\setlength{\rightskip}{0pt plus 5cm}\#define KNI\_\-ReturnInt(
+\begin{DoxyParamCaption}
+\item[{}]{value}
+\end{DoxyParamCaption}
+)~return ({\bf jint}) (value)}\label{kni_8h_a6489b2237d8bb7b810c48c6d5188f68c}
+Returns an int value from a native function. Calling the function will terminate execution of the native function immediately 
+\begin{DoxyParams}{Parameters}
+\item[{\em value}]The result value of the native method \end{DoxyParams}
+
+
+Definition at line 1423 of file kni.h.
+
+
+
+Referenced by java\_\-lang\_\-System\_\-identityHashCode(), and java\_\-lang\_\-Thread\_\-activeCount().
+
+\index{kni.h@{kni.h}!KNI\_\-ReturnLong@{KNI\_\-ReturnLong}}
+\index{KNI\_\-ReturnLong@{KNI\_\-ReturnLong}!kni.h@{kni.h}}
+\subsubsection[{KNI\_\-ReturnLong}]{\setlength{\rightskip}{0pt plus 5cm}\#define KNI\_\-ReturnLong(
+\begin{DoxyParamCaption}
+\item[{}]{value}
+\end{DoxyParamCaption}
+)~return ({\bf jlong}) (value)}\label{kni_8h_ad20a2cd0e81fd0c30b421eb0a2c0bc35}
+Returns a long value from a native function. Calling the function will terminate execution of the native function immediately 
+\begin{DoxyParams}{Parameters}
+\item[{\em value}]The result value of the native method \end{DoxyParams}
+
+
+Definition at line 1429 of file kni.h.
+
+
+
+Referenced by java\_\-lang\_\-Runtime\_\-freeMemory(), java\_\-lang\_\-Runtime\_\-totalMemory(), and java\_\-lang\_\-System\_\-currentTimeMillis().
+
+\index{kni.h@{kni.h}!KNI\_\-ReturnShort@{KNI\_\-ReturnShort}}
+\index{KNI\_\-ReturnShort@{KNI\_\-ReturnShort}!kni.h@{kni.h}}
+\subsubsection[{KNI\_\-ReturnShort}]{\setlength{\rightskip}{0pt plus 5cm}\#define KNI\_\-ReturnShort(
+\begin{DoxyParamCaption}
+\item[{}]{value}
+\end{DoxyParamCaption}
+)~return ({\bf jshort}) (value)}\label{kni_8h_ab3ef2ea0fc6a5d8ca7d4bac59960a72e}
+Returns a short value from a native function. Calling the function will terminate execution of the native function immediately 
+\begin{DoxyParams}{Parameters}
+\item[{\em value}]The result value of the native method \end{DoxyParams}
+
+
+Definition at line 1417 of file kni.h.
+
+\index{kni.h@{kni.h}!KNI\_\-RETURNTYPE\_\-BOOLEAN@{KNI\_\-RETURNTYPE\_\-BOOLEAN}}
+\index{KNI\_\-RETURNTYPE\_\-BOOLEAN@{KNI\_\-RETURNTYPE\_\-BOOLEAN}!kni.h@{kni.h}}
+\subsubsection[{KNI\_\-RETURNTYPE\_\-BOOLEAN}]{\setlength{\rightskip}{0pt plus 5cm}\#define KNI\_\-RETURNTYPE\_\-BOOLEAN~int32\_\-t}\label{kni_8h_a477aa8c814691956bb5acd6e8e32f6bc}
+KNI return type for functions returning booleans 
+
+Definition at line 127 of file kni.h.
+
+\index{kni.h@{kni.h}!KNI\_\-RETURNTYPE\_\-BYTE@{KNI\_\-RETURNTYPE\_\-BYTE}}
+\index{KNI\_\-RETURNTYPE\_\-BYTE@{KNI\_\-RETURNTYPE\_\-BYTE}!kni.h@{kni.h}}
+\subsubsection[{KNI\_\-RETURNTYPE\_\-BYTE}]{\setlength{\rightskip}{0pt plus 5cm}\#define KNI\_\-RETURNTYPE\_\-BYTE~int32\_\-t}\label{kni_8h_ac8d6fc526f644d00f8f47cae60ff78e2}
+KNI return type for functions returning bytes 
+
+Definition at line 130 of file kni.h.
+
+\index{kni.h@{kni.h}!KNI\_\-RETURNTYPE\_\-CHAR@{KNI\_\-RETURNTYPE\_\-CHAR}}
+\index{KNI\_\-RETURNTYPE\_\-CHAR@{KNI\_\-RETURNTYPE\_\-CHAR}!kni.h@{kni.h}}
+\subsubsection[{KNI\_\-RETURNTYPE\_\-CHAR}]{\setlength{\rightskip}{0pt plus 5cm}\#define KNI\_\-RETURNTYPE\_\-CHAR~int32\_\-t}\label{kni_8h_a968548e3e698b0eeb7006fe3176f8eed}
+KNI return type for functions returning chars 
+
+Definition at line 133 of file kni.h.
+
+\index{kni.h@{kni.h}!KNI\_\-RETURNTYPE\_\-DOUBLE@{KNI\_\-RETURNTYPE\_\-DOUBLE}}
+\index{KNI\_\-RETURNTYPE\_\-DOUBLE@{KNI\_\-RETURNTYPE\_\-DOUBLE}!kni.h@{kni.h}}
+\subsubsection[{KNI\_\-RETURNTYPE\_\-DOUBLE}]{\setlength{\rightskip}{0pt plus 5cm}\#define KNI\_\-RETURNTYPE\_\-DOUBLE~double}\label{kni_8h_a7d6a853cf6dda1ed1e084f7983faf8b2}
+KNI return type for functions returning doubles 
+
+Definition at line 148 of file kni.h.
+
+\index{kni.h@{kni.h}!KNI\_\-RETURNTYPE\_\-FLOAT@{KNI\_\-RETURNTYPE\_\-FLOAT}}
+\index{KNI\_\-RETURNTYPE\_\-FLOAT@{KNI\_\-RETURNTYPE\_\-FLOAT}!kni.h@{kni.h}}
+\subsubsection[{KNI\_\-RETURNTYPE\_\-FLOAT}]{\setlength{\rightskip}{0pt plus 5cm}\#define KNI\_\-RETURNTYPE\_\-FLOAT~float}\label{kni_8h_a9d9e117218f8194bde83e017f1e59945}
+KNI return type for functions returning floats 
+
+Definition at line 145 of file kni.h.
+
+\index{kni.h@{kni.h}!KNI\_\-RETURNTYPE\_\-INT@{KNI\_\-RETURNTYPE\_\-INT}}
+\index{KNI\_\-RETURNTYPE\_\-INT@{KNI\_\-RETURNTYPE\_\-INT}!kni.h@{kni.h}}
+\subsubsection[{KNI\_\-RETURNTYPE\_\-INT}]{\setlength{\rightskip}{0pt plus 5cm}\#define KNI\_\-RETURNTYPE\_\-INT~int32\_\-t}\label{kni_8h_a217507d57882d1cfe0bff1b6cf4bd87f}
+KNI return type for functions returning ints 
+
+Definition at line 139 of file kni.h.
+
+\index{kni.h@{kni.h}!KNI\_\-RETURNTYPE\_\-LONG@{KNI\_\-RETURNTYPE\_\-LONG}}
+\index{KNI\_\-RETURNTYPE\_\-LONG@{KNI\_\-RETURNTYPE\_\-LONG}!kni.h@{kni.h}}
+\subsubsection[{KNI\_\-RETURNTYPE\_\-LONG}]{\setlength{\rightskip}{0pt plus 5cm}\#define KNI\_\-RETURNTYPE\_\-LONG~int64\_\-t}\label{kni_8h_a14cb9fc49959c12771fa09db9df918de}
+KNI return type for functions returning longs 
+
+Definition at line 142 of file kni.h.
+
+\index{kni.h@{kni.h}!KNI\_\-RETURNTYPE\_\-OBJECT@{KNI\_\-RETURNTYPE\_\-OBJECT}}
+\index{KNI\_\-RETURNTYPE\_\-OBJECT@{KNI\_\-RETURNTYPE\_\-OBJECT}!kni.h@{kni.h}}
+\subsubsection[{KNI\_\-RETURNTYPE\_\-OBJECT}]{\setlength{\rightskip}{0pt plus 5cm}\#define KNI\_\-RETURNTYPE\_\-OBJECT~uintptr\_\-t}\label{kni_8h_af7414d5f34c5b85c568dc05bc17c825b}
+KNI return type for functions returning object handles 
+
+Definition at line 151 of file kni.h.
+
+\index{kni.h@{kni.h}!KNI\_\-RETURNTYPE\_\-SHORT@{KNI\_\-RETURNTYPE\_\-SHORT}}
+\index{KNI\_\-RETURNTYPE\_\-SHORT@{KNI\_\-RETURNTYPE\_\-SHORT}!kni.h@{kni.h}}
+\subsubsection[{KNI\_\-RETURNTYPE\_\-SHORT}]{\setlength{\rightskip}{0pt plus 5cm}\#define KNI\_\-RETURNTYPE\_\-SHORT~int32\_\-t}\label{kni_8h_afdc3fa7b20b8f9fafaf6f15e76ce828a}
+KNI return type for functions returning shorts 
+
+Definition at line 136 of file kni.h.
+
+\index{kni.h@{kni.h}!KNI\_\-RETURNTYPE\_\-VOID@{KNI\_\-RETURNTYPE\_\-VOID}}
+\index{KNI\_\-RETURNTYPE\_\-VOID@{KNI\_\-RETURNTYPE\_\-VOID}!kni.h@{kni.h}}
+\subsubsection[{KNI\_\-RETURNTYPE\_\-VOID}]{\setlength{\rightskip}{0pt plus 5cm}\#define KNI\_\-RETURNTYPE\_\-VOID~void}\label{kni_8h_a300ad53dd7e14020f3fe746f8524cdda}
+KNI return type for functions returning void 
+
+Definition at line 124 of file kni.h.
+
+\index{kni.h@{kni.h}!KNI\_\-ReturnVoid@{KNI\_\-ReturnVoid}}
+\index{KNI\_\-ReturnVoid@{KNI\_\-ReturnVoid}!kni.h@{kni.h}}
+\subsubsection[{KNI\_\-ReturnVoid}]{\setlength{\rightskip}{0pt plus 5cm}\#define KNI\_\-ReturnVoid(
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)~return}\label{kni_8h_aab3da6db5bbf44dd98098c23c1edb26b}
+Returns a void value from a native function. Calling this function terminates the execution of the native function immediately 
+
+Definition at line 1393 of file kni.h.
+
+
+
+Referenced by java\_\-lang\_\-Object\_\-\_\-wait(), java\_\-lang\_\-Object\_\-notify(), java\_\-lang\_\-Object\_\-notifyAll(), java\_\-lang\_\-ref\_\-WeakReference\_\-addToWeakReferenceList(), java\_\-lang\_\-Runtime\_\-gc(), java\_\-lang\_\-Thread\_\-interrupt(), java\_\-lang\_\-Thread\_\-join(), java\_\-lang\_\-Thread\_\-sleep(), java\_\-lang\_\-Thread\_\-start(), java\_\-lang\_\-Thread\_\-yield(), and java\_\-lang\_\-Throwable\_\-printStackTrace().
+
+\index{kni.h@{kni.h}!KNI\_\-StartHandles@{KNI\_\-StartHandles}}
+\index{KNI\_\-StartHandles@{KNI\_\-StartHandles}!kni.h@{kni.h}}
+\subsubsection[{KNI\_\-StartHandles}]{\setlength{\rightskip}{0pt plus 5cm}\#define KNI\_\-StartHandles(
+\begin{DoxyParamCaption}
+\item[{}]{n}
+\end{DoxyParamCaption}
+)}\label{kni_8h_a8cbf1161fd4aefef5a0609c9aefcae84}
+{\bfseries Value:}
+\begin{DoxyCode}
+{ \
+    size_t __declared_count__ = 0; \
+    uintptr_t __handles__[n]
+\end{DoxyCode}
+Allocates enough space for n handles for the current native method 
+\begin{DoxyParams}{Parameters}
+\item[{\em n}]A positive integer specifying the number of handles to allocate \end{DoxyParams}
+
+
+Definition at line 1467 of file kni.h.
+
+
+
+Referenced by java\_\-lang\_\-Class\_\-forName(), java\_\-lang\_\-Class\_\-getInternalName(), java\_\-lang\_\-Class\_\-isAssignableFrom(), java\_\-lang\_\-Class\_\-isInstance(), java\_\-lang\_\-Class\_\-newInstance(), java\_\-lang\_\-Object\_\-\_\-wait(), java\_\-lang\_\-Object\_\-getClass(), java\_\-lang\_\-Object\_\-notify(), java\_\-lang\_\-Object\_\-notifyAll(), java\_\-lang\_\-ref\_\-WeakReference\_\-addToWeakReferenceList(), java\_\-lang\_\-String\_\-intern(), java\_\-lang\_\-System\_\-arraycopy(), java\_\-lang\_\-System\_\-identityHashCode(), java\_\-lang\_\-Thread\_\-currentThread(), java\_\-lang\_\-Thread\_\-interrupt(), java\_\-lang\_\-Thread\_\-join(), and java\_\-lang\_\-Thread\_\-start().
+
+\index{kni.h@{kni.h}!KNI\_\-TRUE@{KNI\_\-TRUE}}
+\index{KNI\_\-TRUE@{KNI\_\-TRUE}!kni.h@{kni.h}}
+\subsubsection[{KNI\_\-TRUE}]{\setlength{\rightskip}{0pt plus 5cm}\#define KNI\_\-TRUE~(1)}\label{kni_8h_a18f871c7fce89415cac439fffdc39642}
+'true' value of a java ' boolean' 
+
+Definition at line 164 of file kni.h.
+
+
+
+Referenced by KNI\_\-IsAssignableFrom(), and KNI\_\-IsInstanceOf().
+
+\index{kni.h@{kni.h}!KNI\_\-VERSION@{KNI\_\-VERSION}}
+\index{KNI\_\-VERSION@{KNI\_\-VERSION}!kni.h@{kni.h}}
+\subsubsection[{KNI\_\-VERSION}]{\setlength{\rightskip}{0pt plus 5cm}\#define KNI\_\-VERSION~(0x00010000)}\label{kni_8h_a5edc2887d95485092575d253d7e96119}
+KNI version. Currently 1.0 
+
+Definition at line 188 of file kni.h.
+
+
+
+\subsection{Typedef Documentation}
+\index{kni.h@{kni.h}!jarray@{jarray}}
+\index{jarray@{jarray}!kni.h@{kni.h}}
+\subsubsection[{jarray}]{\setlength{\rightskip}{0pt plus 5cm}typedef {\bf jobject} {\bf jarray}}\label{kni_8h_a78544f163134d629b0907abc1e63138f}
+Untyped java array reference 
+
+Definition at line 87 of file kni.h.
+
+\index{kni.h@{kni.h}!jboolean@{jboolean}}
+\index{jboolean@{jboolean}!kni.h@{kni.h}}
+\subsubsection[{jboolean}]{\setlength{\rightskip}{0pt plus 5cm}typedef uint8\_\-t {\bf jboolean}}\label{kni_8h_a2aabf7e11dd010e6affa89cadc811710}
+Java 'boolean' type 
+
+Definition at line 44 of file kni.h.
+
+\index{kni.h@{kni.h}!jbooleanArray@{jbooleanArray}}
+\index{jbooleanArray@{jbooleanArray}!kni.h@{kni.h}}
+\subsubsection[{jbooleanArray}]{\setlength{\rightskip}{0pt plus 5cm}typedef {\bf jarray} {\bf jbooleanArray}}\label{kni_8h_a4009296a2297910b95c3457a227328e1}
+boolean array reference 
+
+Definition at line 90 of file kni.h.
+
+\index{kni.h@{kni.h}!jbyte@{jbyte}}
+\index{jbyte@{jbyte}!kni.h@{kni.h}}
+\subsubsection[{jbyte}]{\setlength{\rightskip}{0pt plus 5cm}typedef uint8\_\-t {\bf jbyte}}\label{kni_8h_a58bc29d75bdd9af6db91c0e444890d4a}
+Java 'byte' type 
+
+Definition at line 47 of file kni.h.
+
+\index{kni.h@{kni.h}!jbyteArray@{jbyteArray}}
+\index{jbyteArray@{jbyteArray}!kni.h@{kni.h}}
+\subsubsection[{jbyteArray}]{\setlength{\rightskip}{0pt plus 5cm}typedef {\bf jarray} {\bf jbyteArray}}\label{kni_8h_acb34823f6a2f4a76dc58fd9cf6b52ff6}
+byte array reference 
+
+Definition at line 93 of file kni.h.
+
+\index{kni.h@{kni.h}!jchar@{jchar}}
+\index{jchar@{jchar}!kni.h@{kni.h}}
+\subsubsection[{jchar}]{\setlength{\rightskip}{0pt plus 5cm}typedef uint16\_\-t {\bf jchar}}\label{kni_8h_af15c8b821f6a554997c2fa4893c31951}
+Java 'char' type 
+
+Definition at line 50 of file kni.h.
+
+\index{kni.h@{kni.h}!jcharArray@{jcharArray}}
+\index{jcharArray@{jcharArray}!kni.h@{kni.h}}
+\subsubsection[{jcharArray}]{\setlength{\rightskip}{0pt plus 5cm}typedef {\bf jarray} {\bf jcharArray}}\label{kni_8h_a511d51e9d38d61dce8c2ffbe5ecfb22d}
+char array reference 
+
+Definition at line 96 of file kni.h.
+
+\index{kni.h@{kni.h}!jclass@{jclass}}
+\index{jclass@{jclass}!kni.h@{kni.h}}
+\subsubsection[{jclass}]{\setlength{\rightskip}{0pt plus 5cm}typedef uintptr\_\-t$\ast$ {\bf jclass}}\label{kni_8h_aea4c88adda83c15e37575b95d7947fe6}
+\doxyref{java.lang.Class}{p.}{classjava_1_1lang_1_1_class} reference 
+
+Definition at line 78 of file kni.h.
+
+\index{kni.h@{kni.h}!jdouble@{jdouble}}
+\index{jdouble@{jdouble}!kni.h@{kni.h}}
+\subsubsection[{jdouble}]{\setlength{\rightskip}{0pt plus 5cm}typedef double {\bf jdouble}}\label{kni_8h_a4dbf307878725eebfb852c2800a951fa}
+Java 'double' type 
+
+Definition at line 65 of file kni.h.
+
+\index{kni.h@{kni.h}!jdoubleArray@{jdoubleArray}}
+\index{jdoubleArray@{jdoubleArray}!kni.h@{kni.h}}
+\subsubsection[{jdoubleArray}]{\setlength{\rightskip}{0pt plus 5cm}typedef {\bf jarray} {\bf jdoubleArray}}\label{kni_8h_a7970b87de8d49c1fe5facc1ecda5d560}
+double array reference 
+
+Definition at line 111 of file kni.h.
+
+\index{kni.h@{kni.h}!jfieldID@{jfieldID}}
+\index{jfieldID@{jfieldID}!kni.h@{kni.h}}
+\subsubsection[{jfieldID}]{\setlength{\rightskip}{0pt plus 5cm}typedef uintptr\_\-t {\bf jfieldID}}\label{kni_8h_afeb7bb06bd0111d7792cac2b06ca2e11}
+Reference to a field 
+
+Definition at line 117 of file kni.h.
+
+\index{kni.h@{kni.h}!jfloat@{jfloat}}
+\index{jfloat@{jfloat}!kni.h@{kni.h}}
+\subsubsection[{jfloat}]{\setlength{\rightskip}{0pt plus 5cm}typedef float {\bf jfloat}}\label{kni_8h_a5d393cee6f500e76ac60e7e29279bf17}
+Java 'float' type 
+
+Definition at line 62 of file kni.h.
+
+\index{kni.h@{kni.h}!jfloatArray@{jfloatArray}}
+\index{jfloatArray@{jfloatArray}!kni.h@{kni.h}}
+\subsubsection[{jfloatArray}]{\setlength{\rightskip}{0pt plus 5cm}typedef {\bf jarray} {\bf jfloatArray}}\label{kni_8h_aadf58d5e9c7189db4638d7e50bed3841}
+float array reference 
+
+Definition at line 108 of file kni.h.
+
+\index{kni.h@{kni.h}!jint@{jint}}
+\index{jint@{jint}!kni.h@{kni.h}}
+\subsubsection[{jint}]{\setlength{\rightskip}{0pt plus 5cm}typedef int32\_\-t {\bf jint}}\label{kni_8h_a36d2d2d6848d7f576b7f8875f95efd1e}
+Java 'int' type 
+
+Definition at line 56 of file kni.h.
+
+\index{kni.h@{kni.h}!jintArray@{jintArray}}
+\index{jintArray@{jintArray}!kni.h@{kni.h}}
+\subsubsection[{jintArray}]{\setlength{\rightskip}{0pt plus 5cm}typedef {\bf jarray} {\bf jintArray}}\label{kni_8h_a2bf7845ae665f91517ba1ea33f659701}
+int array reference 
+
+Definition at line 102 of file kni.h.
+
+\index{kni.h@{kni.h}!jlong@{jlong}}
+\index{jlong@{jlong}!kni.h@{kni.h}}
+\subsubsection[{jlong}]{\setlength{\rightskip}{0pt plus 5cm}typedef int64\_\-t {\bf jlong}}\label{kni_8h_a6c3e7e2cbf647998ac1eb3dd10890d37}
+Java 'long' type 
+
+Definition at line 59 of file kni.h.
+
+\index{kni.h@{kni.h}!jlongArray@{jlongArray}}
+\index{jlongArray@{jlongArray}!kni.h@{kni.h}}
+\subsubsection[{jlongArray}]{\setlength{\rightskip}{0pt plus 5cm}typedef {\bf jarray} {\bf jlongArray}}\label{kni_8h_a1090d6a7969eb2030190f0fde9606545}
+long array reference 
+
+Definition at line 105 of file kni.h.
+
+\index{kni.h@{kni.h}!jobject@{jobject}}
+\index{jobject@{jobject}!kni.h@{kni.h}}
+\subsubsection[{jobject}]{\setlength{\rightskip}{0pt plus 5cm}typedef uintptr\_\-t$\ast$ {\bf jobject}}\label{kni_8h_a7babe0c0b6defa1b33da97b66aed8d1c}
+\doxyref{java.lang.Object}{p.}{classjava_1_1lang_1_1_object} reference 
+
+Definition at line 75 of file kni.h.
+
+\index{kni.h@{kni.h}!jobjectArray@{jobjectArray}}
+\index{jobjectArray@{jobjectArray}!kni.h@{kni.h}}
+\subsubsection[{jobjectArray}]{\setlength{\rightskip}{0pt plus 5cm}typedef {\bf jarray} {\bf jobjectArray}}\label{kni_8h_a563317be23add0c2922e34b6983fec7e}
+Array of object references 
+
+Definition at line 114 of file kni.h.
+
+\index{kni.h@{kni.h}!jshort@{jshort}}
+\index{jshort@{jshort}!kni.h@{kni.h}}
+\subsubsection[{jshort}]{\setlength{\rightskip}{0pt plus 5cm}typedef int16\_\-t {\bf jshort}}\label{kni_8h_a8436c228414d8b882086f54981175525}
+Java 'short' type 
+
+Definition at line 53 of file kni.h.
+
+\index{kni.h@{kni.h}!jshortArray@{jshortArray}}
+\index{jshortArray@{jshortArray}!kni.h@{kni.h}}
+\subsubsection[{jshortArray}]{\setlength{\rightskip}{0pt plus 5cm}typedef {\bf jarray} {\bf jshortArray}}\label{kni_8h_a324cb95947c7dd8d9670de754abba052}
+short array reference 
+
+Definition at line 99 of file kni.h.
+
+\index{kni.h@{kni.h}!jsize@{jsize}}
+\index{jsize@{jsize}!kni.h@{kni.h}}
+\subsubsection[{jsize}]{\setlength{\rightskip}{0pt plus 5cm}typedef {\bf jint} {\bf jsize}}\label{kni_8h_ae76ffede4acd03ec31101899cce740ea}
+Size type (string length, etc...) 
+
+Definition at line 68 of file kni.h.
+
+\index{kni.h@{kni.h}!jstring@{jstring}}
+\index{jstring@{jstring}!kni.h@{kni.h}}
+\subsubsection[{jstring}]{\setlength{\rightskip}{0pt plus 5cm}typedef {\bf jobject} {\bf jstring}}\label{kni_8h_a6b61b4d7ccdc1edb60f2c735f9b401c9}
+\doxyref{java.lang.String}{p.}{classjava_1_1lang_1_1_string} reference 
+
+Definition at line 84 of file kni.h.
+
+\index{kni.h@{kni.h}!jthrowable@{jthrowable}}
+\index{jthrowable@{jthrowable}!kni.h@{kni.h}}
+\subsubsection[{jthrowable}]{\setlength{\rightskip}{0pt plus 5cm}typedef {\bf jobject} {\bf jthrowable}}\label{kni_8h_a890ad8298bcbec657011f49aa6a37e83}
+\doxyref{java.lang.Throwable}{p.}{classjava_1_1lang_1_1_throwable} reference 
+
+Definition at line 81 of file kni.h.
+
+
+
+\subsection{Function Documentation}
+\index{kni.h@{kni.h}!\_\-KNI\_\-push\_\-handle@{\_\-KNI\_\-push\_\-handle}}
+\index{\_\-KNI\_\-push\_\-handle@{\_\-KNI\_\-push\_\-handle}!kni.h@{kni.h}}
+\subsubsection[{\_\-KNI\_\-push\_\-handle}]{\setlength{\rightskip}{0pt plus 5cm}static {\bf jobject} \_\-KNI\_\-push\_\-handle (
+\begin{DoxyParamCaption}
+\item[{{\bf jobject}}]{ handle}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily  [inline, static]}}\label{kni_8h_a96254be2bdc54391f307bbea78f4f9a2}
+Internal function used for recording the new handles as temporary roots while declaring them. This function also clears the passed handle so that the garbage collector will not see a garbage reference 
+\begin{DoxyParams}{Parameters}
+\item[{\em handle}]A KNI object handle \end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+The {\itshape handle\/} argument 
+\end{DoxyReturn}
+
+
+Definition at line 1457 of file kni.h.
+
+
+
+References thread\_\-push\_\-root().
+
+\index{kni.h@{kni.h}!KNI\_\-FatalError@{KNI\_\-FatalError}}
+\index{KNI\_\-FatalError@{KNI\_\-FatalError}!kni.h@{kni.h}}
+\subsubsection[{KNI\_\-FatalError}]{\setlength{\rightskip}{0pt plus 5cm}void KNI\_\-FatalError (
+\begin{DoxyParamCaption}
+\item[{const char $\ast$}]{ message}
+\end{DoxyParamCaption}
+)}\label{kni_8h_a4707183ef9398f27a1074a4d464e290e}
+Prints an error message to the system’s standard error output, and terminates the execution of the virtual machine immediately 
+\begin{DoxyParams}{Parameters}
+\item[{\em message}]The error message as a UTF-\/8 string \end{DoxyParams}
+
+
+Definition at line 77 of file kni.c.
+
+
+
+References vm\_\-fail().
+
+\index{kni.h@{kni.h}!KNI\_\-FindClass@{KNI\_\-FindClass}}
+\index{KNI\_\-FindClass@{KNI\_\-FindClass}!kni.h@{kni.h}}
+\subsubsection[{KNI\_\-FindClass}]{\setlength{\rightskip}{0pt plus 5cm}static void KNI\_\-FindClass (
+\begin{DoxyParamCaption}
+\item[{const char $\ast$}]{ name, }
+\item[{{\bf jclass}}]{ classHandle}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily  [inline, static]}}\label{kni_8h_aab4b9703d8cf2809801e143eb406def8}
+Initializes a handle with a reference to the named class or interface. The function assumes that the class has already been loaded to the system and properly initialized. If this is not the case, or if no class is found, the handle will be initialized to NULL 
+\begin{DoxyParams}{Parameters}
+\item[{\em name}]The descriptor of the class or interface to be returned. The name is represented as a UTF-\/8 string \item[{\em classHandle}]A handle in which the class pointer will be returned \end{DoxyParams}
+
+
+Definition at line 210 of file kni.h.
+
+
+
+References bcl\_\-find\_\-class(), and class\_\-get\_\-object().
+
+\index{kni.h@{kni.h}!KNI\_\-GetArrayLength@{KNI\_\-GetArrayLength}}
+\index{KNI\_\-GetArrayLength@{KNI\_\-GetArrayLength}!kni.h@{kni.h}}
+\subsubsection[{KNI\_\-GetArrayLength}]{\setlength{\rightskip}{0pt plus 5cm}static {\bf jsize} KNI\_\-GetArrayLength (
+\begin{DoxyParamCaption}
+\item[{{\bf jarray}}]{ array}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily  [inline, static]}}\label{kni_8h_ac2eec807de7c8d512172ca357a83341b}
+Returns the number of elements in a given Java array object. The {\itshape array\/} argument may denote an array of any element type, including primitive types or reference types. If the given array handle is NULL, the function returns -\/1 
+\begin{DoxyParams}{Parameters}
+\item[{\em array}]A handle pointing to an array object whose length is to be determined \end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Returns the number of elements in the array, or -\/1 if the given array handle is NULL 
+\end{DoxyReturn}
+
+
+Definition at line 878 of file kni.h.
+
+\index{kni.h@{kni.h}!KNI\_\-GetBooleanArrayElement@{KNI\_\-GetBooleanArrayElement}}
+\index{KNI\_\-GetBooleanArrayElement@{KNI\_\-GetBooleanArrayElement}!kni.h@{kni.h}}
+\subsubsection[{KNI\_\-GetBooleanArrayElement}]{\setlength{\rightskip}{0pt plus 5cm}static {\bf jboolean} KNI\_\-GetBooleanArrayElement (
+\begin{DoxyParamCaption}
+\item[{{\bf jbooleanArray}}]{ arrayHandle, }
+\item[{{\bf jsize}}]{ index}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily  [inline, static]}}\label{kni_8h_a0b927bcef02facec88467c7433a74e9c}
+Returns an element of an array of booleans. The given array reference must not be NULL. No array type checking or index range checking is performed 
+\begin{DoxyParams}{Parameters}
+\item[{\em arrayHandle}]A handle pointing to an array object \item[{\em index}]The index of the element in the array. Index 0 denotes the first element in the array \end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Returns the element at position index of an array of booleans 
+\end{DoxyReturn}
+
+
+Definition at line 894 of file kni.h.
+
+
+
+References array\_\-get\_\-data().
+
+\index{kni.h@{kni.h}!KNI\_\-GetBooleanField@{KNI\_\-GetBooleanField}}
+\index{KNI\_\-GetBooleanField@{KNI\_\-GetBooleanField}!kni.h@{kni.h}}
+\subsubsection[{KNI\_\-GetBooleanField}]{\setlength{\rightskip}{0pt plus 5cm}static {\bf jboolean} KNI\_\-GetBooleanField (
+\begin{DoxyParamCaption}
+\item[{{\bf jobject}}]{ objectHandle, }
+\item[{{\bf jfieldID}}]{ fieldID}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily  [inline, static]}}\label{kni_8h_a478f737497ef097715d5fa605788e99a}
+Returns the value of an instance field of type boolean. The field to access is denoted by fieldID 
+\begin{DoxyParams}{Parameters}
+\item[{\em objectHandle}]A handle pointing to an object whose field is to be accessed \item[{\em fieldID}]The field ID of the given instance field \end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+The value of the specified instance field 
+\end{DoxyReturn}
+
+
+Definition at line 322 of file kni.h.
+
+\index{kni.h@{kni.h}!KNI\_\-GetByteArrayElement@{KNI\_\-GetByteArrayElement}}
+\index{KNI\_\-GetByteArrayElement@{KNI\_\-GetByteArrayElement}!kni.h@{kni.h}}
+\subsubsection[{KNI\_\-GetByteArrayElement}]{\setlength{\rightskip}{0pt plus 5cm}static {\bf jbyte} KNI\_\-GetByteArrayElement (
+\begin{DoxyParamCaption}
+\item[{{\bf jbyteArray}}]{ arrayHandle, }
+\item[{{\bf jsize}}]{ index}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily  [inline, static]}}\label{kni_8h_a9685e1c9e2bde88aa2fccf5785058400}
+Returns an element of an array of bytes. The given array reference must not be NULL. No array type checking or index range checking is performed 
+\begin{DoxyParams}{Parameters}
+\item[{\em arrayHandle}]A handle pointing to an array object \item[{\em index}]The index of the element in the array. Index 0 denotes the first element in the array \end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Returns the element at position index of an array of bytes 
+\end{DoxyReturn}
+
+
+Definition at line 910 of file kni.h.
+
+
+
+References array\_\-get\_\-data().
+
+\index{kni.h@{kni.h}!KNI\_\-GetByteField@{KNI\_\-GetByteField}}
+\index{KNI\_\-GetByteField@{KNI\_\-GetByteField}!kni.h@{kni.h}}
+\subsubsection[{KNI\_\-GetByteField}]{\setlength{\rightskip}{0pt plus 5cm}static {\bf jbyte} KNI\_\-GetByteField (
+\begin{DoxyParamCaption}
+\item[{{\bf jobject}}]{ objectHandle, }
+\item[{{\bf jfieldID}}]{ fieldID}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily  [inline, static]}}\label{kni_8h_a3186798727aa6cff59c953243cd8d2bd}
+Returns the value of an instance field of type byte. The field to access is denoted by fieldID 
+\begin{DoxyParams}{Parameters}
+\item[{\em objectHandle}]A handle pointing to an object whose field is to be accessed \item[{\em fieldID}]The field ID of the given instance field \end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+The value of the specified instance field 
+\end{DoxyReturn}
+
+
+Definition at line 337 of file kni.h.
+
+\index{kni.h@{kni.h}!KNI\_\-GetCharArrayElement@{KNI\_\-GetCharArrayElement}}
+\index{KNI\_\-GetCharArrayElement@{KNI\_\-GetCharArrayElement}!kni.h@{kni.h}}
+\subsubsection[{KNI\_\-GetCharArrayElement}]{\setlength{\rightskip}{0pt plus 5cm}static {\bf jchar} KNI\_\-GetCharArrayElement (
+\begin{DoxyParamCaption}
+\item[{{\bf jcharArray}}]{ arrayHandle, }
+\item[{{\bf jsize}}]{ index}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily  [inline, static]}}\label{kni_8h_a79c6fa22d1f30e425291be7843591f83}
+Returns an element of an array of chars. The given array reference must not be NULL. No array type checking or index range checking is performed 
+\begin{DoxyParams}{Parameters}
+\item[{\em arrayHandle}]A handle pointing to an array object \item[{\em index}]The index of the element in the array. Index 0 denotes the first element in the array \end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Returns the element at position index of an array of chars 
+\end{DoxyReturn}
+
+
+Definition at line 925 of file kni.h.
+
+
+
+References array\_\-get\_\-data().
+
+\index{kni.h@{kni.h}!KNI\_\-GetCharField@{KNI\_\-GetCharField}}
+\index{KNI\_\-GetCharField@{KNI\_\-GetCharField}!kni.h@{kni.h}}
+\subsubsection[{KNI\_\-GetCharField}]{\setlength{\rightskip}{0pt plus 5cm}static {\bf jchar} KNI\_\-GetCharField (
+\begin{DoxyParamCaption}
+\item[{{\bf jobject}}]{ objectHandle, }
+\item[{{\bf jfieldID}}]{ fieldID}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily  [inline, static]}}\label{kni_8h_a47ce57c3aae43603a2fa1b16e6f2621e}
+Returns the value of an instance field of type char. The field to access is denoted by fieldID 
+\begin{DoxyParams}{Parameters}
+\item[{\em objectHandle}]A handle pointing to an object whose field is to be accessed \item[{\em fieldID}]The field ID of the given instance field \end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+The value of the specified instance field 
+\end{DoxyReturn}
+
+
+Definition at line 349 of file kni.h.
+
+\index{kni.h@{kni.h}!KNI\_\-GetClassPointer@{KNI\_\-GetClassPointer}}
+\index{KNI\_\-GetClassPointer@{KNI\_\-GetClassPointer}!kni.h@{kni.h}}
+\subsubsection[{KNI\_\-GetClassPointer}]{\setlength{\rightskip}{0pt plus 5cm}static void KNI\_\-GetClassPointer (
+\begin{DoxyParamCaption}
+\item[{{\bf jclass}}]{ toHandle}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily  [inline, static]}}\label{kni_8h_ae2b3e9acbe87bba6a79b7c45b3190a46}
+Reads the value of the class pointer in the current stack frame of a static native method, and stores the value in the handle {\itshape toHandle\/} 
+\begin{DoxyParams}{Parameters}
+\item[{\em toHandle}]A handle to contain the class pointer \end{DoxyParams}
+
+
+Definition at line 1385 of file kni.h.
+
+
+
+References class\_\-get\_\-object(), and thread\_\-self().
+
+\index{kni.h@{kni.h}!KNI\_\-GetFieldID@{KNI\_\-GetFieldID}}
+\index{KNI\_\-GetFieldID@{KNI\_\-GetFieldID}!kni.h@{kni.h}}
+\subsubsection[{KNI\_\-GetFieldID}]{\setlength{\rightskip}{0pt plus 5cm}{\bf jfieldID} KNI\_\-GetFieldID (
+\begin{DoxyParamCaption}
+\item[{{\bf jclass}}]{ classHandle, }
+\item[{const char $\ast$}]{ name, }
+\item[{const char $\ast$}]{ signature}
+\end{DoxyParamCaption}
+)}\label{kni_8h_a8e6d6d1f27553d04b82b4eed2a549d97}
+Returns the field ID of an instance field of the class represented by classHandle. The field is specified by its name and signature. The Get$<$Type$>$Field and Set$<$Type$>$Field families of accessor functions use field IDs to retrieve the value of instance fields. The field must be accessible from the class referred to by classHandle 
+\begin{DoxyParams}{Parameters}
+\item[{\em classHandle}]A handle pointing to a class whose field ID will be retrieved \item[{\em name}]The field name as a UTF-\/8 string \item[{\em signature}]The field descriptor as a UTF-\/8 string \end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Returns a field ID or NULL if the lookup fails for any reason 
+\end{DoxyReturn}
+
+
+Definition at line 98 of file kni.c.
+
+
+
+References bcl\_\-get\_\-class\_\-by\_\-id(), class\_\-get\_\-field(), field\_\-is\_\-static(), JAVA\_\-LANG\_\-CLASS\_\-REF2PTR, and field\_\-t::offset.
+
+\index{kni.h@{kni.h}!KNI\_\-GetIntArrayElement@{KNI\_\-GetIntArrayElement}}
+\index{KNI\_\-GetIntArrayElement@{KNI\_\-GetIntArrayElement}!kni.h@{kni.h}}
+\subsubsection[{KNI\_\-GetIntArrayElement}]{\setlength{\rightskip}{0pt plus 5cm}static {\bf jint} KNI\_\-GetIntArrayElement (
+\begin{DoxyParamCaption}
+\item[{{\bf jintArray}}]{ arrayHandle, }
+\item[{{\bf jsize}}]{ index}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily  [inline, static]}}\label{kni_8h_a965e23daa07f37911e717a567da5a333}
+Returns an element of an array of ints. The given array reference must not be NULL. No array type checking or index range checking is performed 
+\begin{DoxyParams}{Parameters}
+\item[{\em arrayHandle}]A handle pointing to an array object \item[{\em index}]The index of the element in the array. Index 0 denotes the first element in the array \end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Returns the element at position index of an array of ints 
+\end{DoxyReturn}
+
+
+Definition at line 956 of file kni.h.
+
+
+
+References array\_\-get\_\-data().
+
+\index{kni.h@{kni.h}!KNI\_\-GetIntField@{KNI\_\-GetIntField}}
+\index{KNI\_\-GetIntField@{KNI\_\-GetIntField}!kni.h@{kni.h}}
+\subsubsection[{KNI\_\-GetIntField}]{\setlength{\rightskip}{0pt plus 5cm}static {\bf jint} KNI\_\-GetIntField (
+\begin{DoxyParamCaption}
+\item[{{\bf jobject}}]{ objectHandle, }
+\item[{{\bf jfieldID}}]{ fieldID}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily  [inline, static]}}\label{kni_8h_a6aa3cbf16dc5248595a01a0af17942c9}
+Returns the value of an instance field of type int. The field to access is denoted by fieldID 
+\begin{DoxyParams}{Parameters}
+\item[{\em objectHandle}]A handle pointing to an object whose field is to be accessed \item[{\em fieldID}]The field ID of the given instance field \end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+The value of the specified instance field 
+\end{DoxyReturn}
+
+
+Definition at line 373 of file kni.h.
+
+\index{kni.h@{kni.h}!KNI\_\-GetLongArrayElement@{KNI\_\-GetLongArrayElement}}
+\index{KNI\_\-GetLongArrayElement@{KNI\_\-GetLongArrayElement}!kni.h@{kni.h}}
+\subsubsection[{KNI\_\-GetLongArrayElement}]{\setlength{\rightskip}{0pt plus 5cm}static {\bf jlong} KNI\_\-GetLongArrayElement (
+\begin{DoxyParamCaption}
+\item[{{\bf jlongArray}}]{ arrayHandle, }
+\item[{{\bf jsize}}]{ index}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily  [inline, static]}}\label{kni_8h_a4c5690b4056529fac91e76770cfec0bc}
+Returns an element of an array of longs. The given array reference must not be NULL. No array type checking or index range checking is performed 
+\begin{DoxyParams}{Parameters}
+\item[{\em arrayHandle}]A handle pointing to an array object \item[{\em index}]The index of the element in the array. Index 0 denotes the first element in the array \end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Returns the element at position index of an array of longs 
+\end{DoxyReturn}
+
+
+Definition at line 971 of file kni.h.
+
+
+
+References array\_\-get\_\-data().
+
+\index{kni.h@{kni.h}!KNI\_\-GetLongField@{KNI\_\-GetLongField}}
+\index{KNI\_\-GetLongField@{KNI\_\-GetLongField}!kni.h@{kni.h}}
+\subsubsection[{KNI\_\-GetLongField}]{\setlength{\rightskip}{0pt plus 5cm}static {\bf jlong} KNI\_\-GetLongField (
+\begin{DoxyParamCaption}
+\item[{{\bf jobject}}]{ objectHandle, }
+\item[{{\bf jfieldID}}]{ fieldID}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily  [inline, static]}}\label{kni_8h_a675dff4c020364dea8250b9c8ce7307e}
+Returns the value of an instance field of type long. The field to access is denoted by fieldID 
+\begin{DoxyParams}{Parameters}
+\item[{\em objectHandle}]A handle pointing to an object whose field is to be accessed \item[{\em fieldID}]The field ID of the given instance field \end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+The value of the specified instance field 
+\end{DoxyReturn}
+
+
+Definition at line 385 of file kni.h.
+
+\index{kni.h@{kni.h}!KNI\_\-GetObjectArrayElement@{KNI\_\-GetObjectArrayElement}}
+\index{KNI\_\-GetObjectArrayElement@{KNI\_\-GetObjectArrayElement}!kni.h@{kni.h}}
+\subsubsection[{KNI\_\-GetObjectArrayElement}]{\setlength{\rightskip}{0pt plus 5cm}static void KNI\_\-GetObjectArrayElement (
+\begin{DoxyParamCaption}
+\item[{{\bf jobjectArray}}]{ arrayHandle, }
+\item[{{\bf jint}}]{ index, }
+\item[{{\bf jobject}}]{ toHandle}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily  [inline, static]}}\label{kni_8h_aa7580dd0fadb6d79569ddb0532942866}
+Returns an element of an array of a reference type. The given array handle must not be NULL. No array type checking or index range checking is performed 
+\begin{DoxyParams}{Parameters}
+\item[{\em arrayHandle}]A handle pointing to an array object \item[{\em index}]The index of the element in the array. Index 0 denotes the first element in the array \item[{\em toHandle}]A handle to which the return value will be assigned \end{DoxyParams}
+
+
+Definition at line 1023 of file kni.h.
+
+
+
+References array\_\-ref\_\-get\_\-data().
+
+\index{kni.h@{kni.h}!KNI\_\-GetObjectClass@{KNI\_\-GetObjectClass}}
+\index{KNI\_\-GetObjectClass@{KNI\_\-GetObjectClass}!kni.h@{kni.h}}
+\subsubsection[{KNI\_\-GetObjectClass}]{\setlength{\rightskip}{0pt plus 5cm}static void KNI\_\-GetObjectClass (
+\begin{DoxyParamCaption}
+\item[{{\bf jobject}}]{ objectHandle, }
+\item[{{\bf jclass}}]{ classHandle}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily  [inline, static]}}\label{kni_8h_ae98be7421dc2a55247c10aaf22637396}
+Sets the handle {\itshape classHandle\/} to point to the class of the object represented by {\itshape objectHandle\/} 
+\begin{DoxyParams}{Parameters}
+\item[{\em objectHandle}]A handle pointing to an object whose class is being sought \item[{\em classHandle}]A handle which, upon return of this function, will contain a reference to the class of this object \end{DoxyParams}
+
+
+Definition at line 278 of file kni.h.
+
+
+
+References class\_\-get\_\-object(), and header\_\-get\_\-class().
+
+\index{kni.h@{kni.h}!KNI\_\-GetObjectField@{KNI\_\-GetObjectField}}
+\index{KNI\_\-GetObjectField@{KNI\_\-GetObjectField}!kni.h@{kni.h}}
+\subsubsection[{KNI\_\-GetObjectField}]{\setlength{\rightskip}{0pt plus 5cm}static void KNI\_\-GetObjectField (
+\begin{DoxyParamCaption}
+\item[{{\bf jobject}}]{ objectHandle, }
+\item[{{\bf jfieldID}}]{ fieldID, }
+\item[{{\bf jobject}}]{ toHandle}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily  [inline, static]}}\label{kni_8h_ab14800fd53a75cf60cf3a504b816f9bb}
+Returns the value of a field of a reference type, and assigns it to the handle toHandle. The field to access is denoted by {\itshape fieldID\/} 
+\begin{DoxyParams}{Parameters}
+\item[{\em objectHandle}]A handle pointing to an object whose whose field is to be accessed \item[{\em fieldID}]The field ID of the given instance field \item[{\em toHandle}]A handle to which the return value will be assigned \end{DoxyParams}
+
+
+Definition at line 425 of file kni.h.
+
+\index{kni.h@{kni.h}!KNI\_\-GetParameterAsBoolean@{KNI\_\-GetParameterAsBoolean}}
+\index{KNI\_\-GetParameterAsBoolean@{KNI\_\-GetParameterAsBoolean}!kni.h@{kni.h}}
+\subsubsection[{KNI\_\-GetParameterAsBoolean}]{\setlength{\rightskip}{0pt plus 5cm}static {\bf jboolean} KNI\_\-GetParameterAsBoolean (
+\begin{DoxyParamCaption}
+\item[{{\bf jint}}]{ index}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily  [inline, static]}}\label{kni_8h_a62498f81ec82e479b4436a3d6f49e6d2}
+Returns the value of a parameter of type boolean at physical location specified by index. Parameter indices are mapped from left to right. Index value 1 refers to the leftmost parameter that has been passed on to the native method. Remember that parameters of type long or double take up two entries on the operand stack. No type checking or index range checking is performed. 
+\begin{DoxyParams}{Parameters}
+\item[{\em index}]The index of a parameter of a primitive type to the native method. Index value 1 refers to the leftmost parameter in the Java method. \end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Returns the argument of a primitive type at position index in the list of arguments to the native method. 
+\end{DoxyReturn}
+
+
+Definition at line 1236 of file kni.h.
+
+
+
+References thread\_\-t::fp, stack\_\-frame\_\-t::locals, and thread\_\-self().
+
+\index{kni.h@{kni.h}!KNI\_\-GetParameterAsByte@{KNI\_\-GetParameterAsByte}}
+\index{KNI\_\-GetParameterAsByte@{KNI\_\-GetParameterAsByte}!kni.h@{kni.h}}
+\subsubsection[{KNI\_\-GetParameterAsByte}]{\setlength{\rightskip}{0pt plus 5cm}static {\bf jbyte} KNI\_\-GetParameterAsByte (
+\begin{DoxyParamCaption}
+\item[{{\bf jint}}]{ index}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily  [inline, static]}}\label{kni_8h_a65639fb0bd10e04b5a6f463435e936ef}
+Returns the value of a parameter of type byte at physical location specified by index. Parameter indices are mapped from left to right. Index value 1 refers to the leftmost parameter that has been passed on to the native method. Remember that parameters of type long or double take up two entries on the operand stack. No type checking or index range checking is performed. 
+\begin{DoxyParams}{Parameters}
+\item[{\em index}]The index of a parameter of a primitive type to the native method. Index value 1 refers to the leftmost parameter in the Java method. \end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Returns the argument of a primitive type at position index in the list of arguments to the native method. 
+\end{DoxyReturn}
+
+
+Definition at line 1252 of file kni.h.
+
+
+
+References thread\_\-t::fp, stack\_\-frame\_\-t::locals, and thread\_\-self().
+
+
+
+Referenced by jelatine\_\-VMOutputStream\_\-write\_\-to\_\-stderr(), and jelatine\_\-VMOutputStream\_\-write\_\-to\_\-stdout().
+
+\index{kni.h@{kni.h}!KNI\_\-GetParameterAsChar@{KNI\_\-GetParameterAsChar}}
+\index{KNI\_\-GetParameterAsChar@{KNI\_\-GetParameterAsChar}!kni.h@{kni.h}}
+\subsubsection[{KNI\_\-GetParameterAsChar}]{\setlength{\rightskip}{0pt plus 5cm}static {\bf jchar} KNI\_\-GetParameterAsChar (
+\begin{DoxyParamCaption}
+\item[{{\bf jint}}]{ index}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily  [inline, static]}}\label{kni_8h_a2a31ec599e46d52685c92fcd9fe26963}
+Returns the value of a parameter of type char at physical location specified by index. Parameter indices are mapped from left to right. Index value 1 refers to the leftmost parameter that has been passed on to the native method. Remember that parameters of type long or double take up two entries on the operand stack. No type checking or index range checking is performed. 
+\begin{DoxyParams}{Parameters}
+\item[{\em index}]The index of a parameter of a primitive type to the native method. Index value 1 refers to the leftmost parameter in the Java method. \end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Returns the argument of a primitive type at position index in the list of arguments to the native method. 
+\end{DoxyReturn}
+
+
+Definition at line 1268 of file kni.h.
+
+
+
+References thread\_\-t::fp, stack\_\-frame\_\-t::locals, and thread\_\-self().
+
+\index{kni.h@{kni.h}!KNI\_\-GetParameterAsInt@{KNI\_\-GetParameterAsInt}}
+\index{KNI\_\-GetParameterAsInt@{KNI\_\-GetParameterAsInt}!kni.h@{kni.h}}
+\subsubsection[{KNI\_\-GetParameterAsInt}]{\setlength{\rightskip}{0pt plus 5cm}static {\bf jint} KNI\_\-GetParameterAsInt (
+\begin{DoxyParamCaption}
+\item[{{\bf jint}}]{ index}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily  [inline, static]}}\label{kni_8h_a1d85fdbd89ae5f71c454a688084e6291}
+Returns the value of a parameter of type long at physical location specified by index. Parameter indices are mapped from left to right. Index value 1 refers to the leftmost parameter that has been passed on to the native method. Remember that parameters of type long or double take up two entries on the operand stack. No type checking or index range checking is performed. 
+\begin{DoxyParams}{Parameters}
+\item[{\em index}]The index of a parameter of a primitive type to the native method. Index value 1 refers to the leftmost parameter in the Java method. \end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Returns the argument of a primitive type at position index in the list of arguments to the native method. 
+\end{DoxyReturn}
+
+
+Definition at line 1300 of file kni.h.
+
+
+
+References thread\_\-t::fp, stack\_\-frame\_\-t::locals, and thread\_\-self().
+
+
+
+Referenced by java\_\-lang\_\-Object\_\-\_\-wait(), java\_\-lang\_\-Runtime\_\-exit(), and java\_\-lang\_\-System\_\-arraycopy().
+
+\index{kni.h@{kni.h}!KNI\_\-GetParameterAsLong@{KNI\_\-GetParameterAsLong}}
+\index{KNI\_\-GetParameterAsLong@{KNI\_\-GetParameterAsLong}!kni.h@{kni.h}}
+\subsubsection[{KNI\_\-GetParameterAsLong}]{\setlength{\rightskip}{0pt plus 5cm}static {\bf jlong} KNI\_\-GetParameterAsLong (
+\begin{DoxyParamCaption}
+\item[{{\bf jint}}]{ index}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily  [inline, static]}}\label{kni_8h_a094b5634331968ce23796fedd16b1724}
+Returns the value of a parameter of type long at physical location specified by index. Parameter indices are mapped from left to right. Index value 1 refers to the leftmost parameter that has been passed on to the native method. Remember that parameters of type long or double take up two entries on the operand stack. No type checking or index range checking is performed. 
+\begin{DoxyParams}{Parameters}
+\item[{\em index}]The index of a parameter of a primitive type to the native method. Index value 1 refers to the leftmost parameter in the Java method. \end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Returns the argument of a primitive type at position index in the list of arguments to the native method. 
+\end{DoxyReturn}
+
+
+Definition at line 1316 of file kni.h.
+
+
+
+References thread\_\-t::fp, stack\_\-frame\_\-t::locals, and thread\_\-self().
+
+
+
+Referenced by java\_\-lang\_\-Object\_\-\_\-wait(), and java\_\-lang\_\-Thread\_\-sleep().
+
+\index{kni.h@{kni.h}!KNI\_\-GetParameterAsObject@{KNI\_\-GetParameterAsObject}}
+\index{KNI\_\-GetParameterAsObject@{KNI\_\-GetParameterAsObject}!kni.h@{kni.h}}
+\subsubsection[{KNI\_\-GetParameterAsObject}]{\setlength{\rightskip}{0pt plus 5cm}static void KNI\_\-GetParameterAsObject (
+\begin{DoxyParamCaption}
+\item[{{\bf jint}}]{ index, }
+\item[{{\bf jobject}}]{ toHandle}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily  [inline, static]}}\label{kni_8h_a9fda3553abecf562d07dcf2bbf2a64cb}
+Reads the value (object reference) of the parameter specified by {\itshape index\/}, and stores it in the handle {\itshape toHandle\/}. Parameter indices are mapped from left to right. Index value 1 refers to the leftmost parameter that has been passed on to the native method. No type checking or index range checking is performed 
+\begin{DoxyParams}{Parameters}
+\item[{\em index}]The index of a parameter of a reference type to the native method. Index value 1 refers to the leftmost parameter in the Java method \item[{\em toHandle}]A handle to to which the return value will be assigned \end{DoxyParams}
+
+
+Definition at line 1366 of file kni.h.
+
+
+
+References thread\_\-t::fp, stack\_\-frame\_\-t::locals, and thread\_\-self().
+
+
+
+Referenced by java\_\-lang\_\-Class\_\-forName(), java\_\-lang\_\-Class\_\-isAssignableFrom(), java\_\-lang\_\-Class\_\-isInstance(), java\_\-lang\_\-ref\_\-WeakReference\_\-addToWeakReferenceList(), java\_\-lang\_\-System\_\-arraycopy(), and java\_\-lang\_\-System\_\-identityHashCode().
+
+\index{kni.h@{kni.h}!KNI\_\-GetParameterAsShort@{KNI\_\-GetParameterAsShort}}
+\index{KNI\_\-GetParameterAsShort@{KNI\_\-GetParameterAsShort}!kni.h@{kni.h}}
+\subsubsection[{KNI\_\-GetParameterAsShort}]{\setlength{\rightskip}{0pt plus 5cm}static {\bf jshort} KNI\_\-GetParameterAsShort (
+\begin{DoxyParamCaption}
+\item[{{\bf jint}}]{ index}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily  [inline, static]}}\label{kni_8h_a05d4bfbefd9b2e1caaf09c16fd099229}
+Returns the value of a parameter of type short at physical location specified by index. Parameter indices are mapped from left to right. Index value 1 refers to the leftmost parameter that has been passed on to the native method. Remember that parameters of type long or double take up two entries on the operand stack. No type checking or index range checking is performed. 
+\begin{DoxyParams}{Parameters}
+\item[{\em index}]The index of a parameter of a primitive type to the native method. Index value 1 refers to the leftmost parameter in the Java method. \end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Returns the argument of a primitive type at position index in the list of arguments to the native method. 
+\end{DoxyReturn}
+
+
+Definition at line 1284 of file kni.h.
+
+
+
+References thread\_\-t::fp, stack\_\-frame\_\-t::locals, and thread\_\-self().
+
+\index{kni.h@{kni.h}!KNI\_\-GetRawArrayRegion@{KNI\_\-GetRawArrayRegion}}
+\index{KNI\_\-GetRawArrayRegion@{KNI\_\-GetRawArrayRegion}!kni.h@{kni.h}}
+\subsubsection[{KNI\_\-GetRawArrayRegion}]{\setlength{\rightskip}{0pt plus 5cm}static void KNI\_\-GetRawArrayRegion (
+\begin{DoxyParamCaption}
+\item[{{\bf jarray}}]{ arrayHandle, }
+\item[{{\bf jsize}}]{ offset, }
+\item[{{\bf jsize}}]{ n, }
+\item[{{\bf jbyte} $\ast$}]{ dstBuffer}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily  [inline, static]}}\label{kni_8h_a7691aef5406d4d56c33a0ddd49bff43a}
+Gets a region of {\itshape n\/} bytes of an array of a primitive type. The given array handle must not be NULL. No array type checking or range checking is performed 
+\begin{DoxyParams}{Parameters}
+\item[{\em arrayHandle}]A handle initialized with the array reference \item[{\em offset}]A byte offset within the array \item[{\em n}]The number of bytes of raw data to get \item[{\em dstBuffer}]The destination of the data as bytes \end{DoxyParams}
+
+
+Definition at line 1193 of file kni.h.
+
+
+
+References array\_\-get\_\-data().
+
+\index{kni.h@{kni.h}!KNI\_\-GetShortArrayElement@{KNI\_\-GetShortArrayElement}}
+\index{KNI\_\-GetShortArrayElement@{KNI\_\-GetShortArrayElement}!kni.h@{kni.h}}
+\subsubsection[{KNI\_\-GetShortArrayElement}]{\setlength{\rightskip}{0pt plus 5cm}static {\bf jshort} KNI\_\-GetShortArrayElement (
+\begin{DoxyParamCaption}
+\item[{{\bf jshortArray}}]{ arrayHandle, }
+\item[{{\bf jsize}}]{ index}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily  [inline, static]}}\label{kni_8h_a767f899e05f908dd211096fd47012744}
+Returns an element of an array of shorts. The given array reference must not be NULL. No array type checking or index range checking is performed 
+\begin{DoxyParams}{Parameters}
+\item[{\em arrayHandle}]A handle pointing to an array object \item[{\em index}]The index of the element in the array. Index 0 denotes the first element in the array \end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Returns the element at position index of an array of shorts 
+\end{DoxyReturn}
+
+
+Definition at line 940 of file kni.h.
+
+
+
+References array\_\-get\_\-data().
+
+\index{kni.h@{kni.h}!KNI\_\-GetShortField@{KNI\_\-GetShortField}}
+\index{KNI\_\-GetShortField@{KNI\_\-GetShortField}!kni.h@{kni.h}}
+\subsubsection[{KNI\_\-GetShortField}]{\setlength{\rightskip}{0pt plus 5cm}static {\bf jshort} KNI\_\-GetShortField (
+\begin{DoxyParamCaption}
+\item[{{\bf jobject}}]{ objectHandle, }
+\item[{{\bf jfieldID}}]{ fieldID}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily  [inline, static]}}\label{kni_8h_a8f4311df51cf7677a116178e060b8f09}
+Returns the value of an instance field of type short. The field to access is denoted by fieldID 
+\begin{DoxyParams}{Parameters}
+\item[{\em objectHandle}]A handle pointing to an object whose field is to be accessed \item[{\em fieldID}]The field ID of the given instance field \end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+The value of the specified instance field 
+\end{DoxyReturn}
+
+
+Definition at line 361 of file kni.h.
+
+\index{kni.h@{kni.h}!KNI\_\-GetStaticBooleanField@{KNI\_\-GetStaticBooleanField}}
+\index{KNI\_\-GetStaticBooleanField@{KNI\_\-GetStaticBooleanField}!kni.h@{kni.h}}
+\subsubsection[{KNI\_\-GetStaticBooleanField}]{\setlength{\rightskip}{0pt plus 5cm}static {\bf jboolean} KNI\_\-GetStaticBooleanField (
+\begin{DoxyParamCaption}
+\item[{{\bf jclass} classHandle}]{ ATTRIBUTE\_\-UNUSED, }
+\item[{{\bf jfieldID}}]{ fieldID}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily  [inline, static]}}\label{kni_8h_a6ff8eb6b75e836749c5a17efa235e420}
+Returns the value of a static field of boolean type. The field to access is denoted by {\itshape fieldID\/}. 
+\begin{DoxyParams}{Parameters}
+\item[{\em classHandle}]A handle pointing to a class or interface whose static field is to be accessed \item[{\em fieldID}]A field ID of the given class \end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Returns the value of the specified static field 
+\end{DoxyReturn}
+
+
+Definition at line 571 of file kni.h.
+
+\index{kni.h@{kni.h}!KNI\_\-GetStaticByteField@{KNI\_\-GetStaticByteField}}
+\index{KNI\_\-GetStaticByteField@{KNI\_\-GetStaticByteField}!kni.h@{kni.h}}
+\subsubsection[{KNI\_\-GetStaticByteField}]{\setlength{\rightskip}{0pt plus 5cm}static {\bf jbyte} KNI\_\-GetStaticByteField (
+\begin{DoxyParamCaption}
+\item[{{\bf jclass} classHandle}]{ ATTRIBUTE\_\-UNUSED, }
+\item[{{\bf jfieldID}}]{ fieldID}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily  [inline, static]}}\label{kni_8h_a61d7812761fea4e18af8aab7d657166d}
+Returns the value of a static field of byte type. The field to access is denoted by {\itshape fieldID\/}. 
+\begin{DoxyParams}{Parameters}
+\item[{\em classHandle}]A handle pointing to a class or interface whose static field is to be accessed \item[{\em fieldID}]A field ID of the given class \end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Returns the value of the specified static field 
+\end{DoxyReturn}
+
+
+Definition at line 584 of file kni.h.
+
+\index{kni.h@{kni.h}!KNI\_\-GetStaticCharField@{KNI\_\-GetStaticCharField}}
+\index{KNI\_\-GetStaticCharField@{KNI\_\-GetStaticCharField}!kni.h@{kni.h}}
+\subsubsection[{KNI\_\-GetStaticCharField}]{\setlength{\rightskip}{0pt plus 5cm}static {\bf jchar} KNI\_\-GetStaticCharField (
+\begin{DoxyParamCaption}
+\item[{{\bf jclass} classHandle}]{ ATTRIBUTE\_\-UNUSED, }
+\item[{{\bf jfieldID}}]{ fieldID}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily  [inline, static]}}\label{kni_8h_a3f4388ded2434bd3b3b3920951a9260e}
+Returns the value of a static field of char type. The field to access is denoted by {\itshape fieldID\/}. 
+\begin{DoxyParams}{Parameters}
+\item[{\em classHandle}]A handle pointing to a class or interface whose static field is to be accessed \item[{\em fieldID}]A field ID of the given class \end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Returns the value of the specified static field 
+\end{DoxyReturn}
+
+
+Definition at line 597 of file kni.h.
+
+\index{kni.h@{kni.h}!KNI\_\-GetStaticFieldID@{KNI\_\-GetStaticFieldID}}
+\index{KNI\_\-GetStaticFieldID@{KNI\_\-GetStaticFieldID}!kni.h@{kni.h}}
+\subsubsection[{KNI\_\-GetStaticFieldID}]{\setlength{\rightskip}{0pt plus 5cm}{\bf jfieldID} KNI\_\-GetStaticFieldID (
+\begin{DoxyParamCaption}
+\item[{{\bf jclass}}]{ classHandle, }
+\item[{const char $\ast$}]{ name, }
+\item[{const char $\ast$}]{ signature}
+\end{DoxyParamCaption}
+)}\label{kni_8h_a2027c06d500402684f7dd3fbcf743544}
+Returns the field ID of a static field of the class represented by {\itshape classHandle\/}. The field is specified by its name and signature. The GetStatic$<$Type$>$Field and SetStatic$<$Type$>$Field families of accessor functions use field IDs to retrieve the value of static fields. The field must be accessible from the class referred to by classHandle 
+\begin{DoxyParams}{Parameters}
+\item[{\em classHandle}]A handle pointing to a class whose field ID will be retrieved \item[{\em name}]The field name as a UTF-\/8 string \item[{\em signature}]The field descriptor as a UTF-\/8 string \end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Returns a field ID or NULL if the lookup fails for any reason 
+\end{DoxyReturn}
+
+
+Definition at line 129 of file kni.c.
+
+
+
+References bcl\_\-get\_\-class\_\-by\_\-id(), class\_\-get\_\-field(), field\_\-is\_\-static(), JAVA\_\-LANG\_\-CLASS\_\-REF2PTR, field\_\-t::offset, class\_\-t::static\_\-data, and static\_\-field\_\-data\_\-ptr().
+
+\index{kni.h@{kni.h}!KNI\_\-GetStaticIntField@{KNI\_\-GetStaticIntField}}
+\index{KNI\_\-GetStaticIntField@{KNI\_\-GetStaticIntField}!kni.h@{kni.h}}
+\subsubsection[{KNI\_\-GetStaticIntField}]{\setlength{\rightskip}{0pt plus 5cm}static {\bf jint} KNI\_\-GetStaticIntField (
+\begin{DoxyParamCaption}
+\item[{{\bf jclass} classHandle}]{ ATTRIBUTE\_\-UNUSED, }
+\item[{{\bf jfieldID}}]{ fieldID}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily  [inline, static]}}\label{kni_8h_ae557cc14772a3953bdce1b4de79c1029}
+Returns the value of a static field of int type. The field to access is denoted by {\itshape fieldID\/}. 
+\begin{DoxyParams}{Parameters}
+\item[{\em classHandle}]A handle pointing to a class or interface whose static field is to be accessed \item[{\em fieldID}]A field ID of the given class \end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Returns the value of the specified static field 
+\end{DoxyReturn}
+
+
+Definition at line 623 of file kni.h.
+
+\index{kni.h@{kni.h}!KNI\_\-GetStaticLongField@{KNI\_\-GetStaticLongField}}
+\index{KNI\_\-GetStaticLongField@{KNI\_\-GetStaticLongField}!kni.h@{kni.h}}
+\subsubsection[{KNI\_\-GetStaticLongField}]{\setlength{\rightskip}{0pt plus 5cm}static {\bf jlong} KNI\_\-GetStaticLongField (
+\begin{DoxyParamCaption}
+\item[{{\bf jclass} classHandle}]{ ATTRIBUTE\_\-UNUSED, }
+\item[{{\bf jfieldID}}]{ fieldID}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily  [inline, static]}}\label{kni_8h_a06589ffc39e4ea0bf8d8ea76a45038bf}
+Returns the value of a static field of long type. The field to access is denoted by {\itshape fieldID\/}. 
+\begin{DoxyParams}{Parameters}
+\item[{\em classHandle}]A handle pointing to a class or interface whose static field is to be accessed \item[{\em fieldID}]A field ID of the given class \end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Returns the value of the specified static field 
+\end{DoxyReturn}
+
+
+Definition at line 636 of file kni.h.
+
+\index{kni.h@{kni.h}!KNI\_\-GetStaticObjectField@{KNI\_\-GetStaticObjectField}}
+\index{KNI\_\-GetStaticObjectField@{KNI\_\-GetStaticObjectField}!kni.h@{kni.h}}
+\subsubsection[{KNI\_\-GetStaticObjectField}]{\setlength{\rightskip}{0pt plus 5cm}static void KNI\_\-GetStaticObjectField (
+\begin{DoxyParamCaption}
+\item[{{\bf jclass} classHandle}]{ ATTRIBUTE\_\-UNUSED, }
+\item[{{\bf jfieldID}}]{ fieldID, }
+\item[{{\bf jobject}}]{ toHandle}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily  [inline, static]}}\label{kni_8h_a6b5f600c8aca4687af939e65006da40d}
+Returns the value of a static field of a reference type, and assigns it to the handle {\itshape toHandle\/}. The field to access is denoted by {\itshape fieldID\/} 
+\begin{DoxyParams}{Parameters}
+\item[{\em classHandle}]A handle pointing to a class or interface whose static field is to be accessed \item[{\em fieldID}]A field ID of the given class \item[{\em toHandle}]A handle to which the return value will be assigned \end{DoxyParams}
+
+
+Definition at line 679 of file kni.h.
+
+\index{kni.h@{kni.h}!KNI\_\-GetStaticShortField@{KNI\_\-GetStaticShortField}}
+\index{KNI\_\-GetStaticShortField@{KNI\_\-GetStaticShortField}!kni.h@{kni.h}}
+\subsubsection[{KNI\_\-GetStaticShortField}]{\setlength{\rightskip}{0pt plus 5cm}static {\bf jshort} KNI\_\-GetStaticShortField (
+\begin{DoxyParamCaption}
+\item[{{\bf jclass} classHandle}]{ ATTRIBUTE\_\-UNUSED, }
+\item[{{\bf jfieldID}}]{ fieldID}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily  [inline, static]}}\label{kni_8h_a1e3fb50d1e4126bb07236eb1f4dadbe1}
+Returns the value of a static field of short type. The field to access is denoted by {\itshape fieldID\/}. 
+\begin{DoxyParams}{Parameters}
+\item[{\em classHandle}]A handle pointing to a class or interface whose static field is to be accessed \item[{\em fieldID}]A field ID of the given class \end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Returns the value of the specified static field 
+\end{DoxyReturn}
+
+
+Definition at line 610 of file kni.h.
+
+\index{kni.h@{kni.h}!KNI\_\-GetStringLength@{KNI\_\-GetStringLength}}
+\index{KNI\_\-GetStringLength@{KNI\_\-GetStringLength}!kni.h@{kni.h}}
+\subsubsection[{KNI\_\-GetStringLength}]{\setlength{\rightskip}{0pt plus 5cm}static {\bf jsize} KNI\_\-GetStringLength (
+\begin{DoxyParamCaption}
+\item[{{\bf jstring}}]{ stringHandle}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily  [inline, static]}}\label{kni_8h_af8de97af4a60e27d2ebd0a55e018ca49}
+Returns the number of Unicode characters in a \doxyref{java.lang.String}{p.}{classjava_1_1lang_1_1_string} object. If the given string handle is NULL, the function returns -\/1 
+\begin{DoxyParams}{Parameters}
+\item[{\em stringHandle}]A handle pointing to a \doxyref{java.lang.String}{p.}{classjava_1_1lang_1_1_string} string object whose length is to be determined \end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+The length of the string, or -\/1 if the given string handle is NULL 
+\end{DoxyReturn}
+
+
+Definition at line 819 of file kni.h.
+
+
+
+References JAVA\_\-LANG\_\-STRING\_\-REF2PTR.
+
+\index{kni.h@{kni.h}!KNI\_\-GetStringRegion@{KNI\_\-GetStringRegion}}
+\index{KNI\_\-GetStringRegion@{KNI\_\-GetStringRegion}!kni.h@{kni.h}}
+\subsubsection[{KNI\_\-GetStringRegion}]{\setlength{\rightskip}{0pt plus 5cm}void KNI\_\-GetStringRegion (
+\begin{DoxyParamCaption}
+\item[{{\bf jstring}}]{ stringHandle, }
+\item[{{\bf jsize}}]{ offset, }
+\item[{{\bf jsize}}]{ n, }
+\item[{{\bf jchar} $\ast$}]{ jcharbuf}
+\end{DoxyParamCaption}
+)}\label{kni_8h_a6f1e80d28ac21fa73ee22594906b6b3a}
+Copies a number of Unicode characters from a \doxyref{java.lang.String}{p.}{classjava_1_1lang_1_1_string} object (denoted by {\itshape stringHandle\/}), beginning at {\itshape offset\/}, to the given buffer {\itshape jcharbuf\/}. No range checking is performed. It is the responsibility of the native function programmer to allocate the return buffer, and to make sure that it is large enough 
+\begin{DoxyParams}{Parameters}
+\item[{\em stringHandle}]A handle pointing to a \doxyref{java.lang.String}{p.}{classjava_1_1lang_1_1_string} object whose contents are to be copied \item[{\em offset}]The offset within the string object at which to start copying (offset 0: first character in the Java string.) \item[{\em n}]The number of 16-\/bit Unicode characters to copy \item[{\em jcharbuf}]A pointer to a buffer to hold the Unicode characters \end{DoxyParams}
+
+
+Definition at line 164 of file kni.c.
+
+
+
+References array\_\-get\_\-data(), JAVA\_\-LANG\_\-STRING\_\-REF2PTR, and java\_\-lang\_\-String\_\-t::value.
+
+\index{kni.h@{kni.h}!KNI\_\-GetSuperClass@{KNI\_\-GetSuperClass}}
+\index{KNI\_\-GetSuperClass@{KNI\_\-GetSuperClass}!kni.h@{kni.h}}
+\subsubsection[{KNI\_\-GetSuperClass}]{\setlength{\rightskip}{0pt plus 5cm}static void KNI\_\-GetSuperClass (
+\begin{DoxyParamCaption}
+\item[{{\bf jclass}}]{ classHandle, }
+\item[{{\bf jclass}}]{ superClassHandle}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily  [inline, static]}}\label{kni_8h_a40159af3af9df1060b441217ce6a91c5}
+Initializes the {\itshape parent\/} handle to contain a pointer to the superclass of the given class (represented by {\itshape cl\/}). If {\itshape cl\/} represents the class \doxyref{java.lang.Object}{p.}{classjava_1_1lang_1_1_object}, then the function sets the {\itshape parent\/} handle to NULL 
+\begin{DoxyParams}{Parameters}
+\item[{\em classHandle}]A handle initialized with a reference to the class object whose superclass is to be determined \item[{\em superClassHandle}]A handle which, upon return from this function, will contain a reference to the superclass object \end{DoxyParams}
+
+
+Definition at line 229 of file kni.h.
+
+
+
+References bcl\_\-get\_\-class\_\-by\_\-id(), class\_\-get\_\-object(), class\_\-get\_\-parent(), JAVA\_\-LANG\_\-CLASS\_\-REF2PTR, and class\_\-t::parent.
+
+\index{kni.h@{kni.h}!KNI\_\-GetThisPointer@{KNI\_\-GetThisPointer}}
+\index{KNI\_\-GetThisPointer@{KNI\_\-GetThisPointer}!kni.h@{kni.h}}
+\subsubsection[{KNI\_\-GetThisPointer}]{\setlength{\rightskip}{0pt plus 5cm}static void KNI\_\-GetThisPointer (
+\begin{DoxyParamCaption}
+\item[{{\bf jobject}}]{ toHandle}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily  [inline, static]}}\label{kni_8h_ae91230ac63c0abfbbbb3ab75bd2ad9fe}
+Reads the value of the 'this' pointer in the current stack frame of an instance (non-\/static) native method, and stores the value in the handle {\itshape toHandle\/} 
+\begin{DoxyParams}{Parameters}
+\item[{\em toHandle}]A handle to contain the 'this' pointer \end{DoxyParams}
+
+
+Definition at line 1376 of file kni.h.
+
+
+
+References thread\_\-t::fp, stack\_\-frame\_\-t::locals, and thread\_\-self().
+
+
+
+Referenced by java\_\-lang\_\-Class\_\-getInternalName(), java\_\-lang\_\-Class\_\-isAssignableFrom(), java\_\-lang\_\-Class\_\-isInstance(), java\_\-lang\_\-Class\_\-newInstance(), java\_\-lang\_\-Object\_\-\_\-wait(), java\_\-lang\_\-Object\_\-getClass(), java\_\-lang\_\-Object\_\-notify(), java\_\-lang\_\-Object\_\-notifyAll(), java\_\-lang\_\-String\_\-intern(), java\_\-lang\_\-Thread\_\-interrupt(), java\_\-lang\_\-Thread\_\-join(), and java\_\-lang\_\-Thread\_\-start().
+
+\index{kni.h@{kni.h}!KNI\_\-GetVersion@{KNI\_\-GetVersion}}
+\index{KNI\_\-GetVersion@{KNI\_\-GetVersion}!kni.h@{kni.h}}
+\subsubsection[{KNI\_\-GetVersion}]{\setlength{\rightskip}{0pt plus 5cm}static {\bf jint} KNI\_\-GetVersion (
+\begin{DoxyParamCaption}
+\item[{void}]{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily  [inline, static]}}\label{kni_8h_aa7f3d79c9c766b9c4b0253ba1ceb7195}
+Return the version information \begin{DoxyReturn}{Returns}
+The native interface version 
+\end{DoxyReturn}
+
+
+Definition at line 193 of file kni.h.
+
+\index{kni.h@{kni.h}!KNI\_\-IsAssignableFrom@{KNI\_\-IsAssignableFrom}}
+\index{KNI\_\-IsAssignableFrom@{KNI\_\-IsAssignableFrom}!kni.h@{kni.h}}
+\subsubsection[{KNI\_\-IsAssignableFrom}]{\setlength{\rightskip}{0pt plus 5cm}static {\bf jboolean} KNI\_\-IsAssignableFrom (
+\begin{DoxyParamCaption}
+\item[{{\bf jclass}}]{ cl1, }
+\item[{{\bf jclass}}]{ cl2}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily  [inline, static]}}\label{kni_8h_ad8a6f6b94474c57d6b860e7092528b08}
+Determines whether an object of class or interface {\itshape cl1\/} can be safely cast to a class or interface {\itshape cl2\/} 
+\begin{DoxyParams}{Parameters}
+\item[{\em cl1}]Handle initialized with a reference to the first class or interface argument \item[{\em cl2}]Handle initialized with a reference to the second class or interface argument \end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+KNI\_\-TRUE if any of the following is true: the first and second argument refer to the same class or interface, the first argument refers to a subclass of the second argument, the first argument refers to a class that has the second argument as one of its interfaces or the first and second arguments both refer to array of classes with element types X and Y, and KNI\_\-IsAssignableFrom(X, Y) is KNI\_\-TRUE. Otherwise KNI\_\-FALSE 
+\end{DoxyReturn}
+
+
+Definition at line 252 of file kni.h.
+
+
+
+References bcl\_\-get\_\-class\_\-by\_\-id(), bcl\_\-is\_\-assignable(), JAVA\_\-LANG\_\-CLASS\_\-REF2PTR, and KNI\_\-TRUE.
+
+
+
+Referenced by java\_\-lang\_\-Class\_\-isAssignableFrom().
+
+\index{kni.h@{kni.h}!KNI\_\-IsInstanceOf@{KNI\_\-IsInstanceOf}}
+\index{KNI\_\-IsInstanceOf@{KNI\_\-IsInstanceOf}!kni.h@{kni.h}}
+\subsubsection[{KNI\_\-IsInstanceOf}]{\setlength{\rightskip}{0pt plus 5cm}static {\bf jboolean} KNI\_\-IsInstanceOf (
+\begin{DoxyParamCaption}
+\item[{{\bf jobject}}]{ objectHandle, }
+\item[{{\bf jclass}}]{ classHandle}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily  [inline, static]}}\label{kni_8h_a82d2cf2df5fb08cb6112aba34344ec08}
+Tests whether an object represented by objectHandle is an instance of a class or interface represented by classHandle 
+\begin{DoxyParams}{Parameters}
+\item[{\em objectHandle}]A handle pointing to an object \item[{\em classHandle}]A handle pointing to a class or interface \end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Returns KNI\_\-TRUE if the given object is an instance of given class, KNI\_\-FALSE otherwise 
+\end{DoxyReturn}
+
+
+Definition at line 297 of file kni.h.
+
+
+
+References bcl\_\-get\_\-class\_\-by\_\-id(), bcl\_\-is\_\-assignable(), header\_\-get\_\-class(), JAVA\_\-LANG\_\-CLASS\_\-REF2PTR, KNI\_\-TRUE, and class\_\-t::obj.
+
+
+
+Referenced by java\_\-lang\_\-Class\_\-isInstance().
+
+\index{kni.h@{kni.h}!KNI\_\-IsNullHandle@{KNI\_\-IsNullHandle}}
+\index{KNI\_\-IsNullHandle@{KNI\_\-IsNullHandle}!kni.h@{kni.h}}
+\subsubsection[{KNI\_\-IsNullHandle}]{\setlength{\rightskip}{0pt plus 5cm}static {\bf jboolean} KNI\_\-IsNullHandle (
+\begin{DoxyParamCaption}
+\item[{{\bf jobject}}]{ handle}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily  [inline, static]}}\label{kni_8h_a86193778162fb051dc0fe05e85ce9cdb}
+Checks if the given handle is NULL 
+\begin{DoxyParams}{Parameters}
+\item[{\em handle}]The handle whose contents will be examined \end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+KNI\_\-TRUE if the handle is NULL, KNI\_\-FALSE otherwise 
+\end{DoxyReturn}
+
+
+Definition at line 1488 of file kni.h.
+
+
+
+Referenced by java\_\-lang\_\-Class\_\-forName(), java\_\-lang\_\-Class\_\-isAssignableFrom(), and java\_\-lang\_\-System\_\-arraycopy().
+
+\index{kni.h@{kni.h}!KNI\_\-IsSameObject@{KNI\_\-IsSameObject}}
+\index{KNI\_\-IsSameObject@{KNI\_\-IsSameObject}!kni.h@{kni.h}}
+\subsubsection[{KNI\_\-IsSameObject}]{\setlength{\rightskip}{0pt plus 5cm}static {\bf jboolean} KNI\_\-IsSameObject (
+\begin{DoxyParamCaption}
+\item[{{\bf jobject}}]{ obj1, }
+\item[{{\bf jobject}}]{ obj2}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily  [inline, static]}}\label{kni_8h_aa0689ccad542b1ce492cbe72d10924e2}
+Checks if the given two handles refer to the same object. No parameter type checking is performed 
+\begin{DoxyParams}{Parameters}
+\item[{\em obj1}]A handle pointing to an object \item[{\em obj2}]A handle pointing to an object \end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+KNI\_\-TRUE if the handles refer to the same object, KNI\_\-FALSE otherwise 
+\end{DoxyReturn}
+
+
+Definition at line 1500 of file kni.h.
+
+\index{kni.h@{kni.h}!KNI\_\-NewString@{KNI\_\-NewString}}
+\index{KNI\_\-NewString@{KNI\_\-NewString}!kni.h@{kni.h}}
+\subsubsection[{KNI\_\-NewString}]{\setlength{\rightskip}{0pt plus 5cm}static void KNI\_\-NewString (
+\begin{DoxyParamCaption}
+\item[{const {\bf jchar} $\ast$}]{ uchars, }
+\item[{{\bf jsize}}]{ length, }
+\item[{{\bf jobject}}]{ stringHandle}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily  [inline, static]}}\label{kni_8h_a999ddc865022a38cd448274b90cdd2f2}
+Creates a \doxyref{java.lang.String}{p.}{classjava_1_1lang_1_1_string} object from the given Unicode sequence. The resulting object is returned to the caller via the stringHandle {\itshape handle\/} 
+\begin{DoxyParams}{Parameters}
+\item[{\em uchars}]A Unicode sequence that will make up the contents of the new string object \item[{\em length}]The length of the string \item[{\em stringHandle}]A handle to hold the reference to the new \doxyref{java.lang.String}{p.}{classjava_1_1lang_1_1_string} object \end{DoxyParams}
+
+
+Definition at line 841 of file kni.h.
+
+
+
+References JAVA\_\-LANG\_\-STRING\_\-PTR2REF, and jstring\_\-create\_\-from\_\-unicode().
+
+\index{kni.h@{kni.h}!KNI\_\-NewStringUTF@{KNI\_\-NewStringUTF}}
+\index{KNI\_\-NewStringUTF@{KNI\_\-NewStringUTF}!kni.h@{kni.h}}
+\subsubsection[{KNI\_\-NewStringUTF}]{\setlength{\rightskip}{0pt plus 5cm}static void KNI\_\-NewStringUTF (
+\begin{DoxyParamCaption}
+\item[{const char $\ast$}]{ utf8chars, }
+\item[{{\bf jobject}}]{ stringHandle}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily  [inline, static]}}\label{kni_8h_a2deb2d83f34a4f949a76bafb29a197fa}
+Creates a \doxyref{java.lang.String}{p.}{classjava_1_1lang_1_1_string} object from the given UTF-\/8 string. The resulting object is returned to the caller via the stringHandle {\itshape handle\/} 
+\begin{DoxyParams}{Parameters}
+\item[{\em utf8chars}]A UTF-\/8 string that will make up the contents of the new string object \item[{\em stringHandle}]A handle to hold the reference to the new \doxyref{java.lang.String}{p.}{classjava_1_1lang_1_1_string} object \end{DoxyParams}
+
+
+Definition at line 857 of file kni.h.
+
+
+
+References JAVA\_\-LANG\_\-STRING\_\-PTR2REF, and jstring\_\-create\_\-from\_\-utf8().
+
+\index{kni.h@{kni.h}!KNI\_\-ReleaseHandle@{KNI\_\-ReleaseHandle}}
+\index{KNI\_\-ReleaseHandle@{KNI\_\-ReleaseHandle}!kni.h@{kni.h}}
+\subsubsection[{KNI\_\-ReleaseHandle}]{\setlength{\rightskip}{0pt plus 5cm}static void KNI\_\-ReleaseHandle (
+\begin{DoxyParamCaption}
+\item[{{\bf jobject}}]{ handle}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily  [inline, static]}}\label{kni_8h_a36499f7b58e2a1e9d6bba34f02794365}
+Sets the value of the given handle to NULL 
+\begin{DoxyParams}{Parameters}
+\item[{\em handle}]The handle whose value will be set to NULL \end{DoxyParams}
+
+
+Definition at line 1508 of file kni.h.
+
+\index{kni.h@{kni.h}!KNI\_\-SetBooleanArrayElement@{KNI\_\-SetBooleanArrayElement}}
+\index{KNI\_\-SetBooleanArrayElement@{KNI\_\-SetBooleanArrayElement}!kni.h@{kni.h}}
+\subsubsection[{KNI\_\-SetBooleanArrayElement}]{\setlength{\rightskip}{0pt plus 5cm}static void KNI\_\-SetBooleanArrayElement (
+\begin{DoxyParamCaption}
+\item[{{\bf jbooleanArray}}]{ arrayHandle, }
+\item[{{\bf jsize}}]{ index, }
+\item[{{\bf jboolean}}]{ value}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily  [inline, static]}}\label{kni_8h_ac6c4d82cd38cd5d1c52d83fe30e9e949}
+Sets an element of an array of booleans. The given array handle must not be NULL. No array type checking or index range checking is performed. 
+\begin{DoxyParams}{Parameters}
+\item[{\em arrayHandle}]A handle pointing to an array object \item[{\em index}]The index of the element in the array. Index 0 denotes the first element in the array \item[{\em value}]The value that will be stored in the array \end{DoxyParams}
+
+
+Definition at line 1039 of file kni.h.
+
+
+
+References array\_\-get\_\-data().
+
+\index{kni.h@{kni.h}!KNI\_\-SetBooleanField@{KNI\_\-SetBooleanField}}
+\index{KNI\_\-SetBooleanField@{KNI\_\-SetBooleanField}!kni.h@{kni.h}}
+\subsubsection[{KNI\_\-SetBooleanField}]{\setlength{\rightskip}{0pt plus 5cm}static void KNI\_\-SetBooleanField (
+\begin{DoxyParamCaption}
+\item[{{\bf jobject}}]{ objectHandle, }
+\item[{{\bf jfieldID}}]{ fieldID, }
+\item[{{\bf jboolean}}]{ value}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily  [inline, static]}}\label{kni_8h_a2358caeff7347087a9f2ff7214f8af8b}
+Sets the value of an instance field of boolean type. The field to modify is denoted by {\itshape fieldID\/} 
+\begin{DoxyParams}{Parameters}
+\item[{\em objectHandle}]A handle pointing to an object whose field is to be modified \item[{\em fieldID}]The field ID of the given instance field \item[{\em value}]The value to set to the instance field \end{DoxyParams}
+
+
+Definition at line 438 of file kni.h.
+
+\index{kni.h@{kni.h}!KNI\_\-SetByteArrayElement@{KNI\_\-SetByteArrayElement}}
+\index{KNI\_\-SetByteArrayElement@{KNI\_\-SetByteArrayElement}!kni.h@{kni.h}}
+\subsubsection[{KNI\_\-SetByteArrayElement}]{\setlength{\rightskip}{0pt plus 5cm}static void KNI\_\-SetByteArrayElement (
+\begin{DoxyParamCaption}
+\item[{{\bf jbyteArray}}]{ arrayHandle, }
+\item[{{\bf jsize}}]{ index, }
+\item[{{\bf jbyte}}]{ value}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily  [inline, static]}}\label{kni_8h_accb9de649ac9a76a9c820d3c373fb0a3}
+Sets an element of an array of bytes. The given array handle must not be NULL. No array type checking or index range checking is performed. 
+\begin{DoxyParams}{Parameters}
+\item[{\em arrayHandle}]A handle pointing to an array object \item[{\em index}]The index of the element in the array. Index 0 denotes the first element in the array \item[{\em value}]The value that will be stored in the array \end{DoxyParams}
+
+
+Definition at line 1059 of file kni.h.
+
+
+
+References array\_\-get\_\-data().
+
+\index{kni.h@{kni.h}!KNI\_\-SetByteField@{KNI\_\-SetByteField}}
+\index{KNI\_\-SetByteField@{KNI\_\-SetByteField}!kni.h@{kni.h}}
+\subsubsection[{KNI\_\-SetByteField}]{\setlength{\rightskip}{0pt plus 5cm}static void KNI\_\-SetByteField (
+\begin{DoxyParamCaption}
+\item[{{\bf jobject}}]{ objectHandle, }
+\item[{{\bf jfieldID}}]{ fieldID, }
+\item[{{\bf jbyte}}]{ value}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily  [inline, static]}}\label{kni_8h_a927105f3a2a8faeee9a064bde065f4b5}
+Sets the value of an instance field of byte type. The field to modify is denoted by {\itshape fieldID\/} 
+\begin{DoxyParams}{Parameters}
+\item[{\em objectHandle}]A handle pointing to an object whose field is to be modified \item[{\em fieldID}]The field ID of the given instance field \item[{\em value}]The value to set to the instance field \end{DoxyParams}
+
+
+Definition at line 456 of file kni.h.
+
+\index{kni.h@{kni.h}!KNI\_\-SetCharArrayElement@{KNI\_\-SetCharArrayElement}}
+\index{KNI\_\-SetCharArrayElement@{KNI\_\-SetCharArrayElement}!kni.h@{kni.h}}
+\subsubsection[{KNI\_\-SetCharArrayElement}]{\setlength{\rightskip}{0pt plus 5cm}static void KNI\_\-SetCharArrayElement (
+\begin{DoxyParamCaption}
+\item[{{\bf jcharArray}}]{ arrayHandle, }
+\item[{{\bf jsize}}]{ index, }
+\item[{{\bf jchar}}]{ value}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily  [inline, static]}}\label{kni_8h_adedccbd011c56eff47f46293c0e6f1b5}
+Sets an element of an array of chars. The given array handle must not be NULL. No array type checking or index range checking is performed. 
+\begin{DoxyParams}{Parameters}
+\item[{\em arrayHandle}]A handle pointing to an array object \item[{\em index}]The index of the element in the array. Index 0 denotes the first element in the array \item[{\em value}]The value that will be stored in the array \end{DoxyParams}
+
+
+Definition at line 1075 of file kni.h.
+
+
+
+References array\_\-get\_\-data().
+
+\index{kni.h@{kni.h}!KNI\_\-SetCharField@{KNI\_\-SetCharField}}
+\index{KNI\_\-SetCharField@{KNI\_\-SetCharField}!kni.h@{kni.h}}
+\subsubsection[{KNI\_\-SetCharField}]{\setlength{\rightskip}{0pt plus 5cm}static void KNI\_\-SetCharField (
+\begin{DoxyParamCaption}
+\item[{{\bf jobject}}]{ objectHandle, }
+\item[{{\bf jfieldID}}]{ fieldID, }
+\item[{{\bf jchar}}]{ value}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily  [inline, static]}}\label{kni_8h_ac6fdd9d28c788257805e4ab483f83f50}
+Sets the value of an instance field of char type. The field to modify is denoted by {\itshape fieldID\/} 
+\begin{DoxyParams}{Parameters}
+\item[{\em objectHandle}]A handle pointing to an object whose field is to be modified \item[{\em fieldID}]The field ID of the given instance field \item[{\em value}]The value to set to the instance field \end{DoxyParams}
+
+
+Definition at line 469 of file kni.h.
+
+\index{kni.h@{kni.h}!KNI\_\-SetIntArrayElement@{KNI\_\-SetIntArrayElement}}
+\index{KNI\_\-SetIntArrayElement@{KNI\_\-SetIntArrayElement}!kni.h@{kni.h}}
+\subsubsection[{KNI\_\-SetIntArrayElement}]{\setlength{\rightskip}{0pt plus 5cm}static void KNI\_\-SetIntArrayElement (
+\begin{DoxyParamCaption}
+\item[{{\bf jintArray}}]{ arrayHandle, }
+\item[{{\bf jsize}}]{ index, }
+\item[{{\bf jint}}]{ value}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily  [inline, static]}}\label{kni_8h_af9861f2e6065d4577061614453e35069}
+Sets an element of an array of ints. The given array handle must not be NULL. No array type checking or index range checking is performed. 
+\begin{DoxyParams}{Parameters}
+\item[{\em arrayHandle}]A handle pointing to an array object \item[{\em index}]The index of the element in the array. Index 0 denotes the first element in the array \item[{\em value}]The value that will be stored in the array \end{DoxyParams}
+
+
+Definition at line 1107 of file kni.h.
+
+
+
+References array\_\-get\_\-data().
+
+\index{kni.h@{kni.h}!KNI\_\-SetIntField@{KNI\_\-SetIntField}}
+\index{KNI\_\-SetIntField@{KNI\_\-SetIntField}!kni.h@{kni.h}}
+\subsubsection[{KNI\_\-SetIntField}]{\setlength{\rightskip}{0pt plus 5cm}static void KNI\_\-SetIntField (
+\begin{DoxyParamCaption}
+\item[{{\bf jobject}}]{ objectHandle, }
+\item[{{\bf jfieldID}}]{ fieldID, }
+\item[{{\bf jint}}]{ value}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily  [inline, static]}}\label{kni_8h_ae5cbe4d16f847aa1a170d162c5709d18}
+Sets the value of an instance field of int type. The field to modify is denoted by {\itshape fieldID\/} 
+\begin{DoxyParams}{Parameters}
+\item[{\em objectHandle}]A handle pointing to an object whose field is to be modified \item[{\em fieldID}]The field ID of the given instance field \item[{\em value}]The value to set to the instance field \end{DoxyParams}
+
+
+Definition at line 495 of file kni.h.
+
+\index{kni.h@{kni.h}!KNI\_\-SetLongArrayElement@{KNI\_\-SetLongArrayElement}}
+\index{KNI\_\-SetLongArrayElement@{KNI\_\-SetLongArrayElement}!kni.h@{kni.h}}
+\subsubsection[{KNI\_\-SetLongArrayElement}]{\setlength{\rightskip}{0pt plus 5cm}static void KNI\_\-SetLongArrayElement (
+\begin{DoxyParamCaption}
+\item[{{\bf jlongArray}}]{ arrayHandle, }
+\item[{{\bf jsize}}]{ index, }
+\item[{{\bf jlong}}]{ value}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily  [inline, static]}}\label{kni_8h_abf0b214d8676cace16353f63709bccdd}
+Sets an element of an array of longs. The given array handle must not be NULL. No array type checking or index range checking is performed. 
+\begin{DoxyParams}{Parameters}
+\item[{\em arrayHandle}]A handle pointing to an array object \item[{\em index}]The index of the element in the array. Index 0 denotes the first element in the array \item[{\em value}]The value that will be stored in the array \end{DoxyParams}
+
+
+Definition at line 1123 of file kni.h.
+
+
+
+References array\_\-get\_\-data().
+
+\index{kni.h@{kni.h}!KNI\_\-SetLongField@{KNI\_\-SetLongField}}
+\index{KNI\_\-SetLongField@{KNI\_\-SetLongField}!kni.h@{kni.h}}
+\subsubsection[{KNI\_\-SetLongField}]{\setlength{\rightskip}{0pt plus 5cm}static void KNI\_\-SetLongField (
+\begin{DoxyParamCaption}
+\item[{{\bf jobject}}]{ objectHandle, }
+\item[{{\bf jfieldID}}]{ fieldID, }
+\item[{{\bf jlong}}]{ value}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily  [inline, static]}}\label{kni_8h_af4321bb8fb6131a6e513f3315894890d}
+Sets the value of an instance field of long type. The field to modify is denoted by {\itshape fieldID\/} 
+\begin{DoxyParams}{Parameters}
+\item[{\em objectHandle}]A handle pointing to an object whose field is to be modified \item[{\em fieldID}]The field ID of the given instance field \item[{\em value}]The value to set to the instance field \end{DoxyParams}
+
+
+Definition at line 508 of file kni.h.
+
+\index{kni.h@{kni.h}!KNI\_\-SetObjectArrayElement@{KNI\_\-SetObjectArrayElement}}
+\index{KNI\_\-SetObjectArrayElement@{KNI\_\-SetObjectArrayElement}!kni.h@{kni.h}}
+\subsubsection[{KNI\_\-SetObjectArrayElement}]{\setlength{\rightskip}{0pt plus 5cm}static void KNI\_\-SetObjectArrayElement (
+\begin{DoxyParamCaption}
+\item[{{\bf jobjectArray}}]{ arrayHandle, }
+\item[{{\bf jint}}]{ index, }
+\item[{{\bf jobject}}]{ fromHandle}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily  [inline, static]}}\label{kni_8h_a22b7baaa3af807e3e1e80e86e723b603}
+Sets an element of an array of a reference type. The given array handle must not be NULL. No array type checking or index range checking is performed 
+\begin{DoxyParams}{Parameters}
+\item[{\em arrayHandle}]A handle pointing to an array object \item[{\em index}]The index of the element in the array. Index 0 denotes the first element in the array \item[{\em fromHandle}]A handle from which value will be read \end{DoxyParams}
+
+
+Definition at line 1176 of file kni.h.
+
+
+
+References array\_\-ref\_\-get\_\-data().
+
+\index{kni.h@{kni.h}!KNI\_\-SetObjectField@{KNI\_\-SetObjectField}}
+\index{KNI\_\-SetObjectField@{KNI\_\-SetObjectField}!kni.h@{kni.h}}
+\subsubsection[{KNI\_\-SetObjectField}]{\setlength{\rightskip}{0pt plus 5cm}static void KNI\_\-SetObjectField (
+\begin{DoxyParamCaption}
+\item[{{\bf jobject}}]{ objectHandle, }
+\item[{{\bf jfieldID}}]{ fieldID, }
+\item[{{\bf jobject}}]{ fromHandle}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily  [inline, static]}}\label{kni_8h_aa348dc3ea9776ca6b4fedcb0b8bba0c5}
+Sets the value of an instance field of a reference type. The field to modify is denoted by {\itshape fieldID\/} 
+\begin{DoxyParams}{Parameters}
+\item[{\em objectHandle}]A handle pointing to an object whose field is to be modified \item[{\em fieldID}]The field ID of the given instance field \item[{\em fromHandle}]A handle pointing to an object that will be assigned to the field \end{DoxyParams}
+
+
+Definition at line 552 of file kni.h.
+
+\index{kni.h@{kni.h}!KNI\_\-SetRawArrayRegion@{KNI\_\-SetRawArrayRegion}}
+\index{KNI\_\-SetRawArrayRegion@{KNI\_\-SetRawArrayRegion}!kni.h@{kni.h}}
+\subsubsection[{KNI\_\-SetRawArrayRegion}]{\setlength{\rightskip}{0pt plus 5cm}static void KNI\_\-SetRawArrayRegion (
+\begin{DoxyParamCaption}
+\item[{{\bf jarray}}]{ arrayHandle, }
+\item[{{\bf jsize}}]{ offset, }
+\item[{{\bf jsize}}]{ n, }
+\item[{const {\bf jbyte} $\ast$}]{ srcBuffer}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily  [inline, static]}}\label{kni_8h_a170b8404e7b10e5c7eb317e55eb27e54}
+Sets a region of n bytes of an array of a primitive type. The given array handle must not be NULL. No array type checking or range checking is performed 
+\begin{DoxyParams}{Parameters}
+\item[{\em arrayHandle}]A handle initialized with the array reference \item[{\em offset}]A byte offset within the array \item[{\em n}]The number of bytes of raw data to change \item[{\em srcBuffer}]The source of the data as bytes \end{DoxyParams}
+
+
+Definition at line 1211 of file kni.h.
+
+
+
+References array\_\-get\_\-data().
+
+\index{kni.h@{kni.h}!KNI\_\-SetShortArrayElement@{KNI\_\-SetShortArrayElement}}
+\index{KNI\_\-SetShortArrayElement@{KNI\_\-SetShortArrayElement}!kni.h@{kni.h}}
+\subsubsection[{KNI\_\-SetShortArrayElement}]{\setlength{\rightskip}{0pt plus 5cm}static void KNI\_\-SetShortArrayElement (
+\begin{DoxyParamCaption}
+\item[{{\bf jshortArray}}]{ arrayHandle, }
+\item[{{\bf jsize}}]{ index, }
+\item[{{\bf jshort}}]{ value}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily  [inline, static]}}\label{kni_8h_ab6cb9d59341b401e3b2c236328733f72}
+Sets an element of an array of shorts. The given array handle must not be NULL. No array type checking or index range checking is performed. 
+\begin{DoxyParams}{Parameters}
+\item[{\em arrayHandle}]A handle pointing to an array object \item[{\em index}]The index of the element in the array. Index 0 denotes the first element in the array \item[{\em value}]The value that will be stored in the array \end{DoxyParams}
+
+
+Definition at line 1091 of file kni.h.
+
+
+
+References array\_\-get\_\-data().
+
+\index{kni.h@{kni.h}!KNI\_\-SetShortField@{KNI\_\-SetShortField}}
+\index{KNI\_\-SetShortField@{KNI\_\-SetShortField}!kni.h@{kni.h}}
+\subsubsection[{KNI\_\-SetShortField}]{\setlength{\rightskip}{0pt plus 5cm}static void KNI\_\-SetShortField (
+\begin{DoxyParamCaption}
+\item[{{\bf jobject}}]{ objectHandle, }
+\item[{{\bf jfieldID}}]{ fieldID, }
+\item[{{\bf jshort}}]{ value}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily  [inline, static]}}\label{kni_8h_a33f98be5636d3226a9bd0b9d0142074c}
+Sets the value of an instance field of short type. The field to modify is denoted by {\itshape fieldID\/} 
+\begin{DoxyParams}{Parameters}
+\item[{\em objectHandle}]A handle pointing to an object whose field is to be modified \item[{\em fieldID}]The field ID of the given instance field \item[{\em value}]The value to set to the instance field \end{DoxyParams}
+
+
+Definition at line 482 of file kni.h.
+
+\index{kni.h@{kni.h}!KNI\_\-SetStaticBooleanField@{KNI\_\-SetStaticBooleanField}}
+\index{KNI\_\-SetStaticBooleanField@{KNI\_\-SetStaticBooleanField}!kni.h@{kni.h}}
+\subsubsection[{KNI\_\-SetStaticBooleanField}]{\setlength{\rightskip}{0pt plus 5cm}static void KNI\_\-SetStaticBooleanField (
+\begin{DoxyParamCaption}
+\item[{{\bf jclass} classHandle}]{ ATTRIBUTE\_\-UNUSED, }
+\item[{{\bf jfieldID}}]{ fieldID, }
+\item[{{\bf jboolean}}]{ value}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily  [inline, static]}}\label{kni_8h_a1dd6756b88165fd1bf7077650efa680d}
+Sets the value of a static field of boolean type. The field to modify is denoted by {\itshape fieldID\/} 
+\begin{DoxyParams}{Parameters}
+\item[{\em classHandle}]A handle pointing to the class or interface whose static field is to be modified \item[{\em fieldID}]A field ID of the given class \item[{\em value}]The value to set to the static field \end{DoxyParams}
+
+
+Definition at line 692 of file kni.h.
+
+\index{kni.h@{kni.h}!KNI\_\-SetStaticByteField@{KNI\_\-SetStaticByteField}}
+\index{KNI\_\-SetStaticByteField@{KNI\_\-SetStaticByteField}!kni.h@{kni.h}}
+\subsubsection[{KNI\_\-SetStaticByteField}]{\setlength{\rightskip}{0pt plus 5cm}static void KNI\_\-SetStaticByteField (
+\begin{DoxyParamCaption}
+\item[{{\bf jclass} classHandle}]{ ATTRIBUTE\_\-UNUSED, }
+\item[{{\bf jfieldID}}]{ fieldID, }
+\item[{{\bf jbyte}}]{ value}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily  [inline, static]}}\label{kni_8h_a0e2828b93a770a4a97c0a423352d2074}
+Sets the value of a static field of byte type. The field to modify is denoted by {\itshape fieldID\/} 
+\begin{DoxyParams}{Parameters}
+\item[{\em classHandle}]A handle pointing to the class or interface whose static field is to be modified \item[{\em fieldID}]A field ID of the given class \item[{\em value}]The value to set to the static field \end{DoxyParams}
+
+
+Definition at line 705 of file kni.h.
+
+\index{kni.h@{kni.h}!KNI\_\-SetStaticCharField@{KNI\_\-SetStaticCharField}}
+\index{KNI\_\-SetStaticCharField@{KNI\_\-SetStaticCharField}!kni.h@{kni.h}}
+\subsubsection[{KNI\_\-SetStaticCharField}]{\setlength{\rightskip}{0pt plus 5cm}static void KNI\_\-SetStaticCharField (
+\begin{DoxyParamCaption}
+\item[{{\bf jclass} classHandle}]{ ATTRIBUTE\_\-UNUSED, }
+\item[{{\bf jfieldID}}]{ fieldID, }
+\item[{{\bf jchar}}]{ value}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily  [inline, static]}}\label{kni_8h_a0827a86c3577eb9a03cd7ad1f5cf3ee1}
+Sets the value of a static field of char type. The field to modify is denoted by {\itshape fieldID\/} 
+\begin{DoxyParams}{Parameters}
+\item[{\em classHandle}]A handle pointing to the class or interface whose static field is to be modified \item[{\em fieldID}]A field ID of the given class \item[{\em value}]The value to set to the static field \end{DoxyParams}
+
+
+Definition at line 718 of file kni.h.
+
+\index{kni.h@{kni.h}!KNI\_\-SetStaticIntField@{KNI\_\-SetStaticIntField}}
+\index{KNI\_\-SetStaticIntField@{KNI\_\-SetStaticIntField}!kni.h@{kni.h}}
+\subsubsection[{KNI\_\-SetStaticIntField}]{\setlength{\rightskip}{0pt plus 5cm}static void KNI\_\-SetStaticIntField (
+\begin{DoxyParamCaption}
+\item[{{\bf jclass} classHandle}]{ ATTRIBUTE\_\-UNUSED, }
+\item[{{\bf jfieldID}}]{ fieldID, }
+\item[{{\bf jint}}]{ value}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily  [inline, static]}}\label{kni_8h_a3d0857d6431e91e260d586214133e434}
+Sets the value of a static field of int type. The field to modify is denoted by {\itshape fieldID\/} 
+\begin{DoxyParams}{Parameters}
+\item[{\em classHandle}]A handle pointing to the class or interface whose static field is to be modified \item[{\em fieldID}]A field ID of the given class \item[{\em value}]The value to set to the static field \end{DoxyParams}
+
+
+Definition at line 744 of file kni.h.
+
+\index{kni.h@{kni.h}!KNI\_\-SetStaticLongField@{KNI\_\-SetStaticLongField}}
+\index{KNI\_\-SetStaticLongField@{KNI\_\-SetStaticLongField}!kni.h@{kni.h}}
+\subsubsection[{KNI\_\-SetStaticLongField}]{\setlength{\rightskip}{0pt plus 5cm}static void KNI\_\-SetStaticLongField (
+\begin{DoxyParamCaption}
+\item[{{\bf jclass} classHandle}]{ ATTRIBUTE\_\-UNUSED, }
+\item[{{\bf jfieldID}}]{ fieldID, }
+\item[{{\bf jlong}}]{ value}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily  [inline, static]}}\label{kni_8h_ad41f8bd154a63858a6bad4384418c25d}
+Sets the value of a static field of long type. The field to modify is denoted by {\itshape fieldID\/} 
+\begin{DoxyParams}{Parameters}
+\item[{\em classHandle}]A handle pointing to the class or interface whose static field is to be modified \item[{\em fieldID}]A field ID of the given class \item[{\em value}]The value to set to the static field \end{DoxyParams}
+
+
+Definition at line 757 of file kni.h.
+
+\index{kni.h@{kni.h}!KNI\_\-SetStaticObjectField@{KNI\_\-SetStaticObjectField}}
+\index{KNI\_\-SetStaticObjectField@{KNI\_\-SetStaticObjectField}!kni.h@{kni.h}}
+\subsubsection[{KNI\_\-SetStaticObjectField}]{\setlength{\rightskip}{0pt plus 5cm}static void KNI\_\-SetStaticObjectField (
+\begin{DoxyParamCaption}
+\item[{{\bf jclass} classHandle}]{ ATTRIBUTE\_\-UNUSED, }
+\item[{{\bf jfieldID}}]{ fieldID, }
+\item[{{\bf jobject}}]{ fromHandle}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily  [inline, static]}}\label{kni_8h_a7477920d70bd55e9367a74dbce1847c6}
+Sets the value of a static field of a reference type. The field to modify is denoted by {\itshape fieldID\/} 
+\begin{DoxyParams}{Parameters}
+\item[{\em classHandle}]A handle pointing to the class or interface whose whose static field is to be modified \item[{\em fieldID}]A field ID of the given class \item[{\em fromHandle}]A handle pointing to an object that will assigned to the field \end{DoxyParams}
+
+
+Definition at line 801 of file kni.h.
+
+\index{kni.h@{kni.h}!KNI\_\-SetStaticShortField@{KNI\_\-SetStaticShortField}}
+\index{KNI\_\-SetStaticShortField@{KNI\_\-SetStaticShortField}!kni.h@{kni.h}}
+\subsubsection[{KNI\_\-SetStaticShortField}]{\setlength{\rightskip}{0pt plus 5cm}static void KNI\_\-SetStaticShortField (
+\begin{DoxyParamCaption}
+\item[{{\bf jclass} classHandle}]{ ATTRIBUTE\_\-UNUSED, }
+\item[{{\bf jfieldID}}]{ fieldID, }
+\item[{{\bf jshort}}]{ value}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily  [inline, static]}}\label{kni_8h_ac193de4c9929e8dc0a78ed9c3c69cff8}
+Sets the value of a static field of short type. The field to modify is denoted by {\itshape fieldID\/} 
+\begin{DoxyParams}{Parameters}
+\item[{\em classHandle}]A handle pointing to the class or interface whose static field is to be modified \item[{\em fieldID}]A field ID of the given class \item[{\em value}]The value to set to the static field \end{DoxyParams}
+
+
+Definition at line 731 of file kni.h.
+
+\index{kni.h@{kni.h}!KNI\_\-ThrowNew@{KNI\_\-ThrowNew}}
+\index{KNI\_\-ThrowNew@{KNI\_\-ThrowNew}!kni.h@{kni.h}}
+\subsubsection[{KNI\_\-ThrowNew}]{\setlength{\rightskip}{0pt plus 5cm}{\bf jint} KNI\_\-ThrowNew (
+\begin{DoxyParamCaption}
+\item[{const char $\ast$}]{ name, }
+\item[{const char $\ast$}]{ message}
+\end{DoxyParamCaption}
+)}\label{kni_8h_a85721ba7bd6d1670b21a7e3fab4706f4}
+Instantiates an exception object with the message specified by message, and causes that exception to be thrown. A thrown exception will be pending in the current thread, but does not immediately disrupt native code execution. The actual exception will be thrown when the program control returns from the native function back to the virtual machine. Note that KNI\_\-ThrowNew does not run the constructor on the new exception object. 
+\begin{DoxyParams}{Parameters}
+\item[{\em name}]The name of a \doxyref{java.lang.Throwable}{p.}{classjava_1_1lang_1_1_throwable} class as a UTF-\/8 string \item[{\em message}]The message used to construct the \doxyref{java.lang.Throwable}{p.}{classjava_1_1lang_1_1_throwable} object; represented as a UTF-\/8 string \end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+KNI\_\-OK on success; otherwise KNI\_\-ERR 
+\end{DoxyReturn}
+
+
+Definition at line 52 of file kni.c.
+
+
+
+References bcl\_\-resolve\_\-class(), stack\_\-frame\_\-t::cl, java\_\-lang\_\-Throwable\_\-t::detailMessage, thread\_\-t::exception, thread\_\-t::fp, gc\_\-new(), JAVA\_\-LANG\_\-STRING\_\-PTR2REF, JAVA\_\-LANG\_\-THROWABLE\_\-REF2PTR, jstring\_\-create\_\-from\_\-utf8(), and thread\_\-self().
+
+
+
+Referenced by arraycopy\_\-ref(), java\_\-lang\_\-Class\_\-forName(), java\_\-lang\_\-Class\_\-isAssignableFrom(), java\_\-lang\_\-Object\_\-\_\-wait(), java\_\-lang\_\-Object\_\-notify(), java\_\-lang\_\-Object\_\-notifyAll(), java\_\-lang\_\-System\_\-arraycopy(), java\_\-lang\_\-Thread\_\-sleep(), thread\_\-join(), thread\_\-sleep(), and thread\_\-wait().
+

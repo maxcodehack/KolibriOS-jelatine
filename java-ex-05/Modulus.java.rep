@@ -1,0 +1,19 @@
+rm: cannot remove directory `tmp_preproc/': Is a directory
+
+Found 1 semantic error compiling "c:/algoritm/c_src/JVMs/tinyvm_0_2_6/muvm_tests/examples_from_book/05/tmp_preproc/Modulus.java":
+
+                      <
+     1. class Modulus {
+   . . .
+    19. } }
+        -->
+not exists:Modulus.class
+Error compile: tmp_preproc/Modulus.java
+Modulus" because a library method that it depends on was not found. See system messages for more information.
+
+Found 2 system errors:
+
+*** Semantic Error: A non-standard version of the type "java.lang.StringBuffer" was found. Class files that depend on this type may not have been generated.
+
+
+*** Semantic Error: A non-standard version of the type "java.lang.StringBuffer" was found. Class files that depend on this type may not have been generated.

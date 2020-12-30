@@ -1,0 +1,1410 @@
+\section{java::lang::String Class Reference}
+\label{classjava_1_1lang_1_1_string}\index{java::lang::String@{java::lang::String}}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+{\bf String} ()
+\item 
+{\bf String} ({\bf String} str)
+\item 
+{\bf String} (char[$\,$] data)
+\item 
+{\bf String} (char[$\,$] data, int {\bf offset}, int {\bf count})
+\item 
+{\bf String} (byte[$\,$] data, int {\bf offset}, int {\bf count}, {\bf String} encoding)  throws UnsupportedEncodingException     
+\item 
+{\bf String} (byte[$\,$] data, {\bf String} encoding)  throws UnsupportedEncodingException     
+\item 
+{\bf String} (byte[$\,$] data, int {\bf offset}, int {\bf count})
+\item 
+{\bf String} (byte[$\,$] data)
+\item 
+{\bf String} ({\bf StringBuffer} buffer)
+\item 
+int {\bf length} ()
+\item 
+char {\bf charAt} (int index)
+\item 
+void {\bf getChars} (int srcBegin, int srcEnd, char dst[$\,$], int dstBegin)
+\item 
+byte[$\,$] {\bf getBytes} ({\bf String} encoding)  throws UnsupportedEncodingException     
+\item 
+byte[$\,$] {\bf getBytes} ()
+\item 
+boolean {\bf equals} ({\bf Object} anObject)
+\item 
+boolean {\bf equalsIgnoreCase} ({\bf String} anotherString)
+\item 
+int {\bf compareTo} ({\bf String} anotherString)
+\item 
+boolean {\bf regionMatches} (boolean ignoreCase, int toffset, {\bf String} other, int ooffset, int len)
+\item 
+boolean {\bf startsWith} ({\bf String} prefix, int toffset)
+\item 
+boolean {\bf startsWith} ({\bf String} prefix)
+\item 
+boolean {\bf endsWith} ({\bf String} suffix)
+\item 
+int {\bf hashCode} ()
+\item 
+int {\bf indexOf} (int ch)
+\item 
+int {\bf indexOf} (int ch, int fromIndex)
+\item 
+int {\bf lastIndexOf} (int ch)
+\item 
+int {\bf lastIndexOf} (int ch, int fromIndex)
+\item 
+int {\bf indexOf} ({\bf String} str)
+\item 
+int {\bf indexOf} ({\bf String} str, int fromIndex)
+\item 
+{\bf String} {\bf substring} (int begin)
+\item 
+{\bf String} {\bf substring} (int beginIndex, int endIndex)
+\item 
+{\bf String} {\bf concat} ({\bf String} str)
+\item 
+{\bf String} {\bf replace} (char oldChar, char newChar)
+\item 
+{\bf String} {\bf toLowerCase} ()
+\item 
+{\bf String} {\bf toUpperCase} ()
+\item 
+{\bf String} {\bf trim} ()
+\item 
+{\bf String} {\bf toString} ()
+\item 
+char[$\,$] {\bf toCharArray} ()
+\item 
+native {\bf String} {\bf intern} ()
+\end{DoxyCompactItemize}
+\subsection*{Static Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+static {\bf String} {\bf valueOf} ({\bf Object} obj)
+\item 
+static {\bf String} {\bf valueOf} (char[$\,$] data)
+\item 
+static {\bf String} {\bf valueOf} (char[$\,$] data, int {\bf offset}, int {\bf count})
+\item 
+static {\bf String} {\bf valueOf} (boolean b)
+\item 
+static {\bf String} {\bf valueOf} (char c)
+\item 
+static {\bf String} {\bf valueOf} (int i)
+\item 
+static {\bf String} {\bf valueOf} (long l)
+\item 
+static {\bf String} {\bf valueOf} (float f)
+\item 
+static {\bf String} {\bf valueOf} (double d)
+\end{DoxyCompactItemize}
+\subsection*{Package Functions}
+\begin{DoxyCompactItemize}
+\item 
+{\bf String} (char[$\,$] data, int {\bf offset}, int {\bf count}, boolean dont\_\-copy)
+\end{DoxyCompactItemize}
+\subsection*{Package Attributes}
+\begin{DoxyCompactItemize}
+\item 
+final char[$\,$] {\bf value}
+\item 
+final int {\bf count}
+\item 
+final int {\bf offset}
+\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+Strings represent an immutable set of characters. All \doxyref{String}{p.}{classjava_1_1lang_1_1_string} literals are instances of this class, and two string literals with the same contents refer to the same \doxyref{String}{p.}{classjava_1_1lang_1_1_string} object.
+
+This class also includes a number of methods for manipulating the contents of strings (of course, creating a new object if there are any changes, as \doxyref{String}{p.}{classjava_1_1lang_1_1_string} is immutable). Case mapping relies on Unicode 3.0.0 standards, where some character sequences have a different number of characters in the uppercase version than the lower case.
+
+Strings are special, in that they are the only object with an overloaded operator. When you use '+' with at least one \doxyref{String}{p.}{classjava_1_1lang_1_1_string} argument, both arguments have \doxyref{String}{p.}{classjava_1_1lang_1_1_string} conversion performed on them, and another \doxyref{String}{p.}{classjava_1_1lang_1_1_string} (not guaranteed to be unique) results.
+
+\doxyref{String}{p.}{classjava_1_1lang_1_1_string} is special-\/cased when doing data serialization -\/ rather than listing the fields of this class, a \doxyref{String}{p.}{classjava_1_1lang_1_1_string} object is converted to a string literal in the object stream.
+
+\begin{DoxyAuthor}{Author}
+Paul N. Fisher 
+
+Eric Blake ({\tt ebb9@email.byu.edu}) 
+
+Per Bothner ({\tt bothner@cygnus.com}) 
+\end{DoxyAuthor}
+\begin{DoxySince}{Since}
+1.0 
+\end{DoxySince}
+
+
+Definition at line 71 of file String.java.
+
+
+
+\subsection{Constructor \& Destructor Documentation}
+\index{java::lang::String@{java::lang::String}!String@{String}}
+\index{String@{String}!java::lang::String@{java::lang::String}}
+\subsubsection[{String}]{\setlength{\rightskip}{0pt plus 5cm}java::lang::String::String (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily  [inline]}}\label{classjava_1_1lang_1_1_string_a724dc49c1b7dec63860fdfe4f10e2d3d}
+Creates an empty \doxyref{String}{p.}{classjava_1_1lang_1_1_string} (length 0). Unless you really need a new object, consider using {\ttfamily \char`\"{}\char`\"{}} instead. 
+
+Definition at line 106 of file String.java.
+
+
+
+References count, offset, and value.
+
+
+
+Referenced by concat(), replace(), substring(), toLowerCase(), toUpperCase(), and valueOf().
+
+\index{java::lang::String@{java::lang::String}!String@{String}}
+\index{String@{String}!java::lang::String@{java::lang::String}}
+\subsubsection[{String}]{\setlength{\rightskip}{0pt plus 5cm}java::lang::String::String (
+\begin{DoxyParamCaption}
+\item[{{\bf String}}]{ str}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily  [inline]}}\label{classjava_1_1lang_1_1_string_a6ebef91e292e2ac0901b2af1313e9cc4}
+Copies the contents of a \doxyref{String}{p.}{classjava_1_1lang_1_1_string} to a new \doxyref{String}{p.}{classjava_1_1lang_1_1_string}. Since Strings are immutable, only a shallow copy is performed.
+
+
+\begin{DoxyParams}{Parameters}
+\item[{\em str}]\doxyref{String}{p.}{classjava_1_1lang_1_1_string} to copy \end{DoxyParams}
+
+\begin{DoxyExceptions}{Exceptions}
+\item[{\em \doxyref{NullPointerException}{p.}{classjava_1_1lang_1_1_null_pointer_exception}}]if value is null \end{DoxyExceptions}
+
+
+Definition at line 120 of file String.java.
+
+
+
+References count, offset, and value.
+
+\index{java::lang::String@{java::lang::String}!String@{String}}
+\index{String@{String}!java::lang::String@{java::lang::String}}
+\subsubsection[{String}]{\setlength{\rightskip}{0pt plus 5cm}java::lang::String::String (
+\begin{DoxyParamCaption}
+\item[{char[$\,$]}]{ data}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily  [inline]}}\label{classjava_1_1lang_1_1_string_a481f8945f876e653f97b22f319277b86}
+Creates a new \doxyref{String}{p.}{classjava_1_1lang_1_1_string} using the character sequence of the char array. Subsequent changes to data do not affect the \doxyref{String}{p.}{classjava_1_1lang_1_1_string}.
+
+
+\begin{DoxyParams}{Parameters}
+\item[{\em data}]char array to copy \end{DoxyParams}
+
+\begin{DoxyExceptions}{Exceptions}
+\item[{\em \doxyref{NullPointerException}{p.}{classjava_1_1lang_1_1_null_pointer_exception}}]if data is null \end{DoxyExceptions}
+
+
+Definition at line 135 of file String.java.
+
+\index{java::lang::String@{java::lang::String}!String@{String}}
+\index{String@{String}!java::lang::String@{java::lang::String}}
+\subsubsection[{String}]{\setlength{\rightskip}{0pt plus 5cm}java::lang::String::String (
+\begin{DoxyParamCaption}
+\item[{char[$\,$]}]{ data, }
+\item[{int}]{ offset, }
+\item[{int}]{ count}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily  [inline]}}\label{classjava_1_1lang_1_1_string_a22849266b6c222830525dd73246fab9c}
+Creates a new \doxyref{String}{p.}{classjava_1_1lang_1_1_string} using the character sequence of a subarray of characters. The string starts at offset, and copies count chars. Subsequent changes to data do not affect the \doxyref{String}{p.}{classjava_1_1lang_1_1_string}.
+
+
+\begin{DoxyParams}{Parameters}
+\item[{\em data}]char array to copy \item[{\em offset}]position (base 0) to start copying out of data \item[{\em count}]the number of characters from data to copy \end{DoxyParams}
+
+\begin{DoxyExceptions}{Exceptions}
+\item[{\em \doxyref{NullPointerException}{p.}{classjava_1_1lang_1_1_null_pointer_exception}}]if data is null \item[{\em \doxyref{IndexOutOfBoundsException}{p.}{classjava_1_1lang_1_1_index_out_of_bounds_exception}}]if (offset $<$ 0 $|$$|$ count $<$ 0 $|$$|$ offset + count $<$ 0 (overflow) $|$$|$ offset + count $>$ data.length) (while unspecified, this is a \doxyref{StringIndexOutOfBoundsException}{p.}{classjava_1_1lang_1_1_string_index_out_of_bounds_exception}) \end{DoxyExceptions}
+
+
+Definition at line 154 of file String.java.
+
+\index{java::lang::String@{java::lang::String}!String@{String}}
+\index{String@{String}!java::lang::String@{java::lang::String}}
+\subsubsection[{String}]{\setlength{\rightskip}{0pt plus 5cm}java::lang::String::String (
+\begin{DoxyParamCaption}
+\item[{byte[$\,$]}]{ data, }
+\item[{int}]{ offset, }
+\item[{int}]{ count, }
+\item[{{\bf String}}]{ encoding}
+\end{DoxyParamCaption}
+)  throws {\bf UnsupportedEncodingException}     \hspace{0.3cm}{\ttfamily  [inline]}}\label{classjava_1_1lang_1_1_string_a54e6d6f190589fcb2fb575b45496a364}
+Creates a new \doxyref{String}{p.}{classjava_1_1lang_1_1_string} using the portion of the byte array starting at the offset and ending at offset + count. Uses the specified encoding type to decode the byte array, so the resulting string may be longer or shorter than the byte array. The behavior is not specified if the decoder encounters invalid characters; this implementation throws an \doxyref{Error}{p.}{classjava_1_1lang_1_1_error}.
+
+
+\begin{DoxyParams}{Parameters}
+\item[{\em data}]byte array to copy \item[{\em offset}]the offset to start at \item[{\em count}]the number of bytes in the array to use \item[{\em encoding}]the name of the encoding to use \end{DoxyParams}
+
+\begin{DoxyExceptions}{Exceptions}
+\item[{\em \doxyref{NullPointerException}{p.}{classjava_1_1lang_1_1_null_pointer_exception}}]if data or encoding is null \item[{\em \doxyref{IndexOutOfBoundsException}{p.}{classjava_1_1lang_1_1_index_out_of_bounds_exception}}]if offset or count is incorrect (while unspecified, this is a \doxyref{StringIndexOutOfBoundsException}{p.}{classjava_1_1lang_1_1_string_index_out_of_bounds_exception}) \item[{\em UnsupportedEncodingException}]if encoding is not found \item[{\em \doxyref{Error}{p.}{classjava_1_1lang_1_1_error}}]if the decoding fails \end{DoxyExceptions}
+\begin{DoxySince}{Since}
+1.1 
+\end{DoxySince}
+
+
+Definition at line 178 of file String.java.
+
+
+
+References count, offset, and value.
+
+\index{java::lang::String@{java::lang::String}!String@{String}}
+\index{String@{String}!java::lang::String@{java::lang::String}}
+\subsubsection[{String}]{\setlength{\rightskip}{0pt plus 5cm}java::lang::String::String (
+\begin{DoxyParamCaption}
+\item[{byte[$\,$]}]{ data, }
+\item[{{\bf String}}]{ encoding}
+\end{DoxyParamCaption}
+)  throws {\bf UnsupportedEncodingException}     \hspace{0.3cm}{\ttfamily  [inline]}}\label{classjava_1_1lang_1_1_string_ae22b656f42dde6884cbcadf3e0bea7a1}
+Creates a new \doxyref{String}{p.}{classjava_1_1lang_1_1_string} using the byte array. Uses the specified encoding type to decode the byte array, so the resulting string may be longer or shorter than the byte array. The behavior is not specified if the decoder encounters invalid characters; this implementation throws an \doxyref{Error}{p.}{classjava_1_1lang_1_1_error}.
+
+
+\begin{DoxyParams}{Parameters}
+\item[{\em data}]byte array to copy \item[{\em encoding}]the name of the encoding to use \end{DoxyParams}
+
+\begin{DoxyExceptions}{Exceptions}
+\item[{\em \doxyref{NullPointerException}{p.}{classjava_1_1lang_1_1_null_pointer_exception}}]if data or encoding is null \item[{\em UnsupportedEncodingException}]if encoding is not found \item[{\em \doxyref{Error}{p.}{classjava_1_1lang_1_1_error}}]if the decoding fails \end{DoxyExceptions}
+\begin{DoxySeeAlso}{See also}
+\doxyref{String}{p.}{classjava_1_1lang_1_1_string_a724dc49c1b7dec63860fdfe4f10e2d3d}(byte[], int, int, \doxyref{String}{p.}{classjava_1_1lang_1_1_string}) 
+\end{DoxySeeAlso}
+\begin{DoxySince}{Since}
+1.1 
+\end{DoxySince}
+
+
+Definition at line 225 of file String.java.
+
+\index{java::lang::String@{java::lang::String}!String@{String}}
+\index{String@{String}!java::lang::String@{java::lang::String}}
+\subsubsection[{String}]{\setlength{\rightskip}{0pt plus 5cm}java::lang::String::String (
+\begin{DoxyParamCaption}
+\item[{byte[$\,$]}]{ data, }
+\item[{int}]{ offset, }
+\item[{int}]{ count}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily  [inline]}}\label{classjava_1_1lang_1_1_string_a2fb0c1523b2aba4fae965070de2caf41}
+Creates a new \doxyref{String}{p.}{classjava_1_1lang_1_1_string} using the portion of the byte array starting at the offset and ending at offset + count. Uses the encoding of the platform's default charset, so the resulting string may be longer or shorter than the byte array. The behavior is not specified if the decoder encounters invalid characters; this implementation throws an \doxyref{Error}{p.}{classjava_1_1lang_1_1_error}.
+
+
+\begin{DoxyParams}{Parameters}
+\item[{\em data}]byte array to copy \item[{\em offset}]the offset to start at \item[{\em count}]the number of bytes in the array to use \end{DoxyParams}
+
+\begin{DoxyExceptions}{Exceptions}
+\item[{\em \doxyref{NullPointerException}{p.}{classjava_1_1lang_1_1_null_pointer_exception}}]if data is null \item[{\em \doxyref{IndexOutOfBoundsException}{p.}{classjava_1_1lang_1_1_index_out_of_bounds_exception}}]if offset or count is incorrect \item[{\em \doxyref{Error}{p.}{classjava_1_1lang_1_1_error}}]if the decoding fails \end{DoxyExceptions}
+\begin{DoxySeeAlso}{See also}
+\doxyref{String}{p.}{classjava_1_1lang_1_1_string_a724dc49c1b7dec63860fdfe4f10e2d3d}(byte[], int, int, \doxyref{String}{p.}{classjava_1_1lang_1_1_string}) 
+\end{DoxySeeAlso}
+\begin{DoxySince}{Since}
+1.1 
+\end{DoxySince}
+
+
+Definition at line 248 of file String.java.
+
+
+
+References value.
+
+\index{java::lang::String@{java::lang::String}!String@{String}}
+\index{String@{String}!java::lang::String@{java::lang::String}}
+\subsubsection[{String}]{\setlength{\rightskip}{0pt plus 5cm}java::lang::String::String (
+\begin{DoxyParamCaption}
+\item[{byte[$\,$]}]{ data}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily  [inline]}}\label{classjava_1_1lang_1_1_string_a7fd76c67e990722886002713071cae32}
+Creates a new \doxyref{String}{p.}{classjava_1_1lang_1_1_string} using the byte array. Uses the encoding of the platform's default charset, so the resulting string may be longer or shorter than the byte array. The behavior is not specified if the decoder encounters invalid characters; this implementation throws an \doxyref{Error}{p.}{classjava_1_1lang_1_1_error}.
+
+
+\begin{DoxyParams}{Parameters}
+\item[{\em data}]byte array to copy \end{DoxyParams}
+
+\begin{DoxyExceptions}{Exceptions}
+\item[{\em \doxyref{NullPointerException}{p.}{classjava_1_1lang_1_1_null_pointer_exception}}]if data is null \item[{\em \doxyref{Error}{p.}{classjava_1_1lang_1_1_error}}]if the decoding fails \end{DoxyExceptions}
+\begin{DoxySeeAlso}{See also}
+\doxyref{String}{p.}{classjava_1_1lang_1_1_string_a724dc49c1b7dec63860fdfe4f10e2d3d}(byte[], int, int) 
+
+\doxyref{String}{p.}{classjava_1_1lang_1_1_string_a724dc49c1b7dec63860fdfe4f10e2d3d}(byte[], int, int, \doxyref{String}{p.}{classjava_1_1lang_1_1_string}) 
+\end{DoxySeeAlso}
+\begin{DoxySince}{Since}
+1.1 
+\end{DoxySince}
+
+
+Definition at line 284 of file String.java.
+
+\index{java::lang::String@{java::lang::String}!String@{String}}
+\index{String@{String}!java::lang::String@{java::lang::String}}
+\subsubsection[{String}]{\setlength{\rightskip}{0pt plus 5cm}java::lang::String::String (
+\begin{DoxyParamCaption}
+\item[{{\bf StringBuffer}}]{ buffer}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily  [inline]}}\label{classjava_1_1lang_1_1_string_a76ebf7fc7e3a57c3f2ddbec704c8597a}
+Creates a new \doxyref{String}{p.}{classjava_1_1lang_1_1_string} using the character sequence represented by the \doxyref{StringBuffer}{p.}{classjava_1_1lang_1_1_string_buffer}. Subsequent changes to buf do not affect the \doxyref{String}{p.}{classjava_1_1lang_1_1_string}.
+
+
+\begin{DoxyParams}{Parameters}
+\item[{\em buffer}]\doxyref{StringBuffer}{p.}{classjava_1_1lang_1_1_string_buffer} to copy \end{DoxyParams}
+
+\begin{DoxyExceptions}{Exceptions}
+\item[{\em \doxyref{NullPointerException}{p.}{classjava_1_1lang_1_1_null_pointer_exception}}]if buffer is null \end{DoxyExceptions}
+
+
+Definition at line 296 of file String.java.
+
+
+
+References java::lang::StringBuffer::count, count, offset, java::lang::StringBuffer::shared, value, and java::lang::StringBuffer::value.
+
+\index{java::lang::String@{java::lang::String}!String@{String}}
+\index{String@{String}!java::lang::String@{java::lang::String}}
+\subsubsection[{String}]{\setlength{\rightskip}{0pt plus 5cm}java::lang::String::String (
+\begin{DoxyParamCaption}
+\item[{char[$\,$]}]{ data, }
+\item[{int}]{ offset, }
+\item[{int}]{ count, }
+\item[{boolean}]{ dont\_\-copy}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily  [inline, package]}}\label{classjava_1_1lang_1_1_string_a608b23feece394faf7c78bc7b7204165}
+Special constructor which can share an array when safe to do so.
+
+
+\begin{DoxyParams}{Parameters}
+\item[{\em data}]the characters to copy \item[{\em offset}]the location to start from \item[{\em count}]the number of characters to use \item[{\em dont\_\-copy}]true if the array is trusted, and need not be copied \end{DoxyParams}
+
+\begin{DoxyExceptions}{Exceptions}
+\item[{\em \doxyref{NullPointerException}{p.}{classjava_1_1lang_1_1_null_pointer_exception}}]if chars is null \item[{\em \doxyref{StringIndexOutOfBoundsException}{p.}{classjava_1_1lang_1_1_string_index_out_of_bounds_exception}}]if bounds check fails \end{DoxyExceptions}
+
+
+Definition at line 327 of file String.java.
+
+
+
+References value.
+
+
+
+\subsection{Member Function Documentation}
+\index{java::lang::String@{java::lang::String}!charAt@{charAt}}
+\index{charAt@{charAt}!java::lang::String@{java::lang::String}}
+\subsubsection[{charAt}]{\setlength{\rightskip}{0pt plus 5cm}char java::lang::String::charAt (
+\begin{DoxyParamCaption}
+\item[{int}]{ index}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily  [inline]}}\label{classjava_1_1lang_1_1_string_a5a4cfb090e96299190b750d7527f75fa}
+Returns the character located at the specified index within this \doxyref{String}{p.}{classjava_1_1lang_1_1_string}.
+
+
+\begin{DoxyParams}{Parameters}
+\item[{\em index}]position of character to return (base 0) \end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+character located at position index 
+\end{DoxyReturn}
+
+\begin{DoxyExceptions}{Exceptions}
+\item[{\em \doxyref{IndexOutOfBoundsException}{p.}{classjava_1_1lang_1_1_index_out_of_bounds_exception}}]if index $<$ 0 $|$$|$ index $>$= \doxyref{length()}{p.}{classjava_1_1lang_1_1_string_af32b1027860058eec523e6ffefd84d17} (while unspecified, this is a \doxyref{StringIndexOutOfBoundsException}{p.}{classjava_1_1lang_1_1_string_index_out_of_bounds_exception}) \end{DoxyExceptions}
+
+
+Definition at line 373 of file String.java.
+
+
+
+References count, offset, and value.
+
+
+
+Referenced by java::lang::Double::parseDouble(), and java::lang::Integer::parseIntInternal().
+
+\index{java::lang::String@{java::lang::String}!compareTo@{compareTo}}
+\index{compareTo@{compareTo}!java::lang::String@{java::lang::String}}
+\subsubsection[{compareTo}]{\setlength{\rightskip}{0pt plus 5cm}int java::lang::String::compareTo (
+\begin{DoxyParamCaption}
+\item[{{\bf String}}]{ anotherString}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily  [inline]}}\label{classjava_1_1lang_1_1_string_a3e7ae2073386103ce4654c535a63960f}
+Compares this \doxyref{String}{p.}{classjava_1_1lang_1_1_string} and another \doxyref{String}{p.}{classjava_1_1lang_1_1_string} (case sensitive, lexicographically). The result is less than 0 if this string sorts before the other, 0 if they are equal, and greater than 0 otherwise. After any common starting sequence is skipped, the result is {\ttfamily this.charAt(k) -\/ anotherString.charAt(k)} if both strings have characters remaining, or {\ttfamily this.length() -\/ anotherString.length()} if one string is a subsequence of the other.
+
+
+\begin{DoxyParams}{Parameters}
+\item[{\em anotherString}]the \doxyref{String}{p.}{classjava_1_1lang_1_1_string} to compare against \end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+the comparison 
+\end{DoxyReturn}
+
+\begin{DoxyExceptions}{Exceptions}
+\item[{\em \doxyref{NullPointerException}{p.}{classjava_1_1lang_1_1_null_pointer_exception}}]if anotherString is null \end{DoxyExceptions}
+
+
+Definition at line 551 of file String.java.
+
+
+
+References count, offset, and value.
+
+\index{java::lang::String@{java::lang::String}!concat@{concat}}
+\index{concat@{concat}!java::lang::String@{java::lang::String}}
+\subsubsection[{concat}]{\setlength{\rightskip}{0pt plus 5cm}{\bf String} java::lang::String::concat (
+\begin{DoxyParamCaption}
+\item[{{\bf String}}]{ str}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily  [inline]}}\label{classjava_1_1lang_1_1_string_adc2d8b69652dd48bfe3876c0cb1ca3e7}
+Concatenates a \doxyref{String}{p.}{classjava_1_1lang_1_1_string} to this \doxyref{String}{p.}{classjava_1_1lang_1_1_string}. This results in a new string unless one of the two originals is \char`\"{}\char`\"{}.
+
+
+\begin{DoxyParams}{Parameters}
+\item[{\em str}]\doxyref{String}{p.}{classjava_1_1lang_1_1_string} to append to this \doxyref{String}{p.}{classjava_1_1lang_1_1_string} \end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+newly concatenated \doxyref{String}{p.}{classjava_1_1lang_1_1_string} 
+\end{DoxyReturn}
+
+\begin{DoxyExceptions}{Exceptions}
+\item[{\em \doxyref{NullPointerException}{p.}{classjava_1_1lang_1_1_null_pointer_exception}}]if str is null \end{DoxyExceptions}
+
+
+Definition at line 861 of file String.java.
+
+
+
+References count, offset, String(), and value.
+
+\index{java::lang::String@{java::lang::String}!endsWith@{endsWith}}
+\index{endsWith@{endsWith}!java::lang::String@{java::lang::String}}
+\subsubsection[{endsWith}]{\setlength{\rightskip}{0pt plus 5cm}boolean java::lang::String::endsWith (
+\begin{DoxyParamCaption}
+\item[{{\bf String}}]{ suffix}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily  [inline]}}\label{classjava_1_1lang_1_1_string_a3abcbd0b9987d23dcee0578d4115e20c}
+Predicate which determines if this \doxyref{String}{p.}{classjava_1_1lang_1_1_string} ends with a given suffix. If the suffix is an empty \doxyref{String}{p.}{classjava_1_1lang_1_1_string}, true is returned.
+
+
+\begin{DoxyParams}{Parameters}
+\item[{\em suffix}]\doxyref{String}{p.}{classjava_1_1lang_1_1_string} to compare \end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+true if this \doxyref{String}{p.}{classjava_1_1lang_1_1_string} ends with the suffix 
+\end{DoxyReturn}
+
+\begin{DoxyExceptions}{Exceptions}
+\item[{\em \doxyref{NullPointerException}{p.}{classjava_1_1lang_1_1_null_pointer_exception}}]if suffix is null \end{DoxyExceptions}
+\begin{DoxySeeAlso}{See also}
+\doxyref{regionMatches(boolean, int, String, int, int)}{p.}{classjava_1_1lang_1_1_string_a607d1a321c50c68175358dd76c1cde62} 
+\end{DoxySeeAlso}
+
+
+Definition at line 657 of file String.java.
+
+
+
+References count, and regionMatches().
+
+\index{java::lang::String@{java::lang::String}!equals@{equals}}
+\index{equals@{equals}!java::lang::String@{java::lang::String}}
+\subsubsection[{equals}]{\setlength{\rightskip}{0pt plus 5cm}boolean java::lang::String::equals (
+\begin{DoxyParamCaption}
+\item[{{\bf Object}}]{ anObject}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily  [inline]}}\label{classjava_1_1lang_1_1_string_a14e1a7261b0ddd643596a07c18c013b6}
+Predicate which compares anObject to this. This is true only for Strings with the same character sequence.
+
+
+\begin{DoxyParams}{Parameters}
+\item[{\em anObject}]the object to compare \end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+true if anObject is semantically equal to this 
+\end{DoxyReturn}
+\begin{DoxySeeAlso}{See also}
+\doxyref{compareTo(String)}{p.}{classjava_1_1lang_1_1_string_a3e7ae2073386103ce4654c535a63960f} 
+
+\doxyref{equalsIgnoreCase(String)}{p.}{classjava_1_1lang_1_1_string_afb606a54e1bd398f3ae4d7a1616f88dc} 
+\end{DoxySeeAlso}
+
+
+Definition at line 465 of file String.java.
+
+
+
+References count, offset, and value.
+
+
+
+Referenced by java::lang::System::getProperty(), java::lang::Double::parseDouble(), and jelatine::VMOutputStream::VMOutputStream().
+
+\index{java::lang::String@{java::lang::String}!equalsIgnoreCase@{equalsIgnoreCase}}
+\index{equalsIgnoreCase@{equalsIgnoreCase}!java::lang::String@{java::lang::String}}
+\subsubsection[{equalsIgnoreCase}]{\setlength{\rightskip}{0pt plus 5cm}boolean java::lang::String::equalsIgnoreCase (
+\begin{DoxyParamCaption}
+\item[{{\bf String}}]{ anotherString}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily  [inline]}}\label{classjava_1_1lang_1_1_string_afb606a54e1bd398f3ae4d7a1616f88dc}
+Compares a \doxyref{String}{p.}{classjava_1_1lang_1_1_string} to this \doxyref{String}{p.}{classjava_1_1lang_1_1_string}, ignoring case. This does not handle multi-\/character capitalization exceptions; instead the comparison is made on a character-\/by-\/character basis, and is true if:\par
+
+\begin{DoxyItemize}
+\item {\ttfamily c1 == c2} 
+\item {\ttfamily Character.toUpperCase(c1) == Character.toUpperCase(c2)} 
+\item {\ttfamily Character.toLowerCase(c1) == Character.toLowerCase(c2)} 
+\end{DoxyItemize}
+
+
+\begin{DoxyParams}{Parameters}
+\item[{\em anotherString}]\doxyref{String}{p.}{classjava_1_1lang_1_1_string} to compare to this \doxyref{String}{p.}{classjava_1_1lang_1_1_string} \end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+true if anotherString is equal, ignoring case 
+\end{DoxyReturn}
+\begin{DoxySeeAlso}{See also}
+\doxyref{equals(Object)}{p.}{classjava_1_1lang_1_1_string_a14e1a7261b0ddd643596a07c18c013b6} 
+
+\doxyref{Character::toUpperCase(char)}{p.}{classjava_1_1lang_1_1_character_ab56e18841965a4438d73e919d0d023d9} 
+
+\doxyref{Character::toLowerCase(char)}{p.}{classjava_1_1lang_1_1_character_acc5f58960788fa69664a929663dfa790} 
+\end{DoxySeeAlso}
+
+
+Definition at line 511 of file String.java.
+
+
+
+References count, offset, and value.
+
+\index{java::lang::String@{java::lang::String}!getBytes@{getBytes}}
+\index{getBytes@{getBytes}!java::lang::String@{java::lang::String}}
+\subsubsection[{getBytes}]{\setlength{\rightskip}{0pt plus 5cm}byte [$\,$] java::lang::String::getBytes (
+\begin{DoxyParamCaption}
+\item[{{\bf String}}]{ encoding}
+\end{DoxyParamCaption}
+)  throws {\bf UnsupportedEncodingException}     \hspace{0.3cm}{\ttfamily  [inline]}}\label{classjava_1_1lang_1_1_string_a085ac9b0367f928c544f478c403f74c8}
+Converts the Unicode characters in this \doxyref{String}{p.}{classjava_1_1lang_1_1_string} to a byte array. Uses the specified encoding method, so the result may be longer or shorter than the \doxyref{String}{p.}{classjava_1_1lang_1_1_string}. Unsupported characters get replaced by an encoding specific byte.
+
+
+\begin{DoxyParams}{Parameters}
+\item[{\em encoding}]encoding name \end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+the resulting byte array 
+\end{DoxyReturn}
+
+\begin{DoxyExceptions}{Exceptions}
+\item[{\em \doxyref{NullPointerException}{p.}{classjava_1_1lang_1_1_null_pointer_exception}}]if enc is null \item[{\em UnsupportedEncodingException}]if encoding is not supported \end{DoxyExceptions}
+\begin{DoxySince}{Since}
+1.1 
+\end{DoxySince}
+
+
+Definition at line 417 of file String.java.
+
+
+
+References count, offset, and value.
+
+\index{java::lang::String@{java::lang::String}!getBytes@{getBytes}}
+\index{getBytes@{getBytes}!java::lang::String@{java::lang::String}}
+\subsubsection[{getBytes}]{\setlength{\rightskip}{0pt plus 5cm}byte [$\,$] java::lang::String::getBytes (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily  [inline]}}\label{classjava_1_1lang_1_1_string_a78e2581eb96be9556a71eb31bee0cdfb}
+Converts the Unicode characters in this \doxyref{String}{p.}{classjava_1_1lang_1_1_string} to a byte array. Uses the encoding of the platform's default charset, so the result may be longer or shorter than the \doxyref{String}{p.}{classjava_1_1lang_1_1_string}. Unsupported characters get replaced by an encoding specific byte.
+
+\begin{DoxyReturn}{Returns}
+the resulting byte array, or null on a problem 
+\end{DoxyReturn}
+\begin{DoxySince}{Since}
+1.1 
+\end{DoxySince}
+
+
+Definition at line 443 of file String.java.
+
+
+
+References count, offset, and value.
+
+\index{java::lang::String@{java::lang::String}!getChars@{getChars}}
+\index{getChars@{getChars}!java::lang::String@{java::lang::String}}
+\subsubsection[{getChars}]{\setlength{\rightskip}{0pt plus 5cm}void java::lang::String::getChars (
+\begin{DoxyParamCaption}
+\item[{int}]{ srcBegin, }
+\item[{int}]{ srcEnd, }
+\item[{char}]{ dst[$\,$], }
+\item[{int}]{ dstBegin}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily  [inline]}}\label{classjava_1_1lang_1_1_string_a69348b62d3f134c88542895c17d18527}
+Copies characters from this \doxyref{String}{p.}{classjava_1_1lang_1_1_string} starting at a specified start index, ending at a specified stop index, to a character array starting at a specified destination begin index.
+
+
+\begin{DoxyParams}{Parameters}
+\item[{\em srcBegin}]index to begin copying characters from this \doxyref{String}{p.}{classjava_1_1lang_1_1_string} \item[{\em srcEnd}]index after the last character to be copied from this \doxyref{String}{p.}{classjava_1_1lang_1_1_string} \item[{\em dst}]character array which this \doxyref{String}{p.}{classjava_1_1lang_1_1_string} is copied into \item[{\em dstBegin}]index to start writing characters into dst \end{DoxyParams}
+
+\begin{DoxyExceptions}{Exceptions}
+\item[{\em \doxyref{NullPointerException}{p.}{classjava_1_1lang_1_1_null_pointer_exception}}]if dst is null \item[{\em \doxyref{IndexOutOfBoundsException}{p.}{classjava_1_1lang_1_1_index_out_of_bounds_exception}}]if any indices are out of bounds (while unspecified, source problems cause a \doxyref{StringIndexOutOfBoundsException}{p.}{classjava_1_1lang_1_1_string_index_out_of_bounds_exception}, and dst problems cause an \doxyref{ArrayIndexOutOfBoundsException}{p.}{classjava_1_1lang_1_1_array_index_out_of_bounds_exception}) \end{DoxyExceptions}
+
+
+Definition at line 396 of file String.java.
+
+
+
+References count, offset, and value.
+
+
+
+Referenced by java::lang::StringBuffer::append(), java::lang::StringBuffer::insert(), and java::lang::StringBuffer::StringBuffer().
+
+\index{java::lang::String@{java::lang::String}!hashCode@{hashCode}}
+\index{hashCode@{hashCode}!java::lang::String@{java::lang::String}}
+\subsubsection[{hashCode}]{\setlength{\rightskip}{0pt plus 5cm}int java::lang::String::hashCode (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily  [inline]}}\label{classjava_1_1lang_1_1_string_aa65371da3410c9a53279156c0f3d7534}
+Computes the hashcode for this \doxyref{String}{p.}{classjava_1_1lang_1_1_string}. This is done with int arithmetic, where $\ast$$\ast$ represents exponentiation, by this formula:\par
+ {\ttfamily s[0]$\ast$31$\ast$$\ast$(n-\/1) + s[1]$\ast$31$\ast$$\ast$(n-\/2) + ... + s[n-\/1]}.
+
+\begin{DoxyReturn}{Returns}
+hashcode value of this \doxyref{String}{p.}{classjava_1_1lang_1_1_string} 
+\end{DoxyReturn}
+
+
+Definition at line 669 of file String.java.
+
+
+
+References count, offset, and value.
+
+\index{java::lang::String@{java::lang::String}!indexOf@{indexOf}}
+\index{indexOf@{indexOf}!java::lang::String@{java::lang::String}}
+\subsubsection[{indexOf}]{\setlength{\rightskip}{0pt plus 5cm}int java::lang::String::indexOf (
+\begin{DoxyParamCaption}
+\item[{{\bf String}}]{ str}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily  [inline]}}\label{classjava_1_1lang_1_1_string_a85ac835429c804f828233addd2a6264b}
+Finds the first instance of a \doxyref{String}{p.}{classjava_1_1lang_1_1_string} in this \doxyref{String}{p.}{classjava_1_1lang_1_1_string}.
+
+
+\begin{DoxyParams}{Parameters}
+\item[{\em str}]\doxyref{String}{p.}{classjava_1_1lang_1_1_string} to find \end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+location (base 0) of the \doxyref{String}{p.}{classjava_1_1lang_1_1_string}, or -\/1 if not found 
+\end{DoxyReturn}
+
+\begin{DoxyExceptions}{Exceptions}
+\item[{\em \doxyref{NullPointerException}{p.}{classjava_1_1lang_1_1_null_pointer_exception}}]if str is null \end{DoxyExceptions}
+
+
+Definition at line 771 of file String.java.
+
+
+
+References indexOf().
+
+\index{java::lang::String@{java::lang::String}!indexOf@{indexOf}}
+\index{indexOf@{indexOf}!java::lang::String@{java::lang::String}}
+\subsubsection[{indexOf}]{\setlength{\rightskip}{0pt plus 5cm}int java::lang::String::indexOf (
+\begin{DoxyParamCaption}
+\item[{{\bf String}}]{ str, }
+\item[{int}]{ fromIndex}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily  [inline]}}\label{classjava_1_1lang_1_1_string_a9c1011dc1051f11791ea40905f703154}
+Finds the first instance of a \doxyref{String}{p.}{classjava_1_1lang_1_1_string} in this \doxyref{String}{p.}{classjava_1_1lang_1_1_string}, starting at a given index. If starting index is less than 0, the search starts at the beginning of this \doxyref{String}{p.}{classjava_1_1lang_1_1_string}. If the starting index is greater than the length of this \doxyref{String}{p.}{classjava_1_1lang_1_1_string}, -\/1 is returned.
+
+
+\begin{DoxyParams}{Parameters}
+\item[{\em str}]\doxyref{String}{p.}{classjava_1_1lang_1_1_string} to find \item[{\em fromIndex}]index to start the search \end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+location (base 0) of the \doxyref{String}{p.}{classjava_1_1lang_1_1_string}, or -\/1 if not found 
+\end{DoxyReturn}
+
+\begin{DoxyExceptions}{Exceptions}
+\item[{\em \doxyref{NullPointerException}{p.}{classjava_1_1lang_1_1_null_pointer_exception}}]if str is null \end{DoxyExceptions}
+
+
+Definition at line 787 of file String.java.
+
+
+
+References count, and value.
+
+\index{java::lang::String@{java::lang::String}!indexOf@{indexOf}}
+\index{indexOf@{indexOf}!java::lang::String@{java::lang::String}}
+\subsubsection[{indexOf}]{\setlength{\rightskip}{0pt plus 5cm}int java::lang::String::indexOf (
+\begin{DoxyParamCaption}
+\item[{int}]{ ch}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily  [inline]}}\label{classjava_1_1lang_1_1_string_a7a0560be0b5194e56c7a7bd756c4b55f}
+Finds the first instance of a character in this \doxyref{String}{p.}{classjava_1_1lang_1_1_string}.
+
+
+\begin{DoxyParams}{Parameters}
+\item[{\em ch}]character to find \end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+location (base 0) of the character, or -\/1 if not found 
+\end{DoxyReturn}
+
+
+Definition at line 690 of file String.java.
+
+
+
+Referenced by jelatine::cldc::io::URL::getParamsMap(), indexOf(), and jelatine::cldc::io::URL::URL().
+
+\index{java::lang::String@{java::lang::String}!indexOf@{indexOf}}
+\index{indexOf@{indexOf}!java::lang::String@{java::lang::String}}
+\subsubsection[{indexOf}]{\setlength{\rightskip}{0pt plus 5cm}int java::lang::String::indexOf (
+\begin{DoxyParamCaption}
+\item[{int}]{ ch, }
+\item[{int}]{ fromIndex}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily  [inline]}}\label{classjava_1_1lang_1_1_string_a32caae99d9dfeb691a574590aaf1a9d1}
+Finds the first instance of a character in this \doxyref{String}{p.}{classjava_1_1lang_1_1_string}, starting at a given index. If starting index is less than 0, the search starts at the beginning of this \doxyref{String}{p.}{classjava_1_1lang_1_1_string}. If the starting index is greater than the length of this \doxyref{String}{p.}{classjava_1_1lang_1_1_string}, -\/1 is returned.
+
+
+\begin{DoxyParams}{Parameters}
+\item[{\em ch}]character to find \item[{\em fromIndex}]index to start the search \end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+location (base 0) of the character, or -\/1 if not found 
+\end{DoxyReturn}
+
+
+Definition at line 705 of file String.java.
+
+
+
+References count, offset, and value.
+
+\index{java::lang::String@{java::lang::String}!intern@{intern}}
+\index{intern@{intern}!java::lang::String@{java::lang::String}}
+\subsubsection[{intern}]{\setlength{\rightskip}{0pt plus 5cm}native {\bf String} java::lang::String::intern (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}\label{classjava_1_1lang_1_1_string_a541b44c14f16bcde05a6704f70d14735}
+If two Strings are considered equal, by the \doxyref{equals()}{p.}{classjava_1_1lang_1_1_string_a14e1a7261b0ddd643596a07c18c013b6} method, then \doxyref{intern()}{p.}{classjava_1_1lang_1_1_string_a541b44c14f16bcde05a6704f70d14735} will return the same \doxyref{String}{p.}{classjava_1_1lang_1_1_string} instance. ie. if (s1.equals(s2)) then (s1.intern() == s2.intern()). All string literals and string-\/valued constant expressions are already interned.
+
+\begin{DoxyReturn}{Returns}
+the interned \doxyref{String}{p.}{classjava_1_1lang_1_1_string} 
+\end{DoxyReturn}
+\index{java::lang::String@{java::lang::String}!lastIndexOf@{lastIndexOf}}
+\index{lastIndexOf@{lastIndexOf}!java::lang::String@{java::lang::String}}
+\subsubsection[{lastIndexOf}]{\setlength{\rightskip}{0pt plus 5cm}int java::lang::String::lastIndexOf (
+\begin{DoxyParamCaption}
+\item[{int}]{ ch}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily  [inline]}}\label{classjava_1_1lang_1_1_string_ad1b0d7cb3f730d2b809d35f5f952022c}
+Finds the last instance of a character in this \doxyref{String}{p.}{classjava_1_1lang_1_1_string}.
+
+
+\begin{DoxyParams}{Parameters}
+\item[{\em ch}]character to find \end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+location (base 0) of the character, or -\/1 if not found 
+\end{DoxyReturn}
+
+
+Definition at line 730 of file String.java.
+
+
+
+References count.
+
+\index{java::lang::String@{java::lang::String}!lastIndexOf@{lastIndexOf}}
+\index{lastIndexOf@{lastIndexOf}!java::lang::String@{java::lang::String}}
+\subsubsection[{lastIndexOf}]{\setlength{\rightskip}{0pt plus 5cm}int java::lang::String::lastIndexOf (
+\begin{DoxyParamCaption}
+\item[{int}]{ ch, }
+\item[{int}]{ fromIndex}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily  [inline]}}\label{classjava_1_1lang_1_1_string_ad1196b61463fc8eaa7066ac7045d1cce}
+Finds the last instance of a character in this \doxyref{String}{p.}{classjava_1_1lang_1_1_string}, starting at a given index. If starting index is greater than the maximum valid index, then the search begins at the end of this \doxyref{String}{p.}{classjava_1_1lang_1_1_string}. If the starting index is less than zero, -\/1 is returned.
+
+
+\begin{DoxyParams}{Parameters}
+\item[{\em ch}]character to find \item[{\em fromIndex}]index to start the search \end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+location (base 0) of the character, or -\/1 if not found 
+\end{DoxyReturn}
+
+
+Definition at line 745 of file String.java.
+
+
+
+References count, offset, and value.
+
+\index{java::lang::String@{java::lang::String}!length@{length}}
+\index{length@{length}!java::lang::String@{java::lang::String}}
+\subsubsection[{length}]{\setlength{\rightskip}{0pt plus 5cm}int java::lang::String::length (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily  [inline]}}\label{classjava_1_1lang_1_1_string_af32b1027860058eec523e6ffefd84d17}
+Returns the number of characters contained in this \doxyref{String}{p.}{classjava_1_1lang_1_1_string}.
+
+\begin{DoxyReturn}{Returns}
+the length of this \doxyref{String}{p.}{classjava_1_1lang_1_1_string} 
+\end{DoxyReturn}
+
+
+Definition at line 360 of file String.java.
+
+
+
+References count.
+
+
+
+Referenced by java::lang::Double::parseDouble(), and java::lang::Integer::parseIntInternal().
+
+\index{java::lang::String@{java::lang::String}!regionMatches@{regionMatches}}
+\index{regionMatches@{regionMatches}!java::lang::String@{java::lang::String}}
+\subsubsection[{regionMatches}]{\setlength{\rightskip}{0pt plus 5cm}boolean java::lang::String::regionMatches (
+\begin{DoxyParamCaption}
+\item[{boolean}]{ ignoreCase, }
+\item[{int}]{ toffset, }
+\item[{{\bf String}}]{ other, }
+\item[{int}]{ ooffset, }
+\item[{int}]{ len}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily  [inline]}}\label{classjava_1_1lang_1_1_string_a607d1a321c50c68175358dd76c1cde62}
+Predicate which determines if this \doxyref{String}{p.}{classjava_1_1lang_1_1_string} matches another \doxyref{String}{p.}{classjava_1_1lang_1_1_string} starting at a specified offset for each \doxyref{String}{p.}{classjava_1_1lang_1_1_string} and continuing for a specified length, optionally ignoring case. Indices out of bounds are harmless, and give a false result. Case comparisons are based on {\ttfamily \doxyref{Character.toLowerCase()}{p.}{classjava_1_1lang_1_1_character_acc5f58960788fa69664a929663dfa790}} and {\ttfamily \doxyref{Character.toUpperCase()}{p.}{classjava_1_1lang_1_1_character_ab56e18841965a4438d73e919d0d023d9}}, not on multi-\/character capitalization expansions.
+
+
+\begin{DoxyParams}{Parameters}
+\item[{\em ignoreCase}]true if case should be ignored in comparision \item[{\em toffset}]index to start comparison at for this \doxyref{String}{p.}{classjava_1_1lang_1_1_string} \item[{\em other}]\doxyref{String}{p.}{classjava_1_1lang_1_1_string} to compare region to this \doxyref{String}{p.}{classjava_1_1lang_1_1_string} \item[{\em ooffset}]index to start comparison at for other \item[{\em len}]number of characters to compare \end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+true if regions match, false otherwise 
+\end{DoxyReturn}
+
+\begin{DoxyExceptions}{Exceptions}
+\item[{\em \doxyref{NullPointerException}{p.}{classjava_1_1lang_1_1_null_pointer_exception}}]if other is null \end{DoxyExceptions}
+
+
+Definition at line 585 of file String.java.
+
+
+
+References count, offset, and value.
+
+
+
+Referenced by endsWith(), and startsWith().
+
+\index{java::lang::String@{java::lang::String}!replace@{replace}}
+\index{replace@{replace}!java::lang::String@{java::lang::String}}
+\subsubsection[{replace}]{\setlength{\rightskip}{0pt plus 5cm}{\bf String} java::lang::String::replace (
+\begin{DoxyParamCaption}
+\item[{char}]{ oldChar, }
+\item[{char}]{ newChar}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily  [inline]}}\label{classjava_1_1lang_1_1_string_ab90d5afe1c91cde8a33292e0b034b2db}
+Replaces every instance of a character in this \doxyref{String}{p.}{classjava_1_1lang_1_1_string} with a new character. If no replacements occur, this is returned.
+
+
+\begin{DoxyParams}{Parameters}
+\item[{\em oldChar}]the old character to replace \item[{\em newChar}]the new character \end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+new \doxyref{String}{p.}{classjava_1_1lang_1_1_string} with all instances of oldChar replaced with newChar 
+\end{DoxyReturn}
+
+
+Definition at line 884 of file String.java.
+
+
+
+References count, offset, String(), and value.
+
+
+
+Referenced by java::lang::Class::getName().
+
+\index{java::lang::String@{java::lang::String}!startsWith@{startsWith}}
+\index{startsWith@{startsWith}!java::lang::String@{java::lang::String}}
+\subsubsection[{startsWith}]{\setlength{\rightskip}{0pt plus 5cm}boolean java::lang::String::startsWith (
+\begin{DoxyParamCaption}
+\item[{{\bf String}}]{ prefix, }
+\item[{int}]{ toffset}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily  [inline]}}\label{classjava_1_1lang_1_1_string_acc40f116a33f35436f3a14730dda0110}
+Predicate which determines if this \doxyref{String}{p.}{classjava_1_1lang_1_1_string} contains the given prefix, beginning comparison at toffset. The result is false if toffset is negative or greater than this.length(), otherwise it is the same as {\ttfamily this.substring(toffset).startsWith(prefix)}.
+
+
+\begin{DoxyParams}{Parameters}
+\item[{\em prefix}]\doxyref{String}{p.}{classjava_1_1lang_1_1_string} to compare \item[{\em toffset}]offset for this \doxyref{String}{p.}{classjava_1_1lang_1_1_string} where comparison starts \end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+true if this \doxyref{String}{p.}{classjava_1_1lang_1_1_string} starts with prefix 
+\end{DoxyReturn}
+
+\begin{DoxyExceptions}{Exceptions}
+\item[{\em \doxyref{NullPointerException}{p.}{classjava_1_1lang_1_1_null_pointer_exception}}]if prefix is null \end{DoxyExceptions}
+\begin{DoxySeeAlso}{See also}
+\doxyref{regionMatches(boolean, int, String, int, int)}{p.}{classjava_1_1lang_1_1_string_a607d1a321c50c68175358dd76c1cde62} 
+\end{DoxySeeAlso}
+
+
+Definition at line 629 of file String.java.
+
+
+
+References count, and regionMatches().
+
+\index{java::lang::String@{java::lang::String}!startsWith@{startsWith}}
+\index{startsWith@{startsWith}!java::lang::String@{java::lang::String}}
+\subsubsection[{startsWith}]{\setlength{\rightskip}{0pt plus 5cm}boolean java::lang::String::startsWith (
+\begin{DoxyParamCaption}
+\item[{{\bf String}}]{ prefix}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily  [inline]}}\label{classjava_1_1lang_1_1_string_ada6282afcc78a35a8914f8532cdd4614}
+Predicate which determines if this \doxyref{String}{p.}{classjava_1_1lang_1_1_string} starts with a given prefix. If the prefix is an empty \doxyref{String}{p.}{classjava_1_1lang_1_1_string}, true is returned.
+
+
+\begin{DoxyParams}{Parameters}
+\item[{\em prefix}]\doxyref{String}{p.}{classjava_1_1lang_1_1_string} to compare \end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+true if this \doxyref{String}{p.}{classjava_1_1lang_1_1_string} starts with the prefix 
+\end{DoxyReturn}
+
+\begin{DoxyExceptions}{Exceptions}
+\item[{\em \doxyref{NullPointerException}{p.}{classjava_1_1lang_1_1_null_pointer_exception}}]if prefix is null \end{DoxyExceptions}
+\begin{DoxySeeAlso}{See also}
+\doxyref{startsWith(String, int)}{p.}{classjava_1_1lang_1_1_string_acc40f116a33f35436f3a14730dda0110} 
+\end{DoxySeeAlso}
+
+
+Definition at line 643 of file String.java.
+
+
+
+References count, and regionMatches().
+
+\index{java::lang::String@{java::lang::String}!substring@{substring}}
+\index{substring@{substring}!java::lang::String@{java::lang::String}}
+\subsubsection[{substring}]{\setlength{\rightskip}{0pt plus 5cm}{\bf String} java::lang::String::substring (
+\begin{DoxyParamCaption}
+\item[{int}]{ beginIndex, }
+\item[{int}]{ endIndex}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily  [inline]}}\label{classjava_1_1lang_1_1_string_aa189248d3f58c6f1dc28d4dcdbd079c2}
+Creates a substring of this \doxyref{String}{p.}{classjava_1_1lang_1_1_string}, starting at a specified index and ending at one character before a specified index.
+
+
+\begin{DoxyParams}{Parameters}
+\item[{\em beginIndex}]index to start substring (inclusive, base 0) \item[{\em endIndex}]index to end at (exclusive) \end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+new \doxyref{String}{p.}{classjava_1_1lang_1_1_string} which is a substring of this \doxyref{String}{p.}{classjava_1_1lang_1_1_string} 
+\end{DoxyReturn}
+
+\begin{DoxyExceptions}{Exceptions}
+\item[{\em \doxyref{IndexOutOfBoundsException}{p.}{classjava_1_1lang_1_1_index_out_of_bounds_exception}}]if begin $<$ 0 $|$$|$ end $>$ \doxyref{length()}{p.}{classjava_1_1lang_1_1_string_af32b1027860058eec523e6ffefd84d17} $|$$|$ begin $>$ end (while unspecified, this is a \doxyref{StringIndexOutOfBoundsException}{p.}{classjava_1_1lang_1_1_string_index_out_of_bounds_exception}) \end{DoxyExceptions}
+
+
+Definition at line 839 of file String.java.
+
+
+
+References count, offset, String(), and value.
+
+\index{java::lang::String@{java::lang::String}!substring@{substring}}
+\index{substring@{substring}!java::lang::String@{java::lang::String}}
+\subsubsection[{substring}]{\setlength{\rightskip}{0pt plus 5cm}{\bf String} java::lang::String::substring (
+\begin{DoxyParamCaption}
+\item[{int}]{ begin}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily  [inline]}}\label{classjava_1_1lang_1_1_string_a45443691d8f5da1acbfb65676df4be94}
+Creates a substring of this \doxyref{String}{p.}{classjava_1_1lang_1_1_string}, starting at a specified index and ending at the end of this \doxyref{String}{p.}{classjava_1_1lang_1_1_string}.
+
+
+\begin{DoxyParams}{Parameters}
+\item[{\em begin}]index to start substring (base 0) \end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+new \doxyref{String}{p.}{classjava_1_1lang_1_1_string} which is a substring of this \doxyref{String}{p.}{classjava_1_1lang_1_1_string} 
+\end{DoxyReturn}
+
+\begin{DoxyExceptions}{Exceptions}
+\item[{\em \doxyref{IndexOutOfBoundsException}{p.}{classjava_1_1lang_1_1_index_out_of_bounds_exception}}]if begin $<$ 0 $|$$|$ begin $>$ \doxyref{length()}{p.}{classjava_1_1lang_1_1_string_af32b1027860058eec523e6ffefd84d17} (while unspecified, this is a \doxyref{StringIndexOutOfBoundsException}{p.}{classjava_1_1lang_1_1_string_index_out_of_bounds_exception}) \end{DoxyExceptions}
+
+
+Definition at line 823 of file String.java.
+
+
+
+References count.
+
+
+
+Referenced by jelatine::cldc::io::URL::getParamsMap(), java::lang::Double::parseDouble(), trim(), and jelatine::cldc::io::URL::URL().
+
+\index{java::lang::String@{java::lang::String}!toCharArray@{toCharArray}}
+\index{toCharArray@{toCharArray}!java::lang::String@{java::lang::String}}
+\subsubsection[{toCharArray}]{\setlength{\rightskip}{0pt plus 5cm}char [$\,$] java::lang::String::toCharArray (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily  [inline]}}\label{classjava_1_1lang_1_1_string_a48ee12d9dae422b552f3d3c1f5e948f5}
+Copies the contents of this \doxyref{String}{p.}{classjava_1_1lang_1_1_string} into a character array. Subsequent changes to the array do not affect the \doxyref{String}{p.}{classjava_1_1lang_1_1_string}.
+
+\begin{DoxyReturn}{Returns}
+character array copying the \doxyref{String}{p.}{classjava_1_1lang_1_1_string} 
+\end{DoxyReturn}
+
+
+Definition at line 1044 of file String.java.
+
+
+
+References count, offset, and value.
+
+\index{java::lang::String@{java::lang::String}!toLowerCase@{toLowerCase}}
+\index{toLowerCase@{toLowerCase}!java::lang::String@{java::lang::String}}
+\subsubsection[{toLowerCase}]{\setlength{\rightskip}{0pt plus 5cm}{\bf String} java::lang::String::toLowerCase (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily  [inline]}}\label{classjava_1_1lang_1_1_string_a268496a7db8c1cef7e11b8f042126edd}
+Lowercases this \doxyref{String}{p.}{classjava_1_1lang_1_1_string}. This uses Unicode's special case mappings, as applied to the platform's default Locale, so the resulting string may be a different length.
+
+\begin{DoxyReturn}{Returns}
+new lowercased \doxyref{String}{p.}{classjava_1_1lang_1_1_string}, or this if no characters were lowercased 
+\end{DoxyReturn}
+
+
+Definition at line 922 of file String.java.
+
+
+
+References count, offset, String(), and value.
+
+\index{java::lang::String@{java::lang::String}!toString@{toString}}
+\index{toString@{toString}!java::lang::String@{java::lang::String}}
+\subsubsection[{toString}]{\setlength{\rightskip}{0pt plus 5cm}{\bf String} java::lang::String::toString (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily  [inline]}}\label{classjava_1_1lang_1_1_string_ac20d184f3d921fe6d9d1f0d350e222ba}
+Returns this, as it is already a String!
+
+\begin{DoxyReturn}{Returns}
+this 
+\end{DoxyReturn}
+
+
+Definition at line 1033 of file String.java.
+
+
+
+Referenced by java::lang::Thread::Thread(), java::lang::Long::toString(), and valueOf().
+
+\index{java::lang::String@{java::lang::String}!toUpperCase@{toUpperCase}}
+\index{toUpperCase@{toUpperCase}!java::lang::String@{java::lang::String}}
+\subsubsection[{toUpperCase}]{\setlength{\rightskip}{0pt plus 5cm}{\bf String} java::lang::String::toUpperCase (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily  [inline]}}\label{classjava_1_1lang_1_1_string_a2d19c391f89bc5ac9c14e441caeaac2c}
+Uppercases this \doxyref{String}{p.}{classjava_1_1lang_1_1_string}. This uses Unicode's special case mappings, as applied to the platform's default Locale, so the resulting string may be a different length.
+
+\begin{DoxyReturn}{Returns}
+new uppercased \doxyref{String}{p.}{classjava_1_1lang_1_1_string}, or this if no characters were uppercased 
+\end{DoxyReturn}
+
+
+Definition at line 963 of file String.java.
+
+
+
+References count, offset, String(), and value.
+
+\index{java::lang::String@{java::lang::String}!trim@{trim}}
+\index{trim@{trim}!java::lang::String@{java::lang::String}}
+\subsubsection[{trim}]{\setlength{\rightskip}{0pt plus 5cm}{\bf String} java::lang::String::trim (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily  [inline]}}\label{classjava_1_1lang_1_1_string_a43355a6a25f3c2504e45aad51d0e8ce9}
+Trims all characters less than or equal to {\ttfamily '0020'} ({\ttfamily ' '}) from the beginning and end of this \doxyref{String}{p.}{classjava_1_1lang_1_1_string}. This includes many, but not all, ASCII control characters, and all whitespace characters.
+
+\begin{DoxyReturn}{Returns}
+new trimmed \doxyref{String}{p.}{classjava_1_1lang_1_1_string}, or this if nothing trimmed 
+\end{DoxyReturn}
+
+
+Definition at line 1005 of file String.java.
+
+
+
+References count, offset, substring(), and value.
+
+\index{java::lang::String@{java::lang::String}!valueOf@{valueOf}}
+\index{valueOf@{valueOf}!java::lang::String@{java::lang::String}}
+\subsubsection[{valueOf}]{\setlength{\rightskip}{0pt plus 5cm}static {\bf String} java::lang::String::valueOf (
+\begin{DoxyParamCaption}
+\item[{double}]{ d}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily  [inline, static]}}\label{classjava_1_1lang_1_1_string_aab7ba8466a3d6bfab85df721fd9ae007}
+Returns a \doxyref{String}{p.}{classjava_1_1lang_1_1_string} representing a double.
+
+
+\begin{DoxyParams}{Parameters}
+\item[{\em d}]the double \end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+\doxyref{String}{p.}{classjava_1_1lang_1_1_string} containing the double 
+\end{DoxyReturn}
+\begin{DoxySeeAlso}{See also}
+\doxyref{Double::toString(double)}{p.}{classjava_1_1lang_1_1_double_a989aa5eaf198a1f272a9a43b21f0448e} 
+\end{DoxySeeAlso}
+
+
+Definition at line 1167 of file String.java.
+
+
+
+References toString().
+
+\index{java::lang::String@{java::lang::String}!valueOf@{valueOf}}
+\index{valueOf@{valueOf}!java::lang::String@{java::lang::String}}
+\subsubsection[{valueOf}]{\setlength{\rightskip}{0pt plus 5cm}static {\bf String} java::lang::String::valueOf (
+\begin{DoxyParamCaption}
+\item[{char}]{ c}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily  [inline, static]}}\label{classjava_1_1lang_1_1_string_a980af48dc6e9afe6ff8b7764cb28e448}
+Returns a \doxyref{String}{p.}{classjava_1_1lang_1_1_string} representing a character.
+
+
+\begin{DoxyParams}{Parameters}
+\item[{\em c}]the character \end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+\doxyref{String}{p.}{classjava_1_1lang_1_1_string} containing the single character c 
+\end{DoxyReturn}
+
+
+Definition at line 1117 of file String.java.
+
+
+
+References String().
+
+\index{java::lang::String@{java::lang::String}!valueOf@{valueOf}}
+\index{valueOf@{valueOf}!java::lang::String@{java::lang::String}}
+\subsubsection[{valueOf}]{\setlength{\rightskip}{0pt plus 5cm}static {\bf String} java::lang::String::valueOf (
+\begin{DoxyParamCaption}
+\item[{float}]{ f}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily  [inline, static]}}\label{classjava_1_1lang_1_1_string_aa7ccc72ef8d7f32de6fb76938c31c82d}
+Returns a \doxyref{String}{p.}{classjava_1_1lang_1_1_string} representing a float.
+
+
+\begin{DoxyParams}{Parameters}
+\item[{\em f}]the float \end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+\doxyref{String}{p.}{classjava_1_1lang_1_1_string} containing the float 
+\end{DoxyReturn}
+\begin{DoxySeeAlso}{See also}
+\doxyref{Float::toString(float)}{p.}{classjava_1_1lang_1_1_float_a90e790b506db9e154c44c3d62ed8f570} 
+\end{DoxySeeAlso}
+
+
+Definition at line 1155 of file String.java.
+
+
+
+References toString().
+
+\index{java::lang::String@{java::lang::String}!valueOf@{valueOf}}
+\index{valueOf@{valueOf}!java::lang::String@{java::lang::String}}
+\subsubsection[{valueOf}]{\setlength{\rightskip}{0pt plus 5cm}static {\bf String} java::lang::String::valueOf (
+\begin{DoxyParamCaption}
+\item[{int}]{ i}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily  [inline, static]}}\label{classjava_1_1lang_1_1_string_acab2b7aedc377c92d516c146372c55c1}
+Returns a \doxyref{String}{p.}{classjava_1_1lang_1_1_string} representing an integer.
+
+
+\begin{DoxyParams}{Parameters}
+\item[{\em i}]the integer \end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+\doxyref{String}{p.}{classjava_1_1lang_1_1_string} containing the integer in base 10 
+\end{DoxyReturn}
+\begin{DoxySeeAlso}{See also}
+\doxyref{Integer::toString(int)}{p.}{classjava_1_1lang_1_1_integer_aac208f88ae45e83711397924c3b9107a} 
+\end{DoxySeeAlso}
+
+
+Definition at line 1130 of file String.java.
+
+
+
+References toString().
+
+\index{java::lang::String@{java::lang::String}!valueOf@{valueOf}}
+\index{valueOf@{valueOf}!java::lang::String@{java::lang::String}}
+\subsubsection[{valueOf}]{\setlength{\rightskip}{0pt plus 5cm}static {\bf String} java::lang::String::valueOf (
+\begin{DoxyParamCaption}
+\item[{char[$\,$]}]{ data}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily  [inline, static]}}\label{classjava_1_1lang_1_1_string_a956fc4511f3f3a5e261458ecaaff1b29}
+Returns a \doxyref{String}{p.}{classjava_1_1lang_1_1_string} representation of a character array. Subsequent changes to the array do not affect the \doxyref{String}{p.}{classjava_1_1lang_1_1_string}.
+
+
+\begin{DoxyParams}{Parameters}
+\item[{\em data}]the character array \end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+a \doxyref{String}{p.}{classjava_1_1lang_1_1_string} containing the same character sequence as data 
+\end{DoxyReturn}
+
+\begin{DoxyExceptions}{Exceptions}
+\item[{\em \doxyref{NullPointerException}{p.}{classjava_1_1lang_1_1_null_pointer_exception}}]if data is null \end{DoxyExceptions}
+\begin{DoxySeeAlso}{See also}
+\doxyref{valueOf}{p.}{classjava_1_1lang_1_1_string_acb43db982bccae8d9570cc2795656884}(char[], int, int) 
+
+\doxyref{String}{p.}{classjava_1_1lang_1_1_string_a724dc49c1b7dec63860fdfe4f10e2d3d}(char[]) 
+\end{DoxySeeAlso}
+
+
+Definition at line 1074 of file String.java.
+
+
+
+References valueOf().
+
+\index{java::lang::String@{java::lang::String}!valueOf@{valueOf}}
+\index{valueOf@{valueOf}!java::lang::String@{java::lang::String}}
+\subsubsection[{valueOf}]{\setlength{\rightskip}{0pt plus 5cm}static {\bf String} java::lang::String::valueOf (
+\begin{DoxyParamCaption}
+\item[{{\bf Object}}]{ obj}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily  [inline, static]}}\label{classjava_1_1lang_1_1_string_acb43db982bccae8d9570cc2795656884}
+Returns a \doxyref{String}{p.}{classjava_1_1lang_1_1_string} representation of an \doxyref{Object}{p.}{classjava_1_1lang_1_1_object}. This is \char`\"{}null\char`\"{} if the object is null, otherwise it is {\ttfamily obj.toString()} (which can be null).
+
+
+\begin{DoxyParams}{Parameters}
+\item[{\em obj}]the \doxyref{Object}{p.}{classjava_1_1lang_1_1_object} \end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+the string conversion of obj 
+\end{DoxyReturn}
+
+
+Definition at line 1059 of file String.java.
+
+
+
+References java::lang::Object::toString().
+
+
+
+Referenced by java::lang::Short::toString(), java::lang::Integer::toString(), java::lang::Byte::toString(), and valueOf().
+
+\index{java::lang::String@{java::lang::String}!valueOf@{valueOf}}
+\index{valueOf@{valueOf}!java::lang::String@{java::lang::String}}
+\subsubsection[{valueOf}]{\setlength{\rightskip}{0pt plus 5cm}static {\bf String} java::lang::String::valueOf (
+\begin{DoxyParamCaption}
+\item[{long}]{ l}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily  [inline, static]}}\label{classjava_1_1lang_1_1_string_a5fc8a425f7aadb6748c57fbbb33de71e}
+Returns a \doxyref{String}{p.}{classjava_1_1lang_1_1_string} representing a long.
+
+
+\begin{DoxyParams}{Parameters}
+\item[{\em l}]the long \end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+\doxyref{String}{p.}{classjava_1_1lang_1_1_string} containing the long in base 10 
+\end{DoxyReturn}
+\begin{DoxySeeAlso}{See also}
+\doxyref{Long::toString(long)}{p.}{classjava_1_1lang_1_1_long_ad0cf0ae523a39050e1be9d11293138f6} 
+\end{DoxySeeAlso}
+
+
+Definition at line 1143 of file String.java.
+
+
+
+References toString().
+
+\index{java::lang::String@{java::lang::String}!valueOf@{valueOf}}
+\index{valueOf@{valueOf}!java::lang::String@{java::lang::String}}
+\subsubsection[{valueOf}]{\setlength{\rightskip}{0pt plus 5cm}static {\bf String} java::lang::String::valueOf (
+\begin{DoxyParamCaption}
+\item[{boolean}]{ b}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily  [inline, static]}}\label{classjava_1_1lang_1_1_string_a6771350eab92abb928b7d6754d1b0715}
+Returns a \doxyref{String}{p.}{classjava_1_1lang_1_1_string} representing a boolean.
+
+
+\begin{DoxyParams}{Parameters}
+\item[{\em b}]the boolean \end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+\char`\"{}true\char`\"{} if b is true, else \char`\"{}false\char`\"{} 
+\end{DoxyReturn}
+
+
+Definition at line 1106 of file String.java.
+
+\index{java::lang::String@{java::lang::String}!valueOf@{valueOf}}
+\index{valueOf@{valueOf}!java::lang::String@{java::lang::String}}
+\subsubsection[{valueOf}]{\setlength{\rightskip}{0pt plus 5cm}static {\bf String} java::lang::String::valueOf (
+\begin{DoxyParamCaption}
+\item[{char[$\,$]}]{ data, }
+\item[{int}]{ offset, }
+\item[{int}]{ count}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily  [inline, static]}}\label{classjava_1_1lang_1_1_string_a0f59f7d3441906998410014a06ec387b}
+Returns a \doxyref{String}{p.}{classjava_1_1lang_1_1_string} representing the character sequence of the char array, starting at the specified offset, and copying chars up to the specified count. Subsequent changes to the array do not affect the \doxyref{String}{p.}{classjava_1_1lang_1_1_string}.
+
+
+\begin{DoxyParams}{Parameters}
+\item[{\em data}]character array \item[{\em offset}]position (base 0) to start copying out of data \item[{\em count}]the number of characters from data to copy \end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+\doxyref{String}{p.}{classjava_1_1lang_1_1_string} containing the chars from data[offset..offset+count] 
+\end{DoxyReturn}
+
+\begin{DoxyExceptions}{Exceptions}
+\item[{\em \doxyref{NullPointerException}{p.}{classjava_1_1lang_1_1_null_pointer_exception}}]if data is null \item[{\em \doxyref{IndexOutOfBoundsException}{p.}{classjava_1_1lang_1_1_index_out_of_bounds_exception}}]if (offset $<$ 0 $|$$|$ count $<$ 0 $|$$|$ offset + count $<$ 0 (overflow) $|$$|$ offset + count $>$ data.length) (while unspecified, this is a \doxyref{StringIndexOutOfBoundsException}{p.}{classjava_1_1lang_1_1_string_index_out_of_bounds_exception}) \end{DoxyExceptions}
+\begin{DoxySeeAlso}{See also}
+\doxyref{String}{p.}{classjava_1_1lang_1_1_string_a724dc49c1b7dec63860fdfe4f10e2d3d}(char[], int, int) 
+\end{DoxySeeAlso}
+
+
+Definition at line 1095 of file String.java.
+
+
+
+References String().
+
+
+
+\subsection{Field Documentation}
+\index{java::lang::String@{java::lang::String}!count@{count}}
+\index{count@{count}!java::lang::String@{java::lang::String}}
+\subsubsection[{count}]{\setlength{\rightskip}{0pt plus 5cm}final int {\bf java::lang::String::count}\hspace{0.3cm}{\ttfamily  [package]}}\label{classjava_1_1lang_1_1_string_acd986fd0614389d03abc300f00b420ee}
+Holds the number of characters in value. This number is generally the same as value.length, but can be smaller because substrings and StringBuffers can share arrays. Package visible for use by trusted code. 
+
+Definition at line 87 of file String.java.
+
+
+
+Referenced by java::lang::StringBuffer::append(), charAt(), compareTo(), concat(), endsWith(), equals(), equalsIgnoreCase(), getBytes(), getChars(), hashCode(), indexOf(), java::lang::StringBuffer::insert(), lastIndexOf(), length(), regionMatches(), replace(), startsWith(), String(), java::lang::StringBuffer::StringBuffer(), substring(), toCharArray(), toLowerCase(), toUpperCase(), and trim().
+
+\index{java::lang::String@{java::lang::String}!offset@{offset}}
+\index{offset@{offset}!java::lang::String@{java::lang::String}}
+\subsubsection[{offset}]{\setlength{\rightskip}{0pt plus 5cm}final int {\bf java::lang::String::offset}\hspace{0.3cm}{\ttfamily  [package]}}\label{classjava_1_1lang_1_1_string_a16e485ee52d692ac6a48f1f9c1dbb464}
+Holds the starting position for characters in value[]. Since \doxyref{substring()}{p.}{classjava_1_1lang_1_1_string_a45443691d8f5da1acbfb65676df4be94}'s are common, the use of offset allows the operation to perform in O(1). Package access is granted for use by \doxyref{StringBuffer}{p.}{classjava_1_1lang_1_1_string_buffer}. 
+
+Definition at line 100 of file String.java.
+
+
+
+Referenced by charAt(), compareTo(), concat(), equals(), equalsIgnoreCase(), getBytes(), getChars(), hashCode(), indexOf(), lastIndexOf(), regionMatches(), replace(), String(), substring(), toCharArray(), toLowerCase(), toUpperCase(), and trim().
+
+\index{java::lang::String@{java::lang::String}!value@{value}}
+\index{value@{value}!java::lang::String@{java::lang::String}}
+\subsubsection[{value}]{\setlength{\rightskip}{0pt plus 5cm}final char [$\,$] {\bf java::lang::String::value}\hspace{0.3cm}{\ttfamily  [package]}}\label{classjava_1_1lang_1_1_string_a13a780582569719ce680ca1a46c1238d}
+Characters which make up the \doxyref{String}{p.}{classjava_1_1lang_1_1_string}. Package access is granted for use by \doxyref{StringBuffer}{p.}{classjava_1_1lang_1_1_string_buffer}. 
+
+Definition at line 80 of file String.java.
+
+
+
+Referenced by charAt(), compareTo(), concat(), equals(), equalsIgnoreCase(), getBytes(), getChars(), hashCode(), indexOf(), lastIndexOf(), regionMatches(), replace(), String(), substring(), toCharArray(), toLowerCase(), toUpperCase(), and trim().
+
+
+
+The documentation for this class was generated from the following file:\begin{DoxyCompactItemize}
+\item 
+src/classpath/java/lang/String.java\end{DoxyCompactItemize}

@@ -1,0 +1,991 @@
+\section{src/jelatine/method.h File Reference}
+\label{method_8h}\index{src/jelatine/method.h@{src/jelatine/method.h}}
+{\ttfamily \#include \char`\"{}wrappers.h\char`\"{}}\par
+{\ttfamily \#include \char`\"{}constantpool.h\char`\"{}}\par
+{\ttfamily \#include \char`\"{}util.h\char`\"{}}\par
+\subsection*{Data Structures}
+\begin{DoxyCompactItemize}
+\item 
+struct {\bf exception\_\-handler\_\-t}
+\item 
+struct {\bf method\_\-t}
+\item 
+struct {\bf method\_\-manager\_\-t}
+\item 
+struct {\bf method\_\-iterator\_\-t}
+\end{DoxyCompactItemize}
+\subsection*{Defines}
+\begin{DoxyCompactItemize}
+\item 
+\#define {\bf JELATINE\_\-METHOD\_\-H}~(1)
+\item 
+\#define {\bf METHOD\_\-ARGUMENTS\_\-BITS}~(4)
+\item 
+\#define {\bf METHOD\_\-ARGUMENTS\_\-MAX}~(1 $<$$<$ METHOD\_\-ARGUMENTS\_\-BITS)
+\item 
+\#define {\bf METHOD\_\-ARGUMENTS\_\-MASK}~(METHOD\_\-ARGUMENTS\_\-MAX -\/ 1)
+\item 
+\#define {\bf METHOD\_\-INDEX\_\-BITS}~(12)
+\item 
+\#define {\bf METHOD\_\-INDEX\_\-MAX}~(1 $<$$<$ METHOD\_\-INDEX\_\-BITS)
+\item 
+\#define {\bf METHOD\_\-INDEX\_\-SHIFT}~(METHOD\_\-ARGUMENTS\_\-BITS)
+\end{DoxyCompactItemize}
+\subsection*{Typedefs}
+\begin{DoxyCompactItemize}
+\item 
+typedef enum {\bf return\_\-value\_\-t} {\bf return\_\-value\_\-t}
+\item 
+typedef struct {\bf exception\_\-handler\_\-t} {\bf exception\_\-handler\_\-t}
+\item 
+typedef void($\ast$ {\bf native\_\-proto\_\-t} )(void)
+\item 
+typedef struct {\bf method\_\-t} {\bf method\_\-t}
+\item 
+typedef struct {\bf method\_\-manager\_\-t} {\bf method\_\-manager\_\-t}
+\item 
+typedef struct {\bf method\_\-iterator\_\-t} {\bf method\_\-iterator\_\-t}
+\end{DoxyCompactItemize}
+\subsection*{Enumerations}
+\begin{DoxyCompactItemize}
+\item 
+enum {\bf return\_\-value\_\-t} \{ \par
+{\bf RET\_\-VOID} =  0, 
+{\bf RET\_\-INT} =  1, 
+{\bf RET\_\-LONG} =  2, 
+{\bf RET\_\-OBJECT} =  3, 
+\par
+{\bf RET\_\-FLOAT} =  4, 
+{\bf RET\_\-DOUBLE} =  5
+ \}
+\end{DoxyCompactItemize}
+\subsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+{\bf method\_\-manager\_\-t} $\ast$ {\bf mm\_\-create} (uint32\_\-t)
+\item 
+{\bf method\_\-t} $\ast$ {\bf mm\_\-get} ({\bf method\_\-manager\_\-t} $\ast$, char $\ast$, char $\ast$)
+\item 
+uint32\_\-t {\bf mm\_\-get\_\-count} ({\bf method\_\-manager\_\-t} $\ast$)
+\item 
+void {\bf mm\_\-add} ({\bf method\_\-manager\_\-t} $\ast$, char $\ast$, char $\ast$, uint16\_\-t, {\bf const\_\-pool\_\-t} $\ast$, {\bf method\_\-attributes\_\-t} $\ast$)
+\item 
+void {\bf init\_\-dummy\_\-methods} (void)
+\item 
+bool {\bf method\_\-compare} (const {\bf method\_\-t} $\ast$, const {\bf method\_\-t} $\ast$)
+\item 
+void {\bf method\_\-link\_\-native} ({\bf method\_\-t} $\ast$, char $\ast$)
+\item 
+void {\bf method\_\-purge} ({\bf method\_\-t} $\ast$)
+\item 
+uint32\_\-t {\bf method\_\-get\_\-code\_\-length} (const {\bf method\_\-t} $\ast$)
+\item 
+bool {\bf method\_\-is\_\-init} (const {\bf method\_\-t} $\ast$)
+\item 
+uint16\_\-t {\bf method\_\-create\_\-packed\_\-index} (const {\bf method\_\-t} $\ast$)
+\item 
+static uint16\_\-t {\bf method\_\-unpack\_\-arguments} (uint16\_\-t m)
+\item 
+static uint16\_\-t {\bf method\_\-unpack\_\-index} (uint16\_\-t m)
+\item 
+static bool {\bf method\_\-is\_\-public} (const {\bf method\_\-t} $\ast$m)
+\item 
+static bool {\bf method\_\-is\_\-protected} (const {\bf method\_\-t} $\ast$m)
+\item 
+static bool {\bf method\_\-is\_\-private} (const {\bf method\_\-t} $\ast$m)
+\item 
+static bool {\bf method\_\-is\_\-native} (const {\bf method\_\-t} $\ast$m)
+\item 
+static bool {\bf method\_\-is\_\-static} (const {\bf method\_\-t} $\ast$m)
+\item 
+static bool {\bf method\_\-is\_\-final} (const {\bf method\_\-t} $\ast$m)
+\item 
+static bool {\bf method\_\-is\_\-synchronized} (const {\bf method\_\-t} $\ast$m)
+\item 
+static bool {\bf method\_\-is\_\-abstract} (const {\bf method\_\-t} $\ast$m)
+\item 
+static void {\bf method\_\-set\_\-linked} ({\bf method\_\-t} $\ast$m)
+\item 
+static bool {\bf method\_\-is\_\-linked} (const {\bf method\_\-t} $\ast$m)
+\item 
+static bool {\bf method\_\-is\_\-main} (const {\bf method\_\-t} $\ast$m)
+\item 
+static void {\bf method\_\-set\_\-index} ({\bf method\_\-t} $\ast$method, uint16\_\-t index)
+\item 
+static uint16\_\-t {\bf method\_\-get\_\-index} (const {\bf method\_\-t} $\ast$method)
+\item 
+static {\bf method\_\-iterator\_\-t} {\bf method\_\-itr} ({\bf method\_\-manager\_\-t} $\ast$mm)
+\item 
+static bool {\bf method\_\-itr\_\-has\_\-next} ({\bf method\_\-iterator\_\-t} itr)
+\item 
+static {\bf method\_\-t} $\ast$ {\bf method\_\-itr\_\-get\_\-next} ({\bf method\_\-iterator\_\-t} $\ast$itr)
+\end{DoxyCompactItemize}
+\subsection*{Variables}
+\begin{DoxyCompactItemize}
+\item 
+{\bf method\_\-t} {\bf halt\_\-method}
+\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+Method structure and interface 
+
+Definition in file {\bf method.h}.
+
+
+
+\subsection{Define Documentation}
+\index{method.h@{method.h}!JELATINE\_\-METHOD\_\-H@{JELATINE\_\-METHOD\_\-H}}
+\index{JELATINE\_\-METHOD\_\-H@{JELATINE\_\-METHOD\_\-H}!method.h@{method.h}}
+\subsubsection[{JELATINE\_\-METHOD\_\-H}]{\setlength{\rightskip}{0pt plus 5cm}\#define JELATINE\_\-METHOD\_\-H~(1)}\label{method_8h_ac832eb455a8f5842bf463a6773876306}
+\doxyref{method.h}{p.}{method_8h} inclusion macro 
+
+Definition at line 28 of file method.h.
+
+\index{method.h@{method.h}!METHOD\_\-ARGUMENTS\_\-BITS@{METHOD\_\-ARGUMENTS\_\-BITS}}
+\index{METHOD\_\-ARGUMENTS\_\-BITS@{METHOD\_\-ARGUMENTS\_\-BITS}!method.h@{method.h}}
+\subsubsection[{METHOD\_\-ARGUMENTS\_\-BITS}]{\setlength{\rightskip}{0pt plus 5cm}\#define METHOD\_\-ARGUMENTS\_\-BITS~(4)}\label{method_8h_afba7945370f8eb0880d8bf7dabefe4fd}
+Defines the number of bits of a method index used for encoding the number of arguments the method accepts 
+
+Definition at line 45 of file method.h.
+
+
+
+Referenced by method\_\-create\_\-packed\_\-index().
+
+\index{method.h@{method.h}!METHOD\_\-ARGUMENTS\_\-MASK@{METHOD\_\-ARGUMENTS\_\-MASK}}
+\index{METHOD\_\-ARGUMENTS\_\-MASK@{METHOD\_\-ARGUMENTS\_\-MASK}!method.h@{method.h}}
+\subsubsection[{METHOD\_\-ARGUMENTS\_\-MASK}]{\setlength{\rightskip}{0pt plus 5cm}\#define METHOD\_\-ARGUMENTS\_\-MASK~(METHOD\_\-ARGUMENTS\_\-MAX -\/ 1)}\label{method_8h_aa6526047151d0f703b018a72bf2ffbe4}
+Defines a bit mask to extract the number of arguments of a method 
+
+Definition at line 51 of file method.h.
+
+\index{method.h@{method.h}!METHOD\_\-ARGUMENTS\_\-MAX@{METHOD\_\-ARGUMENTS\_\-MAX}}
+\index{METHOD\_\-ARGUMENTS\_\-MAX@{METHOD\_\-ARGUMENTS\_\-MAX}!method.h@{method.h}}
+\subsubsection[{METHOD\_\-ARGUMENTS\_\-MAX}]{\setlength{\rightskip}{0pt plus 5cm}\#define METHOD\_\-ARGUMENTS\_\-MAX~(1 $<$$<$ METHOD\_\-ARGUMENTS\_\-BITS)}\label{method_8h_a4d383fa86e1c55c115fa39f4355b431d}
+Defines the maximum number of arguments accepted by a method 
+
+Definition at line 48 of file method.h.
+
+
+
+Referenced by parse\_\-method\_\-descriptor().
+
+\index{method.h@{method.h}!METHOD\_\-INDEX\_\-BITS@{METHOD\_\-INDEX\_\-BITS}}
+\index{METHOD\_\-INDEX\_\-BITS@{METHOD\_\-INDEX\_\-BITS}!method.h@{method.h}}
+\subsubsection[{METHOD\_\-INDEX\_\-BITS}]{\setlength{\rightskip}{0pt plus 5cm}\#define METHOD\_\-INDEX\_\-BITS~(12)}\label{method_8h_a7edd73f548dbcc3ea4bdea8fb2a08104}
+Defines the number of bits of a method index used for encoding the actual index in the dispatch table 
+
+Definition at line 55 of file method.h.
+
+\index{method.h@{method.h}!METHOD\_\-INDEX\_\-MAX@{METHOD\_\-INDEX\_\-MAX}}
+\index{METHOD\_\-INDEX\_\-MAX@{METHOD\_\-INDEX\_\-MAX}!method.h@{method.h}}
+\subsubsection[{METHOD\_\-INDEX\_\-MAX}]{\setlength{\rightskip}{0pt plus 5cm}\#define METHOD\_\-INDEX\_\-MAX~(1 $<$$<$ METHOD\_\-INDEX\_\-BITS)}\label{method_8h_ab84390596cf209ef58c03cfa27b11452}
+Defines the maximum number of methods which can be declared by a class 
+
+Definition at line 58 of file method.h.
+
+\index{method.h@{method.h}!METHOD\_\-INDEX\_\-SHIFT@{METHOD\_\-INDEX\_\-SHIFT}}
+\index{METHOD\_\-INDEX\_\-SHIFT@{METHOD\_\-INDEX\_\-SHIFT}!method.h@{method.h}}
+\subsubsection[{METHOD\_\-INDEX\_\-SHIFT}]{\setlength{\rightskip}{0pt plus 5cm}\#define METHOD\_\-INDEX\_\-SHIFT~(METHOD\_\-ARGUMENTS\_\-BITS)}\label{method_8h_a29259784f6a9b55b63033b1e4c491139}
+Defines the shift value used to extract the actual method index from the index encoded in the bytecode 
+
+Definition at line 62 of file method.h.
+
+
+
+\subsection{Typedef Documentation}
+\index{method.h@{method.h}!exception\_\-handler\_\-t@{exception\_\-handler\_\-t}}
+\index{exception\_\-handler\_\-t@{exception\_\-handler\_\-t}!method.h@{method.h}}
+\subsubsection[{exception\_\-handler\_\-t}]{\setlength{\rightskip}{0pt plus 5cm}typedef struct {\bf exception\_\-handler\_\-t} {\bf exception\_\-handler\_\-t}}\label{method_8h_ad84ef84a33606e88d791bb26a9378e4c}
+Typedef for struct \doxyref{exception\_\-handler\_\-t}{p.}{structexception__handler__t} 
+
+Definition at line 89 of file method.h.
+
+\index{method.h@{method.h}!method\_\-iterator\_\-t@{method\_\-iterator\_\-t}}
+\index{method\_\-iterator\_\-t@{method\_\-iterator\_\-t}!method.h@{method.h}}
+\subsubsection[{method\_\-iterator\_\-t}]{\setlength{\rightskip}{0pt plus 5cm}typedef struct {\bf method\_\-iterator\_\-t} {\bf method\_\-iterator\_\-t}}\label{method_8h_a3b89bf32915d03f36e724b5bd87a2d2e}
+Typedef for the struct \doxyref{method\_\-iterator\_\-t}{p.}{structmethod__iterator__t} type 
+
+Definition at line 313 of file method.h.
+
+\index{method.h@{method.h}!method\_\-manager\_\-t@{method\_\-manager\_\-t}}
+\index{method\_\-manager\_\-t@{method\_\-manager\_\-t}!method.h@{method.h}}
+\subsubsection[{method\_\-manager\_\-t}]{\setlength{\rightskip}{0pt plus 5cm}typedef struct {\bf method\_\-manager\_\-t} {\bf method\_\-manager\_\-t}}\label{method_8h_a7e963027c47c6e2f5a82c8744338d244}
+Typedef for struct \doxyref{method\_\-manager\_\-t}{p.}{structmethod__manager__t} 
+
+Definition at line 131 of file method.h.
+
+\index{method.h@{method.h}!method\_\-t@{method\_\-t}}
+\index{method\_\-t@{method\_\-t}!method.h@{method.h}}
+\subsubsection[{method\_\-t}]{\setlength{\rightskip}{0pt plus 5cm}typedef struct {\bf method\_\-t} {\bf method\_\-t}}\label{method_8h_a55a39bb96ab2525c075e72e0b51acd6f}
+Typedef for struct \doxyref{method\_\-t}{p.}{structmethod__t} 
+
+Definition at line 118 of file method.h.
+
+\index{method.h@{method.h}!native\_\-proto\_\-t@{native\_\-proto\_\-t}}
+\index{native\_\-proto\_\-t@{native\_\-proto\_\-t}!method.h@{method.h}}
+\subsubsection[{native\_\-proto\_\-t}]{\setlength{\rightskip}{0pt plus 5cm}typedef void($\ast$ {\bf native\_\-proto\_\-t})(void)}\label{method_8h_a931babb91a9fcd50fff9fc880f12b7cc}
+Native methods function pointer type 
+
+Definition at line 92 of file method.h.
+
+\index{method.h@{method.h}!return\_\-value\_\-t@{return\_\-value\_\-t}}
+\index{return\_\-value\_\-t@{return\_\-value\_\-t}!method.h@{method.h}}
+\subsubsection[{return\_\-value\_\-t}]{\setlength{\rightskip}{0pt plus 5cm}typedef enum {\bf return\_\-value\_\-t} {\bf return\_\-value\_\-t}}\label{method_8h_ada36bb7388e6fb95d9ace5ba8a028752}
+Typedef for the enum return\_\-value\_\-t type 
+
+Definition at line 77 of file method.h.
+
+
+
+\subsection{Enumeration Type Documentation}
+\index{method.h@{method.h}!return\_\-value\_\-t@{return\_\-value\_\-t}}
+\index{return\_\-value\_\-t@{return\_\-value\_\-t}!method.h@{method.h}}
+\subsubsection[{return\_\-value\_\-t}]{\setlength{\rightskip}{0pt plus 5cm}enum {\bf return\_\-value\_\-t}}\label{method_8h_a9df6d10c7a4f249d65e10e60c618057a}
+Represents the basic return type of a method, currently used only for native methods \begin{Desc}
+\item[Enumerator: ]\par
+\begin{description}
+\index{RET\_\-VOID@{RET\_\-VOID}!method.h@{method.h}}\index{method.h@{method.h}!RET\_\-VOID@{RET\_\-VOID}}\item[{\em 
+RET\_\-VOID\label{method_8h_a9df6d10c7a4f249d65e10e60c618057aa58675c047d50ede01b5ec8cbd10b532e}
+}]No return value. \index{RET\_\-INT@{RET\_\-INT}!method.h@{method.h}}\index{method.h@{method.h}!RET\_\-INT@{RET\_\-INT}}\item[{\em 
+RET\_\-INT\label{method_8h_a9df6d10c7a4f249d65e10e60c618057aaf04b21a24e01ff7cba38e1cca7a0a5c5}
+}]boolean, byte, char, short or int return value \index{RET\_\-LONG@{RET\_\-LONG}!method.h@{method.h}}\index{method.h@{method.h}!RET\_\-LONG@{RET\_\-LONG}}\item[{\em 
+RET\_\-LONG\label{method_8h_a9df6d10c7a4f249d65e10e60c618057aa3406696f7abd78622afef9a2daff0d78}
+}]long return value \index{RET\_\-OBJECT@{RET\_\-OBJECT}!method.h@{method.h}}\index{method.h@{method.h}!RET\_\-OBJECT@{RET\_\-OBJECT}}\item[{\em 
+RET\_\-OBJECT\label{method_8h_a9df6d10c7a4f249d65e10e60c618057aa28f47918d4ec7e2c02e027702dd909eb}
+}]Object reference return value. \index{RET\_\-FLOAT@{RET\_\-FLOAT}!method.h@{method.h}}\index{method.h@{method.h}!RET\_\-FLOAT@{RET\_\-FLOAT}}\item[{\em 
+RET\_\-FLOAT\label{method_8h_a9df6d10c7a4f249d65e10e60c618057aa49bbe9e22a26acf7a31fb7884183ab6b}
+}]Float return value. \index{RET\_\-DOUBLE@{RET\_\-DOUBLE}!method.h@{method.h}}\index{method.h@{method.h}!RET\_\-DOUBLE@{RET\_\-DOUBLE}}\item[{\em 
+RET\_\-DOUBLE\label{method_8h_a9df6d10c7a4f249d65e10e60c618057aad8c2d77c39a28c9e233ee356f32472a0}
+}]Double return value. \end{description}
+\end{Desc}
+
+
+
+Definition at line 67 of file method.h.
+
+
+
+\subsection{Function Documentation}
+\index{method.h@{method.h}!init\_\-dummy\_\-methods@{init\_\-dummy\_\-methods}}
+\index{init\_\-dummy\_\-methods@{init\_\-dummy\_\-methods}!method.h@{method.h}}
+\subsubsection[{init\_\-dummy\_\-methods}]{\setlength{\rightskip}{0pt plus 5cm}void init\_\-dummy\_\-methods (
+\begin{DoxyParamCaption}
+\item[{void}]{}
+\end{DoxyParamCaption}
+)}\label{method_8h_af2317eea671c257e7c426c6299ea36c9}
+Initializes the dummy methods used by the interpreter 
+
+Definition at line 85 of file method.c.
+
+
+
+References bcl\_\-resolve\_\-class(), exception\_\-handler\_\-t::catch\_\-type, method\_\-t::cp, cp\_\-create\_\-dummy(), method\_\-t::data, and method\_\-t::handlers.
+
+
+
+Referenced by vm\_\-run().
+
+\index{method.h@{method.h}!method\_\-compare@{method\_\-compare}}
+\index{method\_\-compare@{method\_\-compare}!method.h@{method.h}}
+\subsubsection[{method\_\-compare}]{\setlength{\rightskip}{0pt plus 5cm}bool method\_\-compare (
+\begin{DoxyParamCaption}
+\item[{const {\bf method\_\-t} $\ast$}]{ method1, }
+\item[{const {\bf method\_\-t} $\ast$}]{ method2}
+\end{DoxyParamCaption}
+)}\label{method_8h_aadb6f397f8e515641b584f1060720123}
+Compares two methods signatures 
+\begin{DoxyParams}{Parameters}
+\item[{\em method1}]A pointer to a method structure \item[{\em method2}]A pointer to a method structure \end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+true if the method signatures match, false otherwise 
+\end{DoxyReturn}
+
+
+Definition at line 461 of file method.c.
+
+
+
+References method\_\-t::descriptor, and method\_\-t::name.
+
+
+
+Referenced by create\_\-dispatch\_\-table(), and create\_\-interface\_\-dispatch\_\-table().
+
+\index{method.h@{method.h}!method\_\-create\_\-packed\_\-index@{method\_\-create\_\-packed\_\-index}}
+\index{method\_\-create\_\-packed\_\-index@{method\_\-create\_\-packed\_\-index}!method.h@{method.h}}
+\subsubsection[{method\_\-create\_\-packed\_\-index}]{\setlength{\rightskip}{0pt plus 5cm}uint16\_\-t method\_\-create\_\-packed\_\-index (
+\begin{DoxyParamCaption}
+\item[{const {\bf method\_\-t} $\ast$}]{ method}
+\end{DoxyParamCaption}
+)}\label{method_8h_a344036c5087887e24e486edce5b4de46}
+Creates the packed index of a method 
+\begin{DoxyParams}{Parameters}
+\item[{\em method}]A pointer to a method \end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+The packed index 
+\end{DoxyReturn}
+
+
+Definition at line 423 of file method.c.
+
+
+
+References method\_\-t::args\_\-size, method\_\-t::index, and METHOD\_\-ARGUMENTS\_\-BITS.
+
+
+
+Referenced by bcl\_\-link\_\-opcode().
+
+\index{method.h@{method.h}!method\_\-get\_\-code\_\-length@{method\_\-get\_\-code\_\-length}}
+\index{method\_\-get\_\-code\_\-length@{method\_\-get\_\-code\_\-length}!method.h@{method.h}}
+\subsubsection[{method\_\-get\_\-code\_\-length}]{\setlength{\rightskip}{0pt plus 5cm}uint32\_\-t method\_\-get\_\-code\_\-length (
+\begin{DoxyParamCaption}
+\item[{const {\bf method\_\-t} $\ast$}]{ method}
+\end{DoxyParamCaption}
+)}\label{method_8h_ab2483ace9ae44c59879814d2c41044c9}
+Gets the length of a method code, the length is automatically adjusted if extra opcodes were added by the translator 
+\begin{DoxyParams}{Parameters}
+\item[{\em method}]A pointer to a method structure \end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+The length of the bytecode in bytes 
+\end{DoxyReturn}
+
+
+Definition at line 447 of file method.c.
+
+
+
+References method\_\-t::code\_\-length, and method\_\-is\_\-synchronized().
+
+
+
+Referenced by load\_\-bytecode(), and translate\_\-bytecode().
+
+\index{method.h@{method.h}!method\_\-get\_\-index@{method\_\-get\_\-index}}
+\index{method\_\-get\_\-index@{method\_\-get\_\-index}!method.h@{method.h}}
+\subsubsection[{method\_\-get\_\-index}]{\setlength{\rightskip}{0pt plus 5cm}static uint16\_\-t method\_\-get\_\-index (
+\begin{DoxyParamCaption}
+\item[{const {\bf method\_\-t} $\ast$}]{ method}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily  [inline, static]}}\label{method_8h_ad98573617f0cd0c6c81019c3100894b7}
+Gets the index of a method 
+\begin{DoxyParams}{Parameters}
+\item[{\em method}]A pointer to a method structure \end{DoxyParams}
+
+
+Definition at line 295 of file method.h.
+
+
+
+References method\_\-t::index.
+
+
+
+Referenced by create\_\-dispatch\_\-table().
+
+\index{method.h@{method.h}!method\_\-is\_\-abstract@{method\_\-is\_\-abstract}}
+\index{method\_\-is\_\-abstract@{method\_\-is\_\-abstract}!method.h@{method.h}}
+\subsubsection[{method\_\-is\_\-abstract}]{\setlength{\rightskip}{0pt plus 5cm}static bool method\_\-is\_\-abstract (
+\begin{DoxyParamCaption}
+\item[{const {\bf method\_\-t} $\ast$}]{ m}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily  [inline, static]}}\label{method_8h_a2aed2c35bde2558abb4a5c590a0a1ad7}
+Checks if a method is abstract 
+\begin{DoxyParams}{Parameters}
+\item[{\em m}]A pointer to a method \end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+true if the method is abstract, false otherwise 
+\end{DoxyReturn}
+
+
+Definition at line 252 of file method.h.
+
+
+
+References method\_\-t::access\_\-flags.
+
+
+
+Referenced by load\_\-methods(), and resolve\_\-method().
+
+\index{method.h@{method.h}!method\_\-is\_\-final@{method\_\-is\_\-final}}
+\index{method\_\-is\_\-final@{method\_\-is\_\-final}!method.h@{method.h}}
+\subsubsection[{method\_\-is\_\-final}]{\setlength{\rightskip}{0pt plus 5cm}static bool method\_\-is\_\-final (
+\begin{DoxyParamCaption}
+\item[{const {\bf method\_\-t} $\ast$}]{ m}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily  [inline, static]}}\label{method_8h_a5d147c5b72f485f3d297437d35f9f8e4}
+Checks if a method is final 
+\begin{DoxyParams}{Parameters}
+\item[{\em m}]A pointer to a method \end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+true if the method is final, false otherwise 
+\end{DoxyReturn}
+
+
+Definition at line 234 of file method.h.
+
+
+
+References method\_\-t::access\_\-flags.
+
+
+
+Referenced by create\_\-dispatch\_\-table().
+
+\index{method.h@{method.h}!method\_\-is\_\-init@{method\_\-is\_\-init}}
+\index{method\_\-is\_\-init@{method\_\-is\_\-init}!method.h@{method.h}}
+\subsubsection[{method\_\-is\_\-init}]{\setlength{\rightskip}{0pt plus 5cm}bool method\_\-is\_\-init (
+\begin{DoxyParamCaption}
+\item[{const {\bf method\_\-t} $\ast$}]{ method}
+\end{DoxyParamCaption}
+)}\label{method_8h_a7f13ee2dfe6f3752f959b3bf29f6041b}
+Returns true if the method is an initialization method 
+\begin{DoxyParams}{Parameters}
+\item[{\em method}]A pointer to a method \end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+true if an initialization method was passed to the function, false otherwise 
+\end{DoxyReturn}
+
+
+Definition at line 433 of file method.c.
+
+
+
+References method\_\-t::name.
+
+
+
+Referenced by bcl\_\-link\_\-opcode(), create\_\-dispatch\_\-table(), method\_\-check\_\-access\_\-flags(), and resolve\_\-method().
+
+\index{method.h@{method.h}!method\_\-is\_\-linked@{method\_\-is\_\-linked}}
+\index{method\_\-is\_\-linked@{method\_\-is\_\-linked}!method.h@{method.h}}
+\subsubsection[{method\_\-is\_\-linked}]{\setlength{\rightskip}{0pt plus 5cm}static bool method\_\-is\_\-linked (
+\begin{DoxyParamCaption}
+\item[{const {\bf method\_\-t} $\ast$}]{ m}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily  [inline, static]}}\label{method_8h_a639e968883ee44817b7db5d8b1d0c339}
+Checks if a method has been linked 
+\begin{DoxyParams}{Parameters}
+\item[{\em m}]A pointer to a method \end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+true if the method has been linked, false otherwise 
+\end{DoxyReturn}
+
+
+Definition at line 269 of file method.h.
+
+
+
+References method\_\-t::access\_\-flags.
+
+
+
+Referenced by bcl\_\-link\_\-method().
+
+\index{method.h@{method.h}!method\_\-is\_\-main@{method\_\-is\_\-main}}
+\index{method\_\-is\_\-main@{method\_\-is\_\-main}!method.h@{method.h}}
+\subsubsection[{method\_\-is\_\-main}]{\setlength{\rightskip}{0pt plus 5cm}static bool method\_\-is\_\-main (
+\begin{DoxyParamCaption}
+\item[{const {\bf method\_\-t} $\ast$}]{ m}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily  [inline, static]}}\label{method_8h_a906ded30bb2443c3f9775f5b14e0587d}
+Checks if a method is the main() method 
+\begin{DoxyParams}{Parameters}
+\item[{\em m}]A pointer to a method \end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+true if the method is the main() method, false otherwise 
+\end{DoxyReturn}
+
+
+Definition at line 278 of file method.h.
+
+
+
+References method\_\-t::access\_\-flags.
+
+
+
+Referenced by bcl\_\-link\_\-method().
+
+\index{method.h@{method.h}!method\_\-is\_\-native@{method\_\-is\_\-native}}
+\index{method\_\-is\_\-native@{method\_\-is\_\-native}!method.h@{method.h}}
+\subsubsection[{method\_\-is\_\-native}]{\setlength{\rightskip}{0pt plus 5cm}static bool method\_\-is\_\-native (
+\begin{DoxyParamCaption}
+\item[{const {\bf method\_\-t} $\ast$}]{ m}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily  [inline, static]}}\label{method_8h_a894897772de23571de2e066d41180670}
+Checks if a method is native 
+\begin{DoxyParams}{Parameters}
+\item[{\em m}]A pointer to a method \end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+true if the method is native, false otherwise 
+\end{DoxyReturn}
+
+
+Definition at line 216 of file method.h.
+
+
+
+References method\_\-t::access\_\-flags.
+
+
+
+Referenced by load\_\-methods(), and vm\_\-run().
+
+\index{method.h@{method.h}!method\_\-is\_\-private@{method\_\-is\_\-private}}
+\index{method\_\-is\_\-private@{method\_\-is\_\-private}!method.h@{method.h}}
+\subsubsection[{method\_\-is\_\-private}]{\setlength{\rightskip}{0pt plus 5cm}static bool method\_\-is\_\-private (
+\begin{DoxyParamCaption}
+\item[{const {\bf method\_\-t} $\ast$}]{ m}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily  [inline, static]}}\label{method_8h_a2434581268569c4ee8983f869a9b9fa5}
+Checks if a method is private 
+\begin{DoxyParams}{Parameters}
+\item[{\em m}]A pointer to a method \end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+true if the method is private, false otherwise 
+\end{DoxyReturn}
+
+
+Definition at line 207 of file method.h.
+
+
+
+References method\_\-t::access\_\-flags.
+
+
+
+Referenced by create\_\-dispatch\_\-table(), and resolve\_\-method().
+
+\index{method.h@{method.h}!method\_\-is\_\-protected@{method\_\-is\_\-protected}}
+\index{method\_\-is\_\-protected@{method\_\-is\_\-protected}!method.h@{method.h}}
+\subsubsection[{method\_\-is\_\-protected}]{\setlength{\rightskip}{0pt plus 5cm}static bool method\_\-is\_\-protected (
+\begin{DoxyParamCaption}
+\item[{const {\bf method\_\-t} $\ast$}]{ m}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily  [inline, static]}}\label{method_8h_afd984f7ed24ef4f9b0840a27bc0f50c0}
+Checks if a method is protected 
+\begin{DoxyParams}{Parameters}
+\item[{\em m}]A pointer to a method \end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+true if the method is protected, false otherwise 
+\end{DoxyReturn}
+
+
+Definition at line 198 of file method.h.
+
+
+
+References method\_\-t::access\_\-flags.
+
+
+
+Referenced by create\_\-dispatch\_\-table(), and resolve\_\-method().
+
+\index{method.h@{method.h}!method\_\-is\_\-public@{method\_\-is\_\-public}}
+\index{method\_\-is\_\-public@{method\_\-is\_\-public}!method.h@{method.h}}
+\subsubsection[{method\_\-is\_\-public}]{\setlength{\rightskip}{0pt plus 5cm}static bool method\_\-is\_\-public (
+\begin{DoxyParamCaption}
+\item[{const {\bf method\_\-t} $\ast$}]{ m}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily  [inline, static]}}\label{method_8h_ae08b17e251825e4aa1859605f4f25129}
+Checks if a method is public 
+\begin{DoxyParams}{Parameters}
+\item[{\em m}]A pointer to a method \end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+true if the method is public, false otherwise 
+\end{DoxyReturn}
+
+
+Definition at line 189 of file method.h.
+
+
+
+References method\_\-t::access\_\-flags.
+
+
+
+Referenced by create\_\-dispatch\_\-table(), load\_\-methods(), resolve\_\-method(), and vm\_\-run().
+
+\index{method.h@{method.h}!method\_\-is\_\-static@{method\_\-is\_\-static}}
+\index{method\_\-is\_\-static@{method\_\-is\_\-static}!method.h@{method.h}}
+\subsubsection[{method\_\-is\_\-static}]{\setlength{\rightskip}{0pt plus 5cm}static bool method\_\-is\_\-static (
+\begin{DoxyParamCaption}
+\item[{const {\bf method\_\-t} $\ast$}]{ m}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily  [inline, static]}}\label{method_8h_a7542ab7b6307dafc4ff7d9edcabb4942}
+Checks if a method is static 
+\begin{DoxyParams}{Parameters}
+\item[{\em m}]A pointer to a method \end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+true if the method is static, false otherwise 
+\end{DoxyReturn}
+
+
+Definition at line 225 of file method.h.
+
+
+
+References method\_\-t::access\_\-flags.
+
+
+
+Referenced by bcl\_\-link\_\-opcode(), create\_\-dispatch\_\-table(), interpreter(), load\_\-methods(), parse\_\-method\_\-descriptor(), translate\_\-bytecode(), and vm\_\-run().
+
+\index{method.h@{method.h}!method\_\-is\_\-synchronized@{method\_\-is\_\-synchronized}}
+\index{method\_\-is\_\-synchronized@{method\_\-is\_\-synchronized}!method.h@{method.h}}
+\subsubsection[{method\_\-is\_\-synchronized}]{\setlength{\rightskip}{0pt plus 5cm}static bool method\_\-is\_\-synchronized (
+\begin{DoxyParamCaption}
+\item[{const {\bf method\_\-t} $\ast$}]{ m}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily  [inline, static]}}\label{method_8h_adf303258b83832ebae19615f27e9ba9e}
+Checks if a method is synchronized 
+\begin{DoxyParams}{Parameters}
+\item[{\em m}]A pointer to a method \end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+true if the method is synchronized, false otherwise 
+\end{DoxyReturn}
+
+
+Definition at line 243 of file method.h.
+
+
+
+References method\_\-t::access\_\-flags.
+
+
+
+Referenced by interpreter(), load\_\-bytecode(), load\_\-exception\_\-handlers(), method\_\-get\_\-code\_\-length(), and translate\_\-bytecode().
+
+\index{method.h@{method.h}!method\_\-itr@{method\_\-itr}}
+\index{method\_\-itr@{method\_\-itr}!method.h@{method.h}}
+\subsubsection[{method\_\-itr}]{\setlength{\rightskip}{0pt plus 5cm}static {\bf method\_\-iterator\_\-t} method\_\-itr (
+\begin{DoxyParamCaption}
+\item[{{\bf method\_\-manager\_\-t} $\ast$}]{ mm}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily  [inline, static]}}\label{method_8h_a93eb16d047715c74b129f75f20fb383e}
+Creates a method iterator from the method manager {\itshape mm\/} 
+\begin{DoxyParams}{Parameters}
+\item[{\em mm}]A pointer to the method manager \end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+An initialized method iterator 
+\end{DoxyReturn}
+
+
+Definition at line 319 of file method.h.
+
+
+
+References method\_\-manager\_\-t::entries, method\_\-iterator\_\-t::entries, method\_\-iterator\_\-t::index, method\_\-manager\_\-t::methods, and method\_\-iterator\_\-t::methods.
+
+
+
+Referenced by assign\_\-interface\_\-indexes(), create\_\-dispatch\_\-table(), create\_\-interface\_\-dispatch\_\-table(), and load\_\-methods().
+
+\index{method.h@{method.h}!method\_\-itr\_\-get\_\-next@{method\_\-itr\_\-get\_\-next}}
+\index{method\_\-itr\_\-get\_\-next@{method\_\-itr\_\-get\_\-next}!method.h@{method.h}}
+\subsubsection[{method\_\-itr\_\-get\_\-next}]{\setlength{\rightskip}{0pt plus 5cm}static {\bf method\_\-t}$\ast$ method\_\-itr\_\-get\_\-next (
+\begin{DoxyParamCaption}
+\item[{{\bf method\_\-iterator\_\-t} $\ast$}]{ itr}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily  [inline, static]}}\label{method_8h_a742c7d32accc6ec746c9d25d2be46fd3}
+Returns the next method, if the iterator has just been created it returns the data of the first field (if it is present) 
+\begin{DoxyParams}{Parameters}
+\item[{\em itr}]A pointer to the field iterator \end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+A pointer to an instance field 
+\end{DoxyReturn}
+
+
+Definition at line 344 of file method.h.
+
+
+
+References method\_\-iterator\_\-t::index, method\_\-itr\_\-has\_\-next(), and method\_\-iterator\_\-t::methods.
+
+
+
+Referenced by assign\_\-interface\_\-indexes(), create\_\-dispatch\_\-table(), create\_\-interface\_\-dispatch\_\-table(), and load\_\-methods().
+
+\index{method.h@{method.h}!method\_\-itr\_\-has\_\-next@{method\_\-itr\_\-has\_\-next}}
+\index{method\_\-itr\_\-has\_\-next@{method\_\-itr\_\-has\_\-next}!method.h@{method.h}}
+\subsubsection[{method\_\-itr\_\-has\_\-next}]{\setlength{\rightskip}{0pt plus 5cm}static bool method\_\-itr\_\-has\_\-next (
+\begin{DoxyParamCaption}
+\item[{{\bf method\_\-iterator\_\-t}}]{ itr}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily  [inline, static]}}\label{method_8h_a365ab35b2b740ef97d31fde98457c0f2}
+Returns true if another method is available 
+\begin{DoxyParams}{Parameters}
+\item[{\em itr}]A method iterator \end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+true if there are more methods, false otherwise 
+\end{DoxyReturn}
+
+
+Definition at line 334 of file method.h.
+
+
+
+References method\_\-iterator\_\-t::entries, and method\_\-iterator\_\-t::index.
+
+
+
+Referenced by assign\_\-interface\_\-indexes(), create\_\-dispatch\_\-table(), create\_\-interface\_\-dispatch\_\-table(), load\_\-methods(), and method\_\-itr\_\-get\_\-next().
+
+\index{method.h@{method.h}!method\_\-link\_\-native@{method\_\-link\_\-native}}
+\index{method\_\-link\_\-native@{method\_\-link\_\-native}!method.h@{method.h}}
+\subsubsection[{method\_\-link\_\-native}]{\setlength{\rightskip}{0pt plus 5cm}void method\_\-link\_\-native (
+\begin{DoxyParamCaption}
+\item[{{\bf method\_\-t} $\ast$}]{ method, }
+\item[{char $\ast$}]{ class\_\-name}
+\end{DoxyParamCaption}
+)}\label{method_8h_a99737b5a338a7e197d4e13e07793739e}
+Link a native method 
+\begin{DoxyParams}{Parameters}
+\item[{\em method}]A pointer to the method \item[{\em class\_\-name}]The name of the class the method belongs to \end{DoxyParams}
+
+
+Definition at line 476 of file method.c.
+
+
+
+References method\_\-t::access\_\-flags, c\_\-throw, method\_\-t::code, method\_\-t::data, dbg\_\-unreachable, method\_\-t::descriptor, method\_\-t::function, JAVA\_\-LANG\_\-NOCLASSDEFFOUNDERROR, method\_\-t::name, native\_\-method\_\-code, native\_\-method\_\-lookup(), and method\_\-t::return\_\-type.
+
+
+
+Referenced by load\_\-methods().
+
+\index{method.h@{method.h}!method\_\-purge@{method\_\-purge}}
+\index{method\_\-purge@{method\_\-purge}!method.h@{method.h}}
+\subsubsection[{method\_\-purge}]{\setlength{\rightskip}{0pt plus 5cm}void method\_\-purge (
+\begin{DoxyParamCaption}
+\item[{{\bf method\_\-t} $\ast$}]{ method}
+\end{DoxyParamCaption}
+)}\label{method_8h_a8ff349754a90d52632620773bb0f59a9}
+Frees the code and exception handlers of a method 
+\begin{DoxyParams}{Parameters}
+\item[{\em method}]A pointer to the method \end{DoxyParams}
+
+
+Definition at line 516 of file method.c.
+
+
+
+References method\_\-t::code, method\_\-t::data, gc\_\-free(), and method\_\-t::handlers.
+
+
+
+Referenced by class\_\-purge\_\-initializer().
+
+\index{method.h@{method.h}!method\_\-set\_\-index@{method\_\-set\_\-index}}
+\index{method\_\-set\_\-index@{method\_\-set\_\-index}!method.h@{method.h}}
+\subsubsection[{method\_\-set\_\-index}]{\setlength{\rightskip}{0pt plus 5cm}static void method\_\-set\_\-index (
+\begin{DoxyParamCaption}
+\item[{{\bf method\_\-t} $\ast$}]{ method, }
+\item[{uint16\_\-t}]{ index}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily  [inline, static]}}\label{method_8h_a8af34c29f18c6d73057319471398f12a}
+Sets the index of a method 
+\begin{DoxyParams}{Parameters}
+\item[{\em method}]A pointer to a method structure \item[{\em index}]The method index \end{DoxyParams}
+
+
+Definition at line 287 of file method.h.
+
+
+
+References method\_\-t::index.
+
+
+
+Referenced by assign\_\-interface\_\-indexes(), and create\_\-dispatch\_\-table().
+
+\index{method.h@{method.h}!method\_\-set\_\-linked@{method\_\-set\_\-linked}}
+\index{method\_\-set\_\-linked@{method\_\-set\_\-linked}!method.h@{method.h}}
+\subsubsection[{method\_\-set\_\-linked}]{\setlength{\rightskip}{0pt plus 5cm}static void method\_\-set\_\-linked (
+\begin{DoxyParamCaption}
+\item[{{\bf method\_\-t} $\ast$}]{ m}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily  [inline, static]}}\label{method_8h_a2629bf80b2a72a2f4c78d3917ea89aa8}
+Sets the ACC\_\-LINKED flag of a method 
+\begin{DoxyParams}{Parameters}
+\item[{\em m}]A pointer to a method \end{DoxyParams}
+
+
+Definition at line 260 of file method.h.
+
+
+
+References method\_\-t::access\_\-flags.
+
+
+
+Referenced by bcl\_\-link\_\-method().
+
+\index{method.h@{method.h}!method\_\-unpack\_\-arguments@{method\_\-unpack\_\-arguments}}
+\index{method\_\-unpack\_\-arguments@{method\_\-unpack\_\-arguments}!method.h@{method.h}}
+\subsubsection[{method\_\-unpack\_\-arguments}]{\setlength{\rightskip}{0pt plus 5cm}static uint16\_\-t method\_\-unpack\_\-arguments (
+\begin{DoxyParamCaption}
+\item[{uint16\_\-t}]{ m}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily  [inline, static]}}\label{method_8h_afbca7f13d03bb457f3c5ca1a7abfc02e}
+Gets the size in stack slots of the arguments packed into the translated bytecode 
+\begin{DoxyParams}{Parameters}
+\item[{\em m}]The packed method index as found in the translated bytecode \end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+The size in stack slots of the arguments 
+\end{DoxyReturn}
+
+
+Definition at line 171 of file method.h.
+
+
+
+Referenced by interpreter().
+
+\index{method.h@{method.h}!method\_\-unpack\_\-index@{method\_\-unpack\_\-index}}
+\index{method\_\-unpack\_\-index@{method\_\-unpack\_\-index}!method.h@{method.h}}
+\subsubsection[{method\_\-unpack\_\-index}]{\setlength{\rightskip}{0pt plus 5cm}static uint16\_\-t method\_\-unpack\_\-index (
+\begin{DoxyParamCaption}
+\item[{uint16\_\-t}]{ m}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily  [inline, static]}}\label{method_8h_a446fec8fbbf20123d93e20c70d42fc04}
+Gets the index of a method packed into the translated bytecode 
+\begin{DoxyParams}{Parameters}
+\item[{\em m}]The packed method index as found in the translated bytecode \end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+The actual method index 
+\end{DoxyReturn}
+
+
+Definition at line 180 of file method.h.
+
+
+
+Referenced by interpreter().
+
+\index{method.h@{method.h}!mm\_\-add@{mm\_\-add}}
+\index{mm\_\-add@{mm\_\-add}!method.h@{method.h}}
+\subsubsection[{mm\_\-add}]{\setlength{\rightskip}{0pt plus 5cm}void mm\_\-add (
+\begin{DoxyParamCaption}
+\item[{{\bf method\_\-manager\_\-t} $\ast$}]{ mm, }
+\item[{char $\ast$}]{ name, }
+\item[{char $\ast$}]{ descriptor, }
+\item[{uint16\_\-t}]{ access\_\-flags, }
+\item[{{\bf const\_\-pool\_\-t} $\ast$}]{ cp, }
+\item[{{\bf method\_\-attributes\_\-t} $\ast$}]{ attr}
+\end{DoxyParamCaption}
+)}\label{method_8h_a3b55a80147ee67e473b1c91abdd048c7}
+Adds a new method to the method manager 
+\begin{DoxyParams}{Parameters}
+\item[{\em mm}]The method manager \item[{\em name}]The method name \item[{\em descriptor}]The method descriptor \item[{\em access\_\-flags}]Access flags of the method \item[{\em cp}]The method's constant pool \item[{\em attr}]The method attributes \end{DoxyParams}
+
+
+Definition at line 324 of file method.c.
+
+
+
+References abstract\_\-method\_\-code, ACC\_\-ABSTRACT, ACC\_\-NATIVE, method\_\-t::access\_\-flags, c\_\-throw, method\_\-t::code, method\_\-attributes\_\-t::code\_\-found, method\_\-attributes\_\-t::code\_\-length, method\_\-t::code\_\-length, method\_\-attributes\_\-t::code\_\-offset, method\_\-t::cp, method\_\-t::data, method\_\-t::descriptor, method\_\-manager\_\-t::entries, method\_\-attributes\_\-t::exception\_\-table\_\-length, method\_\-t::exception\_\-table\_\-length, method\_\-t::handlers, JAVA\_\-LANG\_\-NOCLASSDEFFOUNDERROR, load\_\-method\_\-code, method\_\-attributes\_\-t::max\_\-locals, method\_\-t::max\_\-locals, method\_\-attributes\_\-t::max\_\-stack, method\_\-t::max\_\-stack, method\_\-check\_\-access\_\-flags(), method\_\-manager\_\-t::methods, mm\_\-get(), method\_\-t::name, method\_\-t::offset, parse\_\-method\_\-descriptor(), and method\_\-manager\_\-t::reserved.
+
+
+
+Referenced by load\_\-methods().
+
+\index{method.h@{method.h}!mm\_\-create@{mm\_\-create}}
+\index{mm\_\-create@{mm\_\-create}!method.h@{method.h}}
+\subsubsection[{mm\_\-create}]{\setlength{\rightskip}{0pt plus 5cm}{\bf method\_\-manager\_\-t}$\ast$ mm\_\-create (
+\begin{DoxyParamCaption}
+\item[{uint32\_\-t}]{ count}
+\end{DoxyParamCaption}
+)}\label{method_8h_a0b2b8b8013baf69e19e06cd49a2aa7fe}
+Creates a method manager 
+\begin{DoxyParams}{Parameters}
+\item[{\em count}]The number of methods the manager will hold \end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+A pointer to the newly created method manager 
+\end{DoxyReturn}
+
+
+Definition at line 98 of file method.c.
+
+
+
+References gc\_\-palloc(), method\_\-manager\_\-t::methods, and method\_\-manager\_\-t::reserved.
+
+
+
+Referenced by load\_\-methods().
+
+\index{method.h@{method.h}!mm\_\-get@{mm\_\-get}}
+\index{mm\_\-get@{mm\_\-get}!method.h@{method.h}}
+\subsubsection[{mm\_\-get}]{\setlength{\rightskip}{0pt plus 5cm}{\bf method\_\-t}$\ast$ mm\_\-get (
+\begin{DoxyParamCaption}
+\item[{{\bf method\_\-manager\_\-t} $\ast$}]{ mm, }
+\item[{char $\ast$}]{ name, }
+\item[{char $\ast$}]{ descriptor}
+\end{DoxyParamCaption}
+)}\label{method_8h_a41cbc7a8552c11fc94c11c026a7376a5}
+Finds a method by its name and descriptor, returns NULL if the method is not found 
+\begin{DoxyParams}{Parameters}
+\item[{\em mm}]A pointer to the method manager \item[{\em name}]The method name \item[{\em descriptor}]The method descriptor \end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+A pointer to the method if it was found, NULL otherwise 
+\end{DoxyReturn}
+
+
+Definition at line 397 of file method.c.
+
+
+
+References method\_\-t::descriptor, method\_\-manager\_\-t::entries, method\_\-manager\_\-t::methods, and method\_\-t::name.
+
+
+
+Referenced by class\_\-purge\_\-initializer(), initialize\_\-class(), java\_\-lang\_\-Class\_\-newInstance(), java\_\-lang\_\-Thread\_\-start(), mm\_\-add(), resolve\_\-method(), and vm\_\-run().
+
+\index{method.h@{method.h}!mm\_\-get\_\-count@{mm\_\-get\_\-count}}
+\index{mm\_\-get\_\-count@{mm\_\-get\_\-count}!method.h@{method.h}}
+\subsubsection[{mm\_\-get\_\-count}]{\setlength{\rightskip}{0pt plus 5cm}uint32\_\-t mm\_\-get\_\-count (
+\begin{DoxyParamCaption}
+\item[{{\bf method\_\-manager\_\-t} $\ast$}]{ mm}
+\end{DoxyParamCaption}
+)}\label{method_8h_a6967ae9934b83193eb66f34e22f0f92f}
+Returns the number of methods in the manager 
+\begin{DoxyParams}{Parameters}
+\item[{\em mm}]A pointer to the method manager \end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+The number of methods in the manager 
+\end{DoxyReturn}
+
+
+Definition at line 414 of file method.c.
+
+
+
+References method\_\-manager\_\-t::entries.
+
+
+
+Referenced by create\_\-interface\_\-dispatch\_\-table().
+
+
+
+\subsection{Variable Documentation}
+\index{method.h@{method.h}!halt\_\-method@{halt\_\-method}}
+\index{halt\_\-method@{halt\_\-method}!method.h@{method.h}}
+\subsubsection[{halt\_\-method}]{\setlength{\rightskip}{0pt plus 5cm}{\bf method\_\-t} {\bf halt\_\-method}}\label{method_8h_a5d0cc5a987b03c6f65b3c21c2e75f966}
+Dummy method used to halt the interpreter
+
+Basically the main() method of the first thread (or the run() method of user-\/created threads) return to this method when they are done and this method halts the interpreter execution. This method also contains a fake exception handler which catches all possible exceptions and then deals with them as uncatched exceptions
+
+Halt method structure 
+
+Definition at line 54 of file method.c.
+
+
+
+Referenced by interpreter(), and prepare\_\-for\_\-call().
+

@@ -1,0 +1,1161 @@
+\section{src/jelatine/loader.c File Reference}
+\label{loader_8c}\index{src/jelatine/loader.c@{src/jelatine/loader.c}}
+{\ttfamily \#include \char`\"{}wrappers.h\char`\"{}}\par
+{\ttfamily \#include \char`\"{}bytecode.h\char`\"{}}\par
+{\ttfamily \#include \char`\"{}class.h\char`\"{}}\par
+{\ttfamily \#include \char`\"{}classfile.h\char`\"{}}\par
+{\ttfamily \#include \char`\"{}constantpool.h\char`\"{}}\par
+{\ttfamily \#include \char`\"{}field.h\char`\"{}}\par
+{\ttfamily \#include \char`\"{}jstring.h\char`\"{}}\par
+{\ttfamily \#include \char`\"{}interpreter.h\char`\"{}}\par
+{\ttfamily \#include \char`\"{}loader.h\char`\"{}}\par
+{\ttfamily \#include \char`\"{}memory.h\char`\"{}}\par
+{\ttfamily \#include \char`\"{}method.h\char`\"{}}\par
+{\ttfamily \#include \char`\"{}opcodes.h\char`\"{}}\par
+{\ttfamily \#include \char`\"{}utf8\_\-string.h\char`\"{}}\par
+{\ttfamily \#include \char`\"{}util.h\char`\"{}}\par
+{\ttfamily \#include \char`\"{}verifier.h\char`\"{}}\par
+{\ttfamily \#include \char`\"{}java\_\-lang\_\-Class.h\char`\"{}}\par
+{\ttfamily \#include \char`\"{}java\_\-lang\_\-ref\_\-Reference.h\char`\"{}}\par
+{\ttfamily \#include \char`\"{}java\_\-lang\_\-ref\_\-WeakReference.h\char`\"{}}\par
+{\ttfamily \#include \char`\"{}java\_\-lang\_\-String.h\char`\"{}}\par
+{\ttfamily \#include \char`\"{}java\_\-lang\_\-Thread.h\char`\"{}}\par
+{\ttfamily \#include \char`\"{}java\_\-lang\_\-Throwable.h\char`\"{}}\par
+{\ttfamily \#include \char`\"{}jelatine\_\-VMResourceStream.h\char`\"{}}\par
+\subsection*{Data Structures}
+\begin{DoxyCompactItemize}
+\item 
+struct {\bf loader\_\-t}
+\end{DoxyCompactItemize}
+\subsection*{Defines}
+\begin{DoxyCompactItemize}
+\item 
+\#define {\bf CLASS\_\-TABLE\_\-INIT}~(16)
+\item 
+\#define {\bf CLASS\_\-TABLE\_\-INC}~(16)
+\end{DoxyCompactItemize}
+\subsection*{Typedefs}
+\begin{DoxyCompactItemize}
+\item 
+typedef struct {\bf loader\_\-t} {\bf loader\_\-t}
+\end{DoxyCompactItemize}
+\subsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+static void {\bf load\_\-class} ({\bf class\_\-t} $\ast$)
+\item 
+static uint32\_\-t {\bf get\_\-new\_\-class\_\-id} (void)
+\item 
+static {\bf class\_\-t} $\ast$ {\bf resolve\_\-class} ({\bf class\_\-t} $\ast$, uint16\_\-t)
+\item 
+static {\bf class\_\-t} $\ast$ {\bf preload\_\-class} (const char $\ast$, size\_\-t, size\_\-t)
+\item 
+static void {\bf initialize\_\-static\_\-fields} ({\bf class\_\-t} $\ast$)
+\item 
+static void {\bf initialize\_\-class} ({\bf thread\_\-t} $\ast$, {\bf class\_\-t} $\ast$)
+\item 
+static void {\bf derive\_\-class} ({\bf class\_\-t} $\ast$, {\bf class\_\-file\_\-t} $\ast$)
+\item 
+static void {\bf load\_\-interfaces} ({\bf class\_\-t} $\ast$, {\bf class\_\-file\_\-t} $\ast$)
+\item 
+static void {\bfseries load\_\-attributes} ({\bf class\_\-t} $\ast$, {\bf class\_\-file\_\-t} $\ast$)\label{loader_8c_a6d61cad033c67706d2675743f086cec2}
+
+\item 
+static void {\bf grow\_\-class\_\-table} (void)
+\item 
+static uint32\_\-t {\bf next\_\-interface\_\-id} (void)
+\item 
+static void {\bf load\_\-methods} ({\bf class\_\-t} $\ast$, {\bf class\_\-file\_\-t} $\ast$, bool $\ast$)
+\item 
+static void {\bf load\_\-method\_\-attributes} ({\bf class\_\-t} $\ast$, {\bf class\_\-file\_\-t} $\ast$, {\bf method\_\-attributes\_\-t} $\ast$)
+\item 
+static void {\bf load\_\-method\_\-attribute\_\-Code} ({\bf class\_\-t} $\ast$, {\bf class\_\-file\_\-t} $\ast$, {\bf method\_\-attributes\_\-t} $\ast$)
+\item 
+static void {\bfseries load\_\-attribute\_\-Code\_\-attributes} ({\bf class\_\-t} $\ast$, {\bf class\_\-file\_\-t} $\ast$, {\bf method\_\-attributes\_\-t} $\ast$)\label{loader_8c_ac1d7ce9f3580fedff1d50d850f6838b8}
+
+\item 
+static void {\bfseries load\_\-method\_\-attribute\_\-Exceptions} ({\bf class\_\-t} $\ast$, {\bf class\_\-file\_\-t} $\ast$, {\bf method\_\-attributes\_\-t} $\ast$)\label{loader_8c_af46eed5af699cc5969bd5a9f588a765b}
+
+\item 
+static void {\bf assign\_\-interface\_\-indexes} ({\bf method\_\-manager\_\-t} $\ast$)
+\item 
+static void {\bf create\_\-dispatch\_\-table} ({\bf class\_\-t} $\ast$)
+\item 
+static void {\bf create\_\-interface\_\-dispatch\_\-table} ({\bf class\_\-t} $\ast$)
+\item 
+static {\bf method\_\-t} $\ast$ {\bf resolve\_\-method} ({\bf class\_\-t} $\ast$, uint16\_\-t, bool)
+\item 
+static uint8\_\-t $\ast$ {\bf load\_\-bytecode} ({\bf class\_\-t} $\ast$, {\bf method\_\-t} $\ast$)
+\item 
+static {\bf exception\_\-handler\_\-t} $\ast$ {\bf load\_\-exception\_\-handlers} ({\bf class\_\-t} $\ast$, {\bf method\_\-t} $\ast$, uint8\_\-t $\ast$)
+\item 
+static void {\bf load\_\-fields} ({\bf class\_\-t} $\ast$, {\bf class\_\-file\_\-t} $\ast$)
+\item 
+static void {\bf load\_\-field\_\-info} ({\bf class\_\-t} $\ast$, {\bf class\_\-file\_\-t} $\ast$, {\bf field\_\-info\_\-t} $\ast$)
+\item 
+static void {\bf load\_\-field\_\-attributes} ({\bf class\_\-t} $\ast$, {\bf class\_\-file\_\-t} $\ast$, {\bf field\_\-attributes\_\-t} $\ast$)
+\item 
+static void {\bfseries load\_\-field\_\-attribute\_\-ConstantValue} ({\bf class\_\-t} $\ast$, {\bf class\_\-file\_\-t} $\ast$, {\bf field\_\-attributes\_\-t} $\ast$)\label{loader_8c_ae249da5f753d5931017e6ae1124ddc1b}
+
+\item 
+static void {\bf layout\_\-fields} ({\bf class\_\-t} $\ast$)
+\item 
+static {\bf field\_\-t} $\ast$ {\bf lookup\_\-field} ({\bf class\_\-t} $\ast$$\ast$, const char $\ast$, const char $\ast$, bool)
+\item 
+static {\bf field\_\-t} $\ast$ {\bf resolve\_\-instance\_\-field} ({\bf class\_\-t} $\ast$, uint16\_\-t)
+\item 
+static {\bf field\_\-t} $\ast$ {\bf resolve\_\-static\_\-field} ({\bf class\_\-t} $\ast$, uint16\_\-t)
+\item 
+static uint8\_\-t {\bf get\_\-type\_\-specific\_\-opcode} (uint8\_\-t, const char $\ast$)
+\item 
+void {\bf bcl\_\-init} (void)
+\item 
+{\bf class\_\-t} $\ast$ {\bf bcl\_\-get\_\-class\_\-by\_\-id} (uint32\_\-t id)
+\item 
+void {\bf bcl\_\-mark} (void)
+\item 
+bool {\bf bcl\_\-is\_\-assignable} ({\bf class\_\-t} $\ast$src, {\bf class\_\-t} $\ast$dest)
+\item 
+void {\bf bcl\_\-preload\_\-bootstrap\_\-classes} (void)
+\item 
+{\bf class\_\-t} $\ast$ {\bf bcl\_\-resolve\_\-class} ({\bf class\_\-t} $\ast$orig, const char $\ast$name)
+\item 
+static void {\bf load\_\-attributes} ({\bf class\_\-t} $\ast$cl ATTRIBUTE\_\-UNUSED, {\bf class\_\-file\_\-t} $\ast$cf)
+\item 
+{\bf class\_\-t} $\ast$ {\bf bcl\_\-find\_\-class} (const char $\ast$name)
+\item 
+static void {\bf load\_\-attribute\_\-Code\_\-attributes} ({\bf class\_\-t} $\ast$cl ATTRIBUTE\_\-UNUSED, {\bf class\_\-file\_\-t} $\ast$cf, {\bf method\_\-attributes\_\-t} $\ast$attr ATTRIBUTE\_\-UNUSED)
+\item 
+static void {\bf load\_\-method\_\-attribute\_\-Exceptions} ({\bf class\_\-t} $\ast$cl ATTRIBUTE\_\-UNUSED, {\bf class\_\-file\_\-t} $\ast$cf, {\bf method\_\-attributes\_\-t} $\ast$attr ATTRIBUTE\_\-UNUSED)
+\item 
+static void {\bf load\_\-field\_\-attribute\_\-ConstantValue} ({\bf class\_\-t} $\ast$cl ATTRIBUTE\_\-UNUSED, {\bf class\_\-file\_\-t} $\ast$cf, {\bf field\_\-attributes\_\-t} $\ast$attr)
+\item 
+void {\bf bcl\_\-link\_\-method} ({\bf class\_\-t} $\ast$cl, {\bf method\_\-t} $\ast$method)
+\item 
+const uint8\_\-t $\ast$ {\bf bcl\_\-link\_\-opcode} (const {\bf method\_\-t} $\ast$method, const uint8\_\-t $\ast$lpc, internal\_\-opcode\_\-t opcode)
+\end{DoxyCompactItemize}
+\subsection*{Variables}
+\begin{DoxyCompactItemize}
+\item 
+static {\bf loader\_\-t} {\bf bcl}
+\item 
+{\bf class\_\-t} $\ast$ {\bf array\_\-classes} [8] = \{ NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL \}
+\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+Bootstrap class-\/loader implementation 
+
+Definition in file {\bf loader.c}.
+
+
+
+\subsection{Define Documentation}
+\index{loader.c@{loader.c}!CLASS\_\-TABLE\_\-INC@{CLASS\_\-TABLE\_\-INC}}
+\index{CLASS\_\-TABLE\_\-INC@{CLASS\_\-TABLE\_\-INC}!loader.c@{loader.c}}
+\subsubsection[{CLASS\_\-TABLE\_\-INC}]{\setlength{\rightskip}{0pt plus 5cm}\#define CLASS\_\-TABLE\_\-INC~(16)}\label{loader_8c_aec31f8a5f8aef299e45dd6b5c01c100c}
+Increment of the class-\/table entries 
+
+Definition at line 57 of file loader.c.
+
+\index{loader.c@{loader.c}!CLASS\_\-TABLE\_\-INIT@{CLASS\_\-TABLE\_\-INIT}}
+\index{CLASS\_\-TABLE\_\-INIT@{CLASS\_\-TABLE\_\-INIT}!loader.c@{loader.c}}
+\subsubsection[{CLASS\_\-TABLE\_\-INIT}]{\setlength{\rightskip}{0pt plus 5cm}\#define CLASS\_\-TABLE\_\-INIT~(16)}\label{loader_8c_a849ac0d93fb98cb67cfb832a8b932ecf}
+Number of entries in the class table after startup 
+
+Definition at line 54 of file loader.c.
+
+
+
+Referenced by bcl\_\-init().
+
+
+
+\subsection{Typedef Documentation}
+\index{loader.c@{loader.c}!loader\_\-t@{loader\_\-t}}
+\index{loader\_\-t@{loader\_\-t}!loader.c@{loader.c}}
+\subsubsection[{loader\_\-t}]{\setlength{\rightskip}{0pt plus 5cm}typedef struct {\bf loader\_\-t} {\bf loader\_\-t}}\label{loader_8c_a59779c60f23045e507387383864b09b5}
+Typedef for struct \doxyref{loader\_\-t}{p.}{structloader__t} 
+
+Definition at line 70 of file loader.c.
+
+
+
+\subsection{Function Documentation}
+\index{loader.c@{loader.c}!assign\_\-interface\_\-indexes@{assign\_\-interface\_\-indexes}}
+\index{assign\_\-interface\_\-indexes@{assign\_\-interface\_\-indexes}!loader.c@{loader.c}}
+\subsubsection[{assign\_\-interface\_\-indexes}]{\setlength{\rightskip}{0pt plus 5cm}static void assign\_\-interface\_\-indexes (
+\begin{DoxyParamCaption}
+\item[{{\bf method\_\-manager\_\-t} $\ast$}]{ mm}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily  [static]}}\label{loader_8c_a7fb50b0f19a185b0ecd93b4febe77d3f}
+Assigns the interface indexes to an interface methods' 
+\begin{DoxyParams}{Parameters}
+\item[{\em mm}]A pointer to the method manager \end{DoxyParams}
+
+
+Definition at line 1263 of file loader.c.
+
+
+
+References method\_\-itr(), method\_\-itr\_\-get\_\-next(), method\_\-itr\_\-has\_\-next(), method\_\-set\_\-index(), and next\_\-interface\_\-id().
+
+
+
+Referenced by derive\_\-class().
+
+\index{loader.c@{loader.c}!bcl\_\-find\_\-class@{bcl\_\-find\_\-class}}
+\index{bcl\_\-find\_\-class@{bcl\_\-find\_\-class}!loader.c@{loader.c}}
+\subsubsection[{bcl\_\-find\_\-class}]{\setlength{\rightskip}{0pt plus 5cm}{\bf class\_\-t}$\ast$ bcl\_\-find\_\-class (
+\begin{DoxyParamCaption}
+\item[{const char $\ast$}]{ name}
+\end{DoxyParamCaption}
+)}\label{loader_8c_ae47e2fee83020c0ee7ccc9fe871bc77c}
+Finds a class by its name 
+\begin{DoxyParams}{Parameters}
+\item[{\em name}]The class' name \end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+A pointer to the class or NULL if none is found 
+\end{DoxyReturn}
+
+
+Definition at line 955 of file loader.c.
+
+
+
+References loader\_\-t::class\_\-table, class\_\-t::name, tm\_\-lock(), tm\_\-unlock(), and loader\_\-t::used.
+
+
+
+Referenced by bcl\_\-resolve\_\-class(), KNI\_\-FindClass(), load\_\-class(), and thread\_\-create\_\-main().
+
+\index{loader.c@{loader.c}!bcl\_\-get\_\-class\_\-by\_\-id@{bcl\_\-get\_\-class\_\-by\_\-id}}
+\index{bcl\_\-get\_\-class\_\-by\_\-id@{bcl\_\-get\_\-class\_\-by\_\-id}!loader.c@{loader.c}}
+\subsubsection[{bcl\_\-get\_\-class\_\-by\_\-id}]{\setlength{\rightskip}{0pt plus 5cm}{\bf class\_\-t}$\ast$ bcl\_\-get\_\-class\_\-by\_\-id (
+\begin{DoxyParamCaption}
+\item[{uint32\_\-t}]{ id}
+\end{DoxyParamCaption}
+)}\label{loader_8c_a560f85c12cddb0cc4e93599a6e6ed190}
+Returns a pointer to the class corresponding to the given id 
+\begin{DoxyParams}{Parameters}
+\item[{\em id}]The id of the class \end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+A pointer to the class corresponding to {\itshape id\/} 
+\end{DoxyReturn}
+
+
+Definition at line 158 of file loader.c.
+
+
+
+References loader\_\-t::class\_\-table, tm\_\-lock(), and tm\_\-unlock().
+
+
+
+Referenced by gc\_\-sweep(), interpreter(), java\_\-lang\_\-Class\_\-getInternalName(), java\_\-lang\_\-Class\_\-newInstance(), KNI\_\-GetFieldID(), KNI\_\-GetStaticFieldID(), KNI\_\-GetSuperClass(), KNI\_\-IsAssignableFrom(), and KNI\_\-IsInstanceOf().
+
+\index{loader.c@{loader.c}!bcl\_\-init@{bcl\_\-init}}
+\index{bcl\_\-init@{bcl\_\-init}!loader.c@{loader.c}}
+\subsubsection[{bcl\_\-init}]{\setlength{\rightskip}{0pt plus 5cm}void bcl\_\-init (
+\begin{DoxyParamCaption}
+\item[{void}]{}
+\end{DoxyParamCaption}
+)}\label{loader_8c_a46a68b38ef8f3cf21ea1f731d6622bbf}
+Initializes the bootstrap class loader 
+
+Definition at line 146 of file loader.c.
+
+
+
+References loader\_\-t::capacity, loader\_\-t::class\_\-table, CLASS\_\-TABLE\_\-INIT, gc\_\-malloc(), loader\_\-t::interface\_\-methods, and loader\_\-t::used.
+
+
+
+Referenced by vm\_\-init().
+
+\index{loader.c@{loader.c}!bcl\_\-is\_\-assignable@{bcl\_\-is\_\-assignable}}
+\index{bcl\_\-is\_\-assignable@{bcl\_\-is\_\-assignable}!loader.c@{loader.c}}
+\subsubsection[{bcl\_\-is\_\-assignable}]{\setlength{\rightskip}{0pt plus 5cm}bool bcl\_\-is\_\-assignable (
+\begin{DoxyParamCaption}
+\item[{{\bf class\_\-t} $\ast$}]{ src, }
+\item[{{\bf class\_\-t} $\ast$}]{ dest}
+\end{DoxyParamCaption}
+)}\label{loader_8c_a84b30295c7116ad39932a285e4680aea}
+Checks if the class {\itshape src\/} may be assigned to the class {\itshape dest\/} 
+\begin{DoxyParams}{Parameters}
+\item[{\em src}]A pointer to the source class \item[{\em dest}]A pointer to the destination class \end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+True if the types are assignable, false otherwise 
+\end{DoxyReturn}
+
+
+Definition at line 208 of file loader.c.
+
+
+
+References bcl\_\-is\_\-assignable(), class\_\-is\_\-array(), class\_\-is\_\-interface(), class\_\-is\_\-object(), class\_\-t::elem\_\-class, class\_\-t::elem\_\-type, im\_\-is\_\-present(), class\_\-t::interface\_\-manager, class\_\-t::parent, and PT\_\-REFERENCE.
+
+
+
+Referenced by arraycopy\_\-ref(), bcl\_\-is\_\-assignable(), interpreter(), KNI\_\-IsAssignableFrom(), and KNI\_\-IsInstanceOf().
+
+\index{loader.c@{loader.c}!bcl\_\-link\_\-method@{bcl\_\-link\_\-method}}
+\index{bcl\_\-link\_\-method@{bcl\_\-link\_\-method}!loader.c@{loader.c}}
+\subsubsection[{bcl\_\-link\_\-method}]{\setlength{\rightskip}{0pt plus 5cm}void bcl\_\-link\_\-method (
+\begin{DoxyParamCaption}
+\item[{{\bf class\_\-t} $\ast$}]{ cl, }
+\item[{{\bf method\_\-t} $\ast$}]{ method}
+\end{DoxyParamCaption}
+)}\label{loader_8c_ae1c1dc387dc2754baf40415cb46895d9}
+Executes the actual linking of a method, implements the METHOD\_\-LOAD field 
+\begin{DoxyParams}{Parameters}
+\item[{\em cl}]The class owning the requesting method \item[{\em method}]The method to be linked \end{DoxyParams}
+
+
+Definition at line 2077 of file loader.c.
+
+
+
+References method\_\-t::code, method\_\-t::cp, cp\_\-get\_\-class(), method\_\-t::data, method\_\-t::handlers, initialize\_\-class(), load\_\-bytecode(), load\_\-exception\_\-handlers(), method\_\-is\_\-linked(), method\_\-is\_\-main(), method\_\-set\_\-linked(), thread\_\-self(), tm\_\-lock(), tm\_\-unlock(), and translate\_\-bytecode().
+
+
+
+Referenced by interpreter().
+
+\index{loader.c@{loader.c}!bcl\_\-link\_\-opcode@{bcl\_\-link\_\-opcode}}
+\index{bcl\_\-link\_\-opcode@{bcl\_\-link\_\-opcode}!loader.c@{loader.c}}
+\subsubsection[{bcl\_\-link\_\-opcode}]{\setlength{\rightskip}{0pt plus 5cm}const uint8\_\-t$\ast$ bcl\_\-link\_\-opcode (
+\begin{DoxyParamCaption}
+\item[{const {\bf method\_\-t} $\ast$}]{ method, }
+\item[{const uint8\_\-t $\ast$}]{ lpc, }
+\item[{internal\_\-opcode\_\-t}]{ opcode}
+\end{DoxyParamCaption}
+)}\label{loader_8c_aa144cd4860832816542c7199e6b77523}
+Link a $\ast$\_\-PRELINK opcode. The function behaviour changes depending on the opcode however all that is needed for the opcode to be linked properly is done in this function (for example class initialization). The function returns the same program counter it receives, this is done to 'cast away the constness' of the program counter 
+\begin{DoxyParams}{Parameters}
+\item[{\em method}]The method holding the opcode to be processed \item[{\em lpc}]The program-\/counter pointing to the opcode to be linked \item[{\em opcode}]The opcode value, this is used at the contents of the memory pointed by the program-\/counter may change if more than one thread tries to link it at the same time \end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+The program counter pointing to the linked opcode 
+\end{DoxyReturn}
+
+
+Definition at line 2244 of file loader.c.
+
+
+
+References array\_\-name(), bcl\_\-resolve\_\-class(), c\_\-throw, class\_\-get\_\-dimensions(), class\_\-get\_\-id(), class\_\-is\_\-abstract(), class\_\-is\_\-parent(), class\_\-is\_\-super(), method\_\-t::code, CONSTANT\_\-Class, CONSTANT\_\-Class\_\-resolved, method\_\-t::cp, cp\_\-get\_\-class(), cp\_\-get\_\-class\_\-name(), cp\_\-get\_\-resolved\_\-class(), cp\_\-get\_\-tag(), dbg\_\-unreachable, field\_\-t::descriptor, gc\_\-free(), gc\_\-malloc(), get\_\-type\_\-specific\_\-opcode(), initialize\_\-class(), JAVA\_\-LANG\_\-NOCLASSDEFFOUNDERROR, JAVA\_\-LANG\_\-VIRTUALMACHINEERROR, method\_\-create\_\-packed\_\-index(), method\_\-is\_\-init(), method\_\-is\_\-static(), class\_\-t::name, method\_\-t::name, field\_\-t::offset, resolve\_\-class(), resolve\_\-instance\_\-field(), resolve\_\-method(), resolve\_\-static\_\-field(), store\_\-int16\_\-un, thread\_\-self(), tm\_\-lock(), and tm\_\-unlock().
+
+
+
+Referenced by interpreter().
+
+\index{loader.c@{loader.c}!bcl\_\-mark@{bcl\_\-mark}}
+\index{bcl\_\-mark@{bcl\_\-mark}!loader.c@{loader.c}}
+\subsubsection[{bcl\_\-mark}]{\setlength{\rightskip}{0pt plus 5cm}void bcl\_\-mark (
+\begin{DoxyParamCaption}
+\item[{void}]{}
+\end{DoxyParamCaption}
+)}\label{loader_8c_ad326a3af181aa97298fbb3e74ce2ae7b}
+Asks the class loader to mark all its internal structures allocated on the Java heap or holding Java references 
+
+Definition at line 171 of file loader.c.
+
+
+
+References class\_\-get\_\-object(), loader\_\-t::class\_\-table, static\_\-field\_\-t::data, field\_\-is\_\-reference(), field\_\-itr\_\-get\_\-next(), field\_\-itr\_\-has\_\-next(), gc\_\-mark\_\-reference(), field\_\-t::offset, class\_\-t::static\_\-data, static\_\-field\_\-itr(), and loader\_\-t::used.
+
+
+
+Referenced by gc\_\-mark().
+
+\index{loader.c@{loader.c}!bcl\_\-preload\_\-bootstrap\_\-classes@{bcl\_\-preload\_\-bootstrap\_\-classes}}
+\index{bcl\_\-preload\_\-bootstrap\_\-classes@{bcl\_\-preload\_\-bootstrap\_\-classes}!loader.c@{loader.c}}
+\subsubsection[{bcl\_\-preload\_\-bootstrap\_\-classes}]{\setlength{\rightskip}{0pt plus 5cm}void bcl\_\-preload\_\-bootstrap\_\-classes (
+\begin{DoxyParamCaption}
+\item[{void}]{}
+\end{DoxyParamCaption}
+)}\label{loader_8c_a9a1a5de6cc3812fbda73b22ab0407c49}
+Preload the classes needed during the bootstrap process 
+
+Definition at line 484 of file loader.c.
+
+
+
+References bcl\_\-set\_\-array\_\-class(), JAVA\_\-LANG\_\-CLASS\_\-NREF\_\-SIZE, JAVA\_\-LANG\_\-CLASS\_\-REF\_\-N, JAVA\_\-LANG\_\-STRING\_\-NREF\_\-SIZE, JAVA\_\-LANG\_\-STRING\_\-REF\_\-N, JAVA\_\-LANG\_\-THREAD\_\-NREF\_\-SIZE, JAVA\_\-LANG\_\-THREAD\_\-REF\_\-N, jsm\_\-set\_\-classes(), and preload\_\-class().
+
+
+
+Referenced by vm\_\-run().
+
+\index{loader.c@{loader.c}!bcl\_\-resolve\_\-class@{bcl\_\-resolve\_\-class}}
+\index{bcl\_\-resolve\_\-class@{bcl\_\-resolve\_\-class}!loader.c@{loader.c}}
+\subsubsection[{bcl\_\-resolve\_\-class}]{\setlength{\rightskip}{0pt plus 5cm}{\bf class\_\-t}$\ast$ bcl\_\-resolve\_\-class (
+\begin{DoxyParamCaption}
+\item[{{\bf class\_\-t} $\ast$}]{ orig, }
+\item[{const char $\ast$}]{ name}
+\end{DoxyParamCaption}
+)}\label{loader_8c_aabb2c28b6be70d7db69469d047155f34}
+Resolves a class 
+\begin{DoxyParams}{Parameters}
+\item[{\em orig}]The originating class \item[{\em name}]The class' name \end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+A pointer to the class 
+\end{DoxyReturn}
+
+
+Definition at line 513 of file loader.c.
+
+
+
+References bcl\_\-find\_\-class(), c\_\-catch, c\_\-rethrow, c\_\-throw, c\_\-try, class\_\-is\_\-array(), class\_\-is\_\-being\_\-linked(), class\_\-is\_\-preloaded(), class\_\-is\_\-public(), loader\_\-t::class\_\-table, class\_\-t::elem\_\-class, gc\_\-palloc(), get\_\-new\_\-class\_\-id(), class\_\-t::id, JAVA\_\-LANG\_\-NOCLASSDEFFOUNDERROR, load\_\-class(), class\_\-t::name, same\_\-package(), tm\_\-lock(), tm\_\-unlock(), and utf8\_\-intern().
+
+
+
+Referenced by bcl\_\-link\_\-opcode(), init\_\-dummy\_\-methods(), interpreter(), java\_\-lang\_\-Class\_\-forName(), KNI\_\-ThrowNew(), load\_\-class(), load\_\-exception\_\-handlers(), resolve\_\-class(), and vm\_\-run().
+
+\index{loader.c@{loader.c}!create\_\-dispatch\_\-table@{create\_\-dispatch\_\-table}}
+\index{create\_\-dispatch\_\-table@{create\_\-dispatch\_\-table}!loader.c@{loader.c}}
+\subsubsection[{create\_\-dispatch\_\-table}]{\setlength{\rightskip}{0pt plus 5cm}static void create\_\-dispatch\_\-table (
+\begin{DoxyParamCaption}
+\item[{{\bf class\_\-t} $\ast$}]{ cl}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily  [static]}}\label{loader_8c_aad43236c6f5134a00084e98598588ebc}
+Creates the virtual dispatch table 
+\begin{DoxyParams}{Parameters}
+\item[{\em cl}]A pointer to the current class \end{DoxyParams}
+
+
+Definition at line 1277 of file loader.c.
+
+
+
+References c\_\-throw, class\_\-t::dtable, class\_\-t::dtable\_\-count, gc\_\-palloc(), JAVA\_\-LANG\_\-NOCLASSDEFFOUNDERROR, method\_\-compare(), method\_\-get\_\-index(), method\_\-is\_\-final(), method\_\-is\_\-init(), method\_\-is\_\-private(), method\_\-is\_\-protected(), method\_\-is\_\-public(), method\_\-is\_\-static(), method\_\-itr(), method\_\-itr\_\-get\_\-next(), method\_\-itr\_\-has\_\-next(), class\_\-t::method\_\-manager, method\_\-set\_\-index(), and class\_\-t::parent.
+
+
+
+Referenced by derive\_\-class().
+
+\index{loader.c@{loader.c}!create\_\-interface\_\-dispatch\_\-table@{create\_\-interface\_\-dispatch\_\-table}}
+\index{create\_\-interface\_\-dispatch\_\-table@{create\_\-interface\_\-dispatch\_\-table}!loader.c@{loader.c}}
+\subsubsection[{create\_\-interface\_\-dispatch\_\-table}]{\setlength{\rightskip}{0pt plus 5cm}static void create\_\-interface\_\-dispatch\_\-table (
+\begin{DoxyParamCaption}
+\item[{{\bf class\_\-t} $\ast$}]{ cl}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily  [static]}}\label{loader_8c_aa02bec5db86b66b57adfd7c865cf8758}
+Creates the interface dispatch table of a class 
+\begin{DoxyParams}{Parameters}
+\item[{\em cl}]A pointer to the current class \end{DoxyParams}
+
+
+Definition at line 1372 of file loader.c.
+
+
+
+References class\_\-t::dtable, class\_\-t::dtable\_\-count, gc\_\-palloc(), class\_\-t::inames, method\_\-t::index, interface\_\-itr(), interface\_\-itr\_\-get\_\-next(), interface\_\-itr\_\-has\_\-next(), class\_\-t::interface\_\-manager, class\_\-t::itable, class\_\-t::itable\_\-count, method\_\-compare(), method\_\-itr(), method\_\-itr\_\-get\_\-next(), method\_\-itr\_\-has\_\-next(), class\_\-t::method\_\-manager, and mm\_\-get\_\-count().
+
+
+
+Referenced by derive\_\-class().
+
+\index{loader.c@{loader.c}!derive\_\-class@{derive\_\-class}}
+\index{derive\_\-class@{derive\_\-class}!loader.c@{loader.c}}
+\subsubsection[{derive\_\-class}]{\setlength{\rightskip}{0pt plus 5cm}static void derive\_\-class (
+\begin{DoxyParamCaption}
+\item[{{\bf class\_\-t} $\ast$}]{ cl, }
+\item[{{\bf class\_\-file\_\-t} $\ast$}]{ cf}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily  [static]}}\label{loader_8c_a1f517535717e7f00193789d774e89c15}
+Derives the provided class structure from a class file 
+\begin{DoxyParams}{Parameters}
+\item[{\em cl}]The class structure which will hold the new class \item[{\em cf}]The class-\/file of the class \end{DoxyParams}
+
+
+Definition at line 742 of file loader.c.
+
+
+
+References class\_\-t::access\_\-flags, assign\_\-interface\_\-indexes(), c\_\-throw, cf\_\-load\_\-u2(), cf\_\-load\_\-u4(), class\_\-is\_\-abstract(), class\_\-is\_\-array(), class\_\-is\_\-final(), class\_\-is\_\-interface(), class\_\-is\_\-object(), class\_\-is\_\-public(), class\_\-t::const\_\-pool, cp\_\-create(), cp\_\-get\_\-class\_\-name(), cp\_\-set\_\-tag\_\-and\_\-data(), create\_\-dispatch\_\-table(), create\_\-interface\_\-dispatch\_\-table(), JAVA\_\-LANG\_\-NOCLASSDEFFOUNDERROR, layout\_\-fields(), load\_\-attributes(), load\_\-fields(), load\_\-interfaces(), load\_\-methods(), class\_\-t::method\_\-manager, class\_\-t::name, class\_\-t::parent, and resolve\_\-class().
+
+
+
+Referenced by load\_\-class().
+
+\index{loader.c@{loader.c}!get\_\-new\_\-class\_\-id@{get\_\-new\_\-class\_\-id}}
+\index{get\_\-new\_\-class\_\-id@{get\_\-new\_\-class\_\-id}!loader.c@{loader.c}}
+\subsubsection[{get\_\-new\_\-class\_\-id}]{\setlength{\rightskip}{0pt plus 5cm}static uint32\_\-t get\_\-new\_\-class\_\-id (
+\begin{DoxyParamCaption}
+\item[{void}]{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily  [static]}}\label{loader_8c_af823ea58758cce15bd7dc58c62142855}
+Get a new id for use in a class, also pre-\/allocate the corresponding entry in the class table \begin{DoxyReturn}{Returns}
+A new class id 
+\end{DoxyReturn}
+
+
+Definition at line 425 of file loader.c.
+
+
+
+References loader\_\-t::capacity, grow\_\-class\_\-table(), and loader\_\-t::used.
+
+
+
+Referenced by bcl\_\-resolve\_\-class(), and preload\_\-class().
+
+\index{loader.c@{loader.c}!get\_\-type\_\-specific\_\-opcode@{get\_\-type\_\-specific\_\-opcode}}
+\index{get\_\-type\_\-specific\_\-opcode@{get\_\-type\_\-specific\_\-opcode}!loader.c@{loader.c}}
+\subsubsection[{get\_\-type\_\-specific\_\-opcode}]{\setlength{\rightskip}{0pt plus 5cm}static uint8\_\-t get\_\-type\_\-specific\_\-opcode (
+\begin{DoxyParamCaption}
+\item[{uint8\_\-t}]{ opcode, }
+\item[{const char $\ast$}]{ descriptor}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily  [static]}}\label{loader_8c_a61e652698d7d9456bb9e82e0ac6e959b}
+Turns a non-\/typed GETSTATIC\_\-PRELINK, PUTSTATIC\_\-PRELINK, GETFIELD\_\-PRELINK or PUTFIELD\_\-PRELINK opcode into its typed version 
+\begin{DoxyParams}{Parameters}
+\item[{\em opcode}]The source opcode, either GETSTATIC\_\-PRELINK, PUTSTATIC\_\-PRELINK, GETFIELD\_\-PRELINK or PUTFIELD\_\-PRELINK \item[{\em descriptor}]The field descriptor \end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+The new opcode 
+\end{DoxyReturn}
+
+
+Definition at line 2113 of file loader.c.
+
+
+
+References dbg\_\-unreachable.
+
+
+
+Referenced by bcl\_\-link\_\-opcode().
+
+\index{loader.c@{loader.c}!grow\_\-class\_\-table@{grow\_\-class\_\-table}}
+\index{grow\_\-class\_\-table@{grow\_\-class\_\-table}!loader.c@{loader.c}}
+\subsubsection[{grow\_\-class\_\-table}]{\setlength{\rightskip}{0pt plus 5cm}static void grow\_\-class\_\-table (
+\begin{DoxyParamCaption}
+\item[{void}]{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily  [static]}}\label{loader_8c_a5abe3ca1556b246da868d6bd651e95ed}
+Grows the class, dispatch and interface dispatch table and updates all the threads cached table pointers 
+
+Definition at line 977 of file loader.c.
+
+
+
+References loader\_\-t::capacity, loader\_\-t::class\_\-table, gc\_\-free(), gc\_\-malloc(), and loader\_\-t::used.
+
+
+
+Referenced by get\_\-new\_\-class\_\-id().
+
+\index{loader.c@{loader.c}!initialize\_\-class@{initialize\_\-class}}
+\index{initialize\_\-class@{initialize\_\-class}!loader.c@{loader.c}}
+\subsubsection[{initialize\_\-class}]{\setlength{\rightskip}{0pt plus 5cm}static void initialize\_\-class (
+\begin{DoxyParamCaption}
+\item[{{\bf thread\_\-t} $\ast$}]{ thread, }
+\item[{{\bf class\_\-t} $\ast$}]{ cl}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily  [static]}}\label{loader_8c_a70a3ec9282e20eceea854cda06768ec5}
+Executes the static initialization of class 
+\begin{DoxyParams}{Parameters}
+\item[{\em thread}]The thread trying to initialize the class \item[{\em cl}]The class which will be initialized \end{DoxyParams}
+
+
+Definition at line 667 of file loader.c.
+
+
+
+References class\_\-get\_\-object(), class\_\-is\_\-being\_\-initialized(), class\_\-is\_\-initialized(), class\_\-is\_\-object(), class\_\-purge\_\-initializer(), class\_\-set\_\-state(), CS\_\-ERRONEOUS, CS\_\-INITIALIZED, CS\_\-INITIALIZING, thread\_\-t::exception, class\_\-t::init\_\-thread, initialize\_\-static\_\-fields(), interpreter(), class\_\-t::method\_\-manager, mm\_\-get(), monitor\_\-enter(), monitor\_\-exit(), class\_\-t::parent, thread\_\-notify(), and thread\_\-wait().
+
+
+
+Referenced by bcl\_\-link\_\-method(), bcl\_\-link\_\-opcode(), resolve\_\-method(), and resolve\_\-static\_\-field().
+
+\index{loader.c@{loader.c}!initialize\_\-static\_\-fields@{initialize\_\-static\_\-fields}}
+\index{initialize\_\-static\_\-fields@{initialize\_\-static\_\-fields}!loader.c@{loader.c}}
+\subsubsection[{initialize\_\-static\_\-fields}]{\setlength{\rightskip}{0pt plus 5cm}static void initialize\_\-static\_\-fields (
+\begin{DoxyParamCaption}
+\item[{{\bf class\_\-t} $\ast$}]{ cl}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily  [static]}}\label{loader_8c_a692071572222cbb2566e53a404a1da19}
+Lays out and initializes the static fields of a class 
+\begin{DoxyParams}{Parameters}
+\item[{\em cl}]A class being initialized \end{DoxyParams}
+
+
+Definition at line 581 of file loader.c.
+
+
+
+References class\_\-t::const\_\-pool, cp\_\-get\_\-integer(), cp\_\-get\_\-long(), cp\_\-get\_\-ref(), static\_\-field\_\-t::data, dbg\_\-unreachable, field\_\-t::descriptor, static\_\-field\_\-t::field, field\_\-itr\_\-get\_\-next(), field\_\-itr\_\-has\_\-next(), gc\_\-palloc(), field\_\-t::offset, class\_\-t::static\_\-data, and static\_\-field\_\-itr().
+
+
+
+Referenced by initialize\_\-class().
+
+\index{loader.c@{loader.c}!layout\_\-fields@{layout\_\-fields}}
+\index{layout\_\-fields@{layout\_\-fields}!loader.c@{loader.c}}
+\subsubsection[{layout\_\-fields}]{\setlength{\rightskip}{0pt plus 5cm}static void layout\_\-fields (
+\begin{DoxyParamCaption}
+\item[{{\bf class\_\-t} $\ast$}]{ cl}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily  [static]}}\label{loader_8c_af39967d831f37756caf4be88460b998b}
+Layout the instance fields 
+\begin{DoxyParams}{Parameters}
+\item[{\em cl}]A pointer to the class structure \end{DoxyParams}
+
+
+Definition at line 1756 of file loader.c.
+
+
+
+References c\_\-throw, class\_\-get\_\-nref\_\-size(), class\_\-get\_\-ref\_\-n(), dbg\_\-unreachable, field\_\-t::descriptor, field\_\-itr\_\-get\_\-next(), field\_\-itr\_\-has\_\-next(), class\_\-t::fields, instance\_\-field\_\-itr(), JAVA\_\-LANG\_\-NOCLASSDEFFOUNDERROR, field\_\-t::name, class\_\-t::name, class\_\-t::nref\_\-size, field\_\-t::offset, class\_\-t::parent, class\_\-t::ref\_\-n, and size\_\-ceil().
+
+
+
+Referenced by derive\_\-class().
+
+\index{loader.c@{loader.c}!load\_\-attribute\_\-Code\_\-attributes@{load\_\-attribute\_\-Code\_\-attributes}}
+\index{load\_\-attribute\_\-Code\_\-attributes@{load\_\-attribute\_\-Code\_\-attributes}!loader.c@{loader.c}}
+\subsubsection[{load\_\-attribute\_\-Code\_\-attributes}]{\setlength{\rightskip}{0pt plus 5cm}static void load\_\-attribute\_\-Code\_\-attributes (
+\begin{DoxyParamCaption}
+\item[{{\bf class\_\-t} $\ast$cl}]{ ATTRIBUTE\_\-UNUSED, }
+\item[{{\bf class\_\-file\_\-t} $\ast$}]{ cf, }
+\item[{{\bf method\_\-attributes\_\-t} $\ast$attr}]{ ATTRIBUTE\_\-UNUSED}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily  [static]}}\label{loader_8c_aaa6caac1b8ad8aa3cac4162b17a2c7c3}
+Loads the attributes of a 'Code' attribute 
+\begin{DoxyParams}{Parameters}
+\item[{\em cl}]A pointer to the current class \item[{\em cf}]A pointer to the class file \item[{\em attr}]A pointer to a \doxyref{method\_\-attributes\_\-t}{p.}{structmethod__attributes__t} structure used to hold the attribute data \end{DoxyParams}
+
+
+Definition at line 1208 of file loader.c.
+
+
+
+References c\_\-throw, cf\_\-load\_\-u2(), cf\_\-load\_\-u4(), cf\_\-seek(), cf\_\-tell(), and JAVA\_\-LANG\_\-NOCLASSDEFFOUNDERROR.
+
+
+
+Referenced by load\_\-method\_\-attribute\_\-Code().
+
+\index{loader.c@{loader.c}!load\_\-attributes@{load\_\-attributes}}
+\index{load\_\-attributes@{load\_\-attributes}!loader.c@{loader.c}}
+\subsubsection[{load\_\-attributes}]{\setlength{\rightskip}{0pt plus 5cm}static void load\_\-attributes (
+\begin{DoxyParamCaption}
+\item[{{\bf class\_\-t} $\ast$cl}]{ ATTRIBUTE\_\-UNUSED, }
+\item[{{\bf class\_\-file\_\-t} $\ast$}]{ cf}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily  [static]}}\label{loader_8c_aa102cacb071c23e5931788fb4303a35e}
+Loads a class attributes
+
+All class attributes are ignored ATM
+
+
+\begin{DoxyParams}{Parameters}
+\item[{\em cl}]A pointer to a class structure \item[{\em cf}]A pointer to the class file \end{DoxyParams}
+
+
+Definition at line 926 of file loader.c.
+
+
+
+References c\_\-throw, cf\_\-load\_\-u2(), cf\_\-load\_\-u4(), cf\_\-seek(), cf\_\-tell(), and JAVA\_\-LANG\_\-NOCLASSDEFFOUNDERROR.
+
+
+
+Referenced by derive\_\-class().
+
+\index{loader.c@{loader.c}!load\_\-bytecode@{load\_\-bytecode}}
+\index{load\_\-bytecode@{load\_\-bytecode}!loader.c@{loader.c}}
+\subsubsection[{load\_\-bytecode}]{\setlength{\rightskip}{0pt plus 5cm}static uint8\_\-t $\ast$ load\_\-bytecode (
+\begin{DoxyParamCaption}
+\item[{{\bf class\_\-t} $\ast$}]{ cl, }
+\item[{{\bf method\_\-t} $\ast$}]{ method}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily  [static]}}\label{loader_8c_a7ee0776b224d966ae17e9647db9fecdc}
+Loads the bytecode of a method (and the exception handlers too) and return it 
+\begin{DoxyParams}{Parameters}
+\item[{\em cl}]A pointer to the class owning the method \item[{\em method}]A pointer to the method to be loaded \end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+The bytecode of the method 
+\end{DoxyReturn}
+
+
+Definition at line 1574 of file loader.c.
+
+
+
+References cf\_\-close(), cf\_\-load\_\-u1(), cf\_\-open(), cf\_\-seek(), method\_\-t::data, gc\_\-malloc(), method\_\-get\_\-code\_\-length(), method\_\-is\_\-synchronized(), class\_\-t::name, and method\_\-t::offset.
+
+
+
+Referenced by bcl\_\-link\_\-method().
+
+\index{loader.c@{loader.c}!load\_\-class@{load\_\-class}}
+\index{load\_\-class@{load\_\-class}!loader.c@{loader.c}}
+\subsubsection[{load\_\-class}]{\setlength{\rightskip}{0pt plus 5cm}static void load\_\-class (
+\begin{DoxyParamCaption}
+\item[{{\bf class\_\-t} $\ast$}]{ cl}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily  [static]}}\label{loader_8c_a7c7e36c5ca4d89093d9be31bbdfd88f3}
+Loads and links a class 
+\begin{DoxyParams}{Parameters}
+\item[{\em cl}]A pointer to the class to be loaded \end{DoxyParams}
+
+
+Definition at line 302 of file loader.c.
+
+
+
+References ACC\_\-ABSTRACT, ACC\_\-FINAL, ACC\_\-PUBLIC, class\_\-t::access\_\-flags, bcl\_\-find\_\-class(), bcl\_\-resolve\_\-class(), bcl\_\-set\_\-array\_\-class(), c\_\-throw, cf\_\-close(), cf\_\-open(), class\_\-is\_\-array(), class\_\-is\_\-interface(), class\_\-set\_\-state(), class\_\-t::const\_\-pool, cp\_\-create\_\-dummy(), CS\_\-LINKED, CS\_\-LINKING, derive\_\-class(), class\_\-t::dimensions, class\_\-t::dtable, class\_\-t::elem\_\-class, class\_\-t::elem\_\-type, class\_\-t::fields, class\_\-t::fields\_\-n, gc\_\-free(), gc\_\-malloc(), gc\_\-new(), class\_\-t::id, java\_\-lang\_\-Class\_\-t::id, class\_\-t::inames, class\_\-t::interface\_\-manager, java\_\-lang\_\-Class\_\-t::is\_\-array, java\_\-lang\_\-Class\_\-t::is\_\-interface, class\_\-t::itable, class\_\-t::itable\_\-count, JAVA\_\-LANG\_\-CLASS\_\-REF2PTR, JAVA\_\-LANG\_\-NOCLASSDEFFOUNDERROR, class\_\-t::method\_\-manager, class\_\-t::name, class\_\-t::nref\_\-size, class\_\-t::obj, class\_\-t::parent, prim\_\-to\_\-array\_\-type(), and class\_\-t::ref\_\-n.
+
+
+
+Referenced by bcl\_\-resolve\_\-class().
+
+\index{loader.c@{loader.c}!load\_\-exception\_\-handlers@{load\_\-exception\_\-handlers}}
+\index{load\_\-exception\_\-handlers@{load\_\-exception\_\-handlers}!loader.c@{loader.c}}
+\subsubsection[{load\_\-exception\_\-handlers}]{\setlength{\rightskip}{0pt plus 5cm}static {\bf exception\_\-handler\_\-t} $\ast$ load\_\-exception\_\-handlers (
+\begin{DoxyParamCaption}
+\item[{{\bf class\_\-t} $\ast$}]{ cl, }
+\item[{{\bf method\_\-t} $\ast$}]{ method, }
+\item[{uint8\_\-t $\ast$}]{ code}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily  [static]}}\label{loader_8c_abeb870b14c4f01bfbe892603c415fcd2}
+Loads the exception handlers of a method 
+\begin{DoxyParams}{Parameters}
+\item[{\em cl}]A pointer to the class owning the method \item[{\em method}]A pointer to the method to be loaded \item[{\em code}]A pointer to the method code \end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+The exception handlers of the method 
+\end{DoxyReturn}
+
+
+Definition at line 1608 of file loader.c.
+
+
+
+References bcl\_\-resolve\_\-class(), exception\_\-handler\_\-t::catch\_\-type, cf\_\-close(), cf\_\-load\_\-u2(), cf\_\-open(), cf\_\-seek(), method\_\-t::code\_\-length, method\_\-t::data, exception\_\-handler\_\-t::end\_\-pc, method\_\-t::exception\_\-table\_\-length, gc\_\-malloc(), exception\_\-handler\_\-t::handler\_\-pc, method\_\-is\_\-synchronized(), class\_\-t::name, method\_\-t::offset, resolve\_\-class(), and exception\_\-handler\_\-t::start\_\-pc.
+
+
+
+Referenced by bcl\_\-link\_\-method().
+
+\index{loader.c@{loader.c}!load\_\-field\_\-attribute\_\-ConstantValue@{load\_\-field\_\-attribute\_\-ConstantValue}}
+\index{load\_\-field\_\-attribute\_\-ConstantValue@{load\_\-field\_\-attribute\_\-ConstantValue}!loader.c@{loader.c}}
+\subsubsection[{load\_\-field\_\-attribute\_\-ConstantValue}]{\setlength{\rightskip}{0pt plus 5cm}static void load\_\-field\_\-attribute\_\-ConstantValue (
+\begin{DoxyParamCaption}
+\item[{{\bf class\_\-t} $\ast$cl}]{ ATTRIBUTE\_\-UNUSED, }
+\item[{{\bf class\_\-file\_\-t} $\ast$}]{ cf, }
+\item[{{\bf field\_\-attributes\_\-t} $\ast$}]{ attr}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily  [static]}}\label{loader_8c_acf0a442ac5d338fe19f38ca36f88214f}
+Loads the field's ConstantValue attribute 
+\begin{DoxyParams}{Parameters}
+\item[{\em cl}]A pointer to the current class \item[{\em cf}]A pointer to the class file \item[{\em attr}]A pointer to a \doxyref{field\_\-attributes\_\-t}{p.}{structfield__attributes__t} structure used for storing the attribute data \end{DoxyParams}
+
+
+Definition at line 1746 of file loader.c.
+
+
+
+References cf\_\-load\_\-u2(), and field\_\-attributes\_\-t::constant\_\-value\_\-index.
+
+
+
+Referenced by load\_\-field\_\-attributes().
+
+\index{loader.c@{loader.c}!load\_\-field\_\-attributes@{load\_\-field\_\-attributes}}
+\index{load\_\-field\_\-attributes@{load\_\-field\_\-attributes}!loader.c@{loader.c}}
+\subsubsection[{load\_\-field\_\-attributes}]{\setlength{\rightskip}{0pt plus 5cm}static void load\_\-field\_\-attributes (
+\begin{DoxyParamCaption}
+\item[{{\bf class\_\-t} $\ast$}]{ cl, }
+\item[{{\bf class\_\-file\_\-t} $\ast$}]{ cf, }
+\item[{{\bf field\_\-attributes\_\-t} $\ast$}]{ attr}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily  [static]}}\label{loader_8c_a22e0c0d0cf887bf550902225cde39a91}
+Loads a field's attributes 
+\begin{DoxyParams}{Parameters}
+\item[{\em cl}]A pointer to the class being loaded \item[{\em cf}]A pointer to the class file from which to read the structure \item[{\em attr}]A pointer to a field\_\-attributes structure to be filled\end{DoxyParams}
+The function stores the loaded attributes in the relevant fields of the {\itshape attr\/} parameter 
+
+Definition at line 1696 of file loader.c.
+
+
+
+References c\_\-throw, cf\_\-load\_\-u2(), cf\_\-load\_\-u4(), cf\_\-seek(), cf\_\-tell(), class\_\-t::const\_\-pool, field\_\-attributes\_\-t::constant\_\-value\_\-found, cp\_\-get\_\-string(), JAVA\_\-LANG\_\-NOCLASSDEFFOUNDERROR, and load\_\-field\_\-attribute\_\-ConstantValue().
+
+
+
+Referenced by load\_\-fields().
+
+\index{loader.c@{loader.c}!load\_\-field\_\-info@{load\_\-field\_\-info}}
+\index{load\_\-field\_\-info@{load\_\-field\_\-info}!loader.c@{loader.c}}
+\subsubsection[{load\_\-field\_\-info}]{\setlength{\rightskip}{0pt plus 5cm}static void load\_\-field\_\-info (
+\begin{DoxyParamCaption}
+\item[{{\bf class\_\-t} $\ast$}]{ cl, }
+\item[{{\bf class\_\-file\_\-t} $\ast$}]{ cf, }
+\item[{{\bf field\_\-info\_\-t} $\ast$}]{ info}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily  [static]}}\label{loader_8c_a6214950e8ed7fb13407a3696fde195e2}
+Load a field\_\-info structure from the class file pointed by {\itshape cf\/} 
+\begin{DoxyParams}{Parameters}
+\item[{\em cl}]A pointer to the class being loaded \item[{\em cf}]A pointer to the class file from which to read the structure \item[{\em info}]The file\_\-info structure to be filled \end{DoxyParams}
+
+
+Definition at line 1677 of file loader.c.
+
+
+
+References field\_\-info\_\-t::access\_\-flags, cf\_\-load\_\-u2(), class\_\-t::const\_\-pool, cp\_\-get\_\-string(), field\_\-info\_\-t::descriptor, and field\_\-info\_\-t::name.
+
+
+
+Referenced by load\_\-fields().
+
+\index{loader.c@{loader.c}!load\_\-fields@{load\_\-fields}}
+\index{load\_\-fields@{load\_\-fields}!loader.c@{loader.c}}
+\subsubsection[{load\_\-fields}]{\setlength{\rightskip}{0pt plus 5cm}static void load\_\-fields (
+\begin{DoxyParamCaption}
+\item[{{\bf class\_\-t} $\ast$}]{ cl, }
+\item[{{\bf class\_\-file\_\-t} $\ast$}]{ cf}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily  [static]}}\label{loader_8c_a8bc24417668ca0f29a922d6f0640cc07}
+Loads the class fields 
+\begin{DoxyParams}{Parameters}
+\item[{\em cl}]A pointer to a class being loaded \item[{\em cf}]A pointer to the corresponding class file \end{DoxyParams}
+
+
+Definition at line 1656 of file loader.c.
+
+
+
+References cf\_\-load\_\-u2(), class\_\-add\_\-field(), class\_\-alloc\_\-fields(), load\_\-field\_\-attributes(), load\_\-field\_\-info(), and verify\_\-field().
+
+
+
+Referenced by derive\_\-class().
+
+\index{loader.c@{loader.c}!load\_\-interfaces@{load\_\-interfaces}}
+\index{load\_\-interfaces@{load\_\-interfaces}!loader.c@{loader.c}}
+\subsubsection[{load\_\-interfaces}]{\setlength{\rightskip}{0pt plus 5cm}static void load\_\-interfaces (
+\begin{DoxyParamCaption}
+\item[{{\bf class\_\-t} $\ast$}]{ cl, }
+\item[{{\bf class\_\-file\_\-t} $\ast$}]{ cf}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily  [static]}}\label{loader_8c_a11b41a92da2e13423d8f88638e44027b}
+Loads and verifies the consistency of the interfaces from the specified class-\/file 
+\begin{DoxyParams}{Parameters}
+\item[{\em cl}]A pointer to a class structure \item[{\em cf}]A pointer to the class-\/file representing the class \end{DoxyParams}
+
+
+Definition at line 876 of file loader.c.
+
+
+
+References c\_\-throw, cf\_\-load\_\-u2(), class\_\-is\_\-interface(), im\_\-add(), im\_\-create(), im\_\-flatten(), interface\_\-itr(), interface\_\-itr\_\-get\_\-next(), interface\_\-itr\_\-has\_\-next(), class\_\-t::interface\_\-manager, JAVA\_\-LANG\_\-NOCLASSDEFFOUNDERROR, class\_\-t::parent, and resolve\_\-class().
+
+
+
+Referenced by derive\_\-class().
+
+\index{loader.c@{loader.c}!load\_\-method\_\-attribute\_\-Code@{load\_\-method\_\-attribute\_\-Code}}
+\index{load\_\-method\_\-attribute\_\-Code@{load\_\-method\_\-attribute\_\-Code}!loader.c@{loader.c}}
+\subsubsection[{load\_\-method\_\-attribute\_\-Code}]{\setlength{\rightskip}{0pt plus 5cm}static void load\_\-method\_\-attribute\_\-Code (
+\begin{DoxyParamCaption}
+\item[{{\bf class\_\-t} $\ast$}]{ cl, }
+\item[{{\bf class\_\-file\_\-t} $\ast$}]{ cf, }
+\item[{{\bf method\_\-attributes\_\-t} $\ast$}]{ attr}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily  [static]}}\label{loader_8c_a501eda3d99aaf3e8d6a7b48eddfdac67}
+Load a method's 'Code' attribute 
+\begin{DoxyParams}{Parameters}
+\item[{\em cl}]A pointer to the current class \item[{\em cf}]A pointer to the class file \item[{\em attr}]A pointer to \doxyref{method\_\-attributes\_\-t}{p.}{structmethod__attributes__t} structure used to store the attribute data \end{DoxyParams}
+
+
+Definition at line 1171 of file loader.c.
+
+
+
+References c\_\-throw, cf\_\-load\_\-u2(), cf\_\-load\_\-u4(), cf\_\-seek(), cf\_\-tell(), method\_\-attributes\_\-t::code\_\-length, method\_\-attributes\_\-t::code\_\-offset, method\_\-attributes\_\-t::exception\_\-table\_\-length, JAVA\_\-LANG\_\-NOCLASSDEFFOUNDERROR, load\_\-attribute\_\-Code\_\-attributes(), method\_\-attributes\_\-t::max\_\-locals, and method\_\-attributes\_\-t::max\_\-stack.
+
+
+
+Referenced by load\_\-method\_\-attributes().
+
+\index{loader.c@{loader.c}!load\_\-method\_\-attribute\_\-Exceptions@{load\_\-method\_\-attribute\_\-Exceptions}}
+\index{load\_\-method\_\-attribute\_\-Exceptions@{load\_\-method\_\-attribute\_\-Exceptions}!loader.c@{loader.c}}
+\subsubsection[{load\_\-method\_\-attribute\_\-Exceptions}]{\setlength{\rightskip}{0pt plus 5cm}static void load\_\-method\_\-attribute\_\-Exceptions (
+\begin{DoxyParamCaption}
+\item[{{\bf class\_\-t} $\ast$cl}]{ ATTRIBUTE\_\-UNUSED, }
+\item[{{\bf class\_\-file\_\-t} $\ast$}]{ cf, }
+\item[{{\bf method\_\-attributes\_\-t} $\ast$attr}]{ ATTRIBUTE\_\-UNUSED}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily  [static]}}\label{loader_8c_a18ecb79fa805f176587f80ee8b6f8fd8}
+Loads the Exceptions attribute of a method
+
+Jelatine doesn't use this attribute actually even if it recognizes it as the virtual machine specification mentions that only the compiler should check which exceptions are thrown and which aren't
+
+
+\begin{DoxyParams}{Parameters}
+\item[{\em cl}]A pointer to the current class \item[{\em cf}]A pointer to the class file \item[{\em attr}]A pointer to a \doxyref{method\_\-attributes\_\-t}{p.}{structmethod__attributes__t} structure used to store the attribute data \end{DoxyParams}
+
+
+Definition at line 1244 of file loader.c.
+
+
+
+References cf\_\-load\_\-u2(), gc\_\-free(), and gc\_\-malloc().
+
+
+
+Referenced by load\_\-method\_\-attributes().
+
+\index{loader.c@{loader.c}!load\_\-method\_\-attributes@{load\_\-method\_\-attributes}}
+\index{load\_\-method\_\-attributes@{load\_\-method\_\-attributes}!loader.c@{loader.c}}
+\subsubsection[{load\_\-method\_\-attributes}]{\setlength{\rightskip}{0pt plus 5cm}static void load\_\-method\_\-attributes (
+\begin{DoxyParamCaption}
+\item[{{\bf class\_\-t} $\ast$}]{ cl, }
+\item[{{\bf class\_\-file\_\-t} $\ast$}]{ cf, }
+\item[{{\bf method\_\-attributes\_\-t} $\ast$}]{ attr}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily  [static]}}\label{loader_8c_a84343e1bc57ed8f47cb838996ab35629}
+Load a method attributes
+
+The function stores the retrieved attribute data in the structure pointed by the {\itshape attr\/} parameter 
+\begin{DoxyParams}{Parameters}
+\item[{\em cl}]A pointer to the class being loaded \item[{\em cf}]A pointer to the class file \item[{\em attr}]A pointer to an method\_\-attribute\_\-t structure \end{DoxyParams}
+
+
+Definition at line 1112 of file loader.c.
+
+
+
+References c\_\-throw, cf\_\-load\_\-u2(), cf\_\-load\_\-u4(), cf\_\-seek(), cf\_\-tell(), method\_\-attributes\_\-t::code\_\-found, class\_\-t::const\_\-pool, cp\_\-get\_\-string(), method\_\-attributes\_\-t::exceptions\_\-found, JAVA\_\-LANG\_\-NOCLASSDEFFOUNDERROR, load\_\-method\_\-attribute\_\-Code(), and load\_\-method\_\-attribute\_\-Exceptions().
+
+
+
+Referenced by load\_\-methods().
+
+\index{loader.c@{loader.c}!load\_\-methods@{load\_\-methods}}
+\index{load\_\-methods@{load\_\-methods}!loader.c@{loader.c}}
+\subsubsection[{load\_\-methods}]{\setlength{\rightskip}{0pt plus 5cm}static void load\_\-methods (
+\begin{DoxyParamCaption}
+\item[{{\bf class\_\-t} $\ast$}]{ cl, }
+\item[{{\bf class\_\-file\_\-t} $\ast$}]{ cf, }
+\item[{bool $\ast$}]{ finalizer}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily  [static]}}\label{loader_8c_a6cc389256b779e4cf4a7f63a57d3dd69}
+Creates the method table from the class-\/file representation 
+\begin{DoxyParams}{Parameters}
+\item[{\em cl}]A pointer to the class structure \item[{\em cf}]A pointer to the class file \item[{\em finalizer}]The pointed variable will hold true if the class has a finalizer, false otherwise \end{DoxyParams}
+
+
+Definition at line 1013 of file loader.c.
+
+
+
+References c\_\-throw, cf\_\-load\_\-u2(), class\_\-is\_\-interface(), class\_\-t::const\_\-pool, cp\_\-get\_\-string(), method\_\-t::descriptor, JAVA\_\-LANG\_\-NOCLASSDEFFOUNDERROR, load\_\-method\_\-attributes(), method\_\-is\_\-abstract(), method\_\-is\_\-native(), method\_\-is\_\-public(), method\_\-is\_\-static(), method\_\-itr(), method\_\-itr\_\-get\_\-next(), method\_\-itr\_\-has\_\-next(), method\_\-link\_\-native(), class\_\-t::method\_\-manager, mm\_\-add(), mm\_\-create(), method\_\-t::name, and class\_\-t::name.
+
+
+
+Referenced by derive\_\-class().
+
+\index{loader.c@{loader.c}!lookup\_\-field@{lookup\_\-field}}
+\index{lookup\_\-field@{lookup\_\-field}!loader.c@{loader.c}}
+\subsubsection[{lookup\_\-field}]{\setlength{\rightskip}{0pt plus 5cm}static {\bf field\_\-t} $\ast$ lookup\_\-field (
+\begin{DoxyParamCaption}
+\item[{{\bf class\_\-t} $\ast$$\ast$}]{ pcl, }
+\item[{const char $\ast$}]{ name, }
+\item[{const char $\ast$}]{ descriptor, }
+\item[{bool}]{ stat}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily  [static]}}\label{loader_8c_a4f0e94e3d40e2a8429a049a83b1fb106}
+Do a field lookup as described in the VM spec §5.4.3.2 
+\begin{DoxyParams}{Parameters}
+\item[{\em pcl}]A pointer to the class from which the lookup shall begin, filled with the class to which the field belongs when returning \item[{\em name}]The field name \item[{\em descriptor}]The field descriptor \item[{\em stat}]true if the field is a static field, false otherwise \end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+The requested field or NULL if the field could not be found, if the field is found but is not accessible from {\itshape acl\/} the function will throw an exception 
+\end{DoxyReturn}
+
+
+Definition at line 1968 of file loader.c.
+
+
+
+References class\_\-get\_\-field(), class\_\-is\_\-object(), interface\_\-itr(), interface\_\-itr\_\-get\_\-next(), interface\_\-itr\_\-has\_\-next(), class\_\-t::interface\_\-manager, and class\_\-t::parent.
+
+
+
+Referenced by resolve\_\-instance\_\-field(), and resolve\_\-static\_\-field().
+
+\index{loader.c@{loader.c}!next\_\-interface\_\-id@{next\_\-interface\_\-id}}
+\index{next\_\-interface\_\-id@{next\_\-interface\_\-id}!loader.c@{loader.c}}
+\subsubsection[{next\_\-interface\_\-id}]{\setlength{\rightskip}{0pt plus 5cm}static uint32\_\-t next\_\-interface\_\-id (
+\begin{DoxyParamCaption}
+\item[{void}]{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily  [static]}}\label{loader_8c_a5696476d2621fabc0809d2a05a255313}
+Returns the next index for an interface method \begin{DoxyReturn}{Returns}
+The next index for an interface method 
+\end{DoxyReturn}
+
+
+Definition at line 998 of file loader.c.
+
+
+
+References loader\_\-t::interface\_\-methods.
+
+
+
+Referenced by assign\_\-interface\_\-indexes().
+
+\index{loader.c@{loader.c}!preload\_\-class@{preload\_\-class}}
+\index{preload\_\-class@{preload\_\-class}!loader.c@{loader.c}}
+\subsubsection[{preload\_\-class}]{\setlength{\rightskip}{0pt plus 5cm}static {\bf class\_\-t} $\ast$ preload\_\-class (
+\begin{DoxyParamCaption}
+\item[{const char $\ast$}]{ name, }
+\item[{size\_\-t}]{ ref\_\-n, }
+\item[{size\_\-t}]{ nref\_\-size}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily  [static]}}\label{loader_8c_a24fe95996c202aae337df9482137e17d}
+Preloads a class, the class structure is allocated and initialized only with its name, id and layout information. This is enough to enable the memory allocator to create new objects of the said class. Note that this function doesn't take the class lock, hence it can be used only during the bootstrap phase, all subsequent classes will be loaded using \doxyref{bcl\_\-resolve\_\-class()}{p.}{loader_8c_aabb2c28b6be70d7db69469d047155f34} 
+\begin{DoxyParams}{Parameters}
+\item[{\em name}]The name of the class \item[{\em ref\_\-n}]The number of references of a class' instance \item[{\em nref\_\-size}]The size of the non-\/reference area of a class' instance \end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+A pointer to the preloaded class 
+\end{DoxyReturn}
+
+
+Definition at line 466 of file loader.c.
+
+
+
+References class\_\-set\_\-state(), loader\_\-t::class\_\-table, CS\_\-PRELOADED, gc\_\-palloc(), get\_\-new\_\-class\_\-id(), class\_\-t::id, class\_\-t::name, class\_\-t::nref\_\-size, class\_\-t::ref\_\-n, and utf8\_\-intern().
+
+
+
+Referenced by bcl\_\-preload\_\-bootstrap\_\-classes().
+
+\index{loader.c@{loader.c}!resolve\_\-class@{resolve\_\-class}}
+\index{resolve\_\-class@{resolve\_\-class}!loader.c@{loader.c}}
+\subsubsection[{resolve\_\-class}]{\setlength{\rightskip}{0pt plus 5cm}static {\bf class\_\-t} $\ast$ resolve\_\-class (
+\begin{DoxyParamCaption}
+\item[{{\bf class\_\-t} $\ast$}]{ orig, }
+\item[{uint16\_\-t}]{ index}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily  [static]}}\label{loader_8c_ad4f0acb107e43e477f126daa17dd287d}
+Resolves a class reference 
+\begin{DoxyParams}{Parameters}
+\item[{\em orig}]The originating class \item[{\em index}]Indes in the constant-\/pool were the class descriptor lies \end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+A pointer to the class 
+\end{DoxyReturn}
+
+
+Definition at line 439 of file loader.c.
+
+
+
+References bcl\_\-resolve\_\-class(), class\_\-t::const\_\-pool, CONSTANT\_\-Class\_\-resolved, cp\_\-get\_\-class\_\-name(), cp\_\-get\_\-resolved\_\-class(), cp\_\-get\_\-tag(), and cp\_\-set\_\-tag\_\-and\_\-data().
+
+
+
+Referenced by bcl\_\-link\_\-opcode(), derive\_\-class(), load\_\-exception\_\-handlers(), load\_\-interfaces(), resolve\_\-instance\_\-field(), resolve\_\-method(), and resolve\_\-static\_\-field().
+
+\index{loader.c@{loader.c}!resolve\_\-instance\_\-field@{resolve\_\-instance\_\-field}}
+\index{resolve\_\-instance\_\-field@{resolve\_\-instance\_\-field}!loader.c@{loader.c}}
+\subsubsection[{resolve\_\-instance\_\-field}]{\setlength{\rightskip}{0pt plus 5cm}static {\bf field\_\-t} $\ast$ resolve\_\-instance\_\-field (
+\begin{DoxyParamCaption}
+\item[{{\bf class\_\-t} $\ast$}]{ acl, }
+\item[{uint16\_\-t}]{ index}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily  [static]}}\label{loader_8c_a8e0ac763b40eb703efaf537f1374f8a9}
+Resolves an instance field 
+\begin{DoxyParams}{Parameters}
+\item[{\em acl}]A pointer to the class requesting the resolution \item[{\em index}]An index in the class' constant pool holding the CONSTANT\_\-Fieldref structure describing the field to be resolved \end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+A pointer to the field, throws an exception if the field cannot be resolved or isn't found 
+\end{DoxyReturn}
+
+
+Definition at line 2013 of file loader.c.
+
+
+
+References class\_\-t::const\_\-pool, CONSTANT\_\-Fieldref\_\-resolved, cp\_\-get\_\-fieldref\_\-class(), cp\_\-get\_\-fieldref\_\-name(), cp\_\-get\_\-fieldref\_\-type(), cp\_\-get\_\-resolved\_\-instance\_\-field(), cp\_\-get\_\-tag(), cp\_\-set\_\-tag\_\-and\_\-data(), lookup\_\-field(), resolve\_\-class(), and verify\_\-field\_\-access().
+
+
+
+Referenced by bcl\_\-link\_\-opcode().
+
+\index{loader.c@{loader.c}!resolve\_\-method@{resolve\_\-method}}
+\index{resolve\_\-method@{resolve\_\-method}!loader.c@{loader.c}}
+\subsubsection[{resolve\_\-method}]{\setlength{\rightskip}{0pt plus 5cm}static {\bf method\_\-t} $\ast$ resolve\_\-method (
+\begin{DoxyParamCaption}
+\item[{{\bf class\_\-t} $\ast$}]{ src, }
+\item[{uint16\_\-t}]{ index, }
+\item[{bool}]{ interface}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily  [static]}}\label{loader_8c_aad556081544f130822205f7300c6fee5}
+Resolves a method if it wasn't already done 
+\begin{DoxyParams}{Parameters}
+\item[{\em src}]A pointer to the class requesting the resolution \item[{\em index}]An index in the class' constant pool holding the CONSTANT\_\-Methodref or CONSTANT\_\-InterfaceMethodsref structure describing the method to be resolved \item[{\em interface}]Set to true if the requested method belongs to an interface \end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+A pointer to the method, throws an exception if the method cannot be resolved or isn't found 
+\end{DoxyReturn}
+
+
+Definition at line 1438 of file loader.c.
+
+
+
+References c\_\-throw, class\_\-is\_\-abstract(), class\_\-is\_\-interface(), class\_\-is\_\-object(), class\_\-is\_\-parent(), class\_\-t::const\_\-pool, CONSTANT\_\-InterfaceMethodref\_\-resolved, CONSTANT\_\-Methodref\_\-resolved, cp\_\-get\_\-interfacemethodref\_\-class(), cp\_\-get\_\-interfacemethodref\_\-descriptor(), cp\_\-get\_\-interfacemethodref\_\-name(), cp\_\-get\_\-methodref\_\-class(), cp\_\-get\_\-methodref\_\-descriptor(), cp\_\-get\_\-methodref\_\-name(), cp\_\-get\_\-resolved\_\-interfacemethod(), cp\_\-get\_\-resolved\_\-method(), cp\_\-get\_\-tag(), cp\_\-set\_\-tag\_\-and\_\-data(), initialize\_\-class(), interface\_\-itr(), interface\_\-itr\_\-get\_\-next(), interface\_\-itr\_\-has\_\-next(), class\_\-t::interface\_\-manager, JAVA\_\-LANG\_\-NOCLASSDEFFOUNDERROR, JAVA\_\-LANG\_\-VIRTUALMACHINEERROR, method\_\-is\_\-abstract(), method\_\-is\_\-init(), method\_\-is\_\-private(), method\_\-is\_\-protected(), method\_\-is\_\-public(), class\_\-t::method\_\-manager, mm\_\-get(), class\_\-t::parent, resolve\_\-class(), same\_\-package(), and thread\_\-self().
+
+
+
+Referenced by bcl\_\-link\_\-opcode().
+
+\index{loader.c@{loader.c}!resolve\_\-static\_\-field@{resolve\_\-static\_\-field}}
+\index{resolve\_\-static\_\-field@{resolve\_\-static\_\-field}!loader.c@{loader.c}}
+\subsubsection[{resolve\_\-static\_\-field}]{\setlength{\rightskip}{0pt plus 5cm}static {\bf field\_\-t} $\ast$ resolve\_\-static\_\-field (
+\begin{DoxyParamCaption}
+\item[{{\bf class\_\-t} $\ast$}]{ acl, }
+\item[{uint16\_\-t}]{ index}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily  [static]}}\label{loader_8c_afda86027eac79d997ad140b036364645}
+Resolves a static field 
+\begin{DoxyParams}{Parameters}
+\item[{\em acl}]A pointer to the class requesting the resolution \item[{\em index}]An index in the class' constant pool holding the CONSTANT\_\-Fieldref structure describing the field to be resolved \end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+A pointer to the field, throws an exception if the field cannot be resolved or isn't found 
+\end{DoxyReturn}
+
+
+Definition at line 2043 of file loader.c.
+
+
+
+References class\_\-t::const\_\-pool, CONSTANT\_\-Fieldref\_\-resolved, cp\_\-get\_\-fieldref\_\-class(), cp\_\-get\_\-fieldref\_\-name(), cp\_\-get\_\-fieldref\_\-type(), cp\_\-get\_\-resolved\_\-static\_\-field(), cp\_\-get\_\-tag(), cp\_\-set\_\-tag\_\-and\_\-data(), initialize\_\-class(), lookup\_\-field(), field\_\-t::offset, resolve\_\-class(), class\_\-t::static\_\-data, static\_\-field\_\-data\_\-ptr(), thread\_\-self(), and verify\_\-field\_\-access().
+
+
+
+Referenced by bcl\_\-link\_\-opcode().
+
+
+
+\subsection{Variable Documentation}
+\index{loader.c@{loader.c}!array\_\-classes@{array\_\-classes}}
+\index{array\_\-classes@{array\_\-classes}!loader.c@{loader.c}}
+\subsubsection[{array\_\-classes}]{\setlength{\rightskip}{0pt plus 5cm}{\bf class\_\-t}$\ast$ {\bf array\_\-classes}[8] = \{ NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL \}}\label{loader_8c_a7c6c6e94c393dbf4744ca03c6bed37e5}
+Basic array classes 
+
+Definition at line 80 of file loader.c.
+
+\index{loader.c@{loader.c}!bcl@{bcl}}
+\index{bcl@{bcl}!loader.c@{loader.c}}
+\subsubsection[{bcl}]{\setlength{\rightskip}{0pt plus 5cm}{\bf loader\_\-t} {\bf bcl}\hspace{0.3cm}{\ttfamily  [static]}}\label{loader_8c_ac30c064aaf0fd12f3e7564ea139d7873}
+Bootstrap class loader 
+
+Definition at line 77 of file loader.c.
+

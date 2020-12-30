@@ -1,0 +1,269 @@
+\section{java::lang::Class Class Reference}
+\label{classjava_1_1lang_1_1_class}\index{java::lang::Class@{java::lang::Class}}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+{\bf String} {\bf toString} ()
+\item 
+native {\bf Object} {\bf newInstance} ()  throws InstantiationException,         IllegalAccessException
+\item 
+native boolean {\bf isInstance} ({\bf Object} o)
+\item 
+native boolean {\bf isAssignableFrom} ({\bf Class} c)  throws NullPointerException
+\item 
+boolean {\bf isInterface} ()
+\item 
+boolean {\bf isArray} ()
+\item 
+{\bf String} {\bf getName} ()
+\item 
+{\bf InputStream} {\bf getResourceAsStream} ({\bf String} name)
+\end{DoxyCompactItemize}
+\subsection*{Static Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+static native {\bf Class} {\bf forName} ({\bf String} name)  throws ClassNotFoundException
+\end{DoxyCompactItemize}
+\subsection*{Package Functions}
+\begin{DoxyCompactItemize}
+\item 
+{\bf Class} ()
+\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+A \doxyref{Class}{p.}{classjava_1_1lang_1_1_class} represents a Java type. There will never be multiple \doxyref{Class}{p.}{classjava_1_1lang_1_1_class} objects with identical names and ClassLoaders. Primitive types, array types, and void also have a \doxyref{Class}{p.}{classjava_1_1lang_1_1_class} object.
+
+Arrays with identical type and number of dimensions share the same class. The array class ClassLoader is the same as the ClassLoader of the element type of the array (which can be null to indicate the bootstrap classloader). The name of an array class is {\ttfamily [$<$signature format$>$;}. 
+
+For example, \doxyref{String}{p.}{classjava_1_1lang_1_1_string}[]'s class is {\ttfamily [Ljava.lang.String;}. boolean, byte, short, char, int, long, float and double have the \char`\"{}type name\char`\"{} of Z,B,S,C,I,J,F,D for the purposes of array classes. If it's a multidimensioned array, the same principle applies: {\ttfamily int[][][]} == {\ttfamily [[[I}.
+
+There is no public constructor -\/ \doxyref{Class}{p.}{classjava_1_1lang_1_1_class} objects are obtained only through the virtual machine, as defined in ClassLoaders.
+
+\begin{DoxyAuthor}{Author}
+John Keiser 
+
+Eric Blake ({\tt ebb9@email.byu.edu}) 
+
+Tom Tromey ({\tt tromey@cygnus.com}) 
+\end{DoxyAuthor}
+
+
+Definition at line 67 of file Class.java.
+
+
+
+\subsection{Constructor \& Destructor Documentation}
+\index{java::lang::Class@{java::lang::Class}!Class@{Class}}
+\index{Class@{Class}!java::lang::Class@{java::lang::Class}}
+\subsubsection[{Class}]{\setlength{\rightskip}{0pt plus 5cm}java::lang::Class::Class (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily  [inline, package]}}\label{classjava_1_1lang_1_1_class_a926ac675591d7d1d818dd606e22acc9b}
+\doxyref{Class}{p.}{classjava_1_1lang_1_1_class} is non-\/instantiable from Java code; only the VM can create instances of this class. 
+
+Definition at line 80 of file Class.java.
+
+
+
+\subsection{Member Function Documentation}
+\index{java::lang::Class@{java::lang::Class}!forName@{forName}}
+\index{forName@{forName}!java::lang::Class@{java::lang::Class}}
+\subsubsection[{forName}]{\setlength{\rightskip}{0pt plus 5cm}static native {\bf Class} java::lang::Class::forName (
+\begin{DoxyParamCaption}
+\item[{{\bf String}}]{ name}
+\end{DoxyParamCaption}
+)  throws {\bf ClassNotFoundException}\hspace{0.3cm}{\ttfamily  [static]}}\label{classjava_1_1lang_1_1_class_ad52c0d0db981fc55123daed44904cee7}
+Use the classloader of the current class to load, link, and initialize a class. This is equivalent to your code calling {\ttfamily \doxyref{Class.forName}{p.}{classjava_1_1lang_1_1_class_ad52c0d0db981fc55123daed44904cee7}(name, true, getClass().getClassLoader())}.
+
+
+\begin{DoxyParams}{Parameters}
+\item[{\em name}]the name of the class to find \end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+the \doxyref{Class}{p.}{classjava_1_1lang_1_1_class} object representing the class 
+\end{DoxyReturn}
+
+\begin{DoxyExceptions}{Exceptions}
+\item[{\em \doxyref{ClassNotFoundException}{p.}{classjava_1_1lang_1_1_class_not_found_exception}}]if the class was not found by the classloader \item[{\em LinkageError}]if linking the class fails \item[{\em ExceptionInInitializerError}]if the class loads, but an exception occurs during initialization \end{DoxyExceptions}
+\index{java::lang::Class@{java::lang::Class}!getName@{getName}}
+\index{getName@{getName}!java::lang::Class@{java::lang::Class}}
+\subsubsection[{getName}]{\setlength{\rightskip}{0pt plus 5cm}{\bf String} java::lang::Class::getName (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily  [inline]}}\label{classjava_1_1lang_1_1_class_a5776036387f11a9e14c907b40de74579}
+Get the name of this class, separated by dots for package separators. If the class represents a primitive type, or void, then the name of the type as it appears in the Java programming language is returned. For instance, {\ttfamily Byte.TYPE.getName()} returns \char`\"{}byte\char`\"{}.
+
+Arrays are specially encoded as shown on this table. 
+\begin{DoxyPre}
+ array type          [{\itshape element type\/}
+                     (note that the element type is encoded per
+                      this table)
+ boolean             Z
+ byte                B
+ char                C
+ short               S
+ int                 I
+ long                J
+ float               F
+ double              D
+ void                V
+ class or interface, alone: <dotted name>
+ class or interface, as element type: L<dotted name>;
+ \end{DoxyPre}
+
+
+\begin{DoxyReturn}{Returns}
+the name of this class 
+\end{DoxyReturn}
+
+
+Definition at line 210 of file Class.java.
+
+
+
+References java::lang::String::replace().
+
+
+
+Referenced by getResourceAsStream(), java::lang::Object::toString(), and toString().
+
+\index{java::lang::Class@{java::lang::Class}!getResourceAsStream@{getResourceAsStream}}
+\index{getResourceAsStream@{getResourceAsStream}!java::lang::Class@{java::lang::Class}}
+\subsubsection[{getResourceAsStream}]{\setlength{\rightskip}{0pt plus 5cm}{\bf InputStream} java::lang::Class::getResourceAsStream (
+\begin{DoxyParamCaption}
+\item[{{\bf String}}]{ name}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily  [inline]}}\label{classjava_1_1lang_1_1_class_aefbbafa9878141bcbe34bf560c563b18}
+Finds a resource with a given name in the application's JAR file and returns it as an InputStream
+
+
+\begin{DoxyParams}{Parameters}
+\item[{\em name}]The name of the resource in either relative or absolute format \end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+An InputStream used for accessing the resource or null if none was found 
+\end{DoxyReturn}
+
+
+Definition at line 236 of file Class.java.
+
+
+
+References java::lang::StringBuffer::charAt(), java::lang::StringBuffer::delete(), java::lang::StringBuffer::deleteCharAt(), getName(), java::lang::StringBuffer::insert(), java::lang::StringBuffer::length(), jelatine::VMResourceStream::open(), java::lang::StringBuffer::setCharAt(), and java::lang::StringBuffer::toString().
+
+\index{java::lang::Class@{java::lang::Class}!isArray@{isArray}}
+\index{isArray@{isArray}!java::lang::Class@{java::lang::Class}}
+\subsubsection[{isArray}]{\setlength{\rightskip}{0pt plus 5cm}boolean java::lang::Class::isArray (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily  [inline]}}\label{classjava_1_1lang_1_1_class_a898faa5df7e36c8faceabf5d7c18cd6c}
+Return whether this class is an array type.
+
+\begin{DoxyReturn}{Returns}
+whether this class is an array type 
+\end{DoxyReturn}
+\begin{DoxySince}{Since}
+1.1 
+\end{DoxySince}
+
+
+Definition at line 175 of file Class.java.
+
+\index{java::lang::Class@{java::lang::Class}!isAssignableFrom@{isAssignableFrom}}
+\index{isAssignableFrom@{isAssignableFrom}!java::lang::Class@{java::lang::Class}}
+\subsubsection[{isAssignableFrom}]{\setlength{\rightskip}{0pt plus 5cm}native boolean java::lang::Class::isAssignableFrom (
+\begin{DoxyParamCaption}
+\item[{{\bf Class}}]{ c}
+\end{DoxyParamCaption}
+)  throws {\bf NullPointerException}}\label{classjava_1_1lang_1_1_class_af05f4b845b5555eb8c8386c7ae64a839}
+Discover whether an instance of the \doxyref{Class}{p.}{classjava_1_1lang_1_1_class} parameter would be an instance of this \doxyref{Class}{p.}{classjava_1_1lang_1_1_class} as well. Think of doing {\ttfamily isInstance(c.newInstance())} or even {\ttfamily c.newInstance() instanceof (this class)}. While this checks widening conversions for objects, it must be exact for primitive types.
+
+
+\begin{DoxyParams}{Parameters}
+\item[{\em c}]the class to check \end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+whether an instance of c would be an instance of this class as well 
+\end{DoxyReturn}
+
+\begin{DoxyExceptions}{Exceptions}
+\item[{\em \doxyref{NullPointerException}{p.}{classjava_1_1lang_1_1_null_pointer_exception}}]if c is null \end{DoxyExceptions}
+\begin{DoxySince}{Since}
+1.1 
+\end{DoxySince}
+\index{java::lang::Class@{java::lang::Class}!isInstance@{isInstance}}
+\index{isInstance@{isInstance}!java::lang::Class@{java::lang::Class}}
+\subsubsection[{isInstance}]{\setlength{\rightskip}{0pt plus 5cm}native boolean java::lang::Class::isInstance (
+\begin{DoxyParamCaption}
+\item[{{\bf Object}}]{ o}
+\end{DoxyParamCaption}
+)}\label{classjava_1_1lang_1_1_class_afd31864708cd97f8fead01554f64af16}
+Discover whether an \doxyref{Object}{p.}{classjava_1_1lang_1_1_object} is an instance of this \doxyref{Class}{p.}{classjava_1_1lang_1_1_class}. Think of it as almost like {\ttfamily o instanceof (this class)}.
+
+
+\begin{DoxyParams}{Parameters}
+\item[{\em o}]the \doxyref{Object}{p.}{classjava_1_1lang_1_1_object} to check \end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+whether o is an instance of this class 
+\end{DoxyReturn}
+\index{java::lang::Class@{java::lang::Class}!isInterface@{isInterface}}
+\index{isInterface@{isInterface}!java::lang::Class@{java::lang::Class}}
+\subsubsection[{isInterface}]{\setlength{\rightskip}{0pt plus 5cm}boolean java::lang::Class::isInterface (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily  [inline]}}\label{classjava_1_1lang_1_1_class_a8f00f930b384201110d6f76657fb5480}
+Check whether this class is an interface or not. Array types are not interfaces.
+
+\begin{DoxyReturn}{Returns}
+whether this class is an interface or not 
+\end{DoxyReturn}
+
+
+Definition at line 161 of file Class.java.
+
+
+
+Referenced by toString().
+
+\index{java::lang::Class@{java::lang::Class}!newInstance@{newInstance}}
+\index{newInstance@{newInstance}!java::lang::Class@{java::lang::Class}}
+\subsubsection[{newInstance}]{\setlength{\rightskip}{0pt plus 5cm}native {\bf Object} java::lang::Class::newInstance (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)  throws {\bf InstantiationException},         {\bf IllegalAccessException}}\label{classjava_1_1lang_1_1_class_ad8cb984d818f1297dc2841744fae400e}
+Get a new instance of this class by calling the no-\/argument constructor. The class is initialized if it has not been already. A security check may be performed, with {\ttfamily checkMemberAccess(this, Member.PUBLIC)} as well as {\ttfamily checkPackageAccess} both having to succeed.
+
+\begin{DoxyReturn}{Returns}
+a new instance of this class 
+\end{DoxyReturn}
+
+\begin{DoxyExceptions}{Exceptions}
+\item[{\em \doxyref{InstantiationException}{p.}{classjava_1_1lang_1_1_instantiation_exception}}]if there is not a no-\/arg constructor for this class, including interfaces, abstract classes, arrays, primitive types, and void; or if an exception occurred during the constructor \item[{\em \doxyref{IllegalAccessException}{p.}{classjava_1_1lang_1_1_illegal_access_exception}}]if you are not allowed to access the no-\/arg constructor because of scoping reasons \end{DoxyExceptions}
+\index{java::lang::Class@{java::lang::Class}!toString@{toString}}
+\index{toString@{toString}!java::lang::Class@{java::lang::Class}}
+\subsubsection[{toString}]{\setlength{\rightskip}{0pt plus 5cm}{\bf String} java::lang::Class::toString (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily  [inline]}}\label{classjava_1_1lang_1_1_class_a0221aeef0d58ec021f7b361cbd3cb51c}
+Return the human-\/readable form of this \doxyref{Object}{p.}{classjava_1_1lang_1_1_object}. For an object, this is either \char`\"{}interface \char`\"{} or \char`\"{}class \char`\"{} followed by {\ttfamily \doxyref{getName()}{p.}{classjava_1_1lang_1_1_class_a5776036387f11a9e14c907b40de74579}}, for primitive types and void it is just {\ttfamily \doxyref{getName()}{p.}{classjava_1_1lang_1_1_class_a5776036387f11a9e14c907b40de74579}}.
+
+\begin{DoxyReturn}{Returns}
+the human-\/readable form of this \doxyref{Object}{p.}{classjava_1_1lang_1_1_object} 
+\end{DoxyReturn}
+
+
+Definition at line 91 of file Class.java.
+
+
+
+References getName(), and isInterface().
+
+
+
+The documentation for this class was generated from the following file:\begin{DoxyCompactItemize}
+\item 
+src/classpath/java/lang/Class.java\end{DoxyCompactItemize}

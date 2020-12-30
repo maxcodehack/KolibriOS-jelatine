@@ -1,0 +1,78 @@
+\section{java::util::Enumeration Interface Reference}
+\label{interfacejava_1_1util_1_1_enumeration}\index{java::util::Enumeration@{java::util::Enumeration}}
+
+
+Inherited by java::util::Hashtable::Enumerator.
+
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+Object {\bf nextElement} ()  throws NoSuchElementException
+\end{DoxyCompactItemize}
+\subsection*{Package Functions}
+\begin{DoxyCompactItemize}
+\item 
+boolean {\bf hasMoreElements} ()
+\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+Interface for lists of objects that can be returned in sequence. Successive objects are obtained by the nextElement method. 
+
+As of Java 1.2, the Iterator interface provides the same functionality, but with shorter method names and a new optional method to remove items from the list. If writing for 1.2, consider using Iterator instead. Enumerations over the new collections classes, for use with legacy APIs that require them, can be obtained by the enumeration method in class Collections.
+
+\begin{DoxyAuthor}{Author}
+Warren Levy ({\tt warrenl@cygnus.com}) 
+
+Eric Blake ({\tt ebb9@email.byu.edu}) 
+\end{DoxyAuthor}
+\begin{DoxySeeAlso}{See also}
+Iterator 
+
+\doxyref{Hashtable}{p.}{classjava_1_1util_1_1_hashtable} 
+
+\doxyref{Vector}{p.}{classjava_1_1util_1_1_vector} 
+\end{DoxySeeAlso}
+
+
+Definition at line 61 of file Enumeration.java.
+
+
+
+\subsection{Member Function Documentation}
+\index{java::util::Enumeration@{java::util::Enumeration}!hasMoreElements@{hasMoreElements}}
+\index{hasMoreElements@{hasMoreElements}!java::util::Enumeration@{java::util::Enumeration}}
+\subsubsection[{hasMoreElements}]{\setlength{\rightskip}{0pt plus 5cm}boolean java::util::Enumeration::hasMoreElements (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily  [package]}}\label{interfacejava_1_1util_1_1_enumeration_a00bf94e032803ca168dad3b8c138bb4a}
+Tests whether there are elements remaining in the enumeration.
+
+\begin{DoxyReturn}{Returns}
+true if there is at least one more element in the enumeration, that is, if the next call to nextElement will not throw a \doxyref{NoSuchElementException}{p.}{classjava_1_1util_1_1_no_such_element_exception}. 
+\end{DoxyReturn}
+\index{java::util::Enumeration@{java::util::Enumeration}!nextElement@{nextElement}}
+\index{nextElement@{nextElement}!java::util::Enumeration@{java::util::Enumeration}}
+\subsubsection[{nextElement}]{\setlength{\rightskip}{0pt plus 5cm}Object java::util::Enumeration::nextElement (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)  throws {\bf NoSuchElementException}}\label{interfacejava_1_1util_1_1_enumeration_a5e13fbda755dbd4ab1c1e76f2ce64748}
+Obtain the next element in the enumeration.
+
+\begin{DoxyReturn}{Returns}
+the next element in the enumeration 
+\end{DoxyReturn}
+
+\begin{DoxyExceptions}{Exceptions}
+\item[{\em \doxyref{NoSuchElementException}{p.}{classjava_1_1util_1_1_no_such_element_exception}}]if there are no more elements \end{DoxyExceptions}
+
+
+Referenced by java::util::Hashtable::toString().
+
+
+
+The documentation for this interface was generated from the following file:\begin{DoxyCompactItemize}
+\item 
+src/classpath/java/util/Enumeration.java\end{DoxyCompactItemize}

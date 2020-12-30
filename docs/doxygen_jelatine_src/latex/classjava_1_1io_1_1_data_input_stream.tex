@@ -1,0 +1,843 @@
+\section{java::io::DataInputStream Class Reference}
+\label{classjava_1_1io_1_1_data_input_stream}\index{java::io::DataInputStream@{java::io::DataInputStream}}
+Inheritance diagram for java::io::DataInputStream:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=2.000000cm]{classjava_1_1io_1_1_data_input_stream}
+\end{center}
+\end{figure}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+{\bf DataInputStream} ({\bf InputStream} {\bf in})
+\item 
+int {\bf read} ()  throws IOException     
+\item 
+final int {\bf read} (byte[$\,$] b)  throws IOException     
+\item 
+final int {\bf read} (byte[$\,$] b, int off, int len)  throws IOException     
+\item 
+final void {\bf readFully} (byte[$\,$] b)  throws EOFException, IOException     
+\item 
+final void {\bf readFully} (byte[$\,$] buf, int offset, int len)  throws EOFException, IOException     
+\item 
+int {\bf skipBytes} (int n)  throws IOException     
+\item 
+final boolean {\bf readBoolean} ()  throws IOException     
+\item 
+final byte {\bf readByte} ()  throws IOException     
+\item 
+final int {\bf readUnsignedByte} ()  throws IOException     
+\item 
+final short {\bf readShort} ()  throws IOException     
+\item 
+final int {\bf readUnsignedShort} ()  throws IOException     
+\item 
+final char {\bf readChar} ()  throws IOException     
+\item 
+final int {\bf readInt} ()  throws IOException     
+\item 
+final long {\bf readLong} ()  throws IOException     
+\item 
+final float {\bf readFloat} ()  throws IOException     
+\item 
+final double {\bf readDouble} ()  throws IOException     
+\item 
+final String {\bf readUTF} ()  throws IOException     
+\item 
+long {\bf skip} (long n)  throws IOException     
+\item 
+int {\bf available} ()  throws IOException     
+\item 
+void {\bf close} ()  throws IOException     
+\item 
+synchronized void {\bf mark} (int limit)
+\item 
+synchronized void {\bf reset} ()  throws IOException     
+\item 
+boolean {\bf markSupported} ()
+\end{DoxyCompactItemize}
+\subsection*{Static Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+static final String {\bf readUTF} ({\bf DataInput} {\bf in})  throws IOException     
+\end{DoxyCompactItemize}
+\subsection*{Protected Attributes}
+\begin{DoxyCompactItemize}
+\item 
+{\bf InputStream} {\bf in}
+\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+This subclass of {\ttfamily FilteredInputStream} implements the {\ttfamily \doxyref{DataInput}{p.}{interfacejava_1_1io_1_1_data_input}} interface that provides method for reading primitive Java data types from a stream.
+
+\begin{DoxySeeAlso}{See also}
+\doxyref{DataInput}{p.}{interfacejava_1_1io_1_1_data_input}
+\end{DoxySeeAlso}
+\begin{DoxyAuthor}{Author}
+Warren Levy ({\tt warrenl@cygnus.com}) 
+
+Aaron M. Renn ({\tt arenn@urbanophile.com}) 
+\end{DoxyAuthor}
+\begin{DoxyDate}{Date}
+October 20, 1998. 
+\end{DoxyDate}
+
+
+Definition at line 57 of file DataInputStream.java.
+
+
+
+\subsection{Constructor \& Destructor Documentation}
+\index{java::io::DataInputStream@{java::io::DataInputStream}!DataInputStream@{DataInputStream}}
+\index{DataInputStream@{DataInputStream}!java::io::DataInputStream@{java::io::DataInputStream}}
+\subsubsection[{DataInputStream}]{\setlength{\rightskip}{0pt plus 5cm}java::io::DataInputStream::DataInputStream (
+\begin{DoxyParamCaption}
+\item[{{\bf InputStream}}]{ in}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily  [inline]}}\label{classjava_1_1io_1_1_data_input_stream_a13ed7fd7b1460ca10bae6304d578f12f}
+This constructor initializes a new {\ttfamily \doxyref{DataInputStream}{p.}{classjava_1_1io_1_1_data_input_stream}} to read from the specified subordinate stream.
+
+
+\begin{DoxyParams}{Parameters}
+\item[{\em in}]The subordinate {\ttfamily \doxyref{InputStream}{p.}{classjava_1_1io_1_1_input_stream}} to read from \end{DoxyParams}
+
+
+Definition at line 73 of file DataInputStream.java.
+
+
+
+\subsection{Member Function Documentation}
+\index{java::io::DataInputStream@{java::io::DataInputStream}!available@{available}}
+\index{available@{available}!java::io::DataInputStream@{java::io::DataInputStream}}
+\subsubsection[{available}]{\setlength{\rightskip}{0pt plus 5cm}int java::io::DataInputStream::available (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)  throws {\bf IOException}     \hspace{0.3cm}{\ttfamily  [inline]}}\label{classjava_1_1io_1_1_data_input_stream_adc5dfbb84f579dc5d97fbbe3c482defc}
+Returns the number of available bytes which may be read w/o blocking \begin{DoxyReturn}{Returns}
+The number of available bytes 
+\end{DoxyReturn}
+
+\begin{DoxyExceptions}{Exceptions}
+\item[{\em \doxyref{IOException}{p.}{classjava_1_1io_1_1_i_o_exception}}]if any I/O error occurs \end{DoxyExceptions}
+
+
+Definition at line 622 of file DataInputStream.java.
+
+
+
+References java::io::InputStream::available(), and in.
+
+\index{java::io::DataInputStream@{java::io::DataInputStream}!close@{close}}
+\index{close@{close}!java::io::DataInputStream@{java::io::DataInputStream}}
+\subsubsection[{close}]{\setlength{\rightskip}{0pt plus 5cm}void java::io::DataInputStream::close (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)  throws {\bf IOException}     \hspace{0.3cm}{\ttfamily  [inline]}}\label{classjava_1_1io_1_1_data_input_stream_a8df1ec127e3ef1c30de8bd0c5feff149}
+Closes the input stream 
+\begin{DoxyExceptions}{Exceptions}
+\item[{\em \doxyref{IOException}{p.}{classjava_1_1io_1_1_i_o_exception}}]if any I/O error occurs \end{DoxyExceptions}
+
+
+Definition at line 632 of file DataInputStream.java.
+
+
+
+References java::io::InputStream::close(), and in.
+
+\index{java::io::DataInputStream@{java::io::DataInputStream}!mark@{mark}}
+\index{mark@{mark}!java::io::DataInputStream@{java::io::DataInputStream}}
+\subsubsection[{mark}]{\setlength{\rightskip}{0pt plus 5cm}synchronized void java::io::DataInputStream::mark (
+\begin{DoxyParamCaption}
+\item[{int}]{ limit}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily  [inline]}}\label{classjava_1_1io_1_1_data_input_stream_a042048a575e8686d229aa845756e04bd}
+Marks the current position in the input stream 
+\begin{DoxyParams}{Parameters}
+\item[{\em limit}]The number of bytes which may be read before the mark becomes invalid \end{DoxyParams}
+
+
+Definition at line 643 of file DataInputStream.java.
+
+
+
+References in, and java::io::InputStream::mark().
+
+\index{java::io::DataInputStream@{java::io::DataInputStream}!markSupported@{markSupported}}
+\index{markSupported@{markSupported}!java::io::DataInputStream@{java::io::DataInputStream}}
+\subsubsection[{markSupported}]{\setlength{\rightskip}{0pt plus 5cm}boolean java::io::DataInputStream::markSupported (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily  [inline]}}\label{classjava_1_1io_1_1_data_input_stream_ae42c6de34bc6c28532d73c3e9c57a8a8}
+Returns true if this stream supports the \doxyref{mark()}{p.}{classjava_1_1io_1_1_data_input_stream_a042048a575e8686d229aa845756e04bd} and \doxyref{reset()}{p.}{classjava_1_1io_1_1_data_input_stream_a0077c2334faab5b4d085e29ed6a1b268} methods 
+
+Definition at line 662 of file DataInputStream.java.
+
+
+
+References in, and java::io::InputStream::markSupported().
+
+\index{java::io::DataInputStream@{java::io::DataInputStream}!read@{read}}
+\index{read@{read}!java::io::DataInputStream@{java::io::DataInputStream}}
+\subsubsection[{read}]{\setlength{\rightskip}{0pt plus 5cm}final int java::io::DataInputStream::read (
+\begin{DoxyParamCaption}
+\item[{byte[$\,$]}]{ b}
+\end{DoxyParamCaption}
+)  throws {\bf IOException}     \hspace{0.3cm}{\ttfamily  [inline]}}\label{classjava_1_1io_1_1_data_input_stream_a4aa8625cf2d029003eddfdd261b70532}
+This method reads bytes from the underlying stream into the specified byte array buffer. It will attempt to fill the buffer completely, but may return a short count if there is insufficient data remaining to be read to fill the buffer.
+
+
+\begin{DoxyParams}{Parameters}
+\item[{\em b}]The buffer into which bytes will be read.\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+The actual number of bytes read, or -\/1 if end of stream reached before reading any bytes.
+\end{DoxyReturn}
+
+\begin{DoxyExceptions}{Exceptions}
+\item[{\em \doxyref{IOException}{p.}{classjava_1_1io_1_1_i_o_exception}}]If an error occurs. \end{DoxyExceptions}
+
+
+Definition at line 102 of file DataInputStream.java.
+
+
+
+References in, and java::io::InputStream::read().
+
+\index{java::io::DataInputStream@{java::io::DataInputStream}!read@{read}}
+\index{read@{read}!java::io::DataInputStream@{java::io::DataInputStream}}
+\subsubsection[{read}]{\setlength{\rightskip}{0pt plus 5cm}int java::io::DataInputStream::read (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)  throws {\bf IOException}     \hspace{0.3cm}{\ttfamily  [inline]}}\label{classjava_1_1io_1_1_data_input_stream_ad7b0bfc31a4dd898b4975e82e227e178}
+This method reads a byte from the underlying stream \begin{DoxyReturn}{Returns}
+An int holding the byte read from the stream 
+\end{DoxyReturn}
+
+\begin{DoxyExceptions}{Exceptions}
+\item[{\em \doxyref{IOException}{p.}{classjava_1_1io_1_1_i_o_exception}}]If an error occurs. \end{DoxyExceptions}
+
+
+Definition at line 84 of file DataInputStream.java.
+
+
+
+References in, and java::io::InputStream::read().
+
+\index{java::io::DataInputStream@{java::io::DataInputStream}!read@{read}}
+\index{read@{read}!java::io::DataInputStream@{java::io::DataInputStream}}
+\subsubsection[{read}]{\setlength{\rightskip}{0pt plus 5cm}final int java::io::DataInputStream::read (
+\begin{DoxyParamCaption}
+\item[{byte[$\,$]}]{ b, }
+\item[{int}]{ off, }
+\item[{int}]{ len}
+\end{DoxyParamCaption}
+)  throws {\bf IOException}     \hspace{0.3cm}{\ttfamily  [inline]}}\label{classjava_1_1io_1_1_data_input_stream_a53c096c474f0ed7f7a2196a2e8a221c7}
+This method reads bytes from the underlying stream into the specified byte array buffer. It will attempt to read {\ttfamily len} bytes and will start storing them at position {\ttfamily off} into the buffer. This method can return a short count if there is insufficient data remaining to be read to complete the desired read length.
+
+
+\begin{DoxyParams}{Parameters}
+\item[{\em b}]The buffer into which bytes will be read. \item[{\em off}]The offset into the buffer to start storing bytes. \item[{\em len}]The requested number of bytes to read.\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+The actual number of bytes read, or -\/1 if end of stream reached before reading any bytes.
+\end{DoxyReturn}
+
+\begin{DoxyExceptions}{Exceptions}
+\item[{\em \doxyref{IOException}{p.}{classjava_1_1io_1_1_i_o_exception}}]If an error occurs. \end{DoxyExceptions}
+
+
+Definition at line 123 of file DataInputStream.java.
+
+
+
+References in, and java::io::InputStream::read().
+
+\index{java::io::DataInputStream@{java::io::DataInputStream}!readBoolean@{readBoolean}}
+\index{readBoolean@{readBoolean}!java::io::DataInputStream@{java::io::DataInputStream}}
+\subsubsection[{readBoolean}]{\setlength{\rightskip}{0pt plus 5cm}final boolean java::io::DataInputStream::readBoolean (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)  throws {\bf IOException}     \hspace{0.3cm}{\ttfamily  [inline]}}\label{classjava_1_1io_1_1_data_input_stream_ab60544e4616ba2a0dd4266da3380be71}
+This method reads a Java boolean value from an input stream. It does so by reading a single byte of data. If that byte is zero, then the value returned is {\ttfamily false}. If the byte is non-\/zero, then the value returned is {\ttfamily true}. 
+
+This method can read a {\ttfamily boolean} written by an object implementing the {\ttfamily writeBoolean()} method in the {\ttfamily \doxyref{DataOutput}{p.}{interfacejava_1_1io_1_1_data_output}} interface.
+
+\begin{DoxyReturn}{Returns}
+The {\ttfamily boolean} value read
+\end{DoxyReturn}
+
+\begin{DoxyExceptions}{Exceptions}
+\item[{\em \doxyref{EOFException}{p.}{classjava_1_1io_1_1_e_o_f_exception}}]If end of file is reached before reading the boolean \item[{\em \doxyref{IOException}{p.}{classjava_1_1io_1_1_i_o_exception}}]If any other error occurs\end{DoxyExceptions}
+\begin{DoxySeeAlso}{See also}
+\doxyref{DataOutput::writeBoolean}{p.}{interfacejava_1_1io_1_1_data_output_a0aa819400d442617f3a7aec76b41fe07} 
+\end{DoxySeeAlso}
+
+
+Implements {\bf java::io::DataInput} \doxyref{}{p.}{interfacejava_1_1io_1_1_data_input_a89e4e1441035d370624ba241d55ba8da}.
+
+
+
+Definition at line 232 of file DataInputStream.java.
+
+
+
+References in, and java::io::InputStream::read().
+
+\index{java::io::DataInputStream@{java::io::DataInputStream}!readByte@{readByte}}
+\index{readByte@{readByte}!java::io::DataInputStream@{java::io::DataInputStream}}
+\subsubsection[{readByte}]{\setlength{\rightskip}{0pt plus 5cm}final byte java::io::DataInputStream::readByte (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)  throws {\bf IOException}     \hspace{0.3cm}{\ttfamily  [inline]}}\label{classjava_1_1io_1_1_data_input_stream_abced6ad90f6e7c91291b9abc66d2e3fa}
+This method reads a Java byte value from an input stream. The value is in the range of -\/128 to 127. 
+
+This method can read a {\ttfamily byte} written by an object implementing the {\ttfamily writeByte()} method in the {\ttfamily \doxyref{DataOutput}{p.}{interfacejava_1_1io_1_1_data_output}} interface.
+
+\begin{DoxyReturn}{Returns}
+The {\ttfamily byte} value read
+\end{DoxyReturn}
+
+\begin{DoxyExceptions}{Exceptions}
+\item[{\em \doxyref{EOFException}{p.}{classjava_1_1io_1_1_e_o_f_exception}}]If end of file is reached before reading the byte \item[{\em \doxyref{IOException}{p.}{classjava_1_1io_1_1_i_o_exception}}]If any other error occurs\end{DoxyExceptions}
+\begin{DoxySeeAlso}{See also}
+\doxyref{DataOutput::writeByte}{p.}{interfacejava_1_1io_1_1_data_output_ab82f69df74fc270af167a179745d4d81} 
+\end{DoxySeeAlso}
+
+
+Implements {\bf java::io::DataInput} \doxyref{}{p.}{interfacejava_1_1io_1_1_data_input_aa4b506d9f0bc46b9ddfa30e94408c094}.
+
+
+
+Definition at line 252 of file DataInputStream.java.
+
+
+
+References in, and java::io::InputStream::read().
+
+\index{java::io::DataInputStream@{java::io::DataInputStream}!readChar@{readChar}}
+\index{readChar@{readChar}!java::io::DataInputStream@{java::io::DataInputStream}}
+\subsubsection[{readChar}]{\setlength{\rightskip}{0pt plus 5cm}final char java::io::DataInputStream::readChar (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)  throws {\bf IOException}     \hspace{0.3cm}{\ttfamily  [inline]}}\label{classjava_1_1io_1_1_data_input_stream_a34b6591ce2bc01d687ececc6a848274b}
+This method reads a Java {\ttfamily char} value from an input stream. It operates by reading two bytes from the stream and converting them to a single 16-\/bit Java {\ttfamily char}. The two bytes are stored most significant byte first (i.e., \char`\"{}big endian\char`\"{}) regardless of the native host byte ordering. 
+
+As an example, if {\ttfamily byte1} and {\ttfamily byte2} represent the first and second byte read from the stream respectively, they will be transformed to a {\ttfamily char} in the following manner: 
+
+{\ttfamily (char)(((byte1 \& 0xFF) $<$$<$ 8) $|$ (byte2 \& 0xFF)} 
+
+This method can read a {\ttfamily char} written by an object implementing the {\ttfamily writeChar()} method in the {\ttfamily \doxyref{DataOutput}{p.}{interfacejava_1_1io_1_1_data_output}} interface.
+
+\begin{DoxyReturn}{Returns}
+The {\ttfamily char} value read
+\end{DoxyReturn}
+
+\begin{DoxyExceptions}{Exceptions}
+\item[{\em \doxyref{EOFException}{p.}{classjava_1_1io_1_1_e_o_f_exception}}]If end of file is reached before reading the char \item[{\em \doxyref{IOException}{p.}{classjava_1_1io_1_1_i_o_exception}}]If any other error occurs\end{DoxyExceptions}
+\begin{DoxySeeAlso}{See also}
+\doxyref{DataOutput::writeChar}{p.}{interfacejava_1_1io_1_1_data_output_ac8df25f622b7dee08ffef5d91643d5e3} 
+\end{DoxySeeAlso}
+
+
+Implements {\bf java::io::DataInput} \doxyref{}{p.}{interfacejava_1_1io_1_1_data_input_a6f6470041b6658ef6db707cd6c523332}.
+
+
+
+Definition at line 371 of file DataInputStream.java.
+
+
+
+References readFully().
+
+\index{java::io::DataInputStream@{java::io::DataInputStream}!readDouble@{readDouble}}
+\index{readDouble@{readDouble}!java::io::DataInputStream@{java::io::DataInputStream}}
+\subsubsection[{readDouble}]{\setlength{\rightskip}{0pt plus 5cm}final double java::io::DataInputStream::readDouble (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)  throws {\bf IOException}     \hspace{0.3cm}{\ttfamily  [inline]}}\label{classjava_1_1io_1_1_data_input_stream_ad7cf1465f5c8e5ff72bbc6d012f00459}
+This method reads a Java double value from an input stream. It operates by first reading a {\ttfamily long} value from the stream by calling the {\ttfamily \doxyref{readLong()}{p.}{classjava_1_1io_1_1_data_input_stream_a47711a8383dfffc88857224e2223e886}} method in this interface, then converts that {\ttfamily long} to a {\ttfamily double} using the {\ttfamily longBitsToDouble} method in the class {\ttfamily \doxyref{java.lang.Double}{p.}{classjava_1_1lang_1_1_double}} 
+
+This method can read a {\ttfamily double} written by an object implementing the {\ttfamily writeDouble()} method in the {\ttfamily \doxyref{DataOutput}{p.}{interfacejava_1_1io_1_1_data_output}} interface.
+
+\begin{DoxyReturn}{Returns}
+The {\ttfamily double} value read
+\end{DoxyReturn}
+
+\begin{DoxyExceptions}{Exceptions}
+\item[{\em \doxyref{EOFException}{p.}{classjava_1_1io_1_1_e_o_f_exception}}]If end of file is reached before reading the double \item[{\em \doxyref{IOException}{p.}{classjava_1_1io_1_1_i_o_exception}}]If any other error occurs\end{DoxyExceptions}
+\begin{DoxySeeAlso}{See also}
+\doxyref{DataOutput::writeDouble}{p.}{interfacejava_1_1io_1_1_data_output_ae00f0c212526f41161df14cb0d82d29a} 
+
+\doxyref{java.lang.Double::longBitsToDouble}{p.}{classjava_1_1lang_1_1_double_a8647bc9948f61076a4157bf9f6b35bf4} 
+\end{DoxySeeAlso}
+
+
+Implements {\bf java::io::DataInput} \doxyref{}{p.}{interfacejava_1_1io_1_1_data_input_a355dd55354ac3324f0d7472014c16690}.
+
+
+
+Definition at line 496 of file DataInputStream.java.
+
+
+
+References readLong().
+
+\index{java::io::DataInputStream@{java::io::DataInputStream}!readFloat@{readFloat}}
+\index{readFloat@{readFloat}!java::io::DataInputStream@{java::io::DataInputStream}}
+\subsubsection[{readFloat}]{\setlength{\rightskip}{0pt plus 5cm}final float java::io::DataInputStream::readFloat (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)  throws {\bf IOException}     \hspace{0.3cm}{\ttfamily  [inline]}}\label{classjava_1_1io_1_1_data_input_stream_aae958fe030aec4834762d1d6c2025343}
+This method reads a Java float value from an input stream. It operates by first reading an {\ttfamily int} value from the stream by calling the {\ttfamily \doxyref{readInt()}{p.}{classjava_1_1io_1_1_data_input_stream_a219a804a2db0223254dab028c2635d4c}} method in this interface, then converts that {\ttfamily int} to a {\ttfamily float} using the {\ttfamily intBitsToFloat} method in the class {\ttfamily \doxyref{java.lang.Float}{p.}{classjava_1_1lang_1_1_float}} 
+
+This method can read a {\ttfamily float} written by an object implementing the {\ttfamily writeFloat()} method in the {\ttfamily \doxyref{DataOutput}{p.}{interfacejava_1_1io_1_1_data_output}} interface.
+
+\begin{DoxyReturn}{Returns}
+The {\ttfamily float} value read
+\end{DoxyReturn}
+
+\begin{DoxyExceptions}{Exceptions}
+\item[{\em \doxyref{EOFException}{p.}{classjava_1_1io_1_1_e_o_f_exception}}]If end of file is reached before reading the float \item[{\em \doxyref{IOException}{p.}{classjava_1_1io_1_1_i_o_exception}}]If any other error occurs\end{DoxyExceptions}
+\begin{DoxySeeAlso}{See also}
+\doxyref{DataOutput::writeFloat}{p.}{interfacejava_1_1io_1_1_data_output_a72a2f2797b621fb8df56be7aafb606a4} 
+
+\doxyref{java.lang.Float::intBitsToFloat}{p.}{classjava_1_1lang_1_1_float_a2492e2696c7b6a22d452c0a55d086ca7} 
+\end{DoxySeeAlso}
+
+
+Implements {\bf java::io::DataInput} \doxyref{}{p.}{interfacejava_1_1io_1_1_data_input_a04ffbe393ccd873e2866dafae36fe981}.
+
+
+
+Definition at line 470 of file DataInputStream.java.
+
+
+
+References readInt().
+
+\index{java::io::DataInputStream@{java::io::DataInputStream}!readFully@{readFully}}
+\index{readFully@{readFully}!java::io::DataInputStream@{java::io::DataInputStream}}
+\subsubsection[{readFully}]{\setlength{\rightskip}{0pt plus 5cm}final void java::io::DataInputStream::readFully (
+\begin{DoxyParamCaption}
+\item[{byte[$\,$]}]{ b}
+\end{DoxyParamCaption}
+)  throws {\bf EOFException}, {\bf IOException}     \hspace{0.3cm}{\ttfamily  [inline]}}\label{classjava_1_1io_1_1_data_input_stream_a435324579ce7fb5a1073930b3bcd5cf7}
+This method reads raw bytes into the passed array until the array is full. Note that this method blocks until the data is available and throws an exception if there is not enough data left in the stream to fill the buffer. Note also that zero length buffers are permitted. In this case, the method will return immediately without reading any bytes from the stream.
+
+
+\begin{DoxyParams}{Parameters}
+\item[{\em b}]The buffer into which to read the data\end{DoxyParams}
+
+\begin{DoxyExceptions}{Exceptions}
+\item[{\em \doxyref{EOFException}{p.}{classjava_1_1io_1_1_e_o_f_exception}}]If end of file is reached before filling the buffer \item[{\em \doxyref{IOException}{p.}{classjava_1_1io_1_1_i_o_exception}}]If any other error occurs \end{DoxyExceptions}
+
+
+Implements {\bf java::io::DataInput} \doxyref{}{p.}{interfacejava_1_1io_1_1_data_input_a25f0e72a8039bab6f1ffd0fb5f0986ac}.
+
+
+
+Definition at line 142 of file DataInputStream.java.
+
+
+
+Referenced by readChar(), readInt(), readLong(), readShort(), and readUnsignedShort().
+
+\index{java::io::DataInputStream@{java::io::DataInputStream}!readFully@{readFully}}
+\index{readFully@{readFully}!java::io::DataInputStream@{java::io::DataInputStream}}
+\subsubsection[{readFully}]{\setlength{\rightskip}{0pt plus 5cm}final void java::io::DataInputStream::readFully (
+\begin{DoxyParamCaption}
+\item[{byte[$\,$]}]{ buf, }
+\item[{int}]{ offset, }
+\item[{int}]{ len}
+\end{DoxyParamCaption}
+)  throws {\bf EOFException}, {\bf IOException}     \hspace{0.3cm}{\ttfamily  [inline]}}\label{classjava_1_1io_1_1_data_input_stream_ac4976ab416e307ddc7227c4ff553da1c}
+This method reads raw bytes into the passed array {\ttfamily buf} starting {\ttfamily offset} bytes into the buffer. The number of bytes read will be exactly {\ttfamily len}. Note that this method blocks until the data is available and throws an exception if there is not enough data left in the stream to read {\ttfamily len} bytes. Note also that zero length buffers are permitted. In this case, the method will return immediately without reading any bytes from the stream.
+
+
+\begin{DoxyParams}{Parameters}
+\item[{\em buf}]The buffer into which to read the data \item[{\em offset}]The offset into the buffer to start storing data \item[{\em len}]The number of bytes to read into the buffer\end{DoxyParams}
+
+\begin{DoxyExceptions}{Exceptions}
+\item[{\em \doxyref{EOFException}{p.}{classjava_1_1io_1_1_e_o_f_exception}}]If end of file is reached before filling the buffer \item[{\em \doxyref{IOException}{p.}{classjava_1_1io_1_1_i_o_exception}}]If any other error occurs \end{DoxyExceptions}
+
+
+Implements {\bf java::io::DataInput} \doxyref{}{p.}{interfacejava_1_1io_1_1_data_input_ab10fa035bc76d4e0efb286698f5dcfcc}.
+
+
+
+Definition at line 166 of file DataInputStream.java.
+
+
+
+References in, and java::io::InputStream::read().
+
+\index{java::io::DataInputStream@{java::io::DataInputStream}!readInt@{readInt}}
+\index{readInt@{readInt}!java::io::DataInputStream@{java::io::DataInputStream}}
+\subsubsection[{readInt}]{\setlength{\rightskip}{0pt plus 5cm}final int java::io::DataInputStream::readInt (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)  throws {\bf IOException}     \hspace{0.3cm}{\ttfamily  [inline]}}\label{classjava_1_1io_1_1_data_input_stream_a219a804a2db0223254dab028c2635d4c}
+This method reads a Java {\ttfamily int} value from an input stream It operates by reading four bytes from the stream and converting them to a single Java {\ttfamily int}. The bytes are stored most significant byte first (i.e., \char`\"{}big endian\char`\"{}) regardless of the native host byte ordering. 
+
+As an example, if {\ttfamily byte1} through {\ttfamily byte4} represent the first four bytes read from the stream, they will be transformed to an {\ttfamily int} in the following manner: 
+
+{\ttfamily (int)(((byte1 \& 0xFF) $<$$<$ 24) + ((byte2 \& 0xFF) $<$$<$ 16) + ((byte3 \& 0xFF)$<$$<$ 8) + (byte4 \& 0xFF)))} 
+
+The value returned is in the range of -\/2147483648 to 2147483647. 
+
+This method can read an {\ttfamily int} written by an object implementing the {\ttfamily writeInt()} method in the {\ttfamily \doxyref{DataOutput}{p.}{interfacejava_1_1io_1_1_data_output}} interface.
+
+\begin{DoxyReturn}{Returns}
+The {\ttfamily int} value read
+\end{DoxyReturn}
+
+\begin{DoxyExceptions}{Exceptions}
+\item[{\em \doxyref{EOFException}{p.}{classjava_1_1io_1_1_e_o_f_exception}}]If end of file is reached before reading the int \item[{\em \doxyref{IOException}{p.}{classjava_1_1io_1_1_i_o_exception}}]If any other error occurs\end{DoxyExceptions}
+\begin{DoxySeeAlso}{See also}
+\doxyref{DataOutput::writeInt}{p.}{interfacejava_1_1io_1_1_data_output_a3aac6bf339cad0ec0dd920b5e5c983b7} 
+\end{DoxySeeAlso}
+
+
+Implements {\bf java::io::DataInput} \doxyref{}{p.}{interfacejava_1_1io_1_1_data_input_a9695af32a654f3e32c60e04d04f7844e}.
+
+
+
+Definition at line 405 of file DataInputStream.java.
+
+
+
+References readFully().
+
+
+
+Referenced by readFloat().
+
+\index{java::io::DataInputStream@{java::io::DataInputStream}!readLong@{readLong}}
+\index{readLong@{readLong}!java::io::DataInputStream@{java::io::DataInputStream}}
+\subsubsection[{readLong}]{\setlength{\rightskip}{0pt plus 5cm}final long java::io::DataInputStream::readLong (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)  throws {\bf IOException}     \hspace{0.3cm}{\ttfamily  [inline]}}\label{classjava_1_1io_1_1_data_input_stream_a47711a8383dfffc88857224e2223e886}
+This method reads a Java {\ttfamily long} value from an input stream It operates by reading eight bytes from the stream and converting them to a single Java {\ttfamily long}. The bytes are stored most significant byte first (i.e., \char`\"{}big endian\char`\"{}) regardless of the native host byte ordering. 
+
+As an example, if {\ttfamily byte1} through {\ttfamily byte8} represent the first eight bytes read from the stream, they will be transformed to an {\ttfamily long} in the following manner: 
+
+{\ttfamily (long)(((byte1 \& 0xFF) $<$$<$ 56) + ((byte2 \& 0xFF) $<$$<$ 48) + ((byte3 \& 0xFF) $<$$<$ 40) + ((byte4 \& 0xFF) $<$$<$ 32) + ((byte5 \& 0xFF) $<$$<$ 24) + ((byte6 \& 0xFF) $<$$<$ 16) + ((byte7 \& 0xFF) $<$$<$ 8) + (byte8 \& 0xFF))) } 
+
+The value returned is in the range of -\/9223372036854775808 to 9223372036854775807. 
+
+This method can read an {\ttfamily long} written by an object implementing the {\ttfamily writeLong()} method in the {\ttfamily \doxyref{DataOutput}{p.}{interfacejava_1_1io_1_1_data_output}} interface.
+
+\begin{DoxyReturn}{Returns}
+The {\ttfamily long} value read
+\end{DoxyReturn}
+
+\begin{DoxyExceptions}{Exceptions}
+\item[{\em \doxyref{EOFException}{p.}{classjava_1_1io_1_1_e_o_f_exception}}]If end of file is reached before reading the long \item[{\em \doxyref{IOException}{p.}{classjava_1_1io_1_1_i_o_exception}}]If any other error occurs\end{DoxyExceptions}
+\begin{DoxySeeAlso}{See also}
+\doxyref{DataOutput::writeLong}{p.}{interfacejava_1_1io_1_1_data_output_abd2315a7cb19bdb441b92e74e2aad57f} 
+\end{DoxySeeAlso}
+
+
+Implements {\bf java::io::DataInput} \doxyref{}{p.}{interfacejava_1_1io_1_1_data_input_a831af7e41c8655fb154197f644652e26}.
+
+
+
+Definition at line 443 of file DataInputStream.java.
+
+
+
+References readFully().
+
+
+
+Referenced by readDouble().
+
+\index{java::io::DataInputStream@{java::io::DataInputStream}!readShort@{readShort}}
+\index{readShort@{readShort}!java::io::DataInputStream@{java::io::DataInputStream}}
+\subsubsection[{readShort}]{\setlength{\rightskip}{0pt plus 5cm}final short java::io::DataInputStream::readShort (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)  throws {\bf IOException}     \hspace{0.3cm}{\ttfamily  [inline]}}\label{classjava_1_1io_1_1_data_input_stream_a4ce27395e59224a104bb136fa11cde83}
+This method reads a signed 16-\/bit value into a Java in from the stream. It operates by reading two bytes from the stream and converting them to a single 16-\/bit Java {\ttfamily short}. The two bytes are stored most significant byte first (i.e., \char`\"{}big
+ endian\char`\"{}) regardless of the native host byte ordering. 
+
+As an example, if {\ttfamily byte1} and {\ttfamily byte2} represent the first and second byte read from the stream respectively, they will be transformed to a {\ttfamily short}. in the following manner: 
+
+{\ttfamily (short)(((byte1 \& 0xFF) $<$$<$ 8) $|$ (byte2 \& 0xFF))} 
+
+The value returned is in the range of -\/32768 to 32767. 
+
+This method can read a {\ttfamily short} written by an object implementing the {\ttfamily writeShort()} method in the {\ttfamily \doxyref{DataOutput}{p.}{interfacejava_1_1io_1_1_data_output}} interface.
+
+\begin{DoxyReturn}{Returns}
+The {\ttfamily short} value read
+\end{DoxyReturn}
+
+\begin{DoxyExceptions}{Exceptions}
+\item[{\em \doxyref{EOFException}{p.}{classjava_1_1io_1_1_e_o_f_exception}}]If end of file is reached before reading the value \item[{\em \doxyref{IOException}{p.}{classjava_1_1io_1_1_i_o_exception}}]If any other error occurs\end{DoxyExceptions}
+\begin{DoxySeeAlso}{See also}
+\doxyref{DataOutput::writeShort}{p.}{interfacejava_1_1io_1_1_data_output_a54f812d1c67d83886601bfefd0403375} 
+\end{DoxySeeAlso}
+
+
+Implements {\bf java::io::DataInput} \doxyref{}{p.}{interfacejava_1_1io_1_1_data_input_abf04eb616f2d61e8fb5a6edde7f15ae8}.
+
+
+
+Definition at line 305 of file DataInputStream.java.
+
+
+
+References readFully().
+
+\index{java::io::DataInputStream@{java::io::DataInputStream}!readUnsignedByte@{readUnsignedByte}}
+\index{readUnsignedByte@{readUnsignedByte}!java::io::DataInputStream@{java::io::DataInputStream}}
+\subsubsection[{readUnsignedByte}]{\setlength{\rightskip}{0pt plus 5cm}final int java::io::DataInputStream::readUnsignedByte (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)  throws {\bf IOException}     \hspace{0.3cm}{\ttfamily  [inline]}}\label{classjava_1_1io_1_1_data_input_stream_a2990775e2554636ddf5719a0f6ae9c75}
+This method reads 8 unsigned bits into a Java {\ttfamily int} value from the stream. The value returned is in the range of 0 to 255. 
+
+This method can read an unsigned byte written by an object implementing the {\ttfamily writeUnsignedByte()} method in the {\ttfamily \doxyref{DataOutput}{p.}{interfacejava_1_1io_1_1_data_output}} interface.
+
+\begin{DoxyReturn}{Returns}
+The unsigned bytes value read as a Java {\ttfamily int}.
+\end{DoxyReturn}
+
+\begin{DoxyExceptions}{Exceptions}
+\item[{\em \doxyref{EOFException}{p.}{classjava_1_1io_1_1_e_o_f_exception}}]If end of file is reached before reading the value \item[{\em \doxyref{IOException}{p.}{classjava_1_1io_1_1_i_o_exception}}]If any other error occurs\end{DoxyExceptions}
+\begin{DoxySeeAlso}{See also}
+\doxyref{DataOutput::writeByte}{p.}{interfacejava_1_1io_1_1_data_output_ab82f69df74fc270af167a179745d4d81} 
+\end{DoxySeeAlso}
+
+
+Implements {\bf java::io::DataInput} \doxyref{}{p.}{interfacejava_1_1io_1_1_data_input_a1e7d5f93d9847af91ce8f0d2df885b7e}.
+
+
+
+Definition at line 273 of file DataInputStream.java.
+
+
+
+References in, and java::io::InputStream::read().
+
+\index{java::io::DataInputStream@{java::io::DataInputStream}!readUnsignedShort@{readUnsignedShort}}
+\index{readUnsignedShort@{readUnsignedShort}!java::io::DataInputStream@{java::io::DataInputStream}}
+\subsubsection[{readUnsignedShort}]{\setlength{\rightskip}{0pt plus 5cm}final int java::io::DataInputStream::readUnsignedShort (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)  throws {\bf IOException}     \hspace{0.3cm}{\ttfamily  [inline]}}\label{classjava_1_1io_1_1_data_input_stream_a6d4912b3419f7fb1544a166883343522}
+This method reads 16 unsigned bits into a Java int value from the stream. It operates by reading two bytes from the stream and converting them to a single Java {\ttfamily int} The two bytes are stored most significant byte first (i.e., \char`\"{}big endian\char`\"{}) regardless of the native host byte ordering. 
+
+As an example, if {\ttfamily byte1} and {\ttfamily byte2} represent the first and second byte read from the stream respectively, they will be transformed to an {\ttfamily int} in the following manner: 
+
+{\ttfamily (int)(((byte1 \& 0xFF) $<$$<$ 8) + (byte2 \& 0xFF))} 
+
+The value returned is in the range of 0 to 65535. 
+
+This method can read an unsigned short written by an object implementing the {\ttfamily writeUnsignedShort()} method in the {\ttfamily \doxyref{DataOutput}{p.}{interfacejava_1_1io_1_1_data_output}} interface.
+
+\begin{DoxyReturn}{Returns}
+The unsigned short value read as a Java {\ttfamily int}
+\end{DoxyReturn}
+
+\begin{DoxyExceptions}{Exceptions}
+\item[{\em \doxyref{EOFException}{p.}{classjava_1_1io_1_1_e_o_f_exception}}]If end of file is reached before reading the value \item[{\em \doxyref{IOException}{p.}{classjava_1_1io_1_1_i_o_exception}}]If any other error occurs\end{DoxyExceptions}
+\begin{DoxySeeAlso}{See also}
+\doxyref{DataOutput::writeShort}{p.}{interfacejava_1_1io_1_1_data_output_a54f812d1c67d83886601bfefd0403375} 
+\end{DoxySeeAlso}
+
+
+Implements {\bf java::io::DataInput} \doxyref{}{p.}{interfacejava_1_1io_1_1_data_input_a6d1127e06c7ea968fbab4fc73c4014b8}.
+
+
+
+Definition at line 339 of file DataInputStream.java.
+
+
+
+References readFully().
+
+\index{java::io::DataInputStream@{java::io::DataInputStream}!readUTF@{readUTF}}
+\index{readUTF@{readUTF}!java::io::DataInputStream@{java::io::DataInputStream}}
+\subsubsection[{readUTF}]{\setlength{\rightskip}{0pt plus 5cm}final String java::io::DataInputStream::readUTF (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)  throws {\bf IOException}     \hspace{0.3cm}{\ttfamily  [inline]}}\label{classjava_1_1io_1_1_data_input_stream_a1cdca9d84ffb421f52a35f56f1ebe1fc}
+This method reads a {\ttfamily String} from an input stream that is encoded in a modified UTF-\/8 format. This format has a leading two byte sequence that contains the remaining number of bytes to read. This two byte sequence is read using the {\ttfamily \doxyref{readUnsignedShort()}{p.}{classjava_1_1io_1_1_data_input_stream_a6d4912b3419f7fb1544a166883343522}} method of this interface. 
+
+After the number of remaining bytes have been determined, these bytes are read an transformed into {\ttfamily char} values. These {\ttfamily char} values are encoded in the stream using either a one, two, or three byte format. The particular format in use can be determined by examining the first byte read. 
+
+If the first byte has a high order bit of 0, then that character consists on only one byte. This character value consists of seven bits that are at positions 0 through 6 of the byte. As an example, if {\ttfamily byte1} is the byte read from the stream, it would be converted to a {\ttfamily char} like so: 
+
+{\ttfamily (char)byte1} 
+
+If the first byte has 110 as its high order bits, then the character consists of two bytes. The bits that make up the character value are in positions 0 through 4 of the first byte and bit positions 0 through 5 of the second byte. (The second byte should have 10 as its high order bits). These values are in most significant byte first (i.e., \char`\"{}big endian\char`\"{}) order. 
+
+As an example, if {\ttfamily byte1} and {\ttfamily byte2} are the first two bytes read respectively, and the high order bits of them match the patterns which indicate a two byte character encoding, then they would be converted to a Java {\ttfamily char} like so: 
+
+{\ttfamily (char)(((byte1 \& 0x1F) $<$$<$ 6) $|$ (byte2 \& 0x3F))} 
+
+If the first byte has a 1110 as its high order bits, then the character consists of three bytes. The bits that make up the character value are in positions 0 through 3 of the first byte and bit positions 0 through 5 of the other two bytes. (The second and third bytes should have 10 as their high order bits). These values are in most significant byte first (i.e., \char`\"{}big endian\char`\"{}) order. 
+
+As an example, if {\ttfamily byte1} {\ttfamily byte2} and {\ttfamily byte3} are the three bytes read, and the high order bits of them match the patterns which indicate a three byte character encoding, then they would be converted to a Java {\ttfamily char} like so: 
+
+{\ttfamily (char)(((byte1 \& 0x0F) $<$$<$ 12) $|$ ((byte2 \& 0x3F) $<$$<$ 6) $|$ (byte3 \& 0x3F))} 
+
+Note that all characters are encoded in the method that requires the fewest number of bytes with the exception of the character with the value of {\ttfamily \&\#92;u0000} which is encoded as two bytes. This is a modification of the UTF standard used to prevent C language style {\ttfamily NUL} values from appearing in the byte stream. 
+
+This method can read data that was written by an object implementing the {\ttfamily writeUTF()} method in {\ttfamily \doxyref{DataOutput}{p.}{interfacejava_1_1io_1_1_data_output}}
+
+\begin{DoxyReturn}{Returns}
+The {\ttfamily String} read
+\end{DoxyReturn}
+
+\begin{DoxyExceptions}{Exceptions}
+\item[{\em \doxyref{EOFException}{p.}{classjava_1_1io_1_1_e_o_f_exception}}]If end of file is reached before reading the String \item[{\em \doxyref{UTFDataFormatException}{p.}{classjava_1_1io_1_1_u_t_f_data_format_exception}}]If the data is not in UTF-\/8 format \item[{\em \doxyref{IOException}{p.}{classjava_1_1io_1_1_i_o_exception}}]If any other error occurs\end{DoxyExceptions}
+\begin{DoxySeeAlso}{See also}
+\doxyref{DataOutput::writeUTF}{p.}{interfacejava_1_1io_1_1_data_output_a21e0cbf493ccfd20e766b94efe3f73c2} 
+\end{DoxySeeAlso}
+
+
+Implements {\bf java::io::DataInput} \doxyref{}{p.}{interfacejava_1_1io_1_1_data_input_aceea32ef352ca618d3d0cebccf2b52da}.
+
+
+
+Definition at line 572 of file DataInputStream.java.
+
+\index{java::io::DataInputStream@{java::io::DataInputStream}!readUTF@{readUTF}}
+\index{readUTF@{readUTF}!java::io::DataInputStream@{java::io::DataInputStream}}
+\subsubsection[{readUTF}]{\setlength{\rightskip}{0pt plus 5cm}static final String java::io::DataInputStream::readUTF (
+\begin{DoxyParamCaption}
+\item[{{\bf DataInput}}]{ in}
+\end{DoxyParamCaption}
+)  throws {\bf IOException}     \hspace{0.3cm}{\ttfamily  [inline, static]}}\label{classjava_1_1io_1_1_data_input_stream_a64fa5c19bf1d175efd81c3aa2b32953e}
+This method reads a String encoded in UTF-\/8 format from the specified {\ttfamily \doxyref{DataInput}{p.}{interfacejava_1_1io_1_1_data_input}} source.
+
+
+\begin{DoxyParams}{Parameters}
+\item[{\em in}]The {\ttfamily \doxyref{DataInput}{p.}{interfacejava_1_1io_1_1_data_input}} source to read from\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+The String read from the source
+\end{DoxyReturn}
+
+\begin{DoxyExceptions}{Exceptions}
+\item[{\em \doxyref{IOException}{p.}{classjava_1_1io_1_1_i_o_exception}}]If an error occurs\end{DoxyExceptions}
+\begin{DoxySeeAlso}{See also}
+\doxyref{DataInput::readUTF}{p.}{interfacejava_1_1io_1_1_data_input_aceea32ef352ca618d3d0cebccf2b52da} 
+\end{DoxySeeAlso}
+
+
+Definition at line 589 of file DataInputStream.java.
+
+
+
+References in.
+
+\index{java::io::DataInputStream@{java::io::DataInputStream}!reset@{reset}}
+\index{reset@{reset}!java::io::DataInputStream@{java::io::DataInputStream}}
+\subsubsection[{reset}]{\setlength{\rightskip}{0pt plus 5cm}synchronized void java::io::DataInputStream::reset (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)  throws {\bf IOException}     \hspace{0.3cm}{\ttfamily  [inline]}}\label{classjava_1_1io_1_1_data_input_stream_a0077c2334faab5b4d085e29ed6a1b268}
+Resets the starting position in the input stream to the last marked one 
+\begin{DoxyExceptions}{Exceptions}
+\item[{\em \doxyref{IOException}{p.}{classjava_1_1io_1_1_i_o_exception}}]If any I/O error occurs \end{DoxyExceptions}
+
+
+Definition at line 653 of file DataInputStream.java.
+
+
+
+References in, and java::io::InputStream::reset().
+
+\index{java::io::DataInputStream@{java::io::DataInputStream}!skip@{skip}}
+\index{skip@{skip}!java::io::DataInputStream@{java::io::DataInputStream}}
+\subsubsection[{skip}]{\setlength{\rightskip}{0pt plus 5cm}long java::io::DataInputStream::skip (
+\begin{DoxyParamCaption}
+\item[{long}]{ n}
+\end{DoxyParamCaption}
+)  throws {\bf IOException}     \hspace{0.3cm}{\ttfamily  [inline]}}\label{classjava_1_1io_1_1_data_input_stream_a9c9e7ec30b6557b733c41d4b782b983c}
+Skips n bytes in the input stream 
+\begin{DoxyParams}{Parameters}
+\item[{\em n}]The bytes to be skipped \end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+The actual number of bytes skipped 
+\end{DoxyReturn}
+
+\begin{DoxyExceptions}{Exceptions}
+\item[{\em \doxyref{IOException}{p.}{classjava_1_1io_1_1_i_o_exception}}]If any I/O error occurs \end{DoxyExceptions}
+
+
+Definition at line 611 of file DataInputStream.java.
+
+
+
+References in, and java::io::InputStream::skip().
+
+\index{java::io::DataInputStream@{java::io::DataInputStream}!skipBytes@{skipBytes}}
+\index{skipBytes@{skipBytes}!java::io::DataInputStream@{java::io::DataInputStream}}
+\subsubsection[{skipBytes}]{\setlength{\rightskip}{0pt plus 5cm}int java::io::DataInputStream::skipBytes (
+\begin{DoxyParamCaption}
+\item[{int}]{ n}
+\end{DoxyParamCaption}
+)  throws {\bf IOException}     \hspace{0.3cm}{\ttfamily  [inline]}}\label{classjava_1_1io_1_1_data_input_stream_aaf18d3f92ab17cfc528529392a1fdbfc}
+This method attempts to skip and discard the specified number of bytes in the input stream. It may actually skip fewer bytes than requested. This method will not skip any bytes if passed a negative number of bytes to skip.
+
+
+\begin{DoxyParams}{Parameters}
+\item[{\em n}]The requested number of bytes to skip.\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+The requested number of bytes to skip.
+\end{DoxyReturn}
+
+\begin{DoxyExceptions}{Exceptions}
+\item[{\em \doxyref{IOException}{p.}{classjava_1_1io_1_1_i_o_exception}}]If an error occurs. \end{DoxyExceptions}
+
+
+Implements {\bf java::io::DataInput} \doxyref{}{p.}{interfacejava_1_1io_1_1_data_input_a6c90fb5f447b641526ff8eeaebbef8f7}.
+
+
+
+Definition at line 197 of file DataInputStream.java.
+
+
+
+References in, and java::io::InputStream::skip().
+
+
+
+\subsection{Field Documentation}
+\index{java::io::DataInputStream@{java::io::DataInputStream}!in@{in}}
+\index{in@{in}!java::io::DataInputStream@{java::io::DataInputStream}}
+\subsubsection[{in}]{\setlength{\rightskip}{0pt plus 5cm}{\bf InputStream} {\bf java::io::DataInputStream::in}\hspace{0.3cm}{\ttfamily  [protected]}}\label{classjava_1_1io_1_1_data_input_stream_a371db5f3d9696a9fae3a5359336527c5}
+The embedded \doxyref{InputStream}{p.}{classjava_1_1io_1_1_input_stream} object 
+
+Definition at line 65 of file DataInputStream.java.
+
+
+
+Referenced by available(), close(), mark(), markSupported(), read(), readBoolean(), readByte(), readFully(), readUnsignedByte(), readUTF(), reset(), skip(), and skipBytes().
+
+
+
+The documentation for this class was generated from the following file:\begin{DoxyCompactItemize}
+\item 
+src/classpath/java/io/DataInputStream.java\end{DoxyCompactItemize}

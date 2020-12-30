@@ -1,0 +1,72 @@
+\section{src/jelatine/java\_\-lang\_\-Exception.h File Reference}
+\label{java__lang___exception_8h}\index{src/jelatine/java\_\-lang\_\-Exception.h@{src/jelatine/java\_\-lang\_\-Exception.h}}
+{\ttfamily \#include \char`\"{}wrappers.h\char`\"{}}\par
+{\ttfamily \#include \char`\"{}java\_\-lang\_\-Throwable.h\char`\"{}}\par
+\subsection*{Defines}
+\begin{DoxyCompactItemize}
+\item 
+\#define {\bf JELATINE\_\-JAVA\_\-LANG\_\-EXCEPTION\_\-H}~(1)
+\item 
+\#define {\bf JAVA\_\-LANG\_\-EXCEPTION\_\-REF2PTR}(r)
+\item 
+\#define {\bf JAVA\_\-LANG\_\-EXCEPTION\_\-PTR2REF}(p)~((uintptr\_\-t) (p) + offsetof({\bf java\_\-lang\_\-Exception\_\-t}, header))
+\end{DoxyCompactItemize}
+\subsection*{Typedefs}
+\begin{DoxyCompactItemize}
+\item 
+typedef {\bf java\_\-lang\_\-Throwable\_\-t} {\bf java\_\-lang\_\-Exception\_\-t}
+\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+Java Class 'java.lang.Exception' declaration 
+
+Definition in file {\bf java\_\-lang\_\-Exception.h}.
+
+
+
+\subsection{Define Documentation}
+\index{java\_\-lang\_\-Exception.h@{java\_\-lang\_\-Exception.h}!JAVA\_\-LANG\_\-EXCEPTION\_\-PTR2REF@{JAVA\_\-LANG\_\-EXCEPTION\_\-PTR2REF}}
+\index{JAVA\_\-LANG\_\-EXCEPTION\_\-PTR2REF@{JAVA\_\-LANG\_\-EXCEPTION\_\-PTR2REF}!java_lang_Exception.h@{java\_\-lang\_\-Exception.h}}
+\subsubsection[{JAVA\_\-LANG\_\-EXCEPTION\_\-PTR2REF}]{\setlength{\rightskip}{0pt plus 5cm}\#define JAVA\_\-LANG\_\-EXCEPTION\_\-PTR2REF(
+\begin{DoxyParamCaption}
+\item[{}]{p}
+\end{DoxyParamCaption}
+)~((uintptr\_\-t) (p) + offsetof({\bf java\_\-lang\_\-Exception\_\-t}, header))}\label{java__lang___exception_8h_aa4cfabefe3116d3594135cb6dc3ad22e}
+Turns a C pointer into a reference to a Java Exception object 
+
+Definition at line 43 of file java\_\-lang\_\-Exception.h.
+
+\index{java\_\-lang\_\-Exception.h@{java\_\-lang\_\-Exception.h}!JAVA\_\-LANG\_\-EXCEPTION\_\-REF2PTR@{JAVA\_\-LANG\_\-EXCEPTION\_\-REF2PTR}}
+\index{JAVA\_\-LANG\_\-EXCEPTION\_\-REF2PTR@{JAVA\_\-LANG\_\-EXCEPTION\_\-REF2PTR}!java_lang_Exception.h@{java\_\-lang\_\-Exception.h}}
+\subsubsection[{JAVA\_\-LANG\_\-EXCEPTION\_\-REF2PTR}]{\setlength{\rightskip}{0pt plus 5cm}\#define JAVA\_\-LANG\_\-EXCEPTION\_\-REF2PTR(
+\begin{DoxyParamCaption}
+\item[{}]{r}
+\end{DoxyParamCaption}
+)}\label{java__lang___exception_8h_a16743ddd4e2206aec541dae187e7bf28}
+{\bfseries Value:}
+\begin{DoxyCode}
+((java_lang_Exception_t *) \
+         ((r) - offsetof(java_lang_Exception_t, header)))
+\end{DoxyCode}
+Turns a reference to a Java Exception object into a C pointer 
+
+Definition at line 38 of file java\_\-lang\_\-Exception.h.
+
+\index{java\_\-lang\_\-Exception.h@{java\_\-lang\_\-Exception.h}!JELATINE\_\-JAVA\_\-LANG\_\-EXCEPTION\_\-H@{JELATINE\_\-JAVA\_\-LANG\_\-EXCEPTION\_\-H}}
+\index{JELATINE\_\-JAVA\_\-LANG\_\-EXCEPTION\_\-H@{JELATINE\_\-JAVA\_\-LANG\_\-EXCEPTION\_\-H}!java_lang_Exception.h@{java\_\-lang\_\-Exception.h}}
+\subsubsection[{JELATINE\_\-JAVA\_\-LANG\_\-EXCEPTION\_\-H}]{\setlength{\rightskip}{0pt plus 5cm}\#define JELATINE\_\-JAVA\_\-LANG\_\-EXCEPTION\_\-H~(1)}\label{java__lang___exception_8h_ace3aa906f8420a0f9281ce7568e0cc10}
+\doxyref{java\_\-lang\_\-Exception.h}{p.}{java__lang___exception_8h} inclusion macro 
+
+Definition at line 28 of file java\_\-lang\_\-Exception.h.
+
+
+
+\subsection{Typedef Documentation}
+\index{java\_\-lang\_\-Exception.h@{java\_\-lang\_\-Exception.h}!java\_\-lang\_\-Exception\_\-t@{java\_\-lang\_\-Exception\_\-t}}
+\index{java\_\-lang\_\-Exception\_\-t@{java\_\-lang\_\-Exception\_\-t}!java_lang_Exception.h@{java\_\-lang\_\-Exception.h}}
+\subsubsection[{java\_\-lang\_\-Exception\_\-t}]{\setlength{\rightskip}{0pt plus 5cm}typedef {\bf java\_\-lang\_\-Throwable\_\-t} {\bf java\_\-lang\_\-Exception\_\-t}}\label{java__lang___exception_8h_ab09e178543d540b6c0664b7a2a5dae2b}
+Structure mirroring an instance of the \doxyref{java.lang.Exception}{p.}{classjava_1_1lang_1_1_exception} class 
+
+Definition at line 35 of file java\_\-lang\_\-Exception.h.
+

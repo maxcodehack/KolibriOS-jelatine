@@ -1,0 +1,146 @@
+\section{kni.c File Reference}
+\label{kni_8c}\index{kni.c@{kni.c}}
+{\ttfamily \#include \char`\"{}wrappers.h\char`\"{}}\par
+{\ttfamily \#include \char`\"{}class.h\char`\"{}}\par
+{\ttfamily \#include \char`\"{}field.h\char`\"{}}\par
+{\ttfamily \#include \char`\"{}jstring.h\char`\"{}}\par
+{\ttfamily \#include \char`\"{}kni.h\char`\"{}}\par
+{\ttfamily \#include \char`\"{}loader.h\char`\"{}}\par
+{\ttfamily \#include \char`\"{}memory.h\char`\"{}}\par
+{\ttfamily \#include \char`\"{}vm.h\char`\"{}}\par
+{\ttfamily \#include \char`\"{}java\_\-lang\_\-String.h\char`\"{}}\par
+{\ttfamily \#include \char`\"{}java\_\-lang\_\-Throwable.h\char`\"{}}\par
+\subsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+{\bf jint} {\bf KNI\_\-ThrowNew} (const char $\ast$name, const char $\ast$message)
+\item 
+void {\bf KNI\_\-FatalError} (const char $\ast$message)
+\item 
+{\bf jfieldID} {\bf KNI\_\-GetFieldID} ({\bf jclass} classHandle, const char $\ast$name, const char $\ast$signature)
+\item 
+{\bf jfieldID} {\bf KNI\_\-GetStaticFieldID} ({\bf jclass} classHandle, const char $\ast$name, const char $\ast$signature)
+\item 
+void {\bf KNI\_\-GetStringRegion} ({\bf jstring} stringHandle, {\bf jsize} offset, {\bf jsize} n, {\bf jchar} $\ast$jcharbuf)
+\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+CLDC native interface implementation 
+
+Definition in file {\bf kni.c}.
+
+
+
+\subsection{Function Documentation}
+\index{kni.c@{kni.c}!KNI\_\-FatalError@{KNI\_\-FatalError}}
+\index{KNI\_\-FatalError@{KNI\_\-FatalError}!kni.c@{kni.c}}
+\subsubsection[{KNI\_\-FatalError}]{\setlength{\rightskip}{0pt plus 5cm}void KNI\_\-FatalError (
+\begin{DoxyParamCaption}
+\item[{const char $\ast$}]{ message}
+\end{DoxyParamCaption}
+)}\label{kni_8c_a546e5c946421d85c93c00ccaa2801970}
+Prints an error message to the system’s standard error output, and terminates the execution of the virtual machine immediately 
+\begin{DoxyParams}{Parameters}
+\item[{\em message}]The error message as a UTF-\/8 string \end{DoxyParams}
+
+
+Definition at line 77 of file kni.c.
+
+
+
+References vm\_\-fail().
+
+\index{kni.c@{kni.c}!KNI\_\-GetFieldID@{KNI\_\-GetFieldID}}
+\index{KNI\_\-GetFieldID@{KNI\_\-GetFieldID}!kni.c@{kni.c}}
+\subsubsection[{KNI\_\-GetFieldID}]{\setlength{\rightskip}{0pt plus 5cm}{\bf jfieldID} KNI\_\-GetFieldID (
+\begin{DoxyParamCaption}
+\item[{{\bf jclass}}]{ classHandle, }
+\item[{const char $\ast$}]{ name, }
+\item[{const char $\ast$}]{ signature}
+\end{DoxyParamCaption}
+)}\label{kni_8c_a8e6d6d1f27553d04b82b4eed2a549d97}
+Returns the field ID of an instance field of the class represented by classHandle. The field is specified by its name and signature. The Get$<$Type$>$Field and Set$<$Type$>$Field families of accessor functions use field IDs to retrieve the value of instance fields. The field must be accessible from the class referred to by classHandle 
+\begin{DoxyParams}{Parameters}
+\item[{\em classHandle}]A handle pointing to a class whose field ID will be retrieved \item[{\em name}]The field name as a UTF-\/8 string \item[{\em signature}]The field descriptor as a UTF-\/8 string \end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Returns a field ID or NULL if the lookup fails for any reason 
+\end{DoxyReturn}
+
+
+Definition at line 98 of file kni.c.
+
+
+
+References bcl\_\-get\_\-class\_\-by\_\-id(), class\_\-get\_\-field(), field\_\-is\_\-static(), JAVA\_\-LANG\_\-CLASS\_\-REF2PTR, and field\_\-t::offset.
+
+\index{kni.c@{kni.c}!KNI\_\-GetStaticFieldID@{KNI\_\-GetStaticFieldID}}
+\index{KNI\_\-GetStaticFieldID@{KNI\_\-GetStaticFieldID}!kni.c@{kni.c}}
+\subsubsection[{KNI\_\-GetStaticFieldID}]{\setlength{\rightskip}{0pt plus 5cm}{\bf jfieldID} KNI\_\-GetStaticFieldID (
+\begin{DoxyParamCaption}
+\item[{{\bf jclass}}]{ classHandle, }
+\item[{const char $\ast$}]{ name, }
+\item[{const char $\ast$}]{ signature}
+\end{DoxyParamCaption}
+)}\label{kni_8c_ac66dadac057e3c7df9163a1b8a07fa39}
+Returns the field ID of a static field of the class represented by {\itshape classHandle\/}. The field is specified by its name and signature. The GetStatic$<$Type$>$Field and SetStatic$<$Type$>$Field families of accessor functions use field IDs to retrieve the value of static fields. The field must be accessible from the class referred to by classHandle 
+\begin{DoxyParams}{Parameters}
+\item[{\em classHandle}]A handle pointing to a class whose field ID will be retrieved \item[{\em name}]The field name as a UTF-\/8 string \item[{\em signature}]The field descriptor as a UTF-\/8 string \end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Returns a field ID or NULL if the lookup fails for any reason 
+\end{DoxyReturn}
+
+
+Definition at line 129 of file kni.c.
+
+
+
+References bcl\_\-get\_\-class\_\-by\_\-id(), class\_\-get\_\-field(), field\_\-is\_\-static(), JAVA\_\-LANG\_\-CLASS\_\-REF2PTR, field\_\-t::offset, class\_\-t::static\_\-data, and static\_\-field\_\-data\_\-ptr().
+
+\index{kni.c@{kni.c}!KNI\_\-GetStringRegion@{KNI\_\-GetStringRegion}}
+\index{KNI\_\-GetStringRegion@{KNI\_\-GetStringRegion}!kni.c@{kni.c}}
+\subsubsection[{KNI\_\-GetStringRegion}]{\setlength{\rightskip}{0pt plus 5cm}void KNI\_\-GetStringRegion (
+\begin{DoxyParamCaption}
+\item[{{\bf jstring}}]{ stringHandle, }
+\item[{{\bf jsize}}]{ offset, }
+\item[{{\bf jsize}}]{ n, }
+\item[{{\bf jchar} $\ast$}]{ jcharbuf}
+\end{DoxyParamCaption}
+)}\label{kni_8c_a50c85f327f291f3c688084205f83fa37}
+Copies a number of Unicode characters from a java.lang.String object (denoted by {\itshape stringHandle\/}), beginning at {\itshape offset\/}, to the given buffer {\itshape jcharbuf\/}. No range checking is performed. It is the responsibility of the native function programmer to allocate the return buffer, and to make sure that it is large enough 
+\begin{DoxyParams}{Parameters}
+\item[{\em stringHandle}]A handle pointing to a java.lang.String object whose contents are to be copied \item[{\em offset}]The offset within the string object at which to start copying (offset 0: first character in the Java string.) \item[{\em n}]The number of 16-\/bit Unicode characters to copy \item[{\em jcharbuf}]A pointer to a buffer to hold the Unicode characters \end{DoxyParams}
+
+
+Definition at line 164 of file kni.c.
+
+
+
+References array\_\-get\_\-data(), JAVA\_\-LANG\_\-STRING\_\-REF2PTR, and java\_\-lang\_\-String\_\-t::value.
+
+\index{kni.c@{kni.c}!KNI\_\-ThrowNew@{KNI\_\-ThrowNew}}
+\index{KNI\_\-ThrowNew@{KNI\_\-ThrowNew}!kni.c@{kni.c}}
+\subsubsection[{KNI\_\-ThrowNew}]{\setlength{\rightskip}{0pt plus 5cm}{\bf jint} KNI\_\-ThrowNew (
+\begin{DoxyParamCaption}
+\item[{const char $\ast$}]{ name, }
+\item[{const char $\ast$}]{ message}
+\end{DoxyParamCaption}
+)}\label{kni_8c_a76144fa07666e2d5b2fa38d473a7e8ff}
+Instantiates an exception object with the message specified by message, and causes that exception to be thrown. A thrown exception will be pending in the current thread, but does not immediately disrupt native code execution. The actual exception will be thrown when the program control returns from the native function back to the virtual machine. Note that KNI\_\-ThrowNew does not run the constructor on the new exception object. 
+\begin{DoxyParams}{Parameters}
+\item[{\em name}]The name of a java.lang.Throwable class as a UTF-\/8 string \item[{\em message}]The message used to construct the java.lang.Throwable object; represented as a UTF-\/8 string \end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+KNI\_\-OK on success; otherwise KNI\_\-ERR 
+\end{DoxyReturn}
+
+
+Definition at line 52 of file kni.c.
+
+
+
+References bcl\_\-resolve\_\-class(), stack\_\-frame\_\-t::cl, java\_\-lang\_\-Throwable\_\-t::detailMessage, thread\_\-t::exception, thread\_\-t::fp, gc\_\-new(), JAVA\_\-LANG\_\-STRING\_\-PTR2REF, JAVA\_\-LANG\_\-THROWABLE\_\-REF2PTR, jstring\_\-create\_\-from\_\-utf8(), and thread\_\-self().
+
+
+
+Referenced by arraycopy\_\-ref(), java\_\-lang\_\-Class\_\-forName(), java\_\-lang\_\-Class\_\-isAssignableFrom(), java\_\-lang\_\-Object\_\-\_\-wait(), java\_\-lang\_\-Object\_\-notify(), java\_\-lang\_\-Object\_\-notifyAll(), java\_\-lang\_\-System\_\-arraycopy(), java\_\-lang\_\-Thread\_\-sleep(), thread\_\-join(), thread\_\-sleep(), and thread\_\-wait().
+

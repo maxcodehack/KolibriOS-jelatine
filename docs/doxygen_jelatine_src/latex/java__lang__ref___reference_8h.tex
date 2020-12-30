@@ -1,0 +1,76 @@
+\section{src/jelatine/java\_\-lang\_\-ref\_\-Reference.h File Reference}
+\label{java__lang__ref___reference_8h}\index{src/jelatine/java\_\-lang\_\-ref\_\-Reference.h@{src/jelatine/java\_\-lang\_\-ref\_\-Reference.h}}
+{\ttfamily \#include \char`\"{}wrappers.h\char`\"{}}\par
+\subsection*{Data Structures}
+\begin{DoxyCompactItemize}
+\item 
+struct {\bf java\_\-lang\_\-ref\_\-Reference\_\-t}
+\end{DoxyCompactItemize}
+\subsection*{Defines}
+\begin{DoxyCompactItemize}
+\item 
+\#define {\bf JELATINE\_\-JAVA\_\-LANG\_\-REF\_\-REFERENCE\_\-H}~(1)
+\item 
+\#define {\bf JAVA\_\-LANG\_\-REF\_\-REFERENCE\_\-REF2PTR}(r)
+\item 
+\#define {\bf JAVA\_\-LANG\_\-REF\_\-REFERENCE\_\-PTR2REF}(p)~((uintptr\_\-t) (p) + offsetof({\bf java\_\-lang\_\-ref\_\-Reference\_\-t}, header))
+\end{DoxyCompactItemize}
+\subsection*{Typedefs}
+\begin{DoxyCompactItemize}
+\item 
+typedef struct {\bf java\_\-lang\_\-ref\_\-Reference\_\-t} {\bf java\_\-lang\_\-ref\_\-Reference\_\-t}
+\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+Java Class 'java.lang.ref.Reference' declaration 
+
+Definition in file {\bf java\_\-lang\_\-ref\_\-Reference.h}.
+
+
+
+\subsection{Define Documentation}
+\index{java\_\-lang\_\-ref\_\-Reference.h@{java\_\-lang\_\-ref\_\-Reference.h}!JAVA\_\-LANG\_\-REF\_\-REFERENCE\_\-PTR2REF@{JAVA\_\-LANG\_\-REF\_\-REFERENCE\_\-PTR2REF}}
+\index{JAVA\_\-LANG\_\-REF\_\-REFERENCE\_\-PTR2REF@{JAVA\_\-LANG\_\-REF\_\-REFERENCE\_\-PTR2REF}!java_lang_ref_Reference.h@{java\_\-lang\_\-ref\_\-Reference.h}}
+\subsubsection[{JAVA\_\-LANG\_\-REF\_\-REFERENCE\_\-PTR2REF}]{\setlength{\rightskip}{0pt plus 5cm}\#define JAVA\_\-LANG\_\-REF\_\-REFERENCE\_\-PTR2REF(
+\begin{DoxyParamCaption}
+\item[{}]{p}
+\end{DoxyParamCaption}
+)~((uintptr\_\-t) (p) + offsetof({\bf java\_\-lang\_\-ref\_\-Reference\_\-t}, header))}\label{java__lang__ref___reference_8h_a0f5d6f0fb6a9579de9b8cba39407a81d}
+Turns a C pointer into a reference to a Java WeakReference object 
+
+Definition at line 48 of file java\_\-lang\_\-ref\_\-Reference.h.
+
+\index{java\_\-lang\_\-ref\_\-Reference.h@{java\_\-lang\_\-ref\_\-Reference.h}!JAVA\_\-LANG\_\-REF\_\-REFERENCE\_\-REF2PTR@{JAVA\_\-LANG\_\-REF\_\-REFERENCE\_\-REF2PTR}}
+\index{JAVA\_\-LANG\_\-REF\_\-REFERENCE\_\-REF2PTR@{JAVA\_\-LANG\_\-REF\_\-REFERENCE\_\-REF2PTR}!java_lang_ref_Reference.h@{java\_\-lang\_\-ref\_\-Reference.h}}
+\subsubsection[{JAVA\_\-LANG\_\-REF\_\-REFERENCE\_\-REF2PTR}]{\setlength{\rightskip}{0pt plus 5cm}\#define JAVA\_\-LANG\_\-REF\_\-REFERENCE\_\-REF2PTR(
+\begin{DoxyParamCaption}
+\item[{}]{r}
+\end{DoxyParamCaption}
+)}\label{java__lang__ref___reference_8h_a68212c90b2182ac5410fb940e0d02377}
+{\bfseries Value:}
+\begin{DoxyCode}
+((java_lang_ref_Reference_t *) \
+         ((r) - offsetof(java_lang_ref_Reference_t, header)))
+\end{DoxyCode}
+Turns a reference to a Java Reference object into a C pointer 
+
+Definition at line 43 of file java\_\-lang\_\-ref\_\-Reference.h.
+
+\index{java\_\-lang\_\-ref\_\-Reference.h@{java\_\-lang\_\-ref\_\-Reference.h}!JELATINE\_\-JAVA\_\-LANG\_\-REF\_\-REFERENCE\_\-H@{JELATINE\_\-JAVA\_\-LANG\_\-REF\_\-REFERENCE\_\-H}}
+\index{JELATINE\_\-JAVA\_\-LANG\_\-REF\_\-REFERENCE\_\-H@{JELATINE\_\-JAVA\_\-LANG\_\-REF\_\-REFERENCE\_\-H}!java_lang_ref_Reference.h@{java\_\-lang\_\-ref\_\-Reference.h}}
+\subsubsection[{JELATINE\_\-JAVA\_\-LANG\_\-REF\_\-REFERENCE\_\-H}]{\setlength{\rightskip}{0pt plus 5cm}\#define JELATINE\_\-JAVA\_\-LANG\_\-REF\_\-REFERENCE\_\-H~(1)}\label{java__lang__ref___reference_8h_af400d8fd75797b90840a3966347dab9e}
+\doxyref{java\_\-lang\_\-ref\_\-Reference.h}{p.}{java__lang__ref___reference_8h} inclusion macro 
+
+Definition at line 28 of file java\_\-lang\_\-ref\_\-Reference.h.
+
+
+
+\subsection{Typedef Documentation}
+\index{java\_\-lang\_\-ref\_\-Reference.h@{java\_\-lang\_\-ref\_\-Reference.h}!java\_\-lang\_\-ref\_\-Reference\_\-t@{java\_\-lang\_\-ref\_\-Reference\_\-t}}
+\index{java\_\-lang\_\-ref\_\-Reference\_\-t@{java\_\-lang\_\-ref\_\-Reference\_\-t}!java_lang_ref_Reference.h@{java\_\-lang\_\-ref\_\-Reference.h}}
+\subsubsection[{java\_\-lang\_\-ref\_\-Reference\_\-t}]{\setlength{\rightskip}{0pt plus 5cm}typedef struct {\bf java\_\-lang\_\-ref\_\-Reference\_\-t} {\bf java\_\-lang\_\-ref\_\-Reference\_\-t}}\label{java__lang__ref___reference_8h_a0008d62e9390f4864077d7c775b886c0}
+Typedef for struct \doxyref{java\_\-lang\_\-ref\_\-Reference\_\-t}{p.}{structjava__lang__ref___reference__t} 
+
+Definition at line 40 of file java\_\-lang\_\-ref\_\-Reference.h.
+

@@ -1,0 +1,62 @@
+\section{javax::microedition::io::ContentConnection Interface Reference}
+\label{interfacejavax_1_1microedition_1_1io_1_1_content_connection}\index{javax::microedition::io::ContentConnection@{javax::microedition::io::ContentConnection}}
+Inheritance diagram for javax::microedition::io::ContentConnection:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=4.000000cm]{interfacejavax_1_1microedition_1_1io_1_1_content_connection}
+\end{center}
+\end{figure}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+String {\bf getType} ()
+\item 
+String {\bf getEncoding} ()
+\item 
+long {\bf getLength} ()
+\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+This interface defines the methods of a stream connection used for passing content. 
+
+Definition at line 27 of file ContentConnection.java.
+
+
+
+\subsection{Member Function Documentation}
+\index{javax::microedition::io::ContentConnection@{javax::microedition::io::ContentConnection}!getEncoding@{getEncoding}}
+\index{getEncoding@{getEncoding}!javax::microedition::io::ContentConnection@{javax::microedition::io::ContentConnection}}
+\subsubsection[{getEncoding}]{\setlength{\rightskip}{0pt plus 5cm}String javax::microedition::io::ContentConnection::getEncoding (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}\label{interfacejavax_1_1microedition_1_1io_1_1_content_connection_ad7c45154eabf3254a77447e9b540baa7}
+Returns a description of the encoding used for the content provided by the conncted resource \begin{DoxyReturn}{Returns}
+a String describing the encoding used for the content provided by the conncted resource or null if it is unknown 
+\end{DoxyReturn}
+\index{javax::microedition::io::ContentConnection@{javax::microedition::io::ContentConnection}!getLength@{getLength}}
+\index{getLength@{getLength}!javax::microedition::io::ContentConnection@{javax::microedition::io::ContentConnection}}
+\subsubsection[{getLength}]{\setlength{\rightskip}{0pt plus 5cm}long javax::microedition::io::ContentConnection::getLength (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}\label{interfacejavax_1_1microedition_1_1io_1_1_content_connection_a4032eb72596459e25175d1d11fb7b469}
+Returns the provided content's length \begin{DoxyReturn}{Returns}
+the provided content's length or -\/1 if it is unknown 
+\end{DoxyReturn}
+\index{javax::microedition::io::ContentConnection@{javax::microedition::io::ContentConnection}!getType@{getType}}
+\index{getType@{getType}!javax::microedition::io::ContentConnection@{javax::microedition::io::ContentConnection}}
+\subsubsection[{getType}]{\setlength{\rightskip}{0pt plus 5cm}String javax::microedition::io::ContentConnection::getType (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}\label{interfacejavax_1_1microedition_1_1io_1_1_content_connection_a25ef2170df553ec17e2086c74f0a5140}
+Returns the type of content provided by the connected resource. \begin{DoxyReturn}{Returns}
+the type of content provided by the connected resource or null if the content type is unknown 
+\end{DoxyReturn}
+
+
+The documentation for this interface was generated from the following file:\begin{DoxyCompactItemize}
+\item 
+src/classpath/javax/microedition/io/ContentConnection.java\end{DoxyCompactItemize}

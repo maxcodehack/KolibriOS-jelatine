@@ -1,0 +1,289 @@
+\section{java::io::InputStreamReader Class Reference}
+\label{classjava_1_1io_1_1_input_stream_reader}\index{java::io::InputStreamReader@{java::io::InputStreamReader}}
+Inheritance diagram for java::io::InputStreamReader:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=2.000000cm]{classjava_1_1io_1_1_input_stream_reader}
+\end{center}
+\end{figure}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+{\bf InputStreamReader} ({\bf InputStream} in)
+\item 
+{\bf InputStreamReader} ({\bf InputStream} in, String encoding)  throws UnsupportedEncodingException     
+\item 
+int {\bf read} ()  throws IOException     
+\item 
+int {\bf read} (char[$\,$] buf, int offset, int length)  throws IOException     
+\item 
+long {\bf skip} (long count)  throws IOException      
+\item 
+boolean {\bf ready} ()  throws IOException     
+\item 
+void {\bf mark} (int readLimit)  throws IOException     
+\item 
+void {\bf reset} ()  throws IOException     
+\item 
+void {\bf close} ()  throws IOException     
+\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+This class reads characters from a byte input stream. The characters read are converted from bytes in the underlying stream by a decoding layer. The decoding layer transforms bytes to chars according to an encoding standard. There are many available encodings to choose from. The desired encoding can either be specified by name, or if no encoding is selected, the system default encoding will be used. The system default encoding name is determined from the system property {\ttfamily file.encoding}. The only encodings that are guaranteed to be availalbe are \char`\"{}8859\_\-1\char`\"{} (the Latin-\/1 character set) and \char`\"{}UTF8\char`\"{}. Unforunately, Java does not provide a mechanism for listing the ecodings that are supported in a given implementation. 
+
+Here is a list of standard encoding names that may be available: 
+
+
+\begin{DoxyItemize}
+\item 8859\_\-1 (ISO-\/8859-\/1/Latin-\/1) 
+\item ASCII (7-\/bit ASCII) 
+\item More later 
+\end{DoxyItemize}
+
+It is recommended that applications do not use {\ttfamily \doxyref{InputStreamReader}{p.}{classjava_1_1io_1_1_input_stream_reader}}'s directly. Rather, for efficiency purposes, an object of this class should be wrapped by a {\ttfamily BufferedReader}. 
+
+Due to a deficiency the Java class library design, there is no standard way for an application to install its own byte-\/character encoding.
+
+\begin{DoxySeeAlso}{See also}
+\doxyref{InputStream}{p.}{classjava_1_1io_1_1_input_stream}
+\end{DoxySeeAlso}
+\begin{DoxyAuthor}{Author}
+Robert Schuster 
+
+Aaron M. Renn ({\tt arenn@urbanophile.com}) 
+
+Per Bothner ({\tt bothner@cygnus.com}) 
+\end{DoxyAuthor}
+
+
+Definition at line 76 of file InputStreamReader.java.
+
+
+
+\subsection{Constructor \& Destructor Documentation}
+\index{java::io::InputStreamReader@{java::io::InputStreamReader}!InputStreamReader@{InputStreamReader}}
+\index{InputStreamReader@{InputStreamReader}!java::io::InputStreamReader@{java::io::InputStreamReader}}
+\subsubsection[{InputStreamReader}]{\setlength{\rightskip}{0pt plus 5cm}java::io::InputStreamReader::InputStreamReader (
+\begin{DoxyParamCaption}
+\item[{{\bf InputStream}}]{ in}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily  [inline]}}\label{classjava_1_1io_1_1_input_stream_reader_a9b498732e19c5cdfa98539dce147aff4}
+This method initializes a new instance of {\ttfamily \doxyref{InputStreamReader}{p.}{classjava_1_1io_1_1_input_stream_reader}} to read from the specified stream using the default encoding.
+
+
+\begin{DoxyParams}{Parameters}
+\item[{\em in}]The {\ttfamily \doxyref{InputStream}{p.}{classjava_1_1io_1_1_input_stream}} to read from \end{DoxyParams}
+
+
+Definition at line 89 of file InputStreamReader.java.
+
+\index{java::io::InputStreamReader@{java::io::InputStreamReader}!InputStreamReader@{InputStreamReader}}
+\index{InputStreamReader@{InputStreamReader}!java::io::InputStreamReader@{java::io::InputStreamReader}}
+\subsubsection[{InputStreamReader}]{\setlength{\rightskip}{0pt plus 5cm}java::io::InputStreamReader::InputStreamReader (
+\begin{DoxyParamCaption}
+\item[{{\bf InputStream}}]{ in, }
+\item[{String}]{ encoding}
+\end{DoxyParamCaption}
+)  throws {\bf UnsupportedEncodingException}     \hspace{0.3cm}{\ttfamily  [inline]}}\label{classjava_1_1io_1_1_input_stream_reader_a8953eb18091cbfcfe77f8e84ecb7f5f7}
+This method initializes a new instance of {\ttfamily \doxyref{InputStreamReader}{p.}{classjava_1_1io_1_1_input_stream_reader}} to read from the specified stream using a caller supplied character encoding scheme. Note that due to a deficiency in the Java language design, there is no way to determine which encodings are supported.
+
+
+\begin{DoxyParams}{Parameters}
+\item[{\em in}]The {\ttfamily \doxyref{InputStream}{p.}{classjava_1_1io_1_1_input_stream}} to read from \item[{\em encoding}]The name of the encoding scheme to use\end{DoxyParams}
+
+\begin{DoxyExceptions}{Exceptions}
+\item[{\em \doxyref{UnsupportedEncodingException}{p.}{classjava_1_1io_1_1_unsupported_encoding_exception}}]If the encoding scheme requested is not available. \end{DoxyExceptions}
+
+
+Definition at line 106 of file InputStreamReader.java.
+
+
+
+\subsection{Member Function Documentation}
+\index{java::io::InputStreamReader@{java::io::InputStreamReader}!close@{close}}
+\index{close@{close}!java::io::InputStreamReader@{java::io::InputStreamReader}}
+\subsubsection[{close}]{\setlength{\rightskip}{0pt plus 5cm}void java::io::InputStreamReader::close (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)  throws {\bf IOException}     \hspace{0.3cm}{\ttfamily  [inline, virtual]}}\label{classjava_1_1io_1_1_input_stream_reader_a38638d4104043bc4f9e128f910833001}
+This method closes this stream, as well as the underlying {\ttfamily \doxyref{InputStream}{p.}{classjava_1_1io_1_1_input_stream}}.
+
+
+\begin{DoxyExceptions}{Exceptions}
+\item[{\em \doxyref{IOException}{p.}{classjava_1_1io_1_1_i_o_exception}}]If an error occurs \end{DoxyExceptions}
+
+
+Implements {\bf java::io::Reader} \doxyref{}{p.}{classjava_1_1io_1_1_reader_ab6296bac6525b15c822db692b2a376b1}.
+
+
+
+Definition at line 235 of file InputStreamReader.java.
+
+
+
+References java::io::InputStream::close(), and java::io::Reader::lock.
+
+\index{java::io::InputStreamReader@{java::io::InputStreamReader}!mark@{mark}}
+\index{mark@{mark}!java::io::InputStreamReader@{java::io::InputStreamReader}}
+\subsubsection[{mark}]{\setlength{\rightskip}{0pt plus 5cm}void java::io::InputStreamReader::mark (
+\begin{DoxyParamCaption}
+\item[{int}]{ readLimit}
+\end{DoxyParamCaption}
+)  throws {\bf IOException}     \hspace{0.3cm}{\ttfamily  [inline]}}\label{classjava_1_1io_1_1_input_stream_reader_a5ca4407c5e6dec228e6b00ec1242003e}
+Marks the current position in the underlying stream 
+\begin{DoxyParams}{Parameters}
+\item[{\em readLimit}]The number of chars that can be read before the mark becomes invalid \end{DoxyParams}
+
+\begin{DoxyExceptions}{Exceptions}
+\item[{\em \doxyref{IOException}{p.}{classjava_1_1io_1_1_i_o_exception}}]if an error occurs \end{DoxyExceptions}
+
+
+Reimplemented from {\bf java::io::Reader} \doxyref{}{p.}{classjava_1_1io_1_1_reader_a65f1fc734a064e2e1a653106401fe366}.
+
+
+
+Definition at line 213 of file InputStreamReader.java.
+
+
+
+References java::io::InputStream::mark().
+
+\index{java::io::InputStreamReader@{java::io::InputStreamReader}!read@{read}}
+\index{read@{read}!java::io::InputStreamReader@{java::io::InputStreamReader}}
+\subsubsection[{read}]{\setlength{\rightskip}{0pt plus 5cm}int java::io::InputStreamReader::read (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)  throws {\bf IOException}     \hspace{0.3cm}{\ttfamily  [inline]}}\label{classjava_1_1io_1_1_input_stream_reader_a9902cf5c3805b4b2be48a4390eb09805}
+Reads an char from the input stream and returns it as an int in the range of 0-\/65535. This method also will return -\/1 if the end of the stream has been reached. 
+
+This method will block until the char can be read.
+
+\begin{DoxyReturn}{Returns}
+The char read or -\/1 if end of stream
+\end{DoxyReturn}
+
+\begin{DoxyExceptions}{Exceptions}
+\item[{\em \doxyref{IOException}{p.}{classjava_1_1io_1_1_i_o_exception}}]If an error occurs \end{DoxyExceptions}
+
+
+Reimplemented from {\bf java::io::Reader} \doxyref{}{p.}{classjava_1_1io_1_1_reader_a7e456344736c4c95add3dfdb7e53ea3d}.
+
+
+
+Definition at line 130 of file InputStreamReader.java.
+
+
+
+Referenced by read().
+
+\index{java::io::InputStreamReader@{java::io::InputStreamReader}!read@{read}}
+\index{read@{read}!java::io::InputStreamReader@{java::io::InputStreamReader}}
+\subsubsection[{read}]{\setlength{\rightskip}{0pt plus 5cm}int java::io::InputStreamReader::read (
+\begin{DoxyParamCaption}
+\item[{char[$\,$]}]{ buf, }
+\item[{int}]{ offset, }
+\item[{int}]{ length}
+\end{DoxyParamCaption}
+)  throws {\bf IOException}     \hspace{0.3cm}{\ttfamily  [inline]}}\label{classjava_1_1io_1_1_input_stream_reader_a2fa07c15f33889cdb72f6e7b260ccf8d}
+This method reads up to {\ttfamily length} characters from the stream into the specified array starting at index {\ttfamily offset} into the array.
+
+
+\begin{DoxyParams}{Parameters}
+\item[{\em buf}]The character array to recieve the data read \item[{\em offset}]The offset into the array to start storing characters \item[{\em length}]The requested number of characters to read.\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+The actual number of characters read, or -\/1 if end of stream.
+\end{DoxyReturn}
+
+\begin{DoxyExceptions}{Exceptions}
+\item[{\em \doxyref{IOException}{p.}{classjava_1_1io_1_1_i_o_exception}}]If an error occurs \end{DoxyExceptions}
+
+
+Definition at line 151 of file InputStreamReader.java.
+
+
+
+References java::io::InputStream::read(), and read().
+
+\index{java::io::InputStreamReader@{java::io::InputStreamReader}!ready@{ready}}
+\index{ready@{ready}!java::io::InputStreamReader@{java::io::InputStreamReader}}
+\subsubsection[{ready}]{\setlength{\rightskip}{0pt plus 5cm}boolean java::io::InputStreamReader::ready (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)  throws {\bf IOException}     \hspace{0.3cm}{\ttfamily  [inline]}}\label{classjava_1_1io_1_1_input_stream_reader_a259346db0a18bd41e0ca7471a3651765}
+This method checks to see if the stream is ready to be read. It will return {\ttfamily true} if is, or {\ttfamily false} if it is not. If the stream is not ready to be read, it could (although is not required to) block on the next read attempt.
+
+\begin{DoxyReturn}{Returns}
+{\ttfamily true} if the stream is ready to be read, {\ttfamily false} otherwise
+\end{DoxyReturn}
+
+\begin{DoxyExceptions}{Exceptions}
+\item[{\em \doxyref{IOException}{p.}{classjava_1_1io_1_1_i_o_exception}}]If an error occurs \end{DoxyExceptions}
+
+
+Reimplemented from {\bf java::io::Reader} \doxyref{}{p.}{classjava_1_1io_1_1_reader_ab59aa275aa2a90d2ddc960bf76b73dbb}.
+
+
+
+Definition at line 199 of file InputStreamReader.java.
+
+
+
+References java::io::InputStream::available().
+
+\index{java::io::InputStreamReader@{java::io::InputStreamReader}!reset@{reset}}
+\index{reset@{reset}!java::io::InputStreamReader@{java::io::InputStreamReader}}
+\subsubsection[{reset}]{\setlength{\rightskip}{0pt plus 5cm}void java::io::InputStreamReader::reset (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)  throws {\bf IOException}     \hspace{0.3cm}{\ttfamily  [inline]}}\label{classjava_1_1io_1_1_input_stream_reader_a3b363b4666d37df110babffebff07358}
+Resets the underlying stream to the last marked position 
+\begin{DoxyExceptions}{Exceptions}
+\item[{\em \doxyref{IOException}{p.}{classjava_1_1io_1_1_i_o_exception}}]If an error occurs \end{DoxyExceptions}
+
+
+Reimplemented from {\bf java::io::Reader} \doxyref{}{p.}{classjava_1_1io_1_1_reader_a1fc60008ccfb7a86b7a26612ac8b72ac}.
+
+
+
+Definition at line 223 of file InputStreamReader.java.
+
+
+
+References java::io::InputStream::reset().
+
+\index{java::io::InputStreamReader@{java::io::InputStreamReader}!skip@{skip}}
+\index{skip@{skip}!java::io::InputStreamReader@{java::io::InputStreamReader}}
+\subsubsection[{skip}]{\setlength{\rightskip}{0pt plus 5cm}long java::io::InputStreamReader::skip (
+\begin{DoxyParamCaption}
+\item[{long}]{ count}
+\end{DoxyParamCaption}
+)  throws {\bf IOException}      \hspace{0.3cm}{\ttfamily  [inline]}}\label{classjava_1_1io_1_1_input_stream_reader_ac934d6ea5574fadcfdbfe0b49f86a8e3}
+Skips the specified number of chars in the stream. It returns the actual number of chars skipped, which may be less than the requested amount.
+
+
+\begin{DoxyParams}{Parameters}
+\item[{\em count}]The requested number of chars to skip\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+The actual number of chars skipped.
+\end{DoxyReturn}
+
+\begin{DoxyExceptions}{Exceptions}
+\item[{\em \doxyref{IOException}{p.}{classjava_1_1io_1_1_i_o_exception}}]If an error occurs \item[{\em IllegalArgumentException}]If count is negative \end{DoxyExceptions}
+
+
+Reimplemented from {\bf java::io::Reader} \doxyref{}{p.}{classjava_1_1io_1_1_reader_a0c7d71d958f72f54cef9e2e5ae2ed50f}.
+
+
+
+Definition at line 177 of file InputStreamReader.java.
+
+
+
+The documentation for this class was generated from the following file:\begin{DoxyCompactItemize}
+\item 
+src/classpath/java/io/InputStreamReader.java\end{DoxyCompactItemize}

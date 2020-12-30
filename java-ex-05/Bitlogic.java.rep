@@ -1,0 +1,120 @@
+rm: cannot remove directory `tmp_preproc/': Is a directory
+
+Found 21 syntax errors in "c:/algoritm/c_src/JVMs/tinyvm_0_2_6/muvm_tests/examples_from_book/05/tmp_preproc/Bitlogic.java":
+
+               <-----------
+     9. String binary[] = {
+   . . .
+    11. char []__wrap_const_string16={'1','1','1','1'};
+        ------>
+*** Syntax Error: misplaced construct(s)
+
+
+    13.  (new String(__wrap_const_string1) ), (new String(__wrap_const_string2) ), (new String(__wrap_const_string3) ), (new String(__wrap_const_string4) ), (new String(__wrap_const_string5) ), (new String(__wrap_const_string6) ), (new String(__wrap_const_string7) ), (new String(__wrap_const_string8) ), (new String(__wrap_const_string9) ), (new String(__wrap_const_string10) ),     (new String(__wrap_const_string11) ), (new String(__wrap_const_string12) ), (new String(__wrap_const_string13) ), (new String(__wrap_const_string14) ),
+                                         ^
+*** Syntax Error: ( expected instead of this token
+
+
+                                           <-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------not exists:Bitlogic.class
+Error compile: tmp_preproc/Bitlogic.java
+---------------------------------------------------------------------------------------------------------------------------------------------------------------------
+    13.  (new String(__wrap_const_string1) ), (new String(__wrap_const_string2) ), (new String(__wrap_const_string3) ), (new String(__wrap_const_string4) ), (new String(__wrap_const_string5) ), (new String(__wrap_const_string6) ), (new String(__wrap_const_string7) ), (new String(__wrap_const_string8) ), (new String(__wrap_const_string9) ), (new String(__wrap_const_string10) ),     (new String(__wrap_const_string11) ), (new String(__wrap_const_string12) ), (new String(__wrap_const_string13) ), (new String(__wrap_const_string14) ),
+    14. (new String(__wrap_const_string15) ), (new String(__wrap_const_string16) ) };
+        ------------------------------------------------------------------------->
+*** Syntax Error: ")" inserted to complete Arguments
+
+
+         <---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+    13.  (new String(__wrap_const_string1) ), (new String(__wrap_const_string2) ), (new String(__wrap_const_string3) ), (new String(__wrap_const_string4) ), (new String(__wrap_const_string5) ), (new String(__wrap_const_string6) ), (new String(__wrap_const_string7) ), (new String(__wrap_const_string8) ), (new String(__wrap_const_string9) ), (new String(__wrap_const_string10) ),     (new String(__wrap_const_string11) ), (new String(__wrap_const_string12) ), (new String(__wrap_const_string13) ), (new String(__wrap_const_string14) ),
+    14. (new String(__wrap_const_string15) ), (new String(__wrap_const_string16) ) };
+        ------------------------------------------------------------------------->
+*** Syntax Error: ")" inserted to complete PrimaryNoNewArray
+
+
+         <---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+    13.  (new String(__wrap_const_string1) ), (new String(__wrap_const_string2) ), (new String(__wrap_const_string3) ), (new String(__wrap_const_string4) ), (new String(__wrap_const_string5) ), (new String(__wrap_const_string6) ), (new String(__wrap_const_string7) ), (new String(__wrap_const_string8) ), (new String(__wrap_const_string9) ), (new String(__wrap_const_string10) ),     (new String(__wrap_const_string11) ), (new String(__wrap_const_string12) ), (new String(__wrap_const_string13) ), (new String(__wrap_const_string14) ),
+    14. (new String(__wrap_const_string15) ), (new String(__wrap_const_string16) ) };
+        ------------------------------------------------------------------------->
+*** Syntax Error: "AssignmentOperator AssignmentExpression" inserted to complete Assignment
+
+
+         <---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+    13.  (new String(__wrap_const_string1) ), (new String(__wrap_const_string2) ), (new String(__wrap_const_string3) ), (new String(__wrap_const_string4) ), (new String(__wrap_const_string5) ), (new String(__wrap_const_string6) ), (new String(__wrap_const_string7) ), (new String(__wrap_const_string8) ), (new String(__wrap_const_string9) ), (new String(__wrap_const_string10) ),     (new String(__wrap_const_string11) ), (new String(__wrap_const_string12) ), (new String(__wrap_const_string13) ), (new String(__wrap_const_string14) ),
+    14. (new String(__wrap_const_string15) ), (new String(__wrap_const_string16) ) };
+        ------------------------------------------------------------------------->
+*** Syntax Error: ";" inserted to complete BlockStatement
+
+
+    33. System.out.println((new String(__wrap_const_string17) ) + binary[a]);
+                  ^
+*** Syntax Error: misplaced construct(s)
+
+
+    33. System.out.println((new String(__wrap_const_string17) ) + binary[a]);
+                   ^-----^
+*** Syntax Error: = expected after this token
+
+
+    38. System.out.println((new String(__wrap_const_string18) ) + binary[b]);
+                  ^
+*** Syntax Error: misplaced construct(s)
+
+
+    38. System.out.println((new String(__wrap_const_string18) ) + binary[b]);
+                   ^-----^
+*** Syntax Error: = expected after this token
+
+
+    43. System.out.println((new String(__wrap_const_string19) ) + binary[c]);
+                  ^
+*** Syntax Error: misplaced construct(s)
+
+
+    43. System.out.println((new String(__wrap_const_string19) ) + binary[c]);
+                   ^-----^
+*** Syntax Error: = expected after this token
+
+
+    48. System.out.println((new String(__wrap_const_string20) ) + binary[d]);
+                  ^
+*** Syntax Error: misplaced construct(s)
+
+
+    48. System.out.println((new String(__wrap_const_string20) ) + binary[d]);
+                   ^-----^
+*** Syntax Error: = expected after this token
+
+
+    53. System.out.println((new String(__wrap_const_string21) ) + binary[e]);
+                  ^
+*** Syntax Error: misplaced construct(s)
+
+
+    53. System.out.println((new String(__wrap_const_string21) ) + binary[e]);
+                   ^-----^
+*** Syntax Error: = expected after this token
+
+
+    58. System.out.println((new String(__wrap_const_string22) ) + binary[f]);
+                  ^
+*** Syntax Error: misplaced construct(s)
+
+
+    58. System.out.println((new String(__wrap_const_string22) ) + binary[f]);
+                   ^-----^
+*** Syntax Error: = expected after this token
+
+
+    63. System.out.println((new String(__wrap_const_string23) ) + binary[g]);
+                  ^
+*** Syntax Error: misplaced construct(s)
+
+
+    63. System.out.println((new String(__wrap_const_string23) ) + binary[g]);
+                   ^-----^
+*** Syntax Error: = expected after this token
+
+
+    64. } }
+          ^
+*** Syntax Error: Unexpected symbol ignored

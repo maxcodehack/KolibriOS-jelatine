@@ -1,0 +1,210 @@
+\section{java::lang::Short Class Reference}
+\label{classjava_1_1lang_1_1_short}\index{java::lang::Short@{java::lang::Short}}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+{\bf Short} (short value)
+\item 
+short {\bf shortValue} ()
+\item 
+int {\bf hashCode} ()
+\item 
+boolean {\bf equals} ({\bf Object} obj)
+\end{DoxyCompactItemize}
+\subsection*{Static Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+static short {\bf parseShort} ({\bf String} s)  throws NumberFormatException     
+\item 
+static short {\bf parseShort} ({\bf String} s, int radix)  throws NumberFormatException     
+\item 
+static {\bf String} {\bf toString} (short s)
+\end{DoxyCompactItemize}
+\subsection*{Static Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+static final short {\bf MIN\_\-VALUE} = -\/32768
+\item 
+static final short {\bf MAX\_\-VALUE} = 32767
+\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+Instances of class {\ttfamily \doxyref{Short}{p.}{classjava_1_1lang_1_1_short}} represent primitive {\ttfamily short} values.
+
+Additionally, this class provides various helper functions and variables related to shorts.
+
+\begin{DoxyAuthor}{Author}
+Paul Fisher 
+
+John Keiser 
+
+Eric Blake ({\tt ebb9@email.byu.edu}) 
+\end{DoxyAuthor}
+
+
+Definition at line 51 of file Short.java.
+
+
+
+\subsection{Constructor \& Destructor Documentation}
+\index{java::lang::Short@{java::lang::Short}!Short@{Short}}
+\index{Short@{Short}!java::lang::Short@{java::lang::Short}}
+\subsubsection[{Short}]{\setlength{\rightskip}{0pt plus 5cm}java::lang::Short::Short (
+\begin{DoxyParamCaption}
+\item[{short}]{ value}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily  [inline]}}\label{classjava_1_1lang_1_1_short_ae68a29bbb748d4ac4f10e6de66bc99b6}
+Create a {\ttfamily \doxyref{Short}{p.}{classjava_1_1lang_1_1_short}} object representing the value of the {\ttfamily short} argument.
+
+
+\begin{DoxyParams}{Parameters}
+\item[{\em value}]the value to use \end{DoxyParams}
+
+
+Definition at line 77 of file Short.java.
+
+
+
+\subsection{Member Function Documentation}
+\index{java::lang::Short@{java::lang::Short}!equals@{equals}}
+\index{equals@{equals}!java::lang::Short@{java::lang::Short}}
+\subsubsection[{equals}]{\setlength{\rightskip}{0pt plus 5cm}boolean java::lang::Short::equals (
+\begin{DoxyParamCaption}
+\item[{{\bf Object}}]{ obj}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily  [inline]}}\label{classjava_1_1lang_1_1_short_a14c9057c88ba7edfdf96e88351ac8d36}
+Returns {\ttfamily true} if {\ttfamily obj} is an instance of {\ttfamily \doxyref{Short}{p.}{classjava_1_1lang_1_1_short}} and represents the same short value.
+
+
+\begin{DoxyParams}{Parameters}
+\item[{\em obj}]the object to compare \end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+whether these Objects are semantically equal 
+\end{DoxyReturn}
+
+
+Definition at line 163 of file Short.java.
+
+\index{java::lang::Short@{java::lang::Short}!hashCode@{hashCode}}
+\index{hashCode@{hashCode}!java::lang::Short@{java::lang::Short}}
+\subsubsection[{hashCode}]{\setlength{\rightskip}{0pt plus 5cm}int java::lang::Short::hashCode (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily  [inline]}}\label{classjava_1_1lang_1_1_short_ac0b948f78aa80ec4c2b6513fba936090}
+Return a hashcode representing this \doxyref{Object}{p.}{classjava_1_1lang_1_1_object}. {\ttfamily \doxyref{Short}{p.}{classjava_1_1lang_1_1_short}}'s hash code is simply its value.
+
+\begin{DoxyReturn}{Returns}
+this Object's hash code 
+\end{DoxyReturn}
+
+
+Definition at line 151 of file Short.java.
+
+\index{java::lang::Short@{java::lang::Short}!parseShort@{parseShort}}
+\index{parseShort@{parseShort}!java::lang::Short@{java::lang::Short}}
+\subsubsection[{parseShort}]{\setlength{\rightskip}{0pt plus 5cm}static short java::lang::Short::parseShort (
+\begin{DoxyParamCaption}
+\item[{{\bf String}}]{ s, }
+\item[{int}]{ radix}
+\end{DoxyParamCaption}
+)  throws {\bf NumberFormatException}     \hspace{0.3cm}{\ttfamily  [inline, static]}}\label{classjava_1_1lang_1_1_short_aeae5e2355537b131caf2c6b64f9106bc}
+Converts the specified {\ttfamily \doxyref{String}{p.}{classjava_1_1lang_1_1_string}} into a {\ttfamily short} using the specified radix (base). The string must not be {\ttfamily null} or empty. It may begin with an optional '-\/', which will negate the answer, provided that there are also valid digits. Each digit is parsed as if by {\ttfamily Character.digit(d, radix)}, and must be in the range {\ttfamily 0} to {\ttfamily radix -\/ 1}. Finally, the result must be within {\ttfamily MIN\_\-VALUE} to {\ttfamily MAX\_\-VALUE}, inclusive. Unlike \doxyref{Double.parseDouble}{p.}{classjava_1_1lang_1_1_double_a5c5fabd1e39b3d9a8b2bc37277da15bc}, you may not have a leading '+'.
+
+
+\begin{DoxyParams}{Parameters}
+\item[{\em s}]the {\ttfamily \doxyref{String}{p.}{classjava_1_1lang_1_1_string}} to convert \item[{\em radix}]the radix (base) to use in the conversion \end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+the {\ttfamily \doxyref{String}{p.}{classjava_1_1lang_1_1_string}} argument converted to {\ttfamily short} 
+\end{DoxyReturn}
+
+\begin{DoxyExceptions}{Exceptions}
+\item[{\em \doxyref{NumberFormatException}{p.}{classjava_1_1lang_1_1_number_format_exception}}]if {\ttfamily s} cannot be parsed as a {\ttfamily short} \end{DoxyExceptions}
+
+
+Definition at line 112 of file Short.java.
+
+\index{java::lang::Short@{java::lang::Short}!parseShort@{parseShort}}
+\index{parseShort@{parseShort}!java::lang::Short@{java::lang::Short}}
+\subsubsection[{parseShort}]{\setlength{\rightskip}{0pt plus 5cm}static short java::lang::Short::parseShort (
+\begin{DoxyParamCaption}
+\item[{{\bf String}}]{ s}
+\end{DoxyParamCaption}
+)  throws {\bf NumberFormatException}     \hspace{0.3cm}{\ttfamily  [inline, static]}}\label{classjava_1_1lang_1_1_short_a3dfda33ef3a9be8cfed2c1a0449c2e6a}
+Converts the specified {\ttfamily \doxyref{String}{p.}{classjava_1_1lang_1_1_string}} into a {\ttfamily short}. This function assumes a radix of 10.
+
+
+\begin{DoxyParams}{Parameters}
+\item[{\em s}]the {\ttfamily \doxyref{String}{p.}{classjava_1_1lang_1_1_string}} to convert \end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+the {\ttfamily short} value of {\ttfamily s} 
+\end{DoxyReturn}
+
+\begin{DoxyExceptions}{Exceptions}
+\item[{\em \doxyref{NumberFormatException}{p.}{classjava_1_1lang_1_1_number_format_exception}}]if {\ttfamily s} cannot be parsed as a {\ttfamily short} \end{DoxyExceptions}
+
+
+Definition at line 91 of file Short.java.
+
+\index{java::lang::Short@{java::lang::Short}!shortValue@{shortValue}}
+\index{shortValue@{shortValue}!java::lang::Short@{java::lang::Short}}
+\subsubsection[{shortValue}]{\setlength{\rightskip}{0pt plus 5cm}short java::lang::Short::shortValue (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily  [inline]}}\label{classjava_1_1lang_1_1_short_ad6fc5095f627293de1a46fbb1a2a0aff}
+Return the value of this {\ttfamily \doxyref{Short}{p.}{classjava_1_1lang_1_1_short}}.
+
+\begin{DoxyReturn}{Returns}
+the short value 
+\end{DoxyReturn}
+
+
+Definition at line 128 of file Short.java.
+
+\index{java::lang::Short@{java::lang::Short}!toString@{toString}}
+\index{toString@{toString}!java::lang::Short@{java::lang::Short}}
+\subsubsection[{toString}]{\setlength{\rightskip}{0pt plus 5cm}static {\bf String} java::lang::Short::toString (
+\begin{DoxyParamCaption}
+\item[{short}]{ s}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily  [inline, static]}}\label{classjava_1_1lang_1_1_short_aefc366e6c38af65dbb6007e5cb6c4d3f}
+Converts the {\ttfamily short} to a {\ttfamily \doxyref{String}{p.}{classjava_1_1lang_1_1_string}} and assumes a radix of 10.
+
+
+\begin{DoxyParams}{Parameters}
+\item[{\em s}]the {\ttfamily short} to convert to {\ttfamily \doxyref{String}{p.}{classjava_1_1lang_1_1_string}} \end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+the {\ttfamily \doxyref{String}{p.}{classjava_1_1lang_1_1_string}} representation of the argument 
+\end{DoxyReturn}
+
+
+Definition at line 140 of file Short.java.
+
+
+
+References java::lang::String::valueOf().
+
+
+
+\subsection{Field Documentation}
+\index{java::lang::Short@{java::lang::Short}!MAX\_\-VALUE@{MAX\_\-VALUE}}
+\index{MAX\_\-VALUE@{MAX\_\-VALUE}!java::lang::Short@{java::lang::Short}}
+\subsubsection[{MAX\_\-VALUE}]{\setlength{\rightskip}{0pt plus 5cm}final short {\bf java::lang::Short::MAX\_\-VALUE} = 32767\hspace{0.3cm}{\ttfamily  [static]}}\label{classjava_1_1lang_1_1_short_a96de448fc461a26b1b09ab42022d11c7}
+The minimum value a {\ttfamily short} can represent is 32767 (or 2$^{\mbox{15}}$ ). 
+
+Definition at line 63 of file Short.java.
+
+\index{java::lang::Short@{java::lang::Short}!MIN\_\-VALUE@{MIN\_\-VALUE}}
+\index{MIN\_\-VALUE@{MIN\_\-VALUE}!java::lang::Short@{java::lang::Short}}
+\subsubsection[{MIN\_\-VALUE}]{\setlength{\rightskip}{0pt plus 5cm}final short {\bf java::lang::Short::MIN\_\-VALUE} = -\/32768\hspace{0.3cm}{\ttfamily  [static]}}\label{classjava_1_1lang_1_1_short_a4a9260ec58e1b887331227834415ae96}
+The minimum value a {\ttfamily short} can represent is -\/32768 (or -\/2$^{\mbox{15}}$ ). 
+
+Definition at line 57 of file Short.java.
+
+
+
+The documentation for this class was generated from the following file:\begin{DoxyCompactItemize}
+\item 
+src/classpath/java/lang/Short.java\end{DoxyCompactItemize}

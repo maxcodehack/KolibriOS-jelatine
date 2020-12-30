@@ -1,0 +1,344 @@
+\section{classfile.c File Reference}
+\label{classfile_8c}\index{classfile.c@{classfile.c}}
+{\ttfamily \#include \char`\"{}wrappers.h\char`\"{}}\par
+{\ttfamily \#include \char`\"{}class.h\char`\"{}}\par
+{\ttfamily \#include \char`\"{}classfile.h\char`\"{}}\par
+{\ttfamily \#include \char`\"{}memory.h\char`\"{}}\par
+{\ttfamily \#include \char`\"{}util.h\char`\"{}}\par
+{\ttfamily \#include \char`\"{}vm.h\char`\"{}}\par
+\subsection*{Data Structures}
+\begin{DoxyCompactItemize}
+\item 
+struct {\bf path\_\-t}
+\item 
+struct {\bf classpath\_\-t}
+\end{DoxyCompactItemize}
+\subsection*{Typedefs}
+\begin{DoxyCompactItemize}
+\item 
+typedef struct {\bf path\_\-t} {\bf path\_\-t}
+\item 
+typedef struct {\bf classpath\_\-t} {\bf classpath\_\-t}
+\end{DoxyCompactItemize}
+\subsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+static void {\bf set\_\-classpath\_\-string} ({\bf path\_\-t} $\ast$, const char $\ast$)
+\item 
+void {\bf classpath\_\-init} (void)
+\item 
+void {\bf classpath\_\-teardown} (void)
+\item 
+static {\bf class\_\-file\_\-t} $\ast$ {\bf cf\_\-open\_\-with\_\-classpath} (const char $\ast$name, const {\bf path\_\-t} $\ast$cp)
+\item 
+{\bf class\_\-file\_\-t} $\ast$ {\bf cf\_\-open} (const char $\ast$name)
+\item 
+void {\bf cf\_\-close} ({\bf class\_\-file\_\-t} $\ast$cf)
+\item 
+uint8\_\-t {\bf cf\_\-load\_\-u1} ({\bf class\_\-file\_\-t} $\ast$cf)
+\item 
+uint16\_\-t {\bf cf\_\-load\_\-u2} ({\bf class\_\-file\_\-t} $\ast$cf)
+\item 
+uint32\_\-t {\bf cf\_\-load\_\-u4} ({\bf class\_\-file\_\-t} $\ast$cf)
+\item 
+void {\bf cf\_\-seek} ({\bf class\_\-file\_\-t} $\ast$cf, long offset, int whence)
+\item 
+long {\bf cf\_\-tell} ({\bf class\_\-file\_\-t} $\ast$cf)
+\end{DoxyCompactItemize}
+\subsection*{Variables}
+\begin{DoxyCompactItemize}
+\item 
+static {\bf classpath\_\-t} $\ast$ {\bf classpath}
+\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+Class-\/file wrapper implementation 
+
+Definition in file {\bf classfile.c}.
+
+
+
+\subsection{Typedef Documentation}
+\index{classfile.c@{classfile.c}!classpath\_\-t@{classpath\_\-t}}
+\index{classpath\_\-t@{classpath\_\-t}!classfile.c@{classfile.c}}
+\subsubsection[{classpath\_\-t}]{\setlength{\rightskip}{0pt plus 5cm}typedef struct {\bf classpath\_\-t} {\bf classpath\_\-t}}\label{classfile_8c_acfd2b010ea13237251f282ab451f7467}
+Typedef for the struct \doxyref{classpath\_\-t}{p.}{structclasspath__t} 
+
+Definition at line 58 of file classfile.c.
+
+\index{classfile.c@{classfile.c}!path\_\-t@{path\_\-t}}
+\index{path\_\-t@{path\_\-t}!classfile.c@{classfile.c}}
+\subsubsection[{path\_\-t}]{\setlength{\rightskip}{0pt plus 5cm}typedef struct {\bf path\_\-t} {\bf path\_\-t}}\label{classfile_8c_ac13281c89c17652ae7a41c7cecfbc444}
+Typedef for the struct \doxyref{path\_\-t}{p.}{structpath__t} 
+
+Definition at line 47 of file classfile.c.
+
+
+
+\subsection{Function Documentation}
+\index{classfile.c@{classfile.c}!cf\_\-close@{cf\_\-close}}
+\index{cf\_\-close@{cf\_\-close}!classfile.c@{classfile.c}}
+\subsubsection[{cf\_\-close}]{\setlength{\rightskip}{0pt plus 5cm}void cf\_\-close (
+\begin{DoxyParamCaption}
+\item[{{\bf class\_\-file\_\-t} $\ast$}]{ cf}
+\end{DoxyParamCaption}
+)}\label{classfile_8c_a5532e290d640c5bdf3dcd03b8efe1336}
+Closes a class file and disposes the relevant structure 
+\begin{DoxyParams}{Parameters}
+\item[{\em cf}]A pointer to the \doxyref{class\_\-file\_\-t}{p.}{structclass__file__t} structure to be closed and disposed \end{DoxyParams}
+
+
+Definition at line 243 of file classfile.c.
+
+
+
+References class\_\-file\_\-t::file, gc\_\-free(), class\_\-file\_\-t::jar, and class\_\-file\_\-t::plain.
+
+
+
+Referenced by load\_\-bytecode(), load\_\-class(), and load\_\-exception\_\-handlers().
+
+\index{classfile.c@{classfile.c}!cf\_\-load\_\-u1@{cf\_\-load\_\-u1}}
+\index{cf\_\-load\_\-u1@{cf\_\-load\_\-u1}!classfile.c@{classfile.c}}
+\subsubsection[{cf\_\-load\_\-u1}]{\setlength{\rightskip}{0pt plus 5cm}uint8\_\-t cf\_\-load\_\-u1 (
+\begin{DoxyParamCaption}
+\item[{{\bf class\_\-file\_\-t} $\ast$}]{ cf}
+\end{DoxyParamCaption}
+)}\label{classfile_8c_a50621051d9a8dcd193c8028775e6d317}
+Reads a single-\/byte value from the provided class-\/file, throws an exception if the end of the file has been already reached 
+\begin{DoxyParams}{Parameters}
+\item[{\em cf}]A pointer to an open class-\/file \end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+A single-\/byte constant read from the class-\/file 
+\end{DoxyReturn}
+
+
+Definition at line 263 of file classfile.c.
+
+
+
+References c\_\-throw, class\_\-file\_\-t::file, class\_\-file\_\-t::jar, JAVA\_\-LANG\_\-NOCLASSDEFFOUNDERROR, and class\_\-file\_\-t::plain.
+
+
+
+Referenced by cp\_\-create(), and load\_\-bytecode().
+
+\index{classfile.c@{classfile.c}!cf\_\-load\_\-u2@{cf\_\-load\_\-u2}}
+\index{cf\_\-load\_\-u2@{cf\_\-load\_\-u2}!classfile.c@{classfile.c}}
+\subsubsection[{cf\_\-load\_\-u2}]{\setlength{\rightskip}{0pt plus 5cm}uint16\_\-t cf\_\-load\_\-u2 (
+\begin{DoxyParamCaption}
+\item[{{\bf class\_\-file\_\-t} $\ast$}]{ cf}
+\end{DoxyParamCaption}
+)}\label{classfile_8c_a03dc7e1beb7129320685bd823899e65e}
+Reads a two-\/bytes value from the provided class-\/file, throws an exception if the end of the file has been already reached 
+\begin{DoxyParams}{Parameters}
+\item[{\em cf}]A pointer to an open class-\/file \end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+A two-\/bytes constant read from the class-\/file 
+\end{DoxyReturn}
+
+
+Definition at line 291 of file classfile.c.
+
+
+
+References c\_\-throw, class\_\-file\_\-t::file, class\_\-file\_\-t::jar, JAVA\_\-LANG\_\-NOCLASSDEFFOUNDERROR, and class\_\-file\_\-t::plain.
+
+
+
+Referenced by cp\_\-create(), derive\_\-class(), load\_\-attribute\_\-Code\_\-attributes(), load\_\-attributes(), load\_\-exception\_\-handlers(), load\_\-field\_\-attribute\_\-ConstantValue(), load\_\-field\_\-attributes(), load\_\-field\_\-info(), load\_\-fields(), load\_\-interfaces(), load\_\-method\_\-attribute\_\-Code(), load\_\-method\_\-attribute\_\-Exceptions(), load\_\-method\_\-attributes(), and load\_\-methods().
+
+\index{classfile.c@{classfile.c}!cf\_\-load\_\-u4@{cf\_\-load\_\-u4}}
+\index{cf\_\-load\_\-u4@{cf\_\-load\_\-u4}!classfile.c@{classfile.c}}
+\subsubsection[{cf\_\-load\_\-u4}]{\setlength{\rightskip}{0pt plus 5cm}uint32\_\-t cf\_\-load\_\-u4 (
+\begin{DoxyParamCaption}
+\item[{{\bf class\_\-file\_\-t} $\ast$}]{ cf}
+\end{DoxyParamCaption}
+)}\label{classfile_8c_a2e17596bb10335ae59a0c809c9e06220}
+Reads a four-\/bytes value from the provided class-\/file, throws an exception if the end of the file has been already reached 
+\begin{DoxyParams}{Parameters}
+\item[{\em cf}]A pointer to an open class-\/file \end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+A four-\/bytes constant read from the class-\/file 
+\end{DoxyReturn}
+
+
+Definition at line 319 of file classfile.c.
+
+
+
+References c\_\-throw, class\_\-file\_\-t::file, class\_\-file\_\-t::jar, JAVA\_\-LANG\_\-NOCLASSDEFFOUNDERROR, and class\_\-file\_\-t::plain.
+
+
+
+Referenced by cp\_\-create(), derive\_\-class(), load\_\-attribute\_\-Code\_\-attributes(), load\_\-attributes(), load\_\-field\_\-attributes(), load\_\-method\_\-attribute\_\-Code(), and load\_\-method\_\-attributes().
+
+\index{classfile.c@{classfile.c}!cf\_\-open@{cf\_\-open}}
+\index{cf\_\-open@{cf\_\-open}!classfile.c@{classfile.c}}
+\subsubsection[{cf\_\-open}]{\setlength{\rightskip}{0pt plus 5cm}{\bf class\_\-file\_\-t}$\ast$ cf\_\-open (
+\begin{DoxyParamCaption}
+\item[{const char $\ast$}]{ name}
+\end{DoxyParamCaption}
+)}\label{classfile_8c_a404b0dc87c818d06ee3475b7777c2c81}
+Opens a class file with the specified class name (in the internal class format) looking in the classpath directory or JAR file, throws an exception if the class file cannot be found or opened. 
+\begin{DoxyParams}{Parameters}
+\item[{\em name}]The class name \end{DoxyParams}
+
+
+Definition at line 212 of file classfile.c.
+
+
+
+References classpath\_\-t::boot, c\_\-throw, cf\_\-open\_\-with\_\-classpath(), classpath\_\-t::entries, JAVA\_\-LANG\_\-NOCLASSDEFFOUNDERROR, and classpath\_\-t::user.
+
+
+
+Referenced by load\_\-bytecode(), load\_\-class(), and load\_\-exception\_\-handlers().
+
+\index{classfile.c@{classfile.c}!cf\_\-open\_\-with\_\-classpath@{cf\_\-open\_\-with\_\-classpath}}
+\index{cf\_\-open\_\-with\_\-classpath@{cf\_\-open\_\-with\_\-classpath}!classfile.c@{classfile.c}}
+\subsubsection[{cf\_\-open\_\-with\_\-classpath}]{\setlength{\rightskip}{0pt plus 5cm}static {\bf class\_\-file\_\-t}$\ast$ cf\_\-open\_\-with\_\-classpath (
+\begin{DoxyParamCaption}
+\item[{const char $\ast$}]{ name, }
+\item[{const {\bf path\_\-t} $\ast$}]{ cp}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily  [static]}}\label{classfile_8c_a61342deac2dfaea703bf5e8df6342ea3}
+Opens a class file by looking it up in the specified classpath 
+\begin{DoxyParams}{Parameters}
+\item[{\em name}]The class name \item[{\em cp}]The classpath used for the class lookup \end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+A new classfile object, throws an exception upon failure 
+\end{DoxyReturn}
+
+
+Definition at line 152 of file classfile.c.
+
+
+
+References class\_\-file\_\-t::file, gc\_\-free(), gc\_\-malloc(), class\_\-file\_\-t::jar, class\_\-file\_\-t::plain, and path\_\-t::str.
+
+
+
+Referenced by cf\_\-open().
+
+\index{classfile.c@{classfile.c}!cf\_\-seek@{cf\_\-seek}}
+\index{cf\_\-seek@{cf\_\-seek}!classfile.c@{classfile.c}}
+\subsubsection[{cf\_\-seek}]{\setlength{\rightskip}{0pt plus 5cm}void cf\_\-seek (
+\begin{DoxyParamCaption}
+\item[{{\bf class\_\-file\_\-t} $\ast$}]{ cf, }
+\item[{long}]{ offset, }
+\item[{int}]{ whence}
+\end{DoxyParamCaption}
+)}\label{classfile_8c_a30b16b7c4eda548afe7ae4b297f834a6}
+Seeks to the position specified by the {\itshape offset\/} parameter, throws an exception if the position is out of the file's range. This function's semantic is the same as fseek() but only the SEEK\_\-SET and SEEK\_\-CUR whence modes are supported 
+\begin{DoxyParams}{Parameters}
+\item[{\em cf}]A pointer to an open class-\/file \item[{\em offset}]The new position in the class-\/file \item[{\em whence}]From where to start seeking \end{DoxyParams}
+
+
+Definition at line 350 of file classfile.c.
+
+
+
+References c\_\-throw, class\_\-file\_\-t::file, class\_\-file\_\-t::jar, JAVA\_\-LANG\_\-NOCLASSDEFFOUNDERROR, and class\_\-file\_\-t::plain.
+
+
+
+Referenced by load\_\-attribute\_\-Code\_\-attributes(), load\_\-attributes(), load\_\-bytecode(), load\_\-exception\_\-handlers(), load\_\-field\_\-attributes(), load\_\-method\_\-attribute\_\-Code(), and load\_\-method\_\-attributes().
+
+\index{classfile.c@{classfile.c}!cf\_\-tell@{cf\_\-tell}}
+\index{cf\_\-tell@{cf\_\-tell}!classfile.c@{classfile.c}}
+\subsubsection[{cf\_\-tell}]{\setlength{\rightskip}{0pt plus 5cm}long cf\_\-tell (
+\begin{DoxyParamCaption}
+\item[{{\bf class\_\-file\_\-t} $\ast$}]{ cf}
+\end{DoxyParamCaption}
+)}\label{classfile_8c_ad54140862aeff88a465225d86e87ad4a}
+Returns the position inside the current class-\/file 
+\begin{DoxyParams}{Parameters}
+\item[{\em cf}]A pointer to an open class-\/file \end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+An integer holding the current position inside the class-\/file 
+\end{DoxyReturn}
+
+
+Definition at line 374 of file classfile.c.
+
+
+
+References c\_\-throw, class\_\-file\_\-t::file, class\_\-file\_\-t::jar, JAVA\_\-LANG\_\-NOCLASSDEFFOUNDERROR, and class\_\-file\_\-t::plain.
+
+
+
+Referenced by load\_\-attribute\_\-Code\_\-attributes(), load\_\-attributes(), load\_\-field\_\-attributes(), load\_\-method\_\-attribute\_\-Code(), and load\_\-method\_\-attributes().
+
+\index{classfile.c@{classfile.c}!classpath\_\-init@{classpath\_\-init}}
+\index{classpath\_\-init@{classpath\_\-init}!classfile.c@{classfile.c}}
+\subsubsection[{classpath\_\-init}]{\setlength{\rightskip}{0pt plus 5cm}void classpath\_\-init (
+\begin{DoxyParamCaption}
+\item[{void}]{}
+\end{DoxyParamCaption}
+)}\label{classfile_8c_a425705ef770d7f2a283ccfeaf74153fd}
+Initializes the classpath by processing the related options 
+
+Definition at line 102 of file classfile.c.
+
+
+
+References classpath\_\-t::boot, cstrchrnul(), classpath\_\-t::entries, gc\_\-palloc(), opts\_\-get\_\-boot\_\-classpath(), opts\_\-get\_\-classpath(), set\_\-classpath\_\-string(), and classpath\_\-t::user.
+
+
+
+Referenced by vm\_\-init().
+
+\index{classfile.c@{classfile.c}!classpath\_\-teardown@{classpath\_\-teardown}}
+\index{classpath\_\-teardown@{classpath\_\-teardown}!classfile.c@{classfile.c}}
+\subsubsection[{classpath\_\-teardown}]{\setlength{\rightskip}{0pt plus 5cm}void classpath\_\-teardown (
+\begin{DoxyParamCaption}
+\item[{void}]{}
+\end{DoxyParamCaption}
+)}\label{classfile_8c_a64442ad68ab5b809a7e205fda2139378}
+Tear down the classpath 
+
+Definition at line 132 of file classfile.c.
+
+
+
+References classpath\_\-t::entries, and classpath\_\-t::user.
+
+
+
+Referenced by vm\_\-teardown().
+
+\index{classfile.c@{classfile.c}!set\_\-classpath\_\-string@{set\_\-classpath\_\-string}}
+\index{set\_\-classpath\_\-string@{set\_\-classpath\_\-string}!classfile.c@{classfile.c}}
+\subsubsection[{set\_\-classpath\_\-string}]{\setlength{\rightskip}{0pt plus 5cm}static void set\_\-classpath\_\-string (
+\begin{DoxyParamCaption}
+\item[{{\bf path\_\-t} $\ast$}]{ path, }
+\item[{const char $\ast$}]{ str}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily  [static]}}\label{classfile_8c_a7aa01cb8c1247bce344f9a0c5e975529}
+Set the classpath string provided in {\itshape str\/} 
+\begin{DoxyParams}{Parameters}
+\item[{\em path}]The path to be set \item[{\em str}]The input string \end{DoxyParams}
+
+
+Definition at line 81 of file classfile.c.
+
+
+
+References c\_\-throw, JAVA\_\-LANG\_\-VIRTUALMACHINEERROR, and path\_\-t::str.
+
+
+
+Referenced by classpath\_\-init().
+
+
+
+\subsection{Variable Documentation}
+\index{classfile.c@{classfile.c}!classpath@{classpath}}
+\index{classpath@{classpath}!classfile.c@{classfile.c}}
+\subsubsection[{classpath}]{\setlength{\rightskip}{0pt plus 5cm}{\bf classpath\_\-t}$\ast$ {\bf classpath}\hspace{0.3cm}{\ttfamily  [static]}}\label{classfile_8c_a569fdfc4909a1c4cc05e7f351ab1c677}
+Global classpath information 
+
+Definition at line 65 of file classfile.c.
+

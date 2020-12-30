@@ -1,0 +1,162 @@
+\section{javax::microedition::io::DatagramConnection Interface Reference}
+\label{interfacejavax_1_1microedition_1_1io_1_1_datagram_connection}\index{javax::microedition::io::DatagramConnection@{javax::microedition::io::DatagramConnection}}
+Inheritance diagram for javax::microedition::io::DatagramConnection:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=2.000000cm]{interfacejavax_1_1microedition_1_1io_1_1_datagram_connection}
+\end{center}
+\end{figure}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+int {\bf getMaximumLength} ()  throws IOException
+\item 
+int {\bf getNominalLength} ()  throws IOException
+\item 
+void {\bf send} ({\bf Datagram} datagram)  throws IOException, InterruptedIOException
+\item 
+void {\bf receive} ({\bf Datagram} datagram)  throws IOException, InterruptedIOException
+\item 
+{\bf Datagram} {\bf newDatagram} (int size)  throws IOException, IllegalArgumentException
+\item 
+{\bf Datagram} {\bf newDatagram} (int size, String address)  throws IOException, IllegalArgumentException
+\item 
+{\bf Datagram} {\bf newDatagram} (byte[$\,$] buffer, int size)  throws IOException, IllegalArgumentException
+\item 
+{\bf Datagram} {\bf newDatagram} (byte[$\,$] buffer, int size, String address)  throws IOException, IllegalArgumentException
+\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+This interface represents the methods implemented by a datagram connection 
+
+Definition at line 29 of file DatagramConnection.java.
+
+
+
+\subsection{Member Function Documentation}
+\index{javax::microedition::io::DatagramConnection@{javax::microedition::io::DatagramConnection}!getMaximumLength@{getMaximumLength}}
+\index{getMaximumLength@{getMaximumLength}!javax::microedition::io::DatagramConnection@{javax::microedition::io::DatagramConnection}}
+\subsubsection[{getMaximumLength}]{\setlength{\rightskip}{0pt plus 5cm}int javax::microedition::io::DatagramConnection::getMaximumLength (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)  throws {\bf IOException}}\label{interfacejavax_1_1microedition_1_1io_1_1_datagram_connection_a8511b8cc5f615448f40d349f9b6f379f}
+Gets the maximum length of a datagram \begin{DoxyReturn}{Returns}
+The datagram's maximum length 
+\end{DoxyReturn}
+
+\begin{DoxyExceptions}{Exceptions}
+\item[{\em IOException}]If an error occurs \end{DoxyExceptions}
+\index{javax::microedition::io::DatagramConnection@{javax::microedition::io::DatagramConnection}!getNominalLength@{getNominalLength}}
+\index{getNominalLength@{getNominalLength}!javax::microedition::io::DatagramConnection@{javax::microedition::io::DatagramConnection}}
+\subsubsection[{getNominalLength}]{\setlength{\rightskip}{0pt plus 5cm}int javax::microedition::io::DatagramConnection::getNominalLength (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)  throws {\bf IOException}}\label{interfacejavax_1_1microedition_1_1io_1_1_datagram_connection_a576e13533e12dd45146c070a1ce14c6a}
+Gets the nominal length of a datagram \begin{DoxyReturn}{Returns}
+The datagram's nominal length 
+\end{DoxyReturn}
+
+\begin{DoxyExceptions}{Exceptions}
+\item[{\em IOException}]If an error occurs \end{DoxyExceptions}
+\index{javax::microedition::io::DatagramConnection@{javax::microedition::io::DatagramConnection}!newDatagram@{newDatagram}}
+\index{newDatagram@{newDatagram}!javax::microedition::io::DatagramConnection@{javax::microedition::io::DatagramConnection}}
+\subsubsection[{newDatagram}]{\setlength{\rightskip}{0pt plus 5cm}{\bf Datagram} javax::microedition::io::DatagramConnection::newDatagram (
+\begin{DoxyParamCaption}
+\item[{byte[$\,$]}]{ buffer, }
+\item[{int}]{ size}
+\end{DoxyParamCaption}
+)  throws {\bf IOException}, {\bf IllegalArgumentException}}\label{interfacejavax_1_1microedition_1_1io_1_1_datagram_connection_a59b20de1f7c23e5084484a9340e88db0}
+Create a new datagram object with the specified data 
+\begin{DoxyParams}{Parameters}
+\item[{\em buffer}]The data buffer \item[{\em size}]The size of the data buffer \end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+A newly created datagram object 
+\end{DoxyReturn}
+
+\begin{DoxyExceptions}{Exceptions}
+\item[{\em IOException}]If an error occurs \item[{\em IllegalArgumentException}]if the buffer size is negative or larger than the maximum size \end{DoxyExceptions}
+\index{javax::microedition::io::DatagramConnection@{javax::microedition::io::DatagramConnection}!newDatagram@{newDatagram}}
+\index{newDatagram@{newDatagram}!javax::microedition::io::DatagramConnection@{javax::microedition::io::DatagramConnection}}
+\subsubsection[{newDatagram}]{\setlength{\rightskip}{0pt plus 5cm}{\bf Datagram} javax::microedition::io::DatagramConnection::newDatagram (
+\begin{DoxyParamCaption}
+\item[{byte[$\,$]}]{ buffer, }
+\item[{int}]{ size, }
+\item[{String}]{ address}
+\end{DoxyParamCaption}
+)  throws {\bf IOException}, {\bf IllegalArgumentException}}\label{interfacejavax_1_1microedition_1_1io_1_1_datagram_connection_ab3aa41efeb134a3e385562778b099d0b}
+Create a new datagram object with the specified size and address 
+\begin{DoxyParams}{Parameters}
+\item[{\em buffer}]The data buffer \item[{\em size}]The size of the data buffer \item[{\em address}]The target address \end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+A newly create datagram object 
+\end{DoxyReturn}
+
+\begin{DoxyExceptions}{Exceptions}
+\item[{\em IOException}]If an error occurs \item[{\em IllegalArgumentException}]if the buffer size is negative or larger than the maximum size \end{DoxyExceptions}
+\index{javax::microedition::io::DatagramConnection@{javax::microedition::io::DatagramConnection}!newDatagram@{newDatagram}}
+\index{newDatagram@{newDatagram}!javax::microedition::io::DatagramConnection@{javax::microedition::io::DatagramConnection}}
+\subsubsection[{newDatagram}]{\setlength{\rightskip}{0pt plus 5cm}{\bf Datagram} javax::microedition::io::DatagramConnection::newDatagram (
+\begin{DoxyParamCaption}
+\item[{int}]{ size}
+\end{DoxyParamCaption}
+)  throws {\bf IOException}, {\bf IllegalArgumentException}}\label{interfacejavax_1_1microedition_1_1io_1_1_datagram_connection_a5a01e3127cea3c3e6430a62f25c9564e}
+Create a new datagram 
+\begin{DoxyParams}{Parameters}
+\item[{\em size}]The size of the data buffer \end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+A newly created datagram object 
+\end{DoxyReturn}
+
+\begin{DoxyExceptions}{Exceptions}
+\item[{\em IOException}]If an error occurs \item[{\em IllegalArgumentException}]if the buffer size is negative or larger than the maximum size \end{DoxyExceptions}
+\index{javax::microedition::io::DatagramConnection@{javax::microedition::io::DatagramConnection}!newDatagram@{newDatagram}}
+\index{newDatagram@{newDatagram}!javax::microedition::io::DatagramConnection@{javax::microedition::io::DatagramConnection}}
+\subsubsection[{newDatagram}]{\setlength{\rightskip}{0pt plus 5cm}{\bf Datagram} javax::microedition::io::DatagramConnection::newDatagram (
+\begin{DoxyParamCaption}
+\item[{int}]{ size, }
+\item[{String}]{ address}
+\end{DoxyParamCaption}
+)  throws {\bf IOException}, {\bf IllegalArgumentException}}\label{interfacejavax_1_1microedition_1_1io_1_1_datagram_connection_ac547d6cd48038fd605d188999494ddf4}
+Create a new datagram with the specified address 
+\begin{DoxyParams}{Parameters}
+\item[{\em size}]The size of the data buffer \item[{\em address}]The target address \end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+A newly create datagram object 
+\end{DoxyReturn}
+
+\begin{DoxyExceptions}{Exceptions}
+\item[{\em IOException}]If an error occurs \item[{\em IllegalArgumentException}]if the buffer size is negative or larger than the maximum size \end{DoxyExceptions}
+\index{javax::microedition::io::DatagramConnection@{javax::microedition::io::DatagramConnection}!receive@{receive}}
+\index{receive@{receive}!javax::microedition::io::DatagramConnection@{javax::microedition::io::DatagramConnection}}
+\subsubsection[{receive}]{\setlength{\rightskip}{0pt plus 5cm}void javax::microedition::io::DatagramConnection::receive (
+\begin{DoxyParamCaption}
+\item[{{\bf Datagram}}]{ datagram}
+\end{DoxyParamCaption}
+)  throws {\bf IOException}, {\bf InterruptedIOException}}\label{interfacejavax_1_1microedition_1_1io_1_1_datagram_connection_aa486caf0e226ec2d83746c7c7715b68e}
+Receive a single datagram 
+\begin{DoxyParams}{Parameters}
+\item[{\em datagram}]The datagram where the new data will be stored \end{DoxyParams}
+
+\begin{DoxyExceptions}{Exceptions}
+\item[{\em IOException}]If an error occurs \item[{\em InterruptedIOException}]If a timeout or interrupt occurs before completion \end{DoxyExceptions}
+\index{javax::microedition::io::DatagramConnection@{javax::microedition::io::DatagramConnection}!send@{send}}
+\index{send@{send}!javax::microedition::io::DatagramConnection@{javax::microedition::io::DatagramConnection}}
+\subsubsection[{send}]{\setlength{\rightskip}{0pt plus 5cm}void javax::microedition::io::DatagramConnection::send (
+\begin{DoxyParamCaption}
+\item[{{\bf Datagram}}]{ datagram}
+\end{DoxyParamCaption}
+)  throws {\bf IOException}, {\bf InterruptedIOException}}\label{interfacejavax_1_1microedition_1_1io_1_1_datagram_connection_a0cee02932ae8eeabb7dc95c54f5eebed}
+Sends a single datagram 
+\begin{DoxyParams}{Parameters}
+\item[{\em datagram}]The datagram to be sent \end{DoxyParams}
+
+\begin{DoxyExceptions}{Exceptions}
+\item[{\em IOException}]If an error occurs \item[{\em InterruptedIOException}]If a timeout or interrupt occurs before completion \end{DoxyExceptions}
+
+
+The documentation for this interface was generated from the following file:\begin{DoxyCompactItemize}
+\item 
+src/classpath/javax/microedition/io/DatagramConnection.java\end{DoxyCompactItemize}

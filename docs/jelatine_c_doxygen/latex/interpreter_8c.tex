@@ -1,0 +1,105 @@
+\section{interpreter.c File Reference}
+\label{interpreter_8c}\index{interpreter.c@{interpreter.c}}
+{\ttfamily \#include \char`\"{}wrappers.h\char`\"{}}\par
+{\ttfamily \#include \char`\"{}array.h\char`\"{}}\par
+{\ttfamily \#include \char`\"{}class.h\char`\"{}}\par
+{\ttfamily \#include \char`\"{}classfile.h\char`\"{}}\par
+{\ttfamily \#include \char`\"{}field.h\char`\"{}}\par
+{\ttfamily \#include \char`\"{}interpreter.h\char`\"{}}\par
+{\ttfamily \#include \char`\"{}loader.h\char`\"{}}\par
+{\ttfamily \#include \char`\"{}method.h\char`\"{}}\par
+{\ttfamily \#include \char`\"{}opcodes.h\char`\"{}}\par
+{\ttfamily \#include \char`\"{}print.h\char`\"{}}\par
+{\ttfamily \#include \char`\"{}thread.h\char`\"{}}\par
+{\ttfamily \#include \char`\"{}util.h\char`\"{}}\par
+{\ttfamily \#include \char`\"{}vm.h\char`\"{}}\par
+{\ttfamily \#include \char`\"{}java\_\-lang\_\-Class.h\char`\"{}}\par
+\subsection*{Defines}
+\begin{DoxyCompactItemize}
+\item 
+\#define {\bf SAVE\_\-STATE}
+\end{DoxyCompactItemize}
+\subsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+static void {\bf prepare\_\-for\_\-call} ({\bf thread\_\-t} $\ast$thread, {\bf method\_\-t} $\ast$method)
+\item 
+void {\bf interpreter} ({\bf method\_\-t} $\ast$main\_\-method)
+\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+Bytecode interpreter implementation 
+
+Definition in file {\bf interpreter.c}.
+
+
+
+\subsection{Define Documentation}
+\index{interpreter.c@{interpreter.c}!SAVE\_\-STATE@{SAVE\_\-STATE}}
+\index{SAVE\_\-STATE@{SAVE\_\-STATE}!interpreter.c@{interpreter.c}}
+\subsubsection[{SAVE\_\-STATE}]{\setlength{\rightskip}{0pt plus 5cm}\#define SAVE\_\-STATE}\label{interpreter_8c_a802a1a9e9c1aba8134ce496ba760799d}
+{\bfseries Value:}
+\begin{DoxyCode}
+do { \
+        thread->sp = sp; \
+        thread->pc = pc; \
+        thread->fp = fp; \
+    } while (0)
+\end{DoxyCode}
+Create a safe point by saving the relevant part of the interpreter's state 
+
+Definition at line 48 of file interpreter.c.
+
+
+
+Referenced by interpreter().
+
+
+
+\subsection{Function Documentation}
+\index{interpreter.c@{interpreter.c}!interpreter@{interpreter}}
+\index{interpreter@{interpreter}!interpreter.c@{interpreter.c}}
+\subsubsection[{interpreter}]{\setlength{\rightskip}{0pt plus 5cm}void interpreter (
+\begin{DoxyParamCaption}
+\item[{{\bf method\_\-t} $\ast$}]{ main\_\-method}
+\end{DoxyParamCaption}
+)}\label{interpreter_8c_a7409e67a00e55b1c5afa6379d6864bc2}
+Launches the interpreter 
+\begin{DoxyParams}{Parameters}
+\item[{\em main\_\-method}]The entry point \end{DoxyParams}
+
+
+Definition at line 98 of file interpreter.c.
+
+
+
+References AALOAD, AASTORE, ACONST\_\-NULL, ALOAD, ALOAD\_\-0, ALOAD\_\-1, ALOAD\_\-2, ALOAD\_\-3, ANEWARRAY, ANEWARRAY\_\-PRELINK, ARETURN, ARETURN\_\-MONITOREXIT, method\_\-t::args\_\-size, array\_\-get\_\-data(), array\_\-length(), array\_\-ref\_\-get\_\-data(), ARRAYLENGTH, ASTORE, ASTORE\_\-0, ASTORE\_\-1, ASTORE\_\-2, ASTORE\_\-3, ATHROW, BALOAD, BASTORE, bcl\_\-get\_\-class\_\-by\_\-id(), bcl\_\-is\_\-assignable(), bcl\_\-link\_\-method(), bcl\_\-link\_\-opcode(), bcl\_\-resolve\_\-class(), BIPUSH, c\_\-throw, CALOAD, CASTORE, exception\_\-handler\_\-t::catch\_\-type, CHECKCAST, CHECKCAST\_\-PRELINK, stack\_\-frame\_\-t::cl, class\_\-get\_\-object(), class\_\-is\_\-parent(), method\_\-t::code, method\_\-t::cp, cp\_\-data\_\-get\_\-int32(), cp\_\-data\_\-get\_\-int64(), cp\_\-data\_\-get\_\-ptr(), cp\_\-data\_\-get\_\-uintptr(), cp\_\-get\_\-class(), D2F, D2I, D2L, DADD, DALOAD, DASTORE, method\_\-t::data, const\_\-pool\_\-t::data, dbg\_\-unreachable, DCMPG, DCMPL, DCONST\_\-0, DCONST\_\-1, DDIV, class\_\-t::dimensions, DLOAD, DLOAD\_\-0, DLOAD\_\-1, DLOAD\_\-2, DLOAD\_\-3, DMUL, DNEG, DREM, DRETURN, DRETURN\_\-MONITOREXIT, DSTORE, DSTORE\_\-0, DSTORE\_\-1, DSTORE\_\-2, DSTORE\_\-3, DSUB, class\_\-t::dtable, DUP, DUP2, DUP2\_\-X1, DUP2\_\-X2, DUP\_\-X1, DUP\_\-X2, class\_\-t::elem\_\-class, class\_\-t::elem\_\-type, thread\_\-t::exception, method\_\-t::exception\_\-table\_\-length, F2D, F2I, F2L, FADD, FALOAD, FASTORE, FCMPG, FCMPL, FCONST\_\-0, FCONST\_\-1, FCONST\_\-2, FDIV, FLOAD, FLOAD\_\-0, FLOAD\_\-1, FLOAD\_\-2, FLOAD\_\-3, FMUL, FNEG, thread\_\-t::fp, FREM, FRETURN, FRETURN\_\-MONITOREXIT, FSTORE, FSTORE\_\-0, FSTORE\_\-1, FSTORE\_\-2, FSTORE\_\-3, FSUB, method\_\-t::function, gc\_\-new(), gc\_\-new\_\-array\_\-nonref(), gc\_\-new\_\-array\_\-ref(), gc\_\-new\_\-multiarray(), GETFIELD\_\-BOOL, GETFIELD\_\-BYTE, GETFIELD\_\-CHAR, GETFIELD\_\-DOUBLE, GETFIELD\_\-FLOAT, GETFIELD\_\-INT, GETFIELD\_\-LONG, GETFIELD\_\-PRELINK, GETFIELD\_\-REFERENCE, GETFIELD\_\-SHORT, GETSTATIC\_\-BYTE, GETSTATIC\_\-CHAR, GETSTATIC\_\-DOUBLE, GETSTATIC\_\-FLOAT, GETSTATIC\_\-INT, GETSTATIC\_\-LONG, GETSTATIC\_\-PRELINK, GETSTATIC\_\-REFERENCE, GETSTATIC\_\-SHORT, GOTO, GOTO\_\-W, HALT, halt\_\-method, exception\_\-handler\_\-t::handler\_\-pc, method\_\-t::handlers, array\_\-t::header, header\_\-get\_\-class(), I2B, I2C, I2D, I2F, I2L, I2S, IADD, IALOAD, IAND, IASTORE, ICONST\_\-0, ICONST\_\-1, ICONST\_\-2, ICONST\_\-3, ICONST\_\-4, ICONST\_\-5, ICONST\_\-M1, IDIV, IF\_\-ACMPEQ, IF\_\-ACMPNE, IF\_\-ICMPEQ, IF\_\-ICMPGE, IF\_\-ICMPGT, IF\_\-ICMPLE, IF\_\-ICMPLT, IF\_\-ICMPNE, IFEQ, IFGE, IFGT, IFLE, IFLT, IFNE, IFNONNULL, IFNULL, IINC, ILOAD, ILOAD\_\-0, ILOAD\_\-1, ILOAD\_\-2, ILOAD\_\-3, IMUL, class\_\-t::inames, INEG, INSTANCEOF, INSTANCEOF\_\-PRELINK, INTERPRETER\_\-EPILOG, INTERPRETER\_\-PROLOG, INVOKE\_\-NATIVE, INVOKEINTERFACE, INVOKEINTERFACE\_\-PRELINK, INVOKESPECIAL, INVOKESPECIAL\_\-PRELINK, INVOKESTATIC, INVOKESTATIC\_\-PRELINK, INVOKESUPER, INVOKEVIRTUAL, INVOKEVIRTUAL\_\-PRELINK, IOR, IREM, IRETURN, IRETURN\_\-MONITOREXIT, ISHL, ISHR, ISTORE, ISTORE\_\-0, ISTORE\_\-1, ISTORE\_\-2, ISTORE\_\-3, ISUB, class\_\-t::itable, class\_\-t::itable\_\-count, IUSHR, IXOR, JAVA\_\-LANG\_\-VIRTUALMACHINEERROR, L2D, L2F, L2I, LADD, LALOAD, LAND, LASTORE, LCMP, LCONST\_\-0, LCONST\_\-1, LDC, LDC2\_\-W, LDC\_\-PRELINK, LDC\_\-REF, LDC\_\-W, LDC\_\-W\_\-PRELINK, LDC\_\-W\_\-REF, LDIV, LLOAD, LLOAD\_\-0, LLOAD\_\-1, LLOAD\_\-2, LLOAD\_\-3, LMUL, LNEG, load\_\-int16\_\-un, load\_\-int32\_\-un, load\_\-uint16\_\-un, stack\_\-frame\_\-t::locals, LOOKUPSWITCH, LOR, LREM, LRETURN, LRETURN\_\-MONITOREXIT, LSHL, LSHR, LSTORE, LSTORE\_\-0, LSTORE\_\-1, LSTORE\_\-2, LSTORE\_\-3, LSUB, LUSHR, LXOR, method\_\-t::max\_\-locals, method\_\-t::max\_\-stack, stack\_\-frame\_\-t::method, METHOD\_\-ABSTRACT, method\_\-is\_\-static(), method\_\-is\_\-synchronized(), METHOD\_\-LOAD, method\_\-unpack\_\-arguments(), method\_\-unpack\_\-index(), monitor\_\-enter(), monitor\_\-exit(), MONITORENTER, MONITORENTER\_\-SPECIAL, MONITORENTER\_\-SPECIAL\_\-STATIC, MONITOREXIT, MULTIANEWARRAY, MULTIANEWARRAY\_\-PRELINK, class\_\-t::name, NEW, NEW\_\-FINALIZER, NEW\_\-PRELINK, NEWARRAY, NEWARRAY\_\-PRELINK, NOP, OPCODE, class\_\-t::parent, stack\_\-frame\_\-t::pc, POP, POP2, prepare\_\-for\_\-call(), print\_\-method\_\-call, print\_\-method\_\-ret, print\_\-method\_\-unwind, PT\_\-BYTE, PUTFIELD\_\-BOOL, PUTFIELD\_\-BYTE, PUTFIELD\_\-CHAR, PUTFIELD\_\-DOUBLE, PUTFIELD\_\-FLOAT, PUTFIELD\_\-INT, PUTFIELD\_\-LONG, PUTFIELD\_\-PRELINK, PUTFIELD\_\-REFERENCE, PUTSTATIC\_\-BOOL, PUTSTATIC\_\-BYTE, PUTSTATIC\_\-CHAR, PUTSTATIC\_\-DOUBLE, PUTSTATIC\_\-FLOAT, PUTSTATIC\_\-INT, PUTSTATIC\_\-LONG, PUTSTATIC\_\-PRELINK, PUTSTATIC\_\-REFERENCE, RET\_\-DOUBLE, RET\_\-FLOAT, RET\_\-INT, RET\_\-LONG, RET\_\-OBJECT, RET\_\-VOID, RETURN, RETURN\_\-MONITOREXIT, method\_\-t::return\_\-type, SALOAD, SASTORE, SAVE\_\-STATE, SIPUSH, size\_\-ceil(), thread\_\-t::sp, SWAP, TABLESWITCH, thread\_\-self(), and WIDE.
+
+
+
+Referenced by initialize\_\-class(), java\_\-lang\_\-Class\_\-newInstance(), thread\_\-create\_\-main(), and thread\_\-start().
+
+\index{interpreter.c@{interpreter.c}!prepare\_\-for\_\-call@{prepare\_\-for\_\-call}}
+\index{prepare\_\-for\_\-call@{prepare\_\-for\_\-call}!interpreter.c@{interpreter.c}}
+\subsubsection[{prepare\_\-for\_\-call}]{\setlength{\rightskip}{0pt plus 5cm}static void prepare\_\-for\_\-call (
+\begin{DoxyParamCaption}
+\item[{{\bf thread\_\-t} $\ast$}]{ thread, }
+\item[{{\bf method\_\-t} $\ast$}]{ method}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily  [static]}}\label{interpreter_8c_a77e55859933d6f94ea3ee5f1ed29221d}
+Prepares the stack for executing a method when entering the interpreter 
+\begin{DoxyParams}{Parameters}
+\item[{\em thread}]The calling thread \item[{\em method}]The method to be called \end{DoxyParams}
+
+
+Definition at line 63 of file interpreter.c.
+
+
+
+References c\_\-throw, stack\_\-frame\_\-t::cl, method\_\-t::code, method\_\-t::cp, cp\_\-get\_\-class(), thread\_\-t::fp, halt\_\-method, JAVA\_\-LANG\_\-VIRTUALMACHINEERROR, stack\_\-frame\_\-t::locals, method\_\-t::max\_\-locals, method\_\-t::max\_\-stack, stack\_\-frame\_\-t::method, stack\_\-frame\_\-t::pc, and thread\_\-t::sp.
+
+
+
+Referenced by interpreter().
+

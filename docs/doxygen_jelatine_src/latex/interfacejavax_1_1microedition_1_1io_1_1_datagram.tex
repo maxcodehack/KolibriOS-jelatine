@@ -1,0 +1,145 @@
+\section{javax::microedition::io::Datagram Interface Reference}
+\label{interfacejavax_1_1microedition_1_1io_1_1_datagram}\index{javax::microedition::io::Datagram@{javax::microedition::io::Datagram}}
+Inheritance diagram for javax::microedition::io::Datagram:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=2.000000cm]{interfacejavax_1_1microedition_1_1io_1_1_datagram}
+\end{center}
+\end{figure}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+String {\bf getAddress} ()
+\item 
+byte[$\,$] {\bf getData} ()
+\item 
+int {\bf getLength} ()
+\item 
+int {\bf getOffset} ()
+\item 
+void {\bf setAddress} (String address)  throws IllegalArgumentException, IOException
+\item 
+void {\bf setAddress} ({\bf Datagram} datagram)  throws IllegalArgumentException
+\item 
+void {\bf setLength} (int new\_\-length)  throws IllegalArgumentException
+\item 
+void {\bf setData} (byte[$\,$] new\_\-buffer, int new\_\-offset, int new\_\-length)  throws IllegalArgumentException
+\item 
+void {\bf reset} ()
+\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+This class represents the interface of a datagram packet 
+
+Definition at line 31 of file Datagram.java.
+
+
+
+\subsection{Member Function Documentation}
+\index{javax::microedition::io::Datagram@{javax::microedition::io::Datagram}!getAddress@{getAddress}}
+\index{getAddress@{getAddress}!javax::microedition::io::Datagram@{javax::microedition::io::Datagram}}
+\subsubsection[{getAddress}]{\setlength{\rightskip}{0pt plus 5cm}String javax::microedition::io::Datagram::getAddress (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}\label{interfacejavax_1_1microedition_1_1io_1_1_datagram_ad4b90e36fdc86afcbf237665bc948c06}
+Get the datagram's address \begin{DoxyReturn}{Returns}
+a string holding the address or null if it was not set 
+\end{DoxyReturn}
+\index{javax::microedition::io::Datagram@{javax::microedition::io::Datagram}!getData@{getData}}
+\index{getData@{getData}!javax::microedition::io::Datagram@{javax::microedition::io::Datagram}}
+\subsubsection[{getData}]{\setlength{\rightskip}{0pt plus 5cm}byte [$\,$] javax::microedition::io::Datagram::getData (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}\label{interfacejavax_1_1microedition_1_1io_1_1_datagram_a0ae5cfbc0e8c19051a429132bfcc10f5}
+Gets the data held by the data buffer \begin{DoxyReturn}{Returns}
+a byte array holding the data buffer 
+\end{DoxyReturn}
+\index{javax::microedition::io::Datagram@{javax::microedition::io::Datagram}!getLength@{getLength}}
+\index{getLength@{getLength}!javax::microedition::io::Datagram@{javax::microedition::io::Datagram}}
+\subsubsection[{getLength}]{\setlength{\rightskip}{0pt plus 5cm}int javax::microedition::io::Datagram::getLength (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}\label{interfacejavax_1_1microedition_1_1io_1_1_datagram_a200145d69bb56778cd8adfcfb4fcfe04}
+Gets the length of the datagram \begin{DoxyReturn}{Returns}
+the datagram's length 
+\end{DoxyReturn}
+\index{javax::microedition::io::Datagram@{javax::microedition::io::Datagram}!getOffset@{getOffset}}
+\index{getOffset@{getOffset}!javax::microedition::io::Datagram@{javax::microedition::io::Datagram}}
+\subsubsection[{getOffset}]{\setlength{\rightskip}{0pt plus 5cm}int javax::microedition::io::Datagram::getOffset (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}\label{interfacejavax_1_1microedition_1_1io_1_1_datagram_a8f1558cc46a5d5cab4ac9ab3e55bba2c}
+Gets the offset of the datagram \begin{DoxyReturn}{Returns}
+the datagram's offset 
+\end{DoxyReturn}
+\index{javax::microedition::io::Datagram@{javax::microedition::io::Datagram}!reset@{reset}}
+\index{reset@{reset}!javax::microedition::io::Datagram@{javax::microedition::io::Datagram}}
+\subsubsection[{reset}]{\setlength{\rightskip}{0pt plus 5cm}void javax::microedition::io::Datagram::reset (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}\label{interfacejavax_1_1microedition_1_1io_1_1_datagram_ab1ed57cbd1ceab36c7d2a89df19db5d2}
+Resets the access pointer, the offset and the length \index{javax::microedition::io::Datagram@{javax::microedition::io::Datagram}!setAddress@{setAddress}}
+\index{setAddress@{setAddress}!javax::microedition::io::Datagram@{javax::microedition::io::Datagram}}
+\subsubsection[{setAddress}]{\setlength{\rightskip}{0pt plus 5cm}void javax::microedition::io::Datagram::setAddress (
+\begin{DoxyParamCaption}
+\item[{String}]{ address}
+\end{DoxyParamCaption}
+)  throws {\bf IllegalArgumentException}, {\bf IOException}}\label{interfacejavax_1_1microedition_1_1io_1_1_datagram_a9ae83405157576fb721a360f5724cb1f}
+Sets the datagram address 
+\begin{DoxyParams}{Parameters}
+\item[{\em address}]the new address in URL form \end{DoxyParams}
+
+\begin{DoxyExceptions}{Exceptions}
+\item[{\em IllegalArgumentException}]if the address is invalid \item[{\em IOException}]if an error occurs \end{DoxyExceptions}
+\index{javax::microedition::io::Datagram@{javax::microedition::io::Datagram}!setAddress@{setAddress}}
+\index{setAddress@{setAddress}!javax::microedition::io::Datagram@{javax::microedition::io::Datagram}}
+\subsubsection[{setAddress}]{\setlength{\rightskip}{0pt plus 5cm}void javax::microedition::io::Datagram::setAddress (
+\begin{DoxyParamCaption}
+\item[{{\bf Datagram}}]{ datagram}
+\end{DoxyParamCaption}
+)  throws {\bf IllegalArgumentException}}\label{interfacejavax_1_1microedition_1_1io_1_1_datagram_afac81697ce3f5663907400a0e78650ce}
+Sets the datagram address from another datagram 
+\begin{DoxyParams}{Parameters}
+\item[{\em datagram}]source datagram for the address \end{DoxyParams}
+
+\begin{DoxyExceptions}{Exceptions}
+\item[{\em IllegalArgumentException}]if the address is invalid \end{DoxyExceptions}
+\index{javax::microedition::io::Datagram@{javax::microedition::io::Datagram}!setData@{setData}}
+\index{setData@{setData}!javax::microedition::io::Datagram@{javax::microedition::io::Datagram}}
+\subsubsection[{setData}]{\setlength{\rightskip}{0pt plus 5cm}void javax::microedition::io::Datagram::setData (
+\begin{DoxyParamCaption}
+\item[{byte[$\,$]}]{ new\_\-buffer, }
+\item[{int}]{ new\_\-offset, }
+\item[{int}]{ new\_\-length}
+\end{DoxyParamCaption}
+)  throws {\bf IllegalArgumentException}}\label{interfacejavax_1_1microedition_1_1io_1_1_datagram_a5b99b6f27ec018a44b4ed402e7eddfd2}
+Sets the buffer, offset and length of the datagram 
+\begin{DoxyParams}{Parameters}
+\item[{\em new\_\-buffer}]the new data buffer \item[{\em new\_\-offset}]the new offset into the data buffer \item[{\em new\_\-length}]the new length of the data in the buffer \end{DoxyParams}
+
+\begin{DoxyExceptions}{Exceptions}
+\item[{\em IllegalArgumentException}]if the new length exceeds the buffer or if the new\_\-buffer parameter is invalid \end{DoxyExceptions}
+\index{javax::microedition::io::Datagram@{javax::microedition::io::Datagram}!setLength@{setLength}}
+\index{setLength@{setLength}!javax::microedition::io::Datagram@{javax::microedition::io::Datagram}}
+\subsubsection[{setLength}]{\setlength{\rightskip}{0pt plus 5cm}void javax::microedition::io::Datagram::setLength (
+\begin{DoxyParamCaption}
+\item[{int}]{ new\_\-length}
+\end{DoxyParamCaption}
+)  throws {\bf IllegalArgumentException}}\label{interfacejavax_1_1microedition_1_1io_1_1_datagram_a522c17b28f835541ae2d0e9a45082bbb}
+Sets the length of the datagram 
+\begin{DoxyParams}{Parameters}
+\item[{\em new\_\-length}]the new length \end{DoxyParams}
+
+\begin{DoxyExceptions}{Exceptions}
+\item[{\em IllegalArgumentException}]if the new length exceeds the buffer \end{DoxyExceptions}
+
+
+The documentation for this interface was generated from the following file:\begin{DoxyCompactItemize}
+\item 
+src/classpath/javax/microedition/io/Datagram.java\end{DoxyCompactItemize}

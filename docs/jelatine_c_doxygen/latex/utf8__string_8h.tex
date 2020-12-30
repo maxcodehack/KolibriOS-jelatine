@@ -1,0 +1,207 @@
+\section{utf8\_\-string.h File Reference}
+\label{utf8__string_8h}\index{utf8\_\-string.h@{utf8\_\-string.h}}
+{\ttfamily \#include \char`\"{}wrappers.h\char`\"{}}\par
+{\ttfamily \#include \char`\"{}util.h\char`\"{}}\par
+\subsection*{Defines}
+\begin{DoxyCompactItemize}
+\item 
+\#define {\bf JELATINE\_\-UTF8\_\-STRING\_\-H}~(1)
+\end{DoxyCompactItemize}
+\subsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+void {\bf string\_\-manager\_\-init} (size\_\-t, size\_\-t)
+\item 
+char $\ast$ {\bf utf8\_\-intern} (const char $\ast$, size\_\-t)
+\item 
+bool {\bf utf8\_\-check} (const char $\ast$)
+\item 
+size\_\-t {\bf utf8\_\-to\_\-java\_\-length} (const char $\ast$)
+\item 
+void {\bf utf8\_\-to\_\-java} (uint16\_\-t $\ast$, const char $\ast$)
+\item 
+char $\ast$ {\bf java\_\-to\_\-utf8} (const uint16\_\-t $\ast$, size\_\-t)
+\item 
+char $\ast$ {\bf utf8\_\-slashify} (char $\ast$)
+\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+UTF8 string manager declaration and interface 
+
+Definition in file {\bf utf8\_\-string.h}.
+
+
+
+\subsection{Define Documentation}
+\index{utf8\_\-string.h@{utf8\_\-string.h}!JELATINE\_\-UTF8\_\-STRING\_\-H@{JELATINE\_\-UTF8\_\-STRING\_\-H}}
+\index{JELATINE\_\-UTF8\_\-STRING\_\-H@{JELATINE\_\-UTF8\_\-STRING\_\-H}!utf8_string.h@{utf8\_\-string.h}}
+\subsubsection[{JELATINE\_\-UTF8\_\-STRING\_\-H}]{\setlength{\rightskip}{0pt plus 5cm}\#define JELATINE\_\-UTF8\_\-STRING\_\-H~(1)}\label{utf8__string_8h_a85e235650599bd18b6337d1a7e3edf4e}
+\doxyref{utf8\_\-string.h}{p.}{utf8__string_8h} inclusion macro 
+
+Definition at line 28 of file utf8\_\-string.h.
+
+
+
+\subsection{Function Documentation}
+\index{utf8\_\-string.h@{utf8\_\-string.h}!java\_\-to\_\-utf8@{java\_\-to\_\-utf8}}
+\index{java\_\-to\_\-utf8@{java\_\-to\_\-utf8}!utf8_string.h@{utf8\_\-string.h}}
+\subsubsection[{java\_\-to\_\-utf8}]{\setlength{\rightskip}{0pt plus 5cm}char$\ast$ java\_\-to\_\-utf8 (
+\begin{DoxyParamCaption}
+\item[{const uint16\_\-t $\ast$}]{ data, }
+\item[{size\_\-t}]{ length}
+\end{DoxyParamCaption}
+)}\label{utf8__string_8h_acc09ea6a36a214069fc0392801f6e83a}
+Converts a Java string into an UTF-\/8 string. 
+\begin{DoxyParams}{Parameters}
+\item[{\em data}]The string's data \item[{\em length}]The string length \end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+A newly created UTF-\/8 string allocated from the memory heap 
+\end{DoxyReturn}
+
+
+Definition at line 313 of file utf8\_\-string.c.
+
+
+
+References gc\_\-malloc().
+
+
+
+Referenced by java\_\-lang\_\-Class\_\-forName().
+
+\index{utf8\_\-string.h@{utf8\_\-string.h}!string\_\-manager\_\-init@{string\_\-manager\_\-init}}
+\index{string\_\-manager\_\-init@{string\_\-manager\_\-init}!utf8_string.h@{utf8\_\-string.h}}
+\subsubsection[{string\_\-manager\_\-init}]{\setlength{\rightskip}{0pt plus 5cm}void string\_\-manager\_\-init (
+\begin{DoxyParamCaption}
+\item[{size\_\-t}]{ log2cap, }
+\item[{size\_\-t}]{ load}
+\end{DoxyParamCaption}
+)}\label{utf8__string_8h_afabd58eef22c70b14b32c9c2fa0917b4}
+Creates and initializes the string manager with an initial capacity of 2$^\wedge$({\itshape log2cap\/}) entries and {\itshape load\/} load 
+\begin{DoxyParams}{Parameters}
+\item[{\em log2cap}]The binary logarythm of the initial capacity \item[{\em load}]The allowed load on the manager \end{DoxyParams}
+
+
+Definition at line 90 of file utf8\_\-string.c.
+
+
+
+References string\_\-manager\_\-t::buckets, string\_\-manager\_\-t::capacity, string\_\-manager\_\-t::entries, gc\_\-malloc(), string\_\-manager\_\-t::load, and string\_\-manager\_\-t::threshold.
+
+
+
+Referenced by vm\_\-init().
+
+\index{utf8\_\-string.h@{utf8\_\-string.h}!utf8\_\-check@{utf8\_\-check}}
+\index{utf8\_\-check@{utf8\_\-check}!utf8_string.h@{utf8\_\-string.h}}
+\subsubsection[{utf8\_\-check}]{\setlength{\rightskip}{0pt plus 5cm}bool utf8\_\-check (
+\begin{DoxyParamCaption}
+\item[{const char $\ast$}]{ src}
+\end{DoxyParamCaption}
+)}\label{utf8__string_8h_afa38b547a241befd6d6893f1b1927fd1}
+Checks if a string in the Java class file modified UTF8 format is valid, i.e. checks if the length of the string matches the given one and that the string doesn't contain invalid characters 
+\begin{DoxyParams}{Parameters}
+\item[{\em src}]A pointer to the string to be checked \end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+True if the string is valid, false otherwise 
+\end{DoxyReturn}
+
+
+Definition at line 145 of file utf8\_\-string.c.
+
+
+
+Referenced by cp\_\-create(), jstring\_\-create\_\-from\_\-utf8(), jstring\_\-create\_\-literal(), and vm\_\-run().
+
+\index{utf8\_\-string.h@{utf8\_\-string.h}!utf8\_\-intern@{utf8\_\-intern}}
+\index{utf8\_\-intern@{utf8\_\-intern}!utf8_string.h@{utf8\_\-string.h}}
+\subsubsection[{utf8\_\-intern}]{\setlength{\rightskip}{0pt plus 5cm}char$\ast$ utf8\_\-intern (
+\begin{DoxyParamCaption}
+\item[{const char $\ast$}]{ src, }
+\item[{size\_\-t}]{ len}
+\end{DoxyParamCaption}
+)}\label{utf8__string_8h_a95577d823d10c626eff401e4cfa35488}
+Interns a string in the UTF8 format in the string manager and returns a pointer to the interned string.
+
+Empty strings may be interned by specifying a NULL pointer for {\itshape src\/} and a 0 value for {\itshape len\/}. Strings in the Java class file modified format are treated as plain UTF8 strings.
+
+
+\begin{DoxyParams}{Parameters}
+\item[{\em src}]A pointer to an array of bytes, may be NULL \item[{\em len}]The string length \end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+A pointer to the newly created string 
+\end{DoxyReturn}
+
+
+Definition at line 201 of file utf8\_\-string.c.
+
+
+
+References string\_\-manager\_\-t::buckets, string\_\-manager\_\-t::capacity, utf8\_\-string\_\-t::data, string\_\-manager\_\-t::entries, gc\_\-palloc(), string\_\-manager\_\-t::load, utf8\_\-string\_\-t::next, string\_\-manager\_\-rehash(), tm\_\-lock(), tm\_\-unlock(), and utf8\_\-hash().
+
+
+
+Referenced by bcl\_\-resolve\_\-class(), cp\_\-create(), preload\_\-class(), and vm\_\-run().
+
+\index{utf8\_\-string.h@{utf8\_\-string.h}!utf8\_\-slashify@{utf8\_\-slashify}}
+\index{utf8\_\-slashify@{utf8\_\-slashify}!utf8_string.h@{utf8\_\-string.h}}
+\subsubsection[{utf8\_\-slashify}]{\setlength{\rightskip}{0pt plus 5cm}char$\ast$ utf8\_\-slashify (
+\begin{DoxyParamCaption}
+\item[{char $\ast$}]{ src}
+\end{DoxyParamCaption}
+)}\label{utf8__string_8h_aa1fecca79527a91813bf378ee82fa06a}
+Turns a class or package name in the classfile internal format 
+\begin{DoxyParams}{Parameters}
+\item[{\em src}]The source string \end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+The pointer passed to this function 
+\end{DoxyReturn}
+
+
+Definition at line 358 of file utf8\_\-string.c.
+
+
+
+Referenced by java\_\-lang\_\-Class\_\-forName(), and parse\_\-command\_\-line\_\-args().
+
+\index{utf8\_\-string.h@{utf8\_\-string.h}!utf8\_\-to\_\-java@{utf8\_\-to\_\-java}}
+\index{utf8\_\-to\_\-java@{utf8\_\-to\_\-java}!utf8_string.h@{utf8\_\-string.h}}
+\subsubsection[{utf8\_\-to\_\-java}]{\setlength{\rightskip}{0pt plus 5cm}void utf8\_\-to\_\-java (
+\begin{DoxyParamCaption}
+\item[{uint16\_\-t $\ast$}]{ dst, }
+\item[{const char $\ast$}]{ src}
+\end{DoxyParamCaption}
+)}\label{utf8__string_8h_a9a6fd0cfc3f1ee9bbcafba8b56fdfcaa}
+Converts a string in the Java class file modified UTF8 format into a Java string. The java chars of the resulting string are written in {\itshape dst\/}. 
+\begin{DoxyParams}{Parameters}
+\item[{\em dst}]A pointer to an array of Java chars \item[{\em src}]A pointer to a string in the Java class file modified UTF8 format \end{DoxyParams}
+
+
+Definition at line 279 of file utf8\_\-string.c.
+
+
+
+Referenced by jstring\_\-create\_\-from\_\-utf8(), and jstring\_\-create\_\-literal().
+
+\index{utf8\_\-string.h@{utf8\_\-string.h}!utf8\_\-to\_\-java\_\-length@{utf8\_\-to\_\-java\_\-length}}
+\index{utf8\_\-to\_\-java\_\-length@{utf8\_\-to\_\-java\_\-length}!utf8_string.h@{utf8\_\-string.h}}
+\subsubsection[{utf8\_\-to\_\-java\_\-length}]{\setlength{\rightskip}{0pt plus 5cm}size\_\-t utf8\_\-to\_\-java\_\-length (
+\begin{DoxyParamCaption}
+\item[{const char $\ast$}]{ str}
+\end{DoxyParamCaption}
+)}\label{utf8__string_8h_a169410db2645d273892853a470c06ba8}
+Calculates the length of a string in the Java class file modified UTF8 format when converted to its Java representation. The functions excepts the source string to be valid. 
+\begin{DoxyParams}{Parameters}
+\item[{\em str}]A pointer to a string in the Java class file modified UTF8 format \end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+The length of the string once converted 
+\end{DoxyReturn}
+
+
+Definition at line 251 of file utf8\_\-string.c.
+
+
+
+Referenced by jstring\_\-create\_\-from\_\-utf8(), and jstring\_\-create\_\-literal().
+

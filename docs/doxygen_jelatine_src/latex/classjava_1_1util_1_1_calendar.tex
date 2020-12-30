@@ -1,0 +1,892 @@
+\section{java::util::Calendar Class Reference}
+\label{classjava_1_1util_1_1_calendar}\index{java::util::Calendar@{java::util::Calendar}}
+Inheritance diagram for java::util::Calendar:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=2.000000cm]{classjava_1_1util_1_1_calendar}
+\end{center}
+\end{figure}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+final {\bf Date} {\bf getTime} ()
+\item 
+final void {\bf setTime} ({\bf Date} date)
+\item 
+long {\bf getTimeInMillis} ()
+\item 
+void {\bf setTimeInMillis} (long {\bf time})
+\item 
+final int {\bf get} (int field)  throws ArrayIndexOutOfBoundsException     
+\item 
+void {\bf set} (int field, int value)  throws ArrayIndexOutOfBoundsException     
+\item 
+boolean {\bf equals} (Object o)
+\item 
+boolean {\bf before} (Object o)
+\item 
+boolean {\bf after} (Object o)
+\item 
+void {\bf setTimeZone} ({\bf TimeZone} zone)
+\item 
+{\bf TimeZone} {\bf getTimeZone} ()
+\item 
+final void {\bf clear} ()
+\end{DoxyCompactItemize}
+\subsection*{Static Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+static synchronized {\bf Calendar} {\bf getInstance} ()
+\item 
+static synchronized {\bf Calendar} {\bf getInstance} ({\bf TimeZone} zone)
+\end{DoxyCompactItemize}
+\subsection*{Static Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+static final int {\bf YEAR} = 1
+\item 
+static final int {\bf MONTH} = 2
+\item 
+static final int {\bf DATE} = 5
+\item 
+static final int {\bf DAY\_\-OF\_\-MONTH} = 5
+\item 
+static final int {\bf DAY\_\-OF\_\-WEEK} = 7
+\item 
+static final int {\bf AM\_\-PM} = 9
+\item 
+static final int {\bf HOUR} = 10
+\item 
+static final int {\bf HOUR\_\-OF\_\-DAY} = 11
+\item 
+static final int {\bf MINUTE} = 12
+\item 
+static final int {\bf SECOND} = 13
+\item 
+static final int {\bf MILLISECOND} = 14
+\item 
+static final int {\bf SUNDAY} = 1
+\item 
+static final int {\bf MONDAY} = 2
+\item 
+static final int {\bf TUESDAY} = 3
+\item 
+static final int {\bf WEDNESDAY} = 4
+\item 
+static final int {\bf THURSDAY} = 5
+\item 
+static final int {\bf FRIDAY} = 6
+\item 
+static final int {\bf SATURDAY} = 7
+\item 
+static final int {\bf JANUARY} = 0
+\item 
+static final int {\bf FEBRUARY} = 1
+\item 
+static final int {\bf MARCH} = 2
+\item 
+static final int {\bf APRIL} = 3
+\item 
+static final int {\bf MAY} = 4
+\item 
+static final int {\bf JUNE} = 5
+\item 
+static final int {\bf JULY} = 6
+\item 
+static final int {\bf AUGUST} = 7
+\item 
+static final int {\bf SEPTEMBER} = 8
+\item 
+static final int {\bf OCTOBER} = 9
+\item 
+static final int {\bf NOVEMBER} = 10
+\item 
+static final int {\bf DECEMBER} = 11
+\item 
+static final int {\bf AM} = 0
+\item 
+static final int {\bf PM} = 1
+\item 
+static final int {\bf FIELD\_\-COUNT} = 15
+\end{DoxyCompactItemize}
+\subsection*{Protected Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+{\bf Calendar} ()
+\item 
+void {\bf complete} ()
+\item 
+abstract void {\bf computeTime} ()
+\item 
+abstract void {\bf computeFields} ()
+\end{DoxyCompactItemize}
+\subsection*{Protected Attributes}
+\begin{DoxyCompactItemize}
+\item 
+int[$\,$] {\bf fields} = new int[{\bf FIELD\_\-COUNT}]
+\item 
+boolean[$\,$] {\bf isSet} = new boolean[{\bf FIELD\_\-COUNT}]
+\item 
+long {\bf time}
+\item 
+boolean {\bf isTimeSet}
+\item 
+boolean {\bf areFieldsSet}
+\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+This class is an abstract base class for Calendars, which can be used to convert between {\ttfamily \doxyref{Date}{p.}{classjava_1_1util_1_1_date}} objects and a set of integer fields which represent {\ttfamily YEAR}, {\ttfamily MONTH}, {\ttfamily DAY}, etc. The {\ttfamily \doxyref{Date}{p.}{classjava_1_1util_1_1_date}} object represents a time in milliseconds since the Epoch. \par
+
+
+This class is locale sensitive. To get the Object matching the current locale you can use {\ttfamily getInstance}. You can even provide a locale or a timezone. {\ttfamily getInstance} returns currently a {\ttfamily GregorianCalendar} for the current date. \par
+
+
+If you want to convert a date from the Year, Month, Day, DayOfWeek, etc. Representation to a {\ttfamily \doxyref{Date}{p.}{classjava_1_1util_1_1_date}}-\/Object, you can create a new \doxyref{Calendar}{p.}{classjava_1_1util_1_1_calendar} with {\ttfamily \doxyref{getInstance()}{p.}{classjava_1_1util_1_1_calendar_ac79d25925ab6a94a406c1a8549fae97f}}, {\ttfamily \doxyref{clear()}{p.}{classjava_1_1util_1_1_calendar_a8450eb2b4fbb9bba37e19a83051b9fee}} all fields, {\ttfamily \doxyref{set(int,int)}{p.}{classjava_1_1util_1_1_calendar_a898c50a2118c98c439ddcb8b0a30946d}} the fields you need and convert it with {\ttfamily \doxyref{getTime()}{p.}{classjava_1_1util_1_1_calendar_a12de1196e599b58132bbe34f37c2810f}}. \par
+
+
+If you want to convert a {\ttfamily \doxyref{Date}{p.}{classjava_1_1util_1_1_date}}-\/object to the \doxyref{Calendar}{p.}{classjava_1_1util_1_1_calendar} representation, create a new \doxyref{Calendar}{p.}{classjava_1_1util_1_1_calendar}, assign the {\ttfamily \doxyref{Date}{p.}{classjava_1_1util_1_1_date}}-\/Object with {\ttfamily \doxyref{setTime()}{p.}{classjava_1_1util_1_1_calendar_afdaf61f294bdb0cf52324ebce06b25fd}}, and read the fields with {\ttfamily \doxyref{get(int)}{p.}{classjava_1_1util_1_1_calendar_af2dc13666d55ef74ab7bcece514d488d}}. \par
+
+
+When computing the date from time fields, it may happen, that there are either two few fields set, or some fields are inconsistent. This cases will handled in a calendar specific way. Missing fields are replaced by the fields of the epoch: 1970 January 1 00:00. \par
+
+
+To understand, how the day of year is computed out of the fields look at the following table. It is traversed from top to bottom, and for the first line all fields are set, that line is used to compute the day. \par
+
+
+
+\begin{DoxyPre}month + day\_of\_month
+month + week\_of\_month + day\_of\_week
+month + day\_of\_week\_of\_month + day\_of\_week
+day\_of\_year
+day\_of\_week + week\_of\_year\end{DoxyPre}
+
+
+The hour\_\-of\_\-day-\/field takes precedence over the ampm and hour\_\-of\_\-ampm fields. \par
+
+
+{\bfseries Note:} This can differ for non-\/Gregorian calendar. \par
+
+
+Other useful things you can do with an calendar, is {\ttfamily roll}ing fields (that means increase/decrease a specific field by one, propagating overflows), or {\ttfamily add}ing/substracting a fixed amount to a field.
+
+\begin{DoxySeeAlso}{See also}
+\doxyref{Date}{p.}{classjava_1_1util_1_1_date} 
+
+\doxyref{TimeZone}{p.}{classjava_1_1util_1_1_time_zone} 
+\end{DoxySeeAlso}
+
+
+Definition at line 95 of file Calendar.java.
+
+
+
+\subsection{Constructor \& Destructor Documentation}
+\index{java::util::Calendar@{java::util::Calendar}!Calendar@{Calendar}}
+\index{Calendar@{Calendar}!java::util::Calendar@{java::util::Calendar}}
+\subsubsection[{Calendar}]{\setlength{\rightskip}{0pt plus 5cm}java::util::Calendar::Calendar (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily  [inline, protected]}}\label{classjava_1_1util_1_1_calendar_a552fb9d8cef2aee1ba50fab48fe0987a}
+Constructs a new \doxyref{Calendar}{p.}{classjava_1_1util_1_1_calendar} with the default time zone and the default locale. 
+
+Definition at line 303 of file Calendar.java.
+
+
+
+References clear(), and java::util::TimeZone::getDefault().
+
+
+
+\subsection{Member Function Documentation}
+\index{java::util::Calendar@{java::util::Calendar}!after@{after}}
+\index{after@{after}!java::util::Calendar@{java::util::Calendar}}
+\subsubsection[{after}]{\setlength{\rightskip}{0pt plus 5cm}boolean java::util::Calendar::after (
+\begin{DoxyParamCaption}
+\item[{Object}]{ o}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily  [inline]}}\label{classjava_1_1util_1_1_calendar_afbb0d9fb55f3b9ce664884ce7663de9e}
+Compares the given calendar with this. 
+\begin{DoxyParams}{Parameters}
+\item[{\em o}]the object to that we should compare. \end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+true, if the given object is a calendar, and this calendar represents a bigger time than the calendar o. 
+\end{DoxyReturn}
+
+\begin{DoxyExceptions}{Exceptions}
+\item[{\em ClassCastException}]if o is not an calendar. \end{DoxyExceptions}
+
+
+Definition at line 468 of file Calendar.java.
+
+
+
+References getTimeInMillis().
+
+\index{java::util::Calendar@{java::util::Calendar}!before@{before}}
+\index{before@{before}!java::util::Calendar@{java::util::Calendar}}
+\subsubsection[{before}]{\setlength{\rightskip}{0pt plus 5cm}boolean java::util::Calendar::before (
+\begin{DoxyParamCaption}
+\item[{Object}]{ o}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily  [inline]}}\label{classjava_1_1util_1_1_calendar_a7696c16ebd04ca33a970423c452bd216}
+Compares the given calendar with this. 
+\begin{DoxyParams}{Parameters}
+\item[{\em o}]the object to that we should compare. \end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+true, if the given object is a calendar, and this calendar represents a smaller time than the calendar o. 
+\end{DoxyReturn}
+
+\begin{DoxyExceptions}{Exceptions}
+\item[{\em ClassCastException}]if o is not an calendar. \end{DoxyExceptions}
+
+
+Definition at line 453 of file Calendar.java.
+
+
+
+References getTimeInMillis().
+
+\index{java::util::Calendar@{java::util::Calendar}!clear@{clear}}
+\index{clear@{clear}!java::util::Calendar@{java::util::Calendar}}
+\subsubsection[{clear}]{\setlength{\rightskip}{0pt plus 5cm}final void java::util::Calendar::clear (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily  [inline]}}\label{classjava_1_1util_1_1_calendar_a8450eb2b4fbb9bba37e19a83051b9fee}
+Clears the values of all the time fields. 
+
+Definition at line 523 of file Calendar.java.
+
+
+
+References AM, areFieldsSet, FIELD\_\-COUNT, fields, java::util::TimeZone::getRawOffset(), isSet, isTimeSet, JANUARY, and THURSDAY.
+
+
+
+Referenced by Calendar(), and setTimeInMillis().
+
+\index{java::util::Calendar@{java::util::Calendar}!complete@{complete}}
+\index{complete@{complete}!java::util::Calendar@{java::util::Calendar}}
+\subsubsection[{complete}]{\setlength{\rightskip}{0pt plus 5cm}void java::util::Calendar::complete (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily  [inline, protected]}}\label{classjava_1_1util_1_1_calendar_a981393c06346b3f7678e3c36600b6c6e}
+Fills any unset fields in the time field list 
+
+Definition at line 497 of file Calendar.java.
+
+
+
+References areFieldsSet, computeFields(), computeTime(), and isTimeSet.
+
+
+
+Referenced by get(), and jelatine::VMCalendar::VMCalendar().
+
+\index{java::util::Calendar@{java::util::Calendar}!computeFields@{computeFields}}
+\index{computeFields@{computeFields}!java::util::Calendar@{java::util::Calendar}}
+\subsubsection[{computeFields}]{\setlength{\rightskip}{0pt plus 5cm}abstract void java::util::Calendar::computeFields (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily  [protected, pure virtual]}}\label{classjava_1_1util_1_1_calendar_af2104128871bc4ab1b07d77e10d2e94b}
+Converts the milliseconds since the epoch UTC ({\ttfamily time}) to time fields ({\ttfamily fields}). Override this method if you write your own \doxyref{Calendar}{p.}{classjava_1_1util_1_1_calendar}. 
+
+Implemented in {\bf jelatine::VMCalendar} \doxyref{}{p.}{classjelatine_1_1_v_m_calendar_a19e3578101dd45d48896877c8f41539a}.
+
+
+
+Referenced by complete(), and setTimeInMillis().
+
+\index{java::util::Calendar@{java::util::Calendar}!computeTime@{computeTime}}
+\index{computeTime@{computeTime}!java::util::Calendar@{java::util::Calendar}}
+\subsubsection[{computeTime}]{\setlength{\rightskip}{0pt plus 5cm}abstract void java::util::Calendar::computeTime (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily  [protected, pure virtual]}}\label{classjava_1_1util_1_1_calendar_a8bef02a7d4ee773318e4f32db442f10c}
+Converts the time field values ({\ttfamily fields}) to milliseconds since the epoch UTC ({\ttfamily time}). Override this method if you write your own \doxyref{Calendar}{p.}{classjava_1_1util_1_1_calendar}. 
+
+Implemented in {\bf jelatine::VMCalendar} \doxyref{}{p.}{classjelatine_1_1_v_m_calendar_a5302c05540abf758117bc85608bc4dfb}.
+
+
+
+Referenced by complete(), getTime(), and getTimeInMillis().
+
+\index{java::util::Calendar@{java::util::Calendar}!equals@{equals}}
+\index{equals@{equals}!java::util::Calendar@{java::util::Calendar}}
+\subsubsection[{equals}]{\setlength{\rightskip}{0pt plus 5cm}boolean java::util::Calendar::equals (
+\begin{DoxyParamCaption}
+\item[{Object}]{ o}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily  [inline]}}\label{classjava_1_1util_1_1_calendar_a5ebaa0d62b2df37412ced542c8cc8670}
+Compares the given calendar with this. 
+\begin{DoxyParams}{Parameters}
+\item[{\em o}]the object to that we should compare. \end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+true, if the given object is a calendar, that represents the same time (but doesn't necessary have the same fields). 
+\end{DoxyReturn}
+
+
+Definition at line 429 of file Calendar.java.
+
+
+
+References getTimeInMillis(), and getTimeZone().
+
+\index{java::util::Calendar@{java::util::Calendar}!get@{get}}
+\index{get@{get}!java::util::Calendar@{java::util::Calendar}}
+\subsubsection[{get}]{\setlength{\rightskip}{0pt plus 5cm}final int java::util::Calendar::get (
+\begin{DoxyParamCaption}
+\item[{int}]{ field}
+\end{DoxyParamCaption}
+)  throws ArrayIndexOutOfBoundsException     \hspace{0.3cm}{\ttfamily  [inline]}}\label{classjava_1_1util_1_1_calendar_af2dc13666d55ef74ab7bcece514d488d}
+Gets the value of the specified field. They are recomputed if they are invalid. 
+\begin{DoxyParams}{Parameters}
+\item[{\em field}]the time field. One of the time field constants. \end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+the value of the specified field 
+\end{DoxyReturn}
+
+\begin{DoxyExceptions}{Exceptions}
+\item[{\em ArrayIndexOutOfBoundsException}]if the field is outside the valid range. The value of field must be $>$= 0 and $<$= {\ttfamily FIELD\_\-COUNT}. \end{DoxyExceptions}
+
+
+Definition at line 392 of file Calendar.java.
+
+
+
+References areFieldsSet, complete(), fields, and isSet.
+
+
+
+Referenced by java::util::Date::toString().
+
+\index{java::util::Calendar@{java::util::Calendar}!getInstance@{getInstance}}
+\index{getInstance@{getInstance}!java::util::Calendar@{java::util::Calendar}}
+\subsubsection[{getInstance}]{\setlength{\rightskip}{0pt plus 5cm}static synchronized {\bf Calendar} java::util::Calendar::getInstance (
+\begin{DoxyParamCaption}
+\item[{{\bf TimeZone}}]{ zone}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily  [inline, static]}}\label{classjava_1_1util_1_1_calendar_aba057fc67782c0b3fd0823b91d29871f}
+Creates a calendar representing the actual time, using the given time zone and the default locale. 
+\begin{DoxyParams}{Parameters}
+\item[{\em zone}]a time zone. \end{DoxyParams}
+
+
+Definition at line 347 of file Calendar.java.
+
+
+
+References getInstance(), and setTimeZone().
+
+\index{java::util::Calendar@{java::util::Calendar}!getInstance@{getInstance}}
+\index{getInstance@{getInstance}!java::util::Calendar@{java::util::Calendar}}
+\subsubsection[{getInstance}]{\setlength{\rightskip}{0pt plus 5cm}static synchronized {\bf Calendar} java::util::Calendar::getInstance (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily  [inline, static]}}\label{classjava_1_1util_1_1_calendar_ac79d25925ab6a94a406c1a8549fae97f}
+Creates a calendar representing the actual time, using the default time zone and locale. 
+
+Definition at line 337 of file Calendar.java.
+
+
+
+Referenced by getInstance().
+
+\index{java::util::Calendar@{java::util::Calendar}!getTime@{getTime}}
+\index{getTime@{getTime}!java::util::Calendar@{java::util::Calendar}}
+\subsubsection[{getTime}]{\setlength{\rightskip}{0pt plus 5cm}final {\bf Date} java::util::Calendar::getTime (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily  [inline]}}\label{classjava_1_1util_1_1_calendar_a12de1196e599b58132bbe34f37c2810f}
+Converts the time represented by this object to a {\ttfamily \doxyref{Date}{p.}{classjava_1_1util_1_1_date}}-\/Object. \begin{DoxyReturn}{Returns}
+the \doxyref{Date}{p.}{classjava_1_1util_1_1_date}. 
+\end{DoxyReturn}
+
+
+Definition at line 315 of file Calendar.java.
+
+
+
+References computeTime(), isTimeSet, and time.
+
+\index{java::util::Calendar@{java::util::Calendar}!getTimeInMillis@{getTimeInMillis}}
+\index{getTimeInMillis@{getTimeInMillis}!java::util::Calendar@{java::util::Calendar}}
+\subsubsection[{getTimeInMillis}]{\setlength{\rightskip}{0pt plus 5cm}long java::util::Calendar::getTimeInMillis (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily  [inline]}}\label{classjava_1_1util_1_1_calendar_ae1d7d763f5973b358abaffcdee6160f8}
+Returns the time represented by this \doxyref{Calendar}{p.}{classjava_1_1util_1_1_calendar}. \begin{DoxyReturn}{Returns}
+the time in milliseconds since the epoch. 
+\end{DoxyReturn}
+
+
+Definition at line 359 of file Calendar.java.
+
+
+
+References computeTime(), isTimeSet, and time.
+
+
+
+Referenced by after(), before(), and equals().
+
+\index{java::util::Calendar@{java::util::Calendar}!getTimeZone@{getTimeZone}}
+\index{getTimeZone@{getTimeZone}!java::util::Calendar@{java::util::Calendar}}
+\subsubsection[{getTimeZone}]{\setlength{\rightskip}{0pt plus 5cm}{\bf TimeZone} java::util::Calendar::getTimeZone (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily  [inline]}}\label{classjava_1_1util_1_1_calendar_ab78b62e9ce0e8a955b386028d3d0cb8c}
+Gets the time zone of this calendar \begin{DoxyReturn}{Returns}
+the current time zone. 
+\end{DoxyReturn}
+
+
+Definition at line 489 of file Calendar.java.
+
+
+
+Referenced by equals(), and java::util::Date::toString().
+
+\index{java::util::Calendar@{java::util::Calendar}!set@{set}}
+\index{set@{set}!java::util::Calendar@{java::util::Calendar}}
+\subsubsection[{set}]{\setlength{\rightskip}{0pt plus 5cm}void java::util::Calendar::set (
+\begin{DoxyParamCaption}
+\item[{int}]{ field, }
+\item[{int}]{ value}
+\end{DoxyParamCaption}
+)  throws ArrayIndexOutOfBoundsException     \hspace{0.3cm}{\ttfamily  [inline]}}\label{classjava_1_1util_1_1_calendar_a898c50a2118c98c439ddcb8b0a30946d}
+Sets the time field with the given value. This does invalidate the time in milliseconds. 
+\begin{DoxyParams}{Parameters}
+\item[{\em field}]the time field. One of the time field constants \item[{\em value}]the value to be set. \end{DoxyParams}
+
+\begin{DoxyExceptions}{Exceptions}
+\item[{\em ArrayIndexOutOfBoundsException}]if field is outside the valid range. The value of field must be $>$= 0 and $<$= {\ttfamily FIELD\_\-COUNT}. \end{DoxyExceptions}
+
+
+Definition at line 412 of file Calendar.java.
+
+
+
+References FIELD\_\-COUNT, fields, isSet, and isTimeSet.
+
+\index{java::util::Calendar@{java::util::Calendar}!setTime@{setTime}}
+\index{setTime@{setTime}!java::util::Calendar@{java::util::Calendar}}
+\subsubsection[{setTime}]{\setlength{\rightskip}{0pt plus 5cm}final void java::util::Calendar::setTime (
+\begin{DoxyParamCaption}
+\item[{{\bf Date}}]{ date}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily  [inline]}}\label{classjava_1_1util_1_1_calendar_afdaf61f294bdb0cf52324ebce06b25fd}
+Sets this Calendar's time to the given \doxyref{Date}{p.}{classjava_1_1util_1_1_date}. All time fields are invalidated by this method. 
+\begin{DoxyParams}{Parameters}
+\item[{\em date}]the \doxyref{Date}{p.}{classjava_1_1util_1_1_date} \end{DoxyParams}
+
+
+Definition at line 328 of file Calendar.java.
+
+
+
+References java::util::Date::getTime(), and setTimeInMillis().
+
+\index{java::util::Calendar@{java::util::Calendar}!setTimeInMillis@{setTimeInMillis}}
+\index{setTimeInMillis@{setTimeInMillis}!java::util::Calendar@{java::util::Calendar}}
+\subsubsection[{setTimeInMillis}]{\setlength{\rightskip}{0pt plus 5cm}void java::util::Calendar::setTimeInMillis (
+\begin{DoxyParamCaption}
+\item[{long}]{ time}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily  [inline]}}\label{classjava_1_1util_1_1_calendar_a812a741586d3442a631da8a08aaf45aa}
+Sets this Calendar's time to the given Time. All time fields are invalidated by this method. 
+\begin{DoxyParams}{Parameters}
+\item[{\em time}]the time in milliseconds since the epoch \end{DoxyParams}
+
+
+Definition at line 375 of file Calendar.java.
+
+
+
+References clear(), computeFields(), and isTimeSet.
+
+
+
+Referenced by setTime(), java::util::Date::toString(), and jelatine::VMCalendar::VMCalendar().
+
+\index{java::util::Calendar@{java::util::Calendar}!setTimeZone@{setTimeZone}}
+\index{setTimeZone@{setTimeZone}!java::util::Calendar@{java::util::Calendar}}
+\subsubsection[{setTimeZone}]{\setlength{\rightskip}{0pt plus 5cm}void java::util::Calendar::setTimeZone (
+\begin{DoxyParamCaption}
+\item[{{\bf TimeZone}}]{ zone}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily  [inline]}}\label{classjava_1_1util_1_1_calendar_a49585d9b2d6ba99e9f99155437daf493}
+Sets the time zone to the specified value. 
+\begin{DoxyParams}{Parameters}
+\item[{\em zone}]the new time zone \end{DoxyParams}
+
+
+Definition at line 480 of file Calendar.java.
+
+
+
+Referenced by getInstance().
+
+
+
+\subsection{Field Documentation}
+\index{java::util::Calendar@{java::util::Calendar}!AM@{AM}}
+\index{AM@{AM}!java::util::Calendar@{java::util::Calendar}}
+\subsubsection[{AM}]{\setlength{\rightskip}{0pt plus 5cm}final int {\bf java::util::Calendar::AM} = 0\hspace{0.3cm}{\ttfamily  [static]}}\label{classjava_1_1util_1_1_calendar_a6ec0876405757c682b7945b5e0505a93}
+Useful constant for 12-\/hour clock. 
+
+Definition at line 253 of file Calendar.java.
+
+
+
+Referenced by clear(), and jelatine::VMCalendar::computeFields().
+
+\index{java::util::Calendar@{java::util::Calendar}!AM\_\-PM@{AM\_\-PM}}
+\index{AM\_\-PM@{AM\_\-PM}!java::util::Calendar@{java::util::Calendar}}
+\subsubsection[{AM\_\-PM}]{\setlength{\rightskip}{0pt plus 5cm}final int {\bf java::util::Calendar::AM\_\-PM} = 9\hspace{0.3cm}{\ttfamily  [static]}}\label{classjava_1_1util_1_1_calendar_a2f237ecc70988e48b7b1bf153d04097b}
+Constant representing the part of the day for 12-\/hour clock. This should be one of AM or PM. 
+
+Definition at line 128 of file Calendar.java.
+
+
+
+Referenced by jelatine::VMCalendar::computeFields(), and jelatine::VMCalendar::computeTime().
+
+\index{java::util::Calendar@{java::util::Calendar}!APRIL@{APRIL}}
+\index{APRIL@{APRIL}!java::util::Calendar@{java::util::Calendar}}
+\subsubsection[{APRIL}]{\setlength{\rightskip}{0pt plus 5cm}final int {\bf java::util::Calendar::APRIL} = 3\hspace{0.3cm}{\ttfamily  [static]}}\label{classjava_1_1util_1_1_calendar_aa759244ad0f7c52df90c4a3fca651810}
+Constant representing April. 
+
+Definition at line 208 of file Calendar.java.
+
+\index{java::util::Calendar@{java::util::Calendar}!areFieldsSet@{areFieldsSet}}
+\index{areFieldsSet@{areFieldsSet}!java::util::Calendar@{java::util::Calendar}}
+\subsubsection[{areFieldsSet}]{\setlength{\rightskip}{0pt plus 5cm}boolean {\bf java::util::Calendar::areFieldsSet}\hspace{0.3cm}{\ttfamily  [protected]}}\label{classjava_1_1util_1_1_calendar_af80d49fad218a3ba0d72bd9b0a352014}
+Tells if the fields have a valid value. This superseeds the isSet array. 
+
+Definition at line 290 of file Calendar.java.
+
+
+
+Referenced by clear(), complete(), jelatine::VMCalendar::computeFields(), and get().
+
+\index{java::util::Calendar@{java::util::Calendar}!AUGUST@{AUGUST}}
+\index{AUGUST@{AUGUST}!java::util::Calendar@{java::util::Calendar}}
+\subsubsection[{AUGUST}]{\setlength{\rightskip}{0pt plus 5cm}final int {\bf java::util::Calendar::AUGUST} = 7\hspace{0.3cm}{\ttfamily  [static]}}\label{classjava_1_1util_1_1_calendar_a3144f1c21ca881007a396ee33eb204b8}
+Constant representing August. 
+
+Definition at line 228 of file Calendar.java.
+
+\index{java::util::Calendar@{java::util::Calendar}!DATE@{DATE}}
+\index{DATE@{DATE}!java::util::Calendar@{java::util::Calendar}}
+\subsubsection[{DATE}]{\setlength{\rightskip}{0pt plus 5cm}final int {\bf java::util::Calendar::DATE} = 5\hspace{0.3cm}{\ttfamily  [static]}}\label{classjava_1_1util_1_1_calendar_afef2bc6f118e8bc822cb037f53d8d6a9}
+Constant representing the day time field, synonym for DAY\_\-OF\_\-MONTH. 
+
+Definition at line 111 of file Calendar.java.
+
+\index{java::util::Calendar@{java::util::Calendar}!DAY\_\-OF\_\-MONTH@{DAY\_\-OF\_\-MONTH}}
+\index{DAY\_\-OF\_\-MONTH@{DAY\_\-OF\_\-MONTH}!java::util::Calendar@{java::util::Calendar}}
+\subsubsection[{DAY\_\-OF\_\-MONTH}]{\setlength{\rightskip}{0pt plus 5cm}final int {\bf java::util::Calendar::DAY\_\-OF\_\-MONTH} = 5\hspace{0.3cm}{\ttfamily  [static]}}\label{classjava_1_1util_1_1_calendar_a04589bb93293594a3a9cd40f3c5fa639}
+Constant representing the day time field. 
+
+Definition at line 116 of file Calendar.java.
+
+
+
+Referenced by jelatine::VMCalendar::computeFields(), and jelatine::VMCalendar::computeTime().
+
+\index{java::util::Calendar@{java::util::Calendar}!DAY\_\-OF\_\-WEEK@{DAY\_\-OF\_\-WEEK}}
+\index{DAY\_\-OF\_\-WEEK@{DAY\_\-OF\_\-WEEK}!java::util::Calendar@{java::util::Calendar}}
+\subsubsection[{DAY\_\-OF\_\-WEEK}]{\setlength{\rightskip}{0pt plus 5cm}final int {\bf java::util::Calendar::DAY\_\-OF\_\-WEEK} = 7\hspace{0.3cm}{\ttfamily  [static]}}\label{classjava_1_1util_1_1_calendar_ad567f61639909efd03e5ccee3e4efd05}
+Constant representing the day of week time field. This field should contain one of the SUNDAY,...,SATURDAY constants below. 
+
+Definition at line 122 of file Calendar.java.
+
+
+
+Referenced by jelatine::VMCalendar::computeFields(), and jelatine::VMCalendar::computeTime().
+
+\index{java::util::Calendar@{java::util::Calendar}!DECEMBER@{DECEMBER}}
+\index{DECEMBER@{DECEMBER}!java::util::Calendar@{java::util::Calendar}}
+\subsubsection[{DECEMBER}]{\setlength{\rightskip}{0pt plus 5cm}final int {\bf java::util::Calendar::DECEMBER} = 11\hspace{0.3cm}{\ttfamily  [static]}}\label{classjava_1_1util_1_1_calendar_afe07049b566d63a655a032d95b040228}
+Constant representing December. 
+
+Definition at line 248 of file Calendar.java.
+
+\index{java::util::Calendar@{java::util::Calendar}!FEBRUARY@{FEBRUARY}}
+\index{FEBRUARY@{FEBRUARY}!java::util::Calendar@{java::util::Calendar}}
+\subsubsection[{FEBRUARY}]{\setlength{\rightskip}{0pt plus 5cm}final int {\bf java::util::Calendar::FEBRUARY} = 1\hspace{0.3cm}{\ttfamily  [static]}}\label{classjava_1_1util_1_1_calendar_a29306b09fdbd128d5cf57f87400554c4}
+Constant representing February. 
+
+Definition at line 198 of file Calendar.java.
+
+\index{java::util::Calendar@{java::util::Calendar}!FIELD\_\-COUNT@{FIELD\_\-COUNT}}
+\index{FIELD\_\-COUNT@{FIELD\_\-COUNT}!java::util::Calendar@{java::util::Calendar}}
+\subsubsection[{FIELD\_\-COUNT}]{\setlength{\rightskip}{0pt plus 5cm}final int {\bf java::util::Calendar::FIELD\_\-COUNT} = 15\hspace{0.3cm}{\ttfamily  [static]}}\label{classjava_1_1util_1_1_calendar_a6da16eb1403aa484860ef158475d4195}
+Number of time fields. 
+
+Definition at line 263 of file Calendar.java.
+
+
+
+Referenced by clear(), and set().
+
+\index{java::util::Calendar@{java::util::Calendar}!fields@{fields}}
+\index{fields@{fields}!java::util::Calendar@{java::util::Calendar}}
+\subsubsection[{fields}]{\setlength{\rightskip}{0pt plus 5cm}int [$\,$] {\bf java::util::Calendar::fields} = new int[{\bf FIELD\_\-COUNT}]\hspace{0.3cm}{\ttfamily  [protected]}}\label{classjava_1_1util_1_1_calendar_afa8c3c9fefcc52a9a8472f1e18fab358}
+The time fields. The array is indexed by the constants YEAR to DST\_\-OFFSET. 
+
+Definition at line 269 of file Calendar.java.
+
+
+
+Referenced by clear(), jelatine::VMCalendar::computeFields(), jelatine::VMCalendar::computeTime(), get(), and set().
+
+\index{java::util::Calendar@{java::util::Calendar}!FRIDAY@{FRIDAY}}
+\index{FRIDAY@{FRIDAY}!java::util::Calendar@{java::util::Calendar}}
+\subsubsection[{FRIDAY}]{\setlength{\rightskip}{0pt plus 5cm}final int {\bf java::util::Calendar::FRIDAY} = 6\hspace{0.3cm}{\ttfamily  [static]}}\label{classjava_1_1util_1_1_calendar_a56ea8091655ef56c552b565b49177ea6}
+Constant representing Friday. 
+
+Definition at line 183 of file Calendar.java.
+
+\index{java::util::Calendar@{java::util::Calendar}!HOUR@{HOUR}}
+\index{HOUR@{HOUR}!java::util::Calendar@{java::util::Calendar}}
+\subsubsection[{HOUR}]{\setlength{\rightskip}{0pt plus 5cm}final int {\bf java::util::Calendar::HOUR} = 10\hspace{0.3cm}{\ttfamily  [static]}}\label{classjava_1_1util_1_1_calendar_a197e7682f8173216a8619e13d769f6db}
+Constant representing the hour time field for 12-\/hour clock. 
+
+Definition at line 133 of file Calendar.java.
+
+
+
+Referenced by jelatine::VMCalendar::computeFields(), and jelatine::VMCalendar::computeTime().
+
+\index{java::util::Calendar@{java::util::Calendar}!HOUR\_\-OF\_\-DAY@{HOUR\_\-OF\_\-DAY}}
+\index{HOUR\_\-OF\_\-DAY@{HOUR\_\-OF\_\-DAY}!java::util::Calendar@{java::util::Calendar}}
+\subsubsection[{HOUR\_\-OF\_\-DAY}]{\setlength{\rightskip}{0pt plus 5cm}final int {\bf java::util::Calendar::HOUR\_\-OF\_\-DAY} = 11\hspace{0.3cm}{\ttfamily  [static]}}\label{classjava_1_1util_1_1_calendar_a24b39aff16f8c36fb60aa7ec31119cd5}
+Constant representing the hour of day time field for 24-\/hour clock. 
+
+Definition at line 138 of file Calendar.java.
+
+
+
+Referenced by jelatine::VMCalendar::computeFields(), and jelatine::VMCalendar::computeTime().
+
+\index{java::util::Calendar@{java::util::Calendar}!isSet@{isSet}}
+\index{isSet@{isSet}!java::util::Calendar@{java::util::Calendar}}
+\subsubsection[{isSet}]{\setlength{\rightskip}{0pt plus 5cm}boolean [$\,$] {\bf java::util::Calendar::isSet} = new boolean[{\bf FIELD\_\-COUNT}]\hspace{0.3cm}{\ttfamily  [protected]}}\label{classjava_1_1util_1_1_calendar_a0746e4370ad413b6fc0bd4b8a6a707f2}
+The flags which tell if the fields above have a value. 
+
+Definition at line 274 of file Calendar.java.
+
+
+
+Referenced by clear(), jelatine::VMCalendar::computeFields(), jelatine::VMCalendar::computeTime(), get(), and set().
+
+\index{java::util::Calendar@{java::util::Calendar}!isTimeSet@{isTimeSet}}
+\index{isTimeSet@{isTimeSet}!java::util::Calendar@{java::util::Calendar}}
+\subsubsection[{isTimeSet}]{\setlength{\rightskip}{0pt plus 5cm}boolean {\bf java::util::Calendar::isTimeSet}\hspace{0.3cm}{\ttfamily  [protected]}}\label{classjava_1_1util_1_1_calendar_ae10c1138abad6111c027f3b8be3c6018}
+Tells if the above field has a valid value. 
+
+Definition at line 284 of file Calendar.java.
+
+
+
+Referenced by clear(), complete(), jelatine::VMCalendar::computeTime(), getTime(), getTimeInMillis(), set(), and setTimeInMillis().
+
+\index{java::util::Calendar@{java::util::Calendar}!JANUARY@{JANUARY}}
+\index{JANUARY@{JANUARY}!java::util::Calendar@{java::util::Calendar}}
+\subsubsection[{JANUARY}]{\setlength{\rightskip}{0pt plus 5cm}final int {\bf java::util::Calendar::JANUARY} = 0\hspace{0.3cm}{\ttfamily  [static]}}\label{classjava_1_1util_1_1_calendar_a6c92632c9d05dfa495b0655965c0c10a}
+Constant representing January. 
+
+Definition at line 193 of file Calendar.java.
+
+
+
+Referenced by clear().
+
+\index{java::util::Calendar@{java::util::Calendar}!JULY@{JULY}}
+\index{JULY@{JULY}!java::util::Calendar@{java::util::Calendar}}
+\subsubsection[{JULY}]{\setlength{\rightskip}{0pt plus 5cm}final int {\bf java::util::Calendar::JULY} = 6\hspace{0.3cm}{\ttfamily  [static]}}\label{classjava_1_1util_1_1_calendar_a33209e19773c08f03c1cfbe70bbe0e80}
+Constant representing July. 
+
+Definition at line 223 of file Calendar.java.
+
+\index{java::util::Calendar@{java::util::Calendar}!JUNE@{JUNE}}
+\index{JUNE@{JUNE}!java::util::Calendar@{java::util::Calendar}}
+\subsubsection[{JUNE}]{\setlength{\rightskip}{0pt plus 5cm}final int {\bf java::util::Calendar::JUNE} = 5\hspace{0.3cm}{\ttfamily  [static]}}\label{classjava_1_1util_1_1_calendar_a6b5e3f62b5fdf0e2ef82546447821807}
+Constant representing June. 
+
+Definition at line 218 of file Calendar.java.
+
+\index{java::util::Calendar@{java::util::Calendar}!MARCH@{MARCH}}
+\index{MARCH@{MARCH}!java::util::Calendar@{java::util::Calendar}}
+\subsubsection[{MARCH}]{\setlength{\rightskip}{0pt plus 5cm}final int {\bf java::util::Calendar::MARCH} = 2\hspace{0.3cm}{\ttfamily  [static]}}\label{classjava_1_1util_1_1_calendar_ad91f01153c36030fd4fa09bf3690d964}
+Constant representing March. 
+
+Definition at line 203 of file Calendar.java.
+
+\index{java::util::Calendar@{java::util::Calendar}!MAY@{MAY}}
+\index{MAY@{MAY}!java::util::Calendar@{java::util::Calendar}}
+\subsubsection[{MAY}]{\setlength{\rightskip}{0pt plus 5cm}final int {\bf java::util::Calendar::MAY} = 4\hspace{0.3cm}{\ttfamily  [static]}}\label{classjava_1_1util_1_1_calendar_aa046427da9a5d8ac845d3b23a1af20d7}
+Constant representing May. 
+
+Definition at line 213 of file Calendar.java.
+
+\index{java::util::Calendar@{java::util::Calendar}!MILLISECOND@{MILLISECOND}}
+\index{MILLISECOND@{MILLISECOND}!java::util::Calendar@{java::util::Calendar}}
+\subsubsection[{MILLISECOND}]{\setlength{\rightskip}{0pt plus 5cm}final int {\bf java::util::Calendar::MILLISECOND} = 14\hspace{0.3cm}{\ttfamily  [static]}}\label{classjava_1_1util_1_1_calendar_af7ba3b21699f3ae8bd8f20ebda08cfa7}
+Constant representing the millisecond time field. 
+
+Definition at line 153 of file Calendar.java.
+
+
+
+Referenced by jelatine::VMCalendar::computeFields(), and jelatine::VMCalendar::computeTime().
+
+\index{java::util::Calendar@{java::util::Calendar}!MINUTE@{MINUTE}}
+\index{MINUTE@{MINUTE}!java::util::Calendar@{java::util::Calendar}}
+\subsubsection[{MINUTE}]{\setlength{\rightskip}{0pt plus 5cm}final int {\bf java::util::Calendar::MINUTE} = 12\hspace{0.3cm}{\ttfamily  [static]}}\label{classjava_1_1util_1_1_calendar_a1af3906b93886736c87247eac5d85bf2}
+Constant representing the minute of hour time field. 
+
+Definition at line 143 of file Calendar.java.
+
+
+
+Referenced by jelatine::VMCalendar::computeFields(), and jelatine::VMCalendar::computeTime().
+
+\index{java::util::Calendar@{java::util::Calendar}!MONDAY@{MONDAY}}
+\index{MONDAY@{MONDAY}!java::util::Calendar@{java::util::Calendar}}
+\subsubsection[{MONDAY}]{\setlength{\rightskip}{0pt plus 5cm}final int {\bf java::util::Calendar::MONDAY} = 2\hspace{0.3cm}{\ttfamily  [static]}}\label{classjava_1_1util_1_1_calendar_a436879f90522d8e9952776b95615467f}
+Constant representing Monday. 
+
+Definition at line 163 of file Calendar.java.
+
+\index{java::util::Calendar@{java::util::Calendar}!MONTH@{MONTH}}
+\index{MONTH@{MONTH}!java::util::Calendar@{java::util::Calendar}}
+\subsubsection[{MONTH}]{\setlength{\rightskip}{0pt plus 5cm}final int {\bf java::util::Calendar::MONTH} = 2\hspace{0.3cm}{\ttfamily  [static]}}\label{classjava_1_1util_1_1_calendar_a8101002437d5ce09c1246c2a1fcf9b8b}
+Constant representing the month time field. This field should contain one of the JANUARY,...,DECEMBER constants below. 
+
+Definition at line 106 of file Calendar.java.
+
+
+
+Referenced by jelatine::VMCalendar::computeFields(), and jelatine::VMCalendar::computeTime().
+
+\index{java::util::Calendar@{java::util::Calendar}!NOVEMBER@{NOVEMBER}}
+\index{NOVEMBER@{NOVEMBER}!java::util::Calendar@{java::util::Calendar}}
+\subsubsection[{NOVEMBER}]{\setlength{\rightskip}{0pt plus 5cm}final int {\bf java::util::Calendar::NOVEMBER} = 10\hspace{0.3cm}{\ttfamily  [static]}}\label{classjava_1_1util_1_1_calendar_a3aee72e0c74d20753017e67d6f2dc57b}
+Constant representing November. 
+
+Definition at line 243 of file Calendar.java.
+
+\index{java::util::Calendar@{java::util::Calendar}!OCTOBER@{OCTOBER}}
+\index{OCTOBER@{OCTOBER}!java::util::Calendar@{java::util::Calendar}}
+\subsubsection[{OCTOBER}]{\setlength{\rightskip}{0pt plus 5cm}final int {\bf java::util::Calendar::OCTOBER} = 9\hspace{0.3cm}{\ttfamily  [static]}}\label{classjava_1_1util_1_1_calendar_a2158a0d516a6b2890c6d200209b90776}
+Constant representing October. 
+
+Definition at line 238 of file Calendar.java.
+
+\index{java::util::Calendar@{java::util::Calendar}!PM@{PM}}
+\index{PM@{PM}!java::util::Calendar@{java::util::Calendar}}
+\subsubsection[{PM}]{\setlength{\rightskip}{0pt plus 5cm}final int {\bf java::util::Calendar::PM} = 1\hspace{0.3cm}{\ttfamily  [static]}}\label{classjava_1_1util_1_1_calendar_ae8679c1a9849935bb6ac6b75f2f46655}
+Useful constant for 12-\/hour clock. 
+
+Definition at line 258 of file Calendar.java.
+
+
+
+Referenced by jelatine::VMCalendar::computeFields(), and jelatine::VMCalendar::computeTime().
+
+\index{java::util::Calendar@{java::util::Calendar}!SATURDAY@{SATURDAY}}
+\index{SATURDAY@{SATURDAY}!java::util::Calendar@{java::util::Calendar}}
+\subsubsection[{SATURDAY}]{\setlength{\rightskip}{0pt plus 5cm}final int {\bf java::util::Calendar::SATURDAY} = 7\hspace{0.3cm}{\ttfamily  [static]}}\label{classjava_1_1util_1_1_calendar_a24da1888d01a82bb03e1080f058e0ae1}
+Constant representing Saturday. 
+
+Definition at line 188 of file Calendar.java.
+
+\index{java::util::Calendar@{java::util::Calendar}!SECOND@{SECOND}}
+\index{SECOND@{SECOND}!java::util::Calendar@{java::util::Calendar}}
+\subsubsection[{SECOND}]{\setlength{\rightskip}{0pt plus 5cm}final int {\bf java::util::Calendar::SECOND} = 13\hspace{0.3cm}{\ttfamily  [static]}}\label{classjava_1_1util_1_1_calendar_acdb97527911c8b9bc4492651af47847f}
+Constant representing the second time field. 
+
+Definition at line 148 of file Calendar.java.
+
+
+
+Referenced by jelatine::VMCalendar::computeFields(), and jelatine::VMCalendar::computeTime().
+
+\index{java::util::Calendar@{java::util::Calendar}!SEPTEMBER@{SEPTEMBER}}
+\index{SEPTEMBER@{SEPTEMBER}!java::util::Calendar@{java::util::Calendar}}
+\subsubsection[{SEPTEMBER}]{\setlength{\rightskip}{0pt plus 5cm}final int {\bf java::util::Calendar::SEPTEMBER} = 8\hspace{0.3cm}{\ttfamily  [static]}}\label{classjava_1_1util_1_1_calendar_a63e8abe6d6422a818e5dab4c0dff6811}
+Constant representing September. 
+
+Definition at line 233 of file Calendar.java.
+
+\index{java::util::Calendar@{java::util::Calendar}!SUNDAY@{SUNDAY}}
+\index{SUNDAY@{SUNDAY}!java::util::Calendar@{java::util::Calendar}}
+\subsubsection[{SUNDAY}]{\setlength{\rightskip}{0pt plus 5cm}final int {\bf java::util::Calendar::SUNDAY} = 1\hspace{0.3cm}{\ttfamily  [static]}}\label{classjava_1_1util_1_1_calendar_a11a45b26ad89453a7753c239b5b5d22f}
+Constant representing Sunday. 
+
+Definition at line 158 of file Calendar.java.
+
+\index{java::util::Calendar@{java::util::Calendar}!THURSDAY@{THURSDAY}}
+\index{THURSDAY@{THURSDAY}!java::util::Calendar@{java::util::Calendar}}
+\subsubsection[{THURSDAY}]{\setlength{\rightskip}{0pt plus 5cm}final int {\bf java::util::Calendar::THURSDAY} = 5\hspace{0.3cm}{\ttfamily  [static]}}\label{classjava_1_1util_1_1_calendar_af3cd6fd76a99b1fc09c5f967282dd6e6}
+Constant representing Thursday. 
+
+Definition at line 178 of file Calendar.java.
+
+
+
+Referenced by clear(), and jelatine::VMCalendar::computeTime().
+
+\index{java::util::Calendar@{java::util::Calendar}!time@{time}}
+\index{time@{time}!java::util::Calendar@{java::util::Calendar}}
+\subsubsection[{time}]{\setlength{\rightskip}{0pt plus 5cm}long {\bf java::util::Calendar::time}\hspace{0.3cm}{\ttfamily  [protected]}}\label{classjava_1_1util_1_1_calendar_a39805c55d34336008417f3472cf9b8e1}
+The time in milliseconds since the epoch. 
+
+Definition at line 279 of file Calendar.java.
+
+
+
+Referenced by jelatine::VMCalendar::computeFields(), jelatine::VMCalendar::computeTime(), getTime(), and getTimeInMillis().
+
+\index{java::util::Calendar@{java::util::Calendar}!TUESDAY@{TUESDAY}}
+\index{TUESDAY@{TUESDAY}!java::util::Calendar@{java::util::Calendar}}
+\subsubsection[{TUESDAY}]{\setlength{\rightskip}{0pt plus 5cm}final int {\bf java::util::Calendar::TUESDAY} = 3\hspace{0.3cm}{\ttfamily  [static]}}\label{classjava_1_1util_1_1_calendar_aa1f0e05a1c086c9d2d810ac509725117}
+Constant representing Tuesday. 
+
+Definition at line 168 of file Calendar.java.
+
+\index{java::util::Calendar@{java::util::Calendar}!WEDNESDAY@{WEDNESDAY}}
+\index{WEDNESDAY@{WEDNESDAY}!java::util::Calendar@{java::util::Calendar}}
+\subsubsection[{WEDNESDAY}]{\setlength{\rightskip}{0pt plus 5cm}final int {\bf java::util::Calendar::WEDNESDAY} = 4\hspace{0.3cm}{\ttfamily  [static]}}\label{classjava_1_1util_1_1_calendar_aa29ff2e9f0e0ec38de2b40119df019b6}
+Constant representing Wednesday. 
+
+Definition at line 173 of file Calendar.java.
+
+\index{java::util::Calendar@{java::util::Calendar}!YEAR@{YEAR}}
+\index{YEAR@{YEAR}!java::util::Calendar@{java::util::Calendar}}
+\subsubsection[{YEAR}]{\setlength{\rightskip}{0pt plus 5cm}final int {\bf java::util::Calendar::YEAR} = 1\hspace{0.3cm}{\ttfamily  [static]}}\label{classjava_1_1util_1_1_calendar_a4afafda5849eecddae4ac77142c0d51b}
+Constant representing the year time field. 
+
+Definition at line 100 of file Calendar.java.
+
+
+
+Referenced by jelatine::VMCalendar::computeFields(), and jelatine::VMCalendar::computeTime().
+
+
+
+The documentation for this class was generated from the following file:\begin{DoxyCompactItemize}
+\item 
+src/classpath/java/util/Calendar.java\end{DoxyCompactItemize}

@@ -1,0 +1,68 @@
+\section{javax::microedition::io::OutputConnection Interface Reference}
+\label{interfacejavax_1_1microedition_1_1io_1_1_output_connection}\index{javax::microedition::io::OutputConnection@{javax::microedition::io::OutputConnection}}
+Inheritance diagram for javax::microedition::io::OutputConnection:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=4.000000cm]{interfacejavax_1_1microedition_1_1io_1_1_output_connection}
+\end{center}
+\end{figure}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+{\bf OutputStream} {\bf openOutputStream} ()  throws IOException
+\item 
+{\bf DataOutputStream} {\bf openDataOutputStream} ()  throws IOException
+\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+This interface defines an output connection's methods 
+
+Definition at line 30 of file OutputConnection.java.
+
+
+
+\subsection{Member Function Documentation}
+\index{javax::microedition::io::OutputConnection@{javax::microedition::io::OutputConnection}!openDataOutputStream@{openDataOutputStream}}
+\index{openDataOutputStream@{openDataOutputStream}!javax::microedition::io::OutputConnection@{javax::microedition::io::OutputConnection}}
+\subsubsection[{openDataOutputStream}]{\setlength{\rightskip}{0pt plus 5cm}{\bf DataOutputStream} javax::microedition::io::OutputConnection::openDataOutputStream (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)  throws {\bf IOException}}\label{interfacejavax_1_1microedition_1_1io_1_1_output_connection_a53973642a330c2cec993392c1dc694f5}
+Returns a new, opened data output stream for the connection. \begin{DoxyReturn}{Returns}
+A DataOutputStream object 
+\end{DoxyReturn}
+
+\begin{DoxyExceptions}{Exceptions}
+\item[{\em IOException}]If an error occurs \end{DoxyExceptions}
+
+
+Implemented in {\bf jelatine::cldc::io::socket::ProtocolImpl} \doxyref{}{p.}{classjelatine_1_1cldc_1_1io_1_1socket_1_1_protocol_impl_a7712ba6167a2d411d5270ac27cf706b6}.
+
+
+
+Referenced by javax::microedition::io::Connector::openDataOutputStream().
+
+\index{javax::microedition::io::OutputConnection@{javax::microedition::io::OutputConnection}!openOutputStream@{openOutputStream}}
+\index{openOutputStream@{openOutputStream}!javax::microedition::io::OutputConnection@{javax::microedition::io::OutputConnection}}
+\subsubsection[{openOutputStream}]{\setlength{\rightskip}{0pt plus 5cm}{\bf OutputStream} javax::microedition::io::OutputConnection::openOutputStream (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)  throws {\bf IOException}}\label{interfacejavax_1_1microedition_1_1io_1_1_output_connection_a25b150dc409dc72226fa65bfa5376cc2}
+Returns a new, opened output stream for the connection. \begin{DoxyReturn}{Returns}
+An OutputStream object 
+\end{DoxyReturn}
+
+\begin{DoxyExceptions}{Exceptions}
+\item[{\em IOException}]If an error occurs \end{DoxyExceptions}
+
+
+Implemented in {\bf jelatine::cldc::io::socket::ProtocolImpl} \doxyref{}{p.}{classjelatine_1_1cldc_1_1io_1_1socket_1_1_protocol_impl_abf20f6dae98251f2bc24398b00d2fe27}.
+
+
+
+The documentation for this interface was generated from the following file:\begin{DoxyCompactItemize}
+\item 
+src/classpath/javax/microedition/io/OutputConnection.java\end{DoxyCompactItemize}

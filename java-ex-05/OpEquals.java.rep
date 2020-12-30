@@ -1,0 +1,22 @@
+rm: cannot remove directory `tmp_preproc/': Is a directory
+
+Found 1 semantic error compiling "c:/algoritm/c_src/JVMs/tinyvm_0_2_6/muvm_tests/examples_from_book/05/tmp_preproc/OpEquals.java":
+
+                       <
+     1. class OpEquals {
+   . . .
+    34. } }
+        -->
+*** Semantic Error: A class file was not generated for thnot exists:OpEquals.class
+Error compile: tmp_preproc/OpEquals.java
+ot found. See system messages for more information.
+
+Found 3 system errors:
+
+*** Semantic Error: A non-standard version of the type "java.lang.StringBuffer" was found. Class files that depend on this type may not have been generated.
+
+
+*** Semantic Error: A non-standard version of the type "java.lang.StringBuffer" was found. Class files that depend on this type may not have been generated.
+
+
+*** Semantic Error: A non-standard version of the type "java.lang.StringBuffer" was found. Class files that depend on this type may not have been generated.

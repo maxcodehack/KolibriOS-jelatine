@@ -1,0 +1,24 @@
+break jstring_create_literal
+watch (heap.bin[1]!=0) && (heap.bin[1]->next==9)
+display heap.bin
+#jstring_create_literal (src=0xdef8ec "Battery :") at jstring.c:365
+print  (char*)ref
+$24 = (small_chunk_t *) 0xa40514
+(gdb) print  (char*)ref
+$23 = 0xa4050c "B.-"
+(gdb) print  heap.bin
+$28 = {0xa400dc, 0xa40514, 0xa4016c, 0xa40598, 0xa4053c, 0xa40568, 0x0, 0x0, 0xa40148, 0x0, 0x0,
+  0x0, 0xa40114, 0x0, 0x0, 0x0}
+  (gdb) print str
+$19 = (java_lang_String_t *) 0xa40508
+
+(gdb) backtrace
+#0  jstring_create_literal (src=0xdef8ec "Battery :") at jstring.c:365
+#1  0x0040382d in cp_create (cl=0xdefdb8, cf=0xa40418) at constantpool.c:231
+#2  0x0040c9db in derive_class (cl=0xdefdb8, cf=0xa40418) at loader.c:769
+#3  0x0040bcc8 in load_class (cl=0xdefdb8) at loader.c:321
+#4  0x0040c30c in bcl_resolve_class (orig=0x0, name=0xdf2f50 "org/lejos/sample/view/View")
+    at loader.c:551
+#5  0x004133b0 in vm_run () at vm.c:177
+#6  0x0040f774 in main (argc=10, argv=0x3f2c28) at main.c:88
+(gdb)

@@ -1,0 +1,276 @@
+\section{java::io::ByteArrayOutputStream Class Reference}
+\label{classjava_1_1io_1_1_byte_array_output_stream}\index{java::io::ByteArrayOutputStream@{java::io::ByteArrayOutputStream}}
+Inheritance diagram for java::io::ByteArrayOutputStream:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=2.000000cm]{classjava_1_1io_1_1_byte_array_output_stream}
+\end{center}
+\end{figure}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+{\bf ByteArrayOutputStream} ()
+\item 
+{\bf ByteArrayOutputStream} (int size)  throws IllegalArgumentException     
+\item 
+synchronized void {\bf write} (int oneByte)  throws IOException     
+\item 
+synchronized void {\bf write} (byte[$\,$] buffer, int offset, int add)  throws IOException     
+\item 
+synchronized void {\bf reset} ()
+\item 
+synchronized byte[$\,$] {\bf toByteArray} ()
+\item 
+int {\bf size} ()
+\item 
+String {\bf toString} ()
+\item 
+synchronized void {\bf close} ()  throws IOException     
+\end{DoxyCompactItemize}
+\subsection*{Protected Attributes}
+\begin{DoxyCompactItemize}
+\item 
+byte[$\,$] {\bf buf}
+\item 
+int {\bf count}
+\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+This class allows data to be written to a byte array buffer and and then retrieved by an application. The internal byte array buffer is dynamically resized to hold all the data written. Please be aware that writing large amounts to data to this stream will cause large amounts of memory to be allocated. 
+
+The size of the internal buffer defaults to 32 and it is resized by doubling the size of the buffer. This default size can be overridden by using the {\ttfamily gnu.java.io.ByteArrayOutputStream.initialBufferSize} property. 
+
+There is a constructor that specified the initial buffer size and that is the preferred way to set that value because it it portable across all Java class library implementations. 
+
+Note that this class also has methods that convert the byte array buffer to a {\ttfamily String} using either the system default or an application specified character encoding. Thus it can handle multibyte character encodings.
+
+\begin{DoxyAuthor}{Author}
+Aaron M. Renn ({\tt arenn@urbanophile.com}) 
+
+Tom Tromey ({\tt tromey@cygnus.com}) 
+\end{DoxyAuthor}
+
+
+Definition at line 69 of file ByteArrayOutputStream.java.
+
+
+
+\subsection{Constructor \& Destructor Documentation}
+\index{java::io::ByteArrayOutputStream@{java::io::ByteArrayOutputStream}!ByteArrayOutputStream@{ByteArrayOutputStream}}
+\index{ByteArrayOutputStream@{ByteArrayOutputStream}!java::io::ByteArrayOutputStream@{java::io::ByteArrayOutputStream}}
+\subsubsection[{ByteArrayOutputStream}]{\setlength{\rightskip}{0pt plus 5cm}java::io::ByteArrayOutputStream::ByteArrayOutputStream (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily  [inline]}}\label{classjava_1_1io_1_1_byte_array_output_stream_a931cbe0926b700a50b6dae69935c93de}
+This method initializes a new {\ttfamily \doxyref{ByteArrayOutputStream}{p.}{classjava_1_1io_1_1_byte_array_output_stream}} with the default buffer size of 32 bytes. If a different initial buffer size is desired, see the constructor {\ttfamily \doxyref{ByteArrayOutputStream(int size)}{p.}{classjava_1_1io_1_1_byte_array_output_stream_adad14abe6e94cfbf03b961360b56f6cb}}. For applications where the source code is not available, the default buffer size can be set using the system property {\ttfamily gnu.java.io.ByteArrayOutputStream.initialBufferSize} 
+
+Definition at line 100 of file ByteArrayOutputStream.java.
+
+\index{java::io::ByteArrayOutputStream@{java::io::ByteArrayOutputStream}!ByteArrayOutputStream@{ByteArrayOutputStream}}
+\index{ByteArrayOutputStream@{ByteArrayOutputStream}!java::io::ByteArrayOutputStream@{java::io::ByteArrayOutputStream}}
+\subsubsection[{ByteArrayOutputStream}]{\setlength{\rightskip}{0pt plus 5cm}java::io::ByteArrayOutputStream::ByteArrayOutputStream (
+\begin{DoxyParamCaption}
+\item[{int}]{ size}
+\end{DoxyParamCaption}
+)  throws IllegalArgumentException     \hspace{0.3cm}{\ttfamily  [inline]}}\label{classjava_1_1io_1_1_byte_array_output_stream_adad14abe6e94cfbf03b961360b56f6cb}
+This method initializes a new {\ttfamily \doxyref{ByteArrayOutputStream}{p.}{classjava_1_1io_1_1_byte_array_output_stream}} with a specified initial buffer size.
+
+
+\begin{DoxyParams}{Parameters}
+\item[{\em size}]The initial buffer size in bytes \end{DoxyParams}
+
+\begin{DoxyExceptions}{Exceptions}
+\item[{\em IllegalArgumentException}]if size is negative \end{DoxyExceptions}
+
+
+Definition at line 112 of file ByteArrayOutputStream.java.
+
+
+
+References buf, count, and size().
+
+
+
+\subsection{Member Function Documentation}
+\index{java::io::ByteArrayOutputStream@{java::io::ByteArrayOutputStream}!close@{close}}
+\index{close@{close}!java::io::ByteArrayOutputStream@{java::io::ByteArrayOutputStream}}
+\subsubsection[{close}]{\setlength{\rightskip}{0pt plus 5cm}synchronized void java::io::ByteArrayOutputStream::close (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)  throws {\bf IOException}     \hspace{0.3cm}{\ttfamily  [inline]}}\label{classjava_1_1io_1_1_byte_array_output_stream_a53aceb8559b5680592be7096510c9a5f}
+This method closes this output stream and releases any system resources associated with it. A closed stream cannot perform output operations and cannot be reopened. 
+
+For this class no resources are actually released 
+
+Reimplemented from {\bf java::io::OutputStream} \doxyref{}{p.}{classjava_1_1io_1_1_output_stream_ac29c220c5d634fb06be53d688886f3e1}.
+
+
+
+Definition at line 239 of file ByteArrayOutputStream.java.
+
+\index{java::io::ByteArrayOutputStream@{java::io::ByteArrayOutputStream}!reset@{reset}}
+\index{reset@{reset}!java::io::ByteArrayOutputStream@{java::io::ByteArrayOutputStream}}
+\subsubsection[{reset}]{\setlength{\rightskip}{0pt plus 5cm}synchronized void java::io::ByteArrayOutputStream::reset (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily  [inline]}}\label{classjava_1_1io_1_1_byte_array_output_stream_ad7090a86e7c07e062912f7435d4e12f5}
+This method discards all of the bytes that have been written to the internal buffer so far by setting the {\ttfamily count} variable to 0. The internal buffer remains at its currently allocated size. 
+
+Definition at line 168 of file ByteArrayOutputStream.java.
+
+
+
+References count.
+
+\index{java::io::ByteArrayOutputStream@{java::io::ByteArrayOutputStream}!size@{size}}
+\index{size@{size}!java::io::ByteArrayOutputStream@{java::io::ByteArrayOutputStream}}
+\subsubsection[{size}]{\setlength{\rightskip}{0pt plus 5cm}int java::io::ByteArrayOutputStream::size (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily  [inline]}}\label{classjava_1_1io_1_1_byte_array_output_stream_ac81c74b9519c9ad8811502f7782a93db}
+This method returns the number of bytes that have been written to the buffer so far. This is the same as the value of the protected {\ttfamily count} variable. If the {\ttfamily reset} method is called, then this value is reset as well. Note that this method does not return the length of the internal buffer, but only the number of bytes that have been written to it.
+
+\begin{DoxyReturn}{Returns}
+The number of bytes in the internal buffer
+\end{DoxyReturn}
+\begin{DoxySeeAlso}{See also}
+\doxyref{reset()}{p.}{classjava_1_1io_1_1_byte_array_output_stream_ad7090a86e7c07e062912f7435d4e12f5} 
+\end{DoxySeeAlso}
+
+
+Definition at line 213 of file ByteArrayOutputStream.java.
+
+
+
+References count.
+
+
+
+Referenced by ByteArrayOutputStream().
+
+\index{java::io::ByteArrayOutputStream@{java::io::ByteArrayOutputStream}!toByteArray@{toByteArray}}
+\index{toByteArray@{toByteArray}!java::io::ByteArrayOutputStream@{java::io::ByteArrayOutputStream}}
+\subsubsection[{toByteArray}]{\setlength{\rightskip}{0pt plus 5cm}synchronized byte [$\,$] java::io::ByteArrayOutputStream::toByteArray (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily  [inline]}}\label{classjava_1_1io_1_1_byte_array_output_stream_a8411e2e1b5a70d0c260a8636b3f5a6d7}
+This method returns a byte array containing the bytes that have been written to this stream so far. This array is a copy of the valid bytes in the internal buffer and its length is equal to the number of valid bytes, not necessarily to the the length of the current internal buffer. Note that since this method allocates a new array, it should be used with caution when the internal buffer is very large. 
+
+Definition at line 184 of file ByteArrayOutputStream.java.
+
+
+
+References buf, and count.
+
+\index{java::io::ByteArrayOutputStream@{java::io::ByteArrayOutputStream}!toString@{toString}}
+\index{toString@{toString}!java::io::ByteArrayOutputStream@{java::io::ByteArrayOutputStream}}
+\subsubsection[{toString}]{\setlength{\rightskip}{0pt plus 5cm}String java::io::ByteArrayOutputStream::toString (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily  [inline]}}\label{classjava_1_1io_1_1_byte_array_output_stream_aaa84ed763a8a89e0a8f84ccf40309199}
+Returns the bytes in the internal array as a {\ttfamily String}. The bytes in the buffer are converted to characters using the system default encoding. There is an overloaded {\ttfamily \doxyref{toString()}{p.}{classjava_1_1io_1_1_byte_array_output_stream_aaa84ed763a8a89e0a8f84ccf40309199}} method that allows an application specified character encoding to be used.
+
+\begin{DoxyReturn}{Returns}
+A {\ttfamily String} containing the data written to this stream so far 
+\end{DoxyReturn}
+
+
+Definition at line 227 of file ByteArrayOutputStream.java.
+
+
+
+References buf, and count.
+
+\index{java::io::ByteArrayOutputStream@{java::io::ByteArrayOutputStream}!write@{write}}
+\index{write@{write}!java::io::ByteArrayOutputStream@{java::io::ByteArrayOutputStream}}
+\subsubsection[{write}]{\setlength{\rightskip}{0pt plus 5cm}synchronized void java::io::ByteArrayOutputStream::write (
+\begin{DoxyParamCaption}
+\item[{byte[$\,$]}]{ buffer, }
+\item[{int}]{ offset, }
+\item[{int}]{ add}
+\end{DoxyParamCaption}
+)  throws {\bf IOException}     \hspace{0.3cm}{\ttfamily  [inline]}}\label{classjava_1_1io_1_1_byte_array_output_stream_a49ada07eeb1479bfb5dcde92d8a9d232}
+This method writes {\ttfamily len} bytes from the passed in array {\ttfamily buf} starting at index {\ttfamily offset} into the internal buffer.
+
+
+\begin{DoxyParams}{Parameters}
+\item[{\em buffer}]The byte array to write data from \item[{\em offset}]The index into the buffer to start writing data from \item[{\em add}]The number of bytes to write \end{DoxyParams}
+
+\begin{DoxyExceptions}{Exceptions}
+\item[{\em \doxyref{IOException}{p.}{classjava_1_1io_1_1_i_o_exception}}]if the stream is closed or any I/O error occurs \end{DoxyExceptions}
+
+
+Reimplemented from {\bf java::io::OutputStream} \doxyref{}{p.}{classjava_1_1io_1_1_output_stream_ac13ddccf0c1b6d05dd794a5c610ae77c}.
+
+
+
+Definition at line 148 of file ByteArrayOutputStream.java.
+
+
+
+References buf, and count.
+
+\index{java::io::ByteArrayOutputStream@{java::io::ByteArrayOutputStream}!write@{write}}
+\index{write@{write}!java::io::ByteArrayOutputStream@{java::io::ByteArrayOutputStream}}
+\subsubsection[{write}]{\setlength{\rightskip}{0pt plus 5cm}synchronized void java::io::ByteArrayOutputStream::write (
+\begin{DoxyParamCaption}
+\item[{int}]{ oneByte}
+\end{DoxyParamCaption}
+)  throws {\bf IOException}     \hspace{0.3cm}{\ttfamily  [inline, virtual]}}\label{classjava_1_1io_1_1_byte_array_output_stream_a856a32037031f18d9228808a7460dad0}
+This method writes the writes the specified byte into the internal buffer.
+
+
+\begin{DoxyParams}{Parameters}
+\item[{\em oneByte}]The byte to be read passed as an int \end{DoxyParams}
+
+\begin{DoxyExceptions}{Exceptions}
+\item[{\em \doxyref{IOException}{p.}{classjava_1_1io_1_1_i_o_exception}}]if the stream is closed or any I/O error occurs \end{DoxyExceptions}
+
+
+Implements {\bf java::io::OutputStream} \doxyref{}{p.}{classjava_1_1io_1_1_output_stream_acb393205e8e2e494c27c289439a8d160}.
+
+
+
+Definition at line 129 of file ByteArrayOutputStream.java.
+
+
+
+References buf, and count.
+
+
+
+\subsection{Field Documentation}
+\index{java::io::ByteArrayOutputStream@{java::io::ByteArrayOutputStream}!buf@{buf}}
+\index{buf@{buf}!java::io::ByteArrayOutputStream@{java::io::ByteArrayOutputStream}}
+\subsubsection[{buf}]{\setlength{\rightskip}{0pt plus 5cm}byte [$\,$] {\bf java::io::ByteArrayOutputStream::buf}\hspace{0.3cm}{\ttfamily  [protected]}}\label{classjava_1_1io_1_1_byte_array_output_stream_a1323f0965ad3cec71ed00b232c9d8cbb}
+The internal buffer where the data written is stored 
+
+Definition at line 74 of file ByteArrayOutputStream.java.
+
+
+
+Referenced by ByteArrayOutputStream(), toByteArray(), toString(), and write().
+
+\index{java::io::ByteArrayOutputStream@{java::io::ByteArrayOutputStream}!count@{count}}
+\index{count@{count}!java::io::ByteArrayOutputStream@{java::io::ByteArrayOutputStream}}
+\subsubsection[{count}]{\setlength{\rightskip}{0pt plus 5cm}int {\bf java::io::ByteArrayOutputStream::count}\hspace{0.3cm}{\ttfamily  [protected]}}\label{classjava_1_1io_1_1_byte_array_output_stream_a8535566ac4f430e7700d40010a69a89c}
+The number of bytes that have been written to the buffer 
+
+Definition at line 79 of file ByteArrayOutputStream.java.
+
+
+
+Referenced by ByteArrayOutputStream(), reset(), size(), toByteArray(), toString(), and write().
+
+
+
+The documentation for this class was generated from the following file:\begin{DoxyCompactItemize}
+\item 
+src/classpath/java/io/ByteArrayOutputStream.java\end{DoxyCompactItemize}

@@ -1,0 +1,97 @@
+\section{print.h File Reference}
+\label{print_8h}\index{print.h@{print.h}}
+{\ttfamily \#include \char`\"{}wrappers.h\char`\"{}}\par
+{\ttfamily \#include \char`\"{}constantpool.h\char`\"{}}\par
+{\ttfamily \#include \char`\"{}method.h\char`\"{}}\par
+{\ttfamily \#include \char`\"{}thread.h\char`\"{}}\par
+\subsection*{Defines}
+\begin{DoxyCompactItemize}
+\item 
+\#define {\bf JELATINE\_\-PRINT\_\-H}~(1)
+\item 
+\#define {\bf print\_\-bytecode}(thread, pc, cp)
+\item 
+\#define {\bf print\_\-method\_\-call}(thread, method)~;
+\item 
+\#define {\bf print\_\-method\_\-ret}(thread, method)~;
+\item 
+\#define {\bf print\_\-method\_\-unwind}(thread, method)~;
+\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+Printing facilities interface 
+
+Definition in file {\bf print.h}.
+
+
+
+\subsection{Define Documentation}
+\index{print.h@{print.h}!JELATINE\_\-PRINT\_\-H@{JELATINE\_\-PRINT\_\-H}}
+\index{JELATINE\_\-PRINT\_\-H@{JELATINE\_\-PRINT\_\-H}!print.h@{print.h}}
+\subsubsection[{JELATINE\_\-PRINT\_\-H}]{\setlength{\rightskip}{0pt plus 5cm}\#define JELATINE\_\-PRINT\_\-H~(1)}\label{print_8h_a22e48a3199e94b7485d00788b46f55ec}
+\doxyref{print.h}{p.}{print_8h} inclusion macro 
+
+Definition at line 28 of file print.h.
+
+\index{print.h@{print.h}!print\_\-bytecode@{print\_\-bytecode}}
+\index{print\_\-bytecode@{print\_\-bytecode}!print.h@{print.h}}
+\subsubsection[{print\_\-bytecode}]{\setlength{\rightskip}{0pt plus 5cm}\#define print\_\-bytecode(
+\begin{DoxyParamCaption}
+\item[{}]{thread, }
+\item[{}]{pc, }
+\item[{}]{cp}
+\end{DoxyParamCaption}
+)}\label{print_8h_a3d99d50536d5b3194ec1a55a18d14356}
+Dummy definition used when printing is disabled 
+
+Definition at line 43 of file print.h.
+
+\index{print.h@{print.h}!print\_\-method\_\-call@{print\_\-method\_\-call}}
+\index{print\_\-method\_\-call@{print\_\-method\_\-call}!print.h@{print.h}}
+\subsubsection[{print\_\-method\_\-call}]{\setlength{\rightskip}{0pt plus 5cm}\#define print\_\-method\_\-call(
+\begin{DoxyParamCaption}
+\item[{}]{thread, }
+\item[{}]{method}
+\end{DoxyParamCaption}
+)~;}\label{print_8h_aaff63fb4b3e5c3e1c741cdbd8e2bb399}
+Dummy definition used when printing is disabled 
+
+Definition at line 45 of file print.h.
+
+
+
+Referenced by interpreter().
+
+\index{print.h@{print.h}!print\_\-method\_\-ret@{print\_\-method\_\-ret}}
+\index{print\_\-method\_\-ret@{print\_\-method\_\-ret}!print.h@{print.h}}
+\subsubsection[{print\_\-method\_\-ret}]{\setlength{\rightskip}{0pt plus 5cm}\#define print\_\-method\_\-ret(
+\begin{DoxyParamCaption}
+\item[{}]{thread, }
+\item[{}]{method}
+\end{DoxyParamCaption}
+)~;}\label{print_8h_a044f4fac8c8c7ec570f791b19872508f}
+Dummy definition used when printing is disabled 
+
+Definition at line 47 of file print.h.
+
+
+
+Referenced by interpreter().
+
+\index{print.h@{print.h}!print\_\-method\_\-unwind@{print\_\-method\_\-unwind}}
+\index{print\_\-method\_\-unwind@{print\_\-method\_\-unwind}!print.h@{print.h}}
+\subsubsection[{print\_\-method\_\-unwind}]{\setlength{\rightskip}{0pt plus 5cm}\#define print\_\-method\_\-unwind(
+\begin{DoxyParamCaption}
+\item[{}]{thread, }
+\item[{}]{method}
+\end{DoxyParamCaption}
+)~;}\label{print_8h_a0bf88e198c22ba3ecea2612b09e8f408}
+Dummy definition used when printing is disabled 
+
+Definition at line 49 of file print.h.
+
+
+
+Referenced by interpreter().
+

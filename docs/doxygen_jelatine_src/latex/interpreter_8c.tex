@@ -1,0 +1,105 @@
+\section{src/jelatine/interpreter.c File Reference}
+\label{interpreter_8c}\index{src/jelatine/interpreter.c@{src/jelatine/interpreter.c}}
+{\ttfamily \#include \char`\"{}wrappers.h\char`\"{}}\par
+{\ttfamily \#include \char`\"{}array.h\char`\"{}}\par
+{\ttfamily \#include \char`\"{}class.h\char`\"{}}\par
+{\ttfamily \#include \char`\"{}classfile.h\char`\"{}}\par
+{\ttfamily \#include \char`\"{}field.h\char`\"{}}\par
+{\ttfamily \#include \char`\"{}interpreter.h\char`\"{}}\par
+{\ttfamily \#include \char`\"{}loader.h\char`\"{}}\par
+{\ttfamily \#include \char`\"{}method.h\char`\"{}}\par
+{\ttfamily \#include \char`\"{}opcodes.h\char`\"{}}\par
+{\ttfamily \#include \char`\"{}print.h\char`\"{}}\par
+{\ttfamily \#include \char`\"{}thread.h\char`\"{}}\par
+{\ttfamily \#include \char`\"{}util.h\char`\"{}}\par
+{\ttfamily \#include \char`\"{}vm.h\char`\"{}}\par
+{\ttfamily \#include \char`\"{}java\_\-lang\_\-Class.h\char`\"{}}\par
+\subsection*{Defines}
+\begin{DoxyCompactItemize}
+\item 
+\#define {\bf SAVE\_\-STATE}
+\end{DoxyCompactItemize}
+\subsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+static void {\bf prepare\_\-for\_\-call} ({\bf thread\_\-t} $\ast$thread, {\bf method\_\-t} $\ast$method)
+\item 
+void {\bf interpreter} ({\bf method\_\-t} $\ast$main\_\-method)
+\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+Bytecode interpreter implementation 
+
+Definition in file {\bf interpreter.c}.
+
+
+
+\subsection{Define Documentation}
+\index{interpreter.c@{interpreter.c}!SAVE\_\-STATE@{SAVE\_\-STATE}}
+\index{SAVE\_\-STATE@{SAVE\_\-STATE}!interpreter.c@{interpreter.c}}
+\subsubsection[{SAVE\_\-STATE}]{\setlength{\rightskip}{0pt plus 5cm}\#define SAVE\_\-STATE}\label{interpreter_8c_a802a1a9e9c1aba8134ce496ba760799d}
+{\bfseries Value:}
+\begin{DoxyCode}
+do { \
+        thread->sp = sp; \
+        thread->pc = pc; \
+        thread->fp = fp; \
+    } while (0)
+\end{DoxyCode}
+Create a safe point by saving the relevant part of the interpreter's state 
+
+Definition at line 48 of file interpreter.c.
+
+
+
+Referenced by interpreter().
+
+
+
+\subsection{Function Documentation}
+\index{interpreter.c@{interpreter.c}!interpreter@{interpreter}}
+\index{interpreter@{interpreter}!interpreter.c@{interpreter.c}}
+\subsubsection[{interpreter}]{\setlength{\rightskip}{0pt plus 5cm}void interpreter (
+\begin{DoxyParamCaption}
+\item[{{\bf method\_\-t} $\ast$}]{ main\_\-method}
+\end{DoxyParamCaption}
+)}\label{interpreter_8c_a7409e67a00e55b1c5afa6379d6864bc2}
+Launches the interpreter 
+\begin{DoxyParams}{Parameters}
+\item[{\em main\_\-method}]The entry point \end{DoxyParams}
+
+
+Definition at line 98 of file interpreter.c.
+
+
+
+References method\_\-t::args\_\-size, array\_\-get\_\-data(), array\_\-length(), array\_\-ref\_\-get\_\-data(), bcl\_\-get\_\-class\_\-by\_\-id(), bcl\_\-is\_\-assignable(), bcl\_\-link\_\-method(), bcl\_\-link\_\-opcode(), bcl\_\-resolve\_\-class(), c\_\-throw, exception\_\-handler\_\-t::catch\_\-type, stack\_\-frame\_\-t::cl, class\_\-get\_\-object(), class\_\-is\_\-parent(), method\_\-t::code, method\_\-t::cp, cp\_\-data\_\-get\_\-int32(), cp\_\-data\_\-get\_\-int64(), cp\_\-data\_\-get\_\-ptr(), cp\_\-data\_\-get\_\-uintptr(), cp\_\-get\_\-class(), method\_\-t::data, const\_\-pool\_\-t::data, dbg\_\-unreachable, class\_\-t::dimensions, class\_\-t::dtable, class\_\-t::elem\_\-class, class\_\-t::elem\_\-type, thread\_\-t::exception, method\_\-t::exception\_\-table\_\-length, thread\_\-t::fp, method\_\-t::function, gc\_\-new(), gc\_\-new\_\-array\_\-nonref(), gc\_\-new\_\-array\_\-ref(), gc\_\-new\_\-multiarray(), halt\_\-method, exception\_\-handler\_\-t::handler\_\-pc, method\_\-t::handlers, array\_\-t::header, header\_\-get\_\-class(), class\_\-t::inames, INTERPRETER\_\-EPILOG, INTERPRETER\_\-PROLOG, class\_\-t::itable, class\_\-t::itable\_\-count, JAVA\_\-LANG\_\-VIRTUALMACHINEERROR, load\_\-int16\_\-un, load\_\-int32\_\-un, load\_\-uint16\_\-un, stack\_\-frame\_\-t::locals, method\_\-t::max\_\-locals, method\_\-t::max\_\-stack, stack\_\-frame\_\-t::method, method\_\-is\_\-static(), method\_\-is\_\-synchronized(), method\_\-unpack\_\-arguments(), method\_\-unpack\_\-index(), monitor\_\-enter(), monitor\_\-exit(), class\_\-t::name, OPCODE, class\_\-t::parent, stack\_\-frame\_\-t::pc, prepare\_\-for\_\-call(), print\_\-method\_\-call, print\_\-method\_\-ret, print\_\-method\_\-unwind, PT\_\-BYTE, RET\_\-DOUBLE, RET\_\-FLOAT, RET\_\-INT, RET\_\-LONG, RET\_\-OBJECT, RET\_\-VOID, method\_\-t::return\_\-type, SAVE\_\-STATE, size\_\-ceil(), thread\_\-t::sp, and thread\_\-self().
+
+
+
+Referenced by initialize\_\-class(), java\_\-lang\_\-Class\_\-newInstance(), thread\_\-create\_\-main(), and thread\_\-start().
+
+\index{interpreter.c@{interpreter.c}!prepare\_\-for\_\-call@{prepare\_\-for\_\-call}}
+\index{prepare\_\-for\_\-call@{prepare\_\-for\_\-call}!interpreter.c@{interpreter.c}}
+\subsubsection[{prepare\_\-for\_\-call}]{\setlength{\rightskip}{0pt plus 5cm}static void prepare\_\-for\_\-call (
+\begin{DoxyParamCaption}
+\item[{{\bf thread\_\-t} $\ast$}]{ thread, }
+\item[{{\bf method\_\-t} $\ast$}]{ method}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily  [static]}}\label{interpreter_8c_a77e55859933d6f94ea3ee5f1ed29221d}
+Prepares the stack for executing a method when entering the interpreter 
+\begin{DoxyParams}{Parameters}
+\item[{\em thread}]The calling thread \item[{\em method}]The method to be called \end{DoxyParams}
+
+
+Definition at line 63 of file interpreter.c.
+
+
+
+References c\_\-throw, stack\_\-frame\_\-t::cl, method\_\-t::code, method\_\-t::cp, cp\_\-get\_\-class(), thread\_\-t::fp, halt\_\-method, JAVA\_\-LANG\_\-VIRTUALMACHINEERROR, stack\_\-frame\_\-t::locals, method\_\-t::max\_\-locals, method\_\-t::max\_\-stack, stack\_\-frame\_\-t::method, stack\_\-frame\_\-t::pc, and thread\_\-t::sp.
+
+
+
+Referenced by interpreter().
+

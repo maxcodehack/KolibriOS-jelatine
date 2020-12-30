@@ -1,0 +1,629 @@
+\section{java::io::PrintStream Class Reference}
+\label{classjava_1_1io_1_1_print_stream}\index{java::io::PrintStream@{java::io::PrintStream}}
+Inheritance diagram for java::io::PrintStream:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=2.000000cm]{classjava_1_1io_1_1_print_stream}
+\end{center}
+\end{figure}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+{\bf PrintStream} ({\bf OutputStream} out)
+\item 
+void {\bf flush} ()
+\item 
+void {\bf close} ()
+\item 
+boolean {\bf checkError} ()
+\item 
+void {\bf write} (int oneByte)
+\item 
+void {\bf write} (byte[$\,$] buffer, int offset, int len)
+\item 
+void {\bf print} (boolean bool)
+\item 
+synchronized void {\bf print} (char ch)
+\item 
+void {\bf print} (int inum)
+\item 
+void {\bf print} (long lnum)
+\item 
+void {\bf print} (float fnum)
+\item 
+void {\bf print} (double dnum)
+\item 
+void {\bf print} (char[$\,$] charArray)
+\item 
+void {\bf print} (String str)
+\item 
+void {\bf print} (Object obj)
+\item 
+void {\bf println} ()
+\item 
+void {\bf println} (boolean bool)
+\item 
+synchronized void {\bf println} (char ch)
+\item 
+void {\bf println} (int inum)
+\item 
+void {\bf println} (long lnum)
+\item 
+void {\bf println} (float fnum)
+\item 
+void {\bf println} (double dnum)
+\item 
+void {\bf println} (char[$\,$] charArray)
+\item 
+void {\bf println} (String str)
+\item 
+void {\bf println} (Object obj)
+\end{DoxyCompactItemize}
+\subsection*{Protected Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+void {\bf setError} ()
+\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+This class prints Java primitive values and object to a stream as text. None of the methods in this class throw an exception. However, errors can be detected by calling the {\ttfamily \doxyref{checkError()}{p.}{classjava_1_1io_1_1_print_stream_a12ef6072467fa82489b5cf60e67b7c9a}} method. Additionally, this stream can be designated as \char`\"{}autoflush\char`\"{} when created so that any writes are automatically flushed to the underlying output sink when the current line is terminated. 
+
+This class converts char's into byte's using the system default encoding.
+
+\begin{DoxyAuthor}{Author}
+Aaron M. Renn ({\tt arenn@urbanophile.com}) 
+
+Tom Tromey ({\tt tromey@cygnus.com}) 
+\end{DoxyAuthor}
+
+
+Definition at line 59 of file PrintStream.java.
+
+
+
+\subsection{Constructor \& Destructor Documentation}
+\index{java::io::PrintStream@{java::io::PrintStream}!PrintStream@{PrintStream}}
+\index{PrintStream@{PrintStream}!java::io::PrintStream@{java::io::PrintStream}}
+\subsubsection[{PrintStream}]{\setlength{\rightskip}{0pt plus 5cm}java::io::PrintStream::PrintStream (
+\begin{DoxyParamCaption}
+\item[{{\bf OutputStream}}]{ out}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily  [inline]}}\label{classjava_1_1io_1_1_print_stream_a45e52fb5ca0d58625ed4cc47a1005d4f}
+This method intializes a new {\ttfamily \doxyref{PrintStream}{p.}{classjava_1_1io_1_1_print_stream}} object to write to the specified output sink.
+
+
+\begin{DoxyParams}{Parameters}
+\item[{\em out}]The {\ttfamily \doxyref{OutputStream}{p.}{classjava_1_1io_1_1_output_stream}} to write to. \end{DoxyParams}
+
+
+Definition at line 88 of file PrintStream.java.
+
+
+
+\subsection{Member Function Documentation}
+\index{java::io::PrintStream@{java::io::PrintStream}!checkError@{checkError}}
+\index{checkError@{checkError}!java::io::PrintStream@{java::io::PrintStream}}
+\subsubsection[{checkError}]{\setlength{\rightskip}{0pt plus 5cm}boolean java::io::PrintStream::checkError (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily  [inline]}}\label{classjava_1_1io_1_1_print_stream_a12ef6072467fa82489b5cf60e67b7c9a}
+This method checks to see if an error has occurred on this stream. Note that once an error has occurred, this method will continue to report {\ttfamily true} forever for this stream. Before checking for an error condition, this method flushes the stream.
+
+\begin{DoxyReturn}{Returns}
+{\ttfamily true} if an error has occurred, {\ttfamily false} otherwise 
+\end{DoxyReturn}
+
+
+Definition at line 135 of file PrintStream.java.
+
+
+
+References flush().
+
+\index{java::io::PrintStream@{java::io::PrintStream}!close@{close}}
+\index{close@{close}!java::io::PrintStream@{java::io::PrintStream}}
+\subsubsection[{close}]{\setlength{\rightskip}{0pt plus 5cm}void java::io::PrintStream::close (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily  [inline]}}\label{classjava_1_1io_1_1_print_stream_ad598b56801607eb222f3fee76d19a2f9}
+This method closes this stream and all underlying streams. 
+
+Reimplemented from {\bf java::io::OutputStream} \doxyref{}{p.}{classjava_1_1io_1_1_output_stream_ac29c220c5d634fb06be53d688886f3e1}.
+
+
+
+Definition at line 113 of file PrintStream.java.
+
+
+
+References java::io::OutputStream::close(), flush(), and setError().
+
+\index{java::io::PrintStream@{java::io::PrintStream}!flush@{flush}}
+\index{flush@{flush}!java::io::PrintStream@{java::io::PrintStream}}
+\subsubsection[{flush}]{\setlength{\rightskip}{0pt plus 5cm}void java::io::PrintStream::flush (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily  [inline]}}\label{classjava_1_1io_1_1_print_stream_a818389fbcc8a22642b85e98287b21c66}
+This method flushes any buffered bytes to the underlying stream and then flushes that stream as well. 
+
+Reimplemented from {\bf java::io::OutputStream} \doxyref{}{p.}{classjava_1_1io_1_1_output_stream_a3a69e1616669e6a05e69b92d077cf0f5}.
+
+
+
+Definition at line 98 of file PrintStream.java.
+
+
+
+References java::io::OutputStream::flush(), and setError().
+
+
+
+Referenced by checkError(), and close().
+
+\index{java::io::PrintStream@{java::io::PrintStream}!print@{print}}
+\index{print@{print}!java::io::PrintStream@{java::io::PrintStream}}
+\subsubsection[{print}]{\setlength{\rightskip}{0pt plus 5cm}synchronized void java::io::PrintStream::print (
+\begin{DoxyParamCaption}
+\item[{char}]{ ch}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily  [inline]}}\label{classjava_1_1io_1_1_print_stream_aa293fff8a9c4826c99a61e40057b0cc6}
+This method prints a char to the stream. The actual value printed is determined by the character encoding in use.
+
+
+\begin{DoxyParams}{Parameters}
+\item[{\em ch}]The {\ttfamily char} value to be printed \end{DoxyParams}
+
+
+Definition at line 208 of file PrintStream.java.
+
+
+
+References print().
+
+\index{java::io::PrintStream@{java::io::PrintStream}!print@{print}}
+\index{print@{print}!java::io::PrintStream@{java::io::PrintStream}}
+\subsubsection[{print}]{\setlength{\rightskip}{0pt plus 5cm}void java::io::PrintStream::print (
+\begin{DoxyParamCaption}
+\item[{int}]{ inum}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily  [inline]}}\label{classjava_1_1io_1_1_print_stream_a28879f547cfe3f3cbefb0df8e583f05e}
+This method prints an integer to the stream. The value printed is determined using the {\ttfamily String.valueOf()} method.
+
+
+\begin{DoxyParams}{Parameters}
+\item[{\em inum}]The {\ttfamily int} value to be printed \end{DoxyParams}
+
+
+Definition at line 219 of file PrintStream.java.
+
+
+
+References print().
+
+\index{java::io::PrintStream@{java::io::PrintStream}!print@{print}}
+\index{print@{print}!java::io::PrintStream@{java::io::PrintStream}}
+\subsubsection[{print}]{\setlength{\rightskip}{0pt plus 5cm}void java::io::PrintStream::print (
+\begin{DoxyParamCaption}
+\item[{long}]{ lnum}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily  [inline]}}\label{classjava_1_1io_1_1_print_stream_a0fc2d44bc50cc785d374bd1cc4306b2d}
+This method prints a long to the stream. The value printed is determined using the {\ttfamily String.valueOf()} method.
+
+
+\begin{DoxyParams}{Parameters}
+\item[{\em lnum}]The {\ttfamily long} value to be printed \end{DoxyParams}
+
+
+Definition at line 230 of file PrintStream.java.
+
+
+
+References print().
+
+\index{java::io::PrintStream@{java::io::PrintStream}!print@{print}}
+\index{print@{print}!java::io::PrintStream@{java::io::PrintStream}}
+\subsubsection[{print}]{\setlength{\rightskip}{0pt plus 5cm}void java::io::PrintStream::print (
+\begin{DoxyParamCaption}
+\item[{float}]{ fnum}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily  [inline]}}\label{classjava_1_1io_1_1_print_stream_a31029644079951feb3d02879ed754051}
+This method prints a float to the stream. The value printed is determined using the {\ttfamily String.valueOf()} method.
+
+
+\begin{DoxyParams}{Parameters}
+\item[{\em fnum}]The {\ttfamily float} value to be printed \end{DoxyParams}
+
+
+Definition at line 241 of file PrintStream.java.
+
+
+
+References print().
+
+\index{java::io::PrintStream@{java::io::PrintStream}!print@{print}}
+\index{print@{print}!java::io::PrintStream@{java::io::PrintStream}}
+\subsubsection[{print}]{\setlength{\rightskip}{0pt plus 5cm}void java::io::PrintStream::print (
+\begin{DoxyParamCaption}
+\item[{double}]{ dnum}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily  [inline]}}\label{classjava_1_1io_1_1_print_stream_a4cfbabe739d3aa0bd61e5bdb073e8122}
+This method prints a double to the stream. The value printed is determined using the {\ttfamily String.valueOf()} method.
+
+
+\begin{DoxyParams}{Parameters}
+\item[{\em dnum}]The {\ttfamily double} value to be printed \end{DoxyParams}
+
+
+Definition at line 252 of file PrintStream.java.
+
+
+
+References print().
+
+\index{java::io::PrintStream@{java::io::PrintStream}!print@{print}}
+\index{print@{print}!java::io::PrintStream@{java::io::PrintStream}}
+\subsubsection[{print}]{\setlength{\rightskip}{0pt plus 5cm}void java::io::PrintStream::print (
+\begin{DoxyParamCaption}
+\item[{char[$\,$]}]{ charArray}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily  [inline]}}\label{classjava_1_1io_1_1_print_stream_a6f785a19304390af47013d326072fde6}
+This method prints an array of characters to the stream. The actual value printed depends on the system default encoding.
+
+
+\begin{DoxyParams}{Parameters}
+\item[{\em charArray}]The array of characters to print. \end{DoxyParams}
+
+
+Definition at line 263 of file PrintStream.java.
+
+
+
+References print().
+
+\index{java::io::PrintStream@{java::io::PrintStream}!print@{print}}
+\index{print@{print}!java::io::PrintStream@{java::io::PrintStream}}
+\subsubsection[{print}]{\setlength{\rightskip}{0pt plus 5cm}void java::io::PrintStream::print (
+\begin{DoxyParamCaption}
+\item[{boolean}]{ bool}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily  [inline]}}\label{classjava_1_1io_1_1_print_stream_a62bbd08ba59879d6f1178218ded4566c}
+This methods prints a boolean value to the stream. {\ttfamily true} values are printed as \char`\"{}true\char`\"{} and {\ttfamily false} values are printed as \char`\"{}false\char`\"{}.
+
+
+\begin{DoxyParams}{Parameters}
+\item[{\em bool}]The {\ttfamily boolean} value to print \end{DoxyParams}
+
+
+Definition at line 197 of file PrintStream.java.
+
+
+
+Referenced by print(), and println().
+
+\index{java::io::PrintStream@{java::io::PrintStream}!print@{print}}
+\index{print@{print}!java::io::PrintStream@{java::io::PrintStream}}
+\subsubsection[{print}]{\setlength{\rightskip}{0pt plus 5cm}void java::io::PrintStream::print (
+\begin{DoxyParamCaption}
+\item[{String}]{ str}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily  [inline]}}\label{classjava_1_1io_1_1_print_stream_a400bba7578b49fef2bea035af9e9aa4e}
+This method prints a {\ttfamily String} to the stream. The actual value printed depends on the system default encoding.
+
+
+\begin{DoxyParams}{Parameters}
+\item[{\em str}]The {\ttfamily String} to print. \end{DoxyParams}
+
+
+Definition at line 274 of file PrintStream.java.
+
+
+
+References print().
+
+\index{java::io::PrintStream@{java::io::PrintStream}!print@{print}}
+\index{print@{print}!java::io::PrintStream@{java::io::PrintStream}}
+\subsubsection[{print}]{\setlength{\rightskip}{0pt plus 5cm}void java::io::PrintStream::print (
+\begin{DoxyParamCaption}
+\item[{Object}]{ obj}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily  [inline]}}\label{classjava_1_1io_1_1_print_stream_ab95df8c391b56dae1849db6f95d21d02}
+This method prints an {\ttfamily Object} to the stream. The actual value printed is determined by calling the {\ttfamily String.valueOf()} method.
+
+
+\begin{DoxyParams}{Parameters}
+\item[{\em obj}]The {\ttfamily Object} to print. \end{DoxyParams}
+
+
+Definition at line 286 of file PrintStream.java.
+
+
+
+References print().
+
+\index{java::io::PrintStream@{java::io::PrintStream}!println@{println}}
+\index{println@{println}!java::io::PrintStream@{java::io::PrintStream}}
+\subsubsection[{println}]{\setlength{\rightskip}{0pt plus 5cm}void java::io::PrintStream::println (
+\begin{DoxyParamCaption}
+\item[{char[$\,$]}]{ charArray}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily  [inline]}}\label{classjava_1_1io_1_1_print_stream_a7e50312c18f6f626e6a53fcd56669344}
+This method prints an array of characters to the stream. The actual value printed depends on the system default encoding. 
+
+This method prints a line termination sequence after printing the value.
+
+
+\begin{DoxyParams}{Parameters}
+\item[{\em charArray}]The array of characters to print. \end{DoxyParams}
+
+
+Definition at line 388 of file PrintStream.java.
+
+
+
+References print().
+
+\index{java::io::PrintStream@{java::io::PrintStream}!println@{println}}
+\index{println@{println}!java::io::PrintStream@{java::io::PrintStream}}
+\subsubsection[{println}]{\setlength{\rightskip}{0pt plus 5cm}void java::io::PrintStream::println (
+\begin{DoxyParamCaption}
+\item[{Object}]{ obj}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily  [inline]}}\label{classjava_1_1io_1_1_print_stream_aeb45c44d89bbc1369e2fd78dedd378d5}
+This method prints an {\ttfamily Object} to the stream. The actual value printed is determined by calling the {\ttfamily String.valueOf()} method. 
+
+This method prints a line termination sequence after printing the value.
+
+
+\begin{DoxyParams}{Parameters}
+\item[{\em obj}]The {\ttfamily Object} to print. \end{DoxyParams}
+
+
+Definition at line 415 of file PrintStream.java.
+
+
+
+References print().
+
+\index{java::io::PrintStream@{java::io::PrintStream}!println@{println}}
+\index{println@{println}!java::io::PrintStream@{java::io::PrintStream}}
+\subsubsection[{println}]{\setlength{\rightskip}{0pt plus 5cm}void java::io::PrintStream::println (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily  [inline]}}\label{classjava_1_1io_1_1_print_stream_a242361ca1ebff745a37e4980ae093e75}
+This method prints a line separator sequence to the stream. The value printed is determined by the system property line.separator and is not necessarily the Unix newline character. 
+
+Definition at line 296 of file PrintStream.java.
+
+
+
+References print().
+
+\index{java::io::PrintStream@{java::io::PrintStream}!println@{println}}
+\index{println@{println}!java::io::PrintStream@{java::io::PrintStream}}
+\subsubsection[{println}]{\setlength{\rightskip}{0pt plus 5cm}void java::io::PrintStream::println (
+\begin{DoxyParamCaption}
+\item[{double}]{ dnum}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily  [inline]}}\label{classjava_1_1io_1_1_print_stream_aa22fd448eba97b9bffa5c067b349a955}
+This method prints a double to the stream. The value printed is determined using the {\ttfamily String.valueOf()} method. 
+
+This method prints a line termination sequence after printing the value.
+
+
+\begin{DoxyParams}{Parameters}
+\item[{\em dnum}]The {\ttfamily double} value to be printed \end{DoxyParams}
+
+
+Definition at line 375 of file PrintStream.java.
+
+
+
+References print().
+
+\index{java::io::PrintStream@{java::io::PrintStream}!println@{println}}
+\index{println@{println}!java::io::PrintStream@{java::io::PrintStream}}
+\subsubsection[{println}]{\setlength{\rightskip}{0pt plus 5cm}void java::io::PrintStream::println (
+\begin{DoxyParamCaption}
+\item[{long}]{ lnum}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily  [inline]}}\label{classjava_1_1io_1_1_print_stream_aef82fa4ef7348dcf1d3ae231d7660568}
+This method prints a long to the stream. The value printed is determined using the {\ttfamily String.valueOf()} method. 
+
+This method prints a line termination sequence after printing the value.
+
+
+\begin{DoxyParams}{Parameters}
+\item[{\em lnum}]The {\ttfamily long} value to be printed \end{DoxyParams}
+
+
+Definition at line 349 of file PrintStream.java.
+
+
+
+References print().
+
+\index{java::io::PrintStream@{java::io::PrintStream}!println@{println}}
+\index{println@{println}!java::io::PrintStream@{java::io::PrintStream}}
+\subsubsection[{println}]{\setlength{\rightskip}{0pt plus 5cm}void java::io::PrintStream::println (
+\begin{DoxyParamCaption}
+\item[{boolean}]{ bool}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily  [inline]}}\label{classjava_1_1io_1_1_print_stream_abc336227bacf1855adb31fadcde93589}
+This methods prints a boolean value to the stream. {\ttfamily true} values are printed as \char`\"{}true\char`\"{} and {\ttfamily false} values are printed as \char`\"{}false\char`\"{}. 
+
+This method prints a line termination sequence after printing the value.
+
+
+\begin{DoxyParams}{Parameters}
+\item[{\em bool}]The {\ttfamily boolean} value to print \end{DoxyParams}
+
+
+Definition at line 310 of file PrintStream.java.
+
+
+
+References print().
+
+\index{java::io::PrintStream@{java::io::PrintStream}!println@{println}}
+\index{println@{println}!java::io::PrintStream@{java::io::PrintStream}}
+\subsubsection[{println}]{\setlength{\rightskip}{0pt plus 5cm}synchronized void java::io::PrintStream::println (
+\begin{DoxyParamCaption}
+\item[{char}]{ ch}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily  [inline]}}\label{classjava_1_1io_1_1_print_stream_ad7abbe3aa49bb878750fd796dd3ddac5}
+This method prints a char to the stream. The actual value printed is determined by the character encoding in use. 
+
+This method prints a line termination sequence after printing the value.
+
+
+\begin{DoxyParams}{Parameters}
+\item[{\em ch}]The {\ttfamily char} value to be printed \end{DoxyParams}
+
+
+Definition at line 323 of file PrintStream.java.
+
+
+
+References print().
+
+\index{java::io::PrintStream@{java::io::PrintStream}!println@{println}}
+\index{println@{println}!java::io::PrintStream@{java::io::PrintStream}}
+\subsubsection[{println}]{\setlength{\rightskip}{0pt plus 5cm}void java::io::PrintStream::println (
+\begin{DoxyParamCaption}
+\item[{float}]{ fnum}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily  [inline]}}\label{classjava_1_1io_1_1_print_stream_aa3ba00b2a5df01177b842fba5731bd75}
+This method prints a float to the stream. The value printed is determined using the {\ttfamily String.valueOf()} method. 
+
+This method prints a line termination sequence after printing the value.
+
+
+\begin{DoxyParams}{Parameters}
+\item[{\em fnum}]The {\ttfamily float} value to be printed \end{DoxyParams}
+
+
+Definition at line 362 of file PrintStream.java.
+
+
+
+References print().
+
+\index{java::io::PrintStream@{java::io::PrintStream}!println@{println}}
+\index{println@{println}!java::io::PrintStream@{java::io::PrintStream}}
+\subsubsection[{println}]{\setlength{\rightskip}{0pt plus 5cm}void java::io::PrintStream::println (
+\begin{DoxyParamCaption}
+\item[{String}]{ str}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily  [inline]}}\label{classjava_1_1io_1_1_print_stream_a0faa1a332db49fa4785f7dafa43acef9}
+This method prints a {\ttfamily String} to the stream. The actual value printed depends on the system default encoding. 
+
+This method prints a line termination sequence after printing the value.
+
+
+\begin{DoxyParams}{Parameters}
+\item[{\em str}]The {\ttfamily String} to print. \end{DoxyParams}
+
+
+Definition at line 401 of file PrintStream.java.
+
+
+
+References print().
+
+\index{java::io::PrintStream@{java::io::PrintStream}!println@{println}}
+\index{println@{println}!java::io::PrintStream@{java::io::PrintStream}}
+\subsubsection[{println}]{\setlength{\rightskip}{0pt plus 5cm}void java::io::PrintStream::println (
+\begin{DoxyParamCaption}
+\item[{int}]{ inum}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily  [inline]}}\label{classjava_1_1io_1_1_print_stream_a5bc71ec87ae5c64e3944e7be031b839c}
+This method prints an integer to the stream. The value printed is determined using the {\ttfamily String.valueOf()} method. 
+
+This method prints a line termination sequence after printing the value.
+
+
+\begin{DoxyParams}{Parameters}
+\item[{\em inum}]The {\ttfamily int} value to be printed \end{DoxyParams}
+
+
+Definition at line 336 of file PrintStream.java.
+
+
+
+References print().
+
+\index{java::io::PrintStream@{java::io::PrintStream}!setError@{setError}}
+\index{setError@{setError}!java::io::PrintStream@{java::io::PrintStream}}
+\subsubsection[{setError}]{\setlength{\rightskip}{0pt plus 5cm}void java::io::PrintStream::setError (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily  [inline, protected]}}\label{classjava_1_1io_1_1_print_stream_aa4d22e6473b3c1b1dc2d4f3ae4a530f2}
+This method can be called by subclasses to indicate that an error has occurred and should be reported by {\ttfamily checkError}. 
+
+Definition at line 145 of file PrintStream.java.
+
+
+
+Referenced by close(), flush(), and write().
+
+\index{java::io::PrintStream@{java::io::PrintStream}!write@{write}}
+\index{write@{write}!java::io::PrintStream@{java::io::PrintStream}}
+\subsubsection[{write}]{\setlength{\rightskip}{0pt plus 5cm}void java::io::PrintStream::write (
+\begin{DoxyParamCaption}
+\item[{byte[$\,$]}]{ buffer, }
+\item[{int}]{ offset, }
+\item[{int}]{ len}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily  [inline]}}\label{classjava_1_1io_1_1_print_stream_ac0aaf2f44e9c720047c470ecb5df9df0}
+This method writes {\ttfamily len} bytes from the specified array starting at index {\ttfamily offset} into the array.
+
+
+\begin{DoxyParams}{Parameters}
+\item[{\em buffer}]The array of bytes to write \item[{\em offset}]The index into the array to start writing from \item[{\em len}]The number of bytes to write \end{DoxyParams}
+
+
+Reimplemented from {\bf java::io::OutputStream} \doxyref{}{p.}{classjava_1_1io_1_1_output_stream_ac13ddccf0c1b6d05dd794a5c610ae77c}.
+
+
+
+Definition at line 178 of file PrintStream.java.
+
+
+
+References setError(), and java::io::OutputStream::write().
+
+\index{java::io::PrintStream@{java::io::PrintStream}!write@{write}}
+\index{write@{write}!java::io::PrintStream@{java::io::PrintStream}}
+\subsubsection[{write}]{\setlength{\rightskip}{0pt plus 5cm}void java::io::PrintStream::write (
+\begin{DoxyParamCaption}
+\item[{int}]{ oneByte}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily  [inline, virtual]}}\label{classjava_1_1io_1_1_print_stream_a57d8bc8120feb022af721c4dfd6eb687}
+This method writes a byte of data to the stream. If auto-\/flush is enabled, printing a newline character will cause the stream to be flushed after the character is written.
+
+
+\begin{DoxyParams}{Parameters}
+\item[{\em oneByte}]The byte to be written \end{DoxyParams}
+
+
+Implements {\bf java::io::OutputStream} \doxyref{}{p.}{classjava_1_1io_1_1_output_stream_acb393205e8e2e494c27c289439a8d160}.
+
+
+
+Definition at line 157 of file PrintStream.java.
+
+
+
+References setError(), and java::io::OutputStream::write().
+
+
+
+The documentation for this class was generated from the following file:\begin{DoxyCompactItemize}
+\item 
+src/classpath/java/io/PrintStream.java\end{DoxyCompactItemize}
